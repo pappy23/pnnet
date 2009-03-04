@@ -1,2 +1,2 @@
-/usr/bin/ar cr bin/libpann.a  CMakeFiles/pann.dir/lib.cpp.o
+/usr/bin/ar cr bin/libpann.a  CMakeFiles/pann.dir/Object.cpp.o
 /usr/bin/ranlib bin/libpann.a

@@ -102,19 +102,6 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named HelloWorld
-
-# Build rule for target.
-HelloWorld: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 HelloWorld
-.PHONY : HelloWorld
-
-# fast build rule for target.
-HelloWorld/fast:
-	$(MAKE) -f CMakeFiles/HelloWorld.dir/build.make CMakeFiles/HelloWorld.dir/build
-.PHONY : HelloWorld/fast
-
-#=============================================================================
 # Target rules for targets named pann
 
 # Build rule for target.
@@ -127,53 +114,42 @@ pann/fast:
 	$(MAKE) -f CMakeFiles/pann.dir/build.make CMakeFiles/pann.dir/build
 .PHONY : pann/fast
 
-lib.o: lib.cpp.o
-.PHONY : lib.o
+#=============================================================================
+# Target rules for targets named ObjectTest
+
+# Build rule for target.
+ObjectTest: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ObjectTest
+.PHONY : ObjectTest
+
+# fast build rule for target.
+ObjectTest/fast:
+	$(MAKE) -f apps/CMakeFiles/ObjectTest.dir/build.make apps/CMakeFiles/ObjectTest.dir/build
+.PHONY : ObjectTest/fast
+
+Object.o: Object.cpp.o
+.PHONY : Object.o
 
 # target to build an object file
-lib.cpp.o:
-	$(MAKE) -f CMakeFiles/pann.dir/build.make CMakeFiles/pann.dir/lib.cpp.o
-.PHONY : lib.cpp.o
+Object.cpp.o:
+	$(MAKE) -f CMakeFiles/pann.dir/build.make CMakeFiles/pann.dir/Object.cpp.o
+.PHONY : Object.cpp.o
 
-lib.i: lib.cpp.i
-.PHONY : lib.i
-
-# target to preprocess a source file
-lib.cpp.i:
-	$(MAKE) -f CMakeFiles/pann.dir/build.make CMakeFiles/pann.dir/lib.cpp.i
-.PHONY : lib.cpp.i
-
-lib.s: lib.cpp.s
-.PHONY : lib.s
-
-# target to generate assembly for a file
-lib.cpp.s:
-	$(MAKE) -f CMakeFiles/pann.dir/build.make CMakeFiles/pann.dir/lib.cpp.s
-.PHONY : lib.cpp.s
-
-main.o: main.cpp.o
-.PHONY : main.o
-
-# target to build an object file
-main.cpp.o:
-	$(MAKE) -f CMakeFiles/HelloWorld.dir/build.make CMakeFiles/HelloWorld.dir/main.cpp.o
-.PHONY : main.cpp.o
-
-main.i: main.cpp.i
-.PHONY : main.i
+Object.i: Object.cpp.i
+.PHONY : Object.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) -f CMakeFiles/HelloWorld.dir/build.make CMakeFiles/HelloWorld.dir/main.cpp.i
-.PHONY : main.cpp.i
+Object.cpp.i:
+	$(MAKE) -f CMakeFiles/pann.dir/build.make CMakeFiles/pann.dir/Object.cpp.i
+.PHONY : Object.cpp.i
 
-main.s: main.cpp.s
-.PHONY : main.s
+Object.s: Object.cpp.s
+.PHONY : Object.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) -f CMakeFiles/HelloWorld.dir/build.make CMakeFiles/HelloWorld.dir/main.cpp.s
-.PHONY : main.cpp.s
+Object.cpp.s:
+	$(MAKE) -f CMakeFiles/pann.dir/build.make CMakeFiles/pann.dir/Object.cpp.s
+.PHONY : Object.cpp.s
 
 # Help Target
 help:
@@ -181,16 +157,13 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... HelloWorld"
 	@echo "... edit_cache"
 	@echo "... pann"
 	@echo "... rebuild_cache"
-	@echo "... lib.o"
-	@echo "... lib.i"
-	@echo "... lib.s"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... ObjectTest"
+	@echo "... Object.o"
+	@echo "... Object.i"
+	@echo "... Object.s"
 .PHONY : help
 
 

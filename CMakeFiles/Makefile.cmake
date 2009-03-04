@@ -11,6 +11,7 @@ SET(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/CMakeCXXCompiler.cmake"
   "CMakeFiles/CMakeSystem.cmake"
   "src/CMakeLists.txt"
+  "src/apps/CMakeLists.txt"
   "/usr/share/cmake-2.6/Modules/CMakeCInformation.cmake"
   "/usr/share/cmake-2.6/Modules/CMakeCXXInformation.cmake"
   "/usr/share/cmake-2.6/Modules/CMakeCommonLanguageInclude.cmake"
@@ -30,10 +31,11 @@ SET(CMAKE_MAKEFILE_OUTPUTS
   "Makefile"
   "CMakeFiles/cmake.check_cache"
   "CMakeFiles/CMakeDirectoryInformation.cmake"
+  "apps/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
 SET(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/HelloWorld.dir/DependInfo.cmake"
   "CMakeFiles/pann.dir/DependInfo.cmake"
+  "apps/CMakeFiles/ObjectTest.dir/DependInfo.cmake"
   )
