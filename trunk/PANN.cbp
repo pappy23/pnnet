@@ -7,18 +7,18 @@
       <Option compiler="gcc" />
       <Build>
       <Target title="all">
-         <Option working_dir="/home/booble/pann" />
+         <Option working_dir="/home/booble/pann/trunk" />
          <Option type="4" />
          <MakeCommands>
-            <Build command="/usr/bin/make -f &quot;/home/booble/pann/Makefile&quot; all" />
-            <CompileFile command="/usr/bin/make -f &quot;/home/booble/pann/Makefile&quot; &quot;$file&quot;" />
-            <Clean command="/usr/bin/make -f &quot;/home/booble/pann/Makefile&quot; clean" />
-            <DistClean command="/usr/bin/make -f &quot;/home/booble/pann/Makefile&quot; clean" />
+            <Build command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; all" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; clean" />
          </MakeCommands>
       </Target>
       <Target title="HelloWorld">
-         <Option output="/home/booble/pann/bin/HelloWorld" prefix_auto="0" extension_auto="0" />
-         <Option working_dir="/home/booble/pann" />
+         <Option output="/home/booble/pann/trunk/bin/HelloWorld" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/booble/pann/trunk" />
          <Option object_output="./" />
          <Option type="1" />
          <Option compiler="gcc" />
@@ -28,15 +28,15 @@
             <Add directory="/usr/lib/openmpi/include" />
          </Compiler>
          <MakeCommands>
-            <Build command="/usr/bin/make -f &quot;/home/booble/pann/Makefile&quot; HelloWorld" />
-            <CompileFile command="/usr/bin/make -f &quot;/home/booble/pann/Makefile&quot; &quot;$file&quot;" />
-            <Clean command="/usr/bin/make -f &quot;/home/booble/pann/Makefile&quot; clean" />
-            <DistClean command="/usr/bin/make -f &quot;/home/booble/pann/Makefile&quot; clean" />
+            <Build command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; HelloWorld" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; clean" />
          </MakeCommands>
       </Target>
       <Target title="HelloWorld/fast">
-         <Option output="/home/booble/pann/bin/HelloWorld" prefix_auto="0" extension_auto="0" />
-         <Option working_dir="/home/booble/pann" />
+         <Option output="/home/booble/pann/trunk/bin/HelloWorld" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/booble/pann/trunk" />
          <Option object_output="./" />
          <Option type="1" />
          <Option compiler="gcc" />
@@ -46,15 +46,15 @@
             <Add directory="/usr/lib/openmpi/include" />
          </Compiler>
          <MakeCommands>
-            <Build command="/usr/bin/make -f &quot;/home/booble/pann/Makefile&quot; HelloWorld/fast" />
-            <CompileFile command="/usr/bin/make -f &quot;/home/booble/pann/Makefile&quot; &quot;$file&quot;" />
-            <Clean command="/usr/bin/make -f &quot;/home/booble/pann/Makefile&quot; clean" />
-            <DistClean command="/usr/bin/make -f &quot;/home/booble/pann/Makefile&quot; clean" />
+            <Build command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; HelloWorld/fast" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; clean" />
          </MakeCommands>
       </Target>
       <Target title="pann">
-         <Option output="/home/booble/pann/bin/libpann.so" prefix_auto="0" extension_auto="0" />
-         <Option working_dir="/home/booble/pann" />
+         <Option output="/home/booble/pann/trunk/bin/libpann.so" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/booble/pann/trunk" />
          <Option object_output="./" />
          <Option type="3" />
          <Option compiler="gcc" />
@@ -64,15 +64,15 @@
             <Add directory="/usr/lib/openmpi/include" />
          </Compiler>
          <MakeCommands>
-            <Build command="/usr/bin/make -f &quot;/home/booble/pann/Makefile&quot; pann" />
-            <CompileFile command="/usr/bin/make -f &quot;/home/booble/pann/Makefile&quot; &quot;$file&quot;" />
-            <Clean command="/usr/bin/make -f &quot;/home/booble/pann/Makefile&quot; clean" />
-            <DistClean command="/usr/bin/make -f &quot;/home/booble/pann/Makefile&quot; clean" />
+            <Build command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; pann" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; clean" />
          </MakeCommands>
       </Target>
       <Target title="pann/fast">
-         <Option output="/home/booble/pann/bin/libpann.so" prefix_auto="0" extension_auto="0" />
-         <Option working_dir="/home/booble/pann" />
+         <Option output="/home/booble/pann/trunk/bin/libpann.so" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/booble/pann/trunk" />
          <Option object_output="./" />
          <Option type="3" />
          <Option compiler="gcc" />
@@ -82,26 +82,26 @@
             <Add directory="/usr/lib/openmpi/include" />
          </Compiler>
          <MakeCommands>
-            <Build command="/usr/bin/make -f &quot;/home/booble/pann/Makefile&quot; pann/fast" />
-            <CompileFile command="/usr/bin/make -f &quot;/home/booble/pann/Makefile&quot; &quot;$file&quot;" />
-            <Clean command="/usr/bin/make -f &quot;/home/booble/pann/Makefile&quot; clean" />
-            <DistClean command="/usr/bin/make -f &quot;/home/booble/pann/Makefile&quot; clean" />
+            <Build command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; pann/fast" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; clean" />
          </MakeCommands>
       </Target>
       <Target title="rebuild_cache">
-         <Option working_dir="/home/booble/pann" />
+         <Option working_dir="/home/booble/pann/trunk" />
          <Option type="4" />
          <MakeCommands>
-            <Build command="/usr/bin/make -f &quot;/home/booble/pann/Makefile&quot; rebuild_cache" />
-            <CompileFile command="/usr/bin/make -f &quot;/home/booble/pann/Makefile&quot; &quot;$file&quot;" />
-            <Clean command="/usr/bin/make -f &quot;/home/booble/pann/Makefile&quot; clean" />
-            <DistClean command="/usr/bin/make -f &quot;/home/booble/pann/Makefile&quot; clean" />
+            <Build command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; rebuild_cache" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; clean" />
          </MakeCommands>
       </Target>
       </Build>
-      <Unit filename="/home/booble/pann/src/lib.cpp">
+      <Unit filename="/home/booble/pann/trunk/src/lib.cpp">
       </Unit>
-      <Unit filename="/home/booble/pann/src/main.cpp">
+      <Unit filename="/home/booble/pann/trunk/src/main.cpp">
       </Unit>
    </Project>
 </CodeBlocks_project_file>

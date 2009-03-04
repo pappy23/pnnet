@@ -6,13 +6,19 @@
 
 #IncludeRegexTransform: 
 
-/home/booble/pann/src/main.cpp
+/home/booble/pann/trunk/src/lib.h
+iostream
+-
+
+/home/booble/pann/trunk/src/main.cpp
 boost/mpi/environment.hpp
 -
 boost/mpi/communicator.hpp
 -
 iostream
 -
+lib.h
+/home/booble/pann/trunk/src/lib.h
 
 /usr/lib/openmpi/include/mpi.h
 stddef.h

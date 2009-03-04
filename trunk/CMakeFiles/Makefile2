@@ -50,10 +50,10 @@ RM = /usr/bin/cmake -E remove -f
 CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/booble/pann/src
+CMAKE_SOURCE_DIR = /home/booble/pann/trunk/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/booble/pann
+CMAKE_BINARY_DIR = /home/booble/pann/trunk
 
 #=============================================================================
 # Target rules for target CMakeFiles/HelloWorld.dir
@@ -62,7 +62,7 @@ CMAKE_BINARY_DIR = /home/booble/pann
 CMakeFiles/HelloWorld.dir/all: CMakeFiles/pann.dir/all
 	$(MAKE) -f CMakeFiles/HelloWorld.dir/build.make CMakeFiles/HelloWorld.dir/depend
 	$(MAKE) -f CMakeFiles/HelloWorld.dir/build.make CMakeFiles/HelloWorld.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/booble/pann/CMakeFiles  1
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/booble/pann/trunk/CMakeFiles  1
 	@echo "Built target HelloWorld"
 .PHONY : CMakeFiles/HelloWorld.dir/all
 
@@ -72,9 +72,9 @@ all: CMakeFiles/HelloWorld.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/HelloWorld.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/booble/pann/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/booble/pann/trunk/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/HelloWorld.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/booble/pann/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/booble/pann/trunk/CMakeFiles 0
 .PHONY : CMakeFiles/HelloWorld.dir/rule
 
 # Convenience name for target.
@@ -97,7 +97,7 @@ clean: CMakeFiles/HelloWorld.dir/clean
 CMakeFiles/pann.dir/all:
 	$(MAKE) -f CMakeFiles/pann.dir/build.make CMakeFiles/pann.dir/depend
 	$(MAKE) -f CMakeFiles/pann.dir/build.make CMakeFiles/pann.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/booble/pann/CMakeFiles  2
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/booble/pann/trunk/CMakeFiles  2
 	@echo "Built target pann"
 .PHONY : CMakeFiles/pann.dir/all
 
@@ -107,9 +107,9 @@ all: CMakeFiles/pann.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/pann.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/booble/pann/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/booble/pann/trunk/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/pann.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/booble/pann/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/booble/pann/trunk/CMakeFiles 0
 .PHONY : CMakeFiles/pann.dir/rule
 
 # Convenience name for target.

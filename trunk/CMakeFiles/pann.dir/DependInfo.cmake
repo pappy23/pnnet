@@ -4,7 +4,7 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/home/booble/pann/src/lib.cpp" "/home/booble/pann/CMakeFiles/pann.dir/lib.cpp.o"
+  "/home/booble/pann/trunk/src/lib.cpp" "/home/booble/pann/trunk/CMakeFiles/pann.dir/lib.cpp.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 

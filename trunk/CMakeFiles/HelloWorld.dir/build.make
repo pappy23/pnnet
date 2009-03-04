@@ -38,10 +38,10 @@ RM = /usr/bin/cmake -E remove -f
 CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/booble/pann/src
+CMAKE_SOURCE_DIR = /home/booble/pann/trunk/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/booble/pann
+CMAKE_BINARY_DIR = /home/booble/pann/trunk
 
 # Include any dependencies generated for this target.
 include CMakeFiles/HelloWorld.dir/depend.make
@@ -54,7 +54,7 @@ include CMakeFiles/HelloWorld.dir/flags.make
 
 CMakeFiles/HelloWorld.dir/main.cpp.o: CMakeFiles/HelloWorld.dir/flags.make
 CMakeFiles/HelloWorld.dir/main.cpp.o: src/main.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/booble/pann/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/booble/pann/trunk/CMakeFiles $(CMAKE_PROGRESS_1)
 	@echo "Building CXX object CMakeFiles/HelloWorld.dir/main.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/HelloWorld.dir/main.cpp.o -c src/main.cpp
 
@@ -118,6 +118,6 @@ CMakeFiles/HelloWorld.dir/clean:
 .PHONY : CMakeFiles/HelloWorld.dir/clean
 
 CMakeFiles/HelloWorld.dir/depend:
-	cd /home/booble/pann && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/booble/pann/src /home/booble/pann/src /home/booble/pann /home/booble/pann /home/booble/pann/CMakeFiles/HelloWorld.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/booble/pann/trunk && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/booble/pann/trunk/src /home/booble/pann/trunk/src /home/booble/pann/trunk /home/booble/pann/trunk /home/booble/pann/trunk/CMakeFiles/HelloWorld.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/HelloWorld.dir/depend
 
