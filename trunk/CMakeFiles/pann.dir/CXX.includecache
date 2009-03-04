@@ -6,14 +6,16 @@
 
 #IncludeRegexTransform: 
 
-/home/booble/pann/trunk/src/lib.cpp
-lib.h
-/home/booble/pann/trunk/src/lib.h
-boost/any.hpp
--
+/home/booble/pann/trunk/src/Object.cpp
+Object.h
+/home/booble/pann/trunk/src/Object.h
 
-/home/booble/pann/trunk/src/lib.h
-iostream
+/home/booble/pann/trunk/src/Object.h
+map
+-
+string
+-
+boost/any.hpp
 -
 
 /usr/local/include/boost-1_38/boost/any.hpp

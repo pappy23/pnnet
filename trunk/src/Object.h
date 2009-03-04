@@ -1,46 +1,30 @@
 //Object.h                                                                                                                    
-
 #ifndef OBJECT_H
 #define OBJECT_H
 
 #include <map>
-#include <sstream>
-#include <iomanip>
+#include <string>
 
-#include "Type.h"
-#include "Exception.h"
+#include <boost/any.hpp>
 
-namespace NNet
+namespace pann
 {
-        class Object
-        {
-        public:
-                Object(Object* pParent = 0);
-                virtual ~Object();
+    class Object
+    {
+    public:
+        Object(int id);
+        virtual ~Object();
 
-        void setParent(Object*);
-                Object* getParent();
+        int id();
 
-                bool is(const std::string& rAttributeName) const;
-                void unset(const std::string& rAttributeName);
-                void set(const std::string& rAttributeName, tAttribute);
-                void set(const std::string& rAttributeName, tFloat);
-                void set(const std::string& rAttributeName, const std::string&);
-                void setAttribute(const std::string& rAttributeName, tAttribute);
-                void setFloat(const std::string& rAttributeName, tFloat);
-                void setString(const std::string& rAttributeName, const std::string&);
-                tAttribute          get(const std::string& rAttributeName) const;
-                tAttribute          getAttribute(const std::string& rAttributeName) const;
-                tFloat              getFloat(const std::string& rAttributeName) const;
-                const std::string&  getString(const std::string& rAttributeName) const;
-        tAttribute operator[](const std::string& rAttributeName) const;
+        bool is(const std::string&) const;
+        void unset(const std::string&);
+        boost::any& operator[](const std::string&);
 
-                const std::string stat() const;
-
-        protected:
-                Object* pParent;
-                mutable std::map<std::string, tAttribute> Attributes;
-        };
+    protected:
+        int obj_id;
+        mutable std::map<std::string, boost::any> Attributes;
+    };
 
 }; //namespace NNet
 

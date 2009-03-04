@@ -56,48 +56,13 @@ CMAKE_SOURCE_DIR = /home/booble/pann/trunk/src
 CMAKE_BINARY_DIR = /home/booble/pann/trunk
 
 #=============================================================================
-# Target rules for target CMakeFiles/HelloWorld.dir
-
-# All Build rule for target.
-CMakeFiles/HelloWorld.dir/all: CMakeFiles/pann.dir/all
-	$(MAKE) -f CMakeFiles/HelloWorld.dir/build.make CMakeFiles/HelloWorld.dir/depend
-	$(MAKE) -f CMakeFiles/HelloWorld.dir/build.make CMakeFiles/HelloWorld.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/booble/pann/trunk/CMakeFiles  1
-	@echo "Built target HelloWorld"
-.PHONY : CMakeFiles/HelloWorld.dir/all
-
-# Include target in all.
-all: CMakeFiles/HelloWorld.dir/all
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/HelloWorld.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/booble/pann/trunk/CMakeFiles 2
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/HelloWorld.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/booble/pann/trunk/CMakeFiles 0
-.PHONY : CMakeFiles/HelloWorld.dir/rule
-
-# Convenience name for target.
-HelloWorld: CMakeFiles/HelloWorld.dir/rule
-.PHONY : HelloWorld
-
-# clean rule for target.
-CMakeFiles/HelloWorld.dir/clean:
-	$(MAKE) -f CMakeFiles/HelloWorld.dir/build.make CMakeFiles/HelloWorld.dir/clean
-.PHONY : CMakeFiles/HelloWorld.dir/clean
-
-# clean rule for target.
-clean: CMakeFiles/HelloWorld.dir/clean
-.PHONY : clean
-
-#=============================================================================
 # Target rules for target CMakeFiles/pann.dir
 
 # All Build rule for target.
 CMakeFiles/pann.dir/all:
 	$(MAKE) -f CMakeFiles/pann.dir/build.make CMakeFiles/pann.dir/depend
 	$(MAKE) -f CMakeFiles/pann.dir/build.make CMakeFiles/pann.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/booble/pann/trunk/CMakeFiles  2
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/booble/pann/trunk/CMakeFiles  1
 	@echo "Built target pann"
 .PHONY : CMakeFiles/pann.dir/all
 
@@ -123,6 +88,56 @@ CMakeFiles/pann.dir/clean:
 
 # clean rule for target.
 clean: CMakeFiles/pann.dir/clean
+.PHONY : clean
+
+#=============================================================================
+# Directory level rules for directory apps
+
+# Convenience name for "all" pass in the directory.
+apps/all: apps/CMakeFiles/ObjectTest.dir/all
+.PHONY : apps/all
+
+# Convenience name for "clean" pass in the directory.
+apps/clean: apps/CMakeFiles/ObjectTest.dir/clean
+.PHONY : apps/clean
+
+# Convenience name for "preinstall" pass in the directory.
+apps/preinstall:
+.PHONY : apps/preinstall
+
+#=============================================================================
+# Target rules for target apps/CMakeFiles/ObjectTest.dir
+
+# All Build rule for target.
+apps/CMakeFiles/ObjectTest.dir/all: CMakeFiles/pann.dir/all
+	$(MAKE) -f apps/CMakeFiles/ObjectTest.dir/build.make apps/CMakeFiles/ObjectTest.dir/depend
+	$(MAKE) -f apps/CMakeFiles/ObjectTest.dir/build.make apps/CMakeFiles/ObjectTest.dir/build
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/booble/pann/trunk/CMakeFiles  2
+	@echo "Built target ObjectTest"
+.PHONY : apps/CMakeFiles/ObjectTest.dir/all
+
+# Include target in all.
+all: apps/CMakeFiles/ObjectTest.dir/all
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+apps/CMakeFiles/ObjectTest.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/booble/pann/trunk/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 apps/CMakeFiles/ObjectTest.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/booble/pann/trunk/CMakeFiles 0
+.PHONY : apps/CMakeFiles/ObjectTest.dir/rule
+
+# Convenience name for target.
+ObjectTest: apps/CMakeFiles/ObjectTest.dir/rule
+.PHONY : ObjectTest
+
+# clean rule for target.
+apps/CMakeFiles/ObjectTest.dir/clean:
+	$(MAKE) -f apps/CMakeFiles/ObjectTest.dir/build.make apps/CMakeFiles/ObjectTest.dir/clean
+.PHONY : apps/CMakeFiles/ObjectTest.dir/clean
+
+# clean rule for target.
+clean: apps/CMakeFiles/ObjectTest.dir/clean
 .PHONY : clean
 
 #=============================================================================
