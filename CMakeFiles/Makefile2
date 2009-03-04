@@ -56,13 +56,83 @@ CMAKE_SOURCE_DIR = /home/booble/pann/trunk/src
 CMAKE_BINARY_DIR = /home/booble/pann/trunk
 
 #=============================================================================
+# Target rules for target CMakeFiles/NeuronTest.dir
+
+# All Build rule for target.
+CMakeFiles/NeuronTest.dir/all: CMakeFiles/pann.dir/all
+	$(MAKE) -f CMakeFiles/NeuronTest.dir/build.make CMakeFiles/NeuronTest.dir/depend
+	$(MAKE) -f CMakeFiles/NeuronTest.dir/build.make CMakeFiles/NeuronTest.dir/build
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/booble/pann/trunk/CMakeFiles  1
+	@echo "Built target NeuronTest"
+.PHONY : CMakeFiles/NeuronTest.dir/all
+
+# Include target in all.
+all: CMakeFiles/NeuronTest.dir/all
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/NeuronTest.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/booble/pann/trunk/CMakeFiles 3
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/NeuronTest.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/booble/pann/trunk/CMakeFiles 0
+.PHONY : CMakeFiles/NeuronTest.dir/rule
+
+# Convenience name for target.
+NeuronTest: CMakeFiles/NeuronTest.dir/rule
+.PHONY : NeuronTest
+
+# clean rule for target.
+CMakeFiles/NeuronTest.dir/clean:
+	$(MAKE) -f CMakeFiles/NeuronTest.dir/build.make CMakeFiles/NeuronTest.dir/clean
+.PHONY : CMakeFiles/NeuronTest.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/NeuronTest.dir/clean
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/ObjectTest.dir
+
+# All Build rule for target.
+CMakeFiles/ObjectTest.dir/all: CMakeFiles/pann.dir/all
+	$(MAKE) -f CMakeFiles/ObjectTest.dir/build.make CMakeFiles/ObjectTest.dir/depend
+	$(MAKE) -f CMakeFiles/ObjectTest.dir/build.make CMakeFiles/ObjectTest.dir/build
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/booble/pann/trunk/CMakeFiles  2
+	@echo "Built target ObjectTest"
+.PHONY : CMakeFiles/ObjectTest.dir/all
+
+# Include target in all.
+all: CMakeFiles/ObjectTest.dir/all
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/ObjectTest.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/booble/pann/trunk/CMakeFiles 3
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/ObjectTest.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/booble/pann/trunk/CMakeFiles 0
+.PHONY : CMakeFiles/ObjectTest.dir/rule
+
+# Convenience name for target.
+ObjectTest: CMakeFiles/ObjectTest.dir/rule
+.PHONY : ObjectTest
+
+# clean rule for target.
+CMakeFiles/ObjectTest.dir/clean:
+	$(MAKE) -f CMakeFiles/ObjectTest.dir/build.make CMakeFiles/ObjectTest.dir/clean
+.PHONY : CMakeFiles/ObjectTest.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/ObjectTest.dir/clean
+.PHONY : clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/pann.dir
 
 # All Build rule for target.
 CMakeFiles/pann.dir/all:
 	$(MAKE) -f CMakeFiles/pann.dir/build.make CMakeFiles/pann.dir/depend
 	$(MAKE) -f CMakeFiles/pann.dir/build.make CMakeFiles/pann.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/booble/pann/trunk/CMakeFiles  1
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/booble/pann/trunk/CMakeFiles  3 4
 	@echo "Built target pann"
 .PHONY : CMakeFiles/pann.dir/all
 
@@ -72,7 +142,7 @@ all: CMakeFiles/pann.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/pann.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/booble/pann/trunk/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/booble/pann/trunk/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/pann.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/booble/pann/trunk/CMakeFiles 0
 .PHONY : CMakeFiles/pann.dir/rule
@@ -88,56 +158,6 @@ CMakeFiles/pann.dir/clean:
 
 # clean rule for target.
 clean: CMakeFiles/pann.dir/clean
-.PHONY : clean
-
-#=============================================================================
-# Directory level rules for directory apps
-
-# Convenience name for "all" pass in the directory.
-apps/all: apps/CMakeFiles/ObjectTest.dir/all
-.PHONY : apps/all
-
-# Convenience name for "clean" pass in the directory.
-apps/clean: apps/CMakeFiles/ObjectTest.dir/clean
-.PHONY : apps/clean
-
-# Convenience name for "preinstall" pass in the directory.
-apps/preinstall:
-.PHONY : apps/preinstall
-
-#=============================================================================
-# Target rules for target apps/CMakeFiles/ObjectTest.dir
-
-# All Build rule for target.
-apps/CMakeFiles/ObjectTest.dir/all: CMakeFiles/pann.dir/all
-	$(MAKE) -f apps/CMakeFiles/ObjectTest.dir/build.make apps/CMakeFiles/ObjectTest.dir/depend
-	$(MAKE) -f apps/CMakeFiles/ObjectTest.dir/build.make apps/CMakeFiles/ObjectTest.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/booble/pann/trunk/CMakeFiles  2
-	@echo "Built target ObjectTest"
-.PHONY : apps/CMakeFiles/ObjectTest.dir/all
-
-# Include target in all.
-all: apps/CMakeFiles/ObjectTest.dir/all
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-apps/CMakeFiles/ObjectTest.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/booble/pann/trunk/CMakeFiles 2
-	$(MAKE) -f CMakeFiles/Makefile2 apps/CMakeFiles/ObjectTest.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/booble/pann/trunk/CMakeFiles 0
-.PHONY : apps/CMakeFiles/ObjectTest.dir/rule
-
-# Convenience name for target.
-ObjectTest: apps/CMakeFiles/ObjectTest.dir/rule
-.PHONY : ObjectTest
-
-# clean rule for target.
-apps/CMakeFiles/ObjectTest.dir/clean:
-	$(MAKE) -f apps/CMakeFiles/ObjectTest.dir/build.make apps/CMakeFiles/ObjectTest.dir/clean
-.PHONY : apps/CMakeFiles/ObjectTest.dir/clean
-
-# clean rule for target.
-clean: apps/CMakeFiles/ObjectTest.dir/clean
 .PHONY : clean
 
 #=============================================================================
