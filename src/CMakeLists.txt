@@ -2,8 +2,8 @@ cmake_minimum_required(VERSION 2.6)
 
 PROJECT (PANN)
 
-SET(BOOST_INCLUDEDIR /usr/local/include/boost-1_38)
-SET(BOOST_LIBRARYDIR /usr/local/lib)
+#SET(BOOST_INCLUDEDIR /usr/local/include/boost-1_38)
+#SET(BOOST_LIBRARYDIR /usr/local/lib)
 
 SET(Boost_USE_STATIC_LIBS ON)
 FIND_PACKAGE (Boost COMPONENTS mpi thread)
