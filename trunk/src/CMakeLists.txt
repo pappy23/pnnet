@@ -21,7 +21,7 @@ ELSE(MPI_FOUND)
     MESSAGE(FATAL_ERROR "Could not find MPI!")
 ENDIF(MPI_FOUND)
 
-ADD_LIBRARY (pann SHARED lib.cpp)
+ADD_LIBRARY (pann STATIC lib.cpp)
 
 ADD_EXECUTABLE (HelloWorld main.cpp)
 TARGET_LINK_LIBRARIES (HelloWorld pann ${MPI_LIBRARIES} ${Boost_LIBRARIES})

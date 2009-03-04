@@ -84,7 +84,7 @@ HelloWorld_OBJECTS = \
 HelloWorld_EXTERNAL_OBJECTS =
 
 bin/HelloWorld: CMakeFiles/HelloWorld.dir/main.cpp.o
-bin/HelloWorld: bin/libpann.so
+bin/HelloWorld: bin/libpann.a
 bin/HelloWorld: /usr/lib/openmpi/lib/libmpi_cxx.so
 bin/HelloWorld: /usr/lib/openmpi/lib/libmpi.so
 bin/HelloWorld: /usr/lib/openmpi/lib/libopen-rte.so
