@@ -1,0 +1,1 @@
+/usr/bin/c++  -fPIC -g  -shared -Wl,-soname,libpann.so -o bin/libpann.so CMakeFiles/pann.dir/lib.cpp.o 
