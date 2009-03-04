@@ -12,6 +12,14 @@ int main(int argc, char* argv[])
     std::cout << "I am process " << world.rank() << " of " << world.size()
     << "." << std::endl;
     print_hello();
+    int a=0,b;
+    while(1)
+    {
+        a--;
+        b = a; 
+    }
+
+    std::cout<<b;
 
     return 0;
 }
