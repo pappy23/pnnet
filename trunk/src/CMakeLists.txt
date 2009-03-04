@@ -23,11 +23,14 @@ ELSE(MPI_FOUND)
 ENDIF(MPI_FOUND)
 
 ############################################################################
-ADD_LIBRARY (pann STATIC Object.cpp)
+ADD_LIBRARY (pann STATIC Object.cpp Neuron.cpp)
 
 #ADD_EXECUTABLE (HelloWorld main.cpp)
 #TARGET_LINK_LIBRARIES (HelloWorld pann ${MPI_LIBRARIES} ${Boost_LIBRARIES})
 
 ADD_EXECUTABLE (ObjectTest ObjectTest.cpp)
 TARGET_LINK_LIBRARIES (ObjectTest pann ${Boost_LIBRARIES})
+
+ADD_EXECUTABLE (NeuronTest NeuronTest.cpp)
+TARGET_LINK_LIBRARIES (NeuronTest pann ${Boost_LIBRARIES})
 

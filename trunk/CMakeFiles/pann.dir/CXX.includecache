@@ -6,6 +6,14 @@
 
 #IncludeRegexTransform: 
 
+/home/booble/pann/trunk/src/Neuron.cpp
+Neuron.h
+/home/booble/pann/trunk/src/Neuron.h
+
+/home/booble/pann/trunk/src/Neuron.h
+Object.h
+/home/booble/pann/trunk/src/Object.h
+
 /home/booble/pann/trunk/src/Object.cpp
 Object.h
 /home/booble/pann/trunk/src/Object.h

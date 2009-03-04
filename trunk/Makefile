@@ -102,6 +102,32 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named NeuronTest
+
+# Build rule for target.
+NeuronTest: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 NeuronTest
+.PHONY : NeuronTest
+
+# fast build rule for target.
+NeuronTest/fast:
+	$(MAKE) -f CMakeFiles/NeuronTest.dir/build.make CMakeFiles/NeuronTest.dir/build
+.PHONY : NeuronTest/fast
+
+#=============================================================================
+# Target rules for targets named ObjectTest
+
+# Build rule for target.
+ObjectTest: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ObjectTest
+.PHONY : ObjectTest
+
+# fast build rule for target.
+ObjectTest/fast:
+	$(MAKE) -f CMakeFiles/ObjectTest.dir/build.make CMakeFiles/ObjectTest.dir/build
+.PHONY : ObjectTest/fast
+
+#=============================================================================
 # Target rules for targets named pann
 
 # Build rule for target.
@@ -114,18 +140,53 @@ pann/fast:
 	$(MAKE) -f CMakeFiles/pann.dir/build.make CMakeFiles/pann.dir/build
 .PHONY : pann/fast
 
-#=============================================================================
-# Target rules for targets named ObjectTest
+Neuron.o: Neuron.cpp.o
+.PHONY : Neuron.o
 
-# Build rule for target.
-ObjectTest: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 ObjectTest
-.PHONY : ObjectTest
+# target to build an object file
+Neuron.cpp.o:
+	$(MAKE) -f CMakeFiles/pann.dir/build.make CMakeFiles/pann.dir/Neuron.cpp.o
+.PHONY : Neuron.cpp.o
 
-# fast build rule for target.
-ObjectTest/fast:
-	$(MAKE) -f apps/CMakeFiles/ObjectTest.dir/build.make apps/CMakeFiles/ObjectTest.dir/build
-.PHONY : ObjectTest/fast
+Neuron.i: Neuron.cpp.i
+.PHONY : Neuron.i
+
+# target to preprocess a source file
+Neuron.cpp.i:
+	$(MAKE) -f CMakeFiles/pann.dir/build.make CMakeFiles/pann.dir/Neuron.cpp.i
+.PHONY : Neuron.cpp.i
+
+Neuron.s: Neuron.cpp.s
+.PHONY : Neuron.s
+
+# target to generate assembly for a file
+Neuron.cpp.s:
+	$(MAKE) -f CMakeFiles/pann.dir/build.make CMakeFiles/pann.dir/Neuron.cpp.s
+.PHONY : Neuron.cpp.s
+
+NeuronTest.o: NeuronTest.cpp.o
+.PHONY : NeuronTest.o
+
+# target to build an object file
+NeuronTest.cpp.o:
+	$(MAKE) -f CMakeFiles/NeuronTest.dir/build.make CMakeFiles/NeuronTest.dir/NeuronTest.cpp.o
+.PHONY : NeuronTest.cpp.o
+
+NeuronTest.i: NeuronTest.cpp.i
+.PHONY : NeuronTest.i
+
+# target to preprocess a source file
+NeuronTest.cpp.i:
+	$(MAKE) -f CMakeFiles/NeuronTest.dir/build.make CMakeFiles/NeuronTest.dir/NeuronTest.cpp.i
+.PHONY : NeuronTest.cpp.i
+
+NeuronTest.s: NeuronTest.cpp.s
+.PHONY : NeuronTest.s
+
+# target to generate assembly for a file
+NeuronTest.cpp.s:
+	$(MAKE) -f CMakeFiles/NeuronTest.dir/build.make CMakeFiles/NeuronTest.dir/NeuronTest.cpp.s
+.PHONY : NeuronTest.cpp.s
 
 Object.o: Object.cpp.o
 .PHONY : Object.o
@@ -151,19 +212,53 @@ Object.cpp.s:
 	$(MAKE) -f CMakeFiles/pann.dir/build.make CMakeFiles/pann.dir/Object.cpp.s
 .PHONY : Object.cpp.s
 
+ObjectTest.o: ObjectTest.cpp.o
+.PHONY : ObjectTest.o
+
+# target to build an object file
+ObjectTest.cpp.o:
+	$(MAKE) -f CMakeFiles/ObjectTest.dir/build.make CMakeFiles/ObjectTest.dir/ObjectTest.cpp.o
+.PHONY : ObjectTest.cpp.o
+
+ObjectTest.i: ObjectTest.cpp.i
+.PHONY : ObjectTest.i
+
+# target to preprocess a source file
+ObjectTest.cpp.i:
+	$(MAKE) -f CMakeFiles/ObjectTest.dir/build.make CMakeFiles/ObjectTest.dir/ObjectTest.cpp.i
+.PHONY : ObjectTest.cpp.i
+
+ObjectTest.s: ObjectTest.cpp.s
+.PHONY : ObjectTest.s
+
+# target to generate assembly for a file
+ObjectTest.cpp.s:
+	$(MAKE) -f CMakeFiles/ObjectTest.dir/build.make CMakeFiles/ObjectTest.dir/ObjectTest.cpp.s
+.PHONY : ObjectTest.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
+	@echo "... NeuronTest"
+	@echo "... ObjectTest"
 	@echo "... edit_cache"
 	@echo "... pann"
 	@echo "... rebuild_cache"
-	@echo "... ObjectTest"
+	@echo "... Neuron.o"
+	@echo "... Neuron.i"
+	@echo "... Neuron.s"
+	@echo "... NeuronTest.o"
+	@echo "... NeuronTest.i"
+	@echo "... NeuronTest.s"
 	@echo "... Object.o"
 	@echo "... Object.i"
 	@echo "... Object.s"
+	@echo "... ObjectTest.o"
+	@echo "... ObjectTest.i"
+	@echo "... ObjectTest.s"
 .PHONY : help
 
 
