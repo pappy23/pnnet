@@ -4,11 +4,11 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/home/booble/pann/src/main.cpp" "/home/booble/pann/CMakeFiles/HelloWorld.dir/main.cpp.o"
+  "/home/booble/pann/trunk/src/main.cpp" "/home/booble/pann/trunk/CMakeFiles/HelloWorld.dir/main.cpp.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 
 # Targets to which this target links.
 SET(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/booble/pann/CMakeFiles/pann.dir/DependInfo.cmake"
+  "/home/booble/pann/trunk/CMakeFiles/pann.dir/DependInfo.cmake"
   )
