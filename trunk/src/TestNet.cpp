@@ -1,4 +1,4 @@
-//NeuronTest.cpp
+//TestNet.cpp
 
 #include <iostream>
 #include <iomanip>
@@ -7,15 +7,17 @@
 #include "ActivationFunction.h"
 
 using namespace std;
-using namespace pann;
 using namespace boost;
+using namespace pann;
 
 int main()
 {
-    Neuron n(1, ActivationFunction::Linear());
+    ActivationFunction::Linear defaultFunction;
+    Neuron n(defaultFunction);
 
     n["ilf"] = (int)10;
     cout<<"n[ilf] = "<<setprecision(5)<<(float)any_cast<int>(n["ilf"])<<endl;
+    cout<<"Linear.f() = "<<n.activationValue<<endl;
 
     return 0;
 }
