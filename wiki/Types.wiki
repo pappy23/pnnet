@@ -46,6 +46,9 @@ Weight:
 *float value_delta
 
 Net:
--map<int, Neuron>
+-map<string, const ActivationFunction::Base &> activationFunctions
+-vector<Neuron &> inputNeurons;
+-vector<Neuron &> oututNeurons;
+-vector<Neuron>
 -vector<Weight>
 }}}
