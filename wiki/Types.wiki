@@ -1,0 +1,29 @@
+#summary Types description
+
+Object
+|--Neuron
+|--Link
+|--Weight
+|--Net
+
+-field
+*attribute
+
+Object:
+-map<string, any> Attributes
+
+Neuron:
+-ActivationFunction & activation_fcn
+-float receptive_field
+-float activation_value
+-vector<Link> links;
+
+Link:
+-Neuron & to
+-bool direction in/out
+-Weight & w;
+
+Weight:
+-int usage_count
+-float value
+*float value_delta
