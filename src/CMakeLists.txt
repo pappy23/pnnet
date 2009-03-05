@@ -34,3 +34,4 @@ TARGET_LINK_LIBRARIES (ObjectTest pann ${Boost_LIBRARIES})
 ADD_EXECUTABLE (NeuronTest NeuronTest.cpp)
 TARGET_LINK_LIBRARIES (NeuronTest pann ${Boost_LIBRARIES})
 
+ADD_EXECUTABLE (Test Test.cpp)

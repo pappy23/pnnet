@@ -36,5 +36,6 @@ SET(CMAKE_MAKEFILE_OUTPUTS
 SET(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/NeuronTest.dir/DependInfo.cmake"
   "CMakeFiles/ObjectTest.dir/DependInfo.cmake"
+  "CMakeFiles/Test.dir/DependInfo.cmake"
   "CMakeFiles/pann.dir/DependInfo.cmake"
   )
