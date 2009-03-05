@@ -1,5 +1,5 @@
 #summary Types description
-
+{{{
 Object
 |--Neuron
 |--Link
@@ -27,3 +27,4 @@ Weight:
 -int usage_count
 -float value
 *float value_delta
+}}}
