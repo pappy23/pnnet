@@ -5,7 +5,7 @@
 
 namespace pann
 {
-    namespace ActivationFunctions
+    namespace ActivationFunction
     {
         class Base
         {

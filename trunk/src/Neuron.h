@@ -11,8 +11,17 @@ namespace pann
     class Neuron : public Object
     {
     public:
-        Neuron(int);
-        ~Neuron();
+        Neuron::Neuron(ActivationFunction::Base & activationFunction) : 
+            this->activationFunction(activationFunction), 
+            this->receptiveField(0), 
+            this->activationValue(activationFunction::f(0)) { };
+
+        ~Neuron() { };
+        
+        ActivationFunction::Base & activationFunction;
+        float receptiveField;
+        float activationValue;
+        vector<Link> links;
     };
 
 }; //pann

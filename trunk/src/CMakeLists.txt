@@ -23,7 +23,7 @@ ELSE(MPI_FOUND)
 ENDIF(MPI_FOUND)
 
 ############################################################################
-ADD_LIBRARY (pann STATIC Object.cpp Neuron.cpp ActivationFunction.cpp Net.cpp)
+ADD_LIBRARY (pann STATIC Object.cpp Neuron.cpp Net.cpp)
 
 #ADD_EXECUTABLE (HelloWorld main.cpp)
 #TARGET_LINK_LIBRARIES (HelloWorld pann ${MPI_LIBRARIES} ${Boost_LIBRARIES})

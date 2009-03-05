@@ -12,17 +12,14 @@ namespace pann
     class Object
     {
     public:
-        Object(int id);
+        Object();
         virtual ~Object();
-
-        int id();
 
         bool is(const std::string&) const;
         void unset(const std::string&);
         boost::any& operator[](const std::string&);
 
     protected:
-        int obj_id;
         mutable std::map<std::string, boost::any> Attributes;
     };
 

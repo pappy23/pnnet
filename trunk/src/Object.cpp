@@ -8,7 +8,7 @@ using boost::any;
 
 namespace pann
 {             
-    Object::Object(int id) : obj_id(id)
+    Object::Object()
     {                              
     } //Object                      
 
@@ -16,12 +16,6 @@ namespace pann
     Object::~Object()
     {                
     } //~Object      
-
-    int
-    Object::id()
-    {
-        return this->obj_id;
-    } //id
 
     bool
     Object::is(const string& rAttributeName) const
