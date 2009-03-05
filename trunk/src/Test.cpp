@@ -5,8 +5,7 @@ using namespace std;
 class A
 {
 public:
-    static int val;
-    static void f();
+    int val;
 };
 
 class B : public A
@@ -21,6 +20,6 @@ int main()
     A & r1 = o;
     A & r2 = r1;
 
-//    r2.val =7;
+
     return 0;
 }

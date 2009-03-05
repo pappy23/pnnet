@@ -3,6 +3,7 @@
 #ifndef WEIGHT_H
 #define WEIGHT_H
 
+#include "Includes.h"
 #include "Object.h"
 
 namespace pann

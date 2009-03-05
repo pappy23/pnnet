@@ -3,9 +3,10 @@
 #ifndef LINK_H
 #define LINK_H
 
+#include "Includes.h"
 #include "Object.h"
-#include "Neuron.h"
 #include "Weight.h"
+#include "Neuron.h"
 
 namespace pann
 {

@@ -2,10 +2,7 @@
 #ifndef OBJECT_H
 #define OBJECT_H
 
-#include <map>
-#include <string>
-
-#include <boost/any.hpp>
+#include "Includes.h"
 
 namespace pann
 {
