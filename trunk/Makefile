@@ -128,6 +128,19 @@ ObjectTest/fast:
 .PHONY : ObjectTest/fast
 
 #=============================================================================
+# Target rules for targets named Test
+
+# Build rule for target.
+Test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Test
+.PHONY : Test
+
+# fast build rule for target.
+Test/fast:
+	$(MAKE) -f CMakeFiles/Test.dir/build.make CMakeFiles/Test.dir/build
+.PHONY : Test/fast
+
+#=============================================================================
 # Target rules for targets named pann
 
 # Build rule for target.
@@ -236,6 +249,30 @@ ObjectTest.cpp.s:
 	$(MAKE) -f CMakeFiles/ObjectTest.dir/build.make CMakeFiles/ObjectTest.dir/ObjectTest.cpp.s
 .PHONY : ObjectTest.cpp.s
 
+Test.o: Test.cpp.o
+.PHONY : Test.o
+
+# target to build an object file
+Test.cpp.o:
+	$(MAKE) -f CMakeFiles/Test.dir/build.make CMakeFiles/Test.dir/Test.cpp.o
+.PHONY : Test.cpp.o
+
+Test.i: Test.cpp.i
+.PHONY : Test.i
+
+# target to preprocess a source file
+Test.cpp.i:
+	$(MAKE) -f CMakeFiles/Test.dir/build.make CMakeFiles/Test.dir/Test.cpp.i
+.PHONY : Test.cpp.i
+
+Test.s: Test.cpp.s
+.PHONY : Test.s
+
+# target to generate assembly for a file
+Test.cpp.s:
+	$(MAKE) -f CMakeFiles/Test.dir/build.make CMakeFiles/Test.dir/Test.cpp.s
+.PHONY : Test.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -244,6 +281,7 @@ help:
 	@echo "... depend"
 	@echo "... NeuronTest"
 	@echo "... ObjectTest"
+	@echo "... Test"
 	@echo "... edit_cache"
 	@echo "... pann"
 	@echo "... rebuild_cache"
@@ -259,6 +297,9 @@ help:
 	@echo "... ObjectTest.o"
 	@echo "... ObjectTest.i"
 	@echo "... ObjectTest.s"
+	@echo "... Test.o"
+	@echo "... Test.i"
+	@echo "... Test.s"
 .PHONY : help
 
 
