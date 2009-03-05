@@ -10,19 +10,19 @@ namespace pann
         class Base
         {
         public:
-            static float f(float);
-            static float derivative(float);
+            virtual float f(float) = 0;
+            virtual float derivative(float) = 0;
         };
 
         class Linear : public Base
         {
         public:
-            static float f(float x)
+            float f(float x)
             {
                 return x;
             } //f
 
-            static float derivative(float)
+            float derivative(float)
             {
                 return 0;
             } //derivative

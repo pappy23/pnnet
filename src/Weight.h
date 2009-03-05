@@ -12,8 +12,8 @@ namespace pann
     {
     public:
         Weight(float) : 
-            this->value(value),
-            this->usageCount(1) { };
+            value(value),
+            usageCount(1) { };
 
         ~Weight() { };
 

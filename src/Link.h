@@ -9,18 +9,19 @@
 
 namespace pann
 {
+    class Neuron;
 
     class Link : public Object
     {
     public:
+        enum Direction { in, out };
+
         Link(Neuron & to, Weight & w, Direction direction) :
-            this->to(to),
-            this->w(w),
-            this->direction(direction) { };
+            to(to),
+            w(w),
+            direction(direction) { };
 
         ~Link() { };
-
-        enum Direction { in, out; };
         
         const Direction direction;
         Neuron & to;
