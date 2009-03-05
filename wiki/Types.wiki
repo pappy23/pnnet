@@ -1,10 +1,27 @@
 #summary Types description
 {{{
+
+namespace pann
+{
+
 Object
 |--Neuron
 |--Link
 |--Weight
 |--Net
+
+}
+
+namespace ActivationFunction
+{
+
+Base
+|
+|--Linear
+
+}
+
+---
 
 -field
 *attribute
