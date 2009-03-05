@@ -1,0 +1,27 @@
+//Weight.h
+
+#ifndef WEIGHT_H
+#define WEIGHT_H
+
+#include "Object.h"
+
+namespace pann
+{
+
+    class Weight : public Object
+    {
+    public:
+        Weight(float) : 
+            this->value(value),
+            this->usageCount(1) { };
+
+        ~Weight() { };
+
+        int usageCount;
+        float value;
+    };
+
+}; //pann
+
+#endif //WEIGHT_H
+
