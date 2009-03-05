@@ -30,4 +30,5 @@ Weight:
 
 Net:
 -map<int, Neuron>
+-vector<Weight>
 }}}
