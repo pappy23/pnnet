@@ -27,4 +27,7 @@ Weight:
 -int usage_count
 -float value
 *float value_delta
+
+Net:
+-map<int, Neuron>
 }}}
