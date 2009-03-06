@@ -13,11 +13,8 @@ namespace pann
             static Base* _self;
             static int _refcount;
 
-            Base() { };
-            virtual ~Base() { };
-
         public:
-            static Base* Instance();
+            static Base& Instance();
             void freeInstance()
             {
                 _refcount--;
@@ -37,14 +34,14 @@ namespace pann
         class Linear : public Base
         {
         public:
-            static Base* Instance()
+            static Base& Instance()
             {
                 if(!_self)
                     _self = new Linear();
 
                 _refcount++;
 
-                return _self;
+                return *_self;
             };
 
             float f(float x)

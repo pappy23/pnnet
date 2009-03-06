@@ -21,8 +21,8 @@ namespace pann
         Net();
         ~Net();
 
-        int addNeuron(ActivationFunction::Base*);
-        Neuron* getNeuron(int);
+        int addNeuron(ActivationFunction::Base&);
+        Neuron& getNeuron(int);
         void delNeuron(int);
     };
 

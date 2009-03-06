@@ -19,20 +19,20 @@ namespace pann
 
     private:
         Direction _direction;
-        const Neuron* _to;
+        Neuron& _to;
         boost::shared_ptr<Weight> _w;
 
     public:
-        Link(Neuron* to, const Direction direction, Weight* w) :
+        Link(Neuron& to, const Direction direction, Weight* w) :
             _to(to),
             _direction(direction),
             _w(w) { };
 
         ~Link() { };
 
-        inline Direction getDirection() { return _direction; };
-        inline const Neuron* getTo() { return _to; };
-        inline const boost::shared_ptr<Weight> getW() { return _w; };
+        inline Direction getDirection() const { return _direction; };
+        inline Neuron& getTo() const { return _to; };
+        inline const boost::shared_ptr<Weight> getW() const { return _w; };
     };
 
 }; //pann

@@ -15,7 +15,7 @@ namespace pann
     {
     } //~Net
 
-    int Net::addNeuron(ActivationFunction::Base* activationFunction)
+    int Net::addNeuron(ActivationFunction::Base& activationFunction)
     {
         if(!_neurons.insert( pair<int, Neuron>(++_lastNeuronId, Neuron(activationFunction)) ).second)
         {
@@ -31,9 +31,9 @@ namespace pann
         _neurons.erase(neuronId);
     }
 
-    Neuron* Net::getNeuron(int neuronId)
+    Neuron& Net::getNeuron(int neuronId)
     {
-        return &_neurons.at(neuronId);
+        return _neurons.at(neuronId);
     } //getNeuron
 }; //pann
 

@@ -4,20 +4,21 @@
 #include <iomanip>
 
 #include "Includes.h"
-#include "Neuron.h"
+#include "Net.h"
 
 using namespace std;
-using namespace boost;
 using namespace pann;
+using boost::any_cast;
 
 int main()
 {
-    vector<Neuron> v; 
-    v.push_back(Neuron(ActivationFunction::Linear::Instance()));
+    Net net;
+    int nid = net.addNeuron(ActivationFunction::Linear::Instance());
+    Neuron& n = net.getNeuron(nid);
 
-    v[0]["ilf"] = (int)10;
-    cout<<"n[ilf] = "<<setprecision(5)<<(float)any_cast<int>(v[0]["ilf"])<<endl;
-    cout<<"Linear.f() = "<<v[0].activationValue<<endl;
+    n["ilf"] = (int)10;
+    cout<<"n[ilf] = "<<setprecision(5)<<(float)any_cast<int>(n["ilf"])<<endl;
+    cout<<"Linear.f() = "<<n.activationValue<<endl;
 
     return 0;
 }
