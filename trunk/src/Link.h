@@ -17,16 +17,22 @@ namespace pann
     public:
         enum Direction { in, out };
 
-        Link(Neuron & to, Weight & w, Direction direction) :
-            to(to),
-            w(w),
-            direction(direction) { };
+    private:
+        Direction _direction;
+        const Neuron* _to;
+        boost::shared_ptr<Weight> _w;
+
+    public:
+        Link(Neuron* to, const Direction direction, Weight* w) :
+            _to(to),
+            _direction(direction),
+            _w(w) { };
 
         ~Link() { };
-        
-        const Direction direction;
-        Neuron & to;
-        Weight & w;
+
+        inline Direction getDirection() { return _direction; };
+        inline const Neuron* getTo() { return _to; };
+        inline const boost::shared_ptr<Weight> getW() { return _w; };
     };
 
 }; //pann
