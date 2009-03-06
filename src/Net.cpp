@@ -33,7 +33,7 @@ namespace pann
 
     Neuron& Net::getNeuron(int neuronId)
     {
-        return _neurons.at(neuronId);
+        return _neurons.at(neuronId); //FIXME
     } //getNeuron
 }; //pann
 
