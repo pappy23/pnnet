@@ -14,19 +14,16 @@ ELSE(Boost_FOUND)
     MESSAGE(FATAL_ERROR "Could not find Boost package!")
 ENDIF(Boost_FOUND)
 
-FIND_PACKAGE (MPI)
-IF(MPI_FOUND)
-    INCLUDE_DIRECTORIES ( ${MPI_INCLUDE_PATH} )
-    MESSAGE (STATUS "Found MPI: ${MPI_INCLUDE_PATH}")
-ELSE(MPI_FOUND)
-    MESSAGE(FATAL_ERROR "Could not find MPI!")
-ENDIF(MPI_FOUND)
+#FIND_PACKAGE (MPI)
+#IF(MPI_FOUND)
+#        INCLUDE_DIRECTORIES ( ${MPI_INCLUDE_PATH} )
+#    MESSAGE (STATUS "Found MPI: ${MPI_INCLUDE_PATH}")
+#ELSE(MPI_FOUND)
+#    MESSAGE(FATAL_ERROR "Could not find MPI!")
+#ENDIF(MPI_FOUND)
 
 ############################################################################
 ADD_LIBRARY (pann STATIC Object.cpp Neuron.cpp Net.cpp)
-
-#ADD_EXECUTABLE (HelloWorld main.cpp)
-#TARGET_LINK_LIBRARIES (HelloWorld pann ${MPI_LIBRARIES} ${Boost_LIBRARIES})
 
 ADD_EXECUTABLE (TestNet TestNet.cpp)
 TARGET_LINK_LIBRARIES (TestNet pann ${Boost_LIBRARIES})

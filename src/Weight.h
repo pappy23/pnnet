@@ -11,12 +11,11 @@ namespace pann
 
     class Weight : public Object
     {
-
     public:
         int usageCount;
         float value;
 
-        Weight(float value) : 
+        Weight(float value = 1) : 
             value(value),
             usageCount(1) { };
 
