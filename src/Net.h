@@ -4,7 +4,6 @@
 #define NET_H 
 
 #include "Includes.h"
-#include "ActivationFunction.h"
 #include "Object.h"
 #include "Weight.h"
 #include "Neuron.h"
@@ -14,16 +13,17 @@ namespace pann
 
     class Net : public Object
     {
-    public:
-        Net() { };
-        ~Net() { };
+    protected:
+        std::map<int, Neuron> _neurons;
+        int _lastNeuronId;
 
-        std::map<std::string, const ActivationFunction::Base &> activationFunctions;
-        std::vector<Neuron> neurons;
-        std::vector<Weight> weights;
-        //WTF?!
-        //std::vector<Neuron &> inputNeurons; 
-        //std::vector<Neuron &> outputNeurons;
+    public:
+        Net();
+        ~Net();
+
+        int addNeuron(ActivationFunction::Base*);
+        Neuron* getNeuron(int);
+        void delNeuron(int);
     };
 
 }; //pann
