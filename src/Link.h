@@ -1,4 +1,7 @@
-//Link.h
+/**
+ * @file
+ * Link object
+ */
 
 #ifndef LINK_H
 #define LINK_H
@@ -12,15 +15,16 @@ namespace pann
 {
     class Neuron;
 
+    //! Link between two neurons
     class Link : public Object
     {
     public:
         enum Direction { in, out };
 
-    private:
+    protected:
         Direction direction;
         Neuron& to;
-        boost::shared_ptr<Weight> w;
+        boost::shared_ptr<Weight> w; //!< Pointer to Weight object (may be shared between different links)
 
     public:
         Link(Neuron& _to, const Direction _direction, Weight* _w) :

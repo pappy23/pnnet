@@ -1,4 +1,7 @@
-//ActivationFunction.cpp
+/**
+ * @file
+ * Initialization of ActivationFunction::Base static members
+ */
 
 #include "ActivationFunction.h"
 
