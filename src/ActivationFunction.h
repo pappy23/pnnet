@@ -20,6 +20,8 @@ namespace pann
         protected:
             static Base* self;
             static int refcount;
+			Base() {};
+			virtual ~Base() {};
 
         public:
             //Returns reference to ActivationFunction object. It is always the same
@@ -46,6 +48,9 @@ namespace pann
          */
         class Linear : public Base
         {
+		protected:
+			Linear() {};
+			~Linear() {};
         public:
             static Base& Instance()
             {
