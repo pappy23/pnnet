@@ -17,7 +17,7 @@ namespace pann
     namespace Exception
     {
         //! Basic class for every exception
-        class Base : public std::exception
+        class Base
         {
         protected:
             std::ostringstream textStream;
