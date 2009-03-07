@@ -3,37 +3,40 @@
 #include "Net.h"
 
 using std::pair;
+using std::map;
 
 namespace pann
 {
     Net::Net()
     {
-        _lastNeuronId = 0;
+        lastNeuronId = 0;
     } //Net
 
     Net::~Net()
     {
     } //~Net
 
-    int Net::addNeuron(ActivationFunction::Base& activationFunction)
+    int Net::addNeuron(ActivationFunction::Base& _activationFunction)
     {
-        if(!_neurons.insert( pair<int, Neuron>(++_lastNeuronId, Neuron(activationFunction)) ).second)
-        {
-            //Element already exist
-            return 0;
-        }
+        if(!neurons.insert( pair<int, Neuron>(++lastNeuronId, Neuron(_activationFunction)) ).second)
+            throw Exception::ElementExists()<<"Net::addNeuron(): insertion of neuron "<<lastNeuronId<<" failed\n";
         
-        return _lastNeuronId;
+        return lastNeuronId;
     } //addNeuron
 
-    void Net::delNeuron(int neuronId)
+    void Net::delNeuron(int _neuronId)
     {
-        _neurons.erase(neuronId);
+        if(!neurons.erase(_neuronId))
+            throw Exception::ObjectNotFound()<<"Net::delNeuron(): neuron "<<_neuronId<<" not found\n";
     }
 
-    Neuron& Net::getNeuron(int neuronId)
+    Neuron& Net::getNeuron(int _neuronId)
     {
-        return _neurons.find(neuronId)-> second; //FIX by tifon
+        map<int, Neuron>::iterator i = neurons.find(_neuronId);
+        if(i == neurons.end())
+            throw Exception::ObjectNotFound()<<"Net::getNeuron(): neuron "<< _neuronId<<"not found\n";
+
+        return i->second;
     } //getNeuron
 }; //pann
 

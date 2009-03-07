@@ -23,7 +23,7 @@ ENDIF(Boost_FOUND)
 #ENDIF(MPI_FOUND)
 
 ############################################################################
-ADD_LIBRARY (pann STATIC Object.cpp Neuron.cpp Net.cpp)
+ADD_LIBRARY (pann STATIC Object.cpp ActivationFunction.cpp Neuron.cpp Net.cpp)
 
 ADD_EXECUTABLE (TestNet TestNet.cpp)
 TARGET_LINK_LIBRARIES (TestNet pann ${Boost_LIBRARIES})

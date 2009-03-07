@@ -13,14 +13,14 @@ namespace pann
     class Neuron : public Object
     {
     protected:
-        ActivationFunction::Base& _activationFunction;
-        std::list<Link> _links;
+        ActivationFunction::Base& activationFunction;
+        std::list<Link> links;
 
     public:
         float receptiveField;
         float activationValue;
 
-        Neuron(ActivationFunction::Base& activationFunction); 
+        Neuron(ActivationFunction::Base&); 
         ~Neuron();
         
         void connectTo(Neuron&, Link::Direction, float);
