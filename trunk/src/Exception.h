@@ -1,4 +1,8 @@
-//Exception.h                                                                                                                    
+/**
+ * @file
+ * Defines and implements all exception related stuff
+ */
+
 #ifndef EXCEPTION_H
 #define EXCEPTION_H
 
@@ -6,9 +10,14 @@
 
 namespace pann
 {
+    /**
+     * Use case: throw Exception::CoolException()<<"This is exception; i = "<<5<<std::endl;
+     * Don't forget to declare your CoolException, derived from Exception::Base
+     */
     namespace Exception
     {
-        class Base
+        //! Basic class for every exception
+        class Base : public std::exception
         {
         protected:
             std::ostringstream textStream;
@@ -32,10 +41,14 @@ namespace pann
             }
         };
 
-        class ObjectNotFound : public Base { };
-        class ElementExists  : public Base { };
+        //! Reference to unexistent object was requested
+        class ObjectNotFound : public Base { }; 
+        //
+        //! Trying to add already existent element
+        class ElementExists  : public Base { }; 
+
     }; //Exception
 
-}; //namespace NNet
+}; //pann
 
 #endif

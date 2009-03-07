@@ -1,4 +1,10 @@
-//Includes.h
+/**
+ * @file
+ * Common includes
+ *
+ * Contains includes of Boost, MPI and STL header files
+ * frequently used in a project
+ */
 
 //C++ STL
 #include <vector>

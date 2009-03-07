@@ -1,4 +1,7 @@
-//Object.cpp                                                                                                   
+/**
+ * @file
+ * Object realization
+ */
 
 #include "Object.h"
 
