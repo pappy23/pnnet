@@ -3,6 +3,7 @@
 #define OBJECT_H
 
 #include "Includes.h"
+#include "Exception.h"
 
 namespace pann
 {
@@ -17,7 +18,7 @@ namespace pann
         boost::any& operator[](const std::string&);
 
     protected:
-        mutable std::map<std::string, boost::any> Attributes;
+        mutable std::map<std::string, boost::any> attributes;
     };
 
 }; //namespace NNet

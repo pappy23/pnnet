@@ -5,6 +5,7 @@
 #include <map>
 #include <list>
 #include <string>
+#include <sstream>
 
 //Boost
 #include <boost/any.hpp>

@@ -15,8 +15,8 @@ namespace pann
         int usageCount;
         float value;
 
-        Weight(float value = 1) : 
-            value(value),
+        Weight(float _value = 1) : 
+            value(_value),
             usageCount(1) { };
 
         ~Weight() { };

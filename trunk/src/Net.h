@@ -14,8 +14,8 @@ namespace pann
     class Net : public Object
     {
     protected:
-        std::map<int, Neuron> _neurons;
-        int _lastNeuronId;
+        std::map<int, Neuron> neurons;
+        int lastNeuronId;
 
     public:
         Net();

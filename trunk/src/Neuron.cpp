@@ -4,10 +4,10 @@
 
 namespace pann
 {
-    Neuron::Neuron(ActivationFunction::Base& activationFunction) :
-            _activationFunction(activationFunction), 
+    Neuron::Neuron(ActivationFunction::Base& _activationFunction) :
+            activationFunction(_activationFunction), 
             receptiveField(0), 
-            activationValue(activationFunction.f(0))
+            activationValue(_activationFunction.f(0))
     {
     } //Neuron
 
@@ -17,19 +17,20 @@ namespace pann
 
     float Neuron::activate()
     {
-        return activationValue = _activationFunction.f(receptiveField);
+        return activationValue = activationFunction.f(receptiveField);
     } //activate
 
-    void Neuron::connectTo(Neuron& to, Link::Direction direction = Link::out, float weightValue = 1)
+    void Neuron::connectTo(Neuron& _to, Link::Direction _direction = Link::out, float _weightValue = 1)
     {
-        connectTo(to, new Weight(weightValue), direction); 
+        connectTo(_to, new Weight(_weightValue), _direction); 
     } //connectTo
 
-    void Neuron::connectTo(Neuron& to, Weight* weight, Link::Direction direction = Link::out)
+    void Neuron::connectTo(Neuron& _to, Weight* _weight, Link::Direction _direction = Link::out)
     {
-       _links.push_back( Link(to, direction, weight) ); //feedforward link
-       direction == Link::in ? direction = Link::out : direction = Link::in;
-       to._links.push_back( Link(*this, direction, weight) ); //backpropagation link
+        //ACHTUNG!!! Parallel links ARE allowed
+        links.push_back( Link(_to, _direction, _weight) ); //feedforward link
+        _direction == Link::in ? _direction = Link::out : _direction = Link::in;
+        _to.links.push_back( Link(*this, _direction, _weight) ); //backpropagation link
     } //connectTo
 
 }; //pann

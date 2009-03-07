@@ -18,24 +18,25 @@ namespace pann
     } //~Object      
 
     bool
-    Object::is(const string& rAttributeName) const
+    Object::is(const string& _attributeName) const
     {                                             
-        if (Attributes.find(rAttributeName) == Attributes.end())
+        if (attributes.find(_attributeName) == attributes.end())
             return false;                           
 
         return true;
     } //is              
 
     void
-    Object::unset(const string& rAttributeName)
+    Object::unset(const string& _attributeName)
     {                                          
-        Attributes.erase(rAttributeName);  
+        if(!attributes.erase(_attributeName))
+            throw Exception::ObjectNotFound()<<"Object::unset(): attribute "<<_attributeName<<" not found\n";  
     } //unset                                  
 
     any &
-    Object::operator[](const string& rAttributeName)
+    Object::operator[](const string& _attributeName)
     {
-        return Attributes[rAttributeName];
+        return attributes[_attributeName];
     } //operator[]
 
 }; //namespace NNet

@@ -10,18 +10,18 @@ namespace pann
         class Base //Singleton
         {
         protected:
-            static Base* _self;  //FIX: this is pointer!
-            static int _refcount;
+            static Base* self;
+            static int refcount;
 
         public:
-            static Base* Instance(); //FIX: return pointer
+            static Base& Instance();
             void freeInstance()
             {
-                _refcount--;
-                if(!_refcount)
+                refcount--;
+                if(!refcount)
                 {
                     delete this;
-                    _self = 0;
+                    self = 0;
                 }
             };
 
@@ -29,26 +29,22 @@ namespace pann
             virtual float derivative(float) = 0;
         };
 
-//FIX: Init this in ActivationFunction.cpp
-//        Base* Base::_self = 0;
-//        int Base::_refcount = 0;
-
         class Linear : public Base
         {
         public:
-            static Base* Instance()
+            static Base& Instance()
             {
-                if(!_self)
-                    _self = new Linear();
+                if(!self)
+                    self = new Linear();
 
-                _refcount++;
+                refcount++;
 
-                return _self; //FIX: return poiner
+                return *self;
             };
 
-            float f(float x)
+            float f(float _x)
             {
-                return x;
+                return _x;
             } //f
 
             float derivative(float)
