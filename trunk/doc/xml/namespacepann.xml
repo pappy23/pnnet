@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="namespacepann" kind="namespace">
+    <compoundname>pann</compoundname>
+    <innerclass refid="classpann_1_1Link" prot="public">pann::Link</innerclass>
+    <innerclass refid="classpann_1_1Net" prot="public">pann::Net</innerclass>
+    <innerclass refid="classpann_1_1Neuron" prot="public">pann::Neuron</innerclass>
+    <innerclass refid="classpann_1_1Object" prot="public">pann::Object</innerclass>
+    <innerclass refid="classpann_1_1Weight" prot="public">pann::Weight</innerclass>
+    <innernamespace refid="namespacepann_1_1ActivationFunction">pann::ActivationFunction</innernamespace>
+    <innernamespace refid="namespacepann_1_1Exception">pann::Exception</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/booble/pann/trunk/src/ActivationFunction.cpp" line="9"/>
+  </compounddef>
+</doxygen>

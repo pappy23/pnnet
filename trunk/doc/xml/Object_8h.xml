@@ -1,0 +1,174 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="Object_8h" kind="file">
+    <compoundname>Object.h</compoundname>
+    <includes refid="Includes_8h" local="yes">Includes.h</includes>
+    <includes refid="Exception_8h" local="yes">Exception.h</includes>
+    <includedby refid="Link_8h" local="yes">pann/trunk/src/Link.h</includedby>
+    <includedby refid="Weight_8h" local="yes">pann/trunk/src/Weight.h</includedby>
+    <includedby refid="Neuron_8h" local="yes">pann/trunk/src/Neuron.h</includedby>
+    <includedby refid="Net_8h" local="yes">pann/trunk/src/Net.h</includedby>
+    <includedby refid="Object_8cpp" local="yes">pann/trunk/src/Object.cpp</includedby>
+    <incdepgraph>
+      <node id="170">
+        <label>list</label>
+      </node>
+      <node id="174">
+        <label>boost/shared_ptr.hpp</label>
+      </node>
+      <node id="171">
+        <label>string</label>
+      </node>
+      <node id="175">
+        <label>boost/weak_ptr.hpp</label>
+      </node>
+      <node id="169">
+        <label>map</label>
+      </node>
+      <node id="176">
+        <label>Exception.h</label>
+        <link refid="Exception_8h"/>
+        <childnode refid="167" relation="include">
+        </childnode>
+      </node>
+      <node id="173">
+        <label>boost/any.hpp</label>
+      </node>
+      <node id="168">
+        <label>vector</label>
+      </node>
+      <node id="166">
+        <label>pann/trunk/src/Object.h</label>
+        <link refid="Object.h"/>
+        <childnode refid="167" relation="include">
+        </childnode>
+        <childnode refid="176" relation="include">
+        </childnode>
+      </node>
+      <node id="172">
+        <label>sstream</label>
+      </node>
+      <node id="167">
+        <label>Includes.h</label>
+        <link refid="Includes_8h"/>
+        <childnode refid="168" relation="include">
+        </childnode>
+        <childnode refid="169" relation="include">
+        </childnode>
+        <childnode refid="170" relation="include">
+        </childnode>
+        <childnode refid="171" relation="include">
+        </childnode>
+        <childnode refid="172" relation="include">
+        </childnode>
+        <childnode refid="173" relation="include">
+        </childnode>
+        <childnode refid="174" relation="include">
+        </childnode>
+        <childnode refid="175" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="180">
+        <label>pann/trunk/src/Net.h</label>
+        <link refid="Net_8h"/>
+        <childnode refid="181" relation="include">
+        </childnode>
+        <childnode refid="182" relation="include">
+        </childnode>
+      </node>
+      <node id="178">
+        <label>pann/trunk/src/Link.h</label>
+        <link refid="Link_8h"/>
+        <childnode refid="179" relation="include">
+        </childnode>
+      </node>
+      <node id="185">
+        <label>pann/trunk/src/Object.cpp</label>
+        <link refid="Object_8cpp"/>
+      </node>
+      <node id="177">
+        <label>pann/trunk/src/Object.h</label>
+        <link refid="Object.h"/>
+        <childnode refid="178" relation="include">
+        </childnode>
+        <childnode refid="184" relation="include">
+        </childnode>
+        <childnode refid="179" relation="include">
+        </childnode>
+        <childnode refid="180" relation="include">
+        </childnode>
+        <childnode refid="185" relation="include">
+        </childnode>
+      </node>
+      <node id="183">
+        <label>pann/trunk/src/Neuron.cpp</label>
+        <link refid="Neuron_8cpp"/>
+      </node>
+      <node id="179">
+        <label>pann/trunk/src/Neuron.h</label>
+        <link refid="Neuron_8h"/>
+        <childnode refid="178" relation="include">
+        </childnode>
+        <childnode refid="180" relation="include">
+        </childnode>
+        <childnode refid="183" relation="include">
+        </childnode>
+      </node>
+      <node id="181">
+        <label>pann/trunk/src/Net.cpp</label>
+        <link refid="Net_8cpp"/>
+      </node>
+      <node id="184">
+        <label>pann/trunk/src/Weight.h</label>
+        <link refid="Weight_8h"/>
+        <childnode refid="178" relation="include">
+        </childnode>
+        <childnode refid="180" relation="include">
+        </childnode>
+      </node>
+      <node id="182">
+        <label>pann/trunk/src/TestNet.cpp</label>
+        <link refid="TestNet_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classpann_1_1Object" prot="public">pann::Object</innerclass>
+    <innernamespace refid="namespacepann">pann</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Basic Object, equiped with random acess attributes of boost::any </para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="6"><highlight class="preprocessor">#ifndef<sp/>OBJECT_H</highlight></codeline>
+<codeline lineno="7"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>OBJECT_H</highlight></codeline>
+<codeline lineno="8"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Includes_8h" kindref="compound">Includes.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Exception_8h" kindref="compound">Exception.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">pann</highlight></codeline>
+<codeline lineno="13"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="15" refid="classpann_1_1Object" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classpann_1_1Object" kindref="compound" tooltip="Base class for almoust everything.">Object</ref></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classpann_1_1Object_1e4157eda81e363f28504b4ec9d15e196" kindref="member">Object</ref>();</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Object_1461126af2f1a20fa24f1340f670c5733" kindref="member">~Object</ref>();</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Object_1ebbb9ad2f57f093fde45aad4580bf3bb" kindref="member" tooltip="Does attribute.">is</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Object_1ef631d297ec4d921cbf14f8d77baf63b" kindref="member" tooltip="Delete attribute.">unset</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>boost::any&amp;<sp/><ref refid="classpann_1_1Object_14a44c6ffb8a172818167f0004b9a7a45" kindref="member" tooltip="Get reference to attribute. Create it if nonexistent.">operator[]</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="31" refid="classpann_1_1Object_17eff990bb1cc771117099f8cdcd6dd33" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">mutable</highlight><highlight class="normal"><sp/>std::map&lt;std::string,<sp/>boost::any&gt;<sp/><ref refid="classpann_1_1Object_17eff990bb1cc771117099f8cdcd6dd33" kindref="member">attributes</ref>;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal">};<sp/></highlight><highlight class="comment">//pann</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="/home/booble/pann/trunk/src/Object.h"/>
+  </compounddef>
+</doxygen>

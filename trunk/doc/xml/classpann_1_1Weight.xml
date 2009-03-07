@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="classpann_1_1Weight" kind="class" prot="public">
+    <compoundname>pann::Weight</compoundname>
+    <basecompoundref refid="classpann_1_1Object" prot="public" virt="non-virtual">pann::Object</basecompoundref>
+    <includes refid="Weight_8h" local="no">Weight.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classpann_1_1Weight_1f97abb5ee66f72c5cc459e11a27e7c0a" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int pann::Weight::usageCount</definition>
+        <argsstring></argsstring>
+        <name>usageCount</name>
+        <briefdescription>
+<para>Used by weight update algorithms for shared weights. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Weight.h" line="22" bodyfile="/home/booble/pann/trunk/src/Weight.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classpann_1_1Weight_178e45767570b65a9e9d945561448722c" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float pann::Weight::value</definition>
+        <argsstring></argsstring>
+        <name>value</name>
+        <briefdescription>
+<para>weight itself </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Weight.h" line="23" bodyfile="/home/booble/pann/trunk/src/Weight.h" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classpann_1_1Weight_151a25d4941fe6fcea7ff368298fd06ec" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>pann::Weight::Weight</definition>
+        <argsstring>(float _value=1)</argsstring>
+        <name>Weight</name>
+        <param>
+          <type>float</type>
+          <declname>_value</declname>
+          <defval>1</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Weight.h" line="27" bodyfile="/home/booble/pann/trunk/src/Weight.h" bodystart="25" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classpann_1_1Weight_1f75b6811195515ec566ce022eea3aec8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>pann::Weight::~Weight</definition>
+        <argsstring>()</argsstring>
+        <name>~Weight</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Weight.h" line="29" bodyfile="/home/booble/pann/trunk/src/Weight.h" bodystart="29" bodyend="29"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><ref refid="classpann_1_1Weight" kindref="compound">Weight</ref> object, used in <ref refid="classpann_1_1Link" kindref="compound">pann::Link</ref>. <ref refid="classpann_1_1Weight" kindref="compound">Weight</ref> might be shared among different Links. <ref refid="classpann_1_1Link" kindref="compound">Link</ref> contain boost::shared_ptr&lt;Weight&gt; for this object </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="53">
+        <label>pann::Object</label>
+        <link refid="classpann_1_1Object"/>
+      </node>
+      <node id="52">
+        <label>pann::Weight</label>
+        <link refid="classpann_1_1Weight"/>
+        <childnode refid="53" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="55">
+        <label>pann::Object</label>
+        <link refid="classpann_1_1Object"/>
+      </node>
+      <node id="54">
+        <label>pann::Weight</label>
+        <link refid="classpann_1_1Weight"/>
+        <childnode refid="55" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/booble/pann/trunk/src/Weight.h" line="20" bodyfile="/home/booble/pann/trunk/src/Weight.h" bodystart="19" bodyend="30"/>
+    <listofallmembers>
+      <member refid="classpann_1_1Object_17eff990bb1cc771117099f8cdcd6dd33" prot="protected" virt="non-virtual"><scope>pann::Weight</scope><name>attributes</name></member>
+      <member refid="classpann_1_1Object_1ebbb9ad2f57f093fde45aad4580bf3bb" prot="public" virt="non-virtual"><scope>pann::Weight</scope><name>is</name></member>
+      <member refid="classpann_1_1Object_1e4157eda81e363f28504b4ec9d15e196" prot="public" virt="non-virtual"><scope>pann::Weight</scope><name>Object</name></member>
+      <member refid="classpann_1_1Object_14a44c6ffb8a172818167f0004b9a7a45" prot="public" virt="non-virtual"><scope>pann::Weight</scope><name>operator[]</name></member>
+      <member refid="classpann_1_1Object_1ef631d297ec4d921cbf14f8d77baf63b" prot="public" virt="non-virtual"><scope>pann::Weight</scope><name>unset</name></member>
+      <member refid="classpann_1_1Weight_1f97abb5ee66f72c5cc459e11a27e7c0a" prot="public" virt="non-virtual"><scope>pann::Weight</scope><name>usageCount</name></member>
+      <member refid="classpann_1_1Weight_178e45767570b65a9e9d945561448722c" prot="public" virt="non-virtual"><scope>pann::Weight</scope><name>value</name></member>
+      <member refid="classpann_1_1Weight_151a25d4941fe6fcea7ff368298fd06ec" prot="public" virt="non-virtual"><scope>pann::Weight</scope><name>Weight</name></member>
+      <member refid="classpann_1_1Object_1461126af2f1a20fa24f1340f670c5733" prot="public" virt="virtual"><scope>pann::Weight</scope><name>~Object</name></member>
+      <member refid="classpann_1_1Weight_1f75b6811195515ec566ce022eea3aec8" prot="public" virt="non-virtual"><scope>pann::Weight</scope><name>~Weight</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

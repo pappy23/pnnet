@@ -1,0 +1,171 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="Net_8cpp" kind="file">
+    <compoundname>Net.cpp</compoundname>
+    <includes refid="Net_8h" local="yes">Net.h</includes>
+    <incdepgraph>
+      <node id="83">
+        <label>list</label>
+      </node>
+      <node id="87">
+        <label>boost/shared_ptr.hpp</label>
+      </node>
+      <node id="84">
+        <label>string</label>
+      </node>
+      <node id="88">
+        <label>boost/weak_ptr.hpp</label>
+      </node>
+      <node id="82">
+        <label>map</label>
+      </node>
+      <node id="90">
+        <label>Exception.h</label>
+        <link refid="Exception_8h"/>
+        <childnode refid="80" relation="include">
+        </childnode>
+      </node>
+      <node id="86">
+        <label>boost/any.hpp</label>
+      </node>
+      <node id="79">
+        <label>Net.h</label>
+        <link refid="Net_8h"/>
+        <childnode refid="80" relation="include">
+        </childnode>
+        <childnode refid="89" relation="include">
+        </childnode>
+        <childnode refid="91" relation="include">
+        </childnode>
+        <childnode refid="92" relation="include">
+        </childnode>
+      </node>
+      <node id="94">
+        <label>Link.h</label>
+        <link refid="Link_8h"/>
+        <childnode refid="80" relation="include">
+        </childnode>
+        <childnode refid="89" relation="include">
+        </childnode>
+        <childnode refid="91" relation="include">
+        </childnode>
+        <childnode refid="92" relation="include">
+        </childnode>
+      </node>
+      <node id="81">
+        <label>vector</label>
+      </node>
+      <node id="89">
+        <label>Object.h</label>
+        <link refid="Object_8h"/>
+        <childnode refid="80" relation="include">
+        </childnode>
+        <childnode refid="90" relation="include">
+        </childnode>
+      </node>
+      <node id="85">
+        <label>sstream</label>
+      </node>
+      <node id="80">
+        <label>Includes.h</label>
+        <link refid="Includes_8h"/>
+        <childnode refid="81" relation="include">
+        </childnode>
+        <childnode refid="82" relation="include">
+        </childnode>
+        <childnode refid="83" relation="include">
+        </childnode>
+        <childnode refid="84" relation="include">
+        </childnode>
+        <childnode refid="85" relation="include">
+        </childnode>
+        <childnode refid="86" relation="include">
+        </childnode>
+        <childnode refid="87" relation="include">
+        </childnode>
+        <childnode refid="88" relation="include">
+        </childnode>
+      </node>
+      <node id="93">
+        <label>ActivationFunction.h</label>
+        <link refid="ActivationFunction_8h"/>
+      </node>
+      <node id="92">
+        <label>Neuron.h</label>
+        <link refid="Neuron_8h"/>
+        <childnode refid="80" relation="include">
+        </childnode>
+        <childnode refid="89" relation="include">
+        </childnode>
+        <childnode refid="93" relation="include">
+        </childnode>
+        <childnode refid="94" relation="include">
+        </childnode>
+      </node>
+      <node id="78">
+        <label>pann/trunk/src/Net.cpp</label>
+        <link refid="Net.cpp"/>
+        <childnode refid="79" relation="include">
+        </childnode>
+      </node>
+      <node id="91">
+        <label>Weight.h</label>
+        <link refid="Weight_8h"/>
+        <childnode refid="80" relation="include">
+        </childnode>
+        <childnode refid="89" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespacepann">pann</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//Net.cpp</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Net_8h" kindref="compound">Net.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>std::pair;</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>std::map;</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">pann</highlight></codeline>
+<codeline lineno="9"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="10" refid="classpann_1_1Net_1fc3d67838fb89d577abd01b9badbb1dc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classpann_1_1Net_1fc3d67838fb89d577abd01b9badbb1dc" kindref="member">Net::Net</ref>()</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classpann_1_1Net_1214eebfc5b27b67eb6ca47680a5bbe7b" kindref="member">lastNeuronId</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="comment">//Net</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15" refid="classpann_1_1Net_1ede55beb023c08142ca4b5974889d431" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Net::~Net()</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="comment">//~Net</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19" refid="classpann_1_1Net_1ac1e2f21a9ac5bdb119ef32e0ba69a2e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Net_1ac1e2f21a9ac5bdb119ef32e0ba69a2e" kindref="member">Net::addNeuron</ref>(<ref refid="classpann_1_1ActivationFunction_1_1Base" kindref="compound">ActivationFunction::Base</ref>&amp;<sp/>_activationFunction)</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!<ref refid="classpann_1_1Net_13630014d5c5aa55a19fbfa381558e725" kindref="member">neurons</ref>.insert(<sp/>pair&lt;int,<sp/>Neuron&gt;(++<ref refid="classpann_1_1Net_1214eebfc5b27b67eb6ca47680a5bbe7b" kindref="member">lastNeuronId</ref>,<sp/><ref refid="classpann_1_1Neuron" kindref="compound">Neuron</ref>(_activationFunction))<sp/>).second)</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Exception_1_1ElementExists" kindref="compound" tooltip="Trying to add already existent element.">Exception::ElementExists</ref>()&lt;&lt;</highlight><highlight class="stringliteral">&quot;Net::addNeuron():<sp/>insertion<sp/>of<sp/>neuron<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;<ref refid="classpann_1_1Net_1214eebfc5b27b67eb6ca47680a5bbe7b" kindref="member">lastNeuronId</ref>&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>failed\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Net_1214eebfc5b27b67eb6ca47680a5bbe7b" kindref="member">lastNeuronId</ref>;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="comment">//addNeuron</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="classpann_1_1Net_1f72c3cdfe137c4269a8e23cee1ca1f1b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Net_1f72c3cdfe137c4269a8e23cee1ca1f1b" kindref="member">Net::delNeuron</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>_neuronId)</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!<ref refid="classpann_1_1Net_13630014d5c5aa55a19fbfa381558e725" kindref="member">neurons</ref>.erase(_neuronId))</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Exception_1_1ObjectNotFound" kindref="compound" tooltip="Reference to unexistent object was requested.">Exception::ObjectNotFound</ref>()&lt;&lt;</highlight><highlight class="stringliteral">&quot;Net::delNeuron():<sp/>neuron<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;_neuronId&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>not<sp/>found\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="classpann_1_1Net_1f1b8e2db7372d93a3ca60202db2f3fb6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classpann_1_1Neuron" kindref="compound">Neuron</ref>&amp;<sp/><ref refid="classpann_1_1Net_1f1b8e2db7372d93a3ca60202db2f3fb6" kindref="member">Net::getNeuron</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>_neuronId)</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>map&lt;int,<sp/>Neuron&gt;::iterator<sp/>i<sp/>=<sp/><ref refid="classpann_1_1Net_13630014d5c5aa55a19fbfa381558e725" kindref="member">neurons</ref>.find(_neuronId);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(i<sp/>==<sp/><ref refid="classpann_1_1Net_13630014d5c5aa55a19fbfa381558e725" kindref="member">neurons</ref>.end())</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Exception_1_1ObjectNotFound" kindref="compound" tooltip="Reference to unexistent object was requested.">Exception::ObjectNotFound</ref>()&lt;&lt;</highlight><highlight class="stringliteral">&quot;Net::getNeuron():<sp/>neuron<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;<sp/>_neuronId&lt;&lt;</highlight><highlight class="stringliteral">&quot;not<sp/>found\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>i-&gt;second;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="comment">//getNeuron</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal">};<sp/></highlight><highlight class="comment">//pann</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/booble/pann/trunk/src/Net.cpp"/>
+  </compounddef>
+</doxygen>

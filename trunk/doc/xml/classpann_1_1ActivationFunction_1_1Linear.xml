@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="classpann_1_1ActivationFunction_1_1Linear" kind="class" prot="public">
+    <compoundname>pann::ActivationFunction::Linear</compoundname>
+    <basecompoundref refid="classpann_1_1ActivationFunction_1_1Base" prot="public" virt="non-virtual">pann::ActivationFunction::Base</basecompoundref>
+    <includes refid="ActivationFunction_8h" local="no">ActivationFunction.h</includes>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classpann_1_1ActivationFunction_1_1Linear_1576c8546adfe54eb17c26a6255ce80e8" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classpann_1_1ActivationFunction_1_1Base" kindref="compound">Base</ref> &amp;</type>
+        <definition>static Base&amp; pann::ActivationFunction::Linear::Instance</definition>
+        <argsstring>()</argsstring>
+        <name>Instance</name>
+        <reimplements refid="classpann_1_1ActivationFunction_1_1Base_117e4f3cde4275eaf83464a3c0d1add15">Instance</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/ActivationFunction.h" line="51" bodyfile="/home/booble/pann/trunk/src/ActivationFunction.h" bodystart="50" bodyend="58"/>
+        <references refid="classpann_1_1ActivationFunction_1_1Base_104614515549362c5ecab80f1613e1804" compoundref="ActivationFunction_8h" startline="22">pann::ActivationFunction::Base::refcount</references>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classpann_1_1ActivationFunction_1_1Linear_1b2ed38404b63ce7c37a8c7f8abe0cc87" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>float</type>
+        <definition>float pann::ActivationFunction::Linear::f</definition>
+        <argsstring>(float _x)</argsstring>
+        <name>f</name>
+        <reimplements refid="classpann_1_1ActivationFunction_1_1Base_1ba67bce91e8c8fdea2b46d602505c357">f</reimplements>
+        <param>
+          <type>float</type>
+          <declname>_x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/ActivationFunction.h" line="61" bodyfile="/home/booble/pann/trunk/src/ActivationFunction.h" bodystart="60" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="function" id="classpann_1_1ActivationFunction_1_1Linear_12512d45a5cb8c9ff2a45c87cb26034ca" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>float</type>
+        <definition>float pann::ActivationFunction::Linear::derivative</definition>
+        <argsstring>(float)</argsstring>
+        <name>derivative</name>
+        <reimplements refid="classpann_1_1ActivationFunction_1_1Base_1236d670dc8e60422b5d4d2d1ed73a9d0">derivative</reimplements>
+        <param>
+          <type>float</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/ActivationFunction.h" line="66" bodyfile="/home/booble/pann/trunk/src/ActivationFunction.h" bodystart="65" bodyend="68"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><ref refid="classpann_1_1ActivationFunction_1_1Linear" kindref="compound">Linear</ref> function y = x dy/dx = 0 </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="24">
+        <label>pann::ActivationFunction::Base</label>
+        <link refid="classpann_1_1ActivationFunction_1_1Base"/>
+      </node>
+      <node id="23">
+        <label>pann::ActivationFunction::Linear</label>
+        <link refid="classpann_1_1ActivationFunction_1_1Linear"/>
+        <childnode refid="24" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="26">
+        <label>pann::ActivationFunction::Base</label>
+        <link refid="classpann_1_1ActivationFunction_1_1Base"/>
+        <childnode refid="26" relation="usage">
+          <edgelabel>self</edgelabel>
+        </childnode>
+      </node>
+      <node id="25">
+        <label>pann::ActivationFunction::Linear</label>
+        <link refid="classpann_1_1ActivationFunction_1_1Linear"/>
+        <childnode refid="26" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/booble/pann/trunk/src/ActivationFunction.h" line="48" bodyfile="/home/booble/pann/trunk/src/ActivationFunction.h" bodystart="47" bodyend="69"/>
+    <listofallmembers>
+      <member refid="classpann_1_1ActivationFunction_1_1Linear_12512d45a5cb8c9ff2a45c87cb26034ca" prot="public" virt="virtual"><scope>pann::ActivationFunction::Linear</scope><name>derivative</name></member>
+      <member refid="classpann_1_1ActivationFunction_1_1Linear_1b2ed38404b63ce7c37a8c7f8abe0cc87" prot="public" virt="virtual"><scope>pann::ActivationFunction::Linear</scope><name>f</name></member>
+      <member refid="classpann_1_1ActivationFunction_1_1Base_1d945d585dbc6736c48eb4edbdf81fb6a" prot="public" virt="non-virtual"><scope>pann::ActivationFunction::Linear</scope><name>freeInstance</name></member>
+      <member refid="classpann_1_1ActivationFunction_1_1Linear_1576c8546adfe54eb17c26a6255ce80e8" prot="public" virt="non-virtual"><scope>pann::ActivationFunction::Linear</scope><name>Instance</name></member>
+      <member refid="classpann_1_1ActivationFunction_1_1Base_104614515549362c5ecab80f1613e1804" prot="protected" virt="non-virtual"><scope>pann::ActivationFunction::Linear</scope><name>refcount</name></member>
+      <member refid="classpann_1_1ActivationFunction_1_1Base_195e57874254f891c27aab537644d74a6" prot="protected" virt="non-virtual"><scope>pann::ActivationFunction::Linear</scope><name>self</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
