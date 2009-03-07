@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="dir_6be0afb293d99ecd3276240ba5ea30d1" kind="dir">
+    <compoundname>pann/</compoundname>
+    <innerdir refid="dir_beaa11142bdac03fdf48f69aaa2d8210">pann/trunk/</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/booble/pann/"/>
+  </compounddef>
+</doxygen>

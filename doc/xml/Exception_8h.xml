@@ -1,0 +1,188 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="Exception_8h" kind="file">
+    <compoundname>Exception.h</compoundname>
+    <includes refid="Includes_8h" local="yes">Includes.h</includes>
+    <includedby refid="Object_8h" local="yes">pann/trunk/src/Object.h</includedby>
+    <includedby refid="TestNet_8cpp" local="yes">pann/trunk/src/TestNet.cpp</includedby>
+    <incdepgraph>
+      <node id="16">
+        <label>list</label>
+      </node>
+      <node id="20">
+        <label>boost/shared_ptr.hpp</label>
+      </node>
+      <node id="17">
+        <label>string</label>
+      </node>
+      <node id="21">
+        <label>boost/weak_ptr.hpp</label>
+      </node>
+      <node id="15">
+        <label>map</label>
+      </node>
+      <node id="12">
+        <label>pann/trunk/src/Exception.h</label>
+        <link refid="Exception.h"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>boost/any.hpp</label>
+      </node>
+      <node id="14">
+        <label>vector</label>
+      </node>
+      <node id="18">
+        <label>sstream</label>
+      </node>
+      <node id="13">
+        <label>Includes.h</label>
+        <link refid="Includes_8h"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="22">
+        <label>pann/trunk/src/Exception.h</label>
+        <link refid="Exception.h"/>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>pann/trunk/src/Net.h</label>
+        <link refid="Net_8h"/>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>pann/trunk/src/Link.h</label>
+        <link refid="Link_8h"/>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="31">
+        <label>pann/trunk/src/Object.cpp</label>
+        <link refid="Object_8cpp"/>
+      </node>
+      <node id="23">
+        <label>pann/trunk/src/Object.h</label>
+        <link refid="Object_8h"/>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>pann/trunk/src/Neuron.cpp</label>
+        <link refid="Neuron_8cpp"/>
+      </node>
+      <node id="25">
+        <label>pann/trunk/src/Neuron.h</label>
+        <link refid="Neuron_8h"/>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>pann/trunk/src/Net.cpp</label>
+        <link refid="Net_8cpp"/>
+      </node>
+      <node id="30">
+        <label>pann/trunk/src/Weight.h</label>
+        <link refid="Weight_8h"/>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>pann/trunk/src/TestNet.cpp</label>
+        <link refid="TestNet_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classpann_1_1Exception_1_1Base" prot="public">pann::Exception::Base</innerclass>
+    <innerclass refid="classpann_1_1Exception_1_1ObjectNotFound" prot="public">pann::Exception::ObjectNotFound</innerclass>
+    <innerclass refid="classpann_1_1Exception_1_1ElementExists" prot="public">pann::Exception::ElementExists</innerclass>
+    <innernamespace refid="namespacepann">pann</innernamespace>
+    <innernamespace refid="namespacepann_1_1Exception">pann::Exception</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Defines and implements all exception related stuff </para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="6"><highlight class="preprocessor">#ifndef<sp/>EXCEPTION_H</highlight></codeline>
+<codeline lineno="7"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>EXCEPTION_H</highlight></codeline>
+<codeline lineno="8"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Includes_8h" kindref="compound">Includes.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">pann</highlight></codeline>
+<codeline lineno="12"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="17" refid="namespacepann_1_1Exception" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">Exception</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="20" refid="classpann_1_1Exception_1_1Base" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classpann_1_1Exception_1_1Base" kindref="compound" tooltip="Basic class for every exception.">Base</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>std::exception</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="23" refid="classpann_1_1Exception_1_1Base_13795b9ad6996ac80e80e4e8179b733ab" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::ostringstream<sp/><ref refid="classpann_1_1Exception_1_1Base_13795b9ad6996ac80e80e4e8179b733ab" kindref="member">textStream</ref>;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="26" refid="classpann_1_1Exception_1_1Base_129e2607d6a8c7dc15ed6ed3cb92d3ece" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classpann_1_1Exception_1_1Base_129e2607d6a8c7dc15ed6ed3cb92d3ece" kindref="member">Base</ref>()<sp/>{<sp/>};</highlight></codeline>
+<codeline lineno="27" refid="classpann_1_1Exception_1_1Base_1659925e8afcb384bc88b2f5b9802e052" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classpann_1_1Exception_1_1Base_129e2607d6a8c7dc15ed6ed3cb92d3ece" kindref="member">Base</ref>(<ref refid="classpann_1_1Exception_1_1Base" kindref="compound" tooltip="Basic class for every exception.">Base</ref>&amp;<sp/>_rvalue)<sp/>:<sp/><ref refid="classpann_1_1Exception_1_1Base_13795b9ad6996ac80e80e4e8179b733ab" kindref="member">textStream</ref>(_rvalue.<ref refid="classpann_1_1Exception_1_1Base_13795b9ad6996ac80e80e4e8179b733ab" kindref="member">textStream</ref>.str())<sp/>{<sp/>};</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29" refid="classpann_1_1Exception_1_1Base_12b12cae42f85a5d694111d2bb1de315f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Exception_1_1Base_12b12cae42f85a5d694111d2bb1de315f" kindref="member">~Base</ref>()<sp/>{<sp/>};</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="classpann_1_1Exception_1_1Base_1e73d382790d755edfec2289abe12a626" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="classpann_1_1Exception_1_1Base_1e73d382790d755edfec2289abe12a626" kindref="member">text</ref>()</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Exception_1_1Base_13795b9ad6996ac80e80e4e8179b733ab" kindref="member">textStream</ref>.str();</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36" refid="classpann_1_1Exception_1_1Base_139525dbb840db0f93d66bb6cfa0f3089" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;<sp/><ref refid="classpann_1_1Exception_1_1Base" kindref="compound" tooltip="Basic class for every exception.">Base</ref>&amp;<sp/><ref refid="classpann_1_1Exception_1_1Base_139525dbb840db0f93d66bb6cfa0f3089" kindref="member">operator&lt;&lt;</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>T&amp;<sp/>value)</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classpann_1_1Exception_1_1Base_13795b9ad6996ac80e80e4e8179b733ab" kindref="member">textStream</ref><sp/>&lt;&lt;<sp/>value;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="classpann_1_1Exception_1_1ObjectNotFound" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classpann_1_1Exception_1_1ObjectNotFound" kindref="compound" tooltip="Reference to unexistent object was requested.">ObjectNotFound</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Exception_1_1Base" kindref="compound" tooltip="Basic class for every exception.">Base</ref><sp/>{<sp/>};<sp/></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//</highlight></codeline>
+<codeline lineno="48" refid="classpann_1_1Exception_1_1ElementExists" refkind="compound"><highlight class="comment"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classpann_1_1Exception_1_1ElementExists" kindref="compound" tooltip="Trying to add already existent element.">ElementExists</ref><sp/><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Exception_1_1Base" kindref="compound" tooltip="Basic class for every exception.">Base</ref><sp/>{<sp/>};<sp/></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>};<sp/></highlight><highlight class="comment">//Exception</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal">};<sp/></highlight><highlight class="comment">//pann</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="/home/booble/pann/trunk/src/Exception.h"/>
+  </compounddef>
+</doxygen>

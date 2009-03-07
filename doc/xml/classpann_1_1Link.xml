@@ -1,0 +1,227 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="classpann_1_1Link" kind="class" prot="public">
+    <compoundname>pann::Link</compoundname>
+    <basecompoundref refid="classpann_1_1Object" prot="public" virt="non-virtual">pann::Object</basecompoundref>
+    <includes refid="Link_8h" local="no">Link.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classpann_1_1Link_1843c5a79ffd161b67e1770f65eabf055" prot="public" static="no">
+        <name>Direction</name>
+        <enumvalue id="classpann_1_1Link_1843c5a79ffd161b67e1770f65eabf0556b810850c72ab26c68965db2424df30c" prot="public">
+          <name>in</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classpann_1_1Link_1843c5a79ffd161b67e1770f65eabf0550735525ef5d9a47b94c4597e7c27e522" prot="public">
+          <name>out</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Link.h" line="22" bodyfile="/home/booble/pann/trunk/src/Link.h" bodystart="22" bodyend="22"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classpann_1_1Link_1e3c1cbea824e8177a35201a6da1c0da2" prot="protected" static="no" mutable="no">
+        <type><ref refid="classpann_1_1Link_1843c5a79ffd161b67e1770f65eabf055" kindref="member">Direction</ref></type>
+        <definition>Direction pann::Link::direction</definition>
+        <argsstring></argsstring>
+        <name>direction</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Link.h" line="25" bodyfile="/home/booble/pann/trunk/src/Link.h" bodystart="25" bodyend="-1"/>
+        <referencedby refid="classpann_1_1Link_1eab757727bb6ca0cad8edb46500c3897" compoundref="Link_8h" startline="37" endline="37">getDirection</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classpann_1_1Link_1a9ee2ffbf614efa443d3898b64d4ded8" prot="protected" static="no" mutable="no">
+        <type><ref refid="classpann_1_1Neuron" kindref="compound">Neuron</ref> &amp;</type>
+        <definition>Neuron&amp; pann::Link::to</definition>
+        <argsstring></argsstring>
+        <name>to</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Link.h" line="26" bodyfile="/home/booble/pann/trunk/src/Link.h" bodystart="26" bodyend="-1"/>
+        <referencedby refid="classpann_1_1Link_107b96a800aa700c832a3a401181355b1" compoundref="Link_8h" startline="38" endline="38">getTo</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classpann_1_1Link_1a6387ae5f79407f65a9fffa844319e00" prot="protected" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="classpann_1_1Weight" kindref="compound">Weight</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;Weight&gt; pann::Link::w</definition>
+        <argsstring></argsstring>
+        <name>w</name>
+        <briefdescription>
+<para>Pointer to <ref refid="classpann_1_1Weight" kindref="compound">Weight</ref> object (may be shared between different links). </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Link.h" line="27" bodyfile="/home/booble/pann/trunk/src/Link.h" bodystart="27" bodyend="-1"/>
+        <referencedby refid="classpann_1_1Link_1ce5a96ace22c7561e723f4248e5a41ab" compoundref="Link_8h" startline="39" endline="39">getW</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classpann_1_1Link_1034def4a36ce7701f08a2bc0826cda1a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>pann::Link::Link</definition>
+        <argsstring>(Neuron &amp;_to, const Direction _direction, Weight *_w)</argsstring>
+        <name>Link</name>
+        <param>
+          <type><ref refid="classpann_1_1Neuron" kindref="compound">Neuron</ref> &amp;</type>
+          <declname>_to</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classpann_1_1Link_1843c5a79ffd161b67e1770f65eabf055" kindref="member">Direction</ref></type>
+          <declname>_direction</declname>
+        </param>
+        <param>
+          <type><ref refid="classpann_1_1Weight" kindref="compound">Weight</ref> *</type>
+          <declname>_w</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Link.h" line="33" bodyfile="/home/booble/pann/trunk/src/Link.h" bodystart="30" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="classpann_1_1Link_1d06a124eeddb33744befe239894399bc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>pann::Link::~Link</definition>
+        <argsstring>()</argsstring>
+        <name>~Link</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Link.h" line="35" bodyfile="/home/booble/pann/trunk/src/Link.h" bodystart="35" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="classpann_1_1Link_1eab757727bb6ca0cad8edb46500c3897" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classpann_1_1Link_1843c5a79ffd161b67e1770f65eabf055" kindref="member">Direction</ref></type>
+        <definition>Direction pann::Link::getDirection</definition>
+        <argsstring>() const </argsstring>
+        <name>getDirection</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Link.h" line="37" bodyfile="/home/booble/pann/trunk/src/Link.h" bodystart="37" bodyend="37"/>
+        <references refid="classpann_1_1Link_1e3c1cbea824e8177a35201a6da1c0da2" compoundref="Link_8h" startline="25">direction</references>
+      </memberdef>
+      <memberdef kind="function" id="classpann_1_1Link_107b96a800aa700c832a3a401181355b1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classpann_1_1Neuron" kindref="compound">Neuron</ref> &amp;</type>
+        <definition>Neuron&amp; pann::Link::getTo</definition>
+        <argsstring>() const </argsstring>
+        <name>getTo</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Link.h" line="38" bodyfile="/home/booble/pann/trunk/src/Link.h" bodystart="38" bodyend="38"/>
+        <references refid="classpann_1_1Link_1a9ee2ffbf614efa443d3898b64d4ded8" compoundref="Link_8h" startline="26">to</references>
+      </memberdef>
+      <memberdef kind="function" id="classpann_1_1Link_1ce5a96ace22c7561e723f4248e5a41ab" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const boost::shared_ptr&lt; <ref refid="classpann_1_1Weight" kindref="compound">Weight</ref> &gt;</type>
+        <definition>const boost::shared_ptr&lt;Weight&gt; pann::Link::getW</definition>
+        <argsstring>() const </argsstring>
+        <name>getW</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Link.h" line="39" bodyfile="/home/booble/pann/trunk/src/Link.h" bodystart="39" bodyend="39"/>
+        <references refid="classpann_1_1Link_1a6387ae5f79407f65a9fffa844319e00" compoundref="Link_8h" startline="27">w</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para><ref refid="classpann_1_1Link" kindref="compound">Link</ref> between two neurons. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="28">
+        <label>pann::Object</label>
+        <link refid="classpann_1_1Object"/>
+      </node>
+      <node id="27">
+        <label>pann::Link</label>
+        <link refid="classpann_1_1Link"/>
+        <childnode refid="28" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="31">
+        <label>pann::Neuron</label>
+        <link refid="classpann_1_1Neuron"/>
+        <childnode refid="30" relation="public-inheritance">
+        </childnode>
+        <childnode refid="32" relation="usage">
+          <edgelabel>activationFunction</edgelabel>
+        </childnode>
+      </node>
+      <node id="32">
+        <label>pann::ActivationFunction::Base</label>
+        <link refid="classpann_1_1ActivationFunction_1_1Base"/>
+        <childnode refid="32" relation="usage">
+          <edgelabel>self</edgelabel>
+        </childnode>
+      </node>
+      <node id="30">
+        <label>pann::Object</label>
+        <link refid="classpann_1_1Object"/>
+      </node>
+      <node id="29">
+        <label>pann::Link</label>
+        <link refid="classpann_1_1Link"/>
+        <childnode refid="30" relation="public-inheritance">
+        </childnode>
+        <childnode refid="31" relation="usage">
+          <edgelabel>to</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/booble/pann/trunk/src/Link.h" line="20" bodyfile="/home/booble/pann/trunk/src/Link.h" bodystart="19" bodyend="40"/>
+    <listofallmembers>
+      <member refid="classpann_1_1Object_17eff990bb1cc771117099f8cdcd6dd33" prot="protected" virt="non-virtual"><scope>pann::Link</scope><name>attributes</name></member>
+      <member refid="classpann_1_1Link_1e3c1cbea824e8177a35201a6da1c0da2" prot="protected" virt="non-virtual"><scope>pann::Link</scope><name>direction</name></member>
+      <member refid="classpann_1_1Link_1843c5a79ffd161b67e1770f65eabf055" prot="public" virt="non-virtual"><scope>pann::Link</scope><name>Direction</name></member>
+      <member refid="classpann_1_1Link_1eab757727bb6ca0cad8edb46500c3897" prot="public" virt="non-virtual"><scope>pann::Link</scope><name>getDirection</name></member>
+      <member refid="classpann_1_1Link_107b96a800aa700c832a3a401181355b1" prot="public" virt="non-virtual"><scope>pann::Link</scope><name>getTo</name></member>
+      <member refid="classpann_1_1Link_1ce5a96ace22c7561e723f4248e5a41ab" prot="public" virt="non-virtual"><scope>pann::Link</scope><name>getW</name></member>
+      <member refid="classpann_1_1Link_1843c5a79ffd161b67e1770f65eabf0556b810850c72ab26c68965db2424df30c" prot="public" virt="non-virtual"><scope>pann::Link</scope><name>in</name></member>
+      <member refid="classpann_1_1Object_1ebbb9ad2f57f093fde45aad4580bf3bb" prot="public" virt="non-virtual"><scope>pann::Link</scope><name>is</name></member>
+      <member refid="classpann_1_1Link_1034def4a36ce7701f08a2bc0826cda1a" prot="public" virt="non-virtual"><scope>pann::Link</scope><name>Link</name></member>
+      <member refid="classpann_1_1Object_1e4157eda81e363f28504b4ec9d15e196" prot="public" virt="non-virtual"><scope>pann::Link</scope><name>Object</name></member>
+      <member refid="classpann_1_1Object_14a44c6ffb8a172818167f0004b9a7a45" prot="public" virt="non-virtual"><scope>pann::Link</scope><name>operator[]</name></member>
+      <member refid="classpann_1_1Link_1843c5a79ffd161b67e1770f65eabf0550735525ef5d9a47b94c4597e7c27e522" prot="public" virt="non-virtual"><scope>pann::Link</scope><name>out</name></member>
+      <member refid="classpann_1_1Link_1a9ee2ffbf614efa443d3898b64d4ded8" prot="protected" virt="non-virtual"><scope>pann::Link</scope><name>to</name></member>
+      <member refid="classpann_1_1Object_1ef631d297ec4d921cbf14f8d77baf63b" prot="public" virt="non-virtual"><scope>pann::Link</scope><name>unset</name></member>
+      <member refid="classpann_1_1Link_1a6387ae5f79407f65a9fffa844319e00" prot="protected" virt="non-virtual"><scope>pann::Link</scope><name>w</name></member>
+      <member refid="classpann_1_1Link_1d06a124eeddb33744befe239894399bc" prot="public" virt="non-virtual"><scope>pann::Link</scope><name>~Link</name></member>
+      <member refid="classpann_1_1Object_1461126af2f1a20fa24f1340f670c5733" prot="public" virt="virtual"><scope>pann::Link</scope><name>~Object</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

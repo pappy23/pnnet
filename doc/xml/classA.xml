@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="classA" kind="class" prot="public">
+    <compoundname>A</compoundname>
+    <derivedcompoundref refid="classB" prot="public" virt="non-virtual">B</derivedcompoundref>
+    <derivedcompoundref refid="classC" prot="public" virt="non-virtual">C</derivedcompoundref>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="0">
+        <label>A</label>
+        <link refid="classA"/>
+      </node>
+      <node id="1">
+        <label>B</label>
+        <link refid="classB"/>
+        <childnode refid="0" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>C</label>
+        <link refid="classC"/>
+        <childnode refid="0" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="/home/booble/pann/trunk/src/Test.cpp" line="12" bodyfile="/home/booble/pann/trunk/src/Test.cpp" bodystart="11" bodyend="13"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

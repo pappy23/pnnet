@@ -1,0 +1,178 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="Net_8h" kind="file">
+    <compoundname>Net.h</compoundname>
+    <includes refid="Includes_8h" local="yes">Includes.h</includes>
+    <includes refid="Object_8h" local="yes">Object.h</includes>
+    <includes refid="Weight_8h" local="yes">Weight.h</includes>
+    <includes refid="Neuron_8h" local="yes">Neuron.h</includes>
+    <includedby refid="Net_8cpp" local="yes">pann/trunk/src/Net.cpp</includedby>
+    <includedby refid="TestNet_8cpp" local="yes">pann/trunk/src/TestNet.cpp</includedby>
+    <incdepgraph>
+      <node id="100">
+        <label>list</label>
+      </node>
+      <node id="104">
+        <label>boost/shared_ptr.hpp</label>
+      </node>
+      <node id="101">
+        <label>string</label>
+      </node>
+      <node id="105">
+        <label>boost/weak_ptr.hpp</label>
+      </node>
+      <node id="99">
+        <label>map</label>
+      </node>
+      <node id="107">
+        <label>Exception.h</label>
+        <link refid="Exception_8h"/>
+        <childnode refid="97" relation="include">
+        </childnode>
+      </node>
+      <node id="103">
+        <label>boost/any.hpp</label>
+      </node>
+      <node id="96">
+        <label>pann/trunk/src/Net.h</label>
+        <link refid="Net.h"/>
+        <childnode refid="97" relation="include">
+        </childnode>
+        <childnode refid="106" relation="include">
+        </childnode>
+        <childnode refid="108" relation="include">
+        </childnode>
+        <childnode refid="109" relation="include">
+        </childnode>
+      </node>
+      <node id="111">
+        <label>Link.h</label>
+        <link refid="Link_8h"/>
+        <childnode refid="97" relation="include">
+        </childnode>
+        <childnode refid="106" relation="include">
+        </childnode>
+        <childnode refid="108" relation="include">
+        </childnode>
+        <childnode refid="109" relation="include">
+        </childnode>
+      </node>
+      <node id="98">
+        <label>vector</label>
+      </node>
+      <node id="106">
+        <label>Object.h</label>
+        <link refid="Object_8h"/>
+        <childnode refid="97" relation="include">
+        </childnode>
+        <childnode refid="107" relation="include">
+        </childnode>
+      </node>
+      <node id="102">
+        <label>sstream</label>
+      </node>
+      <node id="97">
+        <label>Includes.h</label>
+        <link refid="Includes_8h"/>
+        <childnode refid="98" relation="include">
+        </childnode>
+        <childnode refid="99" relation="include">
+        </childnode>
+        <childnode refid="100" relation="include">
+        </childnode>
+        <childnode refid="101" relation="include">
+        </childnode>
+        <childnode refid="102" relation="include">
+        </childnode>
+        <childnode refid="103" relation="include">
+        </childnode>
+        <childnode refid="104" relation="include">
+        </childnode>
+        <childnode refid="105" relation="include">
+        </childnode>
+      </node>
+      <node id="110">
+        <label>ActivationFunction.h</label>
+        <link refid="ActivationFunction_8h"/>
+      </node>
+      <node id="109">
+        <label>Neuron.h</label>
+        <link refid="Neuron_8h"/>
+        <childnode refid="97" relation="include">
+        </childnode>
+        <childnode refid="106" relation="include">
+        </childnode>
+        <childnode refid="110" relation="include">
+        </childnode>
+        <childnode refid="111" relation="include">
+        </childnode>
+      </node>
+      <node id="108">
+        <label>Weight.h</label>
+        <link refid="Weight_8h"/>
+        <childnode refid="97" relation="include">
+        </childnode>
+        <childnode refid="106" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="112">
+        <label>pann/trunk/src/Net.h</label>
+        <link refid="Net.h"/>
+        <childnode refid="113" relation="include">
+        </childnode>
+        <childnode refid="114" relation="include">
+        </childnode>
+      </node>
+      <node id="113">
+        <label>pann/trunk/src/Net.cpp</label>
+        <link refid="Net_8cpp"/>
+      </node>
+      <node id="114">
+        <label>pann/trunk/src/TestNet.cpp</label>
+        <link refid="TestNet_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classpann_1_1Net" prot="public">pann::Net</innerclass>
+    <innernamespace refid="namespacepann">pann</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//Net.h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>NET_H</highlight></codeline>
+<codeline lineno="4"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>NET_H<sp/></highlight></codeline>
+<codeline lineno="5"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Includes_8h" kindref="compound">Includes.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Object_8h" kindref="compound">Object.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Weight_8h" kindref="compound">Weight.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Neuron_8h" kindref="compound">Neuron.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">pann</highlight></codeline>
+<codeline lineno="12"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="classpann_1_1Net" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classpann_1_1Net" kindref="compound">Net</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Object" kindref="compound" tooltip="Base class for almoust everything.">Object</ref></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="17" refid="classpann_1_1Net_13630014d5c5aa55a19fbfa381558e725" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::map&lt;int,<sp/>Neuron&gt;<sp/><ref refid="classpann_1_1Net_13630014d5c5aa55a19fbfa381558e725" kindref="member">neurons</ref>;</highlight></codeline>
+<codeline lineno="18" refid="classpann_1_1Net_1214eebfc5b27b67eb6ca47680a5bbe7b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Net_1214eebfc5b27b67eb6ca47680a5bbe7b" kindref="member">lastNeuronId</ref>;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classpann_1_1Net_1fc3d67838fb89d577abd01b9badbb1dc" kindref="member">Net</ref>();</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classpann_1_1Net_1ede55beb023c08142ca4b5974889d431" kindref="member">~Net</ref>();</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Net_1ac1e2f21a9ac5bdb119ef32e0ba69a2e" kindref="member">addNeuron</ref>(<ref refid="classpann_1_1ActivationFunction_1_1Base" kindref="compound">ActivationFunction::Base</ref>&amp;);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classpann_1_1Neuron" kindref="compound">Neuron</ref>&amp;<sp/><ref refid="classpann_1_1Net_1f1b8e2db7372d93a3ca60202db2f3fb6" kindref="member">getNeuron</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Net_1f72c3cdfe137c4269a8e23cee1ca1f1b" kindref="member">delNeuron</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal">};<sp/></highlight><highlight class="comment">//pann</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//NET_H</highlight></codeline>
+<codeline lineno="31"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/booble/pann/trunk/src/Net.h"/>
+  </compounddef>
+</doxygen>

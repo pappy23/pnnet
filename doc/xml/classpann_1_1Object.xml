@@ -1,0 +1,153 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="classpann_1_1Object" kind="class" prot="public">
+    <compoundname>pann::Object</compoundname>
+    <derivedcompoundref refid="classpann_1_1Link" prot="public" virt="non-virtual">pann::Link</derivedcompoundref>
+    <derivedcompoundref refid="classpann_1_1Net" prot="public" virt="non-virtual">pann::Net</derivedcompoundref>
+    <derivedcompoundref refid="classpann_1_1Neuron" prot="public" virt="non-virtual">pann::Neuron</derivedcompoundref>
+    <derivedcompoundref refid="classpann_1_1Weight" prot="public" virt="non-virtual">pann::Weight</derivedcompoundref>
+    <includes refid="Object_8h" local="no">Object.h</includes>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classpann_1_1Object_17eff990bb1cc771117099f8cdcd6dd33" prot="protected" static="no" mutable="yes">
+        <type>std::map&lt; std::string, boost::any &gt;</type>
+        <definition>std::map&lt;std::string, boost::any&gt; pann::Object::attributes</definition>
+        <argsstring></argsstring>
+        <name>attributes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Object.h" line="31" bodyfile="/home/booble/pann/trunk/src/Object.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classpann_1_1Object_1e4157eda81e363f28504b4ec9d15e196" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>pann::Object::Object</definition>
+        <argsstring>()</argsstring>
+        <name>Object</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Object.h" line="18" bodyfile="/home/booble/pann/trunk/src/Object.cpp" bodystart="14" bodyend="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classpann_1_1Object_1461126af2f1a20fa24f1340f670c5733" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>pann::Object::~Object</definition>
+        <argsstring>()</argsstring>
+        <name>~Object</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Object.h" line="19" bodyfile="/home/booble/pann/trunk/src/Object.cpp" bodystart="19" bodyend="21"/>
+      </memberdef>
+      <memberdef kind="function" id="classpann_1_1Object_1ebbb9ad2f57f093fde45aad4580bf3bb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool pann::Object::is</definition>
+        <argsstring>(const std::string &amp;) const </argsstring>
+        <name>is</name>
+        <param>
+          <type>const std::string &amp;</type>
+        </param>
+        <briefdescription>
+<para>Does attribute. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>exist?</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Object.h" line="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classpann_1_1Object_1ef631d297ec4d921cbf14f8d77baf63b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void pann::Object::unset</definition>
+        <argsstring>(const std::string &amp;)</argsstring>
+        <name>unset</name>
+        <param>
+          <type>const std::string &amp;</type>
+        </param>
+        <briefdescription>
+<para>Delete attribute. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Object.h" line="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classpann_1_1Object_14a44c6ffb8a172818167f0004b9a7a45" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>boost::any &amp;</type>
+        <definition>boost::any&amp; pann::Object::operator[]</definition>
+        <argsstring>(const std::string &amp;)</argsstring>
+        <name>operator[]</name>
+        <param>
+          <type>const std::string &amp;</type>
+        </param>
+        <briefdescription>
+<para>Get reference to attribute. Create it if nonexistent. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Object.h" line="28"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Base class for almoust everything. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="45">
+        <label>pann::Neuron</label>
+        <link refid="classpann_1_1Neuron"/>
+        <childnode refid="42" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="42">
+        <label>pann::Object</label>
+        <link refid="classpann_1_1Object"/>
+      </node>
+      <node id="43">
+        <label>pann::Link</label>
+        <link refid="classpann_1_1Link"/>
+        <childnode refid="42" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="46">
+        <label>pann::Weight</label>
+        <link refid="classpann_1_1Weight"/>
+        <childnode refid="42" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="44">
+        <label>pann::Net</label>
+        <link refid="classpann_1_1Net"/>
+        <childnode refid="42" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="/home/booble/pann/trunk/src/Object.h" line="16" bodyfile="/home/booble/pann/trunk/src/Object.h" bodystart="15" bodyend="32"/>
+    <listofallmembers>
+      <member refid="classpann_1_1Object_17eff990bb1cc771117099f8cdcd6dd33" prot="protected" virt="non-virtual"><scope>pann::Object</scope><name>attributes</name></member>
+      <member refid="classpann_1_1Object_1ebbb9ad2f57f093fde45aad4580bf3bb" prot="public" virt="non-virtual"><scope>pann::Object</scope><name>is</name></member>
+      <member refid="classpann_1_1Object_1e4157eda81e363f28504b4ec9d15e196" prot="public" virt="non-virtual"><scope>pann::Object</scope><name>Object</name></member>
+      <member refid="classpann_1_1Object_14a44c6ffb8a172818167f0004b9a7a45" prot="public" virt="non-virtual"><scope>pann::Object</scope><name>operator[]</name></member>
+      <member refid="classpann_1_1Object_1ef631d297ec4d921cbf14f8d77baf63b" prot="public" virt="non-virtual"><scope>pann::Object</scope><name>unset</name></member>
+      <member refid="classpann_1_1Object_1461126af2f1a20fa24f1340f670c5733" prot="public" virt="virtual"><scope>pann::Object</scope><name>~Object</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

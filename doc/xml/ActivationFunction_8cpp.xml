@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="ActivationFunction_8cpp" kind="file">
+    <compoundname>ActivationFunction.cpp</compoundname>
+    <includes refid="ActivationFunction_8h" local="yes">ActivationFunction.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>ActivationFunction.h</label>
+        <link refid="ActivationFunction_8h"/>
+      </node>
+      <node id="0">
+        <label>pann/trunk/src/ActivationFunction.cpp</label>
+        <link refid="ActivationFunction.cpp"/>
+        <childnode refid="1" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespacepann">pann</innernamespace>
+    <innernamespace refid="namespacepann_1_1ActivationFunction">pann::ActivationFunction</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Initialization of ActivationFunction::Base static members </para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="6"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="ActivationFunction_8h" kindref="compound">ActivationFunction.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8" refid="namespacepann" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">pann</highlight></codeline>
+<codeline lineno="9"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="10" refid="namespacepann_1_1ActivationFunction" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">ActivationFunction</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classpann_1_1ActivationFunction_1_1Base" kindref="compound">Base</ref>*<sp/><ref refid="classpann_1_1ActivationFunction_1_1Base_195e57874254f891c27aab537644d74a6" kindref="member">Base::self</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1ActivationFunction_1_1Base_104614515549362c5ecab80f1613e1804" kindref="member">Base::refcount</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>};<sp/></highlight><highlight class="comment">//ActivationFunction</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal">};<sp/></highlight><highlight class="comment">//pann</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/booble/pann/trunk/src/ActivationFunction.cpp"/>
+  </compounddef>
+</doxygen>

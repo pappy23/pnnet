@@ -1,0 +1,199 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="TestNet_8cpp" kind="file">
+    <compoundname>TestNet.cpp</compoundname>
+    <includes local="no">iostream</includes>
+    <includes local="no">iomanip</includes>
+    <includes refid="Includes_8h" local="yes">Includes.h</includes>
+    <includes refid="Net_8h" local="yes">Net.h</includes>
+    <includes refid="Exception_8h" local="yes">Exception.h</includes>
+    <incdepgraph>
+      <node id="199">
+        <label>list</label>
+      </node>
+      <node id="195">
+        <label>iomanip</label>
+      </node>
+      <node id="203">
+        <label>boost/shared_ptr.hpp</label>
+      </node>
+      <node id="200">
+        <label>string</label>
+      </node>
+      <node id="204">
+        <label>boost/weak_ptr.hpp</label>
+      </node>
+      <node id="198">
+        <label>map</label>
+      </node>
+      <node id="207">
+        <label>Exception.h</label>
+        <link refid="Exception_8h"/>
+        <childnode refid="196" relation="include">
+        </childnode>
+      </node>
+      <node id="202">
+        <label>boost/any.hpp</label>
+      </node>
+      <node id="205">
+        <label>Net.h</label>
+        <link refid="Net_8h"/>
+        <childnode refid="196" relation="include">
+        </childnode>
+        <childnode refid="206" relation="include">
+        </childnode>
+        <childnode refid="208" relation="include">
+        </childnode>
+        <childnode refid="209" relation="include">
+        </childnode>
+      </node>
+      <node id="211">
+        <label>Link.h</label>
+        <link refid="Link_8h"/>
+        <childnode refid="196" relation="include">
+        </childnode>
+        <childnode refid="206" relation="include">
+        </childnode>
+        <childnode refid="208" relation="include">
+        </childnode>
+        <childnode refid="209" relation="include">
+        </childnode>
+      </node>
+      <node id="197">
+        <label>vector</label>
+      </node>
+      <node id="206">
+        <label>Object.h</label>
+        <link refid="Object_8h"/>
+        <childnode refid="196" relation="include">
+        </childnode>
+        <childnode refid="207" relation="include">
+        </childnode>
+      </node>
+      <node id="201">
+        <label>sstream</label>
+      </node>
+      <node id="196">
+        <label>Includes.h</label>
+        <link refid="Includes_8h"/>
+        <childnode refid="197" relation="include">
+        </childnode>
+        <childnode refid="198" relation="include">
+        </childnode>
+        <childnode refid="199" relation="include">
+        </childnode>
+        <childnode refid="200" relation="include">
+        </childnode>
+        <childnode refid="201" relation="include">
+        </childnode>
+        <childnode refid="202" relation="include">
+        </childnode>
+        <childnode refid="203" relation="include">
+        </childnode>
+        <childnode refid="204" relation="include">
+        </childnode>
+      </node>
+      <node id="210">
+        <label>ActivationFunction.h</label>
+        <link refid="ActivationFunction_8h"/>
+      </node>
+      <node id="194">
+        <label>iostream</label>
+      </node>
+      <node id="209">
+        <label>Neuron.h</label>
+        <link refid="Neuron_8h"/>
+        <childnode refid="196" relation="include">
+        </childnode>
+        <childnode refid="206" relation="include">
+        </childnode>
+        <childnode refid="210" relation="include">
+        </childnode>
+        <childnode refid="211" relation="include">
+        </childnode>
+      </node>
+      <node id="208">
+        <label>Weight.h</label>
+        <link refid="Weight_8h"/>
+        <childnode refid="196" relation="include">
+        </childnode>
+        <childnode refid="206" relation="include">
+        </childnode>
+      </node>
+      <node id="193">
+        <label>pann/trunk/src/TestNet.cpp</label>
+        <link refid="TestNet.cpp"/>
+        <childnode refid="194" relation="include">
+        </childnode>
+        <childnode refid="195" relation="include">
+        </childnode>
+        <childnode refid="196" relation="include">
+        </childnode>
+        <childnode refid="205" relation="include">
+        </childnode>
+        <childnode refid="207" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="TestNet_8cpp_1e66f6b31b5ad750f1fe042a706a4e3d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int main</definition>
+        <argsstring>()</argsstring>
+        <name>main</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/TestNet.cpp" line="15" bodyfile="/home/booble/pann/trunk/src/TestNet.cpp" bodystart="14" bodyend="33"/>
+        <references refid="classpann_1_1Neuron_1931072044f50671fe1c1588507448684" compoundref="Neuron_8h" startline="21">pann::Neuron::activationValue</references>
+        <references refid="classpann_1_1Net_1ac1e2f21a9ac5bdb119ef32e0ba69a2e" compoundref="Net_8cpp" startline="19" endline="25">pann::Net::addNeuron</references>
+        <references refid="classpann_1_1Net_1f1b8e2db7372d93a3ca60202db2f3fb6" compoundref="Net_8cpp" startline="33" endline="40">pann::Net::getNeuron</references>
+        <references refid="classpann_1_1Exception_1_1Base_1e73d382790d755edfec2289abe12a626" compoundref="Exception_8h" startline="31" endline="34">pann::Exception::Base::text</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//TestNet.cpp</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iomanip&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Includes_8h" kindref="compound">Includes.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Net_8h" kindref="compound">Net.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Exception_8h" kindref="compound">Exception.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal">std;</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal">pann;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>boost::any_cast;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="TestNet_8cpp_1e66f6b31b5ad750f1fe042a706a4e3d4" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="main_8cpp_10ddf1224851353fc92bfbff6f499fa97" kindref="member">main</ref>()</highlight></codeline>
+<codeline lineno="15"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classpann_1_1Net" kindref="compound">Net</ref><sp/>net;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nid<sp/>=<sp/>net.<ref refid="classpann_1_1Net_1ac1e2f21a9ac5bdb119ef32e0ba69a2e" kindref="member">addNeuron</ref>(ActivationFunction::Linear::Instance());</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classpann_1_1Neuron" kindref="compound">Neuron</ref>&amp;<sp/>n<sp/>=<sp/>net.<ref refid="classpann_1_1Net_1f1b8e2db7372d93a3ca60202db2f3fb6" kindref="member">getNeuron</ref>(nid);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Exception_1_1ElementExists" kindref="compound" tooltip="Trying to add already existent element.">Exception::ElementExists</ref>()&lt;&lt;</highlight><highlight class="stringliteral">&quot;test1&quot;</highlight><highlight class="normal">&lt;&lt;5.678&lt;&lt;</highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">&lt;&lt;5&lt;&lt;6&lt;&lt;</highlight><highlight class="stringliteral">&quot;Test\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal">(<ref refid="classpann_1_1Exception_1_1Base" kindref="compound" tooltip="Basic class for every exception.">Exception::Base</ref><sp/>e)</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cout&lt;&lt;e.<ref refid="classpann_1_1Exception_1_1Base_1e73d382790d755edfec2289abe12a626" kindref="member">text</ref>();</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>n[</highlight><highlight class="stringliteral">&quot;ilf&quot;</highlight><highlight class="normal">]<sp/>=<sp/>(int)10;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>cout&lt;&lt;</highlight><highlight class="stringliteral">&quot;n[ilf]<sp/>=<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;setprecision(5)&lt;&lt;(float)any_cast&lt;int&gt;(n[</highlight><highlight class="stringliteral">&quot;ilf&quot;</highlight><highlight class="normal">])&lt;&lt;endl;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>cout&lt;&lt;</highlight><highlight class="stringliteral">&quot;Linear.f()<sp/>=<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;n.<ref refid="classpann_1_1Neuron_1931072044f50671fe1c1588507448684" kindref="member">activationValue</ref>&lt;&lt;endl;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/booble/pann/trunk/src/TestNet.cpp"/>
+  </compounddef>
+</doxygen>
