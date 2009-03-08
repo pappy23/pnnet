@@ -7,6 +7,7 @@
 #include "Object.h"
 #include "ActivationFunction.h"
 #include "Link.h"
+#include "Net.h"
 
 namespace pann
 {
@@ -16,16 +17,21 @@ namespace pann
         ActivationFunction::Base& activationFunction;
         std::list<Link> links;
 
+        std::list<Link>::iterator findLink(Neuron& _to);
+
+        void connect(Neuron& _to, float _weightValue);
+        void connect(Neuron& _to, Weight* _weight);
+        void disconnect(Neuron& _to);
+
     public:
+        friend class Net;
+
         float receptiveField;
         float activationValue;
 
         Neuron(ActivationFunction::Base&); 
         ~Neuron();
         
-        void connectTo(Neuron&, Link::Direction, float);
-        void connectTo(Neuron&, Weight*, Link::Direction);
-
         float activate();
     };
 

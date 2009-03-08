@@ -17,13 +17,16 @@ namespace pann
         std::map<int, Neuron> neurons;
         int lastNeuronId;
 
+        Neuron& findNeuron(int _neuronId);
+
     public:
         Net();
         ~Net();
 
-        int addNeuron(ActivationFunction::Base&);
-        Neuron& getNeuron(int);
-        void delNeuron(int);
+        int addNeuron(ActivationFunction::Base& _activationFunction);
+        void delNeuron(int _neuronId);
+        void addConnection(int _from, int _to, float _weightValue = 1);
+        void delConnection(int _from, int _to);
     };
 
 }; //pann

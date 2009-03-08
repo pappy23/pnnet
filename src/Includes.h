@@ -12,6 +12,7 @@
 #include <list>
 #include <string>
 #include <sstream>
+#include <iostream>
 
 //Boost
 #include <boost/any.hpp>
