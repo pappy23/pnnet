@@ -41,6 +41,7 @@ namespace pann
         std::list<NeuronIter> outputNeurons;
 
         NeuronIter findNeuron(int _neuronId);
+        void formatFront();
 
         NetCache cache;
 
@@ -65,7 +66,7 @@ namespace pann
         void setInput(std::vector<float> _input);
         std::vector<float> getOutput();
 
-        void run();
+        void run(int _threads);
     };
 
 }; //pann

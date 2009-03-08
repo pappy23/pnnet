@@ -6,6 +6,7 @@ using std::pair;
 using std::map;
 using std::list;
 using std::vector;
+using boost::any_cast;
 
 namespace pann
 {
@@ -29,7 +30,7 @@ namespace pann
 
     int Net::addNeuron(ActivationFunction::Base& _activationFunction)
     {
-        cache.flush();
+        cache.touch();
 
         if(!neurons.insert( pair<int, Neuron>(++lastNeuronId, Neuron(_activationFunction)) ).second)
             throw Exception::ElementExists()<<"Net::addNeuron(): insertion of neuron "<<lastNeuronId<<" failed\n";
@@ -55,7 +56,7 @@ namespace pann
 
     void Net::delNeuron(int _neuronId)
     {
-        cache.flush();
+        cache.touch();
 
         if( !neurons.erase(_neuronId) )
             throw Exception::ObjectNotFound()<<"Net::delNeuron(): neuron "<<_neuronId<<" not found\n";
@@ -63,7 +64,7 @@ namespace pann
 
     void Net::setNeuronRole(int _neuronId, NeuronRole _newRole)
     {
-        cache.flush();
+        cache.touch();
 
         NeuronIter iter = findNeuron(_neuronId);
 
@@ -114,7 +115,7 @@ namespace pann
 
     void Net::addConnection(int _from, int _to, float _weightValue)
     {
-        cache.flush();
+        cache.touch();
 
         Neuron& from = findNeuron(_from)->second;
         Neuron& to = findNeuron(_to)->second;
@@ -124,7 +125,7 @@ namespace pann
 
     void Net::delConnection(int _from, int _to)
     {
-        cache.flush();
+        cache.touch();
 
         Neuron& from = findNeuron(_from)->second;
         Neuron& to = findNeuron(_to)->second;
@@ -179,7 +180,7 @@ namespace pann
         return result;
     } //setInput
 
-    void Net::run()
+    void Net::run(int _threads)
     {
         ////put inputNeurons to front
         if( !cache.isOk() )
@@ -187,11 +188,10 @@ namespace pann
             cache.flush();
             
             vector<int> rawFront;
-            //vector< NeuronIter >::iterator iter = inputNeurons.begin();
-            //for(; iter != InputNeurons.end(); ++iter)
             BOOST_FOREACH( NeuronIter iter, inputNeurons )
             {
                 rawFront.push_back(iter->first); 
+                iter->second["hops"] = (int)0;
             }
         }
 
