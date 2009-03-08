@@ -46,6 +46,9 @@ namespace pann
             }
         };
 
+        //! Not critical. Simply instantiate
+        class Warning : public Base { };
+
         //! Reference to unexistent object was requested
         class ObjectNotFound : public Base { }; 
         
@@ -54,6 +57,9 @@ namespace pann
 
         //! Multiple elements exist, but onlyone allowed; ex: parallel links between neurons are not allowed
         class MultipleOccurance  : public Base { }; 
+
+        //! Count of elements mismatch
+        class SizeMismatch  : public Base { }; 
 
     }; //Exception
 
