@@ -30,24 +30,28 @@ namespace pann
     {
     public:
         enum NeuronRole { WorkNeuron = 0, InputNeuron = 1, OutputNeuron = 2 };
-        enum ThreadDistributionPolicy { RoundRobinPolicy, ExplicitPolicy }; //valid only for zero-thread
 
     protected:
         typedef std::map<int, Neuron>::iterator NeuronIter;
 
+        int threadCount;
         int lastNeuronId; //var to add new neurons
         std::map<int, Neuron> neurons;
-        std::list<NeuronIter> inputNeurons;
-        std::list<NeuronIter> outputNeurons;
+        std::list<NeuronIter> inputNeurons;  //Iterators to map<> neurons
+        std::list<NeuronIter> outputNeurons; //Iterators to map<> neurons 
 
         NeuronIter findNeuron(int _neuronId);
-        void formatFront();
+        void formatFront(std::vector<int>& _raw);
 
         NetCache cache;
 
     public:
         Net();
+        Net(int _threads);
         ~Net();
+
+        int getThreadCount();
+        void setThreadCount(int _threads);
 
         int addNeuron(ActivationFunction::Base& _activationFunction);
         int addInputNeuron();
@@ -66,7 +70,7 @@ namespace pann
         void setInput(std::vector<float> _input);
         std::vector<float> getOutput();
 
-        void run(int _threads);
+        void run();
     };
 
 }; //pann

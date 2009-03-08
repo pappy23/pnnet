@@ -36,11 +36,13 @@ namespace pann
             throw Exception::ObjectNotFound()<<"Object::unset(): attribute "<<_attributeName<<" not found\n";  
     } //unset                                  
 
+    /*
     any &
     Object::operator[](const string& _attributeName)
     {
         return attributes[_attributeName];
     } //operator[]
+    */
 
 }; //namespace NNet
 

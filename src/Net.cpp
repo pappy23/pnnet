@@ -13,11 +13,33 @@ namespace pann
     Net::Net()
     {
         lastNeuronId = 0;
+        threadCount = 1;
+    } //Net
+
+    Net::Net(int _threads)
+    {
+        Net::Net();
+        setThreadCount(_threads);
     } //Net
 
     Net::~Net()
     {
     } //~Net
+
+    int Net::getThreadCount()
+    {
+        return threadCount;
+    } //getThreadCount
+
+    void Net::setThreadCount(int _threads)
+    {
+        cache.touch();
+
+        if(_threads < 1 || _threads > 5)
+            throw Exception::RangeMismatch()<<"Net::run(): currently only up to 5 concurrent threads supported\n";
+
+        threadCount = _threads;
+    } //setThreadCount
 
     Net::NeuronIter Net::findNeuron(int _neuronId)
     {
@@ -27,6 +49,25 @@ namespace pann
         
         return iter;
     } //isNeuronExist
+
+    void Net::formatFront(vector<int>& _raw)
+    {
+        cache.data.push_back( NetCache::FrontType() );
+        NetCache::FrontType& tasks = cache.data[cache.data.size() - 1];
+        
+        for(int i = 0; i < threadCount; i++)
+            tasks.push_back( vector<Neuron*>(0) );
+
+        vector<int>::iterator it = unique(_raw.begin(), _raw.end());
+        _raw.resize( it - _raw.begin() );
+
+        for(int i = 0; i < _raw.size(); ++i)
+        {
+            Neuron& n = neurons[ _raw[i] ];
+            tasks[n.getOwnerThread() % threadCount].push_back(&n);
+        }
+
+    } //formatFront
 
     int Net::addNeuron(ActivationFunction::Base& _activationFunction)
     {
@@ -180,35 +221,127 @@ namespace pann
         return result;
     } //setInput
 
-    void Net::run(int _threads)
+    /*
+     * This function updates cache and does
+     * forward propagation through neural network
+     * Be extremely careful!
+     */
+    void Net::run()
     {
-        ////put inputNeurons to front
+        vector<int> rawFront; //Here we will place neuron's ids that will become front, with duplicates
+        //If cache is not up2date, flush it and fill again
         if( !cache.isOk() )
         {
             cache.flush();
             
-            vector<int> rawFront;
+            //Put inputNeurons to front
             BOOST_FOREACH( NeuronIter iter, inputNeurons )
             {
                 rawFront.push_back(iter->first); 
-                iter->second["hops"] = (int)0;
+                iter->second.a_hops = (int)1;
             }
+
+            formatFront(rawFront);
         }
 
-
-        ////while(front.size() > 0)
+        /*
+         * Cache looks like that:
+         *
+         * vector<FrontType> cache.data
+         *     |
+         *     |-(0) vector<ThreadTaskType>      <-- * front pointer points to this vector
+         *     |-(1) vector<ThreadTaskType>
+         *     |-(...)
+         *     |-(number_of_layers) vector<ThreadTaskType>
+         *                          |
+         *                          |-(0) vector<Neuron*> Target neurons for thread1
+         *                          |-(1) vector<Neuron*> Target neurons for thread2
+         *
+         *  At this point cache.data(0) is the only record and it contains input neurons
+         */
+        int layer = 0;
+        while(front->size() > 0)
         {
-            ////distribute front neurons between processes
-            ////write this information into cache
-            ////Every thread gets reference to his own vector of references to neurons
-            ////start working threads
-            ////while they process neurons in front, determine what neurons are next front
-            ////write that information to cache
-            ////delete redundant neurons from front
-            ////new front is formed or loaded from cache
-            ////wait for threads to finish
-            ////that's all. continue while loop
+            NetCache::FrontType* front = &cache.data[layer++];
+
+            //front is ready, lets start our pretty threads =)
+            for(int i = 0; i < threadCount; i++)
+            {
+                //TODO: threading
+                //runFeedForwardThread( (*front)[i] );
+            }
+            
+            if( !cache.isOk() )
+            {
+                /*
+                 * We have better prepare next front
+                 * This block is done one time per cache generation and it
+                 * is executed by main() thread
+                 *
+                 * At first iteration, if you remember, vector<int> _raw contains unique inputNeurons indexes
+                 */
+                int nCount = rawFront.size();
+                for(int i = 0; i < nCount; ++i)
+                {
+                    //pop_front emulation
+                    int cur_neuronId = rawFront[i];
+                    rawFront.erase( rawFront.begin() );
+                    Neuron& cur_neuron = neurons[cur_neuronId];
+
+                    //ok, we've got cur_neuron. We will iterate through his Out links 
+                    //and push_back their opposite sides to rawFront
+                    BOOST_FOREACH( Link& link, cur_neuron.links )
+                    {
+                        //Assume that when cache becomes coherent, all neuron.hops vars become zero
+                        if(link.to.hops == 0)
+                        {
+                            link.to.hops = cur_neuron.hops + 1;
+                            //find cur_neuron, get it's id and push_back it to rawFront
+                            //rawFront.push_back();
+                        }
+
+                        if(link.to.hops == cur_neuron.hops)
+                            throw Exception::Unbelievable()<<"Net::run(): cur_neuron.hops == to.hops."
+                                                                "There is no support for such topologies yet\n";
+                        if( link.to.hops > ( cur_neuron.hops + 1 ) )
+                            throw Exception::Unbelievable()<<"Net::run(): cache regeneration "
+                                                            "discovered that hops was not set to zero\n";
+                        /*
+                         * Short comment. Consider following topology (hops are in brackets):
+                         *   +(0)    <-- output          +(0)             +(3)    <-- front(3)
+                         *  / \                         / \              / \
+                         * +(0)+(0)         ======>    +(0)+(0)  ====>  +(2)+(2)  <-- front(2)
+                         *  \ /           iteration1    \ /        N     \ /
+                         *   +(0)  <-- input             +(1)             +(1)    <-- front on iteration1
+                         *
+                         *   For current neuron (C) and other neuron (T), hops might be:
+                         *   T = 0  - T-neuron is fresh. We will set T=C+1
+                         *   T = N, N < C - it is recurrent link. Dont touch T and dont place it into rawFront
+                         *   T = C  - it is stupid recursive topology. Currently unsupported. Raise exception
+                         *   T = C + 1 - T already hadled. Silently ignore T. We can add T to rawFront
+                         *   T > C + 1 - impossible. Somebody changed hops by hand and didn't touch cache or
+                         *               after last cache generation algorithm didn't set neuron's hops to zero
+                         */
+                    } //BOOST_FOREACH
+                } //link iteration
+                //new rawFront formed
+                formatFront(rawFront);
+            } // if( !cache.isOk() )
+
+            //wait for threads to finish
+            //TODO: wait for work threads to finish
+            
+            ////set hops to zero
+        } //while
+
+        //We rebuilded cache
+        if( !cache.isOk() )
+        {
+            cache.fixed();
+            //Turn all neurons hops to zero. We may use threads for this
+            //TODO^^^
         }
+
     } //run
 /*
     Neuron& Net::getNeuron(int _neuronId)

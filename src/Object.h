@@ -25,7 +25,8 @@ namespace pann
         void unset(const std::string&);
         
         //! Get reference to attribute. Create it if nonexistent
-        boost::any& operator[](const std::string&);
+        //! RESPECT OOP!!!111oneoneone
+        //boost::any& operator[](const std::string&);
 
     protected:
         mutable std::map<std::string, boost::any> attributes;

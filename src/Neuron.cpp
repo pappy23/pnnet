@@ -7,10 +7,21 @@ using boost::shared_ptr;
 
 namespace pann
 {
+    Neuron::Neuron() :
+            activationFunction(ActivationFunction::Linear::Instance()), 
+            receptiveField(0), 
+            activationValue(activationFunction.f(0)),
+            a_hops(0),
+            ownerThread(0)
+    {
+    } //Neuron
+
     Neuron::Neuron(ActivationFunction::Base& _activationFunction) :
             activationFunction(_activationFunction), 
             receptiveField(0), 
-            activationValue(_activationFunction.f(0))
+            activationValue(_activationFunction.f(0)),
+            a_hops(0),
+            ownerThread(0)
     {
     } //Neuron
 
@@ -60,5 +71,13 @@ namespace pann
     {
         links.erase( findLink(_from) );
     } //disconnect
+
+    void Neuron::setOwnerThread(int _thread)
+    {
+        if(0 > _thread || _thread > 100)
+            throw Exception::RangeMismatch()<<"Neuron::setOwnerThread(): thread must be between 0 and 100\n";
+
+        ownerThread =_thread;
+    } //setOwnerThread
 
 }; //pann
