@@ -56,7 +56,7 @@ namespace pann
         NetCache::FrontType& tasks = cache.data[cache.data.size() - 1];
         
         for(int i = 0; i < threadCount; i++)
-            tasks.push_back( vector<Neuron*>(0) );
+            tasks.push_back( vector<Neuron*>() );
 
         vector<int>::iterator it = unique(_raw.begin(), _raw.end());
         _raw.resize( it - _raw.begin() );
@@ -260,7 +260,7 @@ namespace pann
          *  At this point cache.data(0) is the only record and it contains input neurons
          */
         int layer = 0;
-        while(front->size() > 0)
+        while(rawFront.size() > 0)
         {
             NetCache::FrontType* front = &cache.data[layer++];
 
@@ -284,7 +284,7 @@ namespace pann
                 for(int i = 0; i < nCount; ++i)
                 {
                     //pop_front emulation
-                    int cur_neuronId = rawFront[i];
+                    int cur_neuronId = rawFront[0];
                     rawFront.erase( rawFront.begin() );
                     Neuron& cur_neuron = neurons[cur_neuronId];
 
@@ -292,6 +292,10 @@ namespace pann
                     //and push_back their opposite sides to rawFront
                     BOOST_FOREACH( Link& link, cur_neuron.links )
                     {
+                        //Only feedforward links
+                        if(link.direction == Link::In)
+                            continue;
+
                         //Assume that when cache becomes coherent, all neuron.hops vars become zero
                         if(link.to.hops == 0)
                         {
@@ -301,7 +305,7 @@ namespace pann
                         }
 
                         if(link.to.hops == cur_neuron.hops)
-                            throw Exception::Unbelievable()<<"Net::run(): cur_neuron.hops == to.hops."
+                            throw Exception::Unbelievable()<<"Net::run(): cur_neuron.hops == to.hops. "
                                                                 "There is no support for such topologies yet\n";
                         if( link.to.hops > ( cur_neuron.hops + 1 ) )
                             throw Exception::Unbelievable()<<"Net::run(): cache regeneration "
@@ -323,9 +327,12 @@ namespace pann
                          *               after last cache generation algorithm didn't set neuron's hops to zero
                          */
                     } //BOOST_FOREACH
+
                 } //link iteration
+
                 //new rawFront formed
                 formatFront(rawFront);
+
             } // if( !cache.isOk() )
 
             //wait for threads to finish
