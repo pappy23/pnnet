@@ -4,30 +4,54 @@
 #define NEURON_H
 
 #include "Includes.h"
-#include "Object.h"
 #include "ActivationFunction.h"
 #include "Link.h"
 
 namespace pann
 {
-    class Neuron : public Object
+    class Neuron 
     {
     protected:
-        ActivationFunction::Base& _activationFunction;
-        std::list<Link> _links;
+        ActivationFunction& m_activation_function;
+        std::vector<Neuron *> m_in_neurons;
+		std::vector<float> m_input_weights;
+		float m_lin_comb_output;
+		float m_output;
+
 
     public:
-        float receptiveField;
-        float activationValue;
-
-        Neuron(ActivationFunction::Base& activationFunction); 
+        Neuron(ActivationFunction& activationFunction); 
         ~Neuron();
         
-        void connectTo(Neuron&, Link::Direction, float);
-        void connectTo(Neuron&, Weight*, Link::Direction);
+        //void connectTo(Neuron&, Link::Direction, float);
+        //void connectTo(Neuron&, Weight*, Link::Direction);
 
         float activate();
     };
+
+	class TraineeNeuron : public Neuron
+	{
+	protected:
+		std::vector<Neuron *> m_out_neurons;
+
+	};
+
+
+	class TraineeNeuron1 : public TraineeNeuron
+	{
+	protected:
+		int unicpole1;
+		
+	};
+
+	class TraineeNeuron2 : public TraineeNeuron
+	{
+	protected:
+		int unicpole1;
+		
+	};
+
+
 
 }; //pann
 
