@@ -1,40 +1,37 @@
 #include <iostream>
-#include <vector>
-#include <string>
-#include <typeinfo>
 #include <boost/shared_ptr.hpp>
 
 using namespace std;
 using namespace boost;
 
-
 class A
 {
-};
+    int a;
 
-class B : public A
-{
-};
+public:
+    A(int _a) : a(_a)
+    {
+        cout<<"Creating A("<<a<<")\n";
+    };
 
-class C : public A
-{
-//    static string = string("test");
+    ~A()
+    {
+        cout<<"Destroying A("<<a<<")\n";
+    };
 };
 
 int main()
 {
-    B *obj = new B;
-    A *a_ptr = dynamic_cast<A*>(obj);
-    C *c_ptr = dynamic_cast<C*>(obj);
-/*
-    vector< shared_ptr<A> > vec;
+    cout<<"main()\n{\n";
+    shared_ptr<A> ptr1( new A(1) );
 
-    for(int i = 0; i < 10; i++)
     {
-        vec.push_back(shared_ptr<A>(new A));
+        cout<<"  {\n";
+        shared_ptr<A> ptr2 ( ptr1 );
+        cout<<"  }\n";
     }
 
-    cout<<"VAL="<<vec[5]->val<<endl;
-*/    
+    cout<<"} //main()\n";
+
     return 0;
 }

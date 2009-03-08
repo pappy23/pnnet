@@ -23,7 +23,11 @@ namespace pann
             std::ostringstream textStream;
 
         public:
-            Base() { };
+            Base()
+            {
+                std::cerr<<"ACTUNG!!! ";
+            };
+
             Base(Base& _rvalue) : textStream(_rvalue.textStream.str()) { };
 
             virtual ~Base() { };
@@ -36,6 +40,7 @@ namespace pann
             template<typename T> Base& operator<<(const T& value)
             {
                 textStream << value;
+                std::cerr << value;
 
                 return *this;
             }
@@ -43,9 +48,12 @@ namespace pann
 
         //! Reference to unexistent object was requested
         class ObjectNotFound : public Base { }; 
-        //
+        
         //! Trying to add already existent element
         class ElementExists  : public Base { }; 
+
+        //! Multiple elements exist, but onlyone allowed; ex: parallel links between neurons are not allowed
+        class MultipleOccurance  : public Base { }; 
 
     }; //Exception
 
