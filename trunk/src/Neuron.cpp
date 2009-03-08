@@ -3,6 +3,7 @@
 #include "Neuron.h"
 
 using std::list;
+using boost::shared_ptr;
 
 namespace pann
 {
@@ -45,10 +46,10 @@ namespace pann
 
     void Neuron::connect(Neuron& _to, float _weightValue = 1)
     {
-        connect(_to, new Weight(_weightValue)); 
+        connect( _to, shared_ptr<Weight>(new Weight(_weightValue)) ); 
     } //connectTo
 
-    void Neuron::connect(Neuron& _to, Weight* _weight)
+    void Neuron::connect(Neuron& _to, shared_ptr<Weight> _weight)
     {
         //ACHTUNG!!! Parallel links ARE allowed
         links.push_back( Link(_to, Link::out, _weight) ); //feedforward link
