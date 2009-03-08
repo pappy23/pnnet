@@ -20,7 +20,7 @@ namespace pann
         std::list<Link>::iterator findLink(Neuron& _to);
 
         void connect(Neuron& _to, float _weightValue);
-        void connect(Neuron& _to, Weight* _weight);
+        void connect(Neuron& _to, boost::shared_ptr<Weight> _weight);
         void disconnect(Neuron& _to);
 
     public:

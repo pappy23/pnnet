@@ -28,7 +28,7 @@ namespace pann
         Neuron& to;
         const Direction direction;
 
-        Link(Neuron& _to, const Direction _direction, Weight* _w) :
+        Link(Neuron& _to, const Direction _direction, boost::shared_ptr<Weight> _w) :
             to(_to),
             direction(_direction),
             w(_w)

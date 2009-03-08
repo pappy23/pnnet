@@ -23,11 +23,12 @@ public:
 int main()
 {
     cout<<"main()\n{\n";
-    shared_ptr<A> ptr1( new A(1) );
+    A* ptr = new A(1);
+    shared_ptr<A> ptr1( ptr );
 
     {
         cout<<"  {\n";
-        shared_ptr<A> ptr2 ( ptr1 );
+        shared_ptr<A> ptr2 ( ptr );
         cout<<"  }\n";
     }
 
