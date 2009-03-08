@@ -61,6 +61,12 @@ namespace pann
         //! Count of elements mismatch
         class SizeMismatch  : public Base { }; 
 
+        //! Argument out of range
+        class RangeMismatch  : public Base { }; 
+
+        //! It's imposible in our universe!
+        class Unbelievable  : public Base { }; 
+
     }; //Exception
 
 }; //pann

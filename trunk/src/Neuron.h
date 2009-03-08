@@ -16,6 +16,8 @@ namespace pann
     protected:
         ActivationFunction::Base& activationFunction;
         std::list<Link> links;
+        int a_hops;
+        int ownerThread;
 
         std::list<Link>::iterator findLink(Neuron& _to);
 
@@ -23,12 +25,16 @@ namespace pann
         void connect(Neuron& _to, boost::shared_ptr<Weight> _weight);
         void disconnect(Neuron& _to);
 
+        void setOwnerThread(int _thread);
+        inline int getOwnerThread() { return ownerThread; };
+
     public:
         friend class Net;
 
         float receptiveField;
         float activationValue;
 
+        Neuron();
         Neuron(ActivationFunction::Base&); 
         ~Neuron();
         
