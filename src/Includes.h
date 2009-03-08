@@ -7,15 +7,16 @@
  */
 
 //C++ STL
-#include <vector>
+#include <iostream>
+#include <sstream>
 #include <map>
 #include <list>
+#include <vector>
+#include <algorithm>
 #include <string>
-#include <sstream>
-#include <iostream>
 
 //Boost
 #include <boost/any.hpp>
 #include <boost/shared_ptr.hpp>
-#include <boost/weak_ptr.hpp>
+#include <boost/foreach.hpp>
 
