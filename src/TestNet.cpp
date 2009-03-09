@@ -53,7 +53,7 @@ int main()
     cout<<endl;
 
     //Input
-    vector<float> input; 
+    vector<Float> input; 
     input.push_back(1);
     net.setInput(input);
 

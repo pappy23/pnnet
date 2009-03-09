@@ -34,7 +34,7 @@ namespace pann
 
         //Add link to *this neuron
         //Create new Weight object
-        void connect(NeuronIter _to, Link::Direction _direction, float _weightValue);
+        void connect(NeuronIter _to, Link::Direction _direction, Float _weightValue);
 
         //Use existing Weight
         void connect(NeuronIter _to, Link::Direction _direction, boost::shared_ptr<Weight> _weight);
@@ -50,15 +50,15 @@ namespace pann
     public:
         friend class Net;
 
-        float receptiveField;
-        float activationValue;
+        Float receptiveField;
+        Float activationValue;
 
         Neuron();
         Neuron(ActivationFunction::Base&); 
         ~Neuron();
         
         //Calculate activationValue from receptiveField
-        float activate();
+        Float activate();
     };
 
 }; //pann

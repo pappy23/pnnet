@@ -48,12 +48,12 @@ namespace pann
         return result;
     } //findLink
 
-    float Neuron::activate()
+    Float Neuron::activate()
     {
         return activationValue = activationFunction.f(receptiveField);
     } //activate
 
-    void Neuron::connect(NeuronIter _to, Link::Direction _direction, float _weightValue = 1)
+    void Neuron::connect(NeuronIter _to, Link::Direction _direction, Float _weightValue = 1)
     {
         connect( _to, _direction, shared_ptr<Weight>(new Weight(_weightValue)) ); 
     } //connectTo

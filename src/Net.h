@@ -78,14 +78,14 @@ namespace pann
         void setNeuronRole(int _neuronId, NeuronRole _newRole);
         NeuronRole getNeuronRole(int _neuronId);
 
-        void addConnection(int _from, int _to, float _weightValue = 1);
+        void addConnection(int _from, int _to, Float _weightValue = 1);
         void delConnection(int _from, int _to);
 
         std::vector<int> getInputMap();
         std::vector<int> getOutputMap();
 
-        void setInput(std::vector<float> _input);
-        std::vector<float> getOutput();
+        void setInput(std::vector<Float> _input);
+        std::vector<Float> getOutput();
 
         void run();
     };
