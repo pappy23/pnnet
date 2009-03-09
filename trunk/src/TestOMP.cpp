@@ -5,7 +5,7 @@
  
 int main(int argc, char *argv[])
 {
-    float a[N], b[N], c[N];
+    Float a[N], b[N], c[N];
     int i;
     omp_set_dynamic(0);      // запретить менять число потоков с помощью переменной окружения
     omp_set_num_threads(10); // установить число потоков в 10

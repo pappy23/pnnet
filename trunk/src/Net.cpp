@@ -148,7 +148,7 @@ namespace pann
         return (NeuronRole)role;
     } //getNeuronRole
 
-    void Net::addConnection(int _from, int _to, float _weightValue)
+    void Net::addConnection(int _from, int _to, Float _weightValue)
     {
         cache.touch();
 
@@ -190,7 +190,7 @@ namespace pann
         return result;
     } //getOutputMap
 
-    void Net::setInput(vector<float> _input)
+    void Net::setInput(vector<Float> _input)
     {
         if(_input.size() < inputNeurons.size())
             throw Exception::SizeMismatch()<<"setInput(): Supplied input size is smaller then number of input neurons\n";
@@ -203,9 +203,9 @@ namespace pann
             iter->second.receptiveField = _input[i++];
     } //setInput
 
-    vector<float> Net::getOutput()
+    vector<Float> Net::getOutput()
     {
-        vector<float> result;
+        vector<Float> result;
         BOOST_FOREACH( NeuronIter iter, outputNeurons)
             result.push_back(iter->second.activationValue);
 
