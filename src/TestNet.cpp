@@ -63,6 +63,24 @@ int main()
     //Output
     cout<<"Test output: "<<net.getOutput().at(0)<<endl;
 
+    //dump cache
+    net.cache.debugPrint();
+
+    //add one more neuron
+    int nWork3 = net.addNeuron(ActivationFunction::Linear::Instance());
+    net.addConnection(nInput, nWork3, 0.5);
+    net.addConnection(nWork3, nOutput, 1);
+
+    //Test run()
+    net.run();
+
+    //Output
+    cout<<"Test output: "<<net.getOutput().at(0)<<endl;
+
+    //dump cache
+    net.cache.debugPrint();
+
+
     return 0;
 }
 

@@ -5,7 +5,6 @@
 
 #include "Includes.h"
 #include "Object.h"
-#include "Weight.h"
 #include "Neuron.h"
 #include "Cache.h"
 
@@ -14,7 +13,7 @@ namespace pann
     class NetCache : public Cache
     {
     public:
-        typedef std::vector<Neuron*> ThreadTaskType;
+        typedef std::vector<Net::NeuronIter> ThreadTaskType;
         typedef std::vector<ThreadTaskType> FrontType;
         
         std::vector<FrontType> data;
@@ -24,6 +23,23 @@ namespace pann
             data.clear();
             touch();
         }
+
+        //Print cache content for debug purposes
+        void debugPrint()
+        {
+            for(int layers = 0; layers < data.size(); ++layers)
+            {
+                std::cout<<"Layer #"<<layers<<std::endl;
+                for(int threads = 0; threads < data[layers].size(); ++threads)
+                {
+                    std::cout<<"  Thread "<<threads<<": ";
+                    for(int n = 0; n < data[layers][threads].size(); ++n)
+                        cout<<data[layers][threads][n]->first<<" ";
+                    std::cout<<std::endl;
+                }
+                std::cout<<std::endl;
+            }
+        }
     };
 
     class Net : public Object
@@ -32,7 +48,6 @@ namespace pann
         enum NeuronRole { WorkNeuron = 0, InputNeuron = 1, OutputNeuron = 2 };
 
     protected:
-        typedef std::map<int, Neuron>::iterator NeuronIter;
 
         int threadCount;
         int lastNeuronId; //var to add new neurons
@@ -41,11 +56,13 @@ namespace pann
         std::list<NeuronIter> outputNeurons; //Iterators to map<> neurons 
 
         NeuronIter findNeuron(int _neuronId);
-        void formatFront(std::vector<int>& _raw);
+        void formatFront(std::vector<NeuronIter>& _raw);
 
-        NetCache cache;
 
     public:
+        //DEBUG!! put it in protected section
+        NetCache cache;
+
         Net();
         Net(int _threads);
         ~Net();

@@ -9,6 +9,8 @@
 #include "Includes.h"
 #include "Object.h"
 #include "Weight.h"
+
+//NeuronIter declaration
 #include "Neuron.h"
 
 namespace pann
@@ -25,10 +27,10 @@ namespace pann
         boost::shared_ptr<Weight> w; //!< Pointer to Weight object (may be shared between different links)
 
     public:
-        Neuron& to;
+        const NeuronIter to;
         const Direction direction;
 
-        Link(Neuron& _to, const Direction _direction, boost::shared_ptr<Weight> _w) :
+        Link(NeuronIter _to, const Direction _direction, boost::shared_ptr<Weight> _w) :
             to(_to),
             direction(_direction),
             w(_w)
@@ -47,5 +49,5 @@ namespace pann
 
 }; //pann
 
-#endif //WEIGHT_H
+#endif //LINK_H
 

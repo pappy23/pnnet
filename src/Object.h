@@ -8,6 +8,7 @@
 
 #include "Includes.h"
 #include "Exception.h"
+#include "Type.h"
 
 namespace pann
 {
@@ -25,8 +26,10 @@ namespace pann
         void unset(const std::string&);
         
         //! Get reference to attribute. Create it if nonexistent
-        //! RESPECT OOP!!!111oneoneone
-        //boost::any& operator[](const std::string&);
+        boost::any& operator[](const std::string&);
+
+        //! Delete all attributes
+        void erase();
 
     protected:
         mutable std::map<std::string, boost::any> attributes;
