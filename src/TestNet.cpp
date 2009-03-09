@@ -29,16 +29,19 @@ int main()
     net.addConnection(nInput, nWork2);
     net.addConnection(nWork1, nOutput);
     net.addConnection(nWork2, nOutput);
-    
+
     //Link deletion test
+    
     net.addConnection(nInput, nOutput);
     net.delConnection(nInput, nOutput);
     //net.delConnection(nInput, nOutput); //raises exception
     
+
     //Neuron deletion test
-    net.delNeuron(nWork2);
+    //net.delNeuron(nWork2);
 
     //Maps
+    /*
     vector<int> inputs = net.getInputMap();
     vector<int> outputs = net.getOutputMap();
 
@@ -51,20 +54,32 @@ int main()
     for(vector<int>::iterator it = outputs.begin(); it != outputs.end(); ++it)
         cout<<*it<<" ";
     cout<<endl;
-
+    */
+    
     //Input
-    vector<Float> input; 
+    vector<Float> input;
     input.push_back(1);
     net.setInput(input);
+
+    //Debug
+    {
+    ostringstream ost;
+    net.printDebugInfo(ost);
+    cout<<ost.str();
+    }
 
     //Test run()
     net.run();
 
+    //Debug
+    {
+    ostringstream ost;
+    net.printDebugInfo(ost);
+    cout<<ost.str();
+    }
+
     //Output
     cout<<"Test output: "<<net.getOutput().at(0)<<endl;
-
-    //dump cache
-    net.cache.debugPrint();
 
     //add one more neuron
     int nWork3 = net.addNeuron(ActivationFunction::Linear::Instance());
@@ -74,12 +89,15 @@ int main()
     //Test run()
     net.run();
 
+    //Debug
+    {
+    ostringstream ost;
+    net.printDebugInfo(ost);
+    cout<<ost.str();
+    }
+
     //Output
     cout<<"Test output: "<<net.getOutput().at(0)<<endl;
-
-    //dump cache
-    net.cache.debugPrint();
-
 
     return 0;
 }

@@ -31,6 +31,8 @@ namespace pann
         //! Delete all attributes
         void erase();
 
+        virtual void printDebugInfo(std::ostringstream& ost) = 0;
+
     protected:
         mutable std::map<std::string, boost::any> attributes;
     };

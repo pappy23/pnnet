@@ -26,19 +26,19 @@ namespace pann
         }
 
         //Print cache content for debug purposes
-        void debugPrint()
+        void printDebugInfo(std::ostringstream& ost)
         {
             for(int layers = 0; layers < data.size(); ++layers)
             {
-                std::cout<<"Layer #"<<layers<<std::endl;
+                ost<<"Layer #"<<layers<<std::endl;
                 for(int threads = 0; threads < data[layers].size(); ++threads)
                 {
-                    std::cout<<"  Thread "<<threads<<": ";
+                    ost<<"  Thread "<<threads<<": ";
                     for(int n = 0; n < data[layers][threads].size(); ++n)
-                        std::cout<<data[layers][threads][n]->first<<" ";
-                    std::cout<<std::endl;
+                        ost<<data[layers][threads][n]->first<<" ";
+                    ost<<std::endl;
                 }
-                std::cout<<std::endl;
+                ost<<std::endl;
             }
         }
     };
@@ -59,11 +59,9 @@ namespace pann
         NeuronIter findNeuron(int _neuronId);
         void formatFront(std::vector<NeuronIter>& _raw);
 
-
-    public:
-        //DEBUG!! put it in protected section
         NetCache cache;
 
+    public:
         Net();
         Net(int _threads);
         ~Net();
@@ -89,6 +87,8 @@ namespace pann
         std::vector<Float> getOutput();
 
         void run();
+
+        void printDebugInfo(std::ostringstream& ost);
     };
 
 }; //pann

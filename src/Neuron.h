@@ -43,6 +43,8 @@ namespace pann
         void setOwnerThread(int _thread);
         inline int getOwnerThread() { return ownerThread; };
 
+        void printDebugInfo(std::ostringstream& ost);
+
     public:
         friend class Net;
 

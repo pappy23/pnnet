@@ -91,9 +91,23 @@ namespace pann
     void Net::delNeuron(int _neuronId)
     {
         cache.touch();
+        
+        NeuronIter n = findNeuron(_neuronId);
+        
+        //first, delete all links TO neuron
+        BOOST_FOREACH( Link& link, n->second.links)
+        {
+            Link::Direction opposite_direction;
+            if(link.direction == Link::in)
+                opposite_direction = Link::out;
+            else
+                opposite_direction = Link::in;
+
+            link.to->second.disconnect(n, opposite_direction);
+        }
 
         if( !neurons.erase(_neuronId) )
-            throw Exception::ObjectNotFound()<<"Net::delNeuron(): neuron "<<_neuronId<<" not found\n";
+            throw Exception::ObjectNotFound()<<"Net::delNeuron(): can't delete neuron "<<_neuronId<<"\n";
     } //delNeuron
 
     void Net::setNeuronRole(int _neuronId, NeuronRole _newRole)
@@ -346,16 +360,30 @@ namespace pann
         cache.fixed();
 
     } //run
-/*
-    Neuron& Net::getNeuron(int _neuronId)
-    {
-        NeuronIter i = neurons.find(_neuronId);
-        if(i == neurons.end())
-            throw Exception::ObjectNotFound()<<"Net::getNeuron(): neuron "<< _neuronId<<"not found\n";
 
-        return i->second;
-    } //getNeuron
-*/
+    void Net::printDebugInfo(ostringstream& ost)
+    {
+        ost<<"Net\n";
+        ost<<" threadsCount: "<<threadCount<<endl;
+        ost<<" lastNeuronId: "<<lastNeuronId<<endl;
+        ost<<" neurons: ";
+        NeuronIter it = neurons.begin();
+        for(; it != neurons.end(); ++it)
+            ost<<it->first<<" ";
+        ost<<"\n inputNeurons: ";
+        list<NeuronIter>::iterator it2 = inputNeurons.begin();
+        for(; it2 != inputNeurons.end(); ++it2)
+            ost<<(*it2)->first<<" ";
+        ost<<"\n outputNeurons: ";
+        list<NeuronIter>::iterator it3 = outputNeurons.begin();
+        for(; it3 != outputNeurons.end(); ++it3)
+            ost<<(*it3)->first<<" ";
+        ost<<"\n\n";
+        for(it = neurons.begin(); it != neurons.end(); ++it)
+            it->second.printDebugInfo(ost);
+        ost<<"\n\n Cache:\n";
+        cache.printDebugInfo(ost);
+    } //printDebugInfo
 
 }; //pann
 
