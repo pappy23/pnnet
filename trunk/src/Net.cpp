@@ -2,10 +2,7 @@
 
 #include "Net.h"
 
-using std::pair;
-using std::map;
-using std::list;
-using std::vector;
+using namespace std;
 using boost::any_cast;
 
 namespace pann
@@ -50,7 +47,7 @@ namespace pann
         return iter;
     } //isNeuronExist
 
-    void Net::formatFront(vector<int>& _raw)
+    void Net::formatFront(vector<NeuronIter>& _raw)
     {
         cache.data.push_back( NetCache::FrontType() );
         NetCache::FrontType& tasks = cache.data[cache.data.size() - 1];
@@ -58,14 +55,11 @@ namespace pann
         for(int i = 0; i < threadCount; i++)
             tasks.push_back( vector<Neuron*>() );
 
-        vector<int>::iterator it = unique(_raw.begin(), _raw.end());
+        vector<NeuronIter>::iterator it = unique(_raw.begin(), _raw.end());
         _raw.resize( it - _raw.begin() );
 
         for(int i = 0; i < _raw.size(); ++i)
-        {
-            Neuron& n = neurons[ _raw[i] ];
-            tasks[n.getOwnerThread() % threadCount].push_back(&n);
-        }
+            tasks[_raw[i]->second.getOwnerThread() % threadCount].push_back(_raw[i]);
 
     } //formatFront
 
@@ -158,29 +152,30 @@ namespace pann
     {
         cache.touch();
 
-        Neuron& from = findNeuron(_from)->second;
-        Neuron& to = findNeuron(_to)->second;
+        NeuronIter from = findNeuron(_from);
+        NeuronIter to = findNeuron(_to);
 
-        from.connect(to, _weightValue);
+        from.connect(to, Link::out, _weightValue);
+        to.connect(from, Link::in, _weightValue);
     } //addConnection
 
     void Net::delConnection(int _from, int _to)
     {
         cache.touch();
 
-        Neuron& from = findNeuron(_from)->second;
-        Neuron& to = findNeuron(_to)->second;
+        NeuronIter from = findNeuron(_from);
+        NeuronIter to   = findNeuron(_to);
 
-        from.disconnect(to);        
+        from.disconnect(to, Link::out);        
+        to.disconnect(from, Link::in);        
     } //delConnection
 
     std::vector<int> Net::getInputMap()
     {
         vector<int> result;
 
-        list< NeuronIter >::iterator iter = inputNeurons.begin();
-        for(; iter != inputNeurons.end(); ++iter)
-            result.push_back((*iter)->first);
+        BOOST_FOREACH( NeuronIter iter, inputNeurons)
+            result.push_back(iter->first);
 
         return result;
     } //getInputMap
@@ -189,9 +184,8 @@ namespace pann
     {
         vector<int> result;
 
-        list< NeuronIter >::iterator iter = outputNeurons.begin();
-        for(; iter != outputNeurons.end(); ++iter)
-            result.push_back((*iter)->first);
+        BOOST_FOREACH( NeuronIter iter, outputNeurons)
+            result.push_back(iter->first);
 
         return result;
     } //getOutputMap
@@ -204,19 +198,16 @@ namespace pann
         if(_input.size() > inputNeurons.size())
             Exception::Warning()<<"setInput(): Input size is bigger then input neurons count. Check getInputMap() output\n";
 
-        list< NeuronIter >::iterator it = inputNeurons.begin();
-        for(int i = 0; it != inputNeurons.end(); ++it, ++i)
-        {
-            (*it)->second.receptiveField = _input[i];
-        }
+        int i = 0;
+        BOOST_FOREACH( NeuronIter iter, inputNeurons)
+            iter->second.receptiveField = _input[i++];
     } //setInput
 
     vector<float> Net::getOutput()
     {
         vector<float> result;
-        list< NeuronIter >::iterator it = outputNeurons.begin();
-        for(; it != outputNeurons.end(); ++it)
-            result.push_back((*it)->second.activationValue);
+        BOOST_FOREACH( NeuronIter iter, outputNeurons)
+            result.push_back(iter->second.activationValue);
 
         return result;
     } //setInput
@@ -228,17 +219,25 @@ namespace pann
      */
     void Net::run()
     {
-        vector<int> rawFront; //Here we will place neuron's ids that will become front, with duplicates
+        //Here we will place neuron's ids that will become front, with duplicates
+        vector<NeuronIter> rawFront; 
+
         //If cache is not up2date, flush it and fill again
         if( !cache.isOk() )
         {
             cache.flush();
             
+            /*
+             * Function operates with "hops" attribute of every Neuron
+             * to build adequate cache
+             */
+            map<NeuronIter, int> hops;
+        
             //Put inputNeurons to front
             BOOST_FOREACH( NeuronIter iter, inputNeurons )
             {
-                rawFront.push_back(iter->first); 
-                iter->second.a_hops = (int)1;
+                rawFront.push_back(iter); 
+                hops[iter] = 1;
             }
 
             formatFront(rawFront);
@@ -259,9 +258,11 @@ namespace pann
          *
          *  At this point cache.data(0) is the only record and it contains input neurons
          */
+
         int layer = 0;
         while(rawFront.size() > 0)
         {
+            //At first iteration front points to first 'layer', derived from rawFront
             NetCache::FrontType* front = &cache.data[layer++];
 
             //front is ready, lets start our pretty threads =)
@@ -284,32 +285,19 @@ namespace pann
                 for(int i = 0; i < nCount; ++i)
                 {
                     //pop_front emulation
-                    int cur_neuronId = rawFront[0];
+                    NeuronIter currentNeuronIter = rawFront[0];
                     rawFront.erase( rawFront.begin() );
-                    Neuron& cur_neuron = neurons[cur_neuronId];
+
+                    Neuron& currentNeuron = currentNeuronIter->second;
 
                     //ok, we've got cur_neuron. We will iterate through his Out links 
                     //and push_back their opposite sides to rawFront
-                    BOOST_FOREACH( Link& link, cur_neuron.links )
+                    BOOST_FOREACH( Link& link, currentNeuron.links )
                     {
                         //Only feedforward links
-                        if(link.direction == Link::In)
+                        if(link.direction == Link::in)
                             continue;
 
-                        //Assume that when cache becomes coherent, all neuron.hops vars become zero
-                        if(link.to.hops == 0)
-                        {
-                            link.to.hops = cur_neuron.hops + 1;
-                            //find cur_neuron, get it's id and push_back it to rawFront
-                            //rawFront.push_back();
-                        }
-
-                        if(link.to.hops == cur_neuron.hops)
-                            throw Exception::Unbelievable()<<"Net::run(): cur_neuron.hops == to.hops. "
-                                                                "There is no support for such topologies yet\n";
-                        if( link.to.hops > ( cur_neuron.hops + 1 ) )
-                            throw Exception::Unbelievable()<<"Net::run(): cache regeneration "
-                                                            "discovered that hops was not set to zero\n";
                         /*
                          * Short comment. Consider following topology (hops are in brackets):
                          *   +(0)    <-- output          +(0)             +(3)    <-- front(3)
@@ -326,9 +314,23 @@ namespace pann
                          *   T > C + 1 - impossible. Somebody changed hops by hand and didn't touch cache or
                          *               after last cache generation algorithm didn't set neuron's hops to zero
                          */
-                    } //BOOST_FOREACH
+                        
+                        //Assume that when cache becomes coherent, all neuron[hops] vars become zero
+                        if(hops[link.to] == 0)
+                        {
+                            hops[link.to] = hops[currentNeuron] + 1;
+                            rawFront.push_back(link.to);
+                        }
 
-                } //link iteration
+                        if(hops[link.to] == hops[currentNeuron])
+                            throw Exception::Unbelievable()<<"Net::run(): cur_neuron.hops == to.hops. "
+                                                                "There is no support for such topologies yet\n";
+                        if(hops[link.to] > ( hops[currentNeuron] + 1 ) )
+                            throw Exception::Unbelievable()<<"Net::run(): cache regeneration "
+                                                            "discovered that hops was not set to zero\n";
+                    } //BOOST_FOREACH( Link )
+
+                } //rawFormat iteration
 
                 //new rawFront formed
                 formatFront(rawFront);
@@ -338,16 +340,10 @@ namespace pann
             //wait for threads to finish
             //TODO: wait for work threads to finish
             
-            ////set hops to zero
         } //while
 
         //We rebuilded cache
-        if( !cache.isOk() )
-        {
-            cache.fixed();
-            //Turn all neurons hops to zero. We may use threads for this
-            //TODO^^^
-        }
+        cache.fixed();
 
     } //run
 /*

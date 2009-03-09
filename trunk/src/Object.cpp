@@ -33,16 +33,21 @@ namespace pann
     Object::unset(const string& _attributeName)
     {                                          
         if(!attributes.erase(_attributeName))
-            throw Exception::ObjectNotFound()<<"Object::unset(): attribute "<<_attributeName<<" not found\n";  
+            ;
+            //throw Exception::ObjectNotFound()<<"Object::unset(): attribute "<<_attributeName<<" not found\n";  
     } //unset                                  
 
-    /*
+    
     any &
     Object::operator[](const string& _attributeName)
     {
         return attributes[_attributeName];
     } //operator[]
-    */
+   
+    void Object::erase()
+    {
+        attributes.clear();
+    } //erase
 
 }; //namespace NNet
 

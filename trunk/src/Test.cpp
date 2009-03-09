@@ -4,6 +4,9 @@
 using namespace std;
 using namespace boost;
 
+/*
+ * Today we are testing boost::shared_ptr<>
+ */
 class A
 {
     int a;
