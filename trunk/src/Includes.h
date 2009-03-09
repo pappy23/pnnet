@@ -14,6 +14,7 @@
 #include <vector>
 #include <algorithm>
 #include <string>
+#include <iterator>
 
 //Boost
 #include <boost/any.hpp>

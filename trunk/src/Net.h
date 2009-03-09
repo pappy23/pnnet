@@ -7,11 +7,10 @@
 #include "Object.h"
 #include "Neuron.h"
 #include "Cache.h"
+#include "Util.h"
 
 namespace pann
 {
-    typedef std::map<int, Neuron>::iterator NeuronIter;
-    
     class NetCache : public Cache
     {
     public:

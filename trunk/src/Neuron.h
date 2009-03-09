@@ -8,9 +8,6 @@
 #include "ActivationFunction.h"
 #include "Link.h"
 
-//NeuronIter typedef
-#include "Net.h"
-
 namespace pann
 {
     class Neuron : public Object
@@ -28,7 +25,7 @@ namespace pann
 
         //METHODS
 
-        //Helper. Finds returns iterator to list<> links for Neuron& _to
+        //Helper. Finds and returns iterator to list<> links for Neuron& _to
         std::list<Link>::iterator findLink(NeuronIter _to, Link::Direction _direction);
 
         //Add link to *this neuron

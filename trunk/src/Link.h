@@ -10,9 +10,6 @@
 #include "Object.h"
 #include "Weight.h"
 
-//NeuronIter declaration
-#include "Net.h"
-
 namespace pann
 {
     //! Link between two neurons
@@ -41,7 +38,6 @@ namespace pann
             --w->usageCount;
         };
 
-        inline Direction getDirection() const { return direction; };
         inline const Weight& getW() const { return *w; };
     };
 
