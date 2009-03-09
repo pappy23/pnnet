@@ -28,6 +28,7 @@ ADD_LIBRARY (pann STATIC Object.cpp ActivationFunction.cpp Neuron.cpp Net.cpp)
 ADD_EXECUTABLE (TestNet TestNet.cpp)
 TARGET_LINK_LIBRARIES (TestNet pann ${Boost_LIBRARIES})
 
-ADD_EXECUTABLE (Test Test.cpp)
-TARGET_LINK_LIBRARIES (Test ${Boost_LIBRARIES})
+ADD_EXECUTABLE (TestBoost TestBoost.cpp)
+TARGET_LINK_LIBRARIES (TestBoost ${Boost_LIBRARIES})
 
+ADD_EXECUTABLE (TestOMP TestOMP.cpp)
