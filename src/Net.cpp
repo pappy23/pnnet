@@ -38,7 +38,7 @@ namespace pann
         threadCount = _threads;
     } //setThreadCount
 
-    Net::NeuronIter Net::findNeuron(int _neuronId)
+    NeuronIter Net::findNeuron(int _neuronId)
     {
         NeuronIter iter = neurons.find(_neuronId);
         if(neurons.end() == iter)
@@ -53,7 +53,7 @@ namespace pann
         NetCache::FrontType& tasks = cache.data[cache.data.size() - 1];
         
         for(int i = 0; i < threadCount; i++)
-            tasks.push_back( vector<Neuron*>() );
+            tasks.push_back( vector<NeuronIter>() );
 
         vector<NeuronIter>::iterator it = unique(_raw.begin(), _raw.end());
         _raw.resize( it - _raw.begin() );
@@ -155,8 +155,8 @@ namespace pann
         NeuronIter from = findNeuron(_from);
         NeuronIter to = findNeuron(_to);
 
-        from.connect(to, Link::out, _weightValue);
-        to.connect(from, Link::in, _weightValue);
+        from->second.connect(to, Link::out, _weightValue);
+        to->second.connect(from, Link::in, _weightValue);
     } //addConnection
 
     void Net::delConnection(int _from, int _to)
@@ -166,8 +166,8 @@ namespace pann
         NeuronIter from = findNeuron(_from);
         NeuronIter to   = findNeuron(_to);
 
-        from.disconnect(to, Link::out);        
-        to.disconnect(from, Link::in);        
+        from->second.disconnect(to, Link::out);        
+        to->second.disconnect(from, Link::in);        
     } //delConnection
 
     std::vector<int> Net::getInputMap()
@@ -222,17 +222,20 @@ namespace pann
         //Here we will place neuron's ids that will become front, with duplicates
         vector<NeuronIter> rawFront; 
 
+        /*
+         * Function operates with "hops" attribute of every Neuron
+         * to build adequate cache. If cache is already up2date, this
+         * map<> remains empty
+         * Unfortunetly, map<int, Neuron>::iterator doesn't have operator< , so
+         * we shold write own comparison class for hops<>. I placed it to Utils.h
+         */
+        map<NeuronIter, int, NeuronIterCompare> hops;
+        
         //If cache is not up2date, flush it and fill again
         if( !cache.isOk() )
         {
             cache.flush();
             
-            /*
-             * Function operates with "hops" attribute of every Neuron
-             * to build adequate cache
-             */
-            map<NeuronIter, int> hops;
-        
             //Put inputNeurons to front
             BOOST_FOREACH( NeuronIter iter, inputNeurons )
             {
@@ -288,11 +291,9 @@ namespace pann
                     NeuronIter currentNeuronIter = rawFront[0];
                     rawFront.erase( rawFront.begin() );
 
-                    Neuron& currentNeuron = currentNeuronIter->second;
-
                     //ok, we've got cur_neuron. We will iterate through his Out links 
                     //and push_back their opposite sides to rawFront
-                    BOOST_FOREACH( Link& link, currentNeuron.links )
+                    BOOST_FOREACH( Link& link, currentNeuronIter->second.links )
                     {
                         //Only feedforward links
                         if(link.direction == Link::in)
@@ -318,14 +319,14 @@ namespace pann
                         //Assume that when cache becomes coherent, all neuron[hops] vars become zero
                         if(hops[link.to] == 0)
                         {
-                            hops[link.to] = hops[currentNeuron] + 1;
+                            hops[link.to] = hops[currentNeuronIter] + 1;
                             rawFront.push_back(link.to);
                         }
 
-                        if(hops[link.to] == hops[currentNeuron])
+                        if(hops[link.to] == hops[currentNeuronIter])
                             throw Exception::Unbelievable()<<"Net::run(): cur_neuron.hops == to.hops. "
                                                                 "There is no support for such topologies yet\n";
-                        if(hops[link.to] > ( hops[currentNeuron] + 1 ) )
+                        if(hops[link.to] > ( hops[currentNeuronIter] + 1 ) )
                             throw Exception::Unbelievable()<<"Net::run(): cache regeneration "
                                                             "discovered that hops was not set to zero\n";
                     } //BOOST_FOREACH( Link )

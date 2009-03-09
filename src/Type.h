@@ -8,11 +8,13 @@
 
 #include "Includes.h"
 
-#define NeuronIter std::map<int, Neuron>::iterator
-
 namespace pann
 {
     typedef double Float;
+
+    class Neuron;
+    typedef std::map<int, Neuron>::iterator NeuronIter;
+
 }; //pann
 
 #endif //TYPE_H
