@@ -8,12 +8,11 @@
 #include "ActivationFunction.h"
 #include "Link.h"
 
+//NeuronIter typedef
+#include "Net.h"
+
 namespace pann
 {
-    class Neuron;
-
-    //typedef std::map<int, Neuron>::iterator NeuronIter;
-
     class Neuron : public Object
     {
     protected:
