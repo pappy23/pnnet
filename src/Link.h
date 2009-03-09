@@ -11,12 +11,10 @@
 #include "Weight.h"
 
 //NeuronIter declaration
-#include "Neuron.h"
+#include "Net.h"
 
 namespace pann
 {
-    class Neuron;
-
     //! Link between two neurons
     class Link : public Object
     {

@@ -10,10 +10,12 @@
 
 namespace pann
 {
+    typedef std::map<int, Neuron>::iterator NeuronIter;
+    
     class NetCache : public Cache
     {
     public:
-        typedef std::vector<Net::NeuronIter> ThreadTaskType;
+        typedef std::vector<NeuronIter> ThreadTaskType;
         typedef std::vector<ThreadTaskType> FrontType;
         
         std::vector<FrontType> data;
@@ -34,7 +36,7 @@ namespace pann
                 {
                     std::cout<<"  Thread "<<threads<<": ";
                     for(int n = 0; n < data[layers][threads].size(); ++n)
-                        cout<<data[layers][threads][n]->first<<" ";
+                        std::cout<<data[layers][threads][n]->first<<" ";
                     std::cout<<std::endl;
                 }
                 std::cout<<std::endl;
