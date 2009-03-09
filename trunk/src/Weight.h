@@ -27,6 +27,13 @@ namespace pann
             usageCount(1) { };
 
         ~Weight() { };
+
+        void printDebugInfo(std::ostringstream& ost)
+        {
+            ost<<"   Weight\n";
+            ost<<"    usageCount: "<<usageCount<<std::endl;
+            ost<<"    value: "<<value<<std::endl;
+        }
     };
 
 }; //pann

@@ -25,7 +25,7 @@ namespace pann
         public:
             Base()
             {
-                std::cerr<<"ACTUNG!!! ";
+                std::cerr<<"ACHTUNG!!! ";
             };
 
             Base(Base& _rvalue) : textStream(_rvalue.textStream.str()) { };

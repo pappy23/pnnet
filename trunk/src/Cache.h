@@ -32,6 +32,8 @@ namespace pann
         inline bool isOk() { return coherent; };
         inline bool isUp2Date() { return isOk(); };
         inline bool isCoherent() { return isOk(); };
+
+        virtual void printDebugInfo(std::ostringstream& ost) = 0;
     };
 
 }; //pann

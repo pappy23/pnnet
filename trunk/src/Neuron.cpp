@@ -2,7 +2,7 @@
 
 #include "Neuron.h"
 
-using std::list;
+using namespace std;
 using boost::shared_ptr;
 
 namespace pann
@@ -76,5 +76,14 @@ namespace pann
 
         ownerThread =_thread;
     } //setOwnerThread
+
+    void Neuron::printDebugInfo(ostringstream& ost)
+    {
+        ost<<" Neuron\n";
+        ost<<"  ownerThread: "<<ownerThread<<std::endl;
+        list<Link>::iterator it = links.begin();
+        for(; it != links.end(); ++it)
+            it->printDebugInfo(ost);
+    } //printDebugInfo
 
 }; //pann

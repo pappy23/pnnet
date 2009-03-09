@@ -39,6 +39,14 @@ namespace pann
         };
 
         inline const Weight& getW() const { return *w; };
+
+        void printDebugInfo(std::ostringstream& ost)
+        {
+            ost<<"  Link\n";
+            ost<<"   direction: "<<direction<<std::endl;
+            //ost<<"   to: "<<to->first<<std::endl;
+            w->printDebugInfo(ost);
+        }
     };
 
 }; //pann
