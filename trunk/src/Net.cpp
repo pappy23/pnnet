@@ -3,7 +3,6 @@
 #include "Net.h"
 
 using namespace std;
-using boost::any_cast;
 
 namespace pann
 {
