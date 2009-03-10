@@ -169,15 +169,12 @@ namespace pann
 
     void Net::setNeuronOwner(int _neuron, int _owner)
     {
-        if(0 > _owner || _owner > 200)
-            throw Exception::RangeMismatch()<<"setNeuronOwner(): owner is ot of range [0..200]\n";
-
-        findNeuron(_neuron)->second.ownerThread = _owner;
+        findNeuron(_neuron)->second.setOwnerThread(_owner);
     } //setNeuronOwner
 
     int Net::getNeuronOwner(int _neuron)
     {
-        return findNeuron(_neuron)->second.ownerThread;
+        return findNeuron(_neuron)->second.getOwnerThread();
     } //getNeuronOwner
 
     void Net::addConnection(int _from, int _to, Float _weightValue)
@@ -239,7 +236,7 @@ namespace pann
     {
         vector<Float> result;
         BOOST_FOREACH( NeuronIter iter, outputNeurons)
-            result.push_back(iter->second.activationValue);
+            result.push_back(iter->second.getActivationValue());
 
         return result;
     } //setInput
@@ -249,7 +246,7 @@ namespace pann
      * forward propagation through neural network
      * Be extremely careful!
      */
-    void Net::run()
+    void Net::run(Runner* _runner)
     {
         //Here we will place neuron's ids that will become front, with duplicates
         vector<NeuronIter> rawFront; 
@@ -304,11 +301,10 @@ namespace pann
             
             //front is ready, lets start our pretty threads =)
             for(int i = 0; i < threadCount; i++)
-            {
-                //if task is empty - omit thread creation
-                threadPool.add_thread( new boost::thread(this->threadBase, (*front)[i]) );
-            }
-            
+                if((*front)[i].size() > 0)
+                    threadPool.add_thread( new boost::thread(this->threadBase, _runner, (*front)[i]) );
+           //FIXME: put parameters by boost::ref rather then by copying
+
             if( !cache.isOk() )
             {
                 /*
