@@ -49,7 +49,6 @@ namespace pann
         enum NeuronRole { WorkNeuron = 0, InputNeuron = 1, OutputNeuron = 2 };
 
     protected:
-
         int threadCount;
         int lastNeuronId; //var to add new neurons
         std::map<int, Neuron> neurons;
@@ -58,6 +57,13 @@ namespace pann
 
         NeuronIter findNeuron(int _neuronId);
         void formatFront(std::vector<NeuronIter>& _raw);
+
+        static void threadBase(std::vector<NeuronIter> _task)
+        {
+            for(int i = 0; i < _task.size(); i++)
+                std::cout<<_task[i]->first<<" ";
+        } //threadBase
+
 
         NetCache cache;
 
@@ -76,6 +82,9 @@ namespace pann
 
         void setNeuronRole(int _neuronId, NeuronRole _newRole);
         NeuronRole getNeuronRole(int _neuronId);
+
+        void setNeuronOwner(int _neuron, int _owner);
+        int getNeuronOwner(int _neuron);
 
         void addConnection(int _from, int _to, Float _weightValue = 1);
         void delConnection(int _from, int _to);
