@@ -17,9 +17,6 @@ namespace pann
 
         ActivationFunction::Base& activationFunction;
 
-        //List of Links, both directions
-        std::list<Link> links;
-        
         //Thread with this number will take care of our Neuron
         int ownerThread;
 
@@ -28,6 +25,7 @@ namespace pann
         //Helper. Finds and returns iterator to list<> links for Neuron& _to
         std::list<Link>::iterator findLink(NeuronIter _to, Link::Direction _direction);
 
+    public:
         //Add link to *this neuron
         //Create new Weight object
         void connect(NeuronIter _to, Link::Direction _direction, Float _weightValue);
@@ -45,18 +43,22 @@ namespace pann
 
         void printDebugInfo(std::ostringstream& ost);
 
-    public:
-        friend class Net;
-
-        Float receptiveField;
         Float activationValue;
+        
+        //List of Links, both directions
+        std::list<Link> links;
+        
+        Float receptiveField;
 
         Neuron();
         Neuron(ActivationFunction::Base&); 
         ~Neuron();
         
         //Calculate activationValue from receptiveField
-        Float activate();
+        void activate();
+
+        Float getActivationValue();
+
     };
 
 }; //pann

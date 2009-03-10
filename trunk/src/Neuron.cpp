@@ -48,9 +48,10 @@ namespace pann
         return result;
     } //findLink
 
-    Float Neuron::activate()
+    void Neuron::activate()
     {
-        return activationValue = activationFunction.f(receptiveField);
+        activationValue = activationFunction.f(receptiveField);
+        receptiveField = 0;
     } //activate
 
     void Neuron::connect(NeuronIter _to, Link::Direction _direction, Float _weightValue = 1)
@@ -85,5 +86,10 @@ namespace pann
         for(; it != links.end(); ++it)
             it->printDebugInfo(ost);
     } //printDebugInfo
+
+    Float Neuron::getActivationValue()
+    {
+        return activationValue;
+    }
 
 }; //pann

@@ -8,6 +8,7 @@
 #include "Neuron.h"
 #include "Cache.h"
 #include "Util.h"
+#include "Runner.h"
 
 namespace pann
 {
@@ -58,10 +59,10 @@ namespace pann
         NeuronIter findNeuron(int _neuronId);
         void formatFront(std::vector<NeuronIter>& _raw);
 
-        static void threadBase(std::vector<NeuronIter> _task)
+        static void threadBase(Runner* _runner, std::vector<NeuronIter> _task)
         {
             for(int i = 0; i < _task.size(); i++)
-                std::cout<<_task[i]->first<<" ";
+                _runner->run(_task[i]);
         } //threadBase
 
 
@@ -95,7 +96,7 @@ namespace pann
         void setInput(std::vector<Float> _input);
         std::vector<Float> getOutput();
 
-        void run();
+        void run(Runner* _runner);
 
         void printDebugInfo(std::ostringstream& ost);
     };
