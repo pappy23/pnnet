@@ -1,28 +1,20 @@
 #include <iostream>
-#include <map>
-//#include <boost/shared_ptr.hpp>
+#include <boost/thread.hpp>
 
 using namespace std;
-//using namespace boost;
 
-class A;
-
-typedef map<int, A>::iterator It;
-
-class B
+void print(int n)
 {
-    int b;
-    It i;
-};
-
-class A
-{
-    int a;
-    B link;
-};
-
+    cout<<n<<" ";
+}
 
 int main()
 {
-    map<int, A> m;
+    boost::thread_group pool;
+
+    for(int i = 0; i < 10; i++)
+        pool.add_thread(new boost::thread(print, i));
+
+    return 0;
 }
+

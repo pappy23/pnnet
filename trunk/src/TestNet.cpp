@@ -21,6 +21,7 @@ int main()
      *      +      <--- input
      */
     Net net;
+    net.setThreadCount(0);
     int nInput  = net.addInputNeuron();
     int nWork1  = net.addNeuron(ActivationFunction::Linear::Instance());
     int nWork2  = net.addNeuron(ActivationFunction::Linear::Instance());
@@ -65,7 +66,7 @@ int main()
     {
     ostringstream ost;
     net.printDebugInfo(ost);
-    cout<<ost.str();
+    //cout<<ost.str();
     }
 
     //Test run()
@@ -75,7 +76,7 @@ int main()
     {
     ostringstream ost;
     net.printDebugInfo(ost);
-    cout<<ost.str();
+    //cout<<ost.str();
     }
 
     //Output
@@ -86,6 +87,7 @@ int main()
     net.addConnection(nInput, nWork3, 0.5);
     net.addConnection(nWork3, nOutput, 1);
 
+    net.setNeuronOwner(nWork3, 1);
     //Test run()
     net.run();
 
@@ -93,7 +95,7 @@ int main()
     {
     ostringstream ost;
     net.printDebugInfo(ost);
-    cout<<ost.str();
+    //cout<<ost.str();
     }
 
     //Output

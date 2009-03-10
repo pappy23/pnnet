@@ -31,6 +31,12 @@ namespace pann
     {
         cache.touch();
 
+        if(_threads == 0)
+        {
+            threadCount = boost::thread::hardware_concurrency();
+            return;
+        }
+
         if(_threads < 1 || _threads > 5)
             throw Exception::RangeMismatch()<<"Net::run(): currently only up to 5 concurrent threads supported\n";
 
@@ -161,6 +167,19 @@ namespace pann
         return (NeuronRole)role;
     } //getNeuronRole
 
+    void Net::setNeuronOwner(int _neuron, int _owner)
+    {
+        if(0 > _owner || _owner > 200)
+            throw Exception::RangeMismatch()<<"setNeuronOwner(): owner is ot of range [0..200]\n";
+
+        findNeuron(_neuron)->second.ownerThread = _owner;
+    } //setNeuronOwner
+
+    int Net::getNeuronOwner(int _neuron)
+    {
+        return findNeuron(_neuron)->second.ownerThread;
+    } //getNeuronOwner
+
     void Net::addConnection(int _from, int _to, Float _weightValue)
     {
         cache.touch();
@@ -280,12 +299,14 @@ namespace pann
         {
             //At first iteration front points to first 'layer', derived from rawFront
             NetCache::FrontType* front = &cache.data[layer++];
-
+            
+            boost::thread_group threadPool;
+            
             //front is ready, lets start our pretty threads =)
             for(int i = 0; i < threadCount; i++)
             {
-                //TODO: threading
-                //runFeedForwardThread( (*front)[i] );
+                //if task is empty - omit thread creation
+                threadPool.add_thread( new boost::thread(this->threadBase, (*front)[i]) );
             }
             
             if( !cache.isOk() )
@@ -352,12 +373,13 @@ namespace pann
             } // if( !cache.isOk() )
 
             //wait for threads to finish
-            //TODO: wait for work threads to finish
+            threadPool.join_all();
             
         } //while
 
         //We rebuilded cache
-        cache.fixed();
+        if(!cache.isOk())
+            cache.fixed();
 
     } //run
 
