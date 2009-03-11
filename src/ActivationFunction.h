@@ -39,8 +39,8 @@ namespace pann
                 }
             };
 
-            virtual Float f(Float) = 0;
-            virtual Float derivative(Float) = 0;
+            virtual FLOAT f(FLOAT) = 0;
+            virtual FLOAT derivative(FLOAT) = 0;
         };
 
         /**
@@ -64,12 +64,12 @@ namespace pann
                 return *self;
             };
 
-            Float f(Float _x)
+            FLOAT f(FLOAT _x)
             {
                 return _x;
             } //f
 
-            Float derivative(Float)
+            FLOAT derivative(FLOAT)
             {
                 return 0;
             } //derivative

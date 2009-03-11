@@ -55,7 +55,7 @@ namespace pann
         void run(NeuronIter _neuron)
         {
             std::cout<<_neuron->first<<" "<<std::endl;
-        } 
+        }
     };
 
     class FeedforwardPropagationRunner : public Runner
@@ -81,10 +81,10 @@ namespace pann
                 _neuron->second.receptiveField += ( link.to->second.getActivationValue() * link.getW().value );
 
             _neuron->second.activate();
-            
+
             //Debug
             //std::cout<<_neuron->first<<": "<<_neuron->second.getActivationValue()<<std::endl;
-        } 
+        }
     };
 
 }; //pann

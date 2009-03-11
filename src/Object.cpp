@@ -33,7 +33,7 @@ namespace pann
     Object::unset(const string& _attributeName)
     {                                          
         if(!attributes.erase(_attributeName))
-            ;
+			; // TODO: Check this
             //throw Exception::ObjectNotFound()<<"Object::unset(): attribute "<<_attributeName<<" not found\n";  
     } //unset                                  
 

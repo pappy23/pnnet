@@ -20,9 +20,9 @@ namespace pann
     {
     public:
         int usageCount; ///< Used by weight update algorithms for shared weights
-        Float value; ///< weight itself
+        FLOAT value; ///< weight itself
 
-        Weight(Float _value = 1) : 
+        Weight(FLOAT _value = 1) : 
             value(_value),
             usageCount(1) { };
 

@@ -10,7 +10,8 @@
 
 namespace pann
 {
-    typedef double Float;
+    typedef double FLOAT;
+	typedef unsigned int UINT;
 
     class Neuron;
     typedef std::map<int, Neuron>::iterator NeuronIter;
