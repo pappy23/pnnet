@@ -32,7 +32,7 @@ int main()
     net.addConnection(nWork2, nOutput);
     
     //Input
-    vector<Float> input;
+    vector<FLOAT> input;
     input.push_back(1);
     net.setInput(input);
 

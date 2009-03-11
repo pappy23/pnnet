@@ -12,6 +12,8 @@
 
 namespace pann
 {
+    enum RunDirection { ForwardRun, BackwardRun };
+
     class Runner
     {
     protected:
@@ -33,6 +35,7 @@ namespace pann
         };
 
         virtual void run(NeuronIter) = 0;
+        virtual RunDirection direction() = 0;
     };
 
     class NullRunner : public Runner
@@ -52,10 +55,15 @@ namespace pann
             return *self;
         };
 
-        void run(NeuronIter _neuron)
+        virtual void run(NeuronIter _neuron)
         {
             std::cout<<_neuron->first<<" "<<std::endl;
-        }
+        };
+
+        virtual RunDirection direction()
+        {
+            return ForwardRun;
+        };
     };
 
     class FeedforwardPropagationRunner : public Runner
@@ -78,13 +86,18 @@ namespace pann
         void run(NeuronIter _neuron)
         {
             BOOST_FOREACH( Link& link, _neuron->second.links )
-                _neuron->second.receptiveField += ( link.to->second.getActivationValue() * link.getW().value );
+                _neuron->second.receptiveField += ( link.to->second.getActivationValue() * link.getW()->value );
 
             _neuron->second.activate();
 
             //Debug
             //std::cout<<_neuron->first<<": "<<_neuron->second.getActivationValue()<<std::endl;
-        }
+        };
+
+        virtual RunDirection direction()
+        {
+            return ForwardRun;
+        };
     };
 
 }; //pann

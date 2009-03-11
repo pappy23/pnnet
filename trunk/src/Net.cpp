@@ -266,10 +266,19 @@ namespace pann
             cache.flush();
 
             //Put inputNeurons to front
-            BOOST_FOREACH( NeuronIter iter, inputNeurons )
+            if( _runner->direction() == ForwardRun)
             {
-                rawFront.push_back(iter);
-                hops[iter] = 1;
+                BOOST_FOREACH( NeuronIter iter, inputNeurons )
+                {
+                    rawFront.push_back(iter);
+                    hops[iter] = 1;
+                }
+            } else {
+                BOOST_FOREACH( NeuronIter iter, outputNeurons )
+                {
+                    rawFront.push_back(iter);
+                    hops[iter] = 1;
+                }
             }
 
             formatFront(rawFront);
@@ -348,17 +357,14 @@ namespace pann
 
                         //Assume that when cache becomes coherent, all neuron[hops] vars become zero
                         if(hops[link.to] == 0)
-                        {
-                            hops[link.to] = hops[currentNeuronIter] + 1;
-                            rawFront.push_back(link.to);
-                        }
+                            hops[link.to] = hops[currentNeuronIter] + link.latency;
+
+                        if(hops[link.to] == hops[currentNeuronIter] + 1)
+                            rawFront.push_back(link.to); 
 
                         if(hops[link.to] == hops[currentNeuronIter])
                             throw Exception::Unbelievable()<<"Net::run(): cur_neuron.hops == to.hops. "
                                                                 "There is no support for such topologies yet\n";
-                        if(hops[link.to] > ( hops[currentNeuronIter] + 1 ) )
-                            throw Exception::Unbelievable()<<"Net::run(): cache regeneration "
-                                                            "discovered that hops was not set to zero\n";
                     } //BOOST_FOREACH( Link )
 
                 } //rawFormat iteration
