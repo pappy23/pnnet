@@ -47,7 +47,6 @@ namespace pann
     class Net : public Object
     {
     public:
-		
         enum NeuronRole { WorkNeuron = 0, InputNeuron = 1, OutputNeuron = 2 };
 
     protected:

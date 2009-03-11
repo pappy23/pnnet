@@ -24,21 +24,26 @@ namespace pann
     public:
         const NeuronIter to;
         const Direction direction;
+        const UINT latency;
 
-        Link(NeuronIter _to, const Direction _direction, boost::shared_ptr<Weight> _w) :
+        Link(NeuronIter _to, const Direction _direction, boost::shared_ptr<Weight> _w, UINT _latency = 1) :
             to(_to),
             direction(_direction),
-            w(_w)
+            w(_w),
+            latency(_latency)
         {
-            ++w->usageCount;
+            w->incUsageCount();
         };
 
         ~Link()
         {
-            --w->usageCount;
+            w->decUsageCount();
         };
 
-        inline const Weight& getW() const { return *w; };
+        inline const boost::shared_ptr<Weight> getW() const
+        {
+            return w;
+        };
 
         void printDebugInfo(std::ostringstream& ost)
         {

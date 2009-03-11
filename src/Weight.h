@@ -18,8 +18,9 @@ namespace pann
      */
     class Weight : public Object
     {
+        UINT usageCount; ///< Used by weight update algorithms for shared weights
+
     public:
-        int usageCount; ///< Used by weight update algorithms for shared weights
         FLOAT value; ///< weight itself
 
         Weight(FLOAT _value = 1) : 
@@ -27,6 +28,25 @@ namespace pann
             usageCount(1) { };
 
         ~Weight() { };
+
+        UINT incUsageCount()
+        {
+            return ++usageCount;
+        };
+
+        UINT decUsageCount()
+        {
+            if(--usageCount == 0)
+                ; //FIXME
+                //throw Exception::Unbelievable()<<"Weight::decUsageCount(): Kill me\n";
+
+            return usageCount;
+        };
+
+        const UINT& getUsageCount()
+        {
+            return usageCount;
+        };
 
         void printDebugInfo(std::ostringstream& ost)
         {
