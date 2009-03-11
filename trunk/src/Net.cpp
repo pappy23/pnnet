@@ -48,7 +48,7 @@ namespace pann
         NeuronIter iter = neurons.find(_neuronId);
         if(neurons.end() == iter)
             throw Exception::ObjectNotFound()<<"findNeuron(): Neuron "<<_neuronId<<" not found\n";
-        
+
         return iter;
     } //isNeuronExist
 
@@ -56,14 +56,14 @@ namespace pann
     {
         cache.data.push_back( NetCache::FrontType() );
         NetCache::FrontType& tasks = cache.data[cache.data.size() - 1];
-        
+
         for(int i = 0; i < threadCount; i++)
             tasks.push_back( vector<NeuronIter>() );
 
         vector<NeuronIter>::iterator it = unique(_raw.begin(), _raw.end());
         _raw.resize( it - _raw.begin() );
 
-        for(int i = 0; i < _raw.size(); ++i)
+        for(UINT i = 0; i < _raw.size(); ++i)
             tasks[_raw[i]->second.getOwnerThread() % threadCount].push_back(_raw[i]);
 
     } //formatFront
@@ -74,7 +74,7 @@ namespace pann
 
         if(!neurons.insert( pair<int, Neuron>(++lastNeuronId, Neuron(_activationFunction)) ).second)
             throw Exception::ElementExists()<<"Net::addNeuron(): insertion of neuron "<<lastNeuronId<<" failed\n";
-        
+
         return lastNeuronId;
     } //addNeuron
 
@@ -97,9 +97,9 @@ namespace pann
     void Net::delNeuron(int _neuronId)
     {
         cache.touch();
-        
+
         NeuronIter n = findNeuron(_neuronId);
-        
+
         //first, delete all links TO neuron
         BOOST_FOREACH( Link& link, n->second.links)
         {
@@ -177,7 +177,7 @@ namespace pann
         return findNeuron(_neuron)->second.getOwnerThread();
     } //getNeuronOwner
 
-    void Net::addConnection(int _from, int _to, Float _weightValue)
+    void Net::addConnection(int _from, int _to, FLOAT _weightValue)
     {
         cache.touch();
 
@@ -195,8 +195,8 @@ namespace pann
         NeuronIter from = findNeuron(_from);
         NeuronIter to   = findNeuron(_to);
 
-        from->second.disconnect(to, Link::out);        
-        to->second.disconnect(from, Link::in);        
+        from->second.disconnect(to, Link::out);
+        to->second.disconnect(from, Link::in);
     } //delConnection
 
     std::vector<int> Net::getInputMap()
@@ -219,7 +219,7 @@ namespace pann
         return result;
     } //getOutputMap
 
-    void Net::setInput(vector<Float> _input)
+    void Net::setInput(vector<FLOAT> _input)
     {
         if(_input.size() < inputNeurons.size())
             throw Exception::SizeMismatch()<<"setInput(): Supplied input size is smaller then number of input neurons\n";
@@ -232,9 +232,9 @@ namespace pann
             iter->second.receptiveField = _input[i++];
     } //setInput
 
-    vector<Float> Net::getOutput()
+    vector<FLOAT> Net::getOutput()
     {
-        vector<Float> result;
+        vector<FLOAT> result;
         BOOST_FOREACH( NeuronIter iter, outputNeurons)
             result.push_back(iter->second.getActivationValue());
 
@@ -249,7 +249,7 @@ namespace pann
     void Net::run(Runner* _runner)
     {
         //Here we will place neuron's ids that will become front, with duplicates
-        vector<NeuronIter> rawFront; 
+        vector<NeuronIter> rawFront;
 
         /*
          * Function operates with "hops" attribute of every Neuron
@@ -259,16 +259,16 @@ namespace pann
          * we shold write own comparison class for hops<>. I placed it to Utils.h
          */
         map<NeuronIter, int, NeuronIterCompare> hops;
-        
+
         //If cache is not up2date, flush it and fill again
         if( !cache.isOk() )
         {
             cache.flush();
-            
+
             //Put inputNeurons to front
             BOOST_FOREACH( NeuronIter iter, inputNeurons )
             {
-                rawFront.push_back(iter); 
+                rawFront.push_back(iter);
                 hops[iter] = 1;
             }
 
@@ -296,9 +296,9 @@ namespace pann
         {
             //At first iteration front points to first 'layer', derived from rawFront
             NetCache::FrontType* front = &cache.data[layer++];
-            
+
             boost::thread_group threadPool;
-            
+
             //front is ready, lets start our pretty threads =)
             for(int i = 0; i < threadCount; i++)
                 if((*front)[i].size() > 0)
@@ -314,14 +314,14 @@ namespace pann
                  *
                  * At first iteration, if you remember, vector<int> _raw contains unique inputNeurons indexes
                  */
-                int nCount = rawFront.size();
+                int nCount = (int) rawFront.size();
                 for(int i = 0; i < nCount; ++i)
                 {
                     //pop_front emulation
                     NeuronIter currentNeuronIter = rawFront[0];
                     rawFront.erase( rawFront.begin() );
 
-                    //ok, we've got cur_neuron. We will iterate through his Out links 
+                    //ok, we've got cur_neuron. We will iterate through his Out links
                     //and push_back their opposite sides to rawFront
                     BOOST_FOREACH( Link& link, currentNeuronIter->second.links )
                     {
@@ -345,7 +345,7 @@ namespace pann
                          *   T > C + 1 - impossible. Somebody changed hops by hand and didn't touch cache or
                          *               after last cache generation algorithm didn't set neuron's hops to zero
                          */
-                        
+
                         //Assume that when cache becomes coherent, all neuron[hops] vars become zero
                         if(hops[link.to] == 0)
                         {
@@ -370,7 +370,7 @@ namespace pann
 
             //wait for threads to finish
             threadPool.join_all();
-            
+
         } //while
 
         //We rebuilded cache

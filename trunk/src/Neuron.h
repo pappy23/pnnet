@@ -26,38 +26,41 @@ namespace pann
         std::list<Link>::iterator findLink(NeuronIter _to, Link::Direction _direction);
 
     public:
-        //Add link to *this neuron
-        //Create new Weight object
-        void connect(NeuronIter _to, Link::Direction _direction, Float _weightValue);
+        FLOAT activationValue;
 
-        //Use existing Weight
+        std::list<Link> links;//!< List of Link, both directions
+
+        FLOAT receptiveField;
+
+        //! Deafult constructor with Line acitvation function and 0 in all other parametrs
+        Neuron();
+
+        Neuron(ActivationFunction::Base&);
+
+        ~Neuron();
+
+        //! Add link to *this neuron
+        //! Create new Weight object
+        void connect(NeuronIter _to, Link::Direction _direction, FLOAT _weightValue);
+
+        //! Use existing Weight
         void connect(NeuronIter _to, Link::Direction _direction, boost::shared_ptr<Weight> _weight);
-        
-        //Destroy connection
+
+        //! Destroy connection
         void disconnect(NeuronIter _to, Link::Direction _direction);
 
-        //Get/set ownerThread
-        //with bound checking
+        //! Set ownerThread, with bound checking
         void setOwnerThread(int _thread);
+
+        //! Get ownerThread, with bound checking
         inline int getOwnerThread() { return ownerThread; };
 
         void printDebugInfo(std::ostringstream& ost);
 
-        Float activationValue;
-        
-        //List of Links, both directions
-        std::list<Link> links;
-        
-        Float receptiveField;
-
-        Neuron();
-        Neuron(ActivationFunction::Base&); 
-        ~Neuron();
-        
-        //Calculate activationValue from receptiveField
+        //! Calculate activationValue from receptiveField
         void activate();
 
-        Float getActivationValue();
+        FLOAT getActivationValue();
 
     };
 

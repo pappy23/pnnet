@@ -7,17 +7,18 @@ using boost::shared_ptr;
 
 namespace pann
 {
+    //! Deafult constructor
     Neuron::Neuron() :
-            activationFunction(ActivationFunction::Linear::Instance()), 
-            receptiveField(0), 
+            activationFunction(ActivationFunction::Linear::Instance()),
+            receptiveField(0),
             activationValue(activationFunction.f(0)),
             ownerThread(0)
     {
     } //Neuron
 
     Neuron::Neuron(ActivationFunction::Base& _activationFunction) :
-            activationFunction(_activationFunction), 
-            receptiveField(0), 
+            activationFunction(_activationFunction),
+            receptiveField(0),
             activationValue(_activationFunction.f(0)),
             ownerThread(0)
     {
@@ -54,9 +55,9 @@ namespace pann
         receptiveField = 0;
     } //activate
 
-    void Neuron::connect(NeuronIter _to, Link::Direction _direction, Float _weightValue = 1)
+    void Neuron::connect(NeuronIter _to, Link::Direction _direction, FLOAT _weightValue = 1)
     {
-        connect( _to, _direction, shared_ptr<Weight>(new Weight(_weightValue)) ); 
+        connect( _to, _direction, shared_ptr<Weight>(new Weight(_weightValue)) );
     } //connectTo
 
     void Neuron::connect(NeuronIter _to, Link::Direction _direction, shared_ptr<Weight> _weight)
@@ -87,9 +88,9 @@ namespace pann
             it->printDebugInfo(ost);
     } //printDebugInfo
 
-    Float Neuron::getActivationValue()
+    FLOAT Neuron::getActivationValue()
     {
         return activationValue;
-    }
+    }//getActivationValue
 
 }; //pann

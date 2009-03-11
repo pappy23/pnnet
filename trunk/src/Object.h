@@ -19,14 +19,18 @@ namespace pann
         Object();
         virtual ~Object();
 
-        //! Does attribute @param exist?
-        bool is(const std::string&) const;
+        //! Does attribute exist?
+        //! @param _attributeName - checking attribute name
+        bool is(const std::string& _attributeName) const;
 
         //! Delete attribute
-        void unset(const std::string&);
-        
+        //! @param _attributeName - deleting attribute name
+        void unset(const std::string& _attributeName);
+
         //! Get reference to attribute. Create it if nonexistent
-        boost::any& operator[](const std::string&);
+        //! @param _attributeName - getting attribute name
+        //! @return - reference to attribute
+        boost::any& operator[](const std::string& _attributeName);
 
         //! Delete all attributes
         void erase();
@@ -34,7 +38,7 @@ namespace pann
         virtual void printDebugInfo(std::ostringstream& ost) = 0;
 
     protected:
-        mutable std::map<std::string, boost::any> attributes;
+        mutable std::map<std::string, boost::any> attributes; //!< left -  name, right - parametr
     };
 
 }; //pann
