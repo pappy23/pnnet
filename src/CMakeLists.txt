@@ -2,8 +2,8 @@ cmake_minimum_required(VERSION 2.6)
 
 project (PANN)
 
-set(EXECUTABLE_OUTPUT_PATH "./bin" CACHE INTERNAL "")
-set(LIBRARY_OUTPUT_PATH "./bin" CACHE INTERNAL "")
+#set(EXECUTABLE_OUTPUT_PATH "${CMAKE_BINARY_DIR}/bin" CACHE INTERNAL "")
+#set(LIBRARY_OUTPUT_PATH "${CMAKE_BINARY_DIR}/bin" CACHE INTERNAL "")
 
 ############################################################################
 
@@ -29,8 +29,27 @@ endif(Boost_FOUND)
 
 ############################################################################
 
-set(PANN_SOURCES Core/*cpp NetworkModels/*cpp LearningAlgorithms/*cpp)
-add_library(pann STATIC ${PANN_SOURCES})
+set(PANN_SOURCES Core NetworkTopologies LearningAlgorithms)
+include_directories(${PANN_SOURCES})
+#link_directories("${CMAKE_BINARY_DIR}/bin")
 
-add_subdirectory(UnitTests)
+message(STATUS "Adding files to build library")
+foreach(dir ${PANN_SOURCES})
+    file(GLOB files RELATIVE ""  "${dir}/*.cpp")
+    foreach(filename ${files})
+        set(PANN_SOURCE_FILES ${PANN_SOURCE_FILES} "${filename}")
+        message(STATUS ">> ${filename}")
+    endforeach(filename)
+endforeach(dir)
+
+add_library(pann STATIC ${PANN_SOURCE_FILES})
+
+###########################################################################
+
+set(UNIT_TESTS TestBoost TestOMP TestIntSize TestNet TestSerialization)
+
+foreach(test ${UNIT_TESTS})
+    add_executable(${test} UnitTests/${test}.cpp)
+    target_link_libraries(${test} pann ${Boost_LIBRARIES})
+endforeach(test)
 

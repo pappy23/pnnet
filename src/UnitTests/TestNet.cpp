@@ -5,6 +5,7 @@
 
 #include "Includes.h"
 #include "Net.h"
+#include "Storage.h"
 
 using namespace std;
 using namespace pann;
@@ -43,11 +44,24 @@ int main()
     {
     ostringstream ost;
     net.printDebugInfo(ost);
-    //cout<<ost.str();
+    cout<<ost.str();
     }
-
+    
     //Output
     cout<<"Test output: "<<net.getOutput().at(0)<<endl;
+
+    //Serialization test
+    Storage::save(net, "test_net.txt");
+    Net net2;
+    Storage::load(net2, "test_net.txt");
+
+    //Debug
+    {
+    ostringstream ost;
+    net2.printDebugInfo(ost);
+    cout<<ost.str();
+    }
+
 
     return 0;
 }

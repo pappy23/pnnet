@@ -10,7 +10,7 @@
 
 namespace pann
 {
-    typedef double FLOAT;
+    typedef double Float;
 	typedef unsigned int UINT;
 
     class Neuron;

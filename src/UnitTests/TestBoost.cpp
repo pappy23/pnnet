@@ -1,19 +1,47 @@
 #include <iostream>
-#include <boost/thread.hpp>
+#include <fstream>
+#include <boost/archive/text_iarchive.hpp>
+#include <boost/archive/text_oarchive.hpp>
 
 using namespace std;
+using namespace boost;
 
-void print(int n)
+class A
 {
-    cout<<n<<" ";
-}
+    private:
+        friend class boost::serialization::access;
+
+        template<class Archive>
+        void serialize(Archive & ar, const unsigned int version)
+        {
+        ar & a;
+        }
+
+    public:
+        int a;
+};
 
 int main()
 {
-    boost::thread_group pool;
+    A obj;
+    obj.a = 5;
 
-    for(int i = 0; i < 10; i++)
-        pool.add_thread(new boost::thread(print, i));
+    {
+        ofstream ofs("serialization_test.txt");
+        boost::archive::text_oarchive oa(ofs);
+        oa<<obj;
+    }
+
+
+    A obj2;
+
+    {
+        ifstream ifs("serialization_test.txt");
+        boost::archive::text_iarchive ia(ifs);
+        ia >> obj2;
+    }
+
+    cout<<"Result: "<<obj2.a<<endl;
 
     return 0;
 }

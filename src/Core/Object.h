@@ -39,6 +39,14 @@ namespace pann
 
     protected:
         mutable std::map<std::string, boost::any> attributes; //!< left -  name, right - parametr
+
+    private:
+        friend class boost::serialization::access;
+        template<class Archive>
+            void serialize(Archive & ar, const unsigned int version)
+            {
+                //ar & attributes;
+            };
     };
 
 }; //pann

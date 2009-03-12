@@ -21,9 +21,9 @@ namespace pann
         UINT usageCount; ///< Used by weight update algorithms for shared weights
 
     public:
-        FLOAT value; ///< weight itself
+        Float value; ///< weight itself
 
-        Weight(FLOAT _value = 1) : 
+        Weight(Float _value = 1) : 
             value(_value),
             usageCount(1) { };
 
@@ -54,6 +54,17 @@ namespace pann
             ost<<"    usageCount: "<<usageCount<<std::endl;
             ost<<"    value: "<<value<<std::endl;
         }
+
+    private:
+        friend class boost::serialization::access;
+        template<class Archive>
+            void serialize(Archive & ar, const unsigned int version)
+        {
+            ar & boost::serialization::base_object<Object>(*this);
+            ar & usageCount;
+            ar & value;
+        };
+
     };
 
 }; //pann
