@@ -6,6 +6,7 @@
 #ifndef ACTIVATIONFUNCTION_H
 #define ACTIVATIONFUNCTION_H
 
+#include "Includes.h"
 #include "Type.h"
 
 namespace pann
@@ -20,24 +21,18 @@ namespace pann
         class Base //Singleton
         {
         protected:
-            static Base* self;
-            static int refcount;
-			Base() {};
-			virtual ~Base() {};
+            static boost::shared_ptr<Base> self;
+
+        protected:
+			Base() { };
+
+        public:
+			virtual ~Base() { };
 
         public:
             //Returns reference to ActivationFunction object. It is always the same
             //Only one object of class Base exist at a time
-            static Base& Instance();
-            void freeInstance()
-            {
-                refcount--;
-                if(!refcount)
-                {
-                    delete this;
-                    self = 0;
-                }
-            };
+            static boost::shared_ptr<Base> Instance();
 
             virtual Float f(Float) = 0;
             virtual Float derivative(Float) = 0;
@@ -50,18 +45,19 @@ namespace pann
          */
         class Linear : public Base
         {
-		protected:
+		private:
 			Linear() {};
-			~Linear() {};
+
         public:
-            static Base& Instance()
+			~Linear() {};
+
+        public:
+            static boost::shared_ptr<Base> Instance()
             {
                 if(!self)
-                    self = new Linear();
+                    self = boost::shared_ptr<Base>(new Linear());
 
-                refcount++;
-
-                return *self;
+                return self;
             };
 
             Float f(Float _x)

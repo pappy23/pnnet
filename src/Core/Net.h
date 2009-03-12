@@ -26,8 +26,8 @@ namespace pann
             touch();
         }
 
-        //! Print cache content for debug purposes
-        void printDebugInfo(std::ostringstream& ost)
+    public:
+        virtual void printDebugInfo(std::ostringstream& ost)
         {
             for(UINT layers = 0; layers < data.size(); ++layers)
             {
@@ -57,13 +57,15 @@ namespace pann
     public:
         enum NeuronRole { WorkNeuron = 0, InputNeuron = 1, OutputNeuron = 2 };
 
-    protected:
+    private:
         int threadCount;
         int lastNeuronId; //var to add new neurons
         std::map<int, Neuron> neurons;
         std::list<NeuronIter> inputNeurons;  //Iterators to map<> neurons
         std::list<NeuronIter> outputNeurons; //Iterators to map<> neurons
+        NetCache cache;
 
+    private:
         NeuronIter findNeuron(int _neuronId);
         void formatFront(std::vector<NeuronIter>& _raw);
 
@@ -71,10 +73,7 @@ namespace pann
         {
             for(UINT i = 0; i < _task.size(); i++)
                 _runner->run(_task[i]);
-        } //threadBase
-
-
-        NetCache cache;
+        };
 
     public:
         Net();
@@ -84,10 +83,9 @@ namespace pann
         int getThreadCount();
         void setThreadCount(int _threads);
 
-        int addNeuron(ActivationFunction::Base& _activationFunction);
+        int addNeuron(boost::shared_ptr<ActivationFunction::Base> _activationFunction);
         int addInputNeuron();
-        int addOutputNeuron(ActivationFunction::Base& _activationFunction);
-
+        int addOutputNeuron(boost::shared_ptr<ActivationFunction::Base> _activationFunction);
         void delNeuron(int _neuronId);
 
         void setNeuronRole(int _neuronId, NeuronRole _newRole);
@@ -102,12 +100,35 @@ namespace pann
         std::vector<int> getInputMap();
         std::vector<int> getOutputMap();
 
-        void setInput(std::vector<Float> _input);
+        void setInput(const std::vector<Float>& _input);
         std::vector<Float> getOutput();
 
         void run(Runner* _runner);
 
-        void printDebugInfo(std::ostringstream& ost);
+    public:
+        void printDebugInfo(std::ostringstream& ost)
+        {
+            ost<<"Net\n";
+            ost<<" threadsCount: "<<threadCount<<std::endl;
+            ost<<" lastNeuronId: "<<lastNeuronId<<std::endl;
+            ost<<" neurons: ";
+            NeuronIter it = neurons.begin();
+            for(; it != neurons.end(); ++it)
+                ost<<it->first<<" ";
+            ost<<"\n inputNeurons: ";
+            std::list<NeuronIter>::iterator it2 = inputNeurons.begin();
+            for(; it2 != inputNeurons.end(); ++it2)
+                ost<<(*it2)->first<<" ";
+            ost<<"\n outputNeurons: ";
+            std::list<NeuronIter>::iterator it3 = outputNeurons.begin();
+            for(; it3 != outputNeurons.end(); ++it3)
+                ost<<(*it3)->first<<" ";
+            ost<<"\n\n";
+            for(it = neurons.begin(); it != neurons.end(); ++it)
+                it->second.printDebugInfo(ost);
+            ost<<"\n\n Cache:\n";
+            cache.printDebugInfo(ost);
+        };
 
     private:
         friend class boost::serialization::access;

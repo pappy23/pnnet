@@ -68,7 +68,7 @@ namespace pann
 
     } //formatFront
 
-    int Net::addNeuron(ActivationFunction::Base& _activationFunction)
+    int Net::addNeuron(boost::shared_ptr<ActivationFunction::Base> _activationFunction)
     {
         cache.touch();
 
@@ -86,7 +86,7 @@ namespace pann
         return neuronId;
     } //addInputNeuron
 
-    int Net::addOutputNeuron(ActivationFunction::Base& _activationFunction)
+    int Net::addOutputNeuron(boost::shared_ptr<ActivationFunction::Base> _activationFunction)
     {
         int neuronId = addNeuron(_activationFunction);
         setNeuronRole(neuronId, Net::OutputNeuron);
@@ -104,12 +104,12 @@ namespace pann
         BOOST_FOREACH( Link& link, n->second.links)
         {
             Link::Direction opposite_direction;
-            if(link.direction == Link::in)
+            if(link.getDirection() == Link::in)
                 opposite_direction = Link::out;
             else
                 opposite_direction = Link::in;
 
-            link.to->second.disconnect(n, opposite_direction);
+            link.getTo()->second.disconnect(n, opposite_direction);
         }
 
         if( !neurons.erase(_neuronId) )
@@ -219,13 +219,15 @@ namespace pann
         return result;
     } //getOutputMap
 
-    void Net::setInput(vector<Float> _input)
+    void Net::setInput(const vector<Float>& _input)
     {
         if(_input.size() < inputNeurons.size())
-            throw Exception::SizeMismatch()<<"setInput(): Supplied input size is smaller then number of input neurons\n";
+            throw Exception::SizeMismatch()<<"setInput(): Supplied input size is smaller "
+                                                          "then number of input neurons\n";
 
         if(_input.size() > inputNeurons.size())
-            Exception::Warning()<<"setInput(): Input size is bigger then input neurons count. Check getInputMap() output\n";
+            Exception::Warning()<<"setInput(): Input size is bigger then input neurons count. "
+                                               "Check getInputMap() output\n";
 
         int i = 0;
         BOOST_FOREACH( NeuronIter iter, inputNeurons)
@@ -236,7 +238,7 @@ namespace pann
     {
         vector<Float> result;
         BOOST_FOREACH( NeuronIter iter, outputNeurons)
-            result.push_back(iter->second.getActivationValue());
+            result.push_back(iter->second.activationValue);
 
         return result;
     } //setInput
@@ -248,7 +250,7 @@ namespace pann
      */
     void Net::run(Runner* _runner)
     {
-        //Here we will place neuron's ids that will become front, with duplicates
+        //Here we will place neuron's IDs that will become front, with duplicates
         vector<NeuronIter> rawFront;
 
         /*
@@ -285,7 +287,7 @@ namespace pann
         }
 
         /*
-         * Cache looks like that:
+         * Cache looks like this:
          *
          * vector<FrontType> cache.data
          *     |
@@ -304,14 +306,14 @@ namespace pann
         while(rawFront.size() > 0)
         {
             //At first iteration front points to first 'layer', derived from rawFront
-            NetCache::FrontType* front = &cache.data[layer++];
+            NetCache::FrontType& front = cache.data[layer++];
 
             boost::thread_group threadPool;
 
             //front is ready, lets start our pretty threads =)
             for(int i = 0; i < threadCount; i++)
-                if((*front)[i].size() > 0)
-                    threadPool.add_thread( new boost::thread(this->threadBase, _runner, (*front)[i]) );
+                if(front[i].size() > 0)
+                    threadPool.add_thread( new boost::thread(this->threadBase, _runner, front[i]) );
            //FIXME: put parameters by boost::ref rather then by copying
 
             if( !cache.isOk() )
@@ -335,7 +337,7 @@ namespace pann
                     BOOST_FOREACH( Link& link, currentNeuronIter->second.links )
                     {
                         //Only feedforward links
-                        if(link.direction == Link::in)
+                        if(link.getDirection() == Link::in)
                             continue;
 
                         /*
@@ -356,13 +358,13 @@ namespace pann
                          */
 
                         //Assume that when cache becomes coherent, all neuron[hops] vars become zero
-                        if(hops[link.to] == 0)
-                            hops[link.to] = hops[currentNeuronIter] + link.latency;
+                        if(hops[link.getTo()] == 0)
+                            hops[link.getTo()] = hops[currentNeuronIter] + link.getLatency();
 
-                        if(hops[link.to] == hops[currentNeuronIter] + 1)
-                            rawFront.push_back(link.to); 
+                        if(hops[link.getTo()] == hops[currentNeuronIter] + 1)
+                            rawFront.push_back(link.getTo()); 
 
-                        if(hops[link.to] == hops[currentNeuronIter])
+                        if(hops[link.getTo()] == hops[currentNeuronIter])
                             throw Exception::Unbelievable()<<"Net::run(): cur_neuron.hops == to.hops. "
                                                                 "There is no support for such topologies yet\n";
                     } //BOOST_FOREACH( Link )
@@ -384,30 +386,6 @@ namespace pann
             cache.fixed();
 
     } //run
-
-    void Net::printDebugInfo(ostringstream& ost)
-    {
-        ost<<"Net\n";
-        ost<<" threadsCount: "<<threadCount<<endl;
-        ost<<" lastNeuronId: "<<lastNeuronId<<endl;
-        ost<<" neurons: ";
-        NeuronIter it = neurons.begin();
-        for(; it != neurons.end(); ++it)
-            ost<<it->first<<" ";
-        ost<<"\n inputNeurons: ";
-        list<NeuronIter>::iterator it2 = inputNeurons.begin();
-        for(; it2 != inputNeurons.end(); ++it2)
-            ost<<(*it2)->first<<" ";
-        ost<<"\n outputNeurons: ";
-        list<NeuronIter>::iterator it3 = outputNeurons.begin();
-        for(; it3 != outputNeurons.end(); ++it3)
-            ost<<(*it3)->first<<" ";
-        ost<<"\n\n";
-        for(it = neurons.begin(); it != neurons.end(); ++it)
-            it->second.printDebugInfo(ost);
-        ost<<"\n\n Cache:\n";
-        cache.printDebugInfo(ost);
-    } //printDebugInfo
 
 }; //pann
 

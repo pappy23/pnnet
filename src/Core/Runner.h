@@ -86,9 +86,10 @@ namespace pann
         void run(NeuronIter _neuron)
         {
             BOOST_FOREACH( Link& link, _neuron->second.links )
-                _neuron->second.receptiveField += ( link.to->second.getActivationValue() * link.getW()->value );
+                _neuron->second.receptiveField += ( link.getTo()->second.activationValue * link.getWeight()->value );
 
-            _neuron->second.activate();
+            _neuron->second.activationValue = _neuron->second.getActivationFunction()->f(_neuron->second.receptiveField);
+            _neuron->second.receptiveField = 0;
 
             //Debug
             //std::cout<<_neuron->first<<": "<<_neuron->second.getActivationValue()<<std::endl;

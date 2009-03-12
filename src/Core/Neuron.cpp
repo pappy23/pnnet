@@ -3,23 +3,21 @@
 #include "Neuron.h"
 
 using namespace std;
-using boost::shared_ptr;
 
 namespace pann
 {
-    //! Deafult constructor
     Neuron::Neuron() :
             activationFunction(ActivationFunction::Linear::Instance()),
             receptiveField(0),
-            activationValue(activationFunction.f(0)),
+            activationValue(activationFunction->f(0)),
             ownerThread(0)
     {
     } //Neuron
 
-    Neuron::Neuron(ActivationFunction::Base& _activationFunction) :
+    Neuron::Neuron(boost::shared_ptr<ActivationFunction::Base> _activationFunction) :
             activationFunction(_activationFunction),
             receptiveField(0),
-            activationValue(_activationFunction.f(0)),
+            activationValue(_activationFunction->f(0)),
             ownerThread(0)
     {
     } //Neuron
@@ -29,19 +27,19 @@ namespace pann
     } //~Neuron
 
     list<Link>::iterator Neuron::findLink(NeuronIter _to, Link::Direction _direction)
-    {
-        list<Link>::iterator iter = links.begin(),
-                             result = links.end();
-        for(; iter != links.end(); ++iter)
-        {
-            if(iter->to == _to && iter->direction == _direction)
-            {
-                if( result != links.end() ) //Multiple parallel links exist
+    {                                                                                
+        list<Link>::iterator iter = links.begin(),                                   
+        result = links.end();                                   
+        for(; iter != links.end(); ++iter)                                           
+        {                                                                            
+            if(iter->getTo() == _to && iter->getDirection() == _direction)                     
+            {                                                                        
+                if( result != links.end() ) //Multiple parallel links exist          
                     throw Exception::MultipleOccurance()<<"findLink(): detected parallel links\n";
-                else
-                    result = iter;
-            }
-        }
+                else                                                                              
+                    result = iter;                                                                
+            }                                                                                     
+        }                                                                                         
 
         if( result == links.end() )
             throw Exception::ObjectNotFound()<<"findLink(): can't find required link\n";
@@ -49,18 +47,12 @@ namespace pann
         return result;
     } //findLink
 
-    void Neuron::activate()
-    {
-        activationValue = activationFunction.f(receptiveField);
-        receptiveField = 0;
-    } //activate
-
     void Neuron::connect(NeuronIter _to, Link::Direction _direction, Float _weightValue = 1)
     {
-        connect( _to, _direction, shared_ptr<Weight>(new Weight(_weightValue)) );
+        connect( _to, _direction, boost::shared_ptr<Weight>(new Weight(_weightValue)) );
     } //connectTo
 
-    void Neuron::connect(NeuronIter _to, Link::Direction _direction, shared_ptr<Weight> _weight)
+    void Neuron::connect(NeuronIter _to, Link::Direction _direction, boost::shared_ptr<Weight> _weight)
     {
         //FIXME Parallel links ARE allowed
         links.push_back( Link(_to, _direction, _weight) );
@@ -79,18 +71,14 @@ namespace pann
         ownerThread =_thread;
     } //setOwnerThread
 
-    void Neuron::printDebugInfo(ostringstream& ost)
+    int Neuron::getOwnerThread()
     {
-        ost<<" Neuron\n";
-        ost<<"  ownerThread: "<<ownerThread<<std::endl;
-        list<Link>::iterator it = links.begin();
-        for(; it != links.end(); ++it)
-            it->printDebugInfo(ost);
-    } //printDebugInfo
+        return ownerThread;
+    } //getOwnerThread
 
-    Float Neuron::getActivationValue()
+    const boost::shared_ptr<ActivationFunction::Base>& Neuron::getActivationFunction()
     {
-        return activationValue;
-    }//getActivationValue
+        return activationFunction;
+    } //getOwnerThread
 
 }; //pann
