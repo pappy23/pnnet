@@ -12,6 +12,8 @@
 
 namespace pann
 {
+    class Net;
+
     //! Link between two neurons
     class Link : public Object
     {
@@ -22,7 +24,7 @@ namespace pann
         NeuronIter to;
         Direction direction;
         UINT latency;
-        boost::shared_ptr<Weight> w; //!< Pointer to Weight object (may be shared between different links)
+        Weight* w; //!< Pointer to Weight object (might be shared between different links)
 
     private:
         Link()
@@ -31,7 +33,7 @@ namespace pann
         };
 
     public:
-        Link(const NeuronIter _to, const Direction _direction, const boost::shared_ptr<Weight> _w, UINT _latency = 1) :
+        Link(const NeuronIter _to, const Direction _direction, Weight* _w, UINT _latency = 1) :
             to(_to),
             direction(_direction),
             w(_w),
@@ -42,13 +44,14 @@ namespace pann
 
         ~Link()
         {
-            w->decUsageCount();
+            if( !w->decUsageCount() )
+                delete w;
         };
 
-        NeuronIter getTo()                      { return to; };
-        Direction getDirection()                { return direction; };
-        UINT getLatency()                       { return latency; };
-        boost::shared_ptr<Weight> getWeight()   { return w; };
+        NeuronIter getTo()       { return to; };
+        Direction getDirection() { return direction; };
+        UINT getLatency()        { return latency; };
+        Weight* getWeight()      { return w; };
     
     public:
         virtual void printDebugInfo(std::ostringstream& ost)
@@ -60,12 +63,13 @@ namespace pann
         }
 
     private:
+        friend class Net; //now Net is responsible fot 'to' serialization
         friend class boost::serialization::access;
         template<class Archive>
             void serialize(Archive & ar, const unsigned int version)
         {
             ar & boost::serialization::base_object<Object>(*this);
-            ar & to;
+            //ar & to; - it's impossible to serialize iterators :(
             ar & direction;
             ar & latency;
             ar & w;

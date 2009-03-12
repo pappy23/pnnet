@@ -19,7 +19,7 @@
 
 //Boost
 #include <boost/any.hpp>
-#include <boost/shared_ptr.hpp>
+//#include <boost/shared_ptr.hpp>
 #include <boost/foreach.hpp>
 #include <boost/thread.hpp>
 #include <boost/archive/xml_oarchive.hpp>
@@ -29,5 +29,6 @@
 #include <boost/serialization/map.hpp>
 #include <boost/serialization/list.hpp>
 #include <boost/serialization/vector.hpp>
-#include <boost/serialization/shared_ptr.hpp>
+//#include <boost/serialization/shared_ptr.hpp>
+#include <boost/serialization/version.hpp>
 

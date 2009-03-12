@@ -83,9 +83,9 @@ namespace pann
         int getThreadCount();
         void setThreadCount(int _threads);
 
-        int addNeuron(boost::shared_ptr<ActivationFunction::Base> _activationFunction);
+        int addNeuron(ActivationFunction::Base* _activationFunction);
         int addInputNeuron();
-        int addOutputNeuron(boost::shared_ptr<ActivationFunction::Base> _activationFunction);
+        int addOutputNeuron(ActivationFunction::Base* _activationFunction);
         void delNeuron(int _neuronId);
 
         void setNeuronRole(int _neuronId, NeuronRole _newRole);
@@ -133,16 +133,86 @@ namespace pann
     private:
         friend class boost::serialization::access;
         template<class Archive>
-            void serialize(Archive & ar, const unsigned int version)
+            void save(Archive & ar, const unsigned int version) const
             {
                 ar & boost::serialization::base_object<Object>(*this);
                 ar & lastNeuronId;
                 ar & threadCount;
-                ar & cache;
+                //ar & cache; - dont's save it
                 ar & neurons;
-                ar & inputNeurons;
-                ar & outputNeurons;
+
+                //save links 'to' field for every neuron
+                for(std::map<int, Neuron>::const_iterator iter = neurons.begin(); iter != neurons.end(); ++iter)
+                    BOOST_FOREACH( const Link& l, iter->second.links )
+                    {
+                        Link& link = const_cast<Link&>(l);
+                        UINT id = link.getTo()->first;
+                        ar & id; //save ID of remote neuron
+                    }
+
+                UINT size;
+                size = inputNeurons.size();
+                ar & size;
+                BOOST_FOREACH( NeuronIter iter, inputNeurons )
+                {
+                    UINT id = iter->first;
+                    ar & id;
+                }
+
+                size = outputNeurons.size();
+                ar & size;
+                BOOST_FOREACH( NeuronIter iter, outputNeurons )
+                {
+                    UINT id = iter->first;
+                    ar & id;
+                }
             };
+
+        template<class Archive>
+            void load(Archive & ar, const unsigned int version)
+            {
+                cache.touch();
+
+                ar & boost::serialization::base_object<Object>(*this);
+                ar & lastNeuronId;
+                ar & threadCount;
+                //ar & cache; - don't load it
+                ar & neurons;
+               
+                //load links 'to' field for every neuron
+                for(NeuronIter iter = neurons.begin(); iter != neurons.end(); ++iter)
+                    BOOST_FOREACH( Link& l, iter->second.links )
+                    {
+                        UINT id;
+                        ar & id;
+                        l.to = neurons.find(id);
+                        if(l.to == neurons.end())
+                            throw Exception::FilesystemError()<<"Net::load(): can't load Net object. Archive possibly damaged\n";
+                    }
+
+                UINT size;
+                ar & size; 
+                for(UINT i = 0; i < size; i++)
+                {
+                    UINT id; ar & id;
+                    NeuronIter iter = neurons.find(id);
+                    inputNeurons.push_back(iter);
+                    if(iter == neurons.end())
+                        throw Exception::FilesystemError()<<"Net::load(): can't load Net object. Archive possibly damaged\n";
+                }
+
+                ar & size; 
+                for(UINT i = 0; i < size; i++)
+                {
+                    UINT id; ar & id;
+                    NeuronIter iter = neurons.find(id);
+                    outputNeurons.push_back(iter);
+                    if(iter == neurons.end())
+                        throw Exception::FilesystemError()<<"Net::load(): can't load Net object. Archive possibly damaged\n";
+                }
+            };
+
+        BOOST_SERIALIZATION_SPLIT_MEMBER()
     };
 
 }; //pann
