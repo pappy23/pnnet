@@ -64,6 +64,9 @@ namespace pann
         //! Argument out of range
         class RangeMismatch  : public Base { }; 
 
+        //! Exceptionfor raising on filesystem failures (missing file etc.) 
+        class FilesystemError  : public Base { }; 
+
         //! It's imposible in our universe!
         class Unbelievable  : public Base { }; 
 

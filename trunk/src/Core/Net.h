@@ -42,6 +42,14 @@ namespace pann
                 ost<<std::endl;
             }
         }
+
+    private:
+        friend class boost::serialization::access;
+        template<class Archive>
+            void serialize(Archive & ar, const unsigned int version)
+            {
+                ar & data;
+            };
     };
 
     class Net : public Object
@@ -88,18 +96,32 @@ namespace pann
         void setNeuronOwner(int _neuron, int _owner);
         int getNeuronOwner(int _neuron);
 
-        void addConnection(int _from, int _to, FLOAT _weightValue = 1);
+        void addConnection(int _from, int _to, Float _weightValue = 1);
         void delConnection(int _from, int _to);
 
         std::vector<int> getInputMap();
         std::vector<int> getOutputMap();
 
-        void setInput(std::vector<FLOAT> _input);
-        std::vector<FLOAT> getOutput();
+        void setInput(std::vector<Float> _input);
+        std::vector<Float> getOutput();
 
         void run(Runner* _runner);
 
         void printDebugInfo(std::ostringstream& ost);
+
+    private:
+        friend class boost::serialization::access;
+        template<class Archive>
+            void serialize(Archive & ar, const unsigned int version)
+            {
+                ar & boost::serialization::base_object<Object>(*this);
+                ar & lastNeuronId;
+                ar & threadCount;
+                ar & cache;
+                ar & neurons;
+                ar & inputNeurons;
+                ar & outputNeurons;
+            };
     };
 
 }; //pann

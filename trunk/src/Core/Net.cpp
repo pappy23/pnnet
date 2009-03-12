@@ -177,7 +177,7 @@ namespace pann
         return findNeuron(_neuron)->second.getOwnerThread();
     } //getNeuronOwner
 
-    void Net::addConnection(int _from, int _to, FLOAT _weightValue)
+    void Net::addConnection(int _from, int _to, Float _weightValue)
     {
         cache.touch();
 
@@ -219,7 +219,7 @@ namespace pann
         return result;
     } //getOutputMap
 
-    void Net::setInput(vector<FLOAT> _input)
+    void Net::setInput(vector<Float> _input)
     {
         if(_input.size() < inputNeurons.size())
             throw Exception::SizeMismatch()<<"setInput(): Supplied input size is smaller then number of input neurons\n";
@@ -232,9 +232,9 @@ namespace pann
             iter->second.receptiveField = _input[i++];
     } //setInput
 
-    vector<FLOAT> Net::getOutput()
+    vector<Float> Net::getOutput()
     {
-        vector<FLOAT> result;
+        vector<Float> result;
         BOOST_FOREACH( NeuronIter iter, outputNeurons)
             result.push_back(iter->second.getActivationValue());
 

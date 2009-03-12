@@ -52,6 +52,19 @@ namespace pann
             //ost<<"   to: "<<to->first<<std::endl;
             w->printDebugInfo(ost);
         }
+
+    private:
+        friend class boost::serialization::access;
+        template<class Archive>
+            void serialize(Archive & ar, const unsigned int version)
+        {
+            ar & boost::serialization::base_object<Object>(*this);
+            ar & w;
+            ar & const_cast<NeuronIter&>(to);
+            ar & const_cast<Direction&>(direction);
+            ar & const_cast<UINT&>(latency);
+        };
+
     };
 
 }; //pann

@@ -55,7 +55,7 @@ namespace pann
         receptiveField = 0;
     } //activate
 
-    void Neuron::connect(NeuronIter _to, Link::Direction _direction, FLOAT _weightValue = 1)
+    void Neuron::connect(NeuronIter _to, Link::Direction _direction, Float _weightValue = 1)
     {
         connect( _to, _direction, shared_ptr<Weight>(new Weight(_weightValue)) );
     } //connectTo
@@ -88,7 +88,7 @@ namespace pann
             it->printDebugInfo(ost);
     } //printDebugInfo
 
-    FLOAT Neuron::getActivationValue()
+    Float Neuron::getActivationValue()
     {
         return activationValue;
     }//getActivationValue

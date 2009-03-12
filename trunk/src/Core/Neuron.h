@@ -26,11 +26,11 @@ namespace pann
         std::list<Link>::iterator findLink(NeuronIter _to, Link::Direction _direction);
 
     public:
-        FLOAT activationValue;
+        Float activationValue;
 
         std::list<Link> links;//!< List of Link, both directions
 
-        FLOAT receptiveField;
+        Float receptiveField;
 
         //! Deafult constructor with Line acitvation function and 0 in all other parametrs
         Neuron();
@@ -41,7 +41,7 @@ namespace pann
 
         //! Add link to *this neuron
         //! Create new Weight object
-        void connect(NeuronIter _to, Link::Direction _direction, FLOAT _weightValue);
+        void connect(NeuronIter _to, Link::Direction _direction, Float _weightValue);
 
         //! Use existing Weight
         void connect(NeuronIter _to, Link::Direction _direction, boost::shared_ptr<Weight> _weight);
@@ -60,8 +60,20 @@ namespace pann
         //! Calculate activationValue from receptiveField
         void activate();
 
-        FLOAT getActivationValue();
+        Float getActivationValue();
 
+    private:
+        friend class boost::serialization::access;
+        template<class Archive>
+            void serialize(Archive & ar, const unsigned int version)
+            {
+                ar & boost::serialization::base_object<Object>(*this);
+                ar & activationFunction;
+                ar & ownerThread;
+                ar & activationValue;
+                ar & receptiveField;
+                ar & links;
+            };
     };
 
 }; //pann
