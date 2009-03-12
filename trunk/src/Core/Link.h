@@ -18,15 +18,20 @@ namespace pann
     public:
         enum Direction { in, out };
 
-    protected:
+    private:
+        NeuronIter to;
+        Direction direction;
+        UINT latency;
         boost::shared_ptr<Weight> w; //!< Pointer to Weight object (may be shared between different links)
 
-    public:
-        const NeuronIter to;
-        const Direction direction;
-        const UINT latency;
+    private:
+        Link()
+        {
+            // Default constructor required by boost::serialization
+        };
 
-        Link(NeuronIter _to, const Direction _direction, boost::shared_ptr<Weight> _w, UINT _latency = 1) :
+    public:
+        Link(const NeuronIter _to, const Direction _direction, const boost::shared_ptr<Weight> _w, UINT _latency = 1) :
             to(_to),
             direction(_direction),
             w(_w),
@@ -40,12 +45,13 @@ namespace pann
             w->decUsageCount();
         };
 
-        inline const boost::shared_ptr<Weight> getW() const
-        {
-            return w;
-        };
-
-        void printDebugInfo(std::ostringstream& ost)
+        NeuronIter getTo()                      { return to; };
+        Direction getDirection()                { return direction; };
+        UINT getLatency()                       { return latency; };
+        boost::shared_ptr<Weight> getWeight()   { return w; };
+    
+    public:
+        virtual void printDebugInfo(std::ostringstream& ost)
         {
             ost<<"  Link\n";
             ost<<"   direction: "<<direction<<std::endl;
@@ -59,10 +65,10 @@ namespace pann
             void serialize(Archive & ar, const unsigned int version)
         {
             ar & boost::serialization::base_object<Object>(*this);
+            ar & to;
+            ar & direction;
+            ar & latency;
             ar & w;
-            ar & const_cast<NeuronIter&>(to);
-            ar & const_cast<Direction&>(direction);
-            ar & const_cast<UINT&>(latency);
         };
 
     };

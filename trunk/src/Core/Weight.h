@@ -18,15 +18,16 @@ namespace pann
      */
     class Weight : public Object
     {
+    private:
         UINT usageCount; ///< Used by weight update algorithms for shared weights
 
     public:
         Float value; ///< weight itself
 
+    public:
         Weight(Float _value = 1) : 
             value(_value),
             usageCount(1) { };
-
         ~Weight() { };
 
         UINT incUsageCount()
@@ -37,8 +38,10 @@ namespace pann
         UINT decUsageCount()
         {
             if(--usageCount == 0)
-                ; //FIXME
-                //throw Exception::Unbelievable()<<"Weight::decUsageCount(): Kill me\n";
+                ;//throw Exception::Unbelievable()<<"Weight::decUsageCount(): Kill me\n";
+            
+            //when all links that reference to *this are dead,
+            //shared_ptr<Weight> have to delete this
 
             return usageCount;
         };
@@ -48,7 +51,8 @@ namespace pann
             return usageCount;
         };
 
-        void printDebugInfo(std::ostringstream& ost)
+    public:
+        virtual void printDebugInfo(std::ostringstream& ost)
         {
             ost<<"   Weight\n";
             ost<<"    usageCount: "<<usageCount<<std::endl;
@@ -64,7 +68,6 @@ namespace pann
             ar & usageCount;
             ar & value;
         };
-
     };
 
 }; //pann
