@@ -13,7 +13,7 @@ namespace pann
     class Neuron : public Object
     {
     private:
-        boost::shared_ptr<ActivationFunction::Base> activationFunction;
+        ActivationFunction::Base* activationFunction;
         int ownerThread; //Thread with this number will take care of our Neuron
 
     public:
@@ -23,17 +23,16 @@ namespace pann
     
     public:
         Neuron();
-        Neuron(boost::shared_ptr<ActivationFunction::Base>);
+        Neuron(ActivationFunction::Base*);
         ~Neuron();
 
-        void connect(NeuronIter _to, Link::Direction _direction, Float _weightValue);
-        void connect(NeuronIter _to, Link::Direction _direction, boost::shared_ptr<Weight> _weight);
+        void connect(NeuronIter _to, Link::Direction _direction, Weight* _weight);
         void disconnect(NeuronIter _to, Link::Direction _direction);
 
         void setOwnerThread(int _thread);
         int getOwnerThread();
 
-        const boost::shared_ptr<ActivationFunction::Base>& getActivationFunction();
+        ActivationFunction::Base* getActivationFunction();
 
     private:
         //Helper. Finds and returns iterator to list<> links for Neuron& _to
@@ -55,7 +54,7 @@ namespace pann
             void serialize(Archive & ar, const unsigned int version)
             {
                 ar & boost::serialization::base_object<Object>(*this);
-                ar & activationFunction;
+                //ar & activationFunction; FIXME: can't serialize
                 ar & ownerThread;
                 ar & receptiveField;
                 ar & activationValue;

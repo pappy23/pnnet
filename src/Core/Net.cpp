@@ -68,7 +68,7 @@ namespace pann
 
     } //formatFront
 
-    int Net::addNeuron(boost::shared_ptr<ActivationFunction::Base> _activationFunction)
+    int Net::addNeuron(ActivationFunction::Base* _activationFunction)
     {
         cache.touch();
 
@@ -86,7 +86,7 @@ namespace pann
         return neuronId;
     } //addInputNeuron
 
-    int Net::addOutputNeuron(boost::shared_ptr<ActivationFunction::Base> _activationFunction)
+    int Net::addOutputNeuron(ActivationFunction::Base* _activationFunction)
     {
         int neuronId = addNeuron(_activationFunction);
         setNeuronRole(neuronId, Net::OutputNeuron);
@@ -184,8 +184,10 @@ namespace pann
         NeuronIter from = findNeuron(_from);
         NeuronIter to = findNeuron(_to);
 
-        from->second.connect(to, Link::out, _weightValue);
-        to->second.connect(from, Link::in, _weightValue);
+        Weight* w = new Weight(_weightValue);
+
+        from->second.connect(to, Link::out, w);
+        to->second.connect(from, Link::in, w);
     } //addConnection
 
     void Net::delConnection(int _from, int _to)

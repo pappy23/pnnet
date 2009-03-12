@@ -21,7 +21,7 @@ namespace pann
         class Base //Singleton
         {
         protected:
-            static boost::shared_ptr<Base> self;
+            static Base* self;
 
         protected:
 			Base() { };
@@ -32,10 +32,17 @@ namespace pann
         public:
             //Returns reference to ActivationFunction object. It is always the same
             //Only one object of class Base exist at a time
-            static boost::shared_ptr<Base> Instance();
+            static Base* Instance();
 
             virtual Float f(Float) = 0;
             virtual Float derivative(Float) = 0;
+
+        private:
+            friend class boost::serialization::access;
+            template<class Archive>
+                void serialize(Archive & ar, const unsigned int version)
+                {
+                };
         };
 
         /**
@@ -52,10 +59,10 @@ namespace pann
 			~Linear() {};
 
         public:
-            static boost::shared_ptr<Base> Instance()
+            static Base* Instance()
             {
                 if(!self)
-                    self = boost::shared_ptr<Base>(new Linear());
+                    self = new Linear();
 
                 return self;
             };
@@ -69,6 +76,13 @@ namespace pann
             {
                 return 0;
             } //derivative
+
+        private:
+            friend class boost::serialization::access;
+            template<class Archive>
+                void serialize(Archive & ar, const unsigned int version)
+                {
+                };
         };
     }; //ActivationFunctions
 

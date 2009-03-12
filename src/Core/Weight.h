@@ -41,7 +41,7 @@ namespace pann
                 ;//throw Exception::Unbelievable()<<"Weight::decUsageCount(): Kill me\n";
             
             //when all links that reference to *this are dead,
-            //shared_ptr<Weight> have to delete this
+            //~Link() should delete this
 
             return usageCount;
         };

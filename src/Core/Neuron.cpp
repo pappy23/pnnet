@@ -14,7 +14,7 @@ namespace pann
     {
     } //Neuron
 
-    Neuron::Neuron(boost::shared_ptr<ActivationFunction::Base> _activationFunction) :
+    Neuron::Neuron(ActivationFunction::Base* _activationFunction) :
             activationFunction(_activationFunction),
             receptiveField(0),
             activationValue(_activationFunction->f(0)),
@@ -47,12 +47,7 @@ namespace pann
         return result;
     } //findLink
 
-    void Neuron::connect(NeuronIter _to, Link::Direction _direction, Float _weightValue = 1)
-    {
-        connect( _to, _direction, boost::shared_ptr<Weight>(new Weight(_weightValue)) );
-    } //connectTo
-
-    void Neuron::connect(NeuronIter _to, Link::Direction _direction, boost::shared_ptr<Weight> _weight)
+    void Neuron::connect(NeuronIter _to, Link::Direction _direction, Weight* _weight)
     {
         //FIXME Parallel links ARE allowed
         links.push_back( Link(_to, _direction, _weight) );
@@ -76,7 +71,7 @@ namespace pann
         return ownerThread;
     } //getOwnerThread
 
-    const boost::shared_ptr<ActivationFunction::Base>& Neuron::getActivationFunction()
+    ActivationFunction::Base* Neuron::getActivationFunction()
     {
         return activationFunction;
     } //getOwnerThread
