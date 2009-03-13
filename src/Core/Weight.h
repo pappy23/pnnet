@@ -42,9 +42,7 @@ namespace pann
             void serialize(Archive & ar, const unsigned int version)
         {
             ar & boost::serialization::base_object<Object>(*this);
-            std::cout<<"Ref_before: "<<usageCount<<std::endl;
             ar & usageCount;
-            std::cout<<"Ref_after: "<<usageCount<<std::endl;
             ar & value;
         };
     };

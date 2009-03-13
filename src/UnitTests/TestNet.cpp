@@ -47,6 +47,8 @@ int main()
     cout<<ost.str();
     }
     
+    net.delNeuron(nWork2);
+
     //Output
     cout<<"Test output: "<<net.getOutput().at(0)<<endl;
 
@@ -54,6 +56,9 @@ int main()
     Storage::save(net, "test_net.txt");
     Net net2;
     Storage::load(net2, "test_net.txt");
+
+    //Test run()
+    net.run(&(FeedforwardPropagationRunner::Instance()));
 
     //Debug
     {

@@ -104,9 +104,15 @@ namespace pann
 
         BOOST_FOREACH( Link& link, n->second.links)
             if(link.getDirection() == Link::in)
+            {
+                std::cout<<link.getTo()->first<<" "<<n->first<<std::endl;
                 delConnection(link.getTo()->first, n->first);
+            }
             else
+            {
+                std::cout<<n->first<<" "<<link.getTo()->first<<std::endl;
                 delConnection(n->first, link.getTo()->first);
+            }
 
         if( !neurons.erase(_neuronId) )
             throw Exception::ObjectNotFound()<<"Net::delNeuron(): can't delete neuron "<<_neuronId<<"\n";
