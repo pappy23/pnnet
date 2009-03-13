@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+   <FileVersion major="1" minor="6" />
+   <Project>
+      <Option title="PANN" />
+      <Option makefile_is_custom="1" />
+      <Option compiler="gcc" />
+      <Build>
+      <Target title="all">
+         <Option working_dir="/home/booble/pann/trunk" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; all" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="TestBoost">
+         <Option output="/home/booble/pann/trunk/bin/TestBoost" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/booble/pann/trunk" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/usr/local/include/boost-1_38" />
+            <Add directory="/home/booble/pann/trunk/src/Core" />
+            <Add directory="/home/booble/pann/trunk/src/NetworkTopologies" />
+            <Add directory="/home/booble/pann/trunk/src/LearningAlgorithms" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; TestBoost" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="TestBoost/fast">
+         <Option output="/home/booble/pann/trunk/bin/TestBoost" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/booble/pann/trunk" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/usr/local/include/boost-1_38" />
+            <Add directory="/home/booble/pann/trunk/src/Core" />
+            <Add directory="/home/booble/pann/trunk/src/NetworkTopologies" />
+            <Add directory="/home/booble/pann/trunk/src/LearningAlgorithms" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; TestBoost/fast" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="TestIntSize">
+         <Option output="/home/booble/pann/trunk/bin/TestIntSize" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/booble/pann/trunk" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/usr/local/include/boost-1_38" />
+            <Add directory="/home/booble/pann/trunk/src/Core" />
+            <Add directory="/home/booble/pann/trunk/src/NetworkTopologies" />
+            <Add directory="/home/booble/pann/trunk/src/LearningAlgorithms" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; TestIntSize" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="TestIntSize/fast">
+         <Option output="/home/booble/pann/trunk/bin/TestIntSize" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/booble/pann/trunk" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/usr/local/include/boost-1_38" />
+            <Add directory="/home/booble/pann/trunk/src/Core" />
+            <Add directory="/home/booble/pann/trunk/src/NetworkTopologies" />
+            <Add directory="/home/booble/pann/trunk/src/LearningAlgorithms" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; TestIntSize/fast" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="TestNet">
+         <Option output="/home/booble/pann/trunk/bin/TestNet" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/booble/pann/trunk" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/usr/local/include/boost-1_38" />
+            <Add directory="/home/booble/pann/trunk/src/Core" />
+            <Add directory="/home/booble/pann/trunk/src/NetworkTopologies" />
+            <Add directory="/home/booble/pann/trunk/src/LearningAlgorithms" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; TestNet" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="TestNet/fast">
+         <Option output="/home/booble/pann/trunk/bin/TestNet" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/booble/pann/trunk" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/usr/local/include/boost-1_38" />
+            <Add directory="/home/booble/pann/trunk/src/Core" />
+            <Add directory="/home/booble/pann/trunk/src/NetworkTopologies" />
+            <Add directory="/home/booble/pann/trunk/src/LearningAlgorithms" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; TestNet/fast" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="TestOMP">
+         <Option output="/home/booble/pann/trunk/bin/TestOMP" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/booble/pann/trunk" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/usr/local/include/boost-1_38" />
+            <Add directory="/home/booble/pann/trunk/src/Core" />
+            <Add directory="/home/booble/pann/trunk/src/NetworkTopologies" />
+            <Add directory="/home/booble/pann/trunk/src/LearningAlgorithms" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; TestOMP" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="TestOMP/fast">
+         <Option output="/home/booble/pann/trunk/bin/TestOMP" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/booble/pann/trunk" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/usr/local/include/boost-1_38" />
+            <Add directory="/home/booble/pann/trunk/src/Core" />
+            <Add directory="/home/booble/pann/trunk/src/NetworkTopologies" />
+            <Add directory="/home/booble/pann/trunk/src/LearningAlgorithms" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; TestOMP/fast" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="TestSerialization">
+         <Option output="/home/booble/pann/trunk/bin/TestSerialization" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/booble/pann/trunk" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/usr/local/include/boost-1_38" />
+            <Add directory="/home/booble/pann/trunk/src/Core" />
+            <Add directory="/home/booble/pann/trunk/src/NetworkTopologies" />
+            <Add directory="/home/booble/pann/trunk/src/LearningAlgorithms" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; TestSerialization" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="TestSerialization/fast">
+         <Option output="/home/booble/pann/trunk/bin/TestSerialization" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/booble/pann/trunk" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/usr/local/include/boost-1_38" />
+            <Add directory="/home/booble/pann/trunk/src/Core" />
+            <Add directory="/home/booble/pann/trunk/src/NetworkTopologies" />
+            <Add directory="/home/booble/pann/trunk/src/LearningAlgorithms" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; TestSerialization/fast" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="pann">
+         <Option output="/home/booble/pann/trunk/bin/libpann.a" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/booble/pann/trunk" />
+         <Option object_output="./" />
+         <Option type="2" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/usr/local/include/boost-1_38" />
+            <Add directory="/home/booble/pann/trunk/src/Core" />
+            <Add directory="/home/booble/pann/trunk/src/NetworkTopologies" />
+            <Add directory="/home/booble/pann/trunk/src/LearningAlgorithms" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; pann" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="pann/fast">
+         <Option output="/home/booble/pann/trunk/bin/libpann.a" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/booble/pann/trunk" />
+         <Option object_output="./" />
+         <Option type="2" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/usr/local/include/boost-1_38" />
+            <Add directory="/home/booble/pann/trunk/src/Core" />
+            <Add directory="/home/booble/pann/trunk/src/NetworkTopologies" />
+            <Add directory="/home/booble/pann/trunk/src/LearningAlgorithms" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; pann/fast" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="rebuild_cache">
+         <Option working_dir="/home/booble/pann/trunk" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; rebuild_cache" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/booble/pann/trunk/Makefile&quot; clean" />
+         </MakeCommands>
+      </Target>
+      </Build>
+      <Unit filename="/home/booble/pann/trunk/src/Core/ActivationFunction.cpp">
+      </Unit>
+      <Unit filename="/home/booble/pann/trunk/src/Core/Net.cpp">
+      </Unit>
+      <Unit filename="/home/booble/pann/trunk/src/Core/Neuron.cpp">
+      </Unit>
+      <Unit filename="/home/booble/pann/trunk/src/Core/Object.cpp">
+      </Unit>
+      <Unit filename="/home/booble/pann/trunk/src/Core/Runner.cpp">
+      </Unit>
+      <Unit filename="/home/booble/pann/trunk/src/UnitTests/TestBoost.cpp">
+      </Unit>
+      <Unit filename="/home/booble/pann/trunk/src/UnitTests/TestIntSize.cpp">
+      </Unit>
+      <Unit filename="/home/booble/pann/trunk/src/UnitTests/TestNet.cpp">
+      </Unit>
+      <Unit filename="/home/booble/pann/trunk/src/UnitTests/TestOMP.cpp">
+      </Unit>
+      <Unit filename="/home/booble/pann/trunk/src/UnitTests/TestSerialization.cpp">
+      </Unit>
+   </Project>
+</CodeBlocks_project_file>

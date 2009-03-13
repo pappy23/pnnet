@@ -138,9 +138,10 @@ namespace pann
         template<class Archive>
             void save(Archive & ar, const unsigned int version) const
             {
-                std::cout<<"Weights usage counts:\n";
+                std::cout<<"Weights usage counts:";
                 for(int i = 0; i < weights.size(); i++)
                     std::cout<<(const_cast<std::map<int, Weight>&>(weights))[i].usageCount;
+                std::cout<<std::endl;
 
                 ar & boost::serialization::base_object<Object>(*this);
                 ar & lastNeuronId;
@@ -193,10 +194,6 @@ namespace pann
         template<class Archive>
             void load(Archive & ar, const unsigned int version)
             {
-                std::cout<<"Weights usage counts:\n";
-                for(int i = 0; i < weights.size(); i++)
-                    std::cout<<weights[i].usageCount;
-
                 //std::cout<<"load begins\n";
                 cache.touch();
                 //std::cout<<"cache ok\n";
@@ -256,10 +253,6 @@ namespace pann
                     if(iter == neurons.end())
                         throw Exception::FilesystemError()<<"Net::load(): can't load Net object. Archive possibly damaged\n";
                 }
-                std::cout<<"Weights usage counts:\n";
-                for(int i = 0; i < weights.size(); i++)
-                    std::cout<<weights[i].usageCount;
-
             };
 
         BOOST_SERIALIZATION_SPLIT_MEMBER()
