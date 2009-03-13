@@ -40,6 +40,11 @@ int main()
     //Test run()
     net.run(&(FeedforwardPropagationRunner::Instance()));
 
+    net.delNeuron(nWork2);
+
+    //Output
+    cout<<"Test output: "<<net.getOutput().at(0)<<endl;
+
     //Debug
     {
     ostringstream ost;
@@ -47,18 +52,13 @@ int main()
     cout<<ost.str();
     }
     
-    net.delNeuron(nWork2);
-
-    //Output
-    cout<<"Test output: "<<net.getOutput().at(0)<<endl;
-
     //Serialization test
     Storage::save(net, "test_net.txt");
     Net net2;
     Storage::load(net2, "test_net.txt");
 
     //Test run()
-    net.run(&(FeedforwardPropagationRunner::Instance()));
+    net2.run(&(FeedforwardPropagationRunner::Instance()));
 
     //Debug
     {
