@@ -122,11 +122,6 @@ namespace pann
             WeightIter wit = weights.begin();
             for(; wit != weights.end(); ++wit)
                 ost<<wit->first<<" ";
-            ost<<"Weights usage counts:";
-            for(int i = 0; i < weights.size(); i++)
-                ost<<(const_cast<std::map<int, Weight>&>(weights))[i].usageCount;
-            ost<<std::endl;
-
             ost<<"\n inputNeurons: ";
             std::list<NeuronIter>::iterator it2 = inputNeurons.begin();
             for(; it2 != inputNeurons.end(); ++it2)
@@ -147,11 +142,6 @@ namespace pann
         template<class Archive>
             void save(Archive & ar, const unsigned int version) const
             {
-                std::cout<<"Weights usage counts:";
-                for(int i = 0; i < weights.size(); i++)
-                    std::cout<<(const_cast<std::map<int, Weight>&>(weights))[i].usageCount;
-                std::cout<<std::endl;
-
                 ar & boost::serialization::base_object<Object>(*this);
                 ar & lastNeuronId;
                 ar & lastWeightId;
