@@ -16,6 +16,9 @@ namespace pann
     class Neuron;
     typedef std::map<int, Neuron>::iterator NeuronIter;
 
+    class Weight;
+    typedef std::map<int, Weight>::iterator WeightIter;
+
 }; //pann
 
 #endif //TYPE_H

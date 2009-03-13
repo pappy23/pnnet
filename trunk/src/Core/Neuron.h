@@ -25,16 +25,16 @@ namespace pann
         Neuron();
         Neuron(ActivationFunction::Base*);
         ~Neuron();
-
-        void connect(NeuronIter _to, Link::Direction _direction, Weight* _weight);
+/*
+        void connect(NeuronIter _to, Link::Direction _direction, WeightIter _weight);
         void disconnect(NeuronIter _to, Link::Direction _direction);
-
+*/
         void setOwnerThread(int _thread);
         int getOwnerThread();
 
         ActivationFunction::Base* getActivationFunction();
 
-    private:
+/*    private: */
         //Helper. Finds and returns iterator to list<> links for Neuron& _to
         std::list<Link>::iterator findLink(NeuronIter _to, Link::Direction _direction);
 
@@ -58,7 +58,7 @@ namespace pann
                 ar & ownerThread;
                 ar & receptiveField;
                 ar & activationValue;
-                ar & links;
+                //ar & links; - Net responsibility
             };
     };
 
