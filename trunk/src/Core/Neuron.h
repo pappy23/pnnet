@@ -46,7 +46,10 @@ namespace pann
             ost<<"  activationFunction: "<<activationFunction->getId()<<std::endl;
             std::list<Link>::iterator it = links.begin();
             for(; it != links.end(); ++it)
+            {
                 it->printDebugInfo(ost);
+                ost<<"    to: "<<it->getTo()->first<<std::endl;
+            }
         };
 
     private:

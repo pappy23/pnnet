@@ -31,7 +31,6 @@ endif(Boost_FOUND)
 
 set(PANN_SOURCES Core NetworkTopologies LearningAlgorithms)
 include_directories(${PANN_SOURCES})
-#link_directories("${CMAKE_BINARY_DIR}/bin")
 
 message(STATUS "Adding files to build library")
 foreach(dir ${PANN_SOURCES})
@@ -52,4 +51,3 @@ foreach(test ${UNIT_TESTS})
     add_executable(${test} UnitTests/${test}.cpp)
     target_link_libraries(${test} pann ${Boost_LIBRARIES})
 endforeach(test)
-

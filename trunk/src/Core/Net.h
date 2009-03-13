@@ -118,6 +118,15 @@ namespace pann
             NeuronIter it = neurons.begin();
             for(; it != neurons.end(); ++it)
                 ost<<it->first<<" ";
+            ost<<"\n weights: ";
+            WeightIter wit = weights.begin();
+            for(; wit != weights.end(); ++wit)
+                ost<<wit->first<<" ";
+            ost<<"Weights usage counts:";
+            for(int i = 0; i < weights.size(); i++)
+                ost<<(const_cast<std::map<int, Weight>&>(weights))[i].usageCount;
+            ost<<std::endl;
+
             ost<<"\n inputNeurons: ";
             std::list<NeuronIter>::iterator it2 = inputNeurons.begin();
             for(; it2 != inputNeurons.end(); ++it2)
@@ -126,7 +135,7 @@ namespace pann
             std::list<NeuronIter>::iterator it3 = outputNeurons.begin();
             for(; it3 != outputNeurons.end(); ++it3)
                 ost<<(*it3)->first<<" ";
-            ost<<"\n\n";
+            ost<<"\n\n neurons: ";
             for(it = neurons.begin(); it != neurons.end(); ++it)
                 it->second.printDebugInfo(ost);
             ost<<"\n\n Cache:\n";
