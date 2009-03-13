@@ -31,7 +31,11 @@ namespace pann
             to(_to),
             direction(_direction),
             w(_w),
-            latency(_latency) { };
+            latency(_latency)
+        {
+            w->second.usageCount++;
+        };
+
         ~Link()
         {
             w->second.usageCount--;

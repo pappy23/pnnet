@@ -74,10 +74,10 @@ namespace pann
     {
         cache.touch();
 
-        if(!neurons.insert( pair<int, Neuron>(++lastNeuronId, Neuron(_activationFunction)) ).second)
+        if(!neurons.insert( pair<int, Neuron>(lastNeuronId, Neuron(_activationFunction)) ).second)
             throw Exception::ElementExists()<<"Net::addNeuron(): insertion of neuron "<<lastNeuronId<<" failed\n";
 
-        return lastNeuronId;
+        return lastNeuronId++;
     } //addNeuron
 
     int Net::addInputNeuron()
@@ -180,14 +180,14 @@ namespace pann
         NeuronIter from = findNeuron(_from);
         NeuronIter to = findNeuron(_to);
 
-        pair<WeightIter, bool> result = weights.insert( pair<int, Weight>(++lastWeightId, Weight(_weightValue)) );
+        pair<WeightIter, bool> result = weights.insert( pair<int, Weight>(lastWeightId++, Weight(_weightValue)) );
         if(!result.second)
             throw Exception::ElementExists()<<"Net::addWeight(): insertion of new weight failed\n";
 
-        result.first->second.usageCount = 2;
-
         from->second.links.push_back(Link(to, Link::out, result.first));
         to->second.links.push_back(Link(from, Link::in, result.first));
+
+        result.first->second.usageCount = 2;
     } //addConnection
 
     void Net::delConnection(int _from, int _to)
