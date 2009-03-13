@@ -102,17 +102,18 @@ namespace pann
 
         NeuronIter n = findNeuron(_neuronId);
 
-        BOOST_FOREACH( Link& link, n->second.links)
-            if(link.getDirection() == Link::in)
-            {
-                std::cout<<link.getTo()->first<<" "<<n->first<<std::endl;
-                delConnection(link.getTo()->first, n->first);
-            }
+        for(list<Link>::iterator link_iter = n->second.links.begin(); link_iter != n->second.links.end(); )
+        {
+            NeuronIter to = link_iter->getTo();
+            Link::Direction dir = link_iter->getDirection();
+
+            link_iter++;
+
+            if(dir == Link::in)
+                delConnection(to->first, n->first);
             else
-            {
-                std::cout<<n->first<<" "<<link.getTo()->first<<std::endl;
-                delConnection(n->first, link.getTo()->first);
-            }
+                delConnection(n->first, to->first);
+        }
 
         if( !neurons.erase(_neuronId) )
             throw Exception::ObjectNotFound()<<"Net::delNeuron(): can't delete neuron "<<_neuronId<<"\n";
@@ -209,11 +210,11 @@ namespace pann
         if(link_from->getWeight() != link_to->getWeight())
             throw Exception::Unbelievable()<<"Net::delConnection(): symmetric links don't share weight\n";
 
+        if(link_from->getWeight()->second.usageCount == 2)
+            weights.erase(link_from->getWeight()->first);
+
         from->second.links.erase(link_to);
         to->second.links.erase(link_from);
-
-        if(!link_from->getWeight()->second.usageCount)
-            weights.erase(link_from->getWeight()->first);
     } //delConnection
 
     std::vector<int> Net::getInputMap()

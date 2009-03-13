@@ -51,6 +51,7 @@ namespace pann
         {
             ost<<"  Link\n";
             ost<<"   direction: "<<direction<<std::endl;
+            ost<<"   latency: "<<latency<<std::endl;
             //ost<<"   to: "<<to->first<<std::endl; - Neuron - incomplete class
             w->second.printDebugInfo(ost);
         }
