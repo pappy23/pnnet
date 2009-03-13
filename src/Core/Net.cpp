@@ -180,14 +180,14 @@ namespace pann
         NeuronIter from = findNeuron(_from);
         NeuronIter to = findNeuron(_to);
 
-        if(!weights.insert( pair<int, Weight>(++lastWeightId, Weight(_weightValue)) ).second)
+        pair<WeightIter, bool> result = weights.insert( pair<int, Weight>(++lastWeightId, Weight(_weightValue)) );
+        if(!result.second)
             throw Exception::ElementExists()<<"Net::addWeight(): insertion of new weight failed\n";
 
-        WeightIter wi = weights.find(lastWeightId);
-        wi->second.usageCount = 2;
+        result.first->second.usageCount = 2;
 
-        from->second.links.push_back(Link(to, Link::out, wi));
-        to->second.links.push_back(Link(from, Link::in, wi));
+        from->second.links.push_back(Link(to, Link::out, result.first));
+        to->second.links.push_back(Link(from, Link::in, result.first));
     } //addConnection
 
     void Net::delConnection(int _from, int _to)
