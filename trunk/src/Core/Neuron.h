@@ -43,6 +43,7 @@ namespace pann
         {
             ost<<" Neuron\n";
             ost<<"  ownerThread: "<<ownerThread<<std::endl;
+            ost<<"  activationFunction: "<<activationFunction->getId()<<std::endl;
             std::list<Link>::iterator it = links.begin();
             for(; it != links.end(); ++it)
                 it->printDebugInfo(ost);
@@ -51,15 +52,32 @@ namespace pann
     private:
         friend class boost::serialization::access;
         template<class Archive>
-            void serialize(Archive & ar, const unsigned int version)
+            void save(Archive & ar, const unsigned int version) const
             {
                 ar & boost::serialization::base_object<Object>(*this);
-                //ar & activationFunction; FIXME: can't serialize
+                UINT af_id = activationFunction->getId();
+                ar & af_id;
                 ar & ownerThread;
                 ar & receptiveField;
                 ar & activationValue;
                 //ar & links; - Net responsibility
             };
+
+        template<class Archive>
+            void load(Archive & ar, const unsigned int version)
+            {
+                ar & boost::serialization::base_object<Object>(*this);
+                //ar & activationFunction; FIXME: can't serialize
+                UINT af_id;
+                ar & af_id;
+                activationFunction = ActivationFunction::getById(af_id);
+                ar & ownerThread;
+                ar & receptiveField;
+                ar & activationValue;
+                //ar & links; - Net responsibility
+            };
+
+        BOOST_SERIALIZATION_SPLIT_MEMBER()
     };
 
 }; //pann

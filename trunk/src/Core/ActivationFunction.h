@@ -8,6 +8,7 @@
 
 #include "Includes.h"
 #include "Type.h"
+#include "Exception.h"
 
 namespace pann
 {
@@ -34,19 +35,15 @@ namespace pann
             //Only one object of class Base exist at a time
             static Base* Instance();
 
+            virtual UINT getId() = 0;
+
             virtual Float f(Float) = 0;
             virtual Float derivative(Float) = 0;
-
-        private:
-            friend class boost::serialization::access;
-            template<class Archive>
-                void serialize(Archive & ar, const unsigned int version)
-                {
-                };
         };
 
         /**
          * Linear function
+         * id = 1
          * y = x
          * dy/dx = 0
          */
@@ -67,6 +64,8 @@ namespace pann
                 return self;
             };
 
+            virtual UINT getId() { return 1; };
+
             Float f(Float _x)
             {
                 return _x;
@@ -76,14 +75,13 @@ namespace pann
             {
                 return 0;
             } //derivative
-
-        private:
-            friend class boost::serialization::access;
-            template<class Archive>
-                void serialize(Archive & ar, const unsigned int version)
-                {
-                };
         };
+
+        /*
+         * ADD NEW FUNCTIONS TO getById()
+         */
+        Base* getById(const UINT id);
+
     }; //ActivationFunctions
 
 }; //pann

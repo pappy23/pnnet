@@ -167,14 +167,12 @@ namespace pann
                         ar & w;
                         ar & dir;
                         ar & latency;
-                        //std::cout<<"saving link: to "<<to<<"; w "<<w<<"; dir "<<dir<<"\n";
                     }
                 }
                 
                 UINT size;
                 size = inputNeurons.size();
                 ar & size;
-                //std::cout<<"Saving inputNeurons: size="<<size<<"\n";
                 BOOST_FOREACH( NeuronIter iter, inputNeurons )
                 {
                     UINT id = iter->first;
@@ -183,7 +181,6 @@ namespace pann
 
                 size = outputNeurons.size();
                 ar & size;
-                //std::cout<<"Saving outputNeurons: size="<<size<<"\n";
                 BOOST_FOREACH( NeuronIter iter, outputNeurons )
                 {
                     UINT id = iter->first;
@@ -194,21 +191,15 @@ namespace pann
         template<class Archive>
             void load(Archive & ar, const unsigned int version)
             {
-                //std::cout<<"load begins\n";
                 cache.touch();
-                //std::cout<<"cache ok\n";
 
                 ar & boost::serialization::base_object<Object>(*this);
-                //std::cout<<"Object ok\n";
                 ar & lastNeuronId;
                 ar & lastWeightId;
                 ar & threadCount;
-                //std::cout<<"Basic data ok\nlastNeuron="<<lastNeuronId<<"\nlastWeightId="<<lastWeightId<<"\nthreads="<<threadCount<<"\n";
                 //ar & cache; - don't load it
                 ar & neurons;
-                //std::cout<<"Neurons ok\nSize = "<<neurons.size();
                 ar & weights;
-                //std::cout<<"Weights ok\nSize = "<<weights.size();
                
                 //load links 'to' field for every neuron
                 for(NeuronIter iter = neurons.begin(); iter != neurons.end(); ++iter)
@@ -222,7 +213,6 @@ namespace pann
                         ar & w;
                         ar & dir;
                         ar & latency;
-                        //std::cout<<"loading link: to "<<to<<"; w "<<w<<"; dir "<<dir<<"\n";
                         NeuronIter to_it = neurons.find(to);
                         WeightIter  w_it = weights.find(w);
                         if(to_it == neurons.end() || w_it == weights.end())
@@ -234,7 +224,6 @@ namespace pann
 
                 UINT size;
                 ar & size; 
-                //std::cout<<"Loading inputNeurons: size="<<size<<"\n";
                 for(UINT i = 0; i < size; i++)
                 {
                     UINT id; ar & id;
