@@ -46,8 +46,8 @@ namespace pann
 
         return result;
     } //findLink
-
-    void Neuron::connect(NeuronIter _to, Link::Direction _direction, Weight* _weight)
+/*
+    void Neuron::connect(NeuronIter _to, Link::Direction _direction, WeightIter _weight)
     {
         //FIXME Parallel links ARE allowed
         links.push_back( Link(_to, _direction, _weight) );
@@ -57,7 +57,7 @@ namespace pann
     {
         links.erase( findLink(_to, _direction) );
     } //disconnect
-
+*/
     void Neuron::setOwnerThread(int _thread)
     {
         if(0 > _thread || _thread > 100)

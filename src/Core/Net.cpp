@@ -9,7 +9,8 @@ namespace pann
     Net::Net()
     {
         lastNeuronId = 0;
-        threadCount = 1;
+        lastWeightId = 0;
+        setThreadCount(0);
     } //Net
 
     Net::Net(int _threads)
@@ -62,6 +63,7 @@ namespace pann
 
         vector<NeuronIter>::iterator it = unique(_raw.begin(), _raw.end());
         _raw.resize( it - _raw.begin() );
+        threadCount = 1;
 
         for(UINT i = 0; i < _raw.size(); ++i)
             tasks[_raw[i]->second.getOwnerThread() % threadCount].push_back(_raw[i]);
@@ -100,17 +102,11 @@ namespace pann
 
         NeuronIter n = findNeuron(_neuronId);
 
-        //first, delete all links TO neuron
         BOOST_FOREACH( Link& link, n->second.links)
-        {
-            Link::Direction opposite_direction;
             if(link.getDirection() == Link::in)
-                opposite_direction = Link::out;
+                delConnection(link.getTo()->first, n->first);
             else
-                opposite_direction = Link::in;
-
-            link.getTo()->second.disconnect(n, opposite_direction);
-        }
+                delConnection(n->first, link.getTo()->first);
 
         if( !neurons.erase(_neuronId) )
             throw Exception::ObjectNotFound()<<"Net::delNeuron(): can't delete neuron "<<_neuronId<<"\n";
@@ -184,21 +180,34 @@ namespace pann
         NeuronIter from = findNeuron(_from);
         NeuronIter to = findNeuron(_to);
 
-        Weight* w = new Weight(_weightValue);
+        if(!weights.insert( pair<int, Weight>(++lastWeightId, Weight(_weightValue)) ).second)
+            throw Exception::ElementExists()<<"Net::addWeight(): insertion of new weight failed\n";
 
-        from->second.connect(to, Link::out, w);
-        to->second.connect(from, Link::in, w);
+        WeightIter wi = weights.find(lastWeightId);
+        wi->second.usageCount = 2;
+
+        from->second.links.push_back(Link(to, Link::out, wi));
+        to->second.links.push_back(Link(from, Link::in, wi));
     } //addConnection
 
     void Net::delConnection(int _from, int _to)
     {
         cache.touch();
-
+        
         NeuronIter from = findNeuron(_from);
         NeuronIter to   = findNeuron(_to);
 
-        from->second.disconnect(to, Link::out);
-        to->second.disconnect(from, Link::in);
+        list<Link>::iterator link_from = from->second.findLink(to, Link::out);
+        list<Link>::iterator link_to = to->second.findLink(from, Link::in);
+
+        if(link_from->getWeight() != link_to->getWeight())
+            throw Exception::Unbelievable()<<"Net::delConnection(): symmetric links don't share weight\n";
+
+        from->second.links.erase(link_to);
+        to->second.links.erase(link_from);
+
+        if(!link_from->getWeight()->second.usageCount)
+            weights.erase(link_from->getWeight()->first);
     } //delConnection
 
     std::vector<int> Net::getInputMap()

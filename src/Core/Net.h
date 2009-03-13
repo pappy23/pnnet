@@ -60,7 +60,9 @@ namespace pann
     private:
         int threadCount;
         int lastNeuronId; //var to add new neurons
+        int lastWeightId; //var to add new weights
         std::map<int, Neuron> neurons;
+        std::map<int, Weight> weights;
         std::list<NeuronIter> inputNeurons;  //Iterators to map<> neurons
         std::list<NeuronIter> outputNeurons; //Iterators to map<> neurons
         NetCache cache;
@@ -111,6 +113,7 @@ namespace pann
             ost<<"Net\n";
             ost<<" threadsCount: "<<threadCount<<std::endl;
             ost<<" lastNeuronId: "<<lastNeuronId<<std::endl;
+            ost<<" lastWeightId: "<<lastWeightId<<std::endl;
             ost<<" neurons: ";
             NeuronIter it = neurons.begin();
             for(; it != neurons.end(); ++it)
@@ -135,24 +138,42 @@ namespace pann
         template<class Archive>
             void save(Archive & ar, const unsigned int version) const
             {
+                std::cout<<"Weights usage counts:\n";
+                for(int i = 0; i < weights.size(); i++)
+                    std::cout<<(const_cast<std::map<int, Weight>&>(weights))[i].usageCount;
+
                 ar & boost::serialization::base_object<Object>(*this);
                 ar & lastNeuronId;
+                ar & lastWeightId;
                 ar & threadCount;
                 //ar & cache; - dont's save it
                 ar & neurons;
+                ar & weights;
 
                 //save links 'to' field for every neuron
                 for(std::map<int, Neuron>::const_iterator iter = neurons.begin(); iter != neurons.end(); ++iter)
+                {
+                    UINT size = iter->second.links.size();
+                    ar & size;
                     BOOST_FOREACH( const Link& l, iter->second.links )
                     {
                         Link& link = const_cast<Link&>(l);
-                        UINT id = link.getTo()->first;
-                        ar & id; //save ID of remote neuron
+                        UINT to = link.getTo()->first;
+                        UINT w  = link.getWeight()->first;
+                        UINT dir= (UINT)link.getDirection();
+                        UINT latency = (UINT)link.getLatency();
+                        ar & to;
+                        ar & w;
+                        ar & dir;
+                        ar & latency;
+                        //std::cout<<"saving link: to "<<to<<"; w "<<w<<"; dir "<<dir<<"\n";
                     }
-
+                }
+                
                 UINT size;
                 size = inputNeurons.size();
                 ar & size;
+                //std::cout<<"Saving inputNeurons: size="<<size<<"\n";
                 BOOST_FOREACH( NeuronIter iter, inputNeurons )
                 {
                     UINT id = iter->first;
@@ -161,6 +182,7 @@ namespace pann
 
                 size = outputNeurons.size();
                 ar & size;
+                //std::cout<<"Saving outputNeurons: size="<<size<<"\n";
                 BOOST_FOREACH( NeuronIter iter, outputNeurons )
                 {
                     UINT id = iter->first;
@@ -171,27 +193,51 @@ namespace pann
         template<class Archive>
             void load(Archive & ar, const unsigned int version)
             {
+                std::cout<<"Weights usage counts:\n";
+                for(int i = 0; i < weights.size(); i++)
+                    std::cout<<weights[i].usageCount;
+
+                //std::cout<<"load begins\n";
                 cache.touch();
+                //std::cout<<"cache ok\n";
 
                 ar & boost::serialization::base_object<Object>(*this);
+                //std::cout<<"Object ok\n";
                 ar & lastNeuronId;
+                ar & lastWeightId;
                 ar & threadCount;
+                //std::cout<<"Basic data ok\nlastNeuron="<<lastNeuronId<<"\nlastWeightId="<<lastWeightId<<"\nthreads="<<threadCount<<"\n";
                 //ar & cache; - don't load it
                 ar & neurons;
+                //std::cout<<"Neurons ok\nSize = "<<neurons.size();
+                ar & weights;
+                //std::cout<<"Weights ok\nSize = "<<weights.size();
                
                 //load links 'to' field for every neuron
                 for(NeuronIter iter = neurons.begin(); iter != neurons.end(); ++iter)
-                    BOOST_FOREACH( Link& l, iter->second.links )
+                {
+                    UINT size;
+                    ar & size;
+                    for(int i = 0; i < size; i++)
                     {
-                        UINT id;
-                        ar & id;
-                        l.to = neurons.find(id);
-                        if(l.to == neurons.end())
-                            throw Exception::FilesystemError()<<"Net::load(): can't load Net object. Archive possibly damaged\n";
-                    }
+                        UINT to, w, dir, latency;
+                        ar & to;
+                        ar & w;
+                        ar & dir;
+                        ar & latency;
+                        //std::cout<<"loading link: to "<<to<<"; w "<<w<<"; dir "<<dir<<"\n";
+                        NeuronIter to_it = neurons.find(to);
+                        WeightIter  w_it = weights.find(w);
+                        if(to_it == neurons.end() || w_it == weights.end())
+                            throw Exception::FilesystemError()<<"Net::load(): can't load Net object. "
+                                                                              "Archive possibly damaged\n";
+                        iter->second.links.push_back(Link(to_it, (Link::Direction)dir, w_it, latency));
+                   }
+                }
 
                 UINT size;
                 ar & size; 
+                //std::cout<<"Loading inputNeurons: size="<<size<<"\n";
                 for(UINT i = 0; i < size; i++)
                 {
                     UINT id; ar & id;
@@ -210,6 +256,10 @@ namespace pann
                     if(iter == neurons.end())
                         throw Exception::FilesystemError()<<"Net::load(): can't load Net object. Archive possibly damaged\n";
                 }
+                std::cout<<"Weights usage counts:\n";
+                for(int i = 0; i < weights.size(); i++)
+                    std::cout<<weights[i].usageCount;
+
             };
 
         BOOST_SERIALIZATION_SPLIT_MEMBER()
