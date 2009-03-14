@@ -33,18 +33,16 @@ namespace pann
             w(_w),
             latency(_latency)
         {
-            w->second.usageCount++;
         };
 
         ~Link()
         {
-            w->second.usageCount--;
         };
 
-        NeuronIter getTo()       { return to; };
-        Direction getDirection() { return direction; };
-        UINT getLatency()        { return latency; };
-        WeightIter getWeight()   { return w; };
+        NeuronIter getToIter()     { return to; };
+        Direction getDirection()   { return direction; };
+        UINT getLatency()          { return latency; };
+        WeightIter getWeightIter() { return w; };
     
     public:
         virtual void printDebugInfo(std::ostringstream& ost)

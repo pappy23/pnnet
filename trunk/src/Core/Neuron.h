@@ -48,7 +48,7 @@ namespace pann
             for(; it != links.end(); ++it)
             {
                 it->printDebugInfo(ost);
-                ost<<"    to: "<<it->getTo()->first<<std::endl;
+                ost<<"    to: "<<it->getToIter()->first<<std::endl;
             }
         };
 

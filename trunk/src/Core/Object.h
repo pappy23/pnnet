@@ -15,9 +15,15 @@ namespace pann
     //! Base class for almoust everything
     class Object
     {
+    protected:
+        mutable std::map<std::string, boost::any> attributes; //!< left -  name, right - parametr
+        UINT id;
+
     public:
-        Object();
+        Object(UINT _id = 0);
         virtual ~Object();
+        
+        virtual UINT getId();
 
         //! Does attribute exist?
         //! @param _attributeName - checking attribute name
@@ -35,10 +41,8 @@ namespace pann
         //! Delete all attributes
         void erase();
 
+    public:
         virtual void printDebugInfo(std::ostringstream& ost) = 0;
-
-    protected:
-        mutable std::map<std::string, boost::any> attributes; //!< left -  name, right - parametr
 
     private:
         friend class boost::serialization::access;

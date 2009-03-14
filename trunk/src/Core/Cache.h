@@ -30,8 +30,6 @@ namespace pann
         inline void touch() { coherent = false; };
         inline void fixed() { coherent = true;  };
         inline bool isOk() { return coherent; };
-        inline bool isUp2Date() { return isOk(); };
-        inline bool isCoherent() { return isOk(); };
 
         virtual void printDebugInfo(std::ostringstream& ost) = 0;
     };
