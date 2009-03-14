@@ -32,7 +32,7 @@ namespace pann
         result = links.end();                                   
         for(; iter != links.end(); ++iter)                                           
         {                                                                            
-            if(iter->getTo() == _to && iter->getDirection() == _direction)                     
+            if(iter->getToIter() == _to && iter->getDirection() == _direction)                     
             {                                                                        
                 if( result != links.end() ) //Multiple parallel links exist          
                     throw Exception::MultipleOccurance()<<"findLink(): detected parallel links\n";

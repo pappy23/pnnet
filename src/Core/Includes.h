@@ -31,4 +31,5 @@
 #include <boost/serialization/vector.hpp>
 //#include <boost/serialization/shared_ptr.hpp>
 #include <boost/serialization/version.hpp>
+#include <boost/progress.hpp>
 

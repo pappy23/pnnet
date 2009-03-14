@@ -71,6 +71,7 @@ namespace pann
         NeuronIter findNeuron(int _neuronId);
         void formatFront(std::vector<NeuronIter>& _raw);
 
+        //TODO: get _task not by copying but by pointer or boost::ref
         static void threadBase(Runner* _runner, std::vector<NeuronIter> _task)
         {
             for(UINT i = 0; i < _task.size(); i++)
@@ -158,8 +159,8 @@ namespace pann
                     BOOST_FOREACH( const Link& l, iter->second.links )
                     {
                         Link& link = const_cast<Link&>(l);
-                        UINT to = link.getTo()->first;
-                        UINT w  = link.getWeight()->first;
+                        UINT to = link.getToIter()->first;
+                        UINT w  = link.getWeightIter()->first;
                         UINT dir= (UINT)link.getDirection();
                         UINT latency = (UINT)link.getLatency();
                         ar & to;

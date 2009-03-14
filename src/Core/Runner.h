@@ -35,7 +35,7 @@ namespace pann
         };
 
         virtual void run(NeuronIter) = 0;
-        virtual RunDirection direction() = 0;
+        virtual RunDirection getDirection() = 0;
     };
 
     class NullRunner : public Runner
@@ -60,7 +60,7 @@ namespace pann
             std::cout<<_neuron->first<<" "<<std::endl;
         };
 
-        virtual RunDirection direction()
+        virtual RunDirection getDirection()
         {
             return ForwardRun;
         };
@@ -87,7 +87,7 @@ namespace pann
         {
             BOOST_FOREACH( Link& link, _neuron->second.links )
                 _neuron->second.receptiveField += 
-                    ( link.getTo()->second.activationValue * link.getWeight()->second.value );
+                    ( link.getToIter()->second.activationValue * link.getWeightIter()->second.value );
 
             _neuron->second.activationValue = _neuron->second.getActivationFunction()->f(_neuron->second.receptiveField);
             _neuron->second.receptiveField = 0;
@@ -96,7 +96,7 @@ namespace pann
             //std::cout<<_neuron->first<<": "<<_neuron->second.getActivationValue()<<std::endl;
         };
 
-        virtual RunDirection direction()
+        virtual RunDirection getDirection()
         {
             return ForwardRun;
         };

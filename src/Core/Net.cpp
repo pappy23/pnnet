@@ -38,7 +38,7 @@ namespace pann
             return;
         }
 
-        if(_threads < 1 || _threads > 5)
+        if(_threads < 1 || _threads > 64)
             throw Exception::RangeMismatch()<<"Net::run(): currently only up to 5 concurrent threads supported\n";
 
         threadCount = _threads;
@@ -63,7 +63,6 @@ namespace pann
 
         vector<NeuronIter>::iterator it = unique(_raw.begin(), _raw.end());
         _raw.resize( it - _raw.begin() );
-        threadCount = 1;
 
         for(UINT i = 0; i < _raw.size(); ++i)
             tasks[_raw[i]->second.getOwnerThread() % threadCount].push_back(_raw[i]);
@@ -102,11 +101,15 @@ namespace pann
 
         NeuronIter n = findNeuron(_neuronId);
 
+        //Delete all connections to/from current neuron
         for(list<Link>::iterator link_iter = n->second.links.begin(); link_iter != n->second.links.end(); )
         {
-            NeuronIter to = link_iter->getTo();
+            //We will delete link, so we can't use link_iter to get access to Link object
+            //Copy Link attributes into local variables
+            NeuronIter to = link_iter->getToIter();
             Link::Direction dir = link_iter->getDirection();
-
+            
+            //Go to next Link (see for loop - it is without ++ statement)
             link_iter++;
 
             if(dir == Link::in)
@@ -115,6 +118,7 @@ namespace pann
                 delConnection(n->first, to->first);
         }
 
+        //Actually delete Neuron object
         if( !neurons.erase(_neuronId) )
             throw Exception::ObjectNotFound()<<"Net::delNeuron(): can't delete neuron "<<_neuronId<<"\n";
     } //delNeuron
@@ -191,8 +195,8 @@ namespace pann
         if(!result.second)
             throw Exception::ElementExists()<<"Net::addWeight(): insertion of new weight failed\n";
 
-        from->second.links.push_back(Link(to, Link::out, result.first));
-        to->second.links.push_back(Link(from, Link::in, result.first));
+        from->second.links.push_back( Link(to, Link::out, result.first) );
+        to->second.links.push_back( Link(from, Link::in, result.first) );
 
         result.first->second.usageCount = 2;
     } //addConnection
@@ -201,20 +205,36 @@ namespace pann
     {
         cache.touch();
         
-        NeuronIter from = findNeuron(_from);
-        NeuronIter to   = findNeuron(_to);
+        NeuronIter from_niter = findNeuron(_from);
+        NeuronIter to_niter   = findNeuron(_to);
 
-        list<Link>::iterator link_from = from->second.findLink(to, Link::out);
-        list<Link>::iterator link_to = to->second.findLink(from, Link::in);
+        /* Short introduction:
+         * Neuron_from               Neuron_to
+         *  Link                      Link
+         *    to =>Neuron2              to =>Neuron1
+         *    w  =>weight1              w  =>weight1
+         *    dir=>out                  dir=>in
+         */
 
-        if(link_from->getWeight() != link_to->getWeight())
+        //Find correspondent Links in neurons
+        list<Link>::iterator from_liter = from_niter->second.findLink(to_niter, Link::out);
+        list<Link>::iterator to_liter = to_niter->second.findLink(from_niter, Link::in);
+
+        //weight1 (see picture) must be common for both Link objects
+        if(from_liter->getWeightIter() != to_liter->getWeightIter())
             throw Exception::Unbelievable()<<"Net::delConnection(): symmetric links don't share weight\n";
 
-        if(link_from->getWeight()->second.usageCount == 2)
-            weights.erase(link_from->getWeight()->first);
+        //We will delete Link objects and iterators to common weight will be lost
+        WeightIter w_iter = from_liter->getWeightIter();
 
-        from->second.links.erase(link_to);
-        to->second.links.erase(link_from);
+        //Actually delete Link objects from Neuron_to and Neuron_from
+        from_niter->second.links.erase(from_liter);
+        to_niter->second.links.erase(to_liter);
+
+        //Delete weight object if it no more used
+        if( (w_iter->second.usageCount -= 2) == 0) 
+            weights.erase(w_iter->first);
+
     } //delConnection
 
     std::vector<int> Net::getInputMap()
@@ -286,7 +306,7 @@ namespace pann
             cache.flush();
 
             //Put inputNeurons to front
-            if( _runner->direction() == ForwardRun)
+            if( _runner->getDirection() == ForwardRun)
             {
                 BOOST_FOREACH( NeuronIter iter, inputNeurons )
                 {
@@ -294,6 +314,7 @@ namespace pann
                     hops[iter] = 1;
                 }
             } else {
+                //FIXME Backward run is impossible. Cache is built for forward run only
                 BOOST_FOREACH( NeuronIter iter, outputNeurons )
                 {
                     rawFront.push_back(iter);
@@ -376,13 +397,13 @@ namespace pann
                          */
 
                         //Assume that when cache becomes coherent, all neuron[hops] vars become zero
-                        if(hops[link.getTo()] == 0)
-                            hops[link.getTo()] = hops[currentNeuronIter] + link.getLatency();
+                        if(hops[link.getToIter()] == 0)
+                            hops[link.getToIter()] = hops[currentNeuronIter] + link.getLatency();
 
-                        if(hops[link.getTo()] == hops[currentNeuronIter] + 1)
-                            rawFront.push_back(link.getTo()); 
+                        if(hops[link.getToIter()] == hops[currentNeuronIter] + 1)
+                            rawFront.push_back(link.getToIter()); 
 
-                        if(hops[link.getTo()] == hops[currentNeuronIter])
+                        if(hops[link.getToIter()] == hops[currentNeuronIter])
                             throw Exception::Unbelievable()<<"Net::run(): cur_neuron.hops == to.hops. "
                                                                 "There is no support for such topologies yet\n";
                     } //BOOST_FOREACH( Link )

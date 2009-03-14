@@ -11,14 +11,21 @@ using boost::any;
 
 namespace pann
 {             
-    Object::Object()
+    Object::Object(UINT _id)
     {                              
+        id = _id;
     } //Object                      
 
     /*virtual*/
     Object::~Object()
     {                
     } //~Object      
+
+    UINT
+    Object::getId()
+    {
+        return id;
+    }
 
     bool
     Object::is(const string& _attributeName) const
