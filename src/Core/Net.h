@@ -111,6 +111,7 @@ namespace pann
     public:
         void printDebugInfo(std::ostringstream& ost)
         {
+            /*
             ost<<"Net\n";
             ost<<" threadsCount: "<<threadCount<<std::endl;
             ost<<" lastNeuronId: "<<lastNeuronId<<std::endl;
@@ -134,6 +135,7 @@ namespace pann
             ost<<"\n\n neurons: ";
             for(it = neurons.begin(); it != neurons.end(); ++it)
                 it->second.printDebugInfo(ost);
+            */
             ost<<"\n\n Cache:\n";
             cache.printDebugInfo(ost);
         };
@@ -143,13 +145,17 @@ namespace pann
         template<class Archive>
             void save(Archive & ar, const unsigned int version) const
             {
+                boost::progress_display show_progress( 10 + 2*neurons.size() + 20 );
+
                 ar & boost::serialization::base_object<Object>(*this);
                 ar & lastNeuronId;
                 ar & lastWeightId;
                 ar & threadCount;
                 //ar & cache; - dont's save it
+                show_progress += 10;
                 ar & neurons;
                 ar & weights;
+                show_progress += neurons.size();
 
                 //save links 'to' field for every neuron
                 for(std::map<int, Neuron>::const_iterator iter = neurons.begin(); iter != neurons.end(); ++iter)
@@ -168,6 +174,8 @@ namespace pann
                         ar & dir;
                         ar & latency;
                     }
+
+                    show_progress += 1;
                 }
                 
                 UINT size;
@@ -178,6 +186,7 @@ namespace pann
                     UINT id = iter->first;
                     ar & id;
                 }
+                show_progress += 10;
 
                 size = outputNeurons.size();
                 ar & size;
@@ -186,6 +195,7 @@ namespace pann
                     UINT id = iter->first;
                     ar & id;
                 }
+                show_progress += 10;
             };
 
         template<class Archive>
@@ -193,12 +203,17 @@ namespace pann
             {
                 cache.touch();
 
+
                 ar & boost::serialization::base_object<Object>(*this);
                 ar & lastNeuronId;
                 ar & lastWeightId;
                 ar & threadCount;
                 //ar & cache; - don't load it
                 ar & neurons;
+
+                boost::progress_display show_progress( 10 + 2*neurons.size() + 20 );
+                show_progress += ( 10 + neurons.size() );
+                
                 ar & weights;
                
                 //load links 'to' field for every neuron
@@ -220,6 +235,8 @@ namespace pann
                                                                               "Archive possibly damaged\n";
                         iter->second.links.push_back(Link(to_it, (Link::Direction)dir, w_it, latency));
                    }
+
+                    show_progress += 1;
                 }
 
                 UINT size;
@@ -232,6 +249,7 @@ namespace pann
                     if(iter == neurons.end())
                         throw Exception::FilesystemError()<<"Net::load(): can't load Net object. Archive possibly damaged\n";
                 }
+                show_progress += 10;
 
                 ar & size; 
                 for(UINT i = 0; i < size; i++)
@@ -242,6 +260,7 @@ namespace pann
                     if(iter == neurons.end())
                         throw Exception::FilesystemError()<<"Net::load(): can't load Net object. Archive possibly damaged\n";
                 }
+                show_progress += 10;
             };
 
         BOOST_SERIALIZATION_SPLIT_MEMBER()
