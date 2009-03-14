@@ -20,8 +20,10 @@ namespace pann
             if(ofs.fail())
                 throw Exception::FilesystemError()<<"Storage::save(): failed to open file "<<filename<<" for writing\n"; 
 
+            std::cout<<"Saving net to "<<filename<<"..."<<std::endl;
             boost::archive::text_oarchive oa(ofs);
             oa << obj;
+            std::cout<<"\n\n";
 
             ofs.close();
         };
@@ -32,8 +34,10 @@ namespace pann
             if(ifs.fail())
                 throw Exception::FilesystemError()<<"Storage::load(): failed to open file "<<filename<<" for reading\n"; 
             
+            std::cout<<"Loading net from "<<filename<<"..."<<std::endl;
             boost::archive::text_iarchive ia(ifs);
             ia >> obj;
+            std::cout<<"\n\n";
 
             ifs.close();
         };

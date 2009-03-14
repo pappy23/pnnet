@@ -70,7 +70,7 @@ namespace pann
             void load(Archive & ar, const unsigned int version)
             {
                 ar & boost::serialization::base_object<Object>(*this);
-                //ar & activationFunction; FIXME: can't serialize
+                //ar & activationFunction - Net responsibility
                 UINT af_id;
                 ar & af_id;
                 activationFunction = ActivationFunction::getById(af_id);

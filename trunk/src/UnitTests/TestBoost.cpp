@@ -1,47 +1,42 @@
 #include <iostream>
-#include <fstream>
-#include <boost/archive/text_iarchive.hpp>
-#include <boost/archive/text_oarchive.hpp>
+#include <vector>
+#include <algorithm>
 
 using namespace std;
-using namespace boost;
+//using namespace boost;
 
 class A
 {
-    private:
-        friend class boost::serialization::access;
+public:
+    int a;
+};
 
-        template<class Archive>
-        void serialize(Archive & ar, const unsigned int version)
-        {
-        ar & a;
-        }
-
-    public:
-        int a;
+class comp
+{
+public:
+    bool operator()(const A& _lhs, const A& _rhs)
+    {
+        return _lhs.a == _rhs.a;
+    }
 };
 
 int main()
 {
-    A obj;
-    obj.a = 5;
-
+    vector<A> v;
+    for(int i = 0; i < 10; i++)
     {
-        ofstream ofs("serialization_test.txt");
-        boost::archive::text_oarchive oa(ofs);
-        oa<<obj;
+        v.push_back(A());
+        v[i*2].a = i;
+        v.push_back(A());
+        v[i*2+1].a = i;
     }
 
+    cout<<v.size()<<endl;
 
-    A obj2;
+    vector<A>::iterator it = unique(v.begin(), v.end(), comp());
+    v.resize( it - v.begin() );
 
-    {
-        ifstream ifs("serialization_test.txt");
-        boost::archive::text_iarchive ia(ifs);
-        ia >> obj2;
-    }
-
-    cout<<"Result: "<<obj2.a<<endl;
+    cout<<v.size()<<endl;
 
     return 0;
 }

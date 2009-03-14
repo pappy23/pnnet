@@ -8,14 +8,13 @@ namespace pann
 {
     Net::Net()
     {
-        lastNeuronId = 0;
-        lastWeightId = 0;
-        setThreadCount(0);
+        Net::Net(0);
     } //Net
 
     Net::Net(int _threads)
     {
-        Net::Net();
+        lastNeuronId = 0;
+        lastWeightId = 0;
         setThreadCount(_threads);
     } //Net
 
@@ -61,7 +60,8 @@ namespace pann
         for(int i = 0; i < threadCount; i++)
             tasks.push_back( vector<NeuronIter>() );
 
-        vector<NeuronIter>::iterator it = unique(_raw.begin(), _raw.end());
+        sort(_raw.begin(), _raw.end(), NeuronIterCompare());
+        vector<NeuronIter>::iterator it = unique(_raw.begin(), _raw.end(), NeuronIterCompare::equal);
         _raw.resize( it - _raw.begin() );
 
         for(UINT i = 0; i < _raw.size(); ++i)
@@ -73,7 +73,9 @@ namespace pann
     {
         cache.touch();
 
-        if(!neurons.insert( pair<int, Neuron>(lastNeuronId, Neuron(_activationFunction)) ).second)
+        pair<NeuronIter, bool> result = neurons.insert( pair<int, Neuron>(lastNeuronId, Neuron(_activationFunction)) );
+
+        if(!result.second)
             throw Exception::ElementExists()<<"Net::addNeuron(): insertion of neuron "<<lastNeuronId<<" failed\n";
 
         return lastNeuronId++;
@@ -269,7 +271,7 @@ namespace pann
 
         int i = 0;
         BOOST_FOREACH( NeuronIter iter, inputNeurons)
-            iter->second.receptiveField = _input[i++];
+            iter->second.receptiveField += _input[i++];
     } //setInput
 
     vector<Float> Net::getOutput()
@@ -342,7 +344,7 @@ namespace pann
          */
 
         int layer = 0;
-        while(rawFront.size() > 0)
+        do
         {
             //At first iteration front points to first 'layer', derived from rawFront
             NetCache::FrontType& front = cache.data[layer++];
@@ -408,7 +410,7 @@ namespace pann
                                                                 "There is no support for such topologies yet\n";
                     } //BOOST_FOREACH( Link )
 
-                } //rawFormat iteration
+                } //rawFront iteration ( Neuron )
 
                 //new rawFront formed
                 formatFront(rawFront);
@@ -417,8 +419,8 @@ namespace pann
 
             //wait for threads to finish
             threadPool.join_all();
-
-        } //while
+ 
+        } while( (!cache.isOk() && rawFront.size() > 0) || (cache.isOk() && layer < cache.data.size() - 1) );
 
         //We rebuilded cache
         if(!cache.isOk())
