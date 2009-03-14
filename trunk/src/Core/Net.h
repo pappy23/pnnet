@@ -72,10 +72,10 @@ namespace pann
         void formatFront(std::vector<NeuronIter>& _raw);
 
         //TODO: get _task not by copying but by pointer or boost::ref
-        static void threadBase(Runner* _runner, std::vector<NeuronIter> _task)
+        static void threadBase(Runner* _runner, std::vector<NeuronIter> *_task)
         {
-            for(UINT i = 0; i < _task.size(); i++)
-                _runner->run(_task[i]);
+            for(UINT i = 0; i < _task->size(); i++)
+                _runner->run((*_task)[i]);
         };
 
     public:

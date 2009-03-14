@@ -19,10 +19,10 @@ int main()
 
     {
         //MLP simulation
-        const int layers_count = 7;
-        const int neurons_count = 1000;
-        const int runs_count = 10;
-        const int thread_count = 4;
+        const int layers_count = 4;
+        const int neurons_count = 2000;
+        const int runs_count = 100;
+        const int thread_count = 1;
 
         Net net(thread_count);
 

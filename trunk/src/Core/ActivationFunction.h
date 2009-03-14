@@ -77,6 +77,42 @@ namespace pann
             } //derivative
         };
 
+        /**
+         * Hyperbolic tangent function
+         * id = 2
+         * y = tanh(x)
+         * dy/dx = 1
+         */
+        class TanH : public Base
+        {
+		private:
+			TanH() {};
+
+        public:
+			~TanH() {};
+
+        public:
+            static Base* Instance()
+            {
+                if(!self)
+                    self = new TanH();
+
+                return self;
+            };
+
+            virtual UINT getId() { return 2; };
+
+            Float f(Float _x)
+            {
+                return _x;
+            } //f
+
+            Float derivative(Float)
+            {
+                return 0;
+            } //derivative
+        };
+
         /*
          * ADD NEW FUNCTIONS TO getById()
          */

@@ -18,6 +18,9 @@ namespace pann
             case 1:
                 return Linear::Instance();
                 break;
+            case 2:
+                return TanH::Instance();
+                break;
             default:
                 throw Exception::ObjectNotFound()<<"ActivationFunction::getById(): unknown function id: "<<id<<"\n";
             };
