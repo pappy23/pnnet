@@ -354,8 +354,7 @@ namespace pann
             //front is ready, lets start our pretty threads =)
             for(int i = 0; i < threadCount; i++)
                 if(front[i].size() > 0)
-                    threadPool.add_thread( new boost::thread(this->threadBase, _runner, front[i]) );
-           //FIXME: put parameters by boost::ref rather then by copying
+                    threadPool.add_thread( new boost::thread(Net::threadBase, _runner, &(front[i])) );
 
             if( !cache.isOk() )
             {
