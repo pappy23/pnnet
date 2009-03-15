@@ -7,6 +7,7 @@
 #define CACHE_H
 
 #include "Includes.h"
+#include "Type.h"
 #include "Object.h"
 
 namespace pann
@@ -32,6 +33,46 @@ namespace pann
         inline bool isOk() { return coherent; };
 
         virtual void printDebugInfo(std::ostringstream& ost) = 0;
+    };
+
+    class NetCache : public Cache
+    {
+    public:
+        typedef std::vector<NeuronIter> ThreadTaskType;
+        typedef std::vector<ThreadTaskType> FrontType;
+
+        std::vector<FrontType> data;
+
+        virtual void flush()
+        {
+            data.clear();
+            touch();
+        }
+
+    public:
+        virtual void printDebugInfo(std::ostringstream& ost)
+        {
+            for(unsigned layers = 0; layers < data.size(); ++layers)
+            {
+                ost<<"Layer #"<<layers<<std::endl;
+                for(unsigned threads = 0; threads < data[layers].size(); ++threads)
+                {
+                    ost<<"  Thread "<<threads<<": ";
+                    for(unsigned n = 0; n < data[layers][threads].size(); ++n)
+                        ost<<data[layers][threads][n]->first<<" ";
+                    ost<<std::endl;
+                }
+                ost<<std::endl;
+            }
+        }
+
+    private:
+        friend class boost::serialization::access;
+        template<class Archive>
+            void serialize(Archive & ar, const unsigned int version)
+            {
+                ar & data;
+            };
     };
 
 }; //pann

@@ -9,9 +9,12 @@ namespace pann
 {
     namespace ActivationFunction
     {
-        Base* Base::self = 0;
+        Base* Linear::self = 0;
+        Base* Threshold::self = 0;
+        Base* TanH::self = 0;
 
-        Base* getById(const UINT id)
+        Base*
+        getById(const unsigned id)
         {
             switch(id)
             {
@@ -19,6 +22,9 @@ namespace pann
                 return Linear::Instance();
                 break;
             case 2:
+                return Threshold::Instance();
+                break;
+            case 3:
                 return TanH::Instance();
                 break;
             default:

@@ -11,7 +11,7 @@ using boost::any;
 
 namespace pann
 {             
-    Object::Object(UINT _id)
+    Object::Object(unsigned _id)
     {                              
         id = _id;
     } //Object                      
@@ -21,7 +21,7 @@ namespace pann
     {                
     } //~Object      
 
-    UINT
+    unsigned
     Object::getId()
     {
         return id;

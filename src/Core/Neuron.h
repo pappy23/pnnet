@@ -25,17 +25,14 @@ namespace pann
         Neuron();
         Neuron(ActivationFunction::Base*);
         ~Neuron();
-/*
-        void connect(NeuronIter _to, Link::Direction _direction, WeightIter _weight);
-        void disconnect(NeuronIter _to, Link::Direction _direction);
-*/
+
         void setOwnerThread(int _thread);
         int getOwnerThread();
 
         ActivationFunction::Base* getActivationFunction();
 
 /*    private: */
-        //Helper. Finds and returns iterator to list<> links for Neuron& _to
+        //Helper. Finds and returns iterator to list<> links for NeuronIter _to
         std::list<Link>::iterator findLink(NeuronIter _to, Link::Direction _direction);
 
     public:
@@ -58,7 +55,7 @@ namespace pann
             void save(Archive & ar, const unsigned int version) const
             {
                 ar & boost::serialization::base_object<Object>(*this);
-                UINT af_id = activationFunction->getId();
+                unsigned af_id = activationFunction->getId();
                 ar & af_id;
                 ar & ownerThread;
                 ar & receptiveField;
@@ -70,8 +67,7 @@ namespace pann
             void load(Archive & ar, const unsigned int version)
             {
                 ar & boost::serialization::base_object<Object>(*this);
-                //ar & activationFunction - Net responsibility
-                UINT af_id;
+                unsigned af_id;
                 ar & af_id;
                 activationFunction = ActivationFunction::getById(af_id);
                 ar & ownerThread;

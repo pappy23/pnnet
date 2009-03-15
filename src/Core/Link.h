@@ -23,11 +23,11 @@ namespace pann
     private:
         NeuronIter to;
         Direction direction;
-        UINT latency;
         WeightIter w; //!< Pointer to Weight object (might be shared between different links)
+        unsigned latency;
 
     public:
-        Link(const NeuronIter _to, const Direction _direction, WeightIter _w, UINT _latency = 1) :
+        Link(const NeuronIter _to, const Direction _direction, WeightIter _w, unsigned const _latency = 1) :
             to(_to),
             direction(_direction),
             w(_w),
@@ -41,7 +41,7 @@ namespace pann
 
         NeuronIter getToIter()     { return to; };
         Direction getDirection()   { return direction; };
-        UINT getLatency()          { return latency; };
+        unsigned getLatency()      { return latency; };
         WeightIter getWeightIter() { return w; };
     
     public:

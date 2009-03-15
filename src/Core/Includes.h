@@ -13,15 +13,18 @@
 #include <map>
 #include <list>
 #include <vector>
-#include <algorithm>
 #include <string>
+#include <algorithm>
 #include <iterator>
+#include <limits>
+#include <cmath>
 
 //Boost
 #include <boost/any.hpp>
 //#include <boost/shared_ptr.hpp>
 #include <boost/foreach.hpp>
 #include <boost/thread.hpp>
+#include <boost/ref.hpp>
 #include <boost/archive/xml_oarchive.hpp>
 #include <boost/archive/xml_iarchive.hpp>
 #include <boost/archive/text_oarchive.hpp>

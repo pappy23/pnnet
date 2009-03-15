@@ -17,9 +17,9 @@ int main(int argc, char *argv[])
     }
 
     // вычисляем сумму векторов
-    #pragma omp parallel shared(a, b, c) private(i)
+//    #pragma omp parallel shared(a, b, c) private(i)
     {
-    #pragma omp for
+//    #pragma omp for
     for (i = 0; i < N; i++)
         c[i] = a[i] + b[i];
     }

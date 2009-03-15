@@ -7,7 +7,7 @@
 
 namespace pann
 {
-    Runner* Runner::self = 0;
-    int Runner::refcount = 0;
+    Runner* NullRunner::self = 0;
+    Runner* FeedforwardPropagationRunner::self = 0;
 }; //pann
 

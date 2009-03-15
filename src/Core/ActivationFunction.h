@@ -21,21 +21,12 @@ namespace pann
          */
         class Base //Singleton
         {
-        protected:
-            static Base* self;
-
-        protected:
-			Base() { };
-
-        public:
-			virtual ~Base() { };
-
         public:
             //Returns reference to ActivationFunction object. It is always the same
             //Only one object of class Base exist at a time
             static Base* Instance();
 
-            virtual UINT getId() = 0;
+            virtual unsigned getId() = 0;
 
             virtual Float f(Float) = 0;
             virtual Float derivative(Float) = 0;
@@ -49,11 +40,17 @@ namespace pann
          */
         class Linear : public Base
         {
+        private:
+            static Base* self;
+
 		private:
 			Linear() {};
 
         public:
-			~Linear() {};
+			~Linear()
+            {
+                self = 0;
+            };
 
         public:
             static Base* Instance()
@@ -64,27 +61,76 @@ namespace pann
                 return self;
             };
 
-            virtual UINT getId() { return 1; };
+            virtual unsigned getId() { return 1; };
 
-            Float f(Float _x)
+            virtual Float f(Float _x)
             {
                 return _x;
             } //f
 
-            Float derivative(Float)
+            virtual Float derivative(Float)
             {
                 return 0;
             } //derivative
         };
 
         /**
-         * Hyperbolic tangent function
+         * MacCalloc-Pitz threshold function
          * id = 2
-         * y = tanh(x)
-         * dy/dx = 1
+         * y = 0, x <0
+         * y = 1, x>=0
+         */
+        class Threshold : public Base
+        {
+        private:
+            static Base* self;
+
+		private:
+			Threshold() {};
+
+        public:
+			~Threshold() {};
+
+        public:
+            static Base* Instance()
+            {
+                if(!self)
+                    self = new Threshold();
+
+                return self;
+            };
+
+            virtual unsigned getId() { return 2; };
+
+            virtual Float f(Float _x)
+            {
+                if(_x < 0)
+                    return 0;
+                return 1;
+            } //f
+
+            virtual Float derivative(Float _x)
+            {
+                if(_x == 0)
+                    return inf;
+                return 0;
+            } //derivative
+        };
+
+        /**
+         * Hyperbolic tangent function
+         * id = 3
+         * y = a*tanh(b*x)
          */
         class TanH : public Base
         {
+        private:
+            static Base* self;
+
+        public:
+            static const Float a = 1.7159;
+            static const Float b = 0.6667; // 2/3
+
 		private:
 			TanH() {};
 
@@ -100,14 +146,14 @@ namespace pann
                 return self;
             };
 
-            virtual UINT getId() { return 2; };
+            virtual unsigned getId() { return 3; };
 
-            Float f(Float _x)
+            virtual Float f(Float _x)
             {
-                return _x;
+                return a * std::tanh( b * _x );
             } //f
 
-            Float derivative(Float)
+            virtual Float derivative(Float)
             {
                 return 0;
             } //derivative
@@ -116,7 +162,7 @@ namespace pann
         /*
          * ADD NEW FUNCTIONS TO getById()
          */
-        Base* getById(const UINT id);
+        Base* getById(const unsigned id);
 
     }; //ActivationFunctions
 
