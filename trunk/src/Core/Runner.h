@@ -45,12 +45,41 @@ namespace pann
 
         virtual void run(NeuronIter _neuron)
         {
-            std::cout<<"Running: "<<_neuron->first<<std::endl;
         };
 
         virtual RunDirection getDirection()
         {
             return ForwardRun;
+        };
+    };
+
+    class NullBackpropagationRunner : public Runner
+    {
+    private:
+        static Runner* self;
+
+    private:
+        NullBackpropagationRunner() { };
+
+    public:
+        ~NullBackpropagationRunner() { };
+
+    public:
+        static Runner* Instance()
+        {
+            if(!self)
+                self = new NullBackpropagationRunner();
+
+            return self;
+        };
+
+        virtual void run(NeuronIter _neuron)
+        {
+        };
+
+        virtual RunDirection getDirection()
+        {
+            return BackwardRun;
         };
     };
 

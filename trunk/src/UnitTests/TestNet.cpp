@@ -20,9 +20,9 @@ int main()
 
     {
         //MLP simulation
-        const unsigned layers_count = 10;
+        const unsigned layers_count = 4;
         const unsigned neurons_count = 1000;
-        const unsigned runs_count = 5;
+        const unsigned runs_count = 3;
         const unsigned thread_count = 4; 
         ActivationFunction::Base* af = ActivationFunction::TanH::Instance();
 
@@ -41,7 +41,7 @@ int main()
                     owner = 1;
             }
         
-        layers[layers_count - 1].push_back(net.addOutputNeuron(af));
+        layers[layers_count - 1].push_back(net.addNeuron(af));
 
         cout<<"Neurons constructed:\n";
         for(unsigned i = 0; i < layers.size(); i++)
@@ -70,40 +70,42 @@ int main()
                 }
             }
             cout<<"Total: ";
-            //Output
-            cout<<"Test output: "<<setprecision(5)<<fixed<<net.getOutput().at(0)<<endl;
         }
+        //Output
+        cout<<"Test output: "<<setprecision(5)<<fixed<<net.getOutput()[ layers[layers_count - 1][0] ]<<endl;
         
+        //Debug
+        {
+        ostringstream ost;
+        //net.printDebugInfo(ost);
+        cout<<ost.str();
+        }
+    
         //Serialization test
         Storage::save(net, "test_net.txt");
 
         //Memory consumption test
         cout<<"It's time to do memory test\n";
-        sleep(20);
-
-        for(unsigned i = 0; i < layers.size(); i++)
-            cout<<layers[i].size()<<" ";
-        cout<<endl;
+        //sleep(20);
     }
 
     Net net2;
     cout<<"New net...OK\n";
     Storage::load(net2, "test_net.txt");
 
-    //Test run()
-    net2.setInput(input);
-    net2.run(FeedforwardPropagationRunner::Instance());
-
-    //Output
-    cout<<"Test output: "<<setprecision(5)<<net2.getOutput().at(0)<<endl;
-    
     //Debug
     {
-    //ostringstream ost;
+    ostringstream ost;
     //net2.printDebugInfo(ost);
-    //cout<<ost.str();
+    cout<<ost.str();
     }
     
+    //Test run()
+    {
+        progress_timer t;
+        net2.setInput(input);
+        net2.run(FeedforwardPropagationRunner::Instance());
+    }
 
     return 0;
 }
