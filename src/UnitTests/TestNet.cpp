@@ -7,6 +7,7 @@
 #include "Type.h"
 #include "Net.h"
 #include "Storage.h"
+#include "NetworkModel.h"
 
 using namespace std;
 using namespace pann;
@@ -14,45 +15,21 @@ using namespace boost;
 
 int main()
 {
+    const unsigned runs_count = 3;
+    const unsigned layers_count = 2;
+
     //Input
     vector<Float> input;
     input.push_back(3);
 
     {
-        //MLP simulation
-        const unsigned layers_count = 4;
-        const unsigned neurons_count = 1000;
-        const unsigned runs_count = 3;
-        const unsigned thread_count = 4; 
-        ActivationFunction::Base* af = ActivationFunction::TanH::Instance();
+        vector<unsigned> layers;
+        layers.push_back(1);
+        for(unsigned i = 0; i < layers_count; ++i)
+            layers.push_back(100);
+        layers.push_back(1);
 
-        Net net(thread_count);
-        vector< vector<unsigned> > layers(layers_count);
-        
-        layers[0].push_back(net.addInputNeuron());
-
-        unsigned owner = 1;
-        for(unsigned i = 1; i < layers_count - 1; i++)
-            for(unsigned j = 0; j < neurons_count; j++)
-            {
-                layers[i].push_back(net.addNeuron(af));
-                net.setNeuronOwner(layers[i][j], owner);
-                if(++owner > 64)
-                    owner = 1;
-            }
-        
-        layers[layers_count - 1].push_back(net.addNeuron(af));
-
-        cout<<"Neurons constructed:\n";
-        for(unsigned i = 0; i < layers.size(); i++)
-            cout<<layers[i].size()<<" ";
-        cout<<endl;
-        
-        //Connect layers
-        for(unsigned i = 0; i < layers_count - 1; i++) //layers
-            for(unsigned j = 0; j < layers[i].size(); j++) //prev layer
-                for(unsigned k = 0; k < layers[i+1].size(); k++) //next layer
-                    net.addConnection(layers[i][j], layers[i+1][k], 1);
+        Net* net = NetworkModel::MultilayerPerceptron(layers, ActivationFunction::TanH::Instance(), 4);
 
         cout<<"MLP ready\n";
 
@@ -65,14 +42,14 @@ int main()
                 cout.flush();
                 {
                     progress_timer t;
-                    net.setInput(input);
-                    net.run(FeedforwardPropagationRunner::Instance());
+                    net->setInput(input);
+                    net->run(FeedforwardPropagationRunner::Instance());
                 }
             }
             cout<<"Total: ";
         }
         //Output
-        cout<<"Test output: "<<setprecision(5)<<fixed<<net.getOutput()[ layers[layers_count - 1][0] ]<<endl;
+        cout<<"Test output: "<<setprecision(5)<<fixed<<net->getOutput().begin()->second<<endl;
         
         //Debug
         {
@@ -82,11 +59,11 @@ int main()
         }
     
         //Serialization test
-        Storage::save(net, "test_net.txt");
+        Storage::save(*net, "test_net.txt");
 
         //Memory consumption test
         cout<<"It's time to do memory test\n";
-        //sleep(20);
+        sleep(5);
     }
 
     Net net2;
