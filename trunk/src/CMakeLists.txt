@@ -30,7 +30,7 @@ endif(Boost_FOUND)
 
 ############################################################################
 
-set(PANN_SOURCES Core NetworkTopologies LearningAlgorithms)
+set(PANN_SOURCES Core NetworkModels LearningAlgorithms)
 include_directories(${PANN_SOURCES})
 
 message(STATUS "Adding files to build library")

@@ -7,11 +7,13 @@
 #define NETWORKMODEL_H
 
 #include "Includes.h"
+#include "Net.h"
 
 namespace pann
 {
-    class NetworkModel
+    namespace NetworkModel
     {
+        Net* MultilayerPerceptron(std::vector<unsigned> layers, ActivationFunction::Base* af, unsigned threads = 8);
     };
 
 }; //pann
