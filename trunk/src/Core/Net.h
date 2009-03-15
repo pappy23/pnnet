@@ -12,46 +12,6 @@
 
 namespace pann
 {
-    class NetCache : public Cache
-    {
-    public:
-        typedef std::vector<NeuronIter> ThreadTaskType;
-        typedef std::vector<ThreadTaskType> FrontType;
-
-        std::vector<FrontType> data;
-
-        virtual void flush()
-        {
-            data.clear();
-            touch();
-        }
-
-    public:
-        virtual void printDebugInfo(std::ostringstream& ost)
-        {
-            for(UINT layers = 0; layers < data.size(); ++layers)
-            {
-                ost<<"Layer #"<<layers<<std::endl;
-                for(UINT threads = 0; threads < data[layers].size(); ++threads)
-                {
-                    ost<<"  Thread "<<threads<<": ";
-                    for(UINT n = 0; n < data[layers][threads].size(); ++n)
-                        ost<<data[layers][threads][n]->first<<" ";
-                    ost<<std::endl;
-                }
-                ost<<std::endl;
-            }
-        }
-
-    private:
-        friend class boost::serialization::access;
-        template<class Archive>
-            void serialize(Archive & ar, const unsigned int version)
-            {
-                ar & data;
-            };
-    };
-
     class Net : public Object
     {
     public:
@@ -71,11 +31,10 @@ namespace pann
         NeuronIter findNeuron(int _neuronId);
         void formatFront(std::vector<NeuronIter>& _raw);
 
-        //TODO: get _task not by copying but by pointer or boost::ref
-        static void threadBase(Runner* _runner, std::vector<NeuronIter> *_task)
+        static void threadBase(Runner* _runner, std::vector<NeuronIter> _task)
         {
-            for(UINT i = 0; i < _task->size(); i++)
-                _runner->run((*_task)[i]);
+            for(unsigned i = 0; i < _task.size(); i++)
+                _runner->run(_task[i]);
         };
 
     public:
@@ -160,15 +119,15 @@ namespace pann
                 //save links 'to' field for every neuron
                 for(std::map<int, Neuron>::const_iterator iter = neurons.begin(); iter != neurons.end(); ++iter)
                 {
-                    UINT size = iter->second.links.size();
+                    unsigned size = iter->second.links.size();
                     ar & size;
                     BOOST_FOREACH( const Link& l, iter->second.links )
                     {
                         Link& link = const_cast<Link&>(l);
-                        UINT to = link.getToIter()->first;
-                        UINT w  = link.getWeightIter()->first;
-                        UINT dir= (UINT)link.getDirection();
-                        UINT latency = (UINT)link.getLatency();
+                        unsigned to = link.getToIter()->first;
+                        unsigned w  = link.getWeightIter()->first;
+                        unsigned dir= (unsigned)link.getDirection();
+                        unsigned latency = (unsigned)link.getLatency();
                         ar & to;
                         ar & w;
                         ar & dir;
@@ -178,12 +137,12 @@ namespace pann
                     show_progress += 1;
                 }
                 
-                UINT size;
+                unsigned size;
                 size = inputNeurons.size();
                 ar & size;
                 BOOST_FOREACH( NeuronIter iter, inputNeurons )
                 {
-                    UINT id = iter->first;
+                    unsigned id = iter->first;
                     ar & id;
                 }
                 show_progress += 10;
@@ -192,7 +151,7 @@ namespace pann
                 ar & size;
                 BOOST_FOREACH( NeuronIter iter, outputNeurons )
                 {
-                    UINT id = iter->first;
+                    unsigned id = iter->first;
                     ar & id;
                 }
                 show_progress += 10;
@@ -219,11 +178,11 @@ namespace pann
                 //load links 'to' field for every neuron
                 for(NeuronIter iter = neurons.begin(); iter != neurons.end(); ++iter)
                 {
-                    UINT size;
+                    unsigned size;
                     ar & size;
-                    for(int i = 0; i < size; i++)
+                    for(unsigned i = 0; i < size; i++)
                     {
-                        UINT to, w, dir, latency;
+                        unsigned to, w, dir, latency;
                         ar & to;
                         ar & w;
                         ar & dir;
@@ -239,11 +198,11 @@ namespace pann
                     show_progress += 1;
                 }
 
-                UINT size;
+                unsigned size;
                 ar & size; 
-                for(UINT i = 0; i < size; i++)
+                for(unsigned i = 0; i < size; i++)
                 {
-                    UINT id; ar & id;
+                    unsigned id; ar & id;
                     NeuronIter iter = neurons.find(id);
                     inputNeurons.push_back(iter);
                     if(iter == neurons.end())
@@ -252,9 +211,9 @@ namespace pann
                 show_progress += 10;
 
                 ar & size; 
-                for(UINT i = 0; i < size; i++)
+                for(unsigned i = 0; i < size; i++)
                 {
-                    UINT id; ar & id;
+                    unsigned id; ar & id;
                     NeuronIter iter = neurons.find(id);
                     outputNeurons.push_back(iter);
                     if(iter == neurons.end())

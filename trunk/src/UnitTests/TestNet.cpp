@@ -4,6 +4,7 @@
 #include <iomanip>
 
 #include "Includes.h"
+#include "Type.h"
 #include "Net.h"
 #include "Storage.h"
 
@@ -15,62 +16,62 @@ int main()
 {
     //Input
     vector<Float> input;
-    input.push_back(1);
+    input.push_back(3);
 
     {
         //MLP simulation
-        const int layers_count = 4;
-        const int neurons_count = 2000;
-        const int runs_count = 100;
-        const int thread_count = 1;
+        const unsigned layers_count = 10;
+        const unsigned neurons_count = 1000;
+        const unsigned runs_count = 5;
+        const unsigned thread_count = 4; 
+        ActivationFunction::Base* af = ActivationFunction::TanH::Instance();
 
         Net net(thread_count);
-
-        vector< vector<int> > layers(layers_count);
+        vector< vector<unsigned> > layers(layers_count);
         
         layers[0].push_back(net.addInputNeuron());
 
-        int owner = 1;
-        for(int i = 1; i < layers_count - 1; i++)
-            for(int j = 0; j < neurons_count; j++)
+        unsigned owner = 1;
+        for(unsigned i = 1; i < layers_count - 1; i++)
+            for(unsigned j = 0; j < neurons_count; j++)
             {
-                layers[i].push_back(net.addNeuron(ActivationFunction::Linear::Instance()));
+                layers[i].push_back(net.addNeuron(af));
                 net.setNeuronOwner(layers[i][j], owner);
                 if(++owner > 64)
                     owner = 1;
             }
         
-        layers[layers_count - 1].push_back(net.addOutputNeuron(ActivationFunction::Linear::Instance()));
+        layers[layers_count - 1].push_back(net.addOutputNeuron(af));
 
         cout<<"Neurons constructed:\n";
-        for(int i = 0; i < layers.size(); i++)
+        for(unsigned i = 0; i < layers.size(); i++)
             cout<<layers[i].size()<<" ";
         cout<<endl;
         
         //Connect layers
-        for(int i = 0; i < layers_count - 1; i++) //layers
-            for(int j = 0; j < layers[i].size(); j++) //prev layer
-                for(int k = 0; k < layers[i+1].size(); k++) //next layer
-                    net.addConnection(layers[i][j], layers[i+1][k], 0.5);
+        for(unsigned i = 0; i < layers_count - 1; i++) //layers
+            for(unsigned j = 0; j < layers[i].size(); j++) //prev layer
+                for(unsigned k = 0; k < layers[i+1].size(); k++) //next layer
+                    net.addConnection(layers[i][j], layers[i+1][k], 1);
 
         cout<<"MLP ready\n";
 
         //Test run()
         {
             progress_timer t;
-            for(int i = 0; i < runs_count; i++)
+            for(unsigned i = 0; i < runs_count; i++)
             {
                 cout<<i+1<<"-th run: "; 
                 cout.flush();
                 {
                     progress_timer t;
                     net.setInput(input);
-                    net.run(&(FeedforwardPropagationRunner::Instance()));
+                    net.run(FeedforwardPropagationRunner::Instance());
                 }
-                //Output
-                cout<<"Test output: "<<net.getOutput().at(0)<<endl;
             }
             cout<<"Total: ";
+            //Output
+            cout<<"Test output: "<<setprecision(5)<<fixed<<net.getOutput().at(0)<<endl;
         }
         
         //Serialization test
@@ -80,7 +81,7 @@ int main()
         cout<<"It's time to do memory test\n";
         sleep(20);
 
-        for(int i = 0; i < layers.size(); i++)
+        for(unsigned i = 0; i < layers.size(); i++)
             cout<<layers[i].size()<<" ";
         cout<<endl;
     }
@@ -91,10 +92,10 @@ int main()
 
     //Test run()
     net2.setInput(input);
-    net2.run(&(FeedforwardPropagationRunner::Instance()));
+    net2.run(FeedforwardPropagationRunner::Instance());
 
     //Output
-    cout<<"Test output: "<<net2.getOutput().at(0)<<endl;
+    cout<<"Test output: "<<setprecision(5)<<net2.getOutput().at(0)<<endl;
     
     //Debug
     {

@@ -22,12 +22,14 @@ namespace pann
     {
     } //~Net
 
-    int Net::getThreadCount()
+    int
+    Net::getThreadCount()
     {
         return threadCount;
     } //getThreadCount
 
-    void Net::setThreadCount(int _threads)
+    void
+    Net::setThreadCount(int _threads)
     {
         cache.touch();
 
@@ -43,7 +45,8 @@ namespace pann
         threadCount = _threads;
     } //setThreadCount
 
-    NeuronIter Net::findNeuron(int _neuronId)
+    NeuronIter
+    Net::findNeuron(int _neuronId)
     {
         NeuronIter iter = neurons.find(_neuronId);
         if(neurons.end() == iter)
@@ -52,7 +55,8 @@ namespace pann
         return iter;
     } //isNeuronExist
 
-    void Net::formatFront(vector<NeuronIter>& _raw)
+    void
+    Net::formatFront(vector<NeuronIter>& _raw)
     {
         cache.data.push_back( NetCache::FrontType() );
         NetCache::FrontType& tasks = cache.data[cache.data.size() - 1];
@@ -64,12 +68,13 @@ namespace pann
         vector<NeuronIter>::iterator it = unique(_raw.begin(), _raw.end(), NeuronIterCompare::equal);
         _raw.resize( it - _raw.begin() );
 
-        for(UINT i = 0; i < _raw.size(); ++i)
+        for(unsigned i = 0; i < _raw.size(); ++i)
             tasks[_raw[i]->second.getOwnerThread() % threadCount].push_back(_raw[i]);
 
     } //formatFront
 
-    int Net::addNeuron(ActivationFunction::Base* _activationFunction)
+    int
+    Net::addNeuron(ActivationFunction::Base* _activationFunction)
     {
         cache.touch();
 
@@ -81,7 +86,8 @@ namespace pann
         return lastNeuronId++;
     } //addNeuron
 
-    int Net::addInputNeuron()
+    int
+    Net::addInputNeuron()
     {
         int neuronId = addNeuron(ActivationFunction::Linear::Instance());
         setNeuronRole(neuronId, Net::InputNeuron);
@@ -89,7 +95,8 @@ namespace pann
         return neuronId;
     } //addInputNeuron
 
-    int Net::addOutputNeuron(ActivationFunction::Base* _activationFunction)
+    int
+    Net::addOutputNeuron(ActivationFunction::Base* _activationFunction)
     {
         int neuronId = addNeuron(_activationFunction);
         setNeuronRole(neuronId, Net::OutputNeuron);
@@ -97,7 +104,8 @@ namespace pann
         return neuronId;
     } //addOutputNeuron
 
-    void Net::delNeuron(int _neuronId)
+    void
+    Net::delNeuron(int _neuronId)
     {
         cache.touch();
 
@@ -125,7 +133,8 @@ namespace pann
             throw Exception::ObjectNotFound()<<"Net::delNeuron(): can't delete neuron "<<_neuronId<<"\n";
     } //delNeuron
 
-    void Net::setNeuronRole(int _neuronId, NeuronRole _newRole)
+    void
+    Net::setNeuronRole(int _neuronId, NeuronRole _newRole)
     {
         cache.touch();
 
@@ -157,7 +166,8 @@ namespace pann
         }
     } //setNeuronRole
 
-    Net::NeuronRole Net::getNeuronRole(int _neuronId)
+    Net::NeuronRole
+    Net::getNeuronRole(int _neuronId)
     {
         /*
          * 0 - work neuron
@@ -176,17 +186,20 @@ namespace pann
         return (NeuronRole)role;
     } //getNeuronRole
 
-    void Net::setNeuronOwner(int _neuron, int _owner)
+    void
+    Net::setNeuronOwner(int _neuron, int _owner)
     {
         findNeuron(_neuron)->second.setOwnerThread(_owner);
     } //setNeuronOwner
 
-    int Net::getNeuronOwner(int _neuron)
+    int
+    Net::getNeuronOwner(int _neuron)
     {
         return findNeuron(_neuron)->second.getOwnerThread();
     } //getNeuronOwner
 
-    void Net::addConnection(int _from, int _to, Float _weightValue)
+    void
+    Net::addConnection(int _from, int _to, Float _weightValue)
     {
         cache.touch();
 
@@ -203,7 +216,8 @@ namespace pann
         result.first->second.usageCount = 2;
     } //addConnection
 
-    void Net::delConnection(int _from, int _to)
+    void
+    Net::delConnection(int _from, int _to)
     {
         cache.touch();
         
@@ -239,7 +253,8 @@ namespace pann
 
     } //delConnection
 
-    std::vector<int> Net::getInputMap()
+    std::vector<int>
+    Net::getInputMap()
     {
         vector<int> result;
 
@@ -249,7 +264,8 @@ namespace pann
         return result;
     } //getInputMap
 
-    std::vector<int> Net::getOutputMap()
+    std::vector<int>
+    Net::getOutputMap()
     {
         vector<int> result;
 
@@ -259,7 +275,8 @@ namespace pann
         return result;
     } //getOutputMap
 
-    void Net::setInput(const vector<Float>& _input)
+    void
+    Net::setInput(const vector<Float>& _input)
     {
         if(_input.size() < inputNeurons.size())
             throw Exception::SizeMismatch()<<"setInput(): Supplied input size is smaller "
@@ -274,7 +291,8 @@ namespace pann
             iter->second.receptiveField += _input[i++];
     } //setInput
 
-    vector<Float> Net::getOutput()
+    vector<Float>
+    Net::getOutput()
     {
         vector<Float> result;
         BOOST_FOREACH( NeuronIter iter, outputNeurons)
@@ -288,7 +306,8 @@ namespace pann
      * forward propagation through neural network
      * Be extremely careful!
      */
-    void Net::run(Runner* _runner)
+    void
+    Net::run(Runner* _runner)
     {
         //Here we will place neuron's IDs that will become front, with duplicates
         vector<NeuronIter> rawFront;
@@ -343,7 +362,7 @@ namespace pann
          *  At this point cache.data(0) is the only record and it contains input neurons
          */
 
-        int layer = 0;
+        unsigned layer = 0;
         do
         {
             //At first iteration front points to first 'layer', derived from rawFront
@@ -354,7 +373,7 @@ namespace pann
             //front is ready, lets start our pretty threads =)
             for(int i = 0; i < threadCount; i++)
                 if(front[i].size() > 0)
-                    threadPool.add_thread( new boost::thread(Net::threadBase, _runner, &(front[i])) );
+                    threadPool.add_thread( new boost::thread(Net::threadBase, _runner, front[i]) );
 
             if( !cache.isOk() )
             {
@@ -365,8 +384,8 @@ namespace pann
                  *
                  * At first iteration, if you remember, vector<int> _raw contains unique inputNeurons indexes
                  */
-                int nCount = (int) rawFront.size();
-                for(int i = 0; i < nCount; ++i)
+                unsigned nCount = rawFront.size();
+                for(unsigned i = 0; i < nCount; ++i)
                 {
                     //pop_front emulation
                     NeuronIter currentNeuronIter = rawFront[0];

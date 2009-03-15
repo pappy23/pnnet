@@ -17,13 +17,13 @@ namespace pann
     {
     protected:
         mutable std::map<std::string, boost::any> attributes; //!< left -  name, right - parametr
-        UINT id;
+        unsigned id;
 
     public:
-        Object(UINT _id = 0);
+        Object(unsigned _id = 0);
         virtual ~Object();
         
-        virtual UINT getId();
+        virtual unsigned getId();
 
         //! Does attribute exist?
         //! @param _attributeName - checking attribute name

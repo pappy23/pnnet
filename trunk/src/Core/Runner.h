@@ -16,23 +16,8 @@ namespace pann
 
     class Runner
     {
-    protected:
-        static Runner* self;
-        static int refcount;
-        Runner() { };
-        virtual ~Runner() { };
-
     public:
-        static Runner& Instance();
-        void freeInstance()
-        {
-            refcount--;
-            if(!refcount)
-            {
-                delete this;
-                self = 0;
-            }
-        };
+        static Runner* Instance();
 
         virtual void run(NeuronIter) = 0;
         virtual RunDirection getDirection() = 0;
@@ -40,24 +25,27 @@ namespace pann
 
     class NullRunner : public Runner
     {
-    protected:
+    private:
+        static Runner* self;
+
+    private:
         NullRunner() { };
+
+    public:
         ~NullRunner() { };
 
     public:
-        static Runner& Instance()
+        static Runner* Instance()
         {
             if(!self)
                 self = new NullRunner();
 
-            refcount++;
-
-            return *self;
+            return self;
         };
 
         virtual void run(NeuronIter _neuron)
         {
-            std::cout<<_neuron->first<<" "<<std::endl;
+            std::cout<<"Running: "<<_neuron->first<<std::endl;
         };
 
         virtual RunDirection getDirection()
@@ -68,19 +56,22 @@ namespace pann
 
     class FeedforwardPropagationRunner : public Runner
     {
-    protected:
+    private:
+        static Runner* self;
+
+    private:
         FeedforwardPropagationRunner() { };
+        
+    public:    
         ~FeedforwardPropagationRunner() { };
 
     public:
-        static Runner& Instance()
+        static Runner* Instance()
         {
             if(!self)
                 self = new FeedforwardPropagationRunner();
 
-            refcount++;
-
-            return *self;
+            return self;
         };
 
         void run(NeuronIter _neuron)

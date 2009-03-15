@@ -20,7 +20,7 @@ namespace pann
     {
     public:
         Float value; ///< weight itself
-        UINT usageCount; ///< Used by weight update algorithms for shared weights
+        unsigned usageCount; ///< Used by weight update algorithms for shared weights
 
     public:
         Weight(Float _value = 1) : 

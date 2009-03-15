@@ -8,17 +8,17 @@ namespace pann
 {
     Neuron::Neuron() :
             activationFunction(ActivationFunction::Linear::Instance()),
+            ownerThread(0),
             receptiveField(0),
-            activationValue(activationFunction->f(0)),
-            ownerThread(0)
+            activationValue(activationFunction->f(0))
     {
     } //Neuron
 
     Neuron::Neuron(ActivationFunction::Base* _activationFunction) :
             activationFunction(_activationFunction),
+            ownerThread(0),
             receptiveField(0),
-            activationValue(_activationFunction->f(0)),
-            ownerThread(0)
+            activationValue(_activationFunction->f(0))
     {
     } //Neuron
 
@@ -26,7 +26,8 @@ namespace pann
     {
     } //~Neuron
 
-    list<Link>::iterator Neuron::findLink(NeuronIter _to, Link::Direction _direction)
+    list<Link>::iterator
+    Neuron::findLink(NeuronIter _to, Link::Direction _direction)
     {                                                                                
         list<Link>::iterator iter = links.begin(),                                   
         result = links.end();                                   
@@ -46,19 +47,9 @@ namespace pann
 
         return result;
     } //findLink
-/*
-    void Neuron::connect(NeuronIter _to, Link::Direction _direction, WeightIter _weight)
-    {
-        //FIXME Parallel links ARE allowed
-        links.push_back( Link(_to, _direction, _weight) );
-    } //connectTo
 
-    void Neuron::disconnect(NeuronIter _to, Link::Direction _direction)
-    {
-        links.erase( findLink(_to, _direction) );
-    } //disconnect
-*/
-    void Neuron::setOwnerThread(int _thread)
+    void
+    Neuron::setOwnerThread(int _thread)
     {
         if(0 > _thread || _thread > 100)
             throw Exception::RangeMismatch()<<"Neuron::setOwnerThread(): thread must be between 0 and 100\n";
@@ -66,12 +57,14 @@ namespace pann
         ownerThread =_thread;
     } //setOwnerThread
 
-    int Neuron::getOwnerThread()
+    int
+    Neuron::getOwnerThread()
     {
         return ownerThread;
     } //getOwnerThread
 
-    ActivationFunction::Base* Neuron::getActivationFunction()
+    ActivationFunction::Base*
+    Neuron::getActivationFunction()
     {
         return activationFunction;
     } //getOwnerThread
