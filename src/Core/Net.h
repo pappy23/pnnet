@@ -15,16 +15,15 @@ namespace pann
     class Net : public Object
     {
     public:
-        enum NeuronRole { WorkNeuron = 0, InputNeuron = 1, OutputNeuron = 2 };
+        enum NeuronRole { WorkNeuron = 0, InputNeuron = 1 };
 
     private:
-        int threadCount;
-        int lastNeuronId; //var to add new neurons
-        int lastWeightId; //var to add new weights
+        unsigned threadCount;
+        unsigned lastNeuronId; //var to add new neurons
+        unsigned lastWeightId; //var to add new weights
         std::map<int, Neuron> neurons;
         std::map<int, Weight> weights;
         std::list<NeuronIter> inputNeurons;  //Iterators to map<> neurons
-        std::list<NeuronIter> outputNeurons; //Iterators to map<> neurons
         NetCache cache;
 
     private:
@@ -47,7 +46,6 @@ namespace pann
 
         int addNeuron(ActivationFunction::Base* _activationFunction);
         int addInputNeuron();
-        int addOutputNeuron(ActivationFunction::Base* _activationFunction);
         void delNeuron(int _neuronId);
 
         void setNeuronRole(int _neuronId, NeuronRole _newRole);
@@ -60,10 +58,9 @@ namespace pann
         void delConnection(int _from, int _to);
 
         std::vector<int> getInputMap();
-        std::vector<int> getOutputMap();
 
         void setInput(const std::vector<Float>& _input);
-        std::vector<Float> getOutput();
+        std::map<int, Float> getOutput();
 
         void run(Runner* _runner);
 
@@ -87,10 +84,6 @@ namespace pann
             std::list<NeuronIter>::iterator it2 = inputNeurons.begin();
             for(; it2 != inputNeurons.end(); ++it2)
                 ost<<(*it2)->first<<" ";
-            ost<<"\n outputNeurons: ";
-            std::list<NeuronIter>::iterator it3 = outputNeurons.begin();
-            for(; it3 != outputNeurons.end(); ++it3)
-                ost<<(*it3)->first<<" ";
             ost<<"\n\n neurons: ";
             for(it = neurons.begin(); it != neurons.end(); ++it)
                 it->second.printDebugInfo(ost);
@@ -104,19 +97,20 @@ namespace pann
         template<class Archive>
             void save(Archive & ar, const unsigned int version) const
             {
-                boost::progress_display show_progress( 10 + 2*neurons.size() + 20 );
+                boost::progress_display show_progress( 20 + neurons.size() + 20 );
 
                 ar & boost::serialization::base_object<Object>(*this);
+
+                //Saving basic data
                 ar & lastNeuronId;
                 ar & lastWeightId;
                 ar & threadCount;
-                //ar & cache; - dont's save it
-                show_progress += 10;
                 ar & neurons;
+                show_progress += 10;
                 ar & weights;
-                show_progress += neurons.size();
+                show_progress += 10;
 
-                //save links 'to' field for every neuron
+                //Links already saved by 'ar & neurons', but field like 'to' - not
                 for(std::map<int, Neuron>::const_iterator iter = neurons.begin(); iter != neurons.end(); ++iter)
                 {
                     unsigned size = iter->second.links.size();
@@ -137,6 +131,7 @@ namespace pann
                     show_progress += 1;
                 }
                 
+                //Saving input neurons
                 unsigned size;
                 size = inputNeurons.size();
                 ar & size;
@@ -147,12 +142,21 @@ namespace pann
                 }
                 show_progress += 10;
 
-                size = outputNeurons.size();
-                ar & size;
-                BOOST_FOREACH( NeuronIter iter, outputNeurons )
+                //Saving cache
+                unsigned layers = cache.data.size();
+                ar & layers;
+                for(unsigned l = 0; l < cache.data.size(); l++)
                 {
-                    unsigned id = iter->first;
-                    ar & id;
+                    for(unsigned t = 0; t < threadCount; t++)
+                    {
+                        unsigned size = cache.data[l][t].size();
+                        ar & size;
+                        BOOST_FOREACH( NeuronIter iter, cache.data[l][t] )
+                        {
+                            unsigned id = iter->first;
+                            ar & id;
+                        }
+                    }
                 }
                 show_progress += 10;
             };
@@ -160,22 +164,19 @@ namespace pann
         template<class Archive>
             void load(Archive & ar, const unsigned int version)
             {
-                cache.touch();
-
-
                 ar & boost::serialization::base_object<Object>(*this);
+
+                //Restoring basic data
                 ar & lastNeuronId;
                 ar & lastWeightId;
                 ar & threadCount;
-                //ar & cache; - don't load it
                 ar & neurons;
-
-                boost::progress_display show_progress( 10 + 2*neurons.size() + 20 );
-                show_progress += ( 10 + neurons.size() );
-                
+                boost::progress_display show_progress(20 + neurons.size() + 20);
+                show_progress += 10;
                 ar & weights;
+                show_progress += 10;
                
-                //load links 'to' field for every neuron
+                //Loading links data, converting neuron ID's to iterators
                 for(NeuronIter iter = neurons.begin(); iter != neurons.end(); ++iter)
                 {
                     unsigned size;
@@ -193,11 +194,12 @@ namespace pann
                             throw Exception::FilesystemError()<<"Net::load(): can't load Net object. "
                                                                               "Archive possibly damaged\n";
                         iter->second.links.push_back(Link(to_it, (Link::Direction)dir, w_it, latency));
-                   }
-
+                    }
                     show_progress += 1;
                 }
 
+                //Loading list of input neurons
+                inputNeurons.clear(); //may be we loading saved net into existing net with neurons?
                 unsigned size;
                 ar & size; 
                 for(unsigned i = 0; i < size; i++)
@@ -206,19 +208,36 @@ namespace pann
                     NeuronIter iter = neurons.find(id);
                     inputNeurons.push_back(iter);
                     if(iter == neurons.end())
-                        throw Exception::FilesystemError()<<"Net::load(): can't load Net object. Archive possibly damaged\n";
+                        throw Exception::FilesystemError()<<"Net::load(): can't load Net object. "
+                                                                "Archive possibly damaged\n";
                 }
                 show_progress += 10;
 
-                ar & size; 
-                for(unsigned i = 0; i < size; i++)
+                //Loading cache
+                cache.flush();
+                unsigned layers;
+                ar & layers;
+                for(unsigned l = 0; l < layers; l++)
                 {
-                    unsigned id; ar & id;
-                    NeuronIter iter = neurons.find(id);
-                    outputNeurons.push_back(iter);
-                    if(iter == neurons.end())
-                        throw Exception::FilesystemError()<<"Net::load(): can't load Net object. Archive possibly damaged\n";
+                    cache.data.push_back(NetCache::FrontType()); //add new layer to cache
+                    for(unsigned t = 0; t < threadCount; t++)
+                    {
+                        cache.data[l].push_back(NetCache::ThreadTaskType()); //add new thread task info to current layer
+                        unsigned size;
+                        ar & size;
+                        for(unsigned n = 0; n < size; n++)
+                        {
+                            unsigned id;
+                            ar & id;
+                            NeuronIter iter = neurons.find(id);
+                            cache.data[l][t].push_back(iter);
+                            if(iter == neurons.end())
+                                throw Exception::FilesystemError()<<"Net::load(): can't load Net object. "
+                                                                        "Archive possibly damaged\n";
+                        }
+                    }
                 }
+                cache.fixed();
                 show_progress += 10;
             };
 

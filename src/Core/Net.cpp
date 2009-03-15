@@ -40,7 +40,7 @@ namespace pann
         }
 
         if(_threads < 1 || _threads > 64)
-            throw Exception::RangeMismatch()<<"Net::run(): currently only up to 5 concurrent threads supported\n";
+            throw Exception::RangeMismatch()<<"Net::run(): currently only up to 64 concurrent threads supported\n";
 
         threadCount = _threads;
     } //setThreadCount
@@ -61,7 +61,7 @@ namespace pann
         cache.data.push_back( NetCache::FrontType() );
         NetCache::FrontType& tasks = cache.data[cache.data.size() - 1];
 
-        for(int i = 0; i < threadCount; i++)
+        for(unsigned i = 0; i < threadCount; i++)
             tasks.push_back( vector<NeuronIter>() );
 
         sort(_raw.begin(), _raw.end(), NeuronIterCompare());
@@ -94,15 +94,6 @@ namespace pann
 
         return neuronId;
     } //addInputNeuron
-
-    int
-    Net::addOutputNeuron(ActivationFunction::Base* _activationFunction)
-    {
-        int neuronId = addNeuron(_activationFunction);
-        setNeuronRole(neuronId, Net::OutputNeuron);
-
-        return neuronId;
-    } //addOutputNeuron
 
     void
     Net::delNeuron(int _neuronId)
@@ -141,27 +132,16 @@ namespace pann
         NeuronIter iter = findNeuron(_neuronId);
 
         list< NeuronIter >::iterator inputIter = find(inputNeurons.begin(), inputNeurons.end(), iter);
-        list< NeuronIter >::iterator outputIter = find(outputNeurons.begin(), outputNeurons.end(), iter);
 
         switch(_newRole)
         {
             case InputNeuron:
-                if(outputIter != outputNeurons.end())
-                    outputNeurons.erase(outputIter);
                 if(inputIter == inputNeurons.end())
                     inputNeurons.push_back(iter);
-                break;
-            case OutputNeuron:
-                if(inputIter != inputNeurons.end())
-                    inputNeurons.erase(inputIter);
-                if(outputIter == outputNeurons.end())
-                    outputNeurons.push_back(iter);
                 break;
             case WorkNeuron:
                 if(inputIter != inputNeurons.end())
                     inputNeurons.erase(inputIter);
-                if(outputIter != outputNeurons.end())
-                    outputNeurons.erase(outputIter);
                 break;
         }
     } //setNeuronRole
@@ -172,7 +152,6 @@ namespace pann
         /*
          * 0 - work neuron
          * 1 - work+input
-         * 2 - work+output
          */
         int role = 0;
 
@@ -180,8 +159,6 @@ namespace pann
 
         if(find(inputNeurons.begin(), inputNeurons.end(), iter) != inputNeurons.end())
             role+=1;
-        if(find(outputNeurons.begin(), outputNeurons.end(), iter) != outputNeurons.end())
-            role+=2;
 
         return (NeuronRole)role;
     } //getNeuronRole
@@ -264,17 +241,6 @@ namespace pann
         return result;
     } //getInputMap
 
-    std::vector<int>
-    Net::getOutputMap()
-    {
-        vector<int> result;
-
-        BOOST_FOREACH( NeuronIter iter, outputNeurons)
-            result.push_back(iter->first);
-
-        return result;
-    } //getOutputMap
-
     void
     Net::setInput(const vector<Float>& _input)
     {
@@ -291,12 +257,20 @@ namespace pann
             iter->second.receptiveField += _input[i++];
     } //setInput
 
-    vector<Float>
+    map<int, Float>
     Net::getOutput()
     {
-        vector<Float> result;
-        BOOST_FOREACH( NeuronIter iter, outputNeurons)
-            result.push_back(iter->second.activationValue);
+        map<int, Float> result;
+
+        if( !cache.isOk() )
+            this->run(NullRunner::Instance());
+
+        if(cache.data.size() < 2)
+            return result;
+
+        BOOST_FOREACH( NetCache::ThreadTaskType& task, cache.data[cache.data.size() - 2])
+            BOOST_FOREACH( NeuronIter& iter, task )
+                result.insert(pair<int, Float>(iter->first, iter->second.activationValue));
 
         return result;
     } //setInput
@@ -321,13 +295,15 @@ namespace pann
          */
         map<NeuronIter, int, NeuronIterCompare> hops;
 
+        RunDirection dir = _runner->getDirection();
+
         //If cache is not up2date, flush it and fill again
         if( !cache.isOk() )
         {
             cache.flush();
 
             //Put inputNeurons to front
-            if( _runner->getDirection() == ForwardRun)
+            if(dir == ForwardRun)
             {
                 BOOST_FOREACH( NeuronIter iter, inputNeurons )
                 {
@@ -335,12 +311,9 @@ namespace pann
                     hops[iter] = 1;
                 }
             } else {
-                //FIXME Backward run is impossible. Cache is built for forward run only
-                BOOST_FOREACH( NeuronIter iter, outputNeurons )
-                {
-                    rawFront.push_back(iter);
-                    hops[iter] = 1;
-                }
+                //Cache is not up2date and Backpropagation requested. Ok. But we are not going to build 
+                //cache during backpropagation, huh? Do clean forward run first to build cache.
+                this->run(NullRunner::Instance());
             }
 
             formatFront(rawFront);
@@ -362,16 +335,19 @@ namespace pann
          *  At this point cache.data(0) is the only record and it contains input neurons
          */
 
-        unsigned layer = 0;
+        unsigned layer;
+        (dir == ForwardRun) ?  (layer = 0) : (layer = cache.data.size() - 2);
+        
         do
         {
             //At first iteration front points to first 'layer', derived from rawFront
-            NetCache::FrontType& front = cache.data[layer++];
+            NetCache::FrontType& front = cache.data[layer];
 
+            //TODO don't create threadPool every time. Make threads once and feed them with data
             boost::thread_group threadPool;
 
             //front is ready, lets start our pretty threads =)
-            for(int i = 0; i < threadCount; i++)
+            for(unsigned i = 0; i < threadCount; i++)
                 if(front[i].size() > 0)
                     threadPool.add_thread( new boost::thread(Net::threadBase, _runner, front[i]) );
 
@@ -437,8 +413,11 @@ namespace pann
 
             //wait for threads to finish
             threadPool.join_all();
- 
-        } while( (!cache.isOk() && rawFront.size() > 0) || (cache.isOk() && layer < cache.data.size() - 1) );
+            
+        } while( (!cache.isOk() && rawFront.size() > 0) || (cache.isOk() && (
+                    (dir == ForwardRun && ++layer < cache.data.size() - 1) || (dir == BackwardRun && layer-- > 0)
+                ) ) 
+            );
 
         //We rebuilded cache
         if(!cache.isOk())
