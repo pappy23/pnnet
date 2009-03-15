@@ -10,8 +10,12 @@ namespace pann
     namespace ActivationFunction
     {
         Base* Linear::self = 0;
+        
         Base* Threshold::self = 0;
+
         Base* TanH::self = 0;
+        const Float TanH::a = 1.7159;
+        const Float TanH::b = 0.6667;
 
         Base*
         getById(const unsigned id)

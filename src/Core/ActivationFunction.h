@@ -128,8 +128,8 @@ namespace pann
             static Base* self;
 
         public:
-            static const Float a = 1.7159;
-            static const Float b = 0.6667; // 2/3
+            static const Float a;
+            static const Float b;
 
 		private:
 			TanH() {};
