@@ -13,7 +13,7 @@ namespace pann
 {
     namespace NetworkModel
     {
-        Net* MultilayerPerceptron(std::vector<unsigned> layers, ActivationFunction::Base* af, unsigned threads = 8);
+        Net* MultilayerPerceptron(std::vector<unsigned> layers, ActivationFunction::Base* af);
     };
 
 }; //pann

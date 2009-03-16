@@ -64,6 +64,9 @@ namespace pann
         //! Argument out of range
         class RangeMismatch  : public Base { }; 
 
+        //! Requested not computed value
+        class NotReady  : public Base { }; 
+
         //! Exceptionfor raising on filesystem failures (missing file etc.) 
         class FilesystemError  : public Base { }; 
 

@@ -8,6 +8,7 @@
 #include "Net.h"
 #include "Storage.h"
 #include "NetworkModel.h"
+#include "TrainData.h"
 
 using namespace std;
 using namespace pann;
@@ -18,9 +19,11 @@ int main()
     const unsigned runs_count = 3;
     const unsigned layers_count = 2;
 
-    //Input
-    vector<Float> input;
-    input.push_back(3);
+    TrainPattern tp(1, 1);
+    tp.input[0] = 1;
+    tp.desired_output[0] = 1;
+    tp.error[0] = 4;
+    cout<<tp.getMse()<<endl;
 
     {
         vector<unsigned> layers;
@@ -29,7 +32,7 @@ int main()
             layers.push_back(100);
         layers.push_back(1);
 
-        Net* net = NetworkModel::MultilayerPerceptron(layers, ActivationFunction::TanH::Instance(), 4);
+        Net* net = NetworkModel::MultilayerPerceptron(layers, ActivationFunction::TanH::Instance());
 
         cout<<"MLP ready\n";
 
@@ -42,14 +45,16 @@ int main()
                 cout.flush();
                 {
                     progress_timer t;
-                    net->setInput(input);
+                    net->setInput(tp.input);
                     net->run(FeedforwardPropagationRunner::Instance());
                 }
             }
             cout<<"Total: ";
         }
         //Output
-        cout<<"Test output: "<<setprecision(5)<<fixed<<net->getOutput().begin()->second<<endl;
+        valarray<Float> output;
+        net->getOutput(output);
+        cout<<"Test output: "<<setprecision(5)<<fixed<<output[0]<<endl;
         
         //Debug
         {
@@ -80,7 +85,7 @@ int main()
     //Test run()
     {
         progress_timer t;
-        net2.setInput(input);
+        net2.setInput(tp.input);
         net2.run(FeedforwardPropagationRunner::Instance());
     }
 

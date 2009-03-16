@@ -59,8 +59,9 @@ namespace pann
 
         std::vector<int> getInputMap();
 
-        void setInput(const std::vector<Float>& _input);
+        void setInput(const std::valarray<Float>& _input);
         std::map<int, Float> getOutput();
+        void getOutput(std::valarray<Float>& _output);
 
         void run(Runner* _runner);
 

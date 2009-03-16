@@ -12,17 +12,14 @@ namespace pann
         /*
          * TODO: write documentation
          */
-        Net* MultilayerPerceptron(vector<unsigned> layers, ActivationFunction::Base* af, unsigned threads)
+        Net* MultilayerPerceptron(vector<unsigned> layers, ActivationFunction::Base* af)
         {
+            const unsigned threads = 64;
+
             Net* net = new Net(0);
      
             if(layers.size() == 0)
                 return net;
-
-            if(threads < 1)
-                threads = 1;
-            if(threads > 64)
-                threads = 64;
 
             vector< vector<unsigned> > mlp(layers.size());
 
