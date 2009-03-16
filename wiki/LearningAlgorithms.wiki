@@ -1,0 +1,24 @@
+#summary Организация алгоритмов обучения
+
+= Introduction =
+
+Примерный план, как должен выглядеть алгоритм обучения.
+
+
+= Details =
+
+АО - объект.
+
+В один из алгоритмов входят:
+-Runner* feedforward_runner;
+-Runner* backpropagation_runner;
+
+
+Данные.
+Объект TrainPattern
+-bool supervised?
+-valarray<float> input
+-valarray<float> desired_output (used only if 'supervised' == true)
+
+TrainData
+-valarray<TrainPattern>
