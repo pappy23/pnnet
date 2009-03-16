@@ -63,7 +63,7 @@ int main()
         }
     
         //Serialization test
-        //Storage::save(*net, "test_net.txt");
+        Storage::save(*net, "test_net.txt");
 
         //Memory consumption test
         cout<<"It's time to do memory test\n";

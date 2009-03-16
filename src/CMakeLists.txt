@@ -1,21 +1,24 @@
 cmake_minimum_required(VERSION 2.6)
 
 project (PANN)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
+#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -ansi")
+add_definitions(-Wall -ansi)
+set(CMAKE_VERBOSE_MAKEFILE ON)
 
-set(EXECUTABLE_OUTPUT_PATH "${CMAKE_BINARY_DIR}/bin" CACHE INTERNAL "")
-set(LIBRARY_OUTPUT_PATH "${CMAKE_BINARY_DIR}/bin" CACHE INTERNAL "")
+set(EXECUTABLE_OUTPUT_PATH "${CMAKE_BINARY_DIR}/../bin" CACHE INTERNAL "")
+set(LIBRARY_OUTPUT_PATH "${CMAKE_BINARY_DIR}/../bin" CACHE INTERNAL "")
 
 ############################################################################
 
-#SET(BOOST_INCLUDEDIR /usr/local/include/boost-1_38)
+SET(BOOST_INCLUDEDIR /usr/local/include/boost-1_38)
 #SET(BOOST_LIBRARYDIR /usr/local/lib)
 
 set(Boost_USE_STATIC_LIBS ON)
-find_package(Boost COMPONENTS mpi thread)
+find_package(Boost COMPONENTS mpi thread serialization)
 if(Boost_FOUND)
     include_directories(${Boost_INCLUDE_DIR})
     message(STATUS "Found Boost: ${Boost_INCLUDE_DIR}")
+    message(STATUS "Boost libraries: ${Boost_LIBRARIES}")
 else(Boost_FOUND)
     message(FATAL_ERROR "Could not find Boost package!")
 endif(Boost_FOUND)
@@ -43,12 +46,10 @@ foreach(dir ${PANN_SOURCES})
 endforeach(dir)
 
 add_library(pann STATIC ${PANN_SOURCE_FILES})
+target_link_libraries(pann ${Boost_LIBRARIES} pthread)
 
-###########################################################################
+############################################################################
 
-set(UNIT_TESTS TestBoost TestOMP TestIntSize TestNet TestSerialization)
+#link_directories(${CMAKE_BINARY_DIR}/bin)
+subdirs(Utils UnitTests)
 
-foreach(test ${UNIT_TESTS})
-    add_executable(${test} UnitTests/${test}.cpp)
-    target_link_libraries(${test} pann ${Boost_LIBRARIES})
-endforeach(test)
