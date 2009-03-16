@@ -16,14 +16,12 @@ using namespace boost;
 
 int main()
 {
-    const unsigned runs_count = 3;
-    const unsigned layers_count = 2;
+    const unsigned runs_count = 5;
+    const unsigned layers_count = 1000;
+    const unsigned threads_count = 8;
 
     TrainPattern tp(1, 1);
     tp.input[0] = 1;
-    tp.desired_output[0] = 1;
-    tp.error[0] = 4;
-    cout<<tp.getMse()<<endl;
 
     {
         vector<unsigned> layers;
@@ -33,6 +31,7 @@ int main()
         layers.push_back(1);
 
         Net* net = NetworkModel::MultilayerPerceptron(layers, ActivationFunction::TanH::Instance());
+        net->setThreadCount(threads_count);
 
         cout<<"MLP ready\n";
 
