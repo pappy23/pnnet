@@ -30,6 +30,10 @@ namespace pann
             if(layers.size() < 2)
                 return net;
 
+            //Bias
+            unsigned bias = net->addNeuron(ActivationFunction::Linear::Instance());
+            net->addConnection(bias, bias, 1);
+
             //Layers
             unsigned owner = 1;
             for(unsigned l = 1; l < layers.size(); ++l)
@@ -45,7 +49,13 @@ namespace pann
             for(unsigned i = 0; i < mlp.size() - 1; i++) //layers
                 for(unsigned j = 0; j < mlp[i].size(); j++) //prev layer
                     for(unsigned k = 0; k < mlp[i+1].size(); k++) //next layer
-                        net->addConnection(mlp[i][j], mlp[i+1][k], 1);
+                    {
+                        //Connection from current layer (i) to next (i+1)
+                        net->addConnection(mlp[i][j], mlp[i+1][k], 1); //TODO: add rand() weight
+
+                        //Add bias connection
+                        net->addConnection(bias, mlp[i+1][k], 1);
+                    }
             
             //May be we should save mlp for next use
             
