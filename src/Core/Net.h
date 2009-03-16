@@ -28,12 +28,36 @@ namespace pann
 
     private:
         NeuronIter findNeuron(int _neuronId);
+        void regenerateCache();
         void formatFront(std::vector<NeuronIter>& _raw);
 
-        static void threadBase(Runner* _runner, std::vector<NeuronIter> _task)
+        static void threadBase( Runner* _runner, NetCache* _cache, unsigned _cur_thread_no, boost::barrier* _barrier)
         {
-            for(unsigned i = 0; i < _task.size(); i++)
-                _runner->run(_task[i]);
+            RunDirection dir = _runner->getDirection();
+
+            unsigned layer;
+            (dir == ForwardRun) ?  (layer = 0) : (layer = _cache->data.size() - 2);
+            do {
+                //Process current layer
+                NetCache::ThreadTaskType* task = &_cache->data[layer][_cur_thread_no];
+                for(unsigned i = 0; i < task->size(); ++i)
+                    _runner->run( (*task)[i] );
+
+                //Wait for other threads
+                _barrier->wait();
+            } while( (dir == ForwardRun && ++layer < _cache->data.size() - 1) || (dir == BackwardRun && layer-- > 0) );
+            //TODO: check wat happens when unsigned layer becomes = -1
+            /*
+             * A little comment.
+             * Cache structure:
+             * Layer1:   thread1_data, thread2_data, ...
+             * Layer2:   thread1_data, thread2_data, ...
+             * ...
+             * LayerN-1: thread1_data, thread2_data, ...
+             * LayerN:          <= last layer. ALWAYS empty! (see Net::regenerateCache())
+             * cache.size() == N+1;
+             * thread_data is vector of NeuronIter
+             */
         };
 
     public:

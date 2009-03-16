@@ -25,6 +25,7 @@
 //#include <boost/shared_ptr.hpp>
 #include <boost/foreach.hpp>
 #include <boost/thread.hpp>
+#include <boost/thread/barrier.hpp>
 #include <boost/ref.hpp>
 #include <boost/archive/xml_oarchive.hpp>
 #include <boost/archive/xml_iarchive.hpp>

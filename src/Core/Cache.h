@@ -12,7 +12,6 @@
 
 namespace pann
 {
-
     /**
      * Abstract cache object
      * In reality every class should inherit own SuperDuperCache from this class
@@ -65,14 +64,6 @@ namespace pann
                 ost<<std::endl;
             }
         }
-
-    private:
-        friend class boost::serialization::access;
-        template<class Archive>
-            void serialize(Archive & ar, const unsigned int version)
-            {
-                ar & data;
-            };
     };
 
 }; //pann
