@@ -10,6 +10,8 @@
 #include "Util.h"
 #include "Runner.h"
 
+//TODO: add shared weight function addConnection()
+
 namespace pann
 {
     class Net : public Object
