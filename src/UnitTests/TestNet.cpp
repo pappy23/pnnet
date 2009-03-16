@@ -16,18 +16,18 @@ using namespace boost;
 
 int main()
 {
-    const unsigned runs_count = 500;
-    const unsigned layers_count = 800;
-    const unsigned threads_count = 4;
+    const unsigned runs_count = 3;
+    const unsigned layers_count = 0;
+    const unsigned threads_count = 2;
 
     TrainPattern tp(1, 1);
-    tp.input[0] = 1;
+    tp.input[0] = -100;
 
     {
         vector<unsigned> layers;
         layers.push_back(1);
         for(unsigned i = 0; i < layers_count; ++i)
-            layers.push_back(100);
+            layers.push_back(1);
         layers.push_back(1);
 
         Net* net = NetworkModel::MultilayerPerceptron(layers, ActivationFunction::TanH::Instance());
@@ -58,12 +58,12 @@ int main()
         //Debug
         {
         ostringstream ost;
-        //net.printDebugInfo(ost);
+        net->printDebugInfo(ost);
         cout<<ost.str();
         }
     
         //Serialization test
-        Storage::save(*net, "test_net.txt");
+        //Storage::save(*net, "test_net.txt");
 
         //Memory consumption test
         cout<<"It's time to do memory test\n";

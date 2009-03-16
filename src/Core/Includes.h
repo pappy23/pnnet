@@ -19,6 +19,7 @@
 #include <iterator>
 #include <limits>
 #include <cmath>
+#include <cstdlib>
 
 //Boost
 #include <boost/any.hpp>

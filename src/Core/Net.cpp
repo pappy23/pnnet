@@ -364,6 +364,7 @@ namespace pann
                      *   T = 0  - T-neuron is fresh. We will set T=C+1
                      *   T = N, N < C - it is recurrent link. Dont touch T and dont place it into rawFront
                      *   T = C  - it is stupid recursive topology. Currently unsupported. Raise exception
+                     *   T = C, but t=c  - it is recurrent link over 1 neuron. It is supported
                      *   T = C + 1 - T already hadled. Silently ignore T. We can add T to rawFront
                      *   T > C + 1 - impossible. Somebody changed hops by hand and didn't touch cache or
                      *               after last cache generation algorithm didn't set neuron's hops to zero
@@ -376,7 +377,8 @@ namespace pann
                     if(hops[link.getToIter()] == hops[currentNeuronIter] + 1)
                         rawFront.push_back(link.getToIter()); 
 
-                    if(hops[link.getToIter()] == hops[currentNeuronIter])
+                    if(hops[link.getToIter()] == hops[currentNeuronIter] && 
+                            link.getToIter()->first != currentNeuronIter->first)
                         throw Exception::Unbelievable()<<"Net::run(): cur_neuron.hops == to.hops. "
                                                             "There is no support for such topologies yet\n";
                 } //BOOST_FOREACH( Link )
