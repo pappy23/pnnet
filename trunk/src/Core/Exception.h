@@ -43,7 +43,12 @@ namespace pann
                 std::cerr << value;
 
                 return *this;
-            }
+            };
+
+            virtual std::string getText()
+            {
+                return textStream.str();
+            };
         };
 
         //! Not critical. Simply instantiate

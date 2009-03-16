@@ -23,5 +23,5 @@ qt4_wrap_ui( UI_HEADERS ${UIS})
 qt4_wrap_cpp( MOC_SRCS ${MOC_HEADERS} )
 
 add_executable( pann_viewer ${SOURCES} ${UI_HEADERS} ${MOC_SRCS} )
-target_link_libraries( pann_viewer ${QT_LIBRARIES} )
+target_link_libraries( pann_viewer ${QT_LIBRARIES} ${Boost_LIBRARIES} pann)
 
