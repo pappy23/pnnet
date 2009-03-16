@@ -242,7 +242,7 @@ namespace pann
     } //getInputMap
 
     void
-    Net::setInput(const vector<Float>& _input)
+    Net::setInput(const valarray<Float>& _input)
     {
         if(_input.size() < inputNeurons.size())
             throw Exception::SizeMismatch()<<"setInput(): Supplied input size is smaller "
@@ -273,7 +273,18 @@ namespace pann
                 result.insert(pair<int, Float>(iter->first, iter->second.activationValue));
 
         return result;
-    } //setInput
+    } //getOutput
+
+    void
+    Net::getOutput(valarray<Float>& _output)
+    {
+        map<int, Float> output = getOutput();
+        _output.resize(output.size());
+
+        unsigned i = 0;
+        for(map<int, Float>::const_iterator iter = output.begin(); iter != output.end(); ++iter)
+            _output[i++] = iter->second;
+    } //getOutput
 
     /*
      * This function updates cache and does

@@ -55,5 +55,5 @@ namespace pann
         attributes.clear();
     } //erase
 
-}; //namespace NNet
+}; //namespace pann
 

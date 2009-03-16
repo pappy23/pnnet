@@ -25,7 +25,7 @@
          <Compiler>
             <Add directory="/usr/include" />
             <Add directory="/home/booble/pann/trunk/src/Core" />
-            <Add directory="/home/booble/pann/trunk/src/NetworkTopologies" />
+            <Add directory="/home/booble/pann/trunk/src/NetworkModels" />
             <Add directory="/home/booble/pann/trunk/src/LearningAlgorithms" />
          </Compiler>
          <MakeCommands>
@@ -44,7 +44,7 @@
          <Compiler>
             <Add directory="/usr/include" />
             <Add directory="/home/booble/pann/trunk/src/Core" />
-            <Add directory="/home/booble/pann/trunk/src/NetworkTopologies" />
+            <Add directory="/home/booble/pann/trunk/src/NetworkModels" />
             <Add directory="/home/booble/pann/trunk/src/LearningAlgorithms" />
          </Compiler>
          <MakeCommands>
@@ -63,7 +63,7 @@
          <Compiler>
             <Add directory="/usr/include" />
             <Add directory="/home/booble/pann/trunk/src/Core" />
-            <Add directory="/home/booble/pann/trunk/src/NetworkTopologies" />
+            <Add directory="/home/booble/pann/trunk/src/NetworkModels" />
             <Add directory="/home/booble/pann/trunk/src/LearningAlgorithms" />
          </Compiler>
          <MakeCommands>
@@ -82,7 +82,7 @@
          <Compiler>
             <Add directory="/usr/include" />
             <Add directory="/home/booble/pann/trunk/src/Core" />
-            <Add directory="/home/booble/pann/trunk/src/NetworkTopologies" />
+            <Add directory="/home/booble/pann/trunk/src/NetworkModels" />
             <Add directory="/home/booble/pann/trunk/src/LearningAlgorithms" />
          </Compiler>
          <MakeCommands>
@@ -101,7 +101,7 @@
          <Compiler>
             <Add directory="/usr/include" />
             <Add directory="/home/booble/pann/trunk/src/Core" />
-            <Add directory="/home/booble/pann/trunk/src/NetworkTopologies" />
+            <Add directory="/home/booble/pann/trunk/src/NetworkModels" />
             <Add directory="/home/booble/pann/trunk/src/LearningAlgorithms" />
          </Compiler>
          <MakeCommands>
@@ -120,7 +120,7 @@
          <Compiler>
             <Add directory="/usr/include" />
             <Add directory="/home/booble/pann/trunk/src/Core" />
-            <Add directory="/home/booble/pann/trunk/src/NetworkTopologies" />
+            <Add directory="/home/booble/pann/trunk/src/NetworkModels" />
             <Add directory="/home/booble/pann/trunk/src/LearningAlgorithms" />
          </Compiler>
          <MakeCommands>
@@ -139,7 +139,7 @@
          <Compiler>
             <Add directory="/usr/include" />
             <Add directory="/home/booble/pann/trunk/src/Core" />
-            <Add directory="/home/booble/pann/trunk/src/NetworkTopologies" />
+            <Add directory="/home/booble/pann/trunk/src/NetworkModels" />
             <Add directory="/home/booble/pann/trunk/src/LearningAlgorithms" />
          </Compiler>
          <MakeCommands>
@@ -158,7 +158,7 @@
          <Compiler>
             <Add directory="/usr/include" />
             <Add directory="/home/booble/pann/trunk/src/Core" />
-            <Add directory="/home/booble/pann/trunk/src/NetworkTopologies" />
+            <Add directory="/home/booble/pann/trunk/src/NetworkModels" />
             <Add directory="/home/booble/pann/trunk/src/LearningAlgorithms" />
          </Compiler>
          <MakeCommands>
@@ -177,7 +177,7 @@
          <Compiler>
             <Add directory="/usr/include" />
             <Add directory="/home/booble/pann/trunk/src/Core" />
-            <Add directory="/home/booble/pann/trunk/src/NetworkTopologies" />
+            <Add directory="/home/booble/pann/trunk/src/NetworkModels" />
             <Add directory="/home/booble/pann/trunk/src/LearningAlgorithms" />
          </Compiler>
          <MakeCommands>
@@ -196,7 +196,7 @@
          <Compiler>
             <Add directory="/usr/include" />
             <Add directory="/home/booble/pann/trunk/src/Core" />
-            <Add directory="/home/booble/pann/trunk/src/NetworkTopologies" />
+            <Add directory="/home/booble/pann/trunk/src/NetworkModels" />
             <Add directory="/home/booble/pann/trunk/src/LearningAlgorithms" />
          </Compiler>
          <MakeCommands>
@@ -215,7 +215,7 @@
          <Compiler>
             <Add directory="/usr/include" />
             <Add directory="/home/booble/pann/trunk/src/Core" />
-            <Add directory="/home/booble/pann/trunk/src/NetworkTopologies" />
+            <Add directory="/home/booble/pann/trunk/src/NetworkModels" />
             <Add directory="/home/booble/pann/trunk/src/LearningAlgorithms" />
          </Compiler>
          <MakeCommands>
@@ -234,7 +234,7 @@
          <Compiler>
             <Add directory="/usr/include" />
             <Add directory="/home/booble/pann/trunk/src/Core" />
-            <Add directory="/home/booble/pann/trunk/src/NetworkTopologies" />
+            <Add directory="/home/booble/pann/trunk/src/NetworkModels" />
             <Add directory="/home/booble/pann/trunk/src/LearningAlgorithms" />
          </Compiler>
          <MakeCommands>
@@ -264,6 +264,10 @@
       <Unit filename="/home/booble/pann/trunk/src/Core/Object.cpp">
       </Unit>
       <Unit filename="/home/booble/pann/trunk/src/Core/Runner.cpp">
+      </Unit>
+      <Unit filename="/home/booble/pann/trunk/src/LearningAlgorithms/GradientDescent.cpp">
+      </Unit>
+      <Unit filename="/home/booble/pann/trunk/src/NetworkModels/MultilayerPerceptron.cpp">
       </Unit>
       <Unit filename="/home/booble/pann/trunk/src/UnitTests/TestBoost.cpp">
       </Unit>

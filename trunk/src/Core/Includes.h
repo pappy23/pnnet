@@ -13,6 +13,7 @@
 #include <map>
 #include <list>
 #include <vector>
+#include <valarray>
 #include <string>
 #include <algorithm>
 #include <iterator>
