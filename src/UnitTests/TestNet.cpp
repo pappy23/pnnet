@@ -16,9 +16,9 @@ using namespace boost;
 
 int main()
 {
-    const unsigned runs_count = 5;
-    const unsigned layers_count = 1000;
-    const unsigned threads_count = 8;
+    const unsigned runs_count = 500;
+    const unsigned layers_count = 800;
+    const unsigned threads_count = 4;
 
     TrainPattern tp(1, 1);
     tp.input[0] = 1;
