@@ -1,42 +1,21 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <boost/thread.hpp>
 
 using namespace std;
-//using namespace boost;
+using namespace boost;
 
-class A
+void hello()
 {
-public:
-    int a;
-};
-
-class comp
-{
-public:
-    bool operator()(const A& _lhs, const A& _rhs)
-    {
-        return _lhs.a == _rhs.a;
-    }
-};
+    cout<<"hello\n";
+}
 
 int main()
 {
-    vector<A> v;
-    for(int i = 0; i < 10; i++)
-    {
-        v.push_back(A());
-        v[i*2].a = i;
-        v.push_back(A());
-        v[i*2+1].a = i;
-    }
+    boost::thread t(hello);
 
-    cout<<v.size()<<endl;
-
-    vector<A>::iterator it = unique(v.begin(), v.end(), comp());
-    v.resize( it - v.begin() );
-
-    cout<<v.size()<<endl;
+    t.join();
 
     return 0;
 }
