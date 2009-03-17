@@ -13,9 +13,11 @@ namespace pann
 
     Net::Net(int _threads)
     {
-        lastNeuronId = 0;
-        lastWeightId = 0;
+        lastNeuronId = 1;
+        lastWeightId = 1;
         setThreadCount(_threads);
+        biasId = addNeuron(ActivationFunction::Linear::Instance());
+        addConnection(biasId, biasId, 1);
     } //Net
 
     Net::~Net()
@@ -44,6 +46,12 @@ namespace pann
 
         threadCount = _threads;
     } //setThreadCount
+
+    unsigned
+    Net::getBiasId()
+    {
+        return biasId;
+    }; //getBiasId
 
     NeuronIter
     Net::findNeuron(int _neuronId)
@@ -313,6 +321,9 @@ namespace pann
             rawFront.push_back(iter);
             hops[iter] = 1;
         }
+        NeuronIter biasIter = neurons.find(biasId);
+        rawFront.push_back(biasIter);
+        hops[biasIter] = 1;
 
         formatFront(rawFront);
 

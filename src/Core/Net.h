@@ -23,6 +23,7 @@ namespace pann
         unsigned threadCount;
         unsigned lastNeuronId; //var to add new neurons
         unsigned lastWeightId; //var to add new weights
+        unsigned biasId;
         std::map<int, Neuron> neurons;
         std::map<int, Weight> weights;
         std::list<NeuronIter> inputNeurons;  //Iterators to map<> neurons
@@ -48,7 +49,6 @@ namespace pann
                 //Wait for other threads
                 _barrier->wait();
             } while( (dir == ForwardRun && ++layer < _cache->data.size() - 1) || (dir == BackwardRun && layer-- > 0) );
-            //TODO: check wat happens when unsigned layer becomes = -1
             /*
              * A little comment.
              * Cache structure:
@@ -69,6 +69,8 @@ namespace pann
 
         int getThreadCount();
         void setThreadCount(int _threads);
+
+        unsigned getBiasId();
 
         int addNeuron(ActivationFunction::Base* _activationFunction);
         int addInputNeuron();
@@ -94,7 +96,7 @@ namespace pann
     public:
         void printDebugInfo(std::ostringstream& ost)
         {
-            /*
+            
             ost<<"Net\n";
             ost<<" threadsCount: "<<threadCount<<std::endl;
             ost<<" lastNeuronId: "<<lastNeuronId<<std::endl;
@@ -114,7 +116,7 @@ namespace pann
             ost<<"\n\n neurons: ";
             for(it = neurons.begin(); it != neurons.end(); ++it)
                 it->second.printDebugInfo(ost);
-            */
+            
             ost<<"\n\n Cache:\n";
             cache.printDebugInfo(ost);
         };
@@ -132,6 +134,7 @@ namespace pann
                 ar & lastNeuronId;
                 ar & lastWeightId;
                 ar & threadCount;
+                ar & biasId;
                 ar & neurons;
                 show_progress += 10;
                 ar & weights;
@@ -197,6 +200,7 @@ namespace pann
                 ar & lastNeuronId;
                 ar & lastWeightId;
                 ar & threadCount;
+                ar & biasId;
                 ar & neurons;
                 boost::progress_display show_progress(20 + neurons.size() + 20);
                 show_progress += 10;
