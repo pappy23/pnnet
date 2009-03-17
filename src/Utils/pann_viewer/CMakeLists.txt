@@ -1,27 +1,33 @@
 
-set( SOURCES
+set(SOURCES
     main.cpp
     glwidget.cpp
     window.cpp
     )
 
 
-SET( UIS
+SET(UIS
 #    ./ui/dialog.ui
     )
 
-set( MOC_HEADERS
+set(MOC_HEADERS
     window.h
     glwidget.h
     )
 
-set( QT_USE_QTOPENGL 1 )
-find_package( Qt4 REQUIRED )
-include( ${QT_USE_FILE} )
+set(QT_USE_QTOPENGL 1)
+find_package(Qt4)
 
-qt4_wrap_ui( UI_HEADERS ${UIS})
-qt4_wrap_cpp( MOC_SRCS ${MOC_HEADERS} )
+if(QT4_FOUND)
+    message(STATUS "Found Qt4")
 
-add_executable( pann_viewer ${SOURCES} ${UI_HEADERS} ${MOC_SRCS} )
-target_link_libraries( pann_viewer ${QT_LIBRARIES} ${Boost_LIBRARIES} pann)
+    include(${QT_USE_FILE})
+
+    qt4_wrap_ui(UI_HEADERS ${UIS})
+    qt4_wrap_cpp(MOC_SRCS ${MOC_HEADERS})
+
+    add_executable(pann_viewer ${SOURCES} ${UI_HEADERS} ${MOC_SRCS})
+    target_link_libraries(pann_viewer ${QT_LIBRARIES} ${Boost_LIBRARIES} pann)
+
+endif(QT4_FOUND)
 
