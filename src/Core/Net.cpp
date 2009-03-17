@@ -13,8 +13,8 @@ namespace pann
 
     Net::Net(int _threads)
     {
-        lastNeuronId = 1;
-        lastWeightId = 1;
+        lastNeuronId = 0;
+        lastWeightId = 0;
         setThreadCount(_threads);
         biasId = addNeuron(ActivationFunction::Linear::Instance());
         addConnection(biasId, biasId, 1);

@@ -7,18 +7,14 @@
 
 #include "glwidget.h"
 
-QT_BEGIN_NAMESPACE
-class QLabel;
-QT_END_NAMESPACE
-
-class GLWidget;
+#include "NetPublicWrapper.h"
 
 class Window : public QWidget
 {
     Q_OBJECT
 
 public:
-    Window();
+    Window(pann::Net* _net);
 
 private:
     GLWidget *glWidget;

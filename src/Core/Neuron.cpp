@@ -49,7 +49,7 @@ namespace pann
     } //findLink
 
     void
-    Neuron::setOwnerThread(int _thread)
+    Neuron::setOwnerThread(unsigned _thread)
     {
         if(0 > _thread || _thread > 100)
             throw Exception::RangeMismatch()<<"Neuron::setOwnerThread(): thread must be between 0 and 100\n";
@@ -57,14 +57,14 @@ namespace pann
         ownerThread =_thread;
     } //setOwnerThread
 
-    int
-    Neuron::getOwnerThread()
+    unsigned
+    Neuron::getOwnerThread() const
     {
         return ownerThread;
     } //getOwnerThread
 
-    ActivationFunction::Base*
-    Neuron::getActivationFunction()
+    const ActivationFunction::Base*
+    Neuron::getActivationFunction() const
     {
         return activationFunction;
     } //getOwnerThread
