@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 2.6)
 project (PANN)
 #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -ansi")
 add_definitions(-Wall -ansi)
-set(CMAKE_VERBOSE_MAKEFILE ON)
+set(CMAKE_VERBOSE_MAKEFILE OFF)
 
 set(EXECUTABLE_OUTPUT_PATH "${CMAKE_BINARY_DIR}/../bin" CACHE INTERNAL "")
 set(LIBRARY_OUTPUT_PATH "${CMAKE_BINARY_DIR}/../bin" CACHE INTERNAL "")
@@ -50,6 +50,5 @@ target_link_libraries(pann ${Boost_LIBRARIES} pthread)
 
 ############################################################################
 
-#link_directories(${CMAKE_BINARY_DIR}/bin)
 subdirs(Utils UnitTests)
 
