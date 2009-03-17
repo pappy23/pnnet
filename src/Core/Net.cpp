@@ -321,13 +321,11 @@ namespace pann
             rawFront.push_back(iter);
             hops[iter] = 1;
         }
-
-        //Bias neuron is kind of input neuron
-        NeuronIter biasIter = neurons.find(biasId);
-        rawFront.push_back(biasIter);
-        hops[biasIter] = 1;
-
         formatFront(rawFront);
+        
+        //Bias neuron is kind of input neuron
+        NeuronIter biasIter = findNeuron(biasId);
+        cache.data[0][0].push_back(biasIter);
 
         /*
          * Cache looks like this:
