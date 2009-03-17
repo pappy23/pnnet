@@ -39,10 +39,11 @@ namespace pann
         {
         };
 
-        NeuronIter getToIter()     { return to; };
-        Direction getDirection()   { return direction; };
-        unsigned getLatency()      { return latency; };
-        WeightIter getWeightIter() { return w; };
+        NeuronIter getToIter()              { return to; };
+        ConstNeuronIter getToIter() const   { return to; };
+        Direction getDirection() const      { return direction; };
+        unsigned getLatency() const         { return latency; };
+        WeightIter getWeightIter()          { return w; };
     
     public:
         virtual void printDebugInfo(std::ostringstream& ost)

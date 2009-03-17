@@ -17,10 +17,11 @@ namespace pann
 	typedef unsigned int uint;
 
     class Neuron;
-    typedef std::map<int, Neuron>::iterator NeuronIter;
+    typedef std::map<unsigned, Neuron>::iterator NeuronIter;
+    typedef std::map<unsigned, Neuron>::const_iterator ConstNeuronIter;
 
     class Weight;
-    typedef std::map<int, Weight>::iterator WeightIter;
+    typedef std::map<unsigned, Weight>::iterator WeightIter;
 
 }; //pann
 

@@ -1,6 +1,6 @@
 #include "window.h"
 
-Window::Window()
+Window::Window(pann::Net* _net)
 {
     this->resize(700, 500);
     QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
@@ -12,13 +12,6 @@ Window::Window()
     this->setFocusPolicy(Qt::StrongFocus);
     this->setAutoFillBackground(false);
 
-    QHBoxLayout* horizontalLayout = new QHBoxLayout(this);
-
-    glWidget = new GLWidget;
-    glWidget->setMinimumSize(QSize(0, 0));
-    glWidget->setFocusPolicy(Qt::StrongFocus);
-    horizontalLayout->addWidget(glWidget);
-
     label = new QLabel(tr("test"), this);
     QSizePolicy sizePolicy1(QSizePolicy::Fixed, QSizePolicy::Preferred);
     sizePolicy1.setHorizontalStretch(0);
@@ -28,9 +21,15 @@ Window::Window()
     label->setMinimumSize(QSize(150, 0));
     label->setAlignment(Qt::AlignLeft | Qt::AlignTop);
     label->setWordWrap(true);
+
+    glWidget = new GLWidget(_net, label);
+    glWidget->setMinimumSize(QSize(0, 0));
+    glWidget->setFocusPolicy(Qt::StrongFocus);
+
+    QHBoxLayout* horizontalLayout = new QHBoxLayout(this);
+    horizontalLayout->addWidget(glWidget);
     horizontalLayout->addWidget(label);
 
-    //! [1]
     setLayout(horizontalLayout );
 
     setWindowTitle(tr("pann viewer"));

@@ -14,7 +14,7 @@ namespace pann
     {
     private:
         ActivationFunction::Base* activationFunction;
-        int ownerThread; //Thread with this number will take care of our Neuron
+        unsigned ownerThread; //Thread with this number will take care of our Neuron
 
     public:
         Float receptiveField;
@@ -26,10 +26,10 @@ namespace pann
         Neuron(ActivationFunction::Base*);
         ~Neuron();
 
-        void setOwnerThread(int _thread);
-        int getOwnerThread();
+        void setOwnerThread(unsigned _thread);
+        unsigned getOwnerThread() const;
 
-        ActivationFunction::Base* getActivationFunction();
+        const ActivationFunction::Base* getActivationFunction() const;
 
 /*    private: */
         //Helper. Finds and returns iterator to list<> links for NeuronIter _to

@@ -26,10 +26,11 @@ namespace pann
             //Only one object of class Base exist at a time
             static Base* Instance();
 
-            virtual unsigned getId() = 0;
+            virtual unsigned getId() const = 0;
+            virtual std::string getName() const = 0;
 
-            virtual Float f(Float) = 0;
-            virtual Float derivative(Float) = 0;
+            virtual Float f(Float) const = 0;
+            virtual Float derivative(Float) const = 0;
         };
 
         /**
@@ -61,14 +62,15 @@ namespace pann
                 return self;
             };
 
-            virtual unsigned getId() { return 1; };
+            virtual unsigned getId() const { return 1; };
+            virtual std::string getName() const { return "Linear"; };
 
-            virtual Float f(Float _x)
+            virtual Float f(Float _x) const
             {
                 return _x;
             } //f
 
-            virtual Float derivative(Float)
+            virtual Float derivative(Float) const
             {
                 return 0;
             } //derivative
@@ -100,16 +102,17 @@ namespace pann
                 return self;
             };
 
-            virtual unsigned getId() { return 2; };
+            virtual unsigned getId() const { return 2; };
+            virtual std::string getName() const { return "Threshold"; };
 
-            virtual Float f(Float _x)
+            virtual Float f(Float _x) const
             {
                 if(_x < 0)
                     return 0;
                 return 1;
             } //f
 
-            virtual Float derivative(Float _x)
+            virtual Float derivative(Float _x) const
             {
                 if(_x == 0)
                     return inf;
@@ -146,14 +149,15 @@ namespace pann
                 return self;
             };
 
-            virtual unsigned getId() { return 3; };
+            virtual unsigned getId() const { return 3; };
+            virtual std::string getName() const { return "TanH"; };
 
-            virtual Float f(Float _x)
+            virtual Float f(Float _x) const
             {
                 return a * std::tanh( b * _x );
             } //f
 
-            virtual Float derivative(Float)
+            virtual Float derivative(Float) const
             {
                 return 0;
             } //derivative

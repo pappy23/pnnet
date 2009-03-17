@@ -24,10 +24,12 @@ namespace pann
         unsigned lastNeuronId; //var to add new neurons
         unsigned lastWeightId; //var to add new weights
         unsigned biasId;
-        std::map<int, Neuron> neurons;
-        std::map<int, Weight> weights;
+        std::map<unsigned, Neuron> neurons;
+        std::map<unsigned, Weight> weights;
         std::list<NeuronIter> inputNeurons;  //Iterators to map<> neurons
         NetCache cache;
+
+        friend class NetPublicWrapper;
 
     private:
         NeuronIter findNeuron(int _neuronId);
@@ -141,7 +143,7 @@ namespace pann
                 show_progress += 10;
 
                 //Links already saved by 'ar & neurons', but field like 'to' - not
-                for(std::map<int, Neuron>::const_iterator iter = neurons.begin(); iter != neurons.end(); ++iter)
+                for(std::map<unsigned, Neuron>::const_iterator iter = neurons.begin(); iter != neurons.end(); ++iter)
                 {
                     unsigned size = iter->second.links.size();
                     ar & size;

@@ -5,6 +5,7 @@
 
 #include "Net.h"
 #include "Storage.h"
+#include "Storage.h"
 
 using namespace pann;
 
@@ -22,6 +23,7 @@ int main(int argc, char *argv[])
     }
 
     Net net;
+
     try {
         Storage::load(net, argv[1]);
     } catch(Exception::Base& e) { //TODO catch(FilesystemError)
@@ -30,9 +32,7 @@ int main(int argc, char *argv[])
         return -1;
     }
 
-    //Build GL
-
-    Window window;
+    Window window(&net);
     window.show();
     return app.exec();
 }
