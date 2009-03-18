@@ -24,11 +24,7 @@ public slots:
     void setXRotation(int angle);
     void setYRotation(int angle);
     void setZRotation(int angle);
-
-signals:
-    void xRotationChanged(int angle);
-    void yRotationChanged(int angle);
-    void zRotationChanged(int angle);
+    void setScale(float);
 
 protected:
     void initializeGL();
@@ -46,7 +42,6 @@ private:
     {
         GLdouble x, y, z;
     };
-
     std::map<pann::ConstNeuronIter, Coords, pann::NeuronIterCompare> coords;
 
     void calcCoords();
@@ -61,6 +56,8 @@ private:
     int xRot;
     int yRot;
     int zRot;
+    float scale;
+
     QPoint lastPos;
     QColor bgColor;
     QColor neuronColor;

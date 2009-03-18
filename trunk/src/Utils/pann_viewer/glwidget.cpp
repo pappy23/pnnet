@@ -19,6 +19,7 @@ GLWidget::GLWidget(Net* _net, QLabel* _label, QWidget *parent)
     xRot = 0;
     yRot = 0;
     zRot = 0;
+    scale = 1.0;
 
     bgColor = QColor::fromCmykF(0.39, 0.39, 0.0, 0.0);
     neuronColor = QColor(255, 0, 0);
@@ -41,19 +42,74 @@ void GLWidget::calcCoords()
         for(unsigned thread = 0; thread < cache.data[layer].size(); ++thread)
             layer_size += cache.data[layer][thread].size();
 
+        unsigned neuron_number = 0;
         for(unsigned thread = 0; thread < cache.data[layer].size(); ++thread)
         {
-            for(unsigned number = 0; number < cache.data[layer][thread].size(); ++number)
+            for(unsigned i = 0; i < cache.data[layer][thread].size(); ++i)
             {
-                ConstNeuronIter neuronIter = cache.data[layer][thread][number];
+                ConstNeuronIter neuronIter = cache.data[layer][thread][i];
                 Coords c;
-                c.x = (GLdouble) ((GLdouble)layer - (GLdouble)total_layers/2 + 1) * 100;
-                c.y = (GLdouble) ((GLdouble)number -(GLdouble)layer_size/2 + 1) * 50;
-                c.z = (GLdouble)0;
+                c.x = (GLdouble) ((GLdouble)layer - (GLdouble)total_layers/2 + 1.0) * 100;
+                c.y = (GLdouble) ((GLdouble)neuron_number - (GLdouble)layer_size/2 + 1.0 ) * 20;
+                c.z = (GLdouble) (GLdouble) (rand() % 200);
                 coords[neuronIter] = c;
+                neuron_number++;
             }
         }
     }
+}
+
+void GLWidget::drawNetModel()
+{
+    const GLdouble neuronRadius = 7;
+
+    GLUquadric* q = gluNewQuadric();
+
+    glLineWidth(0.5);
+    glPointSize(1.0);
+    glPolygonMode(GL_FRONT, GL_FILL);
+    glPolygonMode(GL_BACK, GL_FILL);
+    gluQuadricNormals(q, GLU_SMOOTH);
+
+    //DEBUG:
+    //glColor3d(0, 0, 255);
+    //gluSphere(q, neuronRadius+20, 20, 20); 
+
+    //For every neuron draw Link::in connections
+    map<unsigned, Neuron>::const_iterator iter = net_wr.getNeurons().begin();
+    for(; iter != net_wr.getNeurons().end(); ++iter)
+    {
+        Coords to_coords = coords[iter];
+
+        //Draw neuron
+        qglColor(neuronColor);
+        glPushMatrix();
+        glTranslated(to_coords.x, to_coords.y, to_coords.z);
+        gluSphere(q, neuronRadius, 20, 20); 
+        glPopMatrix();
+
+        //Draw it's Link::in connections
+        qglColor(linkColor);
+        list<Link>::const_iterator link_iter = iter->second.links.begin();
+        for(; link_iter != iter->second.links.end(); ++link_iter)
+        {
+            if(link_iter->getDirection() == Link::out)
+                continue;
+
+            //We don't want to draw links from bias
+            if(link_iter->getToIter()->first == net_wr.net->getBiasId())
+                continue;
+
+            Coords from_coords = coords[link_iter->getToIter()];
+
+            glBegin(GL_LINES);
+            glVertex3d(from_coords.x, from_coords.y, from_coords.z);
+            glVertex3d(to_coords.x, to_coords.y, to_coords.z);
+            glEnd();
+        }
+    }
+
+    gluDeleteQuadric(q);
 }
 
 void GLWidget::setInfoNeuron(unsigned _id)
@@ -80,6 +136,7 @@ void GLWidget::setInfoNet()
         <<"Neurons: "<<net_wr.getNeurons().size()<<endl
         <<"Weights: "<<net_wr.getWeights().size()<<endl
         <<"Threads: "<<net_wr.net->getThreadCount()<<endl
+        <<"Note: bias connections not shown"<<endl
         <<endl;
 
     info_label->setText(ost.str().c_str());
@@ -100,7 +157,6 @@ void GLWidget::setXRotation(int angle)
     normalizeAngle(&angle);
     if (angle != xRot) {
         xRot = angle;
-        emit xRotationChanged(angle);
         updateGL();
     }
 }
@@ -110,7 +166,6 @@ void GLWidget::setYRotation(int angle)
     normalizeAngle(&angle);
     if (angle != yRot) {
         yRot = angle;
-        emit yRotationChanged(angle);
         updateGL();
     }
 }
@@ -120,7 +175,15 @@ void GLWidget::setZRotation(int angle)
     normalizeAngle(&angle);
     if (angle != zRot) {
         zRot = angle;
-        emit zRotationChanged(angle);
+        updateGL();
+    }
+}
+
+void GLWidget::setScale(float _scale)
+{
+    if(_scale != scale && _scale > 0.1 && _scale < 10.0)
+    {
+        scale = _scale;
         updateGL();
     }
 }
@@ -141,6 +204,7 @@ void GLWidget::paintGL()
     glRotated(xRot / 16.0, 1.0, 0.0, 0.0);
     glRotated(yRot / 16.0, 0.0, 1.0, 0.0);
     glRotated(zRot / 16.0, 0.0, 0.0, 1.0);
+    glScaled(scale,scale,scale);
     drawNetModel();
 }
 
@@ -150,8 +214,8 @@ void GLWidget::resizeGL(int width, int height)
 
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    //glOrtho(-0.5, +0.5, +0.5, -0.5, 4.0, 15.0);
-    glOrtho(-width/2,width/2, -height/2,height/2 ,-(width+height)/4,(width+height)/4);
+    //glOrtho(-500, 500, -500, 500, -100.0, 100.0);
+    glOrtho(-width/2,width/2, -height/2,height/2 ,-(width+height)/2,(width+height)/2);
     glMatrixMode(GL_MODELVIEW);
 }
 
@@ -178,38 +242,40 @@ void GLWidget::mouseMoveEvent(QMouseEvent *event)
 
 void GLWidget::keyPressEvent(QKeyEvent* e)
 {
+    const int rotationDelta = 30.0;
+    const float scaleDelta = 0.05;
     //TODO: show key hint to user via info_label
     //FIXME: not working
     switch(e->key())
     {
         case Qt::Key_Up:
-            glRotated(5.0,1.0,0.0,0.0);
+            setXRotation(xRot + rotationDelta);
             break;
         case Qt::Key_Down:
-            glRotated(-5.0,1.0,0.0,0.0);
+            setXRotation(xRot - rotationDelta);
             break;
         case Qt::Key_Left:
-            glRotated(5.0,0.0,1.0,0.0);
+            setYRotation(yRot + rotationDelta);
             break;
         case Qt::Key_Right:
-            glRotated(-5.0,0.0,1.0,0.0);
+            setYRotation(yRot - rotationDelta);
             break;
         case Qt::Key_Plus:
-            glScaled(1.1,1.1,1.1);
+            setScale(scale + scaleDelta);
             break;
         case Qt::Key_Minus:
-            glScaled(0.9,0.9,0.9);
+            setScale(scale - scaleDelta);
             break;
         case Qt::Key_W:
             glTranslated(0.0,0.1,0.0);
             break;
-        case Qt::Key_Z:
+        case Qt::Key_S:
             glTranslated(0.0,-0.1,0.0);
             break;
         case Qt::Key_A:
             glTranslated(-0.1,0.0,0.0);
             break;
-        case Qt::Key_S:
+        case Qt::Key_D:
             glTranslated(0.1,0.0,0.0);
             break;
         case Qt::Key_Space:
@@ -218,59 +284,8 @@ void GLWidget::keyPressEvent(QKeyEvent* e)
         default:
             return;
     }
-
-    updateGL();
+    //updateGL();
 } 
-
-void GLWidget::drawNetModel()
-{
-    const GLdouble neuronRadius = 7;
-
-    GLUquadric* q = gluNewQuadric();
-
-    glLineWidth(1.5);
-    glPointSize(1.0);
-    glPolygonMode(GL_FRONT, GL_FILL);
-    glPolygonMode(GL_BACK, GL_FILL);
-    gluQuadricNormals(q, GLU_SMOOTH);
-
-    //DEBUG:
-    glColor3d(0, 0, 255);
-    gluSphere(q, neuronRadius+20, 20, 20); 
-
-    //For every neuron draw Link::in connections
-    map<unsigned, Neuron>::const_iterator iter = net_wr.getNeurons().begin();
-    for(; iter != net_wr.getNeurons().end(); ++iter)
-    {
-        Coords to_coords = coords[iter];
-
-        //Draw neuron
-        qglColor(neuronColor);
-        glPushMatrix();
-        glTranslated(to_coords.x, to_coords.y, to_coords.z);
-        gluSphere(q, neuronRadius, 20, 20); 
-        glPopMatrix();
-
-        //Draw it's Link::in connections
-        qglColor(linkColor);
-        list<Link>::const_iterator link_iter = iter->second.links.begin();
-        for(; link_iter != iter->second.links.end(); ++link_iter)
-        {
-            if(link_iter->getDirection() == Link::out)
-                continue;
-
-            Coords from_coords = coords[link_iter->getToIter()];
-
-    glBegin(GL_LINES);
-            glVertex3d(from_coords.x, from_coords.y, from_coords.z);
-            glVertex3d(to_coords.x, to_coords.y, to_coords.z);
-    glEnd();
-        }
-    }
-
-
-    gluDeleteQuadric(q);
-}
 
 void GLWidget::normalizeAngle(int *angle)
 {
