@@ -6,8 +6,8 @@
 #include <QKeyEvent>
 
 #include "Includes.h"
-
 #include "NetPublicWrapper.h"
+#include "Util.h"
 
 class GLWidget : public QGLWidget
 {
@@ -42,11 +42,19 @@ private:
     pann::NetPublicWrapper net_wr;
     QLabel* info_label; //TODO Replace it with QTextEdit and do nice html formatting
 
+    struct Coords
+    {
+        GLdouble x, y, z;
+    };
+
+    std::map<pann::ConstNeuronIter, Coords, pann::NeuronIterCompare> coords;
+
+    void calcCoords();
+
     void setInfoNeuron(unsigned); //fill info label with Neuron info
     void setInfoNet(); //fill info label with Net info
 
     void normalizeAngle(int *angle);
-    void getNeuronCoords(pann::ConstNeuronIter _iter, const pann::NetCache& _cache, GLdouble& _x, GLdouble& _y, GLdouble& _z);
     void drawNetModel();
 
     GLuint object;

@@ -17,7 +17,7 @@ using namespace boost;
 int main()
 {
     const unsigned runs_count = 3;
-    const unsigned layers_count = 0;
+    const unsigned layers_count = 5;
     const unsigned threads_count = 2;
 
     TrainPattern tp(1, 1);
@@ -27,7 +27,7 @@ int main()
         vector<unsigned> layers;
         layers.push_back(1);
         for(unsigned i = 0; i < layers_count; ++i)
-            layers.push_back(1);
+            layers.push_back(20);
         layers.push_back(1);
 
         Net* net = NetworkModel::MultilayerPerceptron(layers, ActivationFunction::TanH::Instance());
@@ -58,7 +58,7 @@ int main()
         //Debug
         {
         ostringstream ost;
-        net->printDebugInfo(ost);
+        //net->printDebugInfo(ost);
         cout<<ost.str();
         }
     
