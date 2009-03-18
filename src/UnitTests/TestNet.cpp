@@ -17,7 +17,7 @@ using namespace boost;
 int main()
 {
     const unsigned runs_count = 3;
-    const unsigned layers_count = 5;
+    const unsigned layers_count = 10;
     const unsigned threads_count = 2;
 
     TrainPattern tp(1, 1);
@@ -58,7 +58,7 @@ int main()
         //Debug
         {
         ostringstream ost;
-        net->printDebugInfo(ost);
+        //net->printDebugInfo(ost);
         cout<<ost.str();
         }
     

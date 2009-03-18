@@ -10,26 +10,21 @@ using namespace pann;
 GLWidget::GLWidget(Net* _net, QLabel* _label, QWidget *parent)
     : QGLWidget(parent), net_wr(_net), info_label(_label)
 {
-    setInfoNet();
-    //setInfoNeuron(1);
-    
-    calcCoords();
-
-    object = 0;
-    xRot = 0;
-    yRot = 0;
-    zRot = 0;
-    scale = 1.0;
-
     bgColor = QColor::fromCmykF(0.39, 0.39, 0.0, 0.0);
     neuronColor = QColor(255, 0, 0);
     linkColor = QColor(0, 255, 0);
+
+    calcCoords();
+
+    restoreDefaults();
+
+    setInfoNet();
+    //setInfoNeuron(1);
 }
 
 GLWidget::~GLWidget()
 {
-    makeCurrent();
-    glDeleteLists(object, 1);
+//    makeCurrent();
 }
 
 void GLWidget::calcCoords()
@@ -48,10 +43,13 @@ void GLWidget::calcCoords()
             for(unsigned i = 0; i < cache.data[layer][thread].size(); ++i)
             {
                 ConstNeuronIter neuronIter = cache.data[layer][thread][i];
+                unsigned planeRows = sqrt(layer_size);
+                unsigned planeCols = layer_size / planeRows;
+
                 Coords c;
-                c.x = (GLdouble) ((GLdouble)layer - (GLdouble)total_layers/2 + 1.0) * 100;
-                c.y = (GLdouble) ((GLdouble)neuron_number - (GLdouble)layer_size/2 + 1.0 ) * 20;
-                c.z = (GLdouble) (GLdouble) (rand() % 200);
+                c.x = (GLdouble) ( (GLdouble)layer - total_layers/2.0 + 1.0) * 100;
+                c.y = (GLdouble) ( (GLdouble)(neuron_number / planeCols) - planeRows/2.0 + 1.0 ) * 40.0;
+                c.z = (GLdouble) ( (GLdouble)(neuron_number % planeCols) - planeCols/2.0 + 1.0 ) * 40.0;
                 coords[neuronIter] = c;
                 neuron_number++;
             }
@@ -61,11 +59,11 @@ void GLWidget::calcCoords()
 
 void GLWidget::drawNetModel()
 {
-    const GLdouble neuronRadius = 7;
+    srand(42); //for linkRate
 
     GLUquadric* q = gluNewQuadric();
 
-    glLineWidth(0.5);
+    glLineWidth(1.5);
     glPointSize(1.0);
     glPolygonMode(GL_FRONT, GL_FILL);
     glPolygonMode(GL_BACK, GL_FILL);
@@ -85,27 +83,32 @@ void GLWidget::drawNetModel()
         qglColor(neuronColor);
         glPushMatrix();
         glTranslated(to_coords.x, to_coords.y, to_coords.z);
-        gluSphere(q, neuronRadius, 20, 20); 
+        gluSphere(q, neuronRadius, 12, 12); 
         glPopMatrix();
 
-        //Draw it's Link::in connections
-        qglColor(linkColor);
-        list<Link>::const_iterator link_iter = iter->second.links.begin();
-        for(; link_iter != iter->second.links.end(); ++link_iter)
+        if(drawLinks)
         {
-            if(link_iter->getDirection() == Link::out)
-                continue;
+            //Draw it's Link::in connections
+            qglColor(linkColor);
+            list<Link>::const_iterator link_iter = iter->second.links.begin();
+            for(; link_iter != iter->second.links.end(); ++link_iter)
+            {
+                if(link_iter->getDirection() == Link::out)
+                    continue;
 
-            //We don't want to draw links from bias
-            if(link_iter->getToIter()->first == net_wr.net->getBiasId())
-                continue;
+                if(link_iter->getToIter()->first == net_wr.net->getBiasId() && !drawBiasLinks)
+                    continue;
 
-            Coords from_coords = coords[link_iter->getToIter()];
+                if(rand() % linkRate)
+                    continue;
 
-            glBegin(GL_LINES);
-            glVertex3d(from_coords.x, from_coords.y, from_coords.z);
-            glVertex3d(to_coords.x, to_coords.y, to_coords.z);
-            glEnd();
+                Coords from_coords = coords[link_iter->getToIter()];
+
+                glBegin(GL_LINES);
+                glVertex3d(from_coords.x, from_coords.y, from_coords.z);
+                glVertex3d(to_coords.x, to_coords.y, to_coords.z);
+                glEnd();
+            }
         }
     }
 
@@ -136,20 +139,34 @@ void GLWidget::setInfoNet()
         <<"Neurons: "<<net_wr.getNeurons().size()<<endl
         <<"Weights: "<<net_wr.getWeights().size()<<endl
         <<"Threads: "<<net_wr.net->getThreadCount()<<endl
-        <<"Note: bias connections not shown"<<endl
-        <<endl;
+        <<endl<<endl;
+
+    if(!drawLinks)
+        ost<<"Note: links are not shown"<<endl;
+
+    if(!drawBiasLinks)
+        ost<<"Note: bias connections are not shown"<<endl;
+
+    ost<<"Note: only every "<<linkRate<<"-th link is shown"<<endl;
+    
+    ost<<endl<<endl;
+    
+    ost<<"Hint: "<<endl;
+    ost<<"'W', 'A', 'S', 'D' - move around"<<endl;
+    ost<<"'+', '-' - zoom"<<endl;
+    ost<<"'Up', 'Down', 'Left', 'Right' - rotate X-Y"<<endl;
+    ost<<"Drag with left mouse button - rotate X-Y"<<endl;
+    ost<<"Drag with right mouse button - rotate X-Z"<<endl;
 
     info_label->setText(ost.str().c_str());
 }
 
-QSize GLWidget::minimumSizeHint() const
+void GLWidget::normalizeAngle(int *angle)
 {
-    return QSize(50, 50);
-}
-
-QSize GLWidget::sizeHint() const
-{
-    return QSize(400, 400);
+    while (*angle < 0)
+        *angle += 360 * 16;
+    while (*angle > 360 * 16)
+        *angle -= 360 * 16;
 }
 
 void GLWidget::setXRotation(int angle)
@@ -188,6 +205,33 @@ void GLWidget::setScale(float _scale)
     }
 }
 
+void GLWidget::setTranslation(float _x, float _y, float _z)
+{
+    //if()
+    {
+        xTrans = _x;
+        yTrans = _y;
+        zTrans = _z;
+        updateGL();
+    }
+}
+
+void GLWidget::restoreDefaults()
+{
+    setTranslation(0, 0, 0);
+    setScale(1.0);
+    setXRotation(0);
+    setYRotation(0);
+    setZRotation(0);
+
+    neuronRadius = 7;
+    drawLinks = true;
+    drawBiasLinks = false;
+    linkRate = 2;
+
+    updateGL();
+}
+
 void GLWidget::initializeGL()
 {
     qglClearColor(bgColor.dark());
@@ -200,7 +244,8 @@ void GLWidget::paintGL()
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glLoadIdentity();
-    glTranslated(0.0, 0.0, -10.0);
+    //glTranslated(0.0, 0.0, -10.0);
+    glTranslated(xTrans, yTrans, zTrans);
     glRotated(xRot / 16.0, 1.0, 0.0, 0.0);
     glRotated(yRot / 16.0, 0.0, 1.0, 0.0);
     glRotated(zRot / 16.0, 0.0, 0.0, 1.0);
@@ -214,7 +259,6 @@ void GLWidget::resizeGL(int width, int height)
 
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    //glOrtho(-500, 500, -500, 500, -100.0, 100.0);
     glOrtho(-width/2,width/2, -height/2,height/2 ,-(width+height)/2,(width+height)/2);
     glMatrixMode(GL_MODELVIEW);
 }
@@ -244,8 +288,9 @@ void GLWidget::keyPressEvent(QKeyEvent* e)
 {
     const int rotationDelta = 30.0;
     const float scaleDelta = 0.05;
+    const float translateDelta = 10;
+    
     //TODO: show key hint to user via info_label
-    //FIXME: not working
     switch(e->key())
     {
         case Qt::Key_Up:
@@ -267,30 +312,22 @@ void GLWidget::keyPressEvent(QKeyEvent* e)
             setScale(scale - scaleDelta);
             break;
         case Qt::Key_W:
-            glTranslated(0.0,0.1,0.0);
+            setTranslation(xTrans, yTrans - translateDelta, zTrans);
             break;
         case Qt::Key_S:
-            glTranslated(0.0,-0.1,0.0);
+            setTranslation(xTrans, yTrans + translateDelta, zTrans);
             break;
         case Qt::Key_A:
-            glTranslated(-0.1,0.0,0.0);
+            setTranslation(xTrans + translateDelta, yTrans, zTrans);
             break;
         case Qt::Key_D:
-            glTranslated(0.1,0.0,0.0);
+            setTranslation(xTrans - translateDelta, yTrans, zTrans);
             break;
         case Qt::Key_Space:
-            glLoadIdentity();
+            restoreDefaults();
             break;
         default:
             return;
     }
     //updateGL();
 } 
-
-void GLWidget::normalizeAngle(int *angle)
-{
-    while (*angle < 0)
-        *angle += 360 * 16;
-    while (*angle > 360 * 16)
-        *angle -= 360 * 16;
-}
