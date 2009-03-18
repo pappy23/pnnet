@@ -17,6 +17,11 @@ namespace pann
             return _lhs->first < _rhs->first;
         };
         
+        bool operator()(const ConstNeuronIter& _lhs, const ConstNeuronIter& _rhs) const
+        {
+            return _lhs->first < _rhs->first;
+        };
+        
         static bool equal(const NeuronIter& _lhs, const NeuronIter& _rhs) 
         {
             return _lhs->first == _rhs->first;

@@ -12,6 +12,8 @@ GLWidget::GLWidget(Net* _net, QLabel* _label, QWidget *parent)
 {
     setInfoNet();
     //setInfoNeuron(1);
+    
+    calcCoords();
 
     object = 0;
     xRot = 0;
@@ -27,6 +29,31 @@ GLWidget::~GLWidget()
 {
     makeCurrent();
     glDeleteLists(object, 1);
+}
+
+void GLWidget::calcCoords()
+{
+    const NetCache& cache = net_wr.getCache();
+    unsigned total_layers = cache.data.size();
+    for(unsigned layer = 0; layer < total_layers; ++layer)
+    {
+        unsigned layer_size = 0;
+        for(unsigned thread = 0; thread < cache.data[layer].size(); ++thread)
+            layer_size += cache.data[layer][thread].size();
+
+        for(unsigned thread = 0; thread < cache.data[layer].size(); ++thread)
+        {
+            for(unsigned number = 0; number < cache.data[layer][thread].size(); ++number)
+            {
+                ConstNeuronIter neuronIter = cache.data[layer][thread][number];
+                Coords c;
+                c.x = (GLdouble) ((GLdouble)layer - (GLdouble)total_layers/2 + 1) * 100;
+                c.y = (GLdouble) ((GLdouble)number -(GLdouble)layer_size/2 + 1) * 50;
+                c.z = (GLdouble)0;
+                coords[neuronIter] = c;
+            }
+        }
+    }
 }
 
 void GLWidget::setInfoNeuron(unsigned _id)
@@ -195,17 +222,9 @@ void GLWidget::keyPressEvent(QKeyEvent* e)
     updateGL();
 } 
 
-void GLWidget::getNeuronCoords(pann::ConstNeuronIter _iter, const pann::NetCache& _cache, GLdouble& _x, GLdouble& _y, GLdouble& _z)
-{
-    _x = 0;
-    _y = 0;
-    _z = (GLdouble) _iter->first * 20;
-}
-
 void GLWidget::drawNetModel()
 {
     const GLdouble neuronRadius = 7;
-    const NetCache& cache = net_wr.getCache();
 
     GLUquadric* q = gluNewQuadric();
 
@@ -215,20 +234,21 @@ void GLWidget::drawNetModel()
     glPolygonMode(GL_BACK, GL_FILL);
     gluQuadricNormals(q, GLU_SMOOTH);
 
-    glBegin(GL_LINES);
+    //DEBUG:
+    glColor3d(0, 0, 255);
+    gluSphere(q, neuronRadius+20, 20, 20); 
 
     //For every neuron draw Link::in connections
     map<unsigned, Neuron>::const_iterator iter = net_wr.getNeurons().begin();
     for(; iter != net_wr.getNeurons().end(); ++iter)
     {
-        GLdouble to_x, to_y, to_z;
-        getNeuronCoords(iter, cache, to_x, to_y, to_z);
+        Coords to_coords = coords[iter];
 
         //Draw neuron
         qglColor(neuronColor);
         glPushMatrix();
-        glTranslated(to_x, to_y, to_z);
-        gluSphere(q, neuronRadius, 12, 12); 
+        glTranslated(to_coords.x, to_coords.y, to_coords.z);
+        gluSphere(q, neuronRadius, 20, 20); 
         glPopMatrix();
 
         //Draw it's Link::in connections
@@ -239,15 +259,15 @@ void GLWidget::drawNetModel()
             if(link_iter->getDirection() == Link::out)
                 continue;
 
-            GLdouble from_x, from_y, from_z;
-            getNeuronCoords(link_iter->getToIter(), cache, from_x, from_y, from_z);
+            Coords from_coords = coords[link_iter->getToIter()];
 
-            glVertex3d(from_x, from_y, from_z);
-            glVertex3d(to_x, to_y, to_z);
+    glBegin(GL_LINES);
+            glVertex3d(from_coords.x, from_coords.y, from_coords.z);
+            glVertex3d(to_coords.x, to_coords.y, to_coords.z);
+    glEnd();
         }
     }
 
-    glEnd();
 
     gluDeleteQuadric(q);
 }
