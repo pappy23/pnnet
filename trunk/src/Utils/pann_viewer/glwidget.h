@@ -17,14 +17,13 @@ public:
     GLWidget(pann::Net* _net, QLabel* _label, QWidget *parent = 0);
     ~GLWidget();
 
-    QSize minimumSizeHint() const;
-    QSize sizeHint() const;
-
 public slots:
     void setXRotation(int angle);
     void setYRotation(int angle);
     void setZRotation(int angle);
     void setScale(float);
+    void setTranslation(float, float, float);
+    void restoreDefaults();
 
 protected:
     void initializeGL();
@@ -52,11 +51,21 @@ private:
     void normalizeAngle(int *angle);
     void drawNetModel();
 
-    GLuint object;
+    //Rotation
     int xRot;
     int yRot;
     int zRot;
+    //Scale
     float scale;
+    //Translation (move object)
+    float xTrans;
+    float yTrans;
+    float zTrans;
+    //Params
+    bool drawBiasLinks;
+    bool drawLinks;
+    float neuronRadius;
+    unsigned linkRate;
 
     QPoint lastPos;
     QColor bgColor;

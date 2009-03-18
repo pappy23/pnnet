@@ -22,18 +22,19 @@ int main(int argc, char *argv[])
         return -1;
     }
 
-    Net net;
+    Net *net = new Net;
 
     try {
-        Storage::load(net, argv[1]);
+        Storage::load(*net, argv[1]);
     } catch(Exception::Base& e) { //TODO catch(FilesystemError)
         err_msg.setText(e.getText().c_str());
         err_msg.exec();
         return -1;
     }
 
-    Window window(&net);
+    Window window(net);
     window.show();
+
     return app.exec();
 }
 
