@@ -10,7 +10,7 @@ set(LIBRARY_OUTPUT_PATH "${CMAKE_BINARY_DIR}/../bin" CACHE INTERNAL "")
 
 ############################################################################
 
-SET(BOOST_INCLUDEDIR /usr/local/include/boost-1_38)
+set(BOOST_INCLUDEDIR /usr/local/include/boost-1_38)
 #SET(BOOST_LIBRARYDIR /usr/local/lib)
 
 set(Boost_USE_STATIC_LIBS ON)
@@ -45,8 +45,9 @@ foreach(dir ${PANN_SOURCES})
     endforeach(filename)
 endforeach(dir)
 
-add_library(pann STATIC ${PANN_SOURCE_FILES})
+add_library(pann SHARED ${PANN_SOURCE_FILES})
 target_link_libraries(pann ${Boost_LIBRARIES} pthread)
+#TODO find how to link static pthread
 
 ############################################################################
 
