@@ -6,7 +6,7 @@
 
 
 = Details =
-
+{{{
 АО - объект.
 
 В один из алгоритмов входят:
@@ -22,3 +22,5 @@
 
 TrainData
 -valarray<TrainPattern>
+
+}}}
