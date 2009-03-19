@@ -10,7 +10,8 @@ namespace pann
             activationFunction(ActivationFunction::Linear::Instance()),
             ownerThread(0),
             receptiveField(0),
-            activationValue(activationFunction->f(0))
+            activationValue(activationFunction->f(0)),
+            oglHint(0)
     {
     } //Neuron
 
@@ -18,7 +19,8 @@ namespace pann
             activationFunction(_activationFunction),
             ownerThread(0),
             receptiveField(0),
-            activationValue(_activationFunction->f(0))
+            activationValue(_activationFunction->f(0)),
+            oglHint(0)
     {
     } //Neuron
 

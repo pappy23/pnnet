@@ -10,13 +10,10 @@ using namespace pann;
 GLWidget::GLWidget(Net* _net, QLabel* _label, QWidget *parent)
     : QGLWidget(parent), net_wr(_net), info_label(_label)
 {
-    bgColor = QColor::fromCmykF(0.39, 0.39, 0.0, 0.0);
-    neuronColor = QColor(255, 0, 0);
-    linkColor = QColor(0, 255, 0);
-
     calcCoords();
 
     restoreDefaults();
+    drawNetModel();
 
     setInfoNet();
     //setInfoNeuron(1);
@@ -30,15 +27,24 @@ GLWidget::~GLWidget()
 void GLWidget::calcCoords()
 {
     const NetCache& cache = net_wr.getCache();
+
     unsigned total_layers = cache.data.size();
+    unsigned total_threads = cache.data[0].size();
+
+    //Form colors for threads
+    srand(42);
+    vector<QColor> threadColors;
+    for(unsigned i = 0; i < total_threads; ++i)
+        threadColors.push_back(QColor(200 + rand() % 55 , rand() % 100, rand() % 100));
+
     for(unsigned layer = 0; layer < total_layers; ++layer)
     {
         unsigned layer_size = 0;
-        for(unsigned thread = 0; thread < cache.data[layer].size(); ++thread)
+        for(unsigned thread = 0; thread < total_threads; ++thread)
             layer_size += cache.data[layer][thread].size();
 
         unsigned neuron_number = 0;
-        for(unsigned thread = 0; thread < cache.data[layer].size(); ++thread)
+        for(unsigned thread = 0; thread < total_threads; ++thread)
         {
             for(unsigned i = 0; i < cache.data[layer][thread].size(); ++i)
             {
@@ -46,10 +52,33 @@ void GLWidget::calcCoords()
                 unsigned planeRows = sqrt(layer_size);
                 unsigned planeCols = layer_size / planeRows;
 
+                OpenGLHint* oglHint = neuronIter->second.oglHint;
                 Coords c;
-                c.x = (GLdouble) ( (GLdouble)layer - total_layers/2.0 + 1.0) * 100;
-                c.y = (GLdouble) ( (GLdouble)(neuron_number / planeCols) - planeRows/2.0 + 1.0 ) * 40.0;
-                c.z = (GLdouble) ( (GLdouble)(neuron_number % planeCols) - planeCols/2.0 + 1.0 ) * 40.0;
+
+                if(oglHint && oglHint->point.x)
+                    c.x = oglHint->point.x;
+                else
+                    c.x = (GLdouble) ( (GLdouble)layer - total_layers/2.0 + 1.0) * 100;
+
+                if(oglHint && oglHint->point.y)
+                    c.x = oglHint->point.y;
+                else
+                    c.y = (GLdouble) ( (GLdouble)(neuron_number / planeCols) - planeRows/2.0 + 1.0 ) * 40.0;
+                
+                if(oglHint && oglHint->point.z)
+                    c.x = oglHint->point.z;
+                else
+                    c.z = (GLdouble) ( (GLdouble)(neuron_number % planeCols) - planeCols/2.0 + 1.0 ) * 40.0;
+
+                if(net_wr.net->getNeuronRole(neuronIter->first) == Net::InputNeuron)
+                    c.color = QColor(0, 150, 0); //Input neuron color
+                else if(layer == total_layers - 2) 
+                    c.color = QColor(0, 0, 150); //Output neuron
+                else if(oglHint && (oglHint->color.r || oglHint->color.g || oglHint->color.b)) //Regular neuron
+                    c.color = QColor(oglHint->color.r, oglHint->color.g, oglHint->color.b);
+                else
+                    c.color = threadColors[thread];
+
                 coords[neuronIter] = c;
                 neuron_number++;
             }
@@ -59,20 +88,11 @@ void GLWidget::calcCoords()
 
 void GLWidget::drawNetModel()
 {
-    srand(42); //for linkRate
-
     GLUquadric* q = gluNewQuadric();
-
-    glLineWidth(1.5);
-    glPointSize(1.0);
-    glPolygonMode(GL_FRONT, GL_FILL);
-    glPolygonMode(GL_BACK, GL_FILL);
     gluQuadricNormals(q, GLU_SMOOTH);
 
-    //DEBUG:
-    //glColor3d(0, 0, 255);
-    //gluSphere(q, neuronRadius+20, 20, 20); 
-
+    glNewList(1,GL_COMPILE);
+    
     //For every neuron draw Link::in connections
     map<unsigned, Neuron>::const_iterator iter = net_wr.getNeurons().begin();
     for(; iter != net_wr.getNeurons().end(); ++iter)
@@ -80,8 +100,8 @@ void GLWidget::drawNetModel()
         Coords to_coords = coords[iter];
 
         //Draw neuron
-        qglColor(neuronColor);
         glPushMatrix();
+        qglColor(to_coords.color);
         glTranslated(to_coords.x, to_coords.y, to_coords.z);
         gluSphere(q, neuronRadius, 12, 12); 
         glPopMatrix();
@@ -89,7 +109,7 @@ void GLWidget::drawNetModel()
         if(drawLinks)
         {
             //Draw it's Link::in connections
-            qglColor(linkColor);
+            qglColor(QColor(0, 255, 0));
             list<Link>::const_iterator link_iter = iter->second.links.begin();
             for(; link_iter != iter->second.links.end(); ++link_iter)
             {
@@ -99,7 +119,7 @@ void GLWidget::drawNetModel()
                 if(link_iter->getToIter()->first == net_wr.net->getBiasId() && !drawBiasLinks)
                     continue;
 
-                if(rand() % linkRate)
+                if(linkRate > 1 && (rand() % linkRate != 0))
                     continue;
 
                 Coords from_coords = coords[link_iter->getToIter()];
@@ -111,6 +131,8 @@ void GLWidget::drawNetModel()
             }
         }
     }
+
+    glEndList();
 
     gluDeleteQuadric(q);
 }
@@ -152,8 +174,8 @@ void GLWidget::setInfoNet()
     ost<<endl<<endl;
     
     ost<<"Hint: "<<endl;
-    ost<<"'W', 'A', 'S', 'D' - move around"<<endl;
-    ost<<"'+', '-' - zoom"<<endl;
+    ost<<"'W', 'A', 'S', 'D', drag with mouse middle button - move around"<<endl;
+    ost<<"'+', '-', mouse wheel  - zoom"<<endl;
     ost<<"'Up', 'Down', 'Left', 'Right' - rotate X-Y"<<endl;
     ost<<"Drag with left mouse button - rotate X-Y"<<endl;
     ost<<"Drag with right mouse button - rotate X-Z"<<endl;
@@ -227,30 +249,65 @@ void GLWidget::restoreDefaults()
     neuronRadius = 7;
     drawLinks = true;
     drawBiasLinks = false;
-    linkRate = 2;
+    linkRate = 4;
 
     updateGL();
 }
 
 void GLWidget::initializeGL()
 {
-    qglClearColor(bgColor.dark());
-    glShadeModel(GL_FLAT);
+    // Antialiasing
+    glEnable(GL_LINE_SMOOTH);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
+    glHint(GL_LINE_SMOOTH_HINT,GL_NICEST);
+    glLineWidth(1.5);
+    glPointSize(1.0);
+
+    //Light
+    glEnable(GL_LIGHTING);
+    glEnable(GL_COLOR_MATERIAL);
+    glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE);
+    glShadeModel(GL_SMOOTH);
+    glEnable(GL_LIGHT0);
+    GLfloat position[]  = { -width()/5.0f, height()/2.0f, 100.0f , 1.0f};
+    glLightfv(GL_LIGHT0, GL_POSITION, position);
+ 
+    GLfloat specular[] = {0.5f, 0.5f, 0.5f , 1.0f};
+    GLfloat ambient[]  = {0.2f, 0.2f, 0.2f , 1.0f};
+    GLfloat diffuse[]  = {0.8f, 0.8f, 0.8f , 1.0f};
+    glLightfv(GL_LIGHT0, GL_SPECULAR, specular);
+    glLightfv(GL_LIGHT0, GL_AMBIENT, ambient);
+    glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuse);
+
+    float specReflection[] = { 0.5f, 0.5f, 0.5f, 1.0f };
+    glMaterialfv(GL_FRONT, GL_SPECULAR, specReflection);
+    glMateriali(GL_FRONT, GL_SHININESS, 50);
+
+/*
+    GLfloat material_specular[] = {1.0f, 1.0f, 1.0f, 1.0f};
+    GLfloat material_emission[] = {1.0f, 1.0f, 1.0f, 1.0f};
+    glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, material_specular);
+    glMaterialfv(GL_FRONT_AND_BACK, GL_EMISSION, material_emission);
+*/
+
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_CULL_FACE);
+    glPolygonMode(GL_FRONT_AND_BACK,GL_FILL);
+
+    qglClearColor(QColor::fromCmykF(0.39, 0.39, 0.0, 0.0).dark());
 }
 
 void GLWidget::paintGL()
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glLoadIdentity();
-    //glTranslated(0.0, 0.0, -10.0);
     glTranslated(xTrans, yTrans, zTrans);
     glRotated(xRot / 16.0, 1.0, 0.0, 0.0);
     glRotated(yRot / 16.0, 0.0, 1.0, 0.0);
     glRotated(zRot / 16.0, 0.0, 0.0, 1.0);
     glScaled(scale,scale,scale);
-    drawNetModel();
+    glCallList(1);
 }
 
 void GLWidget::resizeGL(int width, int height)
@@ -259,13 +316,12 @@ void GLWidget::resizeGL(int width, int height)
 
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    glOrtho(-width/2,width/2, -height/2,height/2 ,-(width+height)/2,(width+height)/2);
+    glOrtho(-width/2,width/2, -height/2,height/2 ,-(width+height),(width+height));
     glMatrixMode(GL_MODELVIEW);
 }
 
 void GLWidget::mousePressEvent(QMouseEvent *event)
 {
-    //TODO: detect click on neuron
     lastPos = event->pos();
 }
 
@@ -280,6 +336,8 @@ void GLWidget::mouseMoveEvent(QMouseEvent *event)
     } else if (event->buttons() & Qt::RightButton) {
         setXRotation(xRot + 8 * dy);
         setZRotation(zRot + 8 * dx);
+    } else if (event->buttons() & Qt::MidButton) {
+        setTranslation(xTrans + dx, yTrans - dy, zTrans);
     }
     lastPos = event->pos();
 }
@@ -290,7 +348,6 @@ void GLWidget::keyPressEvent(QKeyEvent* e)
     const float scaleDelta = 0.05;
     const float translateDelta = 10;
     
-    //TODO: show key hint to user via info_label
     switch(e->key())
     {
         case Qt::Key_Up:
@@ -331,3 +388,10 @@ void GLWidget::keyPressEvent(QKeyEvent* e)
     }
     //updateGL();
 } 
+
+void GLWidget::wheelEvent(QWheelEvent* event)
+{
+//    setTranslation(xTrans - x() + width() / 2.0, yTrans + y() - height() / 2.0, zTrans);
+    setScale(scale + event->delta() / 200.0);
+}
+

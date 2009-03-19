@@ -18,7 +18,7 @@ int main()
 {
     const unsigned runs_count = 3;
     const unsigned layers_count = 10;
-    const unsigned threads_count = 2;
+    const unsigned threads_count = 8;
 
     TrainPattern tp(1, 1);
     tp.input[0] = -100;

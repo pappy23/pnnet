@@ -19,6 +19,9 @@ public:
 private:
     GLWidget *glWidget;
     QLabel* label;
+
+protected:
+    void mouseDoubleClickEvent(QMouseEvent* event);
 };
 
 #endif
