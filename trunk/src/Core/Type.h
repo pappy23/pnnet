@@ -22,6 +22,7 @@ namespace pann
 
     class Weight;
     typedef std::map<unsigned, Weight>::iterator WeightIter;
+    typedef std::map<unsigned, Weight>::const_iterator ConstWeightIter;
 
 }; //pann
 

@@ -6,7 +6,7 @@
 #include <QKeyEvent>
 
 #include "Includes.h"
-#include "NetPublicWrapper.h"
+#include "Net.h"
 #include "Util.h"
 
 class GLWidget : public QGLWidget
@@ -35,7 +35,7 @@ protected:
     void wheelEvent(QWheelEvent* e);
 
 private:
-    pann::NetPublicWrapper net_wr;
+    pann::Net* p_net;
     QLabel* info_label;
 
     struct Coords
