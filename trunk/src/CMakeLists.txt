@@ -45,7 +45,7 @@ foreach(dir ${PANN_SOURCES})
     endforeach(filename)
 endforeach(dir)
 
-add_library(pann SHARED ${PANN_SOURCE_FILES})
+add_library(pann STATIC ${PANN_SOURCE_FILES})
 target_link_libraries(pann ${Boost_LIBRARIES} pthread)
 #TODO find how to link static pthread
 

@@ -32,15 +32,19 @@ protected:
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
     void keyPressEvent(QKeyEvent* e);
+    void wheelEvent(QWheelEvent* e);
 
 private:
     pann::NetPublicWrapper net_wr;
-    QLabel* info_label; //TODO Replace it with QTextEdit and do nice html formatting
+    QLabel* info_label;
 
     struct Coords
     {
         GLdouble x, y, z;
+        QColor color;
     };
+    
+    //Neuron decorator, stores it's 3D coordinates
     std::map<pann::ConstNeuronIter, Coords, pann::NeuronIterCompare> coords;
 
     void calcCoords();
@@ -49,28 +53,29 @@ private:
     void setInfoNet(); //fill info label with Net info
 
     void normalizeAngle(int *angle);
+
+    //Main drawing
     void drawNetModel();
 
     //Rotation
     int xRot;
     int yRot;
     int zRot;
+    QPoint lastPos;
+
     //Scale
     float scale;
+
     //Translation (move object)
     float xTrans;
     float yTrans;
     float zTrans;
+    
     //Params
     bool drawBiasLinks;
     bool drawLinks;
     float neuronRadius;
     unsigned linkRate;
-
-    QPoint lastPos;
-    QColor bgColor;
-    QColor neuronColor;
-    QColor linkColor;
 };
 
 #endif

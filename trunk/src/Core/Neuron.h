@@ -7,6 +7,7 @@
 #include "Object.h"
 #include "ActivationFunction.h"
 #include "Link.h"
+#include "OpenGLHint.h"
 
 namespace pann
 {
@@ -20,6 +21,7 @@ namespace pann
         Float receptiveField;
         Float activationValue;
         std::list<Link> links; //!< List of Link, both directions
+        OpenGLHint* oglHint;
     
     public:
         Neuron();
@@ -61,6 +63,13 @@ namespace pann
                 ar & receptiveField;
                 ar & activationValue;
                 //ar & links; - Net responsibility
+                bool isHintAvailable = false;
+                if(oglHint != 0)
+                {
+                    isHintAvailable = true;
+                    ar & (*oglHint);
+                }
+                ar & isHintAvailable;                    
             };
 
         template<class Archive>
@@ -74,6 +83,13 @@ namespace pann
                 ar & receptiveField;
                 ar & activationValue;
                 //ar & links; - Net responsibility
+                bool isHintAvailable;
+                ar & isHintAvailable;
+                if(isHintAvailable)
+                {
+                    oglHint = new OpenGLHint;
+                    ar & oglHint;
+                }
             };
 
         BOOST_SERIALIZATION_SPLIT_MEMBER()
