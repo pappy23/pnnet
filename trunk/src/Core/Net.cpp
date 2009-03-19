@@ -129,7 +129,7 @@ namespace pann
          */
         unsigned role = 0;
 
-        ConstNeuronIter iter = const_cast<Net*>(this)->findNeuron(_neuronId);
+        ConstNeuronIter iter = findNeuron(_neuronId);
 
         if(find(inputNeurons.begin(), inputNeurons.end(), iter) != inputNeurons.end())
             role+=1;
@@ -201,7 +201,7 @@ namespace pann
     unsigned
     Net::getNeuronOwner(unsigned _neuron) const
     {
-        return const_cast<Net*>(this)->findNeuron(_neuron)->second.getOwnerThread();
+        return findNeuron(_neuron)->second.getOwnerThread();
     } //getNeuronOwner
 
     std::vector<unsigned>
@@ -237,7 +237,7 @@ namespace pann
         map<unsigned, Float> result;
 
         if( !cache.isOk() )
-            const_cast<Net*>(this)->regenerateCache();
+            regenerateCache();
 
         if(cache.data.size() < 2)
             return result;
@@ -310,8 +310,14 @@ namespace pann
         return iter;
     } //findNeuron
 
+    ConstNeuronIter
+    Net::findNeuron(unsigned _neuronId) const
+    {
+        return const_cast<Net*>(this)->findNeuron(_neuronId);
+    } //findNeuron
+
     void
-    Net::formatFront(vector<NeuronIter>& _raw)
+    Net::formatFront(vector<NeuronIter>& _raw) const
     {
         cache.data.push_back( NetCache::FrontType() );
         NetCache::FrontType& tasks = cache.data[cache.data.size() - 1];
@@ -328,7 +334,7 @@ namespace pann
     } //formatFront
 
     void
-    Net::regenerateCache()
+    Net::regenerateCache() const
     {
         cache.flush(); 
 
@@ -352,7 +358,7 @@ namespace pann
         formatFront(rawFront);
         
         //Bias neuron is kind of input neuron
-        NeuronIter biasIter = findNeuron(biasId);
+        NeuronIter biasIter = const_cast<Net*>(this)->findNeuron(biasId);
         cache.data[0][0].push_back(biasIter);
 
         /*

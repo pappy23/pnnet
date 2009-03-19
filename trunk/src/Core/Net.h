@@ -135,17 +135,18 @@ namespace pann
          * Returns NeuronIterator for corresponding neuron ID
          */
         NeuronIter findNeuron(unsigned _neuronId);
+        ConstNeuronIter findNeuron(unsigned _neuronId) const;
 
         /**
          * Helper used by regenerateCache()
          */
-        void formatFront(std::vector<NeuronIter>& _raw);
+        void formatFront(std::vector<NeuronIter>& _raw) const;
 
         /**
          * This function updates cache
          * Be extremely careful!
          */
-        void regenerateCache();
+        void regenerateCache() const;
 
         /**
          * This function is executed by work thread, instantiated from run()
