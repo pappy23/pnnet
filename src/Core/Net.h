@@ -16,9 +16,109 @@ namespace pann
 {
     class Net : public Object
     {
+        /* Public types */
     public:
         enum NeuronRole { WorkNeuron = 0, InputNeuron = 1 };
 
+        /* Public interface */
+    public:
+        /**
+         * Default constructor. 
+         * Creates empty net and sets threadCount to 
+         * hardware specific number (depends on available processors)
+         * Although creates bias neuron
+         */
+        Net();
+
+        /**
+         * Same as above, but threadCount is set to @param _threads
+         */
+        Net(unsigned _threads);
+        ~Net();
+
+        /**
+         * Manipulate threadCount
+         */
+        unsigned getThreadCount() const;
+        void setThreadCount(unsigned _threads);
+
+        /**
+         * Manipulate neurons in network
+         * Remark: addInputNeuron adds neuron with
+         * ActivationFunction::Linear
+         */
+        unsigned addNeuron(ActivationFunction::Base* _activationFunction);
+        unsigned addInputNeuron();
+        void delNeuron(unsigned _neuronId);
+
+        /**
+         * Can turn work neuron to be input and vice versa
+         */
+        void setNeuronRole(unsigned _neuronId, NeuronRole _newRole);
+        NeuronRole getNeuronRole(unsigned _neuronId) const;
+
+        /**
+         * Manage connections between neurons
+         * TODO: add shared connections for convolution networks
+         */
+        void addConnection(unsigned _from, unsigned _to, Float _weightValue = 1);
+        void delConnection(unsigned _from, unsigned _to);
+
+        /**
+         * Manage neuron owner thread
+         * It is usually much higher then threadCount
+         */
+        void setNeuronOwner(unsigned _neuron, unsigned _owner);
+        unsigned getNeuronOwner(unsigned _neuron) const;
+
+        /**
+         * Return IDs of input neurons
+         * (use it in case you don't "remember" what neurons are input or their order)
+         */
+        std::vector<unsigned> getInputMap() const;
+
+        /**
+         * Add values to input neurons receptive fields
+         */
+        void setInput(const std::valarray<Float>& _input);
+
+        /**
+         * Returns pairs<input_neuron_id, it's output>
+         * (only for neurons in last cache layer)
+         */
+        std::map<unsigned, Float> getOutput() const;
+
+        /**
+         * Assign neurons outputs to specified by @param _output valarray
+         * (it is slower then above version, but more useful)
+         */
+        void getOutput(std::valarray<Float>& _output) const;
+
+        /**
+         * Apply @param _runner Runner to each neuron,
+         * layer by layer
+         * Note: layers are computed automaticaly and stored in cache
+         * See regenerateCache() implementation for more details
+         */
+        void run(Runner* _runner);
+
+        /**
+         * Public interface to private attributes
+         * (they are used while training or painting net in pann_viewer)
+         */
+        const NetCache& getCache() const;
+        const std::map<unsigned, Neuron>& getNeurons() const;
+        const std::map<unsigned, Weight>& getWeights() const;
+
+        /**
+         * Get ID of bias neuron
+         * Remark: bias neuron is implemented as work neuron, 
+         * with self-recurrent connection (w=1), placed 
+         * at first cache layer
+         */
+        unsigned getBiasId() const;
+
+        /* Private members */
     private:
         unsigned threadCount;
         unsigned lastNeuronId; //var to add new neurons
@@ -27,21 +127,36 @@ namespace pann
         std::map<unsigned, Neuron> neurons;
         std::map<unsigned, Weight> weights;
         std::list<NeuronIter> inputNeurons;  //Iterators to map<> neurons
-        NetCache cache;
+        NetCache mutable cache;
 
-        friend class NetPublicWrapper;
-
+        /* Private methods */
     private:
-        NeuronIter findNeuron(int _neuronId);
-        void regenerateCache();
+        /**
+         * Returns NeuronIterator for corresponding neuron ID
+         */
+        NeuronIter findNeuron(unsigned _neuronId);
+
+        /**
+         * Helper used by regenerateCache()
+         */
         void formatFront(std::vector<NeuronIter>& _raw);
 
+        /**
+         * This function updates cache
+         * Be extremely careful!
+         */
+        void regenerateCache();
+
+        /**
+         * This function is executed by work thread, instantiated from run()
+         */
         static void threadBase( Runner* _runner, NetCache* _cache, unsigned _cur_thread_no, boost::barrier* _barrier)
         {
             RunDirection dir = _runner->getDirection();
 
             unsigned layer;
             (dir == ForwardRun) ?  (layer = 0) : (layer = _cache->data.size() - 2);
+
             do {
                 //Process current layer
                 NetCache::ThreadTaskType* task = &_cache->data[layer][_cur_thread_no];
@@ -64,39 +179,9 @@ namespace pann
              */
         };
 
+        /* Debug interface */
     public:
-        Net();
-        Net(int _threads);
-        ~Net();
-
-        int getThreadCount();
-        void setThreadCount(int _threads);
-
-        unsigned getBiasId();
-
-        int addNeuron(ActivationFunction::Base* _activationFunction);
-        int addInputNeuron();
-        void delNeuron(int _neuronId);
-
-        void setNeuronRole(int _neuronId, NeuronRole _newRole);
-        NeuronRole getNeuronRole(int _neuronId);
-
-        void setNeuronOwner(int _neuron, int _owner);
-        int getNeuronOwner(int _neuron);
-
-        void addConnection(int _from, int _to, Float _weightValue = 1);
-        void delConnection(int _from, int _to);
-
-        std::vector<int> getInputMap();
-
-        void setInput(const std::valarray<Float>& _input);
-        std::map<int, Float> getOutput();
-        void getOutput(std::valarray<Float>& _output);
-
-        void run(Runner* _runner);
-
-    public:
-        void printDebugInfo(std::ostringstream& ost)
+        void printDebugInfo(std::ostringstream& ost) const
         {
             
             ost<<"Net\n";
@@ -104,15 +189,15 @@ namespace pann
             ost<<" lastNeuronId: "<<lastNeuronId<<std::endl;
             ost<<" lastWeightId: "<<lastWeightId<<std::endl;
             ost<<" neurons: ";
-            NeuronIter it = neurons.begin();
+            ConstNeuronIter it = neurons.begin();
             for(; it != neurons.end(); ++it)
                 ost<<it->first<<" ";
             ost<<"\n weights: ";
-            WeightIter wit = weights.begin();
+            ConstWeightIter wit = weights.begin();
             for(; wit != weights.end(); ++wit)
                 ost<<wit->first<<" ";
             ost<<"\n inputNeurons: ";
-            std::list<NeuronIter>::iterator it2 = inputNeurons.begin();
+            std::list<NeuronIter>::const_iterator it2 = inputNeurons.begin();
             for(; it2 != inputNeurons.end(); ++it2)
                 ost<<(*it2)->first<<" ";
             ost<<"\n\n neurons: ";
@@ -123,6 +208,7 @@ namespace pann
             cache.printDebugInfo(ost);
         };
 
+        /* Serialization */
     private:
         friend class boost::serialization::access;
         template<class Archive>

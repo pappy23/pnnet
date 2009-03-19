@@ -13,16 +13,26 @@ namespace pann
 {
     class Neuron : public Object
     {
+        /* Private attributes */
     private:
         ActivationFunction::Base* activationFunction;
-        unsigned ownerThread; //Thread with this number will take care of our Neuron
 
+        /**
+         * Thread with this number will take care of our Neuron
+         */
+        unsigned ownerThread;
+
+        /* Public attributes
+         * Note: Neuron is usually hidden by Net,
+         * so there is nothing to worry about
+         */
     public:
         Float receptiveField;
         Float activationValue;
         std::list<Link> links; //!< List of Link, both directions
         OpenGLHint* oglHint;
     
+        /* Public interface */
     public:
         Neuron();
         Neuron(ActivationFunction::Base*);
@@ -33,17 +43,19 @@ namespace pann
 
         const ActivationFunction::Base* getActivationFunction() const;
 
-/*    private: */
-        //Helper. Finds and returns iterator to list<> links for NeuronIter _to
+        /**
+         * Helper. Finds and returns iterator to list<> links for NeuronIter _to
+         */
         std::list<Link>::iterator findLink(NeuronIter _to, Link::Direction _direction);
 
+        /* Debug */
     public:
-        virtual void printDebugInfo(std::ostringstream& ost)
+        virtual void printDebugInfo(std::ostringstream& ost) const
         {
             ost<<" Neuron\n";
             ost<<"  ownerThread: "<<ownerThread<<std::endl;
             ost<<"  activationFunction: "<<activationFunction->getId()<<std::endl;
-            std::list<Link>::iterator it = links.begin();
+            std::list<Link>::const_iterator it = links.begin();
             for(; it != links.end(); ++it)
             {
                 it->printDebugInfo(ost);
@@ -51,6 +63,7 @@ namespace pann
             }
         };
 
+        /* Serialization */
     private:
         friend class boost::serialization::access;
         template<class Archive>
@@ -64,12 +77,12 @@ namespace pann
                 ar & activationValue;
                 //ar & links; - Net responsibility
                 bool isHintAvailable = false;
+                ar & isHintAvailable;                    
                 if(oglHint != 0)
                 {
                     isHintAvailable = true;
                     ar & (*oglHint);
                 }
-                ar & isHintAvailable;                    
             };
 
         template<class Archive>

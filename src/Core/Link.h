@@ -17,15 +17,18 @@ namespace pann
     //! Link between two neurons
     class Link : public Object
     {
+        /* Public types */
     public:
         enum Direction { in, out };
 
+        /* Private members */
     private:
         NeuronIter to;
         Direction direction;
         WeightIter w; //!< Pointer to Weight object (might be shared between different links)
         unsigned latency;
 
+        /* Public interface */
     public:
         Link(const NeuronIter _to, const Direction _direction, WeightIter _w, unsigned const _latency = 1) :
             to(_to),
@@ -45,8 +48,9 @@ namespace pann
         unsigned getLatency() const         { return latency; };
         WeightIter getWeightIter()          { return w; };
     
+        /* Debug */
     public:
-        virtual void printDebugInfo(std::ostringstream& ost)
+        virtual void printDebugInfo(std::ostringstream& ost) const
         {
             ost<<"  Link\n";
             ost<<"   direction: "<<direction<<std::endl;

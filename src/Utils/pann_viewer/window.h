@@ -7,7 +7,7 @@
 
 #include "glwidget.h"
 
-#include "NetPublicWrapper.h"
+#include "Net.h"
 
 class Window : public QWidget
 {

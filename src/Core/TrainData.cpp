@@ -63,7 +63,7 @@ namespace pann
     } //resize  
 
     Float
-    TrainPattern::getMse()
+    TrainPattern::getMse() const
     {
         if(desired_output.size() != error.size())
             throw Exception::SizeMismatch()<<"TrainPattern::getMse(): Error size doesn't match desired_output\n";

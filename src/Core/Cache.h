@@ -18,38 +18,59 @@ namespace pann
      */
     class Cache : public Object
     {
-    protected:
-        bool coherent;
-
+        /* Public interface */
     public:
         Cache() : coherent(false) { };
         virtual ~Cache() { };
 
         virtual void flush() = 0;
 
-        inline void touch() { coherent = false; };
-        inline void fixed() { coherent = true;  };
-        inline bool isOk() { return coherent; };
+        void touch()
+        {
+            coherent = false;
+        };
+        
+        void fixed()
+        {
+            coherent = true;
+        };
 
-        virtual void printDebugInfo(std::ostringstream& ost) = 0;
+        bool isOk() const
+        {
+            return coherent;
+        };
+
+        /* Protected attributes */
+    protected:
+        bool coherent;
+
+        /* Debug */
+    public:
+        virtual void printDebugInfo(std::ostringstream& ost) const = 0;
     };
 
     class NetCache : public Cache
     {
+        /* Public types */
     public:
         typedef std::vector<NeuronIter> ThreadTaskType;
         typedef std::vector<ThreadTaskType> FrontType;
 
+        /* Public members */
+    public:
         std::vector<FrontType> data;
 
+        /* Public interface */
+    public:
         virtual void flush()
         {
             data.clear();
             touch();
         }
 
+        /* Debug */
     public:
-        virtual void printDebugInfo(std::ostringstream& ost)
+        virtual void printDebugInfo(std::ostringstream& ost) const
         {
             for(unsigned layers = 0; layers < data.size(); ++layers)
             {

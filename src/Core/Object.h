@@ -42,7 +42,7 @@ namespace pann
         void erase();
 
     public:
-        virtual void printDebugInfo(std::ostringstream& ost) = 0;
+        virtual void printDebugInfo(std::ostringstream& ost) const = 0;
 
     private:
         friend class boost::serialization::access;

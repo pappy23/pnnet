@@ -8,7 +8,7 @@ using namespace std;
 using namespace pann;
 
 GLWidget::GLWidget(Net* _net, QLabel* _label, QWidget *parent)
-    : QGLWidget(parent), net_wr(_net), info_label(_label)
+    : QGLWidget(parent), p_net(_net), info_label(_label)
 {
     calcCoords();
 
@@ -26,7 +26,7 @@ GLWidget::~GLWidget()
 
 void GLWidget::calcCoords()
 {
-    const NetCache& cache = net_wr.getCache();
+    const NetCache& cache = p_net->getCache();
 
     unsigned total_layers = cache.data.size();
     unsigned total_threads = cache.data[0].size();
@@ -70,7 +70,7 @@ void GLWidget::calcCoords()
                 else
                     c.z = (GLdouble) ( (GLdouble)(neuron_number % planeCols) - planeCols/2.0 + 1.0 ) * 40.0;
 
-                if(net_wr.net->getNeuronRole(neuronIter->first) == Net::InputNeuron)
+                if(p_net->getNeuronRole(neuronIter->first) == Net::InputNeuron)
                     c.color = QColor(0, 150, 0); //Input neuron color
                 else if(layer == total_layers - 2) 
                     c.color = QColor(0, 0, 150); //Output neuron
@@ -94,8 +94,8 @@ void GLWidget::drawNetModel()
     glNewList(1,GL_COMPILE);
     
     //For every neuron draw Link::in connections
-    map<unsigned, Neuron>::const_iterator iter = net_wr.getNeurons().begin();
-    for(; iter != net_wr.getNeurons().end(); ++iter)
+    map<unsigned, Neuron>::const_iterator iter = p_net->getNeurons().begin();
+    for(; iter != p_net->getNeurons().end(); ++iter)
     {
         Coords to_coords = coords[iter];
 
@@ -116,7 +116,7 @@ void GLWidget::drawNetModel()
                 if(link_iter->getDirection() == Link::out)
                     continue;
 
-                if(link_iter->getToIter()->first == net_wr.net->getBiasId() && !drawBiasLinks)
+                if(link_iter->getToIter()->first == p_net->getBiasId() && !drawBiasLinks)
                     continue;
 
                 if(linkRate > 1 && (rand() % linkRate != 0))
@@ -139,7 +139,7 @@ void GLWidget::drawNetModel()
 
 void GLWidget::setInfoNeuron(unsigned _id)
 {
-    const Neuron* n = &(net_wr.getNeurons().find(_id)->second);
+    const Neuron* n = &(p_net->getNeurons().find(_id)->second);
     ostringstream ost;
     ost<<"Neuron info:\n"
         <<"ID: "<<_id<<endl
@@ -158,9 +158,9 @@ void GLWidget::setInfoNet()
 {
     ostringstream ost;
     ost<<"Net info:\n"
-        <<"Neurons: "<<net_wr.getNeurons().size()<<endl
-        <<"Weights: "<<net_wr.getWeights().size()<<endl
-        <<"Threads: "<<net_wr.net->getThreadCount()<<endl
+        <<"Neurons: "<<p_net->getNeurons().size()<<endl
+        <<"Weights: "<<p_net->getWeights().size()<<endl
+        <<"Threads: "<<p_net->getThreadCount()<<endl
         <<endl<<endl;
 
     if(!drawLinks)
