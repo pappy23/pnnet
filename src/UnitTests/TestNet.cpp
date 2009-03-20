@@ -67,7 +67,7 @@ int main()
 
         //Memory consumption test
         cout<<"It's time to do memory test\n";
-        sleep(5);
+//        sleep(5);
     }
 
     Net net2;

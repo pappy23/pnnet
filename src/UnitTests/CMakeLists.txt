@@ -1,6 +1,10 @@
 
 add_executable(TestBoost TestBoost.cpp)
-target_link_libraries(TestBoost ${Boost_LIBRARIES} pthread)
+if (WIN32)
+	target_link_libraries(TestBoost ${Boost_LIBRARIES})
+else (WIN32)
+	target_link_libraries(TestBoost ${Boost_LIBRARIES} pthread)
+endif(WIN32)
 
 add_executable(TestIntSize TestIntSize.cpp)
 
