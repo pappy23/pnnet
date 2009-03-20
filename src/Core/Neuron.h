@@ -8,6 +8,7 @@
 #include "ActivationFunction.h"
 #include "Link.h"
 #include "OpenGLHint.h"
+#include "LearningHint.h"
 
 namespace pann
 {
@@ -31,6 +32,7 @@ namespace pann
         Float activationValue;
         std::list<Link> links; //!< List of Link, both directions
         OpenGLHint* oglHint;
+        LearningHint::Base* learningHint;
     
         /* Public interface */
     public:
@@ -76,13 +78,25 @@ namespace pann
                 ar & receptiveField;
                 ar & activationValue;
                 //ar & links; - Net responsibility
-                bool isHintAvailable = false;
+
+                bool isHintAvailable;
+                
+                //OpenGL hint
+                (oglHint != 0) ? (isHintAvailable = true) : (isHintAvailable = false);
                 ar & isHintAvailable;                    
-                if(oglHint != 0)
-                {
-                    isHintAvailable = true;
+                if(isHintAvailable)
                     ar & (*oglHint);
+                
+                //Learning hint
+                (learningHint != 0) ? (isHintAvailable = true) : (isHintAvailable = false);
+                ar & isHintAvailable;                    
+                if(isHintAvailable)
+                {
+                    unsigned lhintId = learningHint->getTypeId();
+                    ar & lhintId;
+                    ar & (*learningHint);
                 }
+                
             };
 
         template<class Archive>
@@ -97,11 +111,23 @@ namespace pann
                 ar & activationValue;
                 //ar & links; - Net responsibility
                 bool isHintAvailable;
+
+                //OpenGL hint
                 ar & isHintAvailable;
                 if(isHintAvailable)
                 {
                     oglHint = new OpenGLHint;
                     ar & oglHint;
+                }
+
+                //Learning hint
+                ar & isHintAvailable;
+                if(isHintAvailable)
+                {
+                    unsigned lhintId;
+                    ar & lhintId;
+                    learningHint = LearningHint::getById(lhintId);
+                    ar & learningHint;
                 }
             };
 

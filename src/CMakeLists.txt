@@ -2,12 +2,12 @@ cmake_minimum_required(VERSION 2.6)
 
 project (PANN)
 
-#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -ansi")
 
 #TODO: check not for OS, but for compiler (gcc)
 if (UNIX)
 	add_definitions(-Wall -ansi)
-endif (WIN32)
+#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -ansi")
+endif (UNIX)
 
 set(CMAKE_VERBOSE_MAKEFILE OFF)
 
@@ -16,15 +16,15 @@ set(LIBRARY_OUTPUT_PATH "${CMAKE_BINARY_DIR}/../bin" CACHE INTERNAL "")
 
 ############################################################################
 
-if (WIN32)
+if(WIN32)
 	set(BOOST_INCLUDEDIR "C:/Program Files/boost/boost_1_38")
 	set(BOOST_ROOT "C:/Program Files/boost/boost_1_38") 
 #TODO: use global variables
-else (WIN32)
+else(WIN32)
 	set(BOOST_INCLUDEDIR /usr/local/include/boost-1_38)
-endif (WIN32)
+#set(BOOST_LIBRARYDIR /usr/local/lib)
+endif(WIN32)
 
-#SET(BOOST_LIBRARYDIR /usr/local/lib)
 
 set(Boost_USE_STATIC_LIBS ON)
 find_package(Boost REQUIRED COMPONENTS thread serialization date_time)
@@ -47,7 +47,7 @@ endif(Boost_FOUND)
 
 ############################################################################
 
-set(PANN_SOURCES Core NetworkModels LearningAlgorithms)
+set(PANN_SOURCES Core)
 include_directories(${PANN_SOURCES})
 
 message(STATUS "Adding files to build library")

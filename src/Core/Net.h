@@ -118,6 +118,10 @@ namespace pann
          */
         unsigned getBiasId() const;
 
+        /* Public members */
+    public:
+        LearningHint::Base* learningHint;
+
         /* Private members */
     private:
         unsigned threadCount;
@@ -278,6 +282,18 @@ namespace pann
                     }
                 }
                 show_progress += 10;
+
+                bool isHintAvailable;
+                //Learning hint
+                (learningHint != 0) ? (isHintAvailable = true) : (isHintAvailable = false);
+                ar & isHintAvailable;                    
+                if(isHintAvailable)
+                {
+                    unsigned lhintId = learningHint->getTypeId();
+                    ar & lhintId;
+                    ar & (*learningHint);
+                }
+                
             };
 
         template<class Archive>
@@ -359,6 +375,17 @@ namespace pann
                 }
                 cache.fixed();
                 show_progress += 10;
+
+                bool isHintAvailable;
+                //Learning hint
+                ar & isHintAvailable;
+                if(isHintAvailable)
+                {
+                    unsigned lhintId;
+                    ar & lhintId;
+                    learningHint = LearningHint::getById(lhintId);
+                    ar & learningHint;
+                }
             };
 
         BOOST_SERIALIZATION_SPLIT_MEMBER()
