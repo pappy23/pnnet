@@ -26,6 +26,8 @@ namespace pann
 
     Neuron::~Neuron()
     {
+        if(oglHint)
+            delete oglHint;
     } //~Neuron
 
     void

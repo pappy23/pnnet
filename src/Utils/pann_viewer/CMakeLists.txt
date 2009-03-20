@@ -27,7 +27,7 @@ if(QT4_FOUND)
     qt4_wrap_cpp(MOC_SRCS ${MOC_HEADERS})
 
     add_executable(pann_viewer ${SOURCES} ${UI_HEADERS} ${MOC_SRCS})
-    target_link_libraries(pann_viewer ${QT_LIBRARIES} ${Boost_LIBRARIES} pann)
+    target_link_libraries(pann_viewer ${QT_LIBRARIES} pann)
 
 endif(QT4_FOUND)
 
