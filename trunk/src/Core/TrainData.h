@@ -51,6 +51,14 @@ namespace pann
         /* Public members */
     public:
         std::vector<TrainPattern> data;
+
+        /* Debug */
+    public:
+        virtual void printDebugInfo(std::ostringstream& ost) const
+        {
+            ost<<"TrainData\n";
+            ost<<"  patterns: "<<data.size()<<std::endl;
+        };
     };
 
 }; //pann

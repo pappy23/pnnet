@@ -11,7 +11,8 @@ namespace pann
             ownerThread(0),
             receptiveField(0),
             activationValue(activationFunction->f(0)),
-            oglHint(0)
+            oglHint(0),
+            learningHint(0)
     {
     } //Neuron
 
@@ -20,7 +21,8 @@ namespace pann
             ownerThread(0),
             receptiveField(0),
             activationValue(_activationFunction->f(0)),
-            oglHint(0)
+            oglHint(0),
+            learningHint(0)
     {
     } //Neuron
 
@@ -28,6 +30,9 @@ namespace pann
     {
         if(oglHint)
             delete oglHint;
+
+        if(learningHint)
+            delete learningHint;
     } //~Neuron
 
     void

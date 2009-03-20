@@ -16,12 +16,15 @@ namespace pann
         lastNeuronId = 0;
         lastWeightId = 0;
         setThreadCount(_threads);
+        learningHint = 0;
         biasId = addNeuron(ActivationFunction::Linear::Instance());
         addConnection(biasId, biasId, 1);
     } //Net
 
     Net::~Net()
     {
+        if(!learningHint)
+            delete learningHint;
     } //~Net
 
     unsigned
