@@ -1,11 +1,14 @@
 cmake_minimum_required(VERSION 2.6)
 
 project (PANN)
+
 #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -ansi")
-if (WIN32)
-else (WIN32)
+
+#TODO: check not for OS, but for compiler (gcc)
+if (UNIX)
 	add_definitions(-Wall -ansi)
 endif (WIN32)
+
 set(CMAKE_VERBOSE_MAKEFILE OFF)
 
 set(EXECUTABLE_OUTPUT_PATH "${CMAKE_BINARY_DIR}/../bin" CACHE INTERNAL "")
@@ -57,7 +60,12 @@ foreach(dir ${PANN_SOURCES})
 endforeach(dir)
 
 add_library(pann STATIC ${PANN_SOURCE_FILES})
-target_link_libraries(pann ${Boost_LIBRARIES})
+
+if(UNIX)
+    target_link_libraries(pann ${Boost_LIBRARIES} pthread)
+else(UNIX)
+    target_link_libraries(pann ${Boost_LIBRARIES})
+endif(UNIX)
 
 ############################################################################
 
