@@ -53,6 +53,8 @@ namespace pann
 
         /**
          * Can turn work neuron to be input and vice versa
+         * TODO: get rid of this functions, set threadCount as parametr to run()
+         * TODO: rewrite cache regeneration procedure to not rely on actual threadCount
          */
         void setNeuronRole(unsigned _neuronId, NeuronRole _newRole);
         NeuronRole getNeuronRole(unsigned _neuronId) const;
@@ -289,7 +291,7 @@ namespace pann
                 ar & isHintAvailable;                    
                 if(isHintAvailable)
                 {
-                    unsigned lhintId = learningHint->getTypeId();
+                    LearningHint::HintId lhintId = learningHint->getTypeId();
                     ar & lhintId;
                     ar & (*learningHint);
                 }
@@ -381,7 +383,7 @@ namespace pann
                 ar & isHintAvailable;
                 if(isHintAvailable)
                 {
-                    unsigned lhintId;
+                    LearningHint::HintId lhintId;
                     ar & lhintId;
                     learningHint = LearningHint::getById(lhintId);
                     ar & learningHint;

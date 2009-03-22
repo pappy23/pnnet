@@ -2,17 +2,171 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
   <compounddef id="namespacepann" kind="namespace">
     <compoundname>pann</compoundname>
+    <innerclass refid="classpann_1_1Cache" prot="public">pann::Cache</innerclass>
+    <innerclass refid="classpann_1_1NetCache" prot="public">pann::NetCache</innerclass>
+    <innerclass refid="classpann_1_1LearningAlgorithm" prot="public">pann::LearningAlgorithm</innerclass>
     <innerclass refid="classpann_1_1Link" prot="public">pann::Link</innerclass>
+    <innerclass refid="classpann_1_1LMS" prot="public">pann::LMS</innerclass>
     <innerclass refid="classpann_1_1Net" prot="public">pann::Net</innerclass>
     <innerclass refid="classpann_1_1Neuron" prot="public">pann::Neuron</innerclass>
     <innerclass refid="classpann_1_1Object" prot="public">pann::Object</innerclass>
+    <innerclass refid="classpann_1_1Point3d" prot="public">pann::Point3d</innerclass>
+    <innerclass refid="classpann_1_1Color" prot="public">pann::Color</innerclass>
+    <innerclass refid="classpann_1_1OpenGLHint" prot="public">pann::OpenGLHint</innerclass>
+    <innerclass refid="classpann_1_1Runner" prot="public">pann::Runner</innerclass>
+    <innerclass refid="classpann_1_1NullRunner" prot="public">pann::NullRunner</innerclass>
+    <innerclass refid="classpann_1_1NullBackpropagationRunner" prot="public">pann::NullBackpropagationRunner</innerclass>
+    <innerclass refid="classpann_1_1FeedforwardPropagationRunner" prot="public">pann::FeedforwardPropagationRunner</innerclass>
+    <innerclass refid="classpann_1_1Storage" prot="public">pann::Storage</innerclass>
+    <innerclass refid="classpann_1_1TrainUtil" prot="public">pann::TrainUtil</innerclass>
+    <innerclass refid="classpann_1_1TrainPattern" prot="public">pann::TrainPattern</innerclass>
+    <innerclass refid="classpann_1_1TrainData" prot="public">pann::TrainData</innerclass>
+    <innerclass refid="structpann_1_1NeuronIterCompare" prot="public">pann::NeuronIterCompare</innerclass>
     <innerclass refid="classpann_1_1Weight" prot="public">pann::Weight</innerclass>
     <innernamespace refid="namespacepann_1_1ActivationFunction">pann::ActivationFunction</innernamespace>
     <innernamespace refid="namespacepann_1_1Exception">pann::Exception</innernamespace>
+    <innernamespace refid="namespacepann_1_1LearningHint">pann::LearningHint</innernamespace>
+    <innernamespace refid="namespacepann_1_1NetworkModel">pann::NetworkModel</innernamespace>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="namespacepann_134cfd8d9243a5183902a991ae1532e37" prot="public" static="no">
+        <name>RunDirection</name>
+        <enumvalue id="namespacepann_134cfd8d9243a5183902a991ae1532e3748f0cddd9d215fba8b09d2e19f2b2a75" prot="public">
+          <name>ForwardRun</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacepann_134cfd8d9243a5183902a991ae1532e370ac5753feef303274f7d3d43a04753c3" prot="public">
+          <name>BackwardRun</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Runner.h" line="15" bodyfile="/home/booble/pann/trunk/src/Core/Runner.h" bodystart="15" bodyend="15"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespacepann_14509ba95a02d59e0a1cd5127e1c55988" prot="public" static="no">
+        <type>double</type>
+        <definition>typedef double pann::Float</definition>
+        <argsstring></argsstring>
+        <name>Float</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Type.h" line="13" bodyfile="/home/booble/pann/trunk/src/Core/Type.h" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacepann_1f9b7c48b4a4f08d45e05c1c9a7d4a08b" prot="public" static="no">
+        <type>unsigned int</type>
+        <definition>typedef unsigned int pann::UINT</definition>
+        <argsstring></argsstring>
+        <name>UINT</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Type.h" line="16" bodyfile="/home/booble/pann/trunk/src/Core/Type.h" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacepann_1e5d2e2854d3f59b30c0149d3303296d4" prot="public" static="no">
+        <type>unsigned int</type>
+        <definition>typedef unsigned int pann::uint</definition>
+        <argsstring></argsstring>
+        <name>uint</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Type.h" line="17" bodyfile="/home/booble/pann/trunk/src/Core/Type.h" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacepann_15b285d6cead198add4f14b5b5a0b97c1" prot="public" static="no">
+        <type>std::map&lt; unsigned, <ref refid="classpann_1_1Neuron" kindref="compound">Neuron</ref> &gt;::iterator</type>
+        <definition>typedef std::map&lt;unsigned, Neuron&gt;::iterator pann::NeuronIter</definition>
+        <argsstring></argsstring>
+        <name>NeuronIter</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Type.h" line="20" bodyfile="/home/booble/pann/trunk/src/Core/Type.h" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacepann_168751290d27789ce6f303cf55ed505ed" prot="public" static="no">
+        <type>std::map&lt; unsigned, <ref refid="classpann_1_1Neuron" kindref="compound">Neuron</ref> &gt;::const_iterator</type>
+        <definition>typedef std::map&lt;unsigned, Neuron&gt;::const_iterator pann::ConstNeuronIter</definition>
+        <argsstring></argsstring>
+        <name>ConstNeuronIter</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Type.h" line="21" bodyfile="/home/booble/pann/trunk/src/Core/Type.h" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacepann_1984e6dfa15df19d238ee8f5792d0cefb" prot="public" static="no">
+        <type>std::map&lt; unsigned, <ref refid="classpann_1_1Weight" kindref="compound">Weight</ref> &gt;::iterator</type>
+        <definition>typedef std::map&lt;unsigned, Weight&gt;::iterator pann::WeightIter</definition>
+        <argsstring></argsstring>
+        <name>WeightIter</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Type.h" line="24" bodyfile="/home/booble/pann/trunk/src/Core/Type.h" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacepann_13b249ab143ae3f41cf6adbedc59525c0" prot="public" static="no">
+        <type>std::map&lt; unsigned, <ref refid="classpann_1_1Weight" kindref="compound">Weight</ref> &gt;::const_iterator</type>
+        <definition>typedef std::map&lt;unsigned, Weight&gt;::const_iterator pann::ConstWeightIter</definition>
+        <argsstring></argsstring>
+        <name>ConstWeightIter</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Type.h" line="25" bodyfile="/home/booble/pann/trunk/src/Core/Type.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespacepann_1681692849fa08fe4251447c25500d75c" prot="public" static="no" mutable="no">
+        <type>const <ref refid="namespacepann_14509ba95a02d59e0a1cd5127e1c55988" kindref="member">Float</ref></type>
+        <definition>const Float pann::inf</definition>
+        <argsstring></argsstring>
+        <name>inf</name>
+        <initializer> std::numeric_limits&lt;double&gt;::infinity()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Type.h" line="14" bodyfile="/home/booble/pann/trunk/src/Core/Type.h" bodystart="14" bodyend="-1"/>
+        <referencedby refid="classpann_1_1ActivationFunction_1_1Threshold_19f7c90eff2ed5fdac54e28965350cc6c" compoundref="ActivationFunction_8h" startline="115" endline="120">pann::ActivationFunction::Threshold::derivative</referencedby>
+      </memberdef>
+      </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/booble/pann/trunk/src/ActivationFunction.cpp" line="9"/>
+    <location file="/home/booble/pann/trunk/src/Core/ActivationFunction.cpp" line="9"/>
   </compounddef>
 </doxygen>

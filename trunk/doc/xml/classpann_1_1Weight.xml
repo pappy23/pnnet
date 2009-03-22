@@ -5,22 +5,9 @@
     <basecompoundref refid="classpann_1_1Object" prot="public" virt="non-virtual">pann::Object</basecompoundref>
     <includes refid="Weight_8h" local="no">Weight.h</includes>
       <sectiondef kind="public-attrib">
-      <memberdef kind="variable" id="classpann_1_1Weight_1f97abb5ee66f72c5cc459e11a27e7c0a" prot="public" static="no" mutable="no">
-        <type>int</type>
-        <definition>int pann::Weight::usageCount</definition>
-        <argsstring></argsstring>
-        <name>usageCount</name>
-        <briefdescription>
-<para>Used by weight update algorithms for shared weights. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Weight.h" line="22" bodyfile="/home/booble/pann/trunk/src/Weight.h" bodystart="22" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="classpann_1_1Weight_178e45767570b65a9e9d945561448722c" prot="public" static="no" mutable="no">
-        <type>float</type>
-        <definition>float pann::Weight::value</definition>
+      <memberdef kind="variable" id="classpann_1_1Weight_1adb717ef6de485b68780db2b50974493" prot="public" static="no" mutable="no">
+        <type><ref refid="namespacepann_14509ba95a02d59e0a1cd5127e1c55988" kindref="member">Float</ref></type>
+        <definition>Float pann::Weight::value</definition>
         <argsstring></argsstring>
         <name>value</name>
         <briefdescription>
@@ -29,17 +16,50 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Weight.h" line="23" bodyfile="/home/booble/pann/trunk/src/Weight.h" bodystart="23" bodyend="-1"/>
+        <location file="/home/booble/pann/trunk/src/Core/Weight.h" line="30" bodyfile="/home/booble/pann/trunk/src/Core/Weight.h" bodystart="26" bodyend="-1"/>
+        <referencedby refid="classpann_1_1Weight_18d51519bd5723b61b32b687502aada06" compoundref="Weight_8h" startline="35" endline="40">printDebugInfo</referencedby>
+        <referencedby refid="classpann_1_1Weight_1ddeecbb0805615aa2ee5c20f7268e577" compoundref="Weight_8h" startline="46" endline="51">serialize</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classpann_1_1Weight_189c6c1790e89fd0f0d76371c9bd3c0cc" prot="public" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned pann::Weight::usageCount</definition>
+        <argsstring></argsstring>
+        <name>usageCount</name>
+        <briefdescription>
+<para>Used by weight update algorithms for shared weights. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Weight.h" line="31" bodyfile="/home/booble/pann/trunk/src/Core/Weight.h" bodystart="31" bodyend="-1"/>
+        <referencedby refid="classpann_1_1Weight_18d51519bd5723b61b32b687502aada06" compoundref="Weight_8h" startline="35" endline="40">printDebugInfo</referencedby>
+        <referencedby refid="classpann_1_1Weight_1ddeecbb0805615aa2ee5c20f7268e577" compoundref="Weight_8h" startline="46" endline="51">serialize</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classpann_1_1Weight_1c98d07dd8f7b70e16ccb9a01abf56b9c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class boost::serialization::access</definition>
+        <argsstring></argsstring>
+        <name>boost::serialization::access</name>
+        <reimplements refid="classpann_1_1Object_1c98d07dd8f7b70e16ccb9a01abf56b9c">boost::serialization::access</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Weight.h" line="44" bodyfile="/home/booble/pann/trunk/src/Core/Weight.h" bodystart="44" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="classpann_1_1Weight_151a25d4941fe6fcea7ff368298fd06ec" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classpann_1_1Weight_126a5478691b78eceda1b83ce7e8e7df5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>pann::Weight::Weight</definition>
-        <argsstring>(float _value=1)</argsstring>
+        <argsstring>(Float _value=1)</argsstring>
         <name>Weight</name>
         <param>
-          <type>float</type>
+          <type><ref refid="namespacepann_14509ba95a02d59e0a1cd5127e1c55988" kindref="member">Float</ref></type>
           <declname>_value</declname>
           <defval>1</defval>
         </param>
@@ -49,7 +69,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Weight.h" line="27" bodyfile="/home/booble/pann/trunk/src/Weight.h" bodystart="25" bodyend="27"/>
+        <location file="/home/booble/pann/trunk/src/Core/Weight.h" line="25" bodyfile="/home/booble/pann/trunk/src/Core/Weight.h" bodystart="23" bodyend="25"/>
       </memberdef>
       <memberdef kind="function" id="classpann_1_1Weight_1f75b6811195515ec566ce022eea3aec8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -62,7 +82,60 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Weight.h" line="29" bodyfile="/home/booble/pann/trunk/src/Weight.h" bodystart="29" bodyend="29"/>
+        <location file="/home/booble/pann/trunk/src/Core/Weight.h" line="26" bodyfile="/home/booble/pann/trunk/src/Core/Weight.h" bodystart="26" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classpann_1_1Weight_18d51519bd5723b61b32b687502aada06" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void pann::Weight::printDebugInfo</definition>
+        <argsstring>(std::ostringstream &amp;ost) const </argsstring>
+        <name>printDebugInfo</name>
+        <reimplements refid="classpann_1_1Object_1f0039bd3a5cdbb3decfa5e33055e1a45">printDebugInfo</reimplements>
+        <param>
+          <type>std::ostringstream &amp;</type>
+          <declname>ost</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Weight.h" line="36" bodyfile="/home/booble/pann/trunk/src/Core/Weight.h" bodystart="35" bodyend="40"/>
+        <references refid="classpann_1_1Weight_189c6c1790e89fd0f0d76371c9bd3c0cc" compoundref="Weight_8h" startline="31">usageCount</references>
+        <references refid="classpann_1_1Weight_1adb717ef6de485b68780db2b50974493" compoundref="Weight_8h" startline="26">value</references>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classpann_1_1Weight_1ddeecbb0805615aa2ee5c20f7268e577" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class</type>
+            <declname>Archive</declname>
+            <defname>Archive</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void pann::Weight::serialize</definition>
+        <argsstring>(Archive &amp;ar, const unsigned int version)</argsstring>
+        <name>serialize</name>
+        <reimplements refid="classpann_1_1Object_113a234c0fcd5d32d341353f1b7b3c828">serialize</reimplements>
+        <param>
+          <type>Archive &amp;</type>
+          <declname>ar</declname>
+        </param>
+        <param>
+          <type>const unsigned int</type>
+          <declname>version</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Weight.h" line="47" bodyfile="/home/booble/pann/trunk/src/Core/Weight.h" bodystart="46" bodyend="51"/>
+        <references refid="classpann_1_1Weight_189c6c1790e89fd0f0d76371c9bd3c0cc" compoundref="Weight_8h" startline="31">usageCount</references>
+        <references refid="classpann_1_1Weight_1adb717ef6de485b68780db2b50974493" compoundref="Weight_8h" startline="26">value</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -70,39 +143,45 @@
     <detaileddescription>
 <para><ref refid="classpann_1_1Weight" kindref="compound">Weight</ref> object, used in <ref refid="classpann_1_1Link" kindref="compound">pann::Link</ref>. <ref refid="classpann_1_1Weight" kindref="compound">Weight</ref> might be shared among different Links. <ref refid="classpann_1_1Link" kindref="compound">Link</ref> contain boost::shared_ptr&lt;Weight&gt; for this object </para>    </detaileddescription>
     <inheritancegraph>
-      <node id="53">
+      <node id="180">
         <label>pann::Object</label>
         <link refid="classpann_1_1Object"/>
       </node>
-      <node id="52">
+      <node id="179">
         <label>pann::Weight</label>
         <link refid="classpann_1_1Weight"/>
-        <childnode refid="53" relation="public-inheritance">
+        <childnode refid="180" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="55">
+      <node id="182">
         <label>pann::Object</label>
         <link refid="classpann_1_1Object"/>
       </node>
-      <node id="54">
+      <node id="181">
         <label>pann::Weight</label>
         <link refid="classpann_1_1Weight"/>
-        <childnode refid="55" relation="public-inheritance">
+        <childnode refid="182" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="/home/booble/pann/trunk/src/Weight.h" line="20" bodyfile="/home/booble/pann/trunk/src/Weight.h" bodystart="19" bodyend="30"/>
+    <location file="/home/booble/pann/trunk/src/Core/Weight.h" line="20" bodyfile="/home/booble/pann/trunk/src/Core/Weight.h" bodystart="19" bodyend="52"/>
     <listofallmembers>
       <member refid="classpann_1_1Object_17eff990bb1cc771117099f8cdcd6dd33" prot="protected" virt="non-virtual"><scope>pann::Weight</scope><name>attributes</name></member>
-      <member refid="classpann_1_1Object_1ebbb9ad2f57f093fde45aad4580bf3bb" prot="public" virt="non-virtual"><scope>pann::Weight</scope><name>is</name></member>
-      <member refid="classpann_1_1Object_1e4157eda81e363f28504b4ec9d15e196" prot="public" virt="non-virtual"><scope>pann::Weight</scope><name>Object</name></member>
-      <member refid="classpann_1_1Object_14a44c6ffb8a172818167f0004b9a7a45" prot="public" virt="non-virtual"><scope>pann::Weight</scope><name>operator[]</name></member>
-      <member refid="classpann_1_1Object_1ef631d297ec4d921cbf14f8d77baf63b" prot="public" virt="non-virtual"><scope>pann::Weight</scope><name>unset</name></member>
-      <member refid="classpann_1_1Weight_1f97abb5ee66f72c5cc459e11a27e7c0a" prot="public" virt="non-virtual"><scope>pann::Weight</scope><name>usageCount</name></member>
-      <member refid="classpann_1_1Weight_178e45767570b65a9e9d945561448722c" prot="public" virt="non-virtual"><scope>pann::Weight</scope><name>value</name></member>
-      <member refid="classpann_1_1Weight_151a25d4941fe6fcea7ff368298fd06ec" prot="public" virt="non-virtual"><scope>pann::Weight</scope><name>Weight</name></member>
+      <member refid="classpann_1_1Weight_1c98d07dd8f7b70e16ccb9a01abf56b9c" prot="public" virt="non-virtual"><scope>pann::Weight</scope><name>boost::serialization::access</name></member>
+      <member refid="classpann_1_1Object_11129a3588cfdab22f8e0562d4a2a03c6" prot="public" virt="non-virtual"><scope>pann::Weight</scope><name>erase</name></member>
+      <member refid="classpann_1_1Object_1fd57145143abda778d92836b1d1e4471" prot="public" virt="virtual"><scope>pann::Weight</scope><name>getId</name></member>
+      <member refid="classpann_1_1Object_1a6c82ac98a12d54126d50256084ca731" prot="protected" virt="non-virtual"><scope>pann::Weight</scope><name>id</name></member>
+      <member refid="classpann_1_1Object_11636c5461bf78692e9f65d1b07ac0e7c" prot="public" virt="non-virtual"><scope>pann::Weight</scope><name>is</name></member>
+      <member refid="classpann_1_1Object_1c7977c476f6c5a8929e6c90550ed0a25" prot="public" virt="non-virtual"><scope>pann::Weight</scope><name>Object</name></member>
+      <member refid="classpann_1_1Object_144586c162aeb57fcf019e7cb4ffa63fd" prot="public" virt="non-virtual"><scope>pann::Weight</scope><name>operator[]</name></member>
+      <member refid="classpann_1_1Weight_18d51519bd5723b61b32b687502aada06" prot="public" virt="virtual"><scope>pann::Weight</scope><name>printDebugInfo</name></member>
+      <member refid="classpann_1_1Weight_1ddeecbb0805615aa2ee5c20f7268e577" prot="private" virt="non-virtual"><scope>pann::Weight</scope><name>serialize</name></member>
+      <member refid="classpann_1_1Object_18fa5d473b8b12627957d3cdec5fdfce0" prot="public" virt="non-virtual"><scope>pann::Weight</scope><name>unset</name></member>
+      <member refid="classpann_1_1Weight_189c6c1790e89fd0f0d76371c9bd3c0cc" prot="public" virt="non-virtual"><scope>pann::Weight</scope><name>usageCount</name></member>
+      <member refid="classpann_1_1Weight_1adb717ef6de485b68780db2b50974493" prot="public" virt="non-virtual"><scope>pann::Weight</scope><name>value</name></member>
+      <member refid="classpann_1_1Weight_126a5478691b78eceda1b83ce7e8e7df5" prot="public" virt="non-virtual"><scope>pann::Weight</scope><name>Weight</name></member>
       <member refid="classpann_1_1Object_1461126af2f1a20fa24f1340f670c5733" prot="public" virt="virtual"><scope>pann::Weight</scope><name>~Object</name></member>
       <member refid="classpann_1_1Weight_1f75b6811195515ec566ce022eea3aec8" prot="public" virt="non-virtual"><scope>pann::Weight</scope><name>~Weight</name></member>
     </listofallmembers>

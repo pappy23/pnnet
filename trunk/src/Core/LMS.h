@@ -3,65 +3,11 @@
 #define LMS_H
 
 #include "Includes.h"
+#include "Net.h"
 #include "LearningAlgorithm.h"
 
 namespace pann
 {
-    namespace LearningHint
-    {
-        class LmsNet : public Base
-        {
-            /* Public members */
-        public:
-            Float learningRate;
-
-            /* Public interface */
-        public:
-            LmsNet() : learningRate(0) { };
-            virtual ~LmsNet() { };
-
-            virtual unsigned getTypeId()
-            {
-                return 2;
-            }
-
-            /* Serialization */
-        private:
-            friend class boost::serialization::access;
-            template<class Archive>
-                void serialize(Archive & ar, const unsigned int version)
-                {
-                    ar & learningRate;
-                };
-        };
-
-        class LmsNeuron : public Base
-        {
-            /* Public interface */
-        public:
-            LmsNeuron() { };
-            virtual ~LmsNeuron() { };
-
-            virtual unsigned getTypeId()
-            {
-                return 3;
-            }
-
-            /* Private members */
-        private:
-            //Float learningRate;
-
-            /* Serialization */
-        private:
-            friend class boost::serialization::access;
-            template<class Archive>
-                void serialize(Archive & ar, const unsigned int version)
-                {
-              //      ar & learningRate;
-                };
-        };
-    }; //LearningHint
-
     class LMS : public LearningAlgorithm
     {
         /* Public interface */

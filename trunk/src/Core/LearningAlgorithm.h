@@ -7,8 +7,8 @@
 #define LEARNINGALGORITHM_H
 
 #include "Includes.h"
-#include "Net.h"
 #include "TrainData.h"
+#include "Net.h"
 
 namespace pann
 {

@@ -14,7 +14,7 @@ namespace pann
 {
     enum RunDirection { ForwardRun, BackwardRun };
 
-    class Runner
+    class Runner //singleton
     {
     public:
         static Runner* Instance();

@@ -10,12 +10,13 @@
     <ul>
       <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
-      <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="classes.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
     </ul>
   </div>
   <div class="tabs">
     <ul>
+      <li><a href="classes.html"><span>Alphabetical&nbsp;List</span></a></li>
       <li><a href="annotated.html"><span>Class&nbsp;List</span></a></li>
       <li><a href="hierarchy.html"><span>Class&nbsp;Hierarchy</span></a></li>
       <li><a href="functions.html"><span>Class&nbsp;Members</span></a></li>
@@ -33,7 +34,9 @@ Inheritance diagram for pann::ActivationFunction::Base:</div>
 
 <p><center><img src="classpann_1_1ActivationFunction_1_1Base.png" usemap="#pann::ActivationFunction::Base_map" border="0" alt=""></center>
 <map name="pann::ActivationFunction::Base_map">
-<area href="classpann_1_1ActivationFunction_1_1Linear.html" alt="pann::ActivationFunction::Linear" shape="rect" coords="0,56,193,80">
+<area href="classpann_1_1ActivationFunction_1_1Linear.html" alt="pann::ActivationFunction::Linear" shape="rect" coords="0,56,213,80">
+<area href="classpann_1_1ActivationFunction_1_1TanH.html" alt="pann::ActivationFunction::TanH" shape="rect" coords="223,56,436,80">
+<area href="classpann_1_1ActivationFunction_1_1Threshold.html" alt="pann::ActivationFunction::Threshold" shape="rect" coords="446,56,659,80">
 </map>
 </div>
 
@@ -41,31 +44,28 @@ Inheritance diagram for pann::ActivationFunction::Base:</div>
 <a href="classpann_1_1ActivationFunction_1_1Base-members.html">List of all members.</a><table border="0" cellpadding="0" cellspacing="0">
 <tr><td></td></tr>
 <tr><td colspan="2"><br><h2>Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1ActivationFunction_1_1Base.html#d945d585dbc6736c48eb4edbdf81fb6a">freeInstance</a> ()</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual unsigned&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1ActivationFunction_1_1Base.html#882ff77ecccf62b9c453243fe0adb63d">getId</a> () const =0</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual float&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1ActivationFunction_1_1Base.html#ba67bce91e8c8fdea2b46d602505c357">f</a> (float)=0</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual std::string&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1ActivationFunction_1_1Base.html#110e8df25117878d2b49cc2fda35c50d">getName</a> () const =0</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual float&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1ActivationFunction_1_1Base.html#236d670dc8e60422b5d4d2d1ed73a9d0">derivative</a> (float)=0</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual <a class="el" href="namespacepann.html#4509ba95a02d59e0a1cd5127e1c55988">Float</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1ActivationFunction_1_1Base.html#6f8d64be53a32ddfe46abb3501849628">f</a> (<a class="el" href="namespacepann.html#4509ba95a02d59e0a1cd5127e1c55988">Float</a>) const =0</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual <a class="el" href="namespacepann.html#4509ba95a02d59e0a1cd5127e1c55988">Float</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1ActivationFunction_1_1Base.html#eb85eeb7e4058df1b5ca45ad15745ad8">derivative</a> (<a class="el" href="namespacepann.html#4509ba95a02d59e0a1cd5127e1c55988">Float</a>) const =0</td></tr>
 
 <tr><td colspan="2"><br><h2>Static Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">static <a class="el" href="classpann_1_1ActivationFunction_1_1Base.html">Base</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1ActivationFunction_1_1Base.html#17e4f3cde4275eaf83464a3c0d1add15">Instance</a> ()</td></tr>
-
-<tr><td colspan="2"><br><h2>Static Protected Attributes</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">static <a class="el" href="classpann_1_1ActivationFunction_1_1Base.html">Base</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1ActivationFunction_1_1Base.html#95e57874254f891c27aab537644d74a6">self</a> = 0</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top">static int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1ActivationFunction_1_1Base.html#04614515549362c5ecab80f1613e1804">refcount</a> = 0</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static <a class="el" href="classpann_1_1ActivationFunction_1_1Base.html">Base</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1ActivationFunction_1_1Base.html#5bce1a2f357da69638b97f6d3ef73395">Instance</a> ()</td></tr>
 
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
-All activation functions inherit <a class="el" href="classpann_1_1ActivationFunction_1_1Base.html">ActivationFunction::Base</a> and implement <a class="el" href="classpann_1_1ActivationFunction_1_1Base.html#17e4f3cde4275eaf83464a3c0d1add15">Instance()</a> method <a class="el" href="classpann_1_1ActivationFunction_1_1Base.html">Base</a> is a singleton pattern 
-<p>Definition at line <a class="el" href="ActivationFunction_8h-source.html#l00018">18</a> of file <a class="el" href="ActivationFunction_8h-source.html">ActivationFunction.h</a>.</p>
+All activation functions inherit <a class="el" href="classpann_1_1ActivationFunction_1_1Base.html">ActivationFunction::Base</a> and implement <a class="el" href="classpann_1_1ActivationFunction_1_1Base.html#5bce1a2f357da69638b97f6d3ef73395">Instance()</a> method <a class="el" href="classpann_1_1ActivationFunction_1_1Base.html">Base</a> is a singleton pattern 
+<p>Definition at line <a class="el" href="ActivationFunction_8h-source.html#l00022">22</a> of file <a class="el" href="ActivationFunction_8h-source.html">ActivationFunction.h</a>.</p>
 <hr><h2>Member Function Documentation</h2>
-<a class="anchor" name="17e4f3cde4275eaf83464a3c0d1add15"></a><!-- doxytag: member="pann::ActivationFunction::Base::Instance" ref="17e4f3cde4275eaf83464a3c0d1add15" args="()" -->
+<a class="anchor" name="5bce1a2f357da69638b97f6d3ef73395"></a><!-- doxytag: member="pann::ActivationFunction::Base::Instance" ref="5bce1a2f357da69638b97f6d3ef73395" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">static <a class="el" href="classpann_1_1ActivationFunction_1_1Base.html">Base</a>&amp; pann::ActivationFunction::Base::Instance           </td>
+          <td class="memname">static <a class="el" href="classpann_1_1ActivationFunction_1_1Base.html">Base</a>* pann::ActivationFunction::Base::Instance           </td>
           <td>(</td>
           <td class="paramname">          </td>
           <td>&nbsp;)&nbsp;</td>
@@ -77,20 +77,20 @@ All activation functions inherit <a class="el" href="classpann_1_1ActivationFunc
 
 <p>
 
-<p>Reimplemented in <a class="el" href="classpann_1_1ActivationFunction_1_1Linear.html#576c8546adfe54eb17c26a6255ce80e8">pann::ActivationFunction::Linear</a>.</p>
+<p>Reimplemented in <a class="el" href="classpann_1_1ActivationFunction_1_1Linear.html#87335208832a774ba10892b4cfe97d09">pann::ActivationFunction::Linear</a>, <a class="el" href="classpann_1_1ActivationFunction_1_1Threshold.html#a132088780dc2b151c7c0b5ae3850b0b">pann::ActivationFunction::Threshold</a>, and <a class="el" href="classpann_1_1ActivationFunction_1_1TanH.html#f0d5c84687ea2693631c44ee1e4448fd">pann::ActivationFunction::TanH</a>.</p>
 
 </div>
 </div><p>
-<a class="anchor" name="d945d585dbc6736c48eb4edbdf81fb6a"></a><!-- doxytag: member="pann::ActivationFunction::Base::freeInstance" ref="d945d585dbc6736c48eb4edbdf81fb6a" args="()" -->
+<a class="anchor" name="882ff77ecccf62b9c453243fe0adb63d"></a><!-- doxytag: member="pann::ActivationFunction::Base::getId" ref="882ff77ecccf62b9c453243fe0adb63d" args="() const =0" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void pann::ActivationFunction::Base::freeInstance           </td>
+          <td class="memname">virtual unsigned pann::ActivationFunction::Base::getId           </td>
           <td>(</td>
           <td class="paramname">          </td>
           <td>&nbsp;)&nbsp;</td>
-          <td><code> [inline]</code></td>
+          <td> const<code> [pure virtual]</code></td>
         </tr>
       </table>
 </div>
@@ -98,23 +98,22 @@ All activation functions inherit <a class="el" href="classpann_1_1ActivationFunc
 
 <p>
 
-<p>Definition at line <a class="el" href="ActivationFunction_8h-source.html#l00028">28</a> of file <a class="el" href="ActivationFunction_8h-source.html">ActivationFunction.h</a>.</p>
+<p>Implemented in <a class="el" href="classpann_1_1ActivationFunction_1_1Linear.html#e9dfd60ec5f8a0cd6c17ef4404add5c4">pann::ActivationFunction::Linear</a>, <a class="el" href="classpann_1_1ActivationFunction_1_1Threshold.html#e3178b402d5bad3ff7d34355415a15b9">pann::ActivationFunction::Threshold</a>, and <a class="el" href="classpann_1_1ActivationFunction_1_1TanH.html#ad4c5d74bcba084a30a5dbf8103e60bb">pann::ActivationFunction::TanH</a>.</p>
 
-<p>References <a class="el" href="ActivationFunction_8h-source.html#l00022">refcount</a>.</p>
+<p>Referenced by <a class="el" href="Neuron_8h-source.html#l00055">pann::Neuron::printDebugInfo()</a>, <a class="el" href="Neuron_8h-source.html#l00072">pann::Neuron::save()</a>, and <a class="el" href="glwidget_8cpp-source.html#l00140">GLWidget::setInfoNeuron()</a>.</p>
 
 </div>
 </div><p>
-<a class="anchor" name="ba67bce91e8c8fdea2b46d602505c357"></a><!-- doxytag: member="pann::ActivationFunction::Base::f" ref="ba67bce91e8c8fdea2b46d602505c357" args="(float)=0" -->
+<a class="anchor" name="110e8df25117878d2b49cc2fda35c50d"></a><!-- doxytag: member="pann::ActivationFunction::Base::getName" ref="110e8df25117878d2b49cc2fda35c50d" args="() const =0" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">virtual float pann::ActivationFunction::Base::f           </td>
+          <td class="memname">virtual std::string pann::ActivationFunction::Base::getName           </td>
           <td>(</td>
-          <td class="paramtype">float&nbsp;</td>
           <td class="paramname">          </td>
           <td>&nbsp;)&nbsp;</td>
-          <td><code> [pure virtual]</code></td>
+          <td> const<code> [pure virtual]</code></td>
         </tr>
       </table>
 </div>
@@ -122,23 +121,23 @@ All activation functions inherit <a class="el" href="classpann_1_1ActivationFunc
 
 <p>
 
-<p>Implemented in <a class="el" href="classpann_1_1ActivationFunction_1_1Linear.html#b2ed38404b63ce7c37a8c7f8abe0cc87">pann::ActivationFunction::Linear</a>.</p>
+<p>Implemented in <a class="el" href="classpann_1_1ActivationFunction_1_1Linear.html#789c99e6a5c5002af46b6a028fd17a74">pann::ActivationFunction::Linear</a>, <a class="el" href="classpann_1_1ActivationFunction_1_1Threshold.html#78703fca497f9efdb5f1760d3f50852d">pann::ActivationFunction::Threshold</a>, and <a class="el" href="classpann_1_1ActivationFunction_1_1TanH.html#4cab8e9156979208d43bb42dbd3e2bef">pann::ActivationFunction::TanH</a>.</p>
 
-<p>Referenced by <a class="el" href="Neuron_8cpp-source.html#l00018">pann::Neuron::activate()</a>.</p>
+<p>Referenced by <a class="el" href="glwidget_8cpp-source.html#l00140">GLWidget::setInfoNeuron()</a>.</p>
 
 </div>
 </div><p>
-<a class="anchor" name="236d670dc8e60422b5d4d2d1ed73a9d0"></a><!-- doxytag: member="pann::ActivationFunction::Base::derivative" ref="236d670dc8e60422b5d4d2d1ed73a9d0" args="(float)=0" -->
+<a class="anchor" name="6f8d64be53a32ddfe46abb3501849628"></a><!-- doxytag: member="pann::ActivationFunction::Base::f" ref="6f8d64be53a32ddfe46abb3501849628" args="(Float) const =0" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">virtual float pann::ActivationFunction::Base::derivative           </td>
+          <td class="memname">virtual <a class="el" href="namespacepann.html#4509ba95a02d59e0a1cd5127e1c55988">Float</a> pann::ActivationFunction::Base::f           </td>
           <td>(</td>
-          <td class="paramtype">float&nbsp;</td>
+          <td class="paramtype"><a class="el" href="namespacepann.html#4509ba95a02d59e0a1cd5127e1c55988">Float</a>&nbsp;</td>
           <td class="paramname">          </td>
           <td>&nbsp;)&nbsp;</td>
-          <td><code> [pure virtual]</code></td>
+          <td> const<code> [pure virtual]</code></td>
         </tr>
       </table>
 </div>
@@ -146,17 +145,21 @@ All activation functions inherit <a class="el" href="classpann_1_1ActivationFunc
 
 <p>
 
-<p>Implemented in <a class="el" href="classpann_1_1ActivationFunction_1_1Linear.html#2512d45a5cb8c9ff2a45c87cb26034ca">pann::ActivationFunction::Linear</a>.</p>
+<p>Implemented in <a class="el" href="classpann_1_1ActivationFunction_1_1Linear.html#7c10cdc08b0bbbb26b68a55c249da4c7">pann::ActivationFunction::Linear</a>, <a class="el" href="classpann_1_1ActivationFunction_1_1Threshold.html#b5c50e74b8f93770f466274f1ebc0fb0">pann::ActivationFunction::Threshold</a>, and <a class="el" href="classpann_1_1ActivationFunction_1_1TanH.html#55414f73736900fc25446ac7bbd66b81">pann::ActivationFunction::TanH</a>.</p>
 
 </div>
 </div><p>
-<hr><h2>Member Data Documentation</h2>
-<a class="anchor" name="95e57874254f891c27aab537644d74a6"></a><!-- doxytag: member="pann::ActivationFunction::Base::self" ref="95e57874254f891c27aab537644d74a6" args="" -->
+<a class="anchor" name="eb85eeb7e4058df1b5ca45ad15745ad8"></a><!-- doxytag: member="pann::ActivationFunction::Base::derivative" ref="eb85eeb7e4058df1b5ca45ad15745ad8" args="(Float) const =0" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classpann_1_1ActivationFunction_1_1Base.html">Base</a> * <a class="el" href="classpann_1_1ActivationFunction_1_1Base.html#95e57874254f891c27aab537644d74a6">pann::ActivationFunction::Base::self</a> = 0<code> [static, protected]</code>          </td>
+          <td class="memname">virtual <a class="el" href="namespacepann.html#4509ba95a02d59e0a1cd5127e1c55988">Float</a> pann::ActivationFunction::Base::derivative           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespacepann.html#4509ba95a02d59e0a1cd5127e1c55988">Float</a>&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const<code> [pure virtual]</code></td>
         </tr>
       </table>
 </div>
@@ -164,33 +167,14 @@ All activation functions inherit <a class="el" href="classpann_1_1ActivationFunc
 
 <p>
 
-<p>Definition at line <a class="el" href="ActivationFunction_8h-source.html#l00021">21</a> of file <a class="el" href="ActivationFunction_8h-source.html">ActivationFunction.h</a>.</p>
+<p>Implemented in <a class="el" href="classpann_1_1ActivationFunction_1_1Linear.html#da93c5387a4f54d5a44ba57007382b14">pann::ActivationFunction::Linear</a>, <a class="el" href="classpann_1_1ActivationFunction_1_1Threshold.html#9f7c90eff2ed5fdac54e28965350cc6c">pann::ActivationFunction::Threshold</a>, and <a class="el" href="classpann_1_1ActivationFunction_1_1TanH.html#23cd96f9359967ea0c7bfe4b0ee09598">pann::ActivationFunction::TanH</a>.</p>
 
 </div>
 </div><p>
-<a class="anchor" name="04614515549362c5ecab80f1613e1804"></a><!-- doxytag: member="pann::ActivationFunction::Base::refcount" ref="04614515549362c5ecab80f1613e1804" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int <a class="el" href="classpann_1_1ActivationFunction_1_1Base.html#04614515549362c5ecab80f1613e1804">pann::ActivationFunction::Base::refcount</a> = 0<code> [static, protected]</code>          </td>
-        </tr>
-      </table>
+<hr>The documentation for this class was generated from the following file:<ul>
+<li>pann/trunk/src/Core/<a class="el" href="ActivationFunction_8h-source.html">ActivationFunction.h</a></ul>
 </div>
-<div class="memdoc">
-
-<p>
-
-<p>Definition at line <a class="el" href="ActivationFunction_8h-source.html#l00022">22</a> of file <a class="el" href="ActivationFunction_8h-source.html">ActivationFunction.h</a>.</p>
-
-<p>Referenced by <a class="el" href="ActivationFunction_8h-source.html#l00028">freeInstance()</a>, and <a class="el" href="ActivationFunction_8h-source.html#l00050">pann::ActivationFunction::Linear::Instance()</a>.</p>
-
-</div>
-</div><p>
-<hr>The documentation for this class was generated from the following files:<ul>
-<li>pann/trunk/src/<a class="el" href="ActivationFunction_8h-source.html">ActivationFunction.h</a><li>pann/trunk/src/<a class="el" href="ActivationFunction_8cpp-source.html">ActivationFunction.cpp</a></ul>
-</div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Mar 7 22:30:09 2009 for pann by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Sun Mar 22 10:11:33 2009 for pann by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

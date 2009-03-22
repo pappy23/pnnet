@@ -15,6 +15,7 @@ namespace pann
     //! Base class for almoust everything
     class Object
     {
+/*  Remove attributes-related code. Respect OOP
     protected:
         mutable std::map<std::string, boost::any> attributes; //!< left -  name, right - parametr
         unsigned id;
@@ -40,7 +41,7 @@ namespace pann
 
         //! Delete all attributes
         void erase();
-
+*/
     public:
         virtual void printDebugInfo(std::ostringstream& ost) const = 0;
 

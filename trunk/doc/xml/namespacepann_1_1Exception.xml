@@ -3,12 +3,19 @@
   <compounddef id="namespacepann_1_1Exception" kind="namespace">
     <compoundname>pann::Exception</compoundname>
     <innerclass refid="classpann_1_1Exception_1_1Base" prot="public">pann::Exception::Base</innerclass>
+    <innerclass refid="classpann_1_1Exception_1_1Warning" prot="public">pann::Exception::Warning</innerclass>
     <innerclass refid="classpann_1_1Exception_1_1ObjectNotFound" prot="public">pann::Exception::ObjectNotFound</innerclass>
     <innerclass refid="classpann_1_1Exception_1_1ElementExists" prot="public">pann::Exception::ElementExists</innerclass>
+    <innerclass refid="classpann_1_1Exception_1_1MultipleOccurance" prot="public">pann::Exception::MultipleOccurance</innerclass>
+    <innerclass refid="classpann_1_1Exception_1_1SizeMismatch" prot="public">pann::Exception::SizeMismatch</innerclass>
+    <innerclass refid="classpann_1_1Exception_1_1RangeMismatch" prot="public">pann::Exception::RangeMismatch</innerclass>
+    <innerclass refid="classpann_1_1Exception_1_1NotReady" prot="public">pann::Exception::NotReady</innerclass>
+    <innerclass refid="classpann_1_1Exception_1_1FilesystemError" prot="public">pann::Exception::FilesystemError</innerclass>
+    <innerclass refid="classpann_1_1Exception_1_1Unbelievable" prot="public">pann::Exception::Unbelievable</innerclass>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
 <para>Use case: throw Exception::CoolException()&lt;&lt;&quot;This is exception; i = &quot;&lt;&lt;5&lt;&lt;std::endl; Don&apos;t forget to declare your CoolException, derived from <ref refid="classpann_1_1Exception_1_1Base" kindref="compound">Exception::Base</ref> </para>    </detaileddescription>
-    <location file="/home/booble/pann/trunk/src/Exception.h" line="18"/>
+    <location file="/home/booble/pann/trunk/src/Core/Exception.h" line="18"/>
   </compounddef>
 </doxygen>
