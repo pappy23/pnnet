@@ -3,11 +3,63 @@
 #define LMS_H
 
 #include "Includes.h"
-#include "Net.h"
 #include "LearningAlgorithm.h"
 
 namespace pann
 {
+    namespace LearningHint
+    {
+        class LmsNet : public Base
+        {
+            /* Public members */
+        public:
+            Float learningRate;
+
+            /* Public interface */
+        public:
+            LmsNet() : learningRate(0) { };
+            virtual ~LmsNet() { };
+
+            /* Serialization */
+        private:
+            friend class boost::serialization::access;
+            template<class Archive>
+                void serialize(Archive & ar, const unsigned int version)
+                {
+                    boost::serialization::void_cast_register<LmsNet, Base>(
+                        static_cast<LmsNet*>(NULL),
+                        static_cast<Base*>(NULL));
+
+                    ar & learningRate;
+                };
+        };
+
+        class LmsNeuron : public Base
+        {
+            /* Public interface */
+        public:
+            LmsNeuron() { };
+            virtual ~LmsNeuron() { };
+
+            /* Private members */
+        private:
+            //Float learningRate;
+
+            /* Serialization */
+        private:
+            friend class boost::serialization::access;
+            template<class Archive>
+                void serialize(Archive & ar, const unsigned int version)
+                {
+                     boost::serialization::void_cast_register<LmsNeuron, Base>(
+                        static_cast<LmsNeuron*>(NULL),
+                        static_cast<Base*>(NULL));
+
+                    //ar & learningRate;
+                };
+        };
+    };
+
     class LMS : public LearningAlgorithm
     {
         /* Public interface */
@@ -42,6 +94,9 @@ namespace pann
         };
     };
 }; //pann
+
+BOOST_CLASS_TRACKING(pann::LearningHint::LmsNet, boost::serialization::track_never);
+BOOST_CLASS_TRACKING(pann::LearningHint::LmsNeuron, boost::serialization::track_never);
 
 #endif //LMS_H
 

@@ -11,7 +11,6 @@
 
 namespace pann
 {
-
     /**
      * Weight object, used in pann::Link. Weight might be shared among different Links.
      * Link contain boost::shared_ptr<Weight> for this object
@@ -20,7 +19,8 @@ namespace pann
     {
         /* Public interface */
     public:
-        Weight(Float _value = 1) : 
+        Weight(unsigned _id = 0, Float _value = 1) : 
+            Object(_id),
             value(_value),
             usageCount(1) { };
         ~Weight() { };
@@ -29,15 +29,6 @@ namespace pann
     public:
         Float value; ///< weight itself
         unsigned usageCount; ///< Used by weight update algorithms for shared weights
-
-        /* Debug */
-    public:
-        virtual void printDebugInfo(std::ostringstream& ost) const
-        {
-            ost<<"   Weight\n";
-            ost<<"    usageCount: "<<usageCount<<std::endl;
-            ost<<"    value: "<<value<<std::endl;
-        }
 
         /* Serialization */
     private:

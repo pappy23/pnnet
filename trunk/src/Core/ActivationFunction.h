@@ -26,16 +26,18 @@ namespace pann
             //Only one object of class Base exist at a time
             static Base* Instance();
 
-            virtual unsigned getId() const = 0;
             virtual std::string getName() const = 0;
 
             virtual Float f(Float) const = 0;
             virtual Float derivative(Float) const = 0;
+
+        /* Serialization */
+        private:
+            friend class boost::serialization::access;
         };
 
         /**
          * Linear function
-         * id = 1
          * y = x
          * dy/dx = 0
          */
@@ -45,7 +47,7 @@ namespace pann
             static Base* self;
 
 		private:
-			Linear() {};
+			Linear() { };
 
         public:
 			~Linear()
@@ -62,7 +64,6 @@ namespace pann
                 return self;
             };
 
-            virtual unsigned getId() const { return 1; };
             virtual std::string getName() const { return "Linear"; };
 
             virtual Float f(Float _x) const
@@ -74,11 +75,21 @@ namespace pann
             {
                 return 0;
             } //derivative
+
+            /* Serialization */
+        private:
+            friend class boost::serialization::access;
+            template<class Archive>
+                void serialize(Archive & ar, const unsigned int version)
+                {
+                     boost::serialization::void_cast_register<Linear, Base>(
+                        static_cast<Linear*>(NULL),
+                        static_cast<Base*>(NULL));
+                };
         };
 
         /**
          * MacCalloc-Pitz threshold function
-         * id = 2
          * y = 0, x <0
          * y = 1, x>=0
          */
@@ -102,7 +113,6 @@ namespace pann
                 return self;
             };
 
-            virtual unsigned getId() const { return 2; };
             virtual std::string getName() const { return "Threshold"; };
 
             virtual Float f(Float _x) const
@@ -118,11 +128,21 @@ namespace pann
                     return inf;
                 return 0;
             } //derivative
+
+            /* Serialization */
+        private:
+            friend class boost::serialization::access;
+            template<class Archive>
+                void serialize(Archive & ar, const unsigned int version)
+                {
+                     boost::serialization::void_cast_register<Threshold, Base>(
+                        static_cast<Threshold*>(NULL),
+                        static_cast<Base*>(NULL));
+                };
         };
 
         /**
          * Hyperbolic tangent function
-         * id = 3
          * y = a*tanh(b*x)
          */
         class TanH : public Base
@@ -149,7 +169,6 @@ namespace pann
                 return self;
             };
 
-            virtual unsigned getId() const { return 3; };
             virtual std::string getName() const { return "TanH"; };
 
             virtual Float f(Float _x) const
@@ -161,12 +180,18 @@ namespace pann
             {
                 return 0;
             } //derivative
+ 
+            /* Serialization */
+        private:
+            friend class boost::serialization::access;
+            template<class Archive>
+                void serialize(Archive & ar, const unsigned int version)
+                {
+                     boost::serialization::void_cast_register<TanH, Base>(
+                        static_cast<TanH*>(NULL),
+                        static_cast<Base*>(NULL));
+                };
         };
-
-        /*
-         * ADD NEW FUNCTIONS TO getById()
-         */
-        Base* getById(const unsigned id);
 
     }; //ActivationFunctions
 

@@ -48,11 +48,11 @@ void GLWidget::calcCoords()
         {
             for(unsigned i = 0; i < cache.data[layer][thread].size(); ++i)
             {
-                ConstNeuronIter neuronIter = cache.data[layer][thread][i];
+                const Neuron* neuronIter = cache.data[layer][thread][i];
                 unsigned planeRows = sqrt(layer_size);
                 unsigned planeCols = layer_size / planeRows;
 
-                OpenGLHint* oglHint = neuronIter->second.oglHint;
+                OpenGLHint* oglHint = neuronIter->oglHint;
                 Coords c;
 
                 if(oglHint && oglHint->point.x)
@@ -70,7 +70,7 @@ void GLWidget::calcCoords()
                 else
                     c.z = (GLdouble) ( (GLdouble)(neuron_number % planeCols) - planeCols/2.0 + 1.0 ) * 40.0;
 
-                if(p_net->getNeuronRole(neuronIter->first) == Net::InputNeuron)
+                if(p_net->getNeuronRole(neuronIter->getId()) == Net::InputNeuron)
                     c.color = QColor(0, 150, 0); //Input neuron color
                 else if(layer == total_layers - 2) 
                     c.color = QColor(0, 0, 150); //Output neuron
@@ -94,10 +94,10 @@ void GLWidget::drawNetModel()
     glNewList(1,GL_COMPILE);
     
     //For every neuron draw Link::in connections
-    map<unsigned, Neuron>::const_iterator iter = p_net->getNeurons().begin();
+    map<unsigned, Neuron*>::const_iterator iter = p_net->getNeurons().begin();
     for(; iter != p_net->getNeurons().end(); ++iter)
     {
-        Coords to_coords = coords[iter];
+        Coords to_coords = coords[iter->second];
 
         //Draw neuron
         glPushMatrix();
@@ -110,19 +110,19 @@ void GLWidget::drawNetModel()
         {
             //Draw it's Link::in connections
             qglColor(QColor(0, 255, 0));
-            list<Link>::const_iterator link_iter = iter->second.links.begin();
-            for(; link_iter != iter->second.links.end(); ++link_iter)
+            list<Link>::const_iterator link_iter = iter->second->links.begin();
+            for(; link_iter != iter->second->links.end(); ++link_iter)
             {
                 if(link_iter->getDirection() == Link::out)
                     continue;
 
-                if(link_iter->getToIter()->first == p_net->getBiasId() && !drawBiasLinks)
+                if(link_iter->getTo()->getId() == p_net->getBiasId() && !drawBiasLinks)
                     continue;
 
                 if(linkRate > 1 && (rand() % linkRate != 0))
                     continue;
 
-                Coords from_coords = coords[link_iter->getToIter()];
+                Coords from_coords = coords[link_iter->getTo()];
 
                 glBegin(GL_LINES);
                 glVertex3d(from_coords.x, from_coords.y, from_coords.z);
@@ -139,12 +139,11 @@ void GLWidget::drawNetModel()
 
 void GLWidget::setInfoNeuron(unsigned _id)
 {
-    const Neuron* n = &(p_net->getNeurons().find(_id)->second);
+    const Neuron* n = p_net->getNeurons().find(_id)->second;
     ostringstream ost;
     ost<<"Neuron info:\n"
         <<"ID: "<<_id<<endl
-        <<"ActivationFunction: "<<n->getActivationFunction()->getName()
-            <<" ("<<n->getActivationFunction()->getId()<<")"<<endl
+        <<"ActivationFunction: "<<n->getActivationFunction()->getName()<<endl
         <<"Owner: "<<n->getOwnerThread()<<endl
         <<"Receptive field: "<<n->receptiveField<<endl
         <<"Activation value: "<<n->activationValue<<endl
@@ -249,7 +248,7 @@ void GLWidget::restoreDefaults()
     neuronRadius = 7;
     drawLinks = true;
     drawBiasLinks = false;
-    linkRate = 4;
+    linkRate = 1;
 
     updateGL();
 }

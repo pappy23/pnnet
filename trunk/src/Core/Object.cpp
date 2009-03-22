@@ -11,7 +11,7 @@ using boost::any;
 
 namespace pann
 {             
-/*
+
     Object::Object(unsigned _id)
     {                              
         id = _id;
@@ -22,11 +22,11 @@ namespace pann
     } //~Object      
 
     unsigned
-    Object::getId()
+    Object::getId() const
     {
         return id;
     }
-
+/*
     bool
     Object::is(const string& _attributeName) const
     {                                             

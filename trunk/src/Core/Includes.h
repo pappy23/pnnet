@@ -27,7 +27,7 @@
 #include <boost/foreach.hpp>
 #include <boost/thread.hpp>
 #include <boost/thread/barrier.hpp>
-#include <boost/ref.hpp>
+//#include <boost/ref.hpp>
 #include <boost/archive/xml_oarchive.hpp>
 #include <boost/archive/xml_iarchive.hpp>
 #include <boost/archive/text_oarchive.hpp>
@@ -35,6 +35,10 @@
 #include <boost/serialization/map.hpp>
 #include <boost/serialization/list.hpp>
 #include <boost/serialization/vector.hpp>
+#include <boost/serialization/serialization.hpp>
+#include <boost/serialization/level.hpp>
+#include <boost/serialization/tracking.hpp>
+#include <boost/serialization/export.hpp>
 //#include <boost/serialization/shared_ptr.hpp>
 #include <boost/serialization/version.hpp>
 #include <boost/progress.hpp>

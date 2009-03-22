@@ -7,13 +7,42 @@
 #include "Object.h"
 #include "Neuron.h"
 #include "Cache.h"
-#include "Util.h"
 #include "Runner.h"
 
 //TODO: add shared weight function addConnection()
 
 namespace pann
 {
+    class NetCache : public Cache
+    {
+        /* Public types */
+    public:
+        typedef std::vector<Neuron*> ThreadTaskType;
+        typedef std::vector<ThreadTaskType> FrontType;
+
+        /* Public members */
+    public:
+        std::vector<FrontType> data;
+
+        /* Public interface */
+    public:
+        virtual void flush()
+        {
+            data.clear();
+            touch();
+        }
+
+        /* Serialization */
+    private:
+        friend class boost::serialization::access;
+        template<class Archive>
+            void serialize(Archive & ar, const unsigned int version)
+            {
+                ar & coherent;
+                ar & data;
+            };             
+    };
+
     class Net : public Object
     {
         /* Public types */
@@ -109,8 +138,8 @@ namespace pann
          * (they are used while training or painting net in pann_viewer)
          */
         const NetCache& getCache() const;
-        const std::map<unsigned, Neuron>& getNeurons() const;
-        const std::map<unsigned, Weight>& getWeights() const;
+        const std::map<unsigned, Neuron*>& getNeurons() const;
+        const std::map<unsigned, Weight*>& getWeights() const;
 
         /**
          * Get ID of bias neuron
@@ -130,23 +159,23 @@ namespace pann
         unsigned lastNeuronId; //var to add new neurons
         unsigned lastWeightId; //var to add new weights
         unsigned biasId;
-        std::map<unsigned, Neuron> neurons;
-        std::map<unsigned, Weight> weights;
-        std::list<NeuronIter> inputNeurons;  //Iterators to map<> neurons
+        std::map<unsigned, Neuron*> neurons;
+        std::map<unsigned, Weight*> weights;
+        std::list<Neuron*> inputNeurons;
         NetCache mutable cache;
 
         /* Private methods */
     private:
         /**
-         * Returns NeuronIterator for corresponding neuron ID
+         * Returns Neuron* for corresponding neuron ID
          */
-        NeuronIter findNeuron(unsigned _neuronId);
-        ConstNeuronIter findNeuron(unsigned _neuronId) const;
+        Neuron* findNeuron(unsigned _neuronId);
+        const Neuron* findNeuron(unsigned _neuronId) const;
 
         /**
          * Helper used by regenerateCache()
          */
-        void formatFront(std::vector<NeuronIter>& _raw) const;
+        void formatFront(std::vector<Neuron*>& _raw) const;
 
         /**
          * This function updates cache
@@ -157,7 +186,7 @@ namespace pann
         /**
          * This function is executed by work thread, instantiated from run()
          */
-        static void threadBase( Runner* _runner, NetCache* _cache, unsigned _cur_thread_no, boost::barrier* _barrier)
+        static void threadBase(Runner* _runner, NetCache* _cache, unsigned _cur_thread_no, boost::barrier* _barrier)
         {
             RunDirection dir = _runner->getDirection();
 
@@ -182,215 +211,28 @@ namespace pann
              * LayerN-1: thread1_data, thread2_data, ...
              * LayerN:          <= last layer. ALWAYS empty! (see Net::regenerateCache())
              * cache.size() == N+1;
-             * thread_data is vector of NeuronIter
+             * thread_data is vector of Neuron*
              */
-        };
-
-        /* Debug interface */
-    public:
-        void printDebugInfo(std::ostringstream& ost) const
-        {
-            
-            ost<<"Net\n";
-            ost<<" threadsCount: "<<threadCount<<std::endl;
-            ost<<" lastNeuronId: "<<lastNeuronId<<std::endl;
-            ost<<" lastWeightId: "<<lastWeightId<<std::endl;
-            ost<<" neurons: ";
-            ConstNeuronIter it = neurons.begin();
-            for(; it != neurons.end(); ++it)
-                ost<<it->first<<" ";
-            ost<<"\n weights: ";
-            ConstWeightIter wit = weights.begin();
-            for(; wit != weights.end(); ++wit)
-                ost<<wit->first<<" ";
-            ost<<"\n inputNeurons: ";
-            std::list<NeuronIter>::const_iterator it2 = inputNeurons.begin();
-            for(; it2 != inputNeurons.end(); ++it2)
-                ost<<(*it2)->first<<" ";
-            ost<<"\n\n neurons: ";
-            for(it = neurons.begin(); it != neurons.end(); ++it)
-                it->second.printDebugInfo(ost);
-            
-            ost<<"\n\n Cache:\n";
-            cache.printDebugInfo(ost);
         };
 
         /* Serialization */
     private:
+        //TODO: check for memory leaks and doubling after serialization
         friend class boost::serialization::access;
         template<class Archive>
-            void save(Archive & ar, const unsigned int version) const
+            void serialize(Archive & ar, const unsigned int version)
             {
-                boost::progress_display show_progress( 20 + neurons.size() + 20 );
-
                 ar & boost::serialization::base_object<Object>(*this);
-
-                //Saving basic data
                 ar & lastNeuronId;
                 ar & lastWeightId;
                 ar & threadCount;
                 ar & biasId;
-                ar & neurons;
-                show_progress += 10;
+                ar & learningHint;
                 ar & weights;
-                show_progress += 10;
-
-                //Links already saved by 'ar & neurons', but field like 'to' - not
-                for(std::map<unsigned, Neuron>::const_iterator iter = neurons.begin(); iter != neurons.end(); ++iter)
-                {
-                    unsigned size = iter->second.links.size();
-                    ar & size;
-                    BOOST_FOREACH( const Link& l, iter->second.links )
-                    {
-                        Link& link = const_cast<Link&>(l);
-                        unsigned to = link.getToIter()->first;
-                        unsigned w  = link.getWeightIter()->first;
-                        unsigned dir= (unsigned)link.getDirection();
-                        unsigned latency = (unsigned)link.getLatency();
-                        ar & to;
-                        ar & w;
-                        ar & dir;
-                        ar & latency;
-                    }
-
-                    show_progress += 1;
-                }
-                
-                //Saving input neurons
-                unsigned size;
-                size = inputNeurons.size();
-                ar & size;
-                BOOST_FOREACH( NeuronIter iter, inputNeurons )
-                {
-                    unsigned id = iter->first;
-                    ar & id;
-                }
-                show_progress += 10;
-
-                //Saving cache
-                unsigned layers = cache.data.size();
-                ar & layers;
-                for(unsigned l = 0; l < cache.data.size(); l++)
-                {
-                    for(unsigned t = 0; t < threadCount; t++)
-                    {
-                        unsigned size = cache.data[l][t].size();
-                        ar & size;
-                        BOOST_FOREACH( NeuronIter iter, cache.data[l][t] )
-                        {
-                            unsigned id = iter->first;
-                            ar & id;
-                        }
-                    }
-                }
-                show_progress += 10;
-
-                bool isHintAvailable;
-                //Learning hint
-                (learningHint != 0) ? (isHintAvailable = true) : (isHintAvailable = false);
-                ar & isHintAvailable;                    
-                if(isHintAvailable)
-                {
-                    LearningHint::HintId lhintId = learningHint->getTypeId();
-                    ar & lhintId;
-                    ar & (*learningHint);
-                }
-                
-            };
-
-        template<class Archive>
-            void load(Archive & ar, const unsigned int version)
-            {
-                ar & boost::serialization::base_object<Object>(*this);
-
-                //Restoring basic data
-                ar & lastNeuronId;
-                ar & lastWeightId;
-                ar & threadCount;
-                ar & biasId;
                 ar & neurons;
-                boost::progress_display show_progress(20 + neurons.size() + 20);
-                show_progress += 10;
-                ar & weights;
-                show_progress += 10;
-               
-                //Loading links data, converting neuron ID's to iterators
-                for(NeuronIter iter = neurons.begin(); iter != neurons.end(); ++iter)
-                {
-                    unsigned size;
-                    ar & size;
-                    for(unsigned i = 0; i < size; i++)
-                    {
-                        unsigned to, w, dir, latency;
-                        ar & to;
-                        ar & w;
-                        ar & dir;
-                        ar & latency;
-                        NeuronIter to_it = neurons.find(to);
-                        WeightIter  w_it = weights.find(w);
-                        if(to_it == neurons.end() || w_it == weights.end())
-                            throw Exception::FilesystemError()<<"Net::load(): can't load Net object. "
-                                                                              "Archive possibly damaged\n";
-                        iter->second.links.push_back(Link(to_it, (Link::Direction)dir, w_it, latency));
-                    }
-                    show_progress += 1;
-                }
-
-                //Loading list of input neurons
-                inputNeurons.clear(); //may be we loading saved net into existing net with neurons?
-                unsigned size;
-                ar & size; 
-                for(unsigned i = 0; i < size; i++)
-                {
-                    unsigned id; ar & id;
-                    NeuronIter iter = neurons.find(id);
-                    inputNeurons.push_back(iter);
-                    if(iter == neurons.end())
-                        throw Exception::FilesystemError()<<"Net::load(): can't load Net object. "
-                                                                "Archive possibly damaged\n";
-                }
-                show_progress += 10;
-
-                //Loading cache
-                cache.flush();
-                unsigned layers;
-                ar & layers;
-                for(unsigned l = 0; l < layers; l++)
-                {
-                    cache.data.push_back(NetCache::FrontType()); //add new layer to cache
-                    for(unsigned t = 0; t < threadCount; t++)
-                    {
-                        cache.data[l].push_back(NetCache::ThreadTaskType()); //add new thread task info to current layer
-                        unsigned size;
-                        ar & size;
-                        for(unsigned n = 0; n < size; n++)
-                        {
-                            unsigned id;
-                            ar & id;
-                            NeuronIter iter = neurons.find(id);
-                            cache.data[l][t].push_back(iter);
-                            if(iter == neurons.end())
-                                throw Exception::FilesystemError()<<"Net::load(): can't load Net object. "
-                                                                        "Archive possibly damaged\n";
-                        }
-                    }
-                }
-                cache.fixed();
-                show_progress += 10;
-
-                bool isHintAvailable;
-                //Learning hint
-                ar & isHintAvailable;
-                if(isHintAvailable)
-                {
-                    LearningHint::HintId lhintId;
-                    ar & lhintId;
-                    learningHint = LearningHint::getById(lhintId);
-                    ar & learningHint;
-                }
+                ar & inputNeurons;
+                ar & cache;
             };
-
-        BOOST_SERIALIZATION_SPLIT_MEMBER()
     };
 
 }; //pann

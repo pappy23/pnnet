@@ -42,7 +42,10 @@ namespace pann
             ar & color.b;
         };
     };
+
 }; //pann
+
+BOOST_CLASS_TRACKING(pann::OpenGLHint, boost::serialization::track_never);
 
 #endif //OPENGLHINT_H
 
