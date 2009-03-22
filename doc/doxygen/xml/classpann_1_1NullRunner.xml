@@ -1,0 +1,145 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="classpann_1_1NullRunner" kind="class" prot="public">
+    <compoundname>pann::NullRunner</compoundname>
+    <basecompoundref refid="classpann_1_1Runner" prot="public" virt="non-virtual">pann::Runner</basecompoundref>
+    <includes refid="Runner_8h" local="no">Runner.h</includes>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classpann_1_1NullRunner_1d8cc52732675efc902933596fa462340" prot="private" static="yes" mutable="no">
+        <type><ref refid="classpann_1_1Runner" kindref="compound">Runner</ref> *</type>
+        <definition>Runner * pann::NullRunner::self</definition>
+        <argsstring></argsstring>
+        <name>self</name>
+        <initializer> 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Runner.h" line="29" bodyfile="/home/booble/pann/trunk/src/Core/Runner.h" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classpann_1_1NullRunner_16010883f582f99db6e43cea15c8e75f8" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>pann::NullRunner::NullRunner</definition>
+        <argsstring>()</argsstring>
+        <name>NullRunner</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Runner.h" line="32" bodyfile="/home/booble/pann/trunk/src/Core/Runner.h" bodystart="32" bodyend="32"/>
+        <referencedby refid="classpann_1_1NullRunner_1de665b491727786c110b50f85c860ca6" compoundref="Runner_8h" startline="38" endline="44">Instance</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classpann_1_1NullRunner_156e7baf943da021decbb2f59b816cbd1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>pann::NullRunner::~NullRunner</definition>
+        <argsstring>()</argsstring>
+        <name>~NullRunner</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Runner.h" line="35" bodyfile="/home/booble/pann/trunk/src/Core/Runner.h" bodystart="35" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="classpann_1_1NullRunner_19a6dad0494baa4a1fec7a4adc227dd0c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void pann::NullRunner::run</definition>
+        <argsstring>(NeuronIter _neuron)</argsstring>
+        <name>run</name>
+        <reimplements refid="classpann_1_1Runner_18f7c1cd84129843504cfe17f738b86d0">run</reimplements>
+        <param>
+          <type><ref refid="namespacepann_15b285d6cead198add4f14b5b5a0b97c1" kindref="member">NeuronIter</ref></type>
+          <declname>_neuron</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Runner.h" line="47" bodyfile="/home/booble/pann/trunk/src/Core/Runner.h" bodystart="46" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="classpann_1_1NullRunner_1b9f4684f46b82d8a44528de10ded73e1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="namespacepann_134cfd8d9243a5183902a991ae1532e37" kindref="member">RunDirection</ref></type>
+        <definition>virtual RunDirection pann::NullRunner::getDirection</definition>
+        <argsstring>()</argsstring>
+        <name>getDirection</name>
+        <reimplements refid="classpann_1_1Runner_1658262373566e4be537caffbc35d8350">getDirection</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Runner.h" line="51" bodyfile="/home/booble/pann/trunk/src/Core/Runner.h" bodystart="50" bodyend="53"/>
+        <references refid="namespacepann_134cfd8d9243a5183902a991ae1532e3748f0cddd9d215fba8b09d2e19f2b2a75" compoundref="Runner_8h" startline="15">pann::ForwardRun</references>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classpann_1_1NullRunner_1de665b491727786c110b50f85c860ca6" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classpann_1_1Runner" kindref="compound">Runner</ref> *</type>
+        <definition>static Runner* pann::NullRunner::Instance</definition>
+        <argsstring>()</argsstring>
+        <name>Instance</name>
+        <reimplements refid="classpann_1_1Runner_1f9711798dab2451cae026fae3c3a89e2">Instance</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Runner.h" line="39" bodyfile="/home/booble/pann/trunk/src/Core/Runner.h" bodystart="38" bodyend="44"/>
+        <references refid="classpann_1_1NullRunner_16010883f582f99db6e43cea15c8e75f8" compoundref="Runner_8h" startline="32" endline="32">NullRunner</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="306">
+        <label>pann::Runner</label>
+        <link refid="classpann_1_1Runner"/>
+      </node>
+      <node id="305">
+        <label>pann::NullRunner</label>
+        <link refid="classpann_1_1NullRunner"/>
+        <childnode refid="306" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="308">
+        <label>pann::Runner</label>
+        <link refid="classpann_1_1Runner"/>
+      </node>
+      <node id="307">
+        <label>pann::NullRunner</label>
+        <link refid="classpann_1_1NullRunner"/>
+        <childnode refid="308" relation="public-inheritance">
+        </childnode>
+        <childnode refid="308" relation="usage">
+          <edgelabel>self</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/booble/pann/trunk/src/Core/Runner.h" line="27" bodyfile="/home/booble/pann/trunk/src/Core/Runner.h" bodystart="26" bodyend="54"/>
+    <listofallmembers>
+      <member refid="classpann_1_1NullRunner_1b9f4684f46b82d8a44528de10ded73e1" prot="public" virt="virtual"><scope>pann::NullRunner</scope><name>getDirection</name></member>
+      <member refid="classpann_1_1NullRunner_1de665b491727786c110b50f85c860ca6" prot="public" virt="non-virtual"><scope>pann::NullRunner</scope><name>Instance</name></member>
+      <member refid="classpann_1_1NullRunner_16010883f582f99db6e43cea15c8e75f8" prot="private" virt="non-virtual"><scope>pann::NullRunner</scope><name>NullRunner</name></member>
+      <member refid="classpann_1_1NullRunner_19a6dad0494baa4a1fec7a4adc227dd0c" prot="public" virt="virtual"><scope>pann::NullRunner</scope><name>run</name></member>
+      <member refid="classpann_1_1NullRunner_1d8cc52732675efc902933596fa462340" prot="private" virt="non-virtual"><scope>pann::NullRunner</scope><name>self</name></member>
+      <member refid="classpann_1_1NullRunner_156e7baf943da021decbb2f59b816cbd1" prot="public" virt="non-virtual"><scope>pann::NullRunner</scope><name>~NullRunner</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

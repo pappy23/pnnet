@@ -1,0 +1,10 @@
+<area shape="rect" href="$classpann_1_1Exception_1_1Base.html" title="Basic class for every exception." alt="" coords="7,208,159,235">
+<area shape="rect" href="$classpann_1_1Exception_1_1ElementExists.html" title="Trying to add already existent element." alt="" coords="220,6,428,32">
+<area shape="rect" href="$classpann_1_1Exception_1_1FilesystemError.html" title="Exceptionfor raising on filesystem failures (missing file etc.)." alt="" coords="216,56,432,83">
+<area shape="rect" href="$classpann_1_1Exception_1_1MultipleOccurance.html" title="Multiple elements exist, but onlyone allowed; ex: parallel links between neurons..." alt="" coords="208,107,440,134">
+<area shape="rect" href="$classpann_1_1Exception_1_1NotReady.html" title="Requested not computed value." alt="" coords="235,158,413,184">
+<area shape="rect" href="$classpann_1_1Exception_1_1ObjectNotFound.html" title="Reference to unexistent object was requested." alt="" coords="216,208,432,235">
+<area shape="rect" href="$classpann_1_1Exception_1_1RangeMismatch.html" title="Argument out of range." alt="" coords="216,259,432,286">
+<area shape="rect" href="$classpann_1_1Exception_1_1SizeMismatch.html" title="Count of elements mismatch." alt="" coords="221,310,427,336">
+<area shape="rect" href="$classpann_1_1Exception_1_1Unbelievable.html" title="It&#39;s imposible in our universe!" alt="" coords="225,360,423,387">
+<area shape="rect" href="$classpann_1_1Exception_1_1Warning.html" title="Not critical. Simply instantiate." alt="" coords="239,411,409,438">

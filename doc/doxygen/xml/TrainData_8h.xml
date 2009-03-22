@@ -1,0 +1,296 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="TrainData_8h" kind="file">
+    <compoundname>TrainData.h</compoundname>
+    <includes refid="Includes_8h" local="yes">Includes.h</includes>
+    <includes refid="Exception_8h" local="yes">Exception.h</includes>
+    <includes refid="Type_8h" local="yes">Type.h</includes>
+    <includes refid="Object_8h" local="yes">Object.h</includes>
+    <includedby refid="LearningAlgorithm_8h" local="yes">pann/trunk/src/Core/LearningAlgorithm.h</includedby>
+    <includedby refid="TrainData_8cpp" local="yes">pann/trunk/src/Core/TrainData.cpp</includedby>
+    <includedby refid="TestNet_8cpp" local="yes">pann/trunk/src/UnitTests/TestNet.cpp</includedby>
+    <incdepgraph>
+      <node id="2594">
+        <label>list</label>
+      </node>
+      <node id="2617">
+        <label>Exception.h</label>
+        <link refid="Exception_8h"/>
+        <childnode refid="2589" relation="include">
+        </childnode>
+      </node>
+      <node id="2596">
+        <label>valarray</label>
+      </node>
+      <node id="2612">
+        <label>boost/serialization/map.hpp</label>
+      </node>
+      <node id="2600">
+        <label>limits</label>
+      </node>
+      <node id="2614">
+        <label>boost/serialization/vector.hpp</label>
+      </node>
+      <node id="2599">
+        <label>iterator</label>
+      </node>
+      <node id="2611">
+        <label>boost/archive/text_iarchive.hpp</label>
+      </node>
+      <node id="2618">
+        <label>Type.h</label>
+        <link refid="Type_8h"/>
+        <childnode refid="2589" relation="include">
+        </childnode>
+      </node>
+      <node id="2604">
+        <label>boost/foreach.hpp</label>
+      </node>
+      <node id="2601">
+        <label>cmath</label>
+      </node>
+      <node id="2608">
+        <label>boost/archive/xml_oarchive.hpp</label>
+      </node>
+      <node id="2597">
+        <label>string</label>
+      </node>
+      <node id="2593">
+        <label>map</label>
+      </node>
+      <node id="2605">
+        <label>boost/thread.hpp</label>
+      </node>
+      <node id="2592">
+        <label>fstream</label>
+      </node>
+      <node id="2589">
+        <label>Includes.h</label>
+        <link refid="Includes_8h"/>
+        <childnode refid="2590" relation="include">
+        </childnode>
+        <childnode refid="2591" relation="include">
+        </childnode>
+        <childnode refid="2592" relation="include">
+        </childnode>
+        <childnode refid="2593" relation="include">
+        </childnode>
+        <childnode refid="2594" relation="include">
+        </childnode>
+        <childnode refid="2595" relation="include">
+        </childnode>
+        <childnode refid="2596" relation="include">
+        </childnode>
+        <childnode refid="2597" relation="include">
+        </childnode>
+        <childnode refid="2598" relation="include">
+        </childnode>
+        <childnode refid="2599" relation="include">
+        </childnode>
+        <childnode refid="2600" relation="include">
+        </childnode>
+        <childnode refid="2601" relation="include">
+        </childnode>
+        <childnode refid="2602" relation="include">
+        </childnode>
+        <childnode refid="2603" relation="include">
+        </childnode>
+        <childnode refid="2604" relation="include">
+        </childnode>
+        <childnode refid="2605" relation="include">
+        </childnode>
+        <childnode refid="2606" relation="include">
+        </childnode>
+        <childnode refid="2607" relation="include">
+        </childnode>
+        <childnode refid="2608" relation="include">
+        </childnode>
+        <childnode refid="2609" relation="include">
+        </childnode>
+        <childnode refid="2610" relation="include">
+        </childnode>
+        <childnode refid="2611" relation="include">
+        </childnode>
+        <childnode refid="2612" relation="include">
+        </childnode>
+        <childnode refid="2613" relation="include">
+        </childnode>
+        <childnode refid="2614" relation="include">
+        </childnode>
+        <childnode refid="2615" relation="include">
+        </childnode>
+        <childnode refid="2616" relation="include">
+        </childnode>
+      </node>
+      <node id="2603">
+        <label>boost/any.hpp</label>
+      </node>
+      <node id="2610">
+        <label>boost/archive/text_oarchive.hpp</label>
+      </node>
+      <node id="2609">
+        <label>boost/archive/xml_iarchive.hpp</label>
+      </node>
+      <node id="2615">
+        <label>boost/serialization/version.hpp</label>
+      </node>
+      <node id="2616">
+        <label>boost/progress.hpp</label>
+      </node>
+      <node id="2595">
+        <label>vector</label>
+      </node>
+      <node id="2619">
+        <label>Object.h</label>
+        <link refid="Object_8h"/>
+        <childnode refid="2589" relation="include">
+        </childnode>
+        <childnode refid="2617" relation="include">
+        </childnode>
+        <childnode refid="2618" relation="include">
+        </childnode>
+      </node>
+      <node id="2606">
+        <label>boost/thread/barrier.hpp</label>
+      </node>
+      <node id="2588">
+        <label>pann/trunk/src/Core/TrainData.h</label>
+        <link refid="TrainData.h"/>
+        <childnode refid="2589" relation="include">
+        </childnode>
+        <childnode refid="2617" relation="include">
+        </childnode>
+        <childnode refid="2618" relation="include">
+        </childnode>
+        <childnode refid="2619" relation="include">
+        </childnode>
+      </node>
+      <node id="2591">
+        <label>sstream</label>
+      </node>
+      <node id="2607">
+        <label>boost/ref.hpp</label>
+      </node>
+      <node id="2602">
+        <label>cstdlib</label>
+      </node>
+      <node id="2590">
+        <label>iostream</label>
+      </node>
+      <node id="2613">
+        <label>boost/serialization/list.hpp</label>
+      </node>
+      <node id="2598">
+        <label>algorithm</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2622">
+        <label>pann/trunk/src/Core/LMS.h</label>
+        <link refid="LMS_8h"/>
+      </node>
+      <node id="2621">
+        <label>pann/trunk/src/Core/LearningAlgorithm.h</label>
+        <link refid="LearningAlgorithm_8h"/>
+        <childnode refid="2622" relation="include">
+        </childnode>
+      </node>
+      <node id="2620">
+        <label>pann/trunk/src/Core/TrainData.h</label>
+        <link refid="TrainData.h"/>
+        <childnode refid="2621" relation="include">
+        </childnode>
+        <childnode refid="2623" relation="include">
+        </childnode>
+        <childnode refid="2624" relation="include">
+        </childnode>
+      </node>
+      <node id="2624">
+        <label>pann/trunk/src/UnitTests/TestNet.cpp</label>
+        <link refid="TestNet_8cpp"/>
+      </node>
+      <node id="2623">
+        <label>pann/trunk/src/Core/TrainData.cpp</label>
+        <link refid="TrainData_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classpann_1_1TrainUtil" prot="public">pann::TrainUtil</innerclass>
+    <innerclass refid="classpann_1_1TrainPattern" prot="public">pann::TrainPattern</innerclass>
+    <innerclass refid="classpann_1_1TrainData" prot="public">pann::TrainData</innerclass>
+    <innernamespace refid="namespacepann">pann</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>TRAINDATA_H</highlight></codeline>
+<codeline lineno="2"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>TRAINDATA_H</highlight></codeline>
+<codeline lineno="3"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Includes_8h" kindref="compound">Includes.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Exception_8h" kindref="compound">Exception.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Type_8h" kindref="compound">Type.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Object_8h" kindref="compound">Object.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">pann</highlight></codeline>
+<codeline lineno="10"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="11" refid="classpann_1_1TrainUtil" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classpann_1_1TrainUtil" kindref="compound">TrainUtil</ref></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::valarray&lt;Float&gt;<sp/><ref refid="classpann_1_1TrainUtil_1f75eeef1d233dd6fcdcae4b8a813a50e" kindref="member">squash_copy</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::valarray&lt;Float&gt;<sp/>&amp;<sp/>_v,<sp/><ref refid="namespacepann_14509ba95a02d59e0a1cd5127e1c55988" kindref="member">Float</ref><sp/>_min,<sp/><ref refid="namespacepann_14509ba95a02d59e0a1cd5127e1c55988" kindref="member">Float</ref><sp/>_max);</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1TrainUtil_191e3a70719a0fa79512565e31a96fed1" kindref="member">squash</ref>(std::valarray&lt;Float&gt;<sp/>&amp;<sp/>_v,<sp/><ref refid="namespacepann_14509ba95a02d59e0a1cd5127e1c55988" kindref="member">Float</ref><sp/>_min,<sp/><ref refid="namespacepann_14509ba95a02d59e0a1cd5127e1c55988" kindref="member">Float</ref><sp/>_max);</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18" refid="classpann_1_1TrainPattern" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classpann_1_1TrainPattern" kindref="compound">TrainPattern</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Object" kindref="compound" tooltip="Base class for almoust everything.">Object</ref></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Public<sp/>interface<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classpann_1_1TrainPattern_16483e8b22416d53fe13825ab978128d4" kindref="member">TrainPattern</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>input_size,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>output_size);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classpann_1_1TrainPattern_105bee37107706ef329474a01b3c89ea0" kindref="member">~TrainPattern</ref>();</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacepann_14509ba95a02d59e0a1cd5127e1c55988" kindref="member">Float</ref><sp/><ref refid="classpann_1_1TrainPattern_14d489b191263eff4b9b965113b0ef7ce" kindref="member">getMse</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Public<sp/>members<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="29" refid="classpann_1_1TrainPattern_123f266ded7dfe0c52d0a5a6b69eb5e90" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::valarray&lt;Float&gt;<sp/><ref refid="classpann_1_1TrainPattern_123f266ded7dfe0c52d0a5a6b69eb5e90" kindref="member">input</ref>;</highlight></codeline>
+<codeline lineno="30" refid="classpann_1_1TrainPattern_13833f6e277b11aa75b5656360c275404" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::valarray&lt;Float&gt;<sp/><ref refid="classpann_1_1TrainPattern_13833f6e277b11aa75b5656360c275404" kindref="member">desired_output</ref>;</highlight></codeline>
+<codeline lineno="31" refid="classpann_1_1TrainPattern_1b3a136db1916fb933c3c17ed90533992" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::valarray&lt;Float&gt;<sp/><ref refid="classpann_1_1TrainPattern_1b3a136db1916fb933c3c17ed90533992" kindref="member">error</ref>;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Private<sp/>methods<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classpann_1_1TrainPattern_16483e8b22416d53fe13825ab978128d4" kindref="member">TrainPattern</ref>();</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1TrainPattern_178175c630caf5c10edbb792a9ea78ad9" kindref="member">resize</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>input_size,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>output_size);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Debug<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="40" refid="classpann_1_1TrainPattern_1a4f1e7a2c806f9a03093c04788b1d21a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1TrainPattern_1a4f1e7a2c806f9a03093c04788b1d21a" kindref="member">printDebugInfo</ref>(std::ostringstream&amp;<sp/>ost)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="41"><highlight class="keyword"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ost&lt;&lt;</highlight><highlight class="stringliteral">&quot;TrainPattern\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ost&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/><sp/>inputs:<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;<ref refid="classpann_1_1TrainPattern_123f266ded7dfe0c52d0a5a6b69eb5e90" kindref="member">input</ref>.size()&lt;&lt;std::endl;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ost&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/><sp/>desired_outputs:<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;<ref refid="classpann_1_1TrainPattern_13833f6e277b11aa75b5656360c275404" kindref="member">desired_output</ref>.size()&lt;&lt;std::endl;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ost&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/><sp/>errors:<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;<ref refid="classpann_1_1TrainPattern_1b3a136db1916fb933c3c17ed90533992" kindref="member">error</ref>.size()&lt;&lt;std::endl;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49" refid="classpann_1_1TrainData" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classpann_1_1TrainData" kindref="compound">TrainData</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Object" kindref="compound" tooltip="Base class for almoust everything.">Object</ref></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Public<sp/>members<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="53" refid="classpann_1_1TrainData_12ea76b5d1bbcd58600b1eb241ad2037b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;TrainPattern&gt;<sp/><ref refid="classpann_1_1TrainData_12ea76b5d1bbcd58600b1eb241ad2037b" kindref="member">data</ref>;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Debug<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="57" refid="classpann_1_1TrainData_1fb88f4772bc657940d41c629ef121924" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1TrainData_1fb88f4772bc657940d41c629ef121924" kindref="member">printDebugInfo</ref>(std::ostringstream&amp;<sp/>ost)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="58"><highlight class="keyword"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ost&lt;&lt;</highlight><highlight class="stringliteral">&quot;TrainData\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ost&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/><sp/>patterns:<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;<ref refid="classpann_1_1TrainData_12ea76b5d1bbcd58600b1eb241ad2037b" kindref="member">data</ref>.size()&lt;&lt;std::endl;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal">};<sp/></highlight><highlight class="comment">//pann</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="67"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/booble/pann/trunk/src/Core/TrainData.h"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,323 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="Neuron_8cpp" kind="file">
+    <compoundname>Neuron.cpp</compoundname>
+    <includes refid="Neuron_8h" local="yes">Neuron.h</includes>
+    <incdepgraph>
+      <node id="2195">
+        <label>list</label>
+      </node>
+      <node id="2219">
+        <label>Exception.h</label>
+        <link refid="Exception_8h"/>
+        <childnode refid="2190" relation="include">
+        </childnode>
+      </node>
+      <node id="2197">
+        <label>valarray</label>
+      </node>
+      <node id="2221">
+        <label>ActivationFunction.h</label>
+        <link refid="ActivationFunction_8h"/>
+        <childnode refid="2190" relation="include">
+        </childnode>
+        <childnode refid="2220" relation="include">
+        </childnode>
+        <childnode refid="2219" relation="include">
+        </childnode>
+      </node>
+      <node id="2213">
+        <label>boost/serialization/map.hpp</label>
+      </node>
+      <node id="2201">
+        <label>limits</label>
+      </node>
+      <node id="2215">
+        <label>boost/serialization/vector.hpp</label>
+      </node>
+      <node id="2200">
+        <label>iterator</label>
+      </node>
+      <node id="2212">
+        <label>boost/archive/text_iarchive.hpp</label>
+      </node>
+      <node id="2225">
+        <label>LearningHint.h</label>
+        <link refid="LearningHint_8h"/>
+        <childnode refid="2190" relation="include">
+        </childnode>
+        <childnode refid="2219" relation="include">
+        </childnode>
+      </node>
+      <node id="2220">
+        <label>Type.h</label>
+        <link refid="Type_8h"/>
+        <childnode refid="2190" relation="include">
+        </childnode>
+      </node>
+      <node id="2222">
+        <label>Link.h</label>
+        <link refid="Link_8h"/>
+        <childnode refid="2190" relation="include">
+        </childnode>
+        <childnode refid="2218" relation="include">
+        </childnode>
+        <childnode refid="2223" relation="include">
+        </childnode>
+      </node>
+      <node id="2224">
+        <label>OpenGLHint.h</label>
+        <link refid="OpenGLHint_8h"/>
+        <childnode refid="2190" relation="include">
+        </childnode>
+      </node>
+      <node id="2205">
+        <label>boost/foreach.hpp</label>
+      </node>
+      <node id="2202">
+        <label>cmath</label>
+      </node>
+      <node id="2209">
+        <label>boost/archive/xml_oarchive.hpp</label>
+      </node>
+      <node id="2198">
+        <label>string</label>
+      </node>
+      <node id="2194">
+        <label>map</label>
+      </node>
+      <node id="2206">
+        <label>boost/thread.hpp</label>
+      </node>
+      <node id="2189">
+        <label>Neuron.h</label>
+        <link refid="Neuron_8h"/>
+        <childnode refid="2190" relation="include">
+        </childnode>
+        <childnode refid="2218" relation="include">
+        </childnode>
+        <childnode refid="2221" relation="include">
+        </childnode>
+        <childnode refid="2222" relation="include">
+        </childnode>
+        <childnode refid="2224" relation="include">
+        </childnode>
+        <childnode refid="2225" relation="include">
+        </childnode>
+      </node>
+      <node id="2193">
+        <label>fstream</label>
+      </node>
+      <node id="2190">
+        <label>Includes.h</label>
+        <link refid="Includes_8h"/>
+        <childnode refid="2191" relation="include">
+        </childnode>
+        <childnode refid="2192" relation="include">
+        </childnode>
+        <childnode refid="2193" relation="include">
+        </childnode>
+        <childnode refid="2194" relation="include">
+        </childnode>
+        <childnode refid="2195" relation="include">
+        </childnode>
+        <childnode refid="2196" relation="include">
+        </childnode>
+        <childnode refid="2197" relation="include">
+        </childnode>
+        <childnode refid="2198" relation="include">
+        </childnode>
+        <childnode refid="2199" relation="include">
+        </childnode>
+        <childnode refid="2200" relation="include">
+        </childnode>
+        <childnode refid="2201" relation="include">
+        </childnode>
+        <childnode refid="2202" relation="include">
+        </childnode>
+        <childnode refid="2203" relation="include">
+        </childnode>
+        <childnode refid="2204" relation="include">
+        </childnode>
+        <childnode refid="2205" relation="include">
+        </childnode>
+        <childnode refid="2206" relation="include">
+        </childnode>
+        <childnode refid="2207" relation="include">
+        </childnode>
+        <childnode refid="2208" relation="include">
+        </childnode>
+        <childnode refid="2209" relation="include">
+        </childnode>
+        <childnode refid="2210" relation="include">
+        </childnode>
+        <childnode refid="2211" relation="include">
+        </childnode>
+        <childnode refid="2212" relation="include">
+        </childnode>
+        <childnode refid="2213" relation="include">
+        </childnode>
+        <childnode refid="2214" relation="include">
+        </childnode>
+        <childnode refid="2215" relation="include">
+        </childnode>
+        <childnode refid="2216" relation="include">
+        </childnode>
+        <childnode refid="2217" relation="include">
+        </childnode>
+      </node>
+      <node id="2204">
+        <label>boost/any.hpp</label>
+      </node>
+      <node id="2211">
+        <label>boost/archive/text_oarchive.hpp</label>
+      </node>
+      <node id="2210">
+        <label>boost/archive/xml_iarchive.hpp</label>
+      </node>
+      <node id="2216">
+        <label>boost/serialization/version.hpp</label>
+      </node>
+      <node id="2217">
+        <label>boost/progress.hpp</label>
+      </node>
+      <node id="2196">
+        <label>vector</label>
+      </node>
+      <node id="2218">
+        <label>Object.h</label>
+        <link refid="Object_8h"/>
+        <childnode refid="2190" relation="include">
+        </childnode>
+        <childnode refid="2219" relation="include">
+        </childnode>
+        <childnode refid="2220" relation="include">
+        </childnode>
+      </node>
+      <node id="2207">
+        <label>boost/thread/barrier.hpp</label>
+      </node>
+      <node id="2192">
+        <label>sstream</label>
+      </node>
+      <node id="2208">
+        <label>boost/ref.hpp</label>
+      </node>
+      <node id="2203">
+        <label>cstdlib</label>
+      </node>
+      <node id="2191">
+        <label>iostream</label>
+      </node>
+      <node id="2188">
+        <label>pann/trunk/src/Core/Neuron.cpp</label>
+        <link refid="Neuron.cpp"/>
+        <childnode refid="2189" relation="include">
+        </childnode>
+      </node>
+      <node id="2214">
+        <label>boost/serialization/list.hpp</label>
+      </node>
+      <node id="2199">
+        <label>algorithm</label>
+      </node>
+      <node id="2223">
+        <label>Weight.h</label>
+        <link refid="Weight_8h"/>
+        <childnode refid="2190" relation="include">
+        </childnode>
+        <childnode refid="2218" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespacepann">pann</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//Neuron.cpp</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Neuron_8h" kindref="compound">Neuron.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal">std;</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">pann</highlight></codeline>
+<codeline lineno="8"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="9" refid="classpann_1_1Neuron_189d63cff9e559e1cbdbdc3c9dbc2efe6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classpann_1_1Neuron_189d63cff9e559e1cbdbdc3c9dbc2efe6" kindref="member">Neuron::Neuron</ref>()<sp/>:</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>activationFunction(ActivationFunction::Linear::Instance()),</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ownerThread(0),</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>receptiveField(0),</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>activationValue(activationFunction-&gt;f(0)),</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>oglHint(0),</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>learningHint(0)</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="comment">//Neuron</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19" refid="classpann_1_1Neuron_1eb0f836051ce56055b3fd7ca3ade67dd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Neuron::Neuron(<ref refid="classpann_1_1ActivationFunction_1_1Base" kindref="compound">ActivationFunction::Base</ref>*<sp/>_activationFunction)<sp/>:</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>activationFunction(_activationFunction),</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ownerThread(0),</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>receptiveField(0),</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>activationValue(_activationFunction-&gt;f(0)),</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>oglHint(0),</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>learningHint(0)</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="comment">//Neuron</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29" refid="classpann_1_1Neuron_1e08f02385e9b8fc0b927fc28fcfda966" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classpann_1_1Neuron_1e08f02385e9b8fc0b927fc28fcfda966" kindref="member">Neuron::~Neuron</ref>()</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="classpann_1_1Neuron_12b0d035a701cad63f77a19fa3c7c2ffb" kindref="member">oglHint</ref>)</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Neuron_12b0d035a701cad63f77a19fa3c7c2ffb" kindref="member">oglHint</ref>;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="classpann_1_1Neuron_16af287c561d4226f59c858d4e020168c" kindref="member">learningHint</ref>)</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Neuron_16af287c561d4226f59c858d4e020168c" kindref="member">learningHint</ref>;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="comment">//~Neuron</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="classpann_1_1Neuron_12ec7496a4939390cc4e9c2b1b4ebfd8a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classpann_1_1Neuron_12ec7496a4939390cc4e9c2b1b4ebfd8a" kindref="member">Neuron::setOwnerThread</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>_thread)</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(0<sp/>&gt;<sp/>_thread<sp/>||<sp/>_thread<sp/>&gt;<sp/>100)</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Exception_1_1RangeMismatch" kindref="compound" tooltip="Argument out of range.">Exception::RangeMismatch</ref>()&lt;&lt;</highlight><highlight class="stringliteral">&quot;Neuron::setOwnerThread():<sp/>thread<sp/>must<sp/>be<sp/>between<sp/>0<sp/>and<sp/>100\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classpann_1_1Neuron_1b22b8940b68c650c5c11c2ee9ea777a1" kindref="member">ownerThread</ref><sp/>=_thread;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="comment">//setOwnerThread</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48" refid="classpann_1_1Neuron_12a426e05cdb3fbd67635a4ba57ec2bbd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classpann_1_1Neuron_12a426e05cdb3fbd67635a4ba57ec2bbd" kindref="member">Neuron::getOwnerThread</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="49"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Neuron_1b22b8940b68c650c5c11c2ee9ea777a1" kindref="member">ownerThread</ref>;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="comment">//getOwnerThread</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1ActivationFunction_1_1Base" kindref="compound">ActivationFunction::Base</ref>*</highlight></codeline>
+<codeline lineno="54" refid="classpann_1_1Neuron_120445c905a8ad3e243e0945bd3595b9a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classpann_1_1Neuron_120445c905a8ad3e243e0945bd3595b9a" kindref="member">Neuron::getActivationFunction</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="55"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Neuron_1bd0230c56464055cc2dcae4da86c5f73" kindref="member">activationFunction</ref>;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="comment">//getOwnerThread</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>list&lt;Link&gt;::iterator</highlight></codeline>
+<codeline lineno="60" refid="classpann_1_1Neuron_1990c18907d963acc1154bcb9c79280ab" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classpann_1_1Neuron_1990c18907d963acc1154bcb9c79280ab" kindref="member">Neuron::findLink</ref>(<ref refid="namespacepann_15b285d6cead198add4f14b5b5a0b97c1" kindref="member">NeuronIter</ref><sp/>_to,<sp/><ref refid="classpann_1_1Link_1843c5a79ffd161b67e1770f65eabf055" kindref="member">Link::Direction</ref><sp/>_direction)</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>list&lt;Link&gt;::iterator<sp/>iter<sp/>=<sp/><ref refid="classpann_1_1Neuron_11ea45590be4c55659a776ff0acf2ac2c" kindref="member" tooltip="List of Link, both directions.">links</ref>.begin(),<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result<sp/>=<sp/><ref refid="classpann_1_1Neuron_11ea45590be4c55659a776ff0acf2ac2c" kindref="member" tooltip="List of Link, both directions.">links</ref>.end();<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(;<sp/>iter<sp/>!=<sp/><ref refid="classpann_1_1Neuron_11ea45590be4c55659a776ff0acf2ac2c" kindref="member" tooltip="List of Link, both directions.">links</ref>.end();<sp/>++iter)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(iter-&gt;getToIter()<sp/>==<sp/>_to<sp/>&amp;&amp;<sp/>iter-&gt;getDirection()<sp/>==<sp/>_direction)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<sp/>result<sp/>!=<sp/><ref refid="classpann_1_1Neuron_11ea45590be4c55659a776ff0acf2ac2c" kindref="member" tooltip="List of Link, both directions.">links</ref>.end()<sp/>)<sp/></highlight><highlight class="comment">//Multiple<sp/>parallel<sp/>links<sp/>exist<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Exception_1_1MultipleOccurance" kindref="compound" tooltip="Multiple elements exist, but onlyone allowed; ex: parallel links between neurons...">Exception::MultipleOccurance</ref>()&lt;&lt;</highlight><highlight class="stringliteral">&quot;findLink():<sp/>detected<sp/>parallel<sp/>links\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result<sp/>=<sp/>iter;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<sp/>result<sp/>==<sp/><ref refid="classpann_1_1Neuron_11ea45590be4c55659a776ff0acf2ac2c" kindref="member" tooltip="List of Link, both directions.">links</ref>.end()<sp/>)</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Exception_1_1ObjectNotFound" kindref="compound" tooltip="Reference to unexistent object was requested.">Exception::ObjectNotFound</ref>()&lt;&lt;</highlight><highlight class="stringliteral">&quot;findLink():<sp/>can&apos;t<sp/>find<sp/>required<sp/>link\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="comment">//findLink</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal">};<sp/></highlight><highlight class="comment">//pann</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/booble/pann/trunk/src/Core/Neuron.cpp"/>
+  </compounddef>
+</doxygen>

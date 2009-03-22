@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="classpann_1_1LMS" kind="class" prot="public">
+    <compoundname>pann::LMS</compoundname>
+    <basecompoundref refid="classpann_1_1LearningAlgorithm" prot="public" virt="non-virtual">pann::LearningAlgorithm</basecompoundref>
+    <includes refid="LMS_8h" local="no">LMS.h</includes>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classpann_1_1LMS_120595ff86bcd64ca2945f9ba440d978a" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void pann::LMS::init</definition>
+        <argsstring>(Net &amp;_net)</argsstring>
+        <name>init</name>
+        <param>
+          <type><ref refid="classpann_1_1Net" kindref="compound">Net</ref> &amp;</type>
+          <declname>_net</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Adds <ref refid="namespacepann_1_1LearningHint" kindref="compound">LearningHint</ref> to network object, sets different parametrs, such as learning rate, momentum etc. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/LMS.h" line="21" bodyfile="/home/booble/pann/trunk/src/Core/LMS.h" bodystart="20" bodyend="28"/>
+        <references refid="classpann_1_1Net_11d95cc042ab3f71840416d7aebdb1def" compoundref="Net_8h" startline="125">pann::Net::learningHint</references>
+        <references refid="classpann_1_1LearningHint_1_1LmsNet_19af70d771c8f6ae5c645d596ff461724" compoundref="LearningHint_8h" startline="73">pann::LearningHint::LmsNet::learningRate</references>
+      </memberdef>
+      <memberdef kind="function" id="classpann_1_1LMS_1e618a8632489d1a7d19ec742fb37ca93" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void pann::LMS::train</definition>
+        <argsstring>(Net &amp;_net, TrainData &amp;_trainData)</argsstring>
+        <name>train</name>
+        <param>
+          <type><ref refid="classpann_1_1Net" kindref="compound">Net</ref> &amp;</type>
+          <declname>_net</declname>
+        </param>
+        <param>
+          <type><ref refid="classpann_1_1TrainData" kindref="compound">TrainData</ref> &amp;</type>
+          <declname>_trainData</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Does one forward propagation and backpropagation, while changing weights. If _trainData.data.size() == 1, then does iterative learning, else - batch learning. All data is used for training and no testing performed </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/LMS.h" line="38" bodyfile="/home/booble/pann/trunk/src/Core/LMS.h" bodystart="37" bodyend="42"/>
+        <references refid="classpann_1_1Net_11d95cc042ab3f71840416d7aebdb1def" compoundref="Net_8h" startline="125">pann::Net::learningHint</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="253">
+        <label>pann::LearningAlgorithm</label>
+        <link refid="classpann_1_1LearningAlgorithm"/>
+      </node>
+      <node id="252">
+        <label>pann::LMS</label>
+        <link refid="classpann_1_1LMS"/>
+        <childnode refid="253" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="255">
+        <label>pann::LearningAlgorithm</label>
+        <link refid="classpann_1_1LearningAlgorithm"/>
+      </node>
+      <node id="254">
+        <label>pann::LMS</label>
+        <link refid="classpann_1_1LMS"/>
+        <childnode refid="255" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/booble/pann/trunk/src/Core/LMS.h" line="12" bodyfile="/home/booble/pann/trunk/src/Core/LMS.h" bodystart="11" bodyend="43"/>
+    <listofallmembers>
+      <member refid="classpann_1_1LMS_120595ff86bcd64ca2945f9ba440d978a" prot="public" virt="non-virtual"><scope>pann::LMS</scope><name>init</name></member>
+      <member refid="classpann_1_1LMS_1e618a8632489d1a7d19ec742fb37ca93" prot="public" virt="non-virtual"><scope>pann::LMS</scope><name>train</name></member>
+      <member refid="classpann_1_1LearningAlgorithm_1acc734261a16ebfcca8309498746d497" prot="public" virt="pure-virtual" ambiguityscope="pann::LearningAlgorithm::"><scope>pann::LMS</scope><name>train</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

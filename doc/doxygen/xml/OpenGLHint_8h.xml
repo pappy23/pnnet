@@ -1,0 +1,336 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="OpenGLHint_8h" kind="file">
+    <compoundname>OpenGLHint.h</compoundname>
+    <includes refid="Includes_8h" local="yes">Includes.h</includes>
+    <includedby refid="Neuron_8h" local="yes">pann/trunk/src/Core/Neuron.h</includedby>
+    <incdepgraph>
+      <node id="2375">
+        <label>list</label>
+      </node>
+      <node id="2377">
+        <label>valarray</label>
+      </node>
+      <node id="2393">
+        <label>boost/serialization/map.hpp</label>
+      </node>
+      <node id="2381">
+        <label>limits</label>
+      </node>
+      <node id="2395">
+        <label>boost/serialization/vector.hpp</label>
+      </node>
+      <node id="2380">
+        <label>iterator</label>
+      </node>
+      <node id="2392">
+        <label>boost/archive/text_iarchive.hpp</label>
+      </node>
+      <node id="2369">
+        <label>pann/trunk/src/Core/OpenGLHint.h</label>
+        <link refid="OpenGLHint.h"/>
+        <childnode refid="2370" relation="include">
+        </childnode>
+      </node>
+      <node id="2385">
+        <label>boost/foreach.hpp</label>
+      </node>
+      <node id="2382">
+        <label>cmath</label>
+      </node>
+      <node id="2389">
+        <label>boost/archive/xml_oarchive.hpp</label>
+      </node>
+      <node id="2378">
+        <label>string</label>
+      </node>
+      <node id="2374">
+        <label>map</label>
+      </node>
+      <node id="2386">
+        <label>boost/thread.hpp</label>
+      </node>
+      <node id="2373">
+        <label>fstream</label>
+      </node>
+      <node id="2370">
+        <label>Includes.h</label>
+        <link refid="Includes_8h"/>
+        <childnode refid="2371" relation="include">
+        </childnode>
+        <childnode refid="2372" relation="include">
+        </childnode>
+        <childnode refid="2373" relation="include">
+        </childnode>
+        <childnode refid="2374" relation="include">
+        </childnode>
+        <childnode refid="2375" relation="include">
+        </childnode>
+        <childnode refid="2376" relation="include">
+        </childnode>
+        <childnode refid="2377" relation="include">
+        </childnode>
+        <childnode refid="2378" relation="include">
+        </childnode>
+        <childnode refid="2379" relation="include">
+        </childnode>
+        <childnode refid="2380" relation="include">
+        </childnode>
+        <childnode refid="2381" relation="include">
+        </childnode>
+        <childnode refid="2382" relation="include">
+        </childnode>
+        <childnode refid="2383" relation="include">
+        </childnode>
+        <childnode refid="2384" relation="include">
+        </childnode>
+        <childnode refid="2385" relation="include">
+        </childnode>
+        <childnode refid="2386" relation="include">
+        </childnode>
+        <childnode refid="2387" relation="include">
+        </childnode>
+        <childnode refid="2388" relation="include">
+        </childnode>
+        <childnode refid="2389" relation="include">
+        </childnode>
+        <childnode refid="2390" relation="include">
+        </childnode>
+        <childnode refid="2391" relation="include">
+        </childnode>
+        <childnode refid="2392" relation="include">
+        </childnode>
+        <childnode refid="2393" relation="include">
+        </childnode>
+        <childnode refid="2394" relation="include">
+        </childnode>
+        <childnode refid="2395" relation="include">
+        </childnode>
+        <childnode refid="2396" relation="include">
+        </childnode>
+        <childnode refid="2397" relation="include">
+        </childnode>
+      </node>
+      <node id="2384">
+        <label>boost/any.hpp</label>
+      </node>
+      <node id="2391">
+        <label>boost/archive/text_oarchive.hpp</label>
+      </node>
+      <node id="2390">
+        <label>boost/archive/xml_iarchive.hpp</label>
+      </node>
+      <node id="2396">
+        <label>boost/serialization/version.hpp</label>
+      </node>
+      <node id="2397">
+        <label>boost/progress.hpp</label>
+      </node>
+      <node id="2376">
+        <label>vector</label>
+      </node>
+      <node id="2387">
+        <label>boost/thread/barrier.hpp</label>
+      </node>
+      <node id="2372">
+        <label>sstream</label>
+      </node>
+      <node id="2388">
+        <label>boost/ref.hpp</label>
+      </node>
+      <node id="2383">
+        <label>cstdlib</label>
+      </node>
+      <node id="2371">
+        <label>iostream</label>
+      </node>
+      <node id="2394">
+        <label>boost/serialization/list.hpp</label>
+      </node>
+      <node id="2379">
+        <label>algorithm</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2404">
+        <label>pann/trunk/src/Core/MultilayerPerceptron.cpp</label>
+        <link refid="MultilayerPerceptron_8cpp"/>
+      </node>
+      <node id="2410">
+        <label>pann/trunk/src/Utils/pann_viewer/glwidget.cpp</label>
+        <link refid="glwidget_8cpp"/>
+      </node>
+      <node id="2412">
+        <label>pann/trunk/src/Utils/pann_viewer/window.cpp</label>
+        <link refid="window_8cpp"/>
+      </node>
+      <node id="2398">
+        <label>pann/trunk/src/Core/OpenGLHint.h</label>
+        <link refid="OpenGLHint.h"/>
+        <childnode refid="2399" relation="include">
+        </childnode>
+      </node>
+      <node id="2406">
+        <label>pann/trunk/src/Core/Net.cpp</label>
+        <link refid="Net_8cpp"/>
+      </node>
+      <node id="2414">
+        <label>pann/trunk/src/Core/Runner.cpp</label>
+        <link refid="Runner_8cpp"/>
+      </node>
+      <node id="2400">
+        <label>pann/trunk/src/Core/Net.h</label>
+        <link refid="Net_8h"/>
+        <childnode refid="2401" relation="include">
+        </childnode>
+        <childnode refid="2402" relation="include">
+        </childnode>
+        <childnode refid="2403" relation="include">
+        </childnode>
+        <childnode refid="2406" relation="include">
+        </childnode>
+        <childnode refid="2407" relation="include">
+        </childnode>
+        <childnode refid="2405" relation="include">
+        </childnode>
+        <childnode refid="2409" relation="include">
+        </childnode>
+        <childnode refid="2411" relation="include">
+        </childnode>
+        <childnode refid="2408" relation="include">
+        </childnode>
+      </node>
+      <node id="2399">
+        <label>pann/trunk/src/Core/Neuron.h</label>
+        <link refid="Neuron_8h"/>
+        <childnode refid="2400" relation="include">
+        </childnode>
+        <childnode refid="2413" relation="include">
+        </childnode>
+        <childnode refid="2415" relation="include">
+        </childnode>
+      </node>
+      <node id="2402">
+        <label>pann/trunk/src/Core/LMS.h</label>
+        <link refid="LMS_8h"/>
+      </node>
+      <node id="2411">
+        <label>pann/trunk/src/Utils/pann_viewer/window.h</label>
+        <link refid="window_8h"/>
+        <childnode refid="2408" relation="include">
+        </childnode>
+        <childnode refid="2412" relation="include">
+        </childnode>
+      </node>
+      <node id="2401">
+        <label>pann/trunk/src/Core/LearningAlgorithm.h</label>
+        <link refid="LearningAlgorithm_8h"/>
+        <childnode refid="2402" relation="include">
+        </childnode>
+      </node>
+      <node id="2403">
+        <label>pann/trunk/src/Core/NetworkModel.h</label>
+        <link refid="NetworkModel_8h"/>
+        <childnode refid="2404" relation="include">
+        </childnode>
+        <childnode refid="2405" relation="include">
+        </childnode>
+      </node>
+      <node id="2408">
+        <label>pann/trunk/src/Utils/pann_viewer/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="2415">
+        <label>pann/trunk/src/Core/Neuron.cpp</label>
+        <link refid="Neuron_8cpp"/>
+      </node>
+      <node id="2407">
+        <label>pann/trunk/src/Core/Storage.h</label>
+        <link refid="Storage_8h"/>
+        <childnode refid="2405" relation="include">
+        </childnode>
+        <childnode refid="2408" relation="include">
+        </childnode>
+      </node>
+      <node id="2405">
+        <label>pann/trunk/src/UnitTests/TestNet.cpp</label>
+        <link refid="TestNet_8cpp"/>
+      </node>
+      <node id="2409">
+        <label>pann/trunk/src/Utils/pann_viewer/glwidget.h</label>
+        <link refid="glwidget_8h"/>
+        <childnode refid="2410" relation="include">
+        </childnode>
+        <childnode refid="2411" relation="include">
+        </childnode>
+      </node>
+      <node id="2413">
+        <label>pann/trunk/src/Core/Runner.h</label>
+        <link refid="Runner_8h"/>
+        <childnode refid="2400" relation="include">
+        </childnode>
+        <childnode refid="2414" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classpann_1_1Point3d" prot="public">pann::Point3d</innerclass>
+    <innerclass refid="classpann_1_1Color" prot="public">pann::Color</innerclass>
+    <innerclass refid="classpann_1_1OpenGLHint" prot="public">pann::OpenGLHint</innerclass>
+    <innernamespace refid="namespacepann">pann</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>OPENGLHINT_H</highlight></codeline>
+<codeline lineno="2"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>OPENGLHINT_H</highlight></codeline>
+<codeline lineno="3"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Includes_8h" kindref="compound">Includes.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">pann</highlight></codeline>
+<codeline lineno="7"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="8" refid="classpann_1_1Point3d" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classpann_1_1Point3d" kindref="compound">Point3d</ref></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="11" refid="classpann_1_1Point3d_1223f584d80ae49ce8b827804929eeb47" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacepann_14509ba95a02d59e0a1cd5127e1c55988" kindref="member">Float</ref><sp/><ref refid="classpann_1_1Point3d_10e8d4e3856a420aadfc360a853d5c8fd" kindref="member">x</ref>,<sp/><ref refid="classpann_1_1Point3d_10951dd463a6738f2f9fcdf838ae14b08" kindref="member">y</ref>,<sp/><ref refid="classpann_1_1Point3d_1223f584d80ae49ce8b827804929eeb47" kindref="member">z</ref>;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="classpann_1_1Color" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classpann_1_1Color" kindref="compound">Color</ref></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="17" refid="classpann_1_1Color_155c36f51e688aa86f292d23962a3fa33" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Color_155c36f51e688aa86f292d23962a3fa33" kindref="member">r</ref>,<sp/><ref refid="classpann_1_1Color_1b7e0e0306a50ce1adb53434303dfce06" kindref="member">g</ref>,<sp/><ref refid="classpann_1_1Color_18f6daae84417efbf6798839840e4fd45" kindref="member">b</ref>;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20" refid="classpann_1_1OpenGLHint" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classpann_1_1OpenGLHint" kindref="compound">OpenGLHint</ref></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="23" refid="classpann_1_1OpenGLHint_1a1170d712442c44710f687fd54cdc910" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classpann_1_1OpenGLHint_1a1170d712442c44710f687fd54cdc910" kindref="member">OpenGLHint</ref>()</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classpann_1_1OpenGLHint_127ec4cdd08b8806818f730ff13b965e8" kindref="member">color</ref>.<ref refid="classpann_1_1Color_155c36f51e688aa86f292d23962a3fa33" kindref="member">r</ref><sp/>=<sp/><ref refid="classpann_1_1OpenGLHint_127ec4cdd08b8806818f730ff13b965e8" kindref="member">color</ref>.<ref refid="classpann_1_1Color_1b7e0e0306a50ce1adb53434303dfce06" kindref="member">g</ref><sp/>=<sp/><ref refid="classpann_1_1OpenGLHint_127ec4cdd08b8806818f730ff13b965e8" kindref="member">color</ref>.<ref refid="classpann_1_1Color_18f6daae84417efbf6798839840e4fd45" kindref="member">b</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classpann_1_1OpenGLHint_1d027bb31231826f924d94b34cc155727" kindref="member">point</ref>.<ref refid="classpann_1_1Point3d_10e8d4e3856a420aadfc360a853d5c8fd" kindref="member">x</ref><sp/>=<sp/><ref refid="classpann_1_1OpenGLHint_1d027bb31231826f924d94b34cc155727" kindref="member">point</ref>.<ref refid="classpann_1_1Point3d_10951dd463a6738f2f9fcdf838ae14b08" kindref="member">y</ref><sp/>=<sp/><ref refid="classpann_1_1OpenGLHint_1d027bb31231826f924d94b34cc155727" kindref="member">point</ref>.<ref refid="classpann_1_1Point3d_1223f584d80ae49ce8b827804929eeb47" kindref="member">z</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="27" refid="classpann_1_1OpenGLHint_127ec4cdd08b8806818f730ff13b965e8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classpann_1_1Color" kindref="compound">Color</ref><sp/><ref refid="classpann_1_1OpenGLHint_127ec4cdd08b8806818f730ff13b965e8" kindref="member">color</ref>;</highlight></codeline>
+<codeline lineno="30" refid="classpann_1_1OpenGLHint_1d027bb31231826f924d94b34cc155727" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classpann_1_1Point3d" kindref="compound">Point3d</ref><sp/><ref refid="classpann_1_1OpenGLHint_1d027bb31231826f924d94b34cc155727" kindref="member">point</ref>;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="33" refid="classpann_1_1OpenGLHint_1c98d07dd8f7b70e16ccb9a01abf56b9c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classpann_1_1OpenGLHint_1c98d07dd8f7b70e16ccb9a01abf56b9c" kindref="member">boost::serialization::access</ref>;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>Archive&gt;</highlight></codeline>
+<codeline lineno="35" refid="classpann_1_1OpenGLHint_16998b32ec3bd36b8fb7718133b424626" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1OpenGLHint_16998b32ec3bd36b8fb7718133b424626" kindref="member">serialize</ref>(Archive<sp/>&amp;<sp/>ar,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>version)</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ar<sp/>&amp;<sp/><ref refid="classpann_1_1OpenGLHint_1d027bb31231826f924d94b34cc155727" kindref="member">point</ref>.<ref refid="classpann_1_1Point3d_10e8d4e3856a420aadfc360a853d5c8fd" kindref="member">x</ref>;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ar<sp/>&amp;<sp/><ref refid="classpann_1_1OpenGLHint_1d027bb31231826f924d94b34cc155727" kindref="member">point</ref>.<ref refid="classpann_1_1Point3d_10951dd463a6738f2f9fcdf838ae14b08" kindref="member">y</ref>;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ar<sp/>&amp;<sp/><ref refid="classpann_1_1OpenGLHint_1d027bb31231826f924d94b34cc155727" kindref="member">point</ref>.<ref refid="classpann_1_1Point3d_1223f584d80ae49ce8b827804929eeb47" kindref="member">z</ref>;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ar<sp/>&amp;<sp/><ref refid="classpann_1_1OpenGLHint_127ec4cdd08b8806818f730ff13b965e8" kindref="member">color</ref>.<ref refid="classpann_1_1Color_155c36f51e688aa86f292d23962a3fa33" kindref="member">r</ref>;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ar<sp/>&amp;<sp/><ref refid="classpann_1_1OpenGLHint_127ec4cdd08b8806818f730ff13b965e8" kindref="member">color</ref>.<ref refid="classpann_1_1Color_1b7e0e0306a50ce1adb53434303dfce06" kindref="member">g</ref>;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ar<sp/>&amp;<sp/><ref refid="classpann_1_1OpenGLHint_127ec4cdd08b8806818f730ff13b965e8" kindref="member">color</ref>.<ref refid="classpann_1_1Color_18f6daae84417efbf6798839840e4fd45" kindref="member">b</ref>;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="45"><highlight class="normal">};<sp/></highlight><highlight class="comment">//pann</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//OPENGLHINT_H</highlight></codeline>
+<codeline lineno="48"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/booble/pann/trunk/src/Core/OpenGLHint.h"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="classpann_1_1Point3d" kind="class" prot="public">
+    <compoundname>pann::Point3d</compoundname>
+    <includes refid="OpenGLHint_8h" local="no">OpenGLHint.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classpann_1_1Point3d_10e8d4e3856a420aadfc360a853d5c8fd" prot="public" static="no" mutable="no">
+        <type><ref refid="namespacepann_14509ba95a02d59e0a1cd5127e1c55988" kindref="member">Float</ref></type>
+        <definition>Float pann::Point3d::x</definition>
+        <argsstring></argsstring>
+        <name>x</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/OpenGLHint.h" line="11" bodyfile="/home/booble/pann/trunk/src/Core/OpenGLHint.h" bodystart="11" bodyend="-1"/>
+        <referencedby refid="classGLWidget_161ec77b4004fb9516acb9869566f9095" compoundref="glwidget_8cpp" startline="27" endline="87">GLWidget::calcCoords</referencedby>
+        <referencedby refid="classpann_1_1OpenGLHint_1a1170d712442c44710f687fd54cdc910" compoundref="OpenGLHint_8h" startline="23" endline="27">pann::OpenGLHint::OpenGLHint</referencedby>
+        <referencedby refid="classpann_1_1OpenGLHint_16998b32ec3bd36b8fb7718133b424626" compoundref="OpenGLHint_8h" startline="35" endline="43">pann::OpenGLHint::serialize</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classpann_1_1Point3d_10951dd463a6738f2f9fcdf838ae14b08" prot="public" static="no" mutable="no">
+        <type><ref refid="namespacepann_14509ba95a02d59e0a1cd5127e1c55988" kindref="member">Float</ref></type>
+        <definition>Float pann::Point3d::y</definition>
+        <argsstring></argsstring>
+        <name>y</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/OpenGLHint.h" line="11" bodyfile="/home/booble/pann/trunk/src/Core/OpenGLHint.h" bodystart="11" bodyend="-1"/>
+        <referencedby refid="classGLWidget_161ec77b4004fb9516acb9869566f9095" compoundref="glwidget_8cpp" startline="27" endline="87">GLWidget::calcCoords</referencedby>
+        <referencedby refid="classpann_1_1OpenGLHint_1a1170d712442c44710f687fd54cdc910" compoundref="OpenGLHint_8h" startline="23" endline="27">pann::OpenGLHint::OpenGLHint</referencedby>
+        <referencedby refid="classpann_1_1OpenGLHint_16998b32ec3bd36b8fb7718133b424626" compoundref="OpenGLHint_8h" startline="35" endline="43">pann::OpenGLHint::serialize</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classpann_1_1Point3d_1223f584d80ae49ce8b827804929eeb47" prot="public" static="no" mutable="no">
+        <type><ref refid="namespacepann_14509ba95a02d59e0a1cd5127e1c55988" kindref="member">Float</ref></type>
+        <definition>Float pann::Point3d::z</definition>
+        <argsstring></argsstring>
+        <name>z</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/OpenGLHint.h" line="11" bodyfile="/home/booble/pann/trunk/src/Core/OpenGLHint.h" bodystart="11" bodyend="-1"/>
+        <referencedby refid="classGLWidget_161ec77b4004fb9516acb9869566f9095" compoundref="glwidget_8cpp" startline="27" endline="87">GLWidget::calcCoords</referencedby>
+        <referencedby refid="classpann_1_1OpenGLHint_1a1170d712442c44710f687fd54cdc910" compoundref="OpenGLHint_8h" startline="23" endline="27">pann::OpenGLHint::OpenGLHint</referencedby>
+        <referencedby refid="classpann_1_1OpenGLHint_16998b32ec3bd36b8fb7718133b424626" compoundref="OpenGLHint_8h" startline="35" endline="43">pann::OpenGLHint::serialize</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/booble/pann/trunk/src/Core/OpenGLHint.h" line="9" bodyfile="/home/booble/pann/trunk/src/Core/OpenGLHint.h" bodystart="8" bodyend="12"/>
+    <listofallmembers>
+      <member refid="classpann_1_1Point3d_10e8d4e3856a420aadfc360a853d5c8fd" prot="public" virt="non-virtual"><scope>pann::Point3d</scope><name>x</name></member>
+      <member refid="classpann_1_1Point3d_10951dd463a6738f2f9fcdf838ae14b08" prot="public" virt="non-virtual"><scope>pann::Point3d</scope><name>y</name></member>
+      <member refid="classpann_1_1Point3d_1223f584d80ae49ce8b827804929eeb47" prot="public" virt="non-virtual"><scope>pann::Point3d</scope><name>z</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

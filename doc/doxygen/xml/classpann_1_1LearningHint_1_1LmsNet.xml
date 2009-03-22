@@ -1,0 +1,155 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="classpann_1_1LearningHint_1_1LmsNet" kind="class" prot="public">
+    <compoundname>pann::LearningHint::LmsNet</compoundname>
+    <basecompoundref refid="classpann_1_1LearningHint_1_1Base" prot="public" virt="non-virtual">pann::LearningHint::Base</basecompoundref>
+    <includes refid="LearningHint_8h" local="no">LearningHint.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classpann_1_1LearningHint_1_1LmsNet_19af70d771c8f6ae5c645d596ff461724" prot="public" static="no" mutable="no">
+        <type><ref refid="namespacepann_14509ba95a02d59e0a1cd5127e1c55988" kindref="member">Float</ref></type>
+        <definition>Float pann::LearningHint::LmsNet::learningRate</definition>
+        <argsstring></argsstring>
+        <name>learningRate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/LearningHint.h" line="73" bodyfile="/home/booble/pann/trunk/src/Core/LearningHint.h" bodystart="73" bodyend="-1"/>
+        <referencedby refid="classpann_1_1LMS_120595ff86bcd64ca2945f9ba440d978a" compoundref="LMS_8h" startline="20" endline="28">pann::LMS::init</referencedby>
+        <referencedby refid="classpann_1_1LearningHint_1_1LmsNet_16f5ede450a9851f27e3ac23dc9571ea9" compoundref="LearningHint_8h" startline="89" endline="92">serialize</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classpann_1_1LearningHint_1_1LmsNet_1c98d07dd8f7b70e16ccb9a01abf56b9c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class boost::serialization::access</definition>
+        <argsstring></argsstring>
+        <name>boost::serialization::access</name>
+        <reimplements refid="classpann_1_1LearningHint_1_1Base_1c98d07dd8f7b70e16ccb9a01abf56b9c">boost::serialization::access</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/LearningHint.h" line="87" bodyfile="/home/booble/pann/trunk/src/Core/LearningHint.h" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classpann_1_1LearningHint_1_1LmsNet_10921cecf27e8a224ba4ef0954432ec0a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>pann::LearningHint::LmsNet::LmsNet</definition>
+        <argsstring>()</argsstring>
+        <name>LmsNet</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/LearningHint.h" line="77" bodyfile="/home/booble/pann/trunk/src/Core/LearningHint.h" bodystart="77" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="classpann_1_1LearningHint_1_1LmsNet_1328405f016bf4cfbf5a3e54493d1fc33" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual pann::LearningHint::LmsNet::~LmsNet</definition>
+        <argsstring>()</argsstring>
+        <name>~LmsNet</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/LearningHint.h" line="78" bodyfile="/home/booble/pann/trunk/src/Core/LearningHint.h" bodystart="78" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="classpann_1_1LearningHint_1_1LmsNet_13a173a62fe76d98825ddbdd6f22a6300" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="namespacepann_1_1LearningHint_11af8c63761604060acd3287e6820b4fe" kindref="member">HintId</ref></type>
+        <definition>virtual HintId pann::LearningHint::LmsNet::getTypeId</definition>
+        <argsstring>()</argsstring>
+        <name>getTypeId</name>
+        <reimplements refid="classpann_1_1LearningHint_1_1Base_1d45edb03ed5fcfd5fec10bc768859ebf">getTypeId</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/LearningHint.h" line="81" bodyfile="/home/booble/pann/trunk/src/Core/LearningHint.h" bodystart="80" bodyend="83"/>
+        <references refid="namespacepann_1_1LearningHint_11af8c63761604060acd3287e6820b4fee35188d65024635375c0cc23d9182321" compoundref="LearningHint_8h" startline="20">pann::LearningHint::LmsNetId</references>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classpann_1_1LearningHint_1_1LmsNet_16f5ede450a9851f27e3ac23dc9571ea9" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class</type>
+            <declname>Archive</declname>
+            <defname>Archive</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void pann::LearningHint::LmsNet::serialize</definition>
+        <argsstring>(Archive &amp;ar, const unsigned int version)</argsstring>
+        <name>serialize</name>
+        <reimplements refid="classpann_1_1LearningHint_1_1Base_111cb8fd2accd56deced056a4b2ab1fed">serialize</reimplements>
+        <param>
+          <type>Archive &amp;</type>
+          <declname>ar</declname>
+        </param>
+        <param>
+          <type>const unsigned int</type>
+          <declname>version</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/LearningHint.h" line="90" bodyfile="/home/booble/pann/trunk/src/Core/LearningHint.h" bodystart="89" bodyend="92"/>
+        <references refid="classpann_1_1LearningHint_1_1LmsNet_19af70d771c8f6ae5c645d596ff461724" compoundref="LearningHint_8h" startline="73">learningRate</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="256">
+        <label>pann::LearningHint::LmsNet</label>
+        <link refid="classpann_1_1LearningHint_1_1LmsNet"/>
+        <childnode refid="257" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="257">
+        <label>pann::LearningHint::Base</label>
+        <link refid="classpann_1_1LearningHint_1_1Base"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="258">
+        <label>pann::LearningHint::LmsNet</label>
+        <link refid="classpann_1_1LearningHint_1_1LmsNet"/>
+        <childnode refid="259" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="259">
+        <label>pann::LearningHint::Base</label>
+        <link refid="classpann_1_1LearningHint_1_1Base"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/booble/pann/trunk/src/Core/LearningHint.h" line="70" bodyfile="/home/booble/pann/trunk/src/Core/LearningHint.h" bodystart="69" bodyend="93"/>
+    <listofallmembers>
+      <member refid="classpann_1_1LearningHint_1_1Base_15b07e8a92401b5b1eb7b8bf3df4092ef" prot="public" virt="non-virtual"><scope>pann::LearningHint::LmsNet</scope><name>Base</name></member>
+      <member refid="classpann_1_1LearningHint_1_1LmsNet_1c98d07dd8f7b70e16ccb9a01abf56b9c" prot="public" virt="non-virtual"><scope>pann::LearningHint::LmsNet</scope><name>boost::serialization::access</name></member>
+      <member refid="classpann_1_1LearningHint_1_1LmsNet_13a173a62fe76d98825ddbdd6f22a6300" prot="public" virt="virtual"><scope>pann::LearningHint::LmsNet</scope><name>getTypeId</name></member>
+      <member refid="classpann_1_1LearningHint_1_1LmsNet_19af70d771c8f6ae5c645d596ff461724" prot="public" virt="non-virtual"><scope>pann::LearningHint::LmsNet</scope><name>learningRate</name></member>
+      <member refid="classpann_1_1LearningHint_1_1LmsNet_10921cecf27e8a224ba4ef0954432ec0a" prot="public" virt="non-virtual"><scope>pann::LearningHint::LmsNet</scope><name>LmsNet</name></member>
+      <member refid="classpann_1_1LearningHint_1_1LmsNet_16f5ede450a9851f27e3ac23dc9571ea9" prot="private" virt="non-virtual"><scope>pann::LearningHint::LmsNet</scope><name>serialize</name></member>
+      <member refid="classpann_1_1LearningHint_1_1Base_14805bfc0c0280ea2e0c3aa16f4aba24a" prot="public" virt="virtual"><scope>pann::LearningHint::LmsNet</scope><name>~Base</name></member>
+      <member refid="classpann_1_1LearningHint_1_1LmsNet_1328405f016bf4cfbf5a3e54493d1fc33" prot="public" virt="virtual"><scope>pann::LearningHint::LmsNet</scope><name>~LmsNet</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

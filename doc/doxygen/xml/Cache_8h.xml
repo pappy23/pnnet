@@ -1,0 +1,374 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="Cache_8h" kind="file">
+    <compoundname>Cache.h</compoundname>
+    <includes refid="Includes_8h" local="yes">Includes.h</includes>
+    <includes refid="Type_8h" local="yes">Type.h</includes>
+    <includes refid="Object_8h" local="yes">Object.h</includes>
+    <includedby refid="Net_8h" local="yes">pann/trunk/src/Core/Net.h</includedby>
+    <incdepgraph>
+      <node id="1654">
+        <label>list</label>
+      </node>
+      <node id="1679">
+        <label>Exception.h</label>
+        <link refid="Exception_8h"/>
+        <childnode refid="1649" relation="include">
+        </childnode>
+      </node>
+      <node id="1656">
+        <label>valarray</label>
+      </node>
+      <node id="1672">
+        <label>boost/serialization/map.hpp</label>
+      </node>
+      <node id="1660">
+        <label>limits</label>
+      </node>
+      <node id="1674">
+        <label>boost/serialization/vector.hpp</label>
+      </node>
+      <node id="1659">
+        <label>iterator</label>
+      </node>
+      <node id="1671">
+        <label>boost/archive/text_iarchive.hpp</label>
+      </node>
+      <node id="1677">
+        <label>Type.h</label>
+        <link refid="Type_8h"/>
+        <childnode refid="1649" relation="include">
+        </childnode>
+      </node>
+      <node id="1664">
+        <label>boost/foreach.hpp</label>
+      </node>
+      <node id="1661">
+        <label>cmath</label>
+      </node>
+      <node id="1648">
+        <label>pann/trunk/src/Core/Cache.h</label>
+        <link refid="Cache.h"/>
+        <childnode refid="1649" relation="include">
+        </childnode>
+        <childnode refid="1677" relation="include">
+        </childnode>
+        <childnode refid="1678" relation="include">
+        </childnode>
+      </node>
+      <node id="1668">
+        <label>boost/archive/xml_oarchive.hpp</label>
+      </node>
+      <node id="1657">
+        <label>string</label>
+      </node>
+      <node id="1653">
+        <label>map</label>
+      </node>
+      <node id="1665">
+        <label>boost/thread.hpp</label>
+      </node>
+      <node id="1652">
+        <label>fstream</label>
+      </node>
+      <node id="1649">
+        <label>Includes.h</label>
+        <link refid="Includes_8h"/>
+        <childnode refid="1650" relation="include">
+        </childnode>
+        <childnode refid="1651" relation="include">
+        </childnode>
+        <childnode refid="1652" relation="include">
+        </childnode>
+        <childnode refid="1653" relation="include">
+        </childnode>
+        <childnode refid="1654" relation="include">
+        </childnode>
+        <childnode refid="1655" relation="include">
+        </childnode>
+        <childnode refid="1656" relation="include">
+        </childnode>
+        <childnode refid="1657" relation="include">
+        </childnode>
+        <childnode refid="1658" relation="include">
+        </childnode>
+        <childnode refid="1659" relation="include">
+        </childnode>
+        <childnode refid="1660" relation="include">
+        </childnode>
+        <childnode refid="1661" relation="include">
+        </childnode>
+        <childnode refid="1662" relation="include">
+        </childnode>
+        <childnode refid="1663" relation="include">
+        </childnode>
+        <childnode refid="1664" relation="include">
+        </childnode>
+        <childnode refid="1665" relation="include">
+        </childnode>
+        <childnode refid="1666" relation="include">
+        </childnode>
+        <childnode refid="1667" relation="include">
+        </childnode>
+        <childnode refid="1668" relation="include">
+        </childnode>
+        <childnode refid="1669" relation="include">
+        </childnode>
+        <childnode refid="1670" relation="include">
+        </childnode>
+        <childnode refid="1671" relation="include">
+        </childnode>
+        <childnode refid="1672" relation="include">
+        </childnode>
+        <childnode refid="1673" relation="include">
+        </childnode>
+        <childnode refid="1674" relation="include">
+        </childnode>
+        <childnode refid="1675" relation="include">
+        </childnode>
+        <childnode refid="1676" relation="include">
+        </childnode>
+      </node>
+      <node id="1663">
+        <label>boost/any.hpp</label>
+      </node>
+      <node id="1670">
+        <label>boost/archive/text_oarchive.hpp</label>
+      </node>
+      <node id="1669">
+        <label>boost/archive/xml_iarchive.hpp</label>
+      </node>
+      <node id="1675">
+        <label>boost/serialization/version.hpp</label>
+      </node>
+      <node id="1676">
+        <label>boost/progress.hpp</label>
+      </node>
+      <node id="1655">
+        <label>vector</label>
+      </node>
+      <node id="1678">
+        <label>Object.h</label>
+        <link refid="Object_8h"/>
+        <childnode refid="1649" relation="include">
+        </childnode>
+        <childnode refid="1679" relation="include">
+        </childnode>
+        <childnode refid="1677" relation="include">
+        </childnode>
+      </node>
+      <node id="1666">
+        <label>boost/thread/barrier.hpp</label>
+      </node>
+      <node id="1651">
+        <label>sstream</label>
+      </node>
+      <node id="1667">
+        <label>boost/ref.hpp</label>
+      </node>
+      <node id="1662">
+        <label>cstdlib</label>
+      </node>
+      <node id="1650">
+        <label>iostream</label>
+      </node>
+      <node id="1673">
+        <label>boost/serialization/list.hpp</label>
+      </node>
+      <node id="1658">
+        <label>algorithm</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1685">
+        <label>pann/trunk/src/Core/MultilayerPerceptron.cpp</label>
+        <link refid="MultilayerPerceptron_8cpp"/>
+      </node>
+      <node id="1691">
+        <label>pann/trunk/src/Utils/pann_viewer/glwidget.cpp</label>
+        <link refid="glwidget_8cpp"/>
+      </node>
+      <node id="1693">
+        <label>pann/trunk/src/Utils/pann_viewer/window.cpp</label>
+        <link refid="window_8cpp"/>
+      </node>
+      <node id="1687">
+        <label>pann/trunk/src/Core/Net.cpp</label>
+        <link refid="Net_8cpp"/>
+      </node>
+      <node id="1680">
+        <label>pann/trunk/src/Core/Cache.h</label>
+        <link refid="Cache.h"/>
+        <childnode refid="1681" relation="include">
+        </childnode>
+      </node>
+      <node id="1681">
+        <label>pann/trunk/src/Core/Net.h</label>
+        <link refid="Net_8h"/>
+        <childnode refid="1682" relation="include">
+        </childnode>
+        <childnode refid="1683" relation="include">
+        </childnode>
+        <childnode refid="1684" relation="include">
+        </childnode>
+        <childnode refid="1687" relation="include">
+        </childnode>
+        <childnode refid="1688" relation="include">
+        </childnode>
+        <childnode refid="1686" relation="include">
+        </childnode>
+        <childnode refid="1690" relation="include">
+        </childnode>
+        <childnode refid="1692" relation="include">
+        </childnode>
+        <childnode refid="1689" relation="include">
+        </childnode>
+      </node>
+      <node id="1683">
+        <label>pann/trunk/src/Core/LMS.h</label>
+        <link refid="LMS_8h"/>
+      </node>
+      <node id="1692">
+        <label>pann/trunk/src/Utils/pann_viewer/window.h</label>
+        <link refid="window_8h"/>
+        <childnode refid="1689" relation="include">
+        </childnode>
+        <childnode refid="1693" relation="include">
+        </childnode>
+      </node>
+      <node id="1682">
+        <label>pann/trunk/src/Core/LearningAlgorithm.h</label>
+        <link refid="LearningAlgorithm_8h"/>
+        <childnode refid="1683" relation="include">
+        </childnode>
+      </node>
+      <node id="1684">
+        <label>pann/trunk/src/Core/NetworkModel.h</label>
+        <link refid="NetworkModel_8h"/>
+        <childnode refid="1685" relation="include">
+        </childnode>
+        <childnode refid="1686" relation="include">
+        </childnode>
+      </node>
+      <node id="1689">
+        <label>pann/trunk/src/Utils/pann_viewer/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="1688">
+        <label>pann/trunk/src/Core/Storage.h</label>
+        <link refid="Storage_8h"/>
+        <childnode refid="1686" relation="include">
+        </childnode>
+        <childnode refid="1689" relation="include">
+        </childnode>
+      </node>
+      <node id="1686">
+        <label>pann/trunk/src/UnitTests/TestNet.cpp</label>
+        <link refid="TestNet_8cpp"/>
+      </node>
+      <node id="1690">
+        <label>pann/trunk/src/Utils/pann_viewer/glwidget.h</label>
+        <link refid="glwidget_8h"/>
+        <childnode refid="1691" relation="include">
+        </childnode>
+        <childnode refid="1692" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classpann_1_1Cache" prot="public">pann::Cache</innerclass>
+    <innerclass refid="classpann_1_1NetCache" prot="public">pann::NetCache</innerclass>
+    <innernamespace refid="namespacepann">pann</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Runtime cache object </para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="6"><highlight class="preprocessor">#ifndef<sp/>CACHE_H</highlight></codeline>
+<codeline lineno="7"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>CACHE_H</highlight></codeline>
+<codeline lineno="8"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Includes_8h" kindref="compound">Includes.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Type_8h" kindref="compound">Type.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Object_8h" kindref="compound">Object.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">pann</highlight></codeline>
+<codeline lineno="14"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="19" refid="classpann_1_1Cache" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classpann_1_1Cache" kindref="compound">Cache</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Object" kindref="compound" tooltip="Base class for almoust everything.">Object</ref></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Public<sp/>interface<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="23" refid="classpann_1_1Cache_13d6ae9eb1692dc039ae0189cb89695cd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classpann_1_1Cache_13d6ae9eb1692dc039ae0189cb89695cd" kindref="member">Cache</ref>()<sp/>:<sp/><ref refid="classpann_1_1Cache_1f56a02e0a8a5a3870cbc9bcdebc6bac3" kindref="member">coherent</ref>(false)<sp/>{<sp/>};</highlight></codeline>
+<codeline lineno="24" refid="classpann_1_1Cache_1873c83b4eccabedace0e37902e65c5b1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Cache_1873c83b4eccabedace0e37902e65c5b1" kindref="member">~Cache</ref>()<sp/>{<sp/>};</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Cache_13623bbb1e91cfa41440cab5840312c5a" kindref="member">flush</ref>()<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="classpann_1_1Cache_12f52dab8b0db5569fc22847ff332345a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Cache_12f52dab8b0db5569fc22847ff332345a" kindref="member">touch</ref>()</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classpann_1_1Cache_1f56a02e0a8a5a3870cbc9bcdebc6bac3" kindref="member">coherent</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="33" refid="classpann_1_1Cache_12cb636d0dcacfc734a83e665bd1c6b69" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Cache_12cb636d0dcacfc734a83e665bd1c6b69" kindref="member">fixed</ref>()</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classpann_1_1Cache_1f56a02e0a8a5a3870cbc9bcdebc6bac3" kindref="member">coherent</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="classpann_1_1Cache_1d3b297e95711bf2b4e57a6437636bf7e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Cache_1d3b297e95711bf2b4e57a6437636bf7e" kindref="member">isOk</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="39"><highlight class="keyword"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Cache_1f56a02e0a8a5a3870cbc9bcdebc6bac3" kindref="member">coherent</ref>;</highlight></codeline>
+<codeline lineno="41" refid="classpann_1_1Cache_1f56a02e0a8a5a3870cbc9bcdebc6bac3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Protected<sp/>attributes<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Cache_1f56a02e0a8a5a3870cbc9bcdebc6bac3" kindref="member">coherent</ref>;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Debug<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Cache_16a3932a817f186bb9c73e6821608f87f" kindref="member">printDebugInfo</ref>(std::ostringstream&amp;<sp/>ost)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52" refid="classpann_1_1NetCache" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classpann_1_1NetCache" kindref="compound">NetCache</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Cache" kindref="compound">Cache</ref></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Public<sp/>types<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="56" refid="classpann_1_1NetCache_126b4ca3dc6f2c0dac775cff86ef891af" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>std::vector&lt;NeuronIter&gt;<sp/><ref refid="classpann_1_1NetCache_126b4ca3dc6f2c0dac775cff86ef891af" kindref="member">ThreadTaskType</ref>;</highlight></codeline>
+<codeline lineno="57" refid="classpann_1_1NetCache_125a54be011377684c4cd5876d0dc3ecf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>std::vector&lt;ThreadTaskType&gt;<sp/><ref refid="classpann_1_1NetCache_125a54be011377684c4cd5876d0dc3ecf" kindref="member">FrontType</ref>;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Public<sp/>members<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="61" refid="classpann_1_1NetCache_1dd41e18c50e038ff9b9cbdf249913cec" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;FrontType&gt;<sp/><ref refid="classpann_1_1NetCache_1dd41e18c50e038ff9b9cbdf249913cec" kindref="member">data</ref>;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Public<sp/>interface<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="65" refid="classpann_1_1NetCache_1cfa966e64695ce3e11a5cd5926e1680c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1NetCache_1cfa966e64695ce3e11a5cd5926e1680c" kindref="member">flush</ref>()</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classpann_1_1NetCache_1dd41e18c50e038ff9b9cbdf249913cec" kindref="member">data</ref>.clear();</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classpann_1_1Cache_12f52dab8b0db5569fc22847ff332345a" kindref="member">touch</ref>();</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Debug<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="73" refid="classpann_1_1NetCache_1f776078aecabf7258b807d4d0249241a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1NetCache_1f776078aecabf7258b807d4d0249241a" kindref="member">printDebugInfo</ref>(std::ostringstream&amp;<sp/>ost)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="74"><highlight class="keyword"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>layers<sp/>=<sp/>0;<sp/>layers<sp/>&lt;<sp/><ref refid="classpann_1_1NetCache_1dd41e18c50e038ff9b9cbdf249913cec" kindref="member">data</ref>.size();<sp/>++layers)</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ost&lt;&lt;</highlight><highlight class="stringliteral">&quot;Layer<sp/>#&quot;</highlight><highlight class="normal">&lt;&lt;layers&lt;&lt;std::endl;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>threads<sp/>=<sp/>0;<sp/>threads<sp/>&lt;<sp/><ref refid="classpann_1_1NetCache_1dd41e18c50e038ff9b9cbdf249913cec" kindref="member">data</ref>[layers].size();<sp/>++threads)</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ost&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/><sp/>Thread<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;threads&lt;&lt;</highlight><highlight class="stringliteral">&quot;:<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>n<sp/>=<sp/>0;<sp/>n<sp/>&lt;<sp/><ref refid="classpann_1_1NetCache_1dd41e18c50e038ff9b9cbdf249913cec" kindref="member">data</ref>[layers][threads].size();<sp/>++n)</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ost&lt;&lt;<ref refid="classpann_1_1NetCache_1dd41e18c50e038ff9b9cbdf249913cec" kindref="member">data</ref>[layers][threads][n]-&gt;first&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ost&lt;&lt;std::endl;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ost&lt;&lt;std::endl;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal">};<sp/></highlight><highlight class="comment">//pann</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//CACHE_H</highlight></codeline>
+<codeline lineno="93"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/booble/pann/trunk/src/Core/Cache.h"/>
+  </compounddef>
+</doxygen>
