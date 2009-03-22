@@ -1,5 +1,0 @@
-<area shape="rect" href="$classpann_1_1Neuron.html#20445c905a8ad3e243e0945bd3595b9a" title="pann::Neuron::getActivationFunction" alt="" coords="237,5,469,32">
-<area shape="rect" href="$classpann_1_1ActivationFunction_1_1Base.html#882ff77ecccf62b9c453243fe0adb63d" title="pann::ActivationFunction::Base::getId" alt="" coords="233,56,473,83">
-<area shape="rect" href="$classpann_1_1ActivationFunction_1_1Base.html#110e8df25117878d2b49cc2fda35c50d" title="pann::ActivationFunction::Base::getName" alt="" coords="221,107,485,133">
-<area shape="rect" href="$classpann_1_1Net.html#20552ffce8f342bb6cf064180780a788" title="pann::Net::getNeurons" alt="" coords="277,157,429,184">
-<area shape="rect" href="$classpann_1_1Neuron.html#2a426e05cdb3fbd67635a4ba57ec2bbd" title="pann::Neuron::getOwnerThread" alt="" coords="253,208,453,235">
