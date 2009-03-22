@@ -1,0 +1,1054 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="classpann_1_1Net" kind="class" prot="public">
+    <compoundname>pann::Net</compoundname>
+    <basecompoundref refid="classpann_1_1Object" prot="public" virt="non-virtual">pann::Object</basecompoundref>
+    <includes refid="Net_8h" local="no">Net.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classpann_1_1Net_12af39a29837c19f66e828589210c477b" prot="public" static="no">
+        <name>NeuronRole</name>
+        <enumvalue id="classpann_1_1Net_12af39a29837c19f66e828589210c477b8e605a7ac4e3dab20e7e4707188fa4ad" prot="public">
+          <name>WorkNeuron</name>
+          <initializer> 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classpann_1_1Net_12af39a29837c19f66e828589210c477b49a06b112c565efc5f96e41f52d8deab" prot="public">
+          <name>InputNeuron</name>
+          <initializer> 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Net.h" line="21" bodyfile="/home/booble/pann/trunk/src/Core/Net.h" bodystart="21" bodyend="21"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classpann_1_1Net_11d95cc042ab3f71840416d7aebdb1def" prot="public" static="no" mutable="no">
+        <type><ref refid="classpann_1_1LearningHint_1_1Base" kindref="compound">LearningHint::Base</ref> *</type>
+        <definition>LearningHint::Base* pann::Net::learningHint</definition>
+        <argsstring></argsstring>
+        <name>learningHint</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Net.h" line="125" bodyfile="/home/booble/pann/trunk/src/Core/Net.h" bodystart="125" bodyend="-1"/>
+        <referencedby refid="classpann_1_1LMS_120595ff86bcd64ca2945f9ba440d978a" compoundref="LMS_8h" startline="20" endline="28">pann::LMS::init</referencedby>
+        <referencedby refid="classpann_1_1Net_1a54ff5e1cbb26acaab7a2035f6719169" compoundref="Net_8h" startline="302" endline="391">load</referencedby>
+        <referencedby refid="classpann_1_1Net_148622ed4f082f1e13dc19a592ae99acc" compoundref="Net_8cpp" startline="14" endline="22">Net</referencedby>
+        <referencedby refid="classpann_1_1Net_16c08684796771a53e67fbe93c51e188a" compoundref="Net_8h" startline="222" endline="299">save</referencedby>
+        <referencedby refid="classpann_1_1LMS_1e618a8632489d1a7d19ec742fb37ca93" compoundref="LMS_8h" startline="37" endline="42">pann::LMS::train</referencedby>
+        <referencedby refid="classpann_1_1Net_1ede55beb023c08142ca4b5974889d431" compoundref="Net_8cpp" startline="24" endline="28">~Net</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classpann_1_1Net_12d41b163ab3f2171150fe8486dae44c9" prot="private" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned pann::Net::threadCount</definition>
+        <argsstring></argsstring>
+        <name>threadCount</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Net.h" line="129" bodyfile="/home/booble/pann/trunk/src/Core/Net.h" bodystart="129" bodyend="-1"/>
+        <referencedby refid="classpann_1_1Net_17367ddcfe022477e2e99aa2115580395" compoundref="Net_8cpp" startline="31" endline="34">getThreadCount</referencedby>
+        <referencedby refid="classpann_1_1Net_1a54ff5e1cbb26acaab7a2035f6719169" compoundref="Net_8h" startline="302" endline="391">load</referencedby>
+        <referencedby refid="classpann_1_1Net_1ec0809d7cb83ea29f7f36492609a2de9" compoundref="Net_8h" startline="191" endline="216">printDebugInfo</referencedby>
+        <referencedby refid="classpann_1_1Net_15da746a5bb40bceb85992f5a77d393e7" compoundref="Net_8cpp" startline="267" endline="280">run</referencedby>
+        <referencedby refid="classpann_1_1Net_16c08684796771a53e67fbe93c51e188a" compoundref="Net_8h" startline="222" endline="299">save</referencedby>
+        <referencedby refid="classpann_1_1Net_1abb4547b6d16ac70f4470ed71357be6b" compoundref="Net_8cpp" startline="37" endline="51">setThreadCount</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classpann_1_1Net_1dbaf91489044bf1f9ce25436f6b35c09" prot="private" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned pann::Net::lastNeuronId</definition>
+        <argsstring></argsstring>
+        <name>lastNeuronId</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Net.h" line="130" bodyfile="/home/booble/pann/trunk/src/Core/Net.h" bodystart="130" bodyend="-1"/>
+        <referencedby refid="classpann_1_1Net_1875e333ddaaaf4d8cc332c4ff816c584" compoundref="Net_8cpp" startline="54" endline="64">addNeuron</referencedby>
+        <referencedby refid="classpann_1_1Net_1a54ff5e1cbb26acaab7a2035f6719169" compoundref="Net_8h" startline="302" endline="391">load</referencedby>
+        <referencedby refid="classpann_1_1Net_148622ed4f082f1e13dc19a592ae99acc" compoundref="Net_8cpp" startline="14" endline="22">Net</referencedby>
+        <referencedby refid="classpann_1_1Net_1ec0809d7cb83ea29f7f36492609a2de9" compoundref="Net_8h" startline="191" endline="216">printDebugInfo</referencedby>
+        <referencedby refid="classpann_1_1Net_16c08684796771a53e67fbe93c51e188a" compoundref="Net_8h" startline="222" endline="299">save</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classpann_1_1Net_1076f5b0fd44096de50541c16fe5b97b3" prot="private" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned pann::Net::lastWeightId</definition>
+        <argsstring></argsstring>
+        <name>lastWeightId</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Net.h" line="131" bodyfile="/home/booble/pann/trunk/src/Core/Net.h" bodystart="131" bodyend="-1"/>
+        <referencedby refid="classpann_1_1Net_15f793f0f9a0462093637d8d7b5fe7b0f" compoundref="Net_8cpp" startline="144" endline="159">addConnection</referencedby>
+        <referencedby refid="classpann_1_1Net_1a54ff5e1cbb26acaab7a2035f6719169" compoundref="Net_8h" startline="302" endline="391">load</referencedby>
+        <referencedby refid="classpann_1_1Net_148622ed4f082f1e13dc19a592ae99acc" compoundref="Net_8cpp" startline="14" endline="22">Net</referencedby>
+        <referencedby refid="classpann_1_1Net_1ec0809d7cb83ea29f7f36492609a2de9" compoundref="Net_8h" startline="191" endline="216">printDebugInfo</referencedby>
+        <referencedby refid="classpann_1_1Net_16c08684796771a53e67fbe93c51e188a" compoundref="Net_8h" startline="222" endline="299">save</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classpann_1_1Net_1cb42333b0f655e2422a959045107ea60" prot="private" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned pann::Net::biasId</definition>
+        <argsstring></argsstring>
+        <name>biasId</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Net.h" line="132" bodyfile="/home/booble/pann/trunk/src/Core/Net.h" bodystart="132" bodyend="-1"/>
+        <referencedby refid="classpann_1_1Net_1179bae99437bcfc80e3477a9c01e0d62" compoundref="Net_8cpp" startline="301" endline="304">getBiasId</referencedby>
+        <referencedby refid="classpann_1_1Net_1a54ff5e1cbb26acaab7a2035f6719169" compoundref="Net_8h" startline="302" endline="391">load</referencedby>
+        <referencedby refid="classpann_1_1Net_148622ed4f082f1e13dc19a592ae99acc" compoundref="Net_8cpp" startline="14" endline="22">Net</referencedby>
+        <referencedby refid="classpann_1_1Net_14293d1faa37e9e2bb73b0ebdaf4a6a9e" compoundref="Net_8cpp" startline="340" endline="444">regenerateCache</referencedby>
+        <referencedby refid="classpann_1_1Net_16c08684796771a53e67fbe93c51e188a" compoundref="Net_8h" startline="222" endline="299">save</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classpann_1_1Net_127693544fbd9f6d5f74b57e9bbdc9a1d" prot="private" static="no" mutable="no">
+        <type>std::map&lt; unsigned, <ref refid="classpann_1_1Neuron" kindref="compound">Neuron</ref> &gt;</type>
+        <definition>std::map&lt;unsigned, Neuron&gt; pann::Net::neurons</definition>
+        <argsstring></argsstring>
+        <name>neurons</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Net.h" line="133" bodyfile="/home/booble/pann/trunk/src/Core/Net.h" bodystart="133" bodyend="-1"/>
+        <referencedby refid="classpann_1_1Net_1875e333ddaaaf4d8cc332c4ff816c584" compoundref="Net_8cpp" startline="54" endline="64">addNeuron</referencedby>
+        <referencedby refid="classpann_1_1Net_1a8b5f8bc26fca890ec606e9f5d6d5943" compoundref="Net_8cpp" startline="76" endline="102">delNeuron</referencedby>
+        <referencedby refid="classpann_1_1Net_1d54642461446c1f5aba34af3c01c290c" compoundref="Net_8cpp" startline="307" endline="314">findNeuron</referencedby>
+        <referencedby refid="classpann_1_1Net_120552ffce8f342bb6cf064180780a788" compoundref="Net_8cpp" startline="289" endline="292">getNeurons</referencedby>
+        <referencedby refid="classpann_1_1Net_1a54ff5e1cbb26acaab7a2035f6719169" compoundref="Net_8h" startline="302" endline="391">load</referencedby>
+        <referencedby refid="classpann_1_1Net_1ec0809d7cb83ea29f7f36492609a2de9" compoundref="Net_8h" startline="191" endline="216">printDebugInfo</referencedby>
+        <referencedby refid="classpann_1_1Net_16c08684796771a53e67fbe93c51e188a" compoundref="Net_8h" startline="222" endline="299">save</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classpann_1_1Net_112f8e99bf960304ccaee098263de6fa8" prot="private" static="no" mutable="no">
+        <type>std::map&lt; unsigned, <ref refid="classpann_1_1Weight" kindref="compound">Weight</ref> &gt;</type>
+        <definition>std::map&lt;unsigned, Weight&gt; pann::Net::weights</definition>
+        <argsstring></argsstring>
+        <name>weights</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Net.h" line="134" bodyfile="/home/booble/pann/trunk/src/Core/Net.h" bodystart="134" bodyend="-1"/>
+        <referencedby refid="classpann_1_1Net_15f793f0f9a0462093637d8d7b5fe7b0f" compoundref="Net_8cpp" startline="144" endline="159">addConnection</referencedby>
+        <referencedby refid="classpann_1_1Net_185d99fb2b386c3f284c4dfa2473cebcb" compoundref="Net_8cpp" startline="162" endline="196">delConnection</referencedby>
+        <referencedby refid="classpann_1_1Net_1f0276c2c5d68a2c9f7d7dfde5e1aca30" compoundref="Net_8cpp" startline="295" endline="298">getWeights</referencedby>
+        <referencedby refid="classpann_1_1Net_1a54ff5e1cbb26acaab7a2035f6719169" compoundref="Net_8h" startline="302" endline="391">load</referencedby>
+        <referencedby refid="classpann_1_1Net_1ec0809d7cb83ea29f7f36492609a2de9" compoundref="Net_8h" startline="191" endline="216">printDebugInfo</referencedby>
+        <referencedby refid="classpann_1_1Net_16c08684796771a53e67fbe93c51e188a" compoundref="Net_8h" startline="222" endline="299">save</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classpann_1_1Net_1678cf8fa54d0a7b56de7864ea2925ce7" prot="private" static="no" mutable="no">
+        <type>std::list&lt; <ref refid="namespacepann_15b285d6cead198add4f14b5b5a0b97c1" kindref="member">NeuronIter</ref> &gt;</type>
+        <definition>std::list&lt;NeuronIter&gt; pann::Net::inputNeurons</definition>
+        <argsstring></argsstring>
+        <name>inputNeurons</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Net.h" line="135" bodyfile="/home/booble/pann/trunk/src/Core/Net.h" bodystart="135" bodyend="-1"/>
+        <referencedby refid="classpann_1_1Net_1710ba8f42654603324432e38a43aecb1" compoundref="Net_8cpp" startline="211" endline="219">getInputMap</referencedby>
+        <referencedby refid="classpann_1_1Net_171c72a853f6acb84389ad4e507c23f8c" compoundref="Net_8cpp" startline="127" endline="141">getNeuronRole</referencedby>
+        <referencedby refid="classpann_1_1Net_1a54ff5e1cbb26acaab7a2035f6719169" compoundref="Net_8h" startline="302" endline="391">load</referencedby>
+        <referencedby refid="classpann_1_1Net_1ec0809d7cb83ea29f7f36492609a2de9" compoundref="Net_8h" startline="191" endline="216">printDebugInfo</referencedby>
+        <referencedby refid="classpann_1_1Net_14293d1faa37e9e2bb73b0ebdaf4a6a9e" compoundref="Net_8cpp" startline="340" endline="444">regenerateCache</referencedby>
+        <referencedby refid="classpann_1_1Net_16c08684796771a53e67fbe93c51e188a" compoundref="Net_8h" startline="222" endline="299">save</referencedby>
+        <referencedby refid="classpann_1_1Net_18776411bdc6658b5d9c4febbae7a2b27" compoundref="Net_8cpp" startline="105" endline="124">setNeuronRole</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classpann_1_1Net_1fb0c8aa932da540a9e1d907508cc00ff" prot="private" static="no" mutable="yes">
+        <type><ref refid="classpann_1_1NetCache" kindref="compound">NetCache</ref></type>
+        <definition>NetCache pann::Net::cache</definition>
+        <argsstring></argsstring>
+        <name>cache</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Net.h" line="136" bodyfile="/home/booble/pann/trunk/src/Core/Net.h" bodystart="136" bodyend="-1"/>
+        <referencedby refid="classpann_1_1Net_15f793f0f9a0462093637d8d7b5fe7b0f" compoundref="Net_8cpp" startline="144" endline="159">addConnection</referencedby>
+        <referencedby refid="classpann_1_1Net_1875e333ddaaaf4d8cc332c4ff816c584" compoundref="Net_8cpp" startline="54" endline="64">addNeuron</referencedby>
+        <referencedby refid="classpann_1_1Net_185d99fb2b386c3f284c4dfa2473cebcb" compoundref="Net_8cpp" startline="162" endline="196">delConnection</referencedby>
+        <referencedby refid="classpann_1_1Net_1a8b5f8bc26fca890ec606e9f5d6d5943" compoundref="Net_8cpp" startline="76" endline="102">delNeuron</referencedby>
+        <referencedby refid="classpann_1_1Net_1bf7a3f67a2d7ced86b8589d69477ed96" compoundref="Net_8cpp" startline="283" endline="286">getCache</referencedby>
+        <referencedby refid="classpann_1_1Net_181e50f71a229b3f94c4908b9ebb31970" compoundref="Net_8cpp" startline="238" endline="253">getOutput</referencedby>
+        <referencedby refid="classpann_1_1Net_1a54ff5e1cbb26acaab7a2035f6719169" compoundref="Net_8h" startline="302" endline="391">load</referencedby>
+        <referencedby refid="classpann_1_1Net_1ec0809d7cb83ea29f7f36492609a2de9" compoundref="Net_8h" startline="191" endline="216">printDebugInfo</referencedby>
+        <referencedby refid="classpann_1_1Net_14293d1faa37e9e2bb73b0ebdaf4a6a9e" compoundref="Net_8cpp" startline="340" endline="444">regenerateCache</referencedby>
+        <referencedby refid="classpann_1_1Net_15da746a5bb40bceb85992f5a77d393e7" compoundref="Net_8cpp" startline="267" endline="280">run</referencedby>
+        <referencedby refid="classpann_1_1Net_16c08684796771a53e67fbe93c51e188a" compoundref="Net_8h" startline="222" endline="299">save</referencedby>
+        <referencedby refid="classpann_1_1Net_18776411bdc6658b5d9c4febbae7a2b27" compoundref="Net_8cpp" startline="105" endline="124">setNeuronRole</referencedby>
+        <referencedby refid="classpann_1_1Net_1abb4547b6d16ac70f4470ed71357be6b" compoundref="Net_8cpp" startline="37" endline="51">setThreadCount</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classpann_1_1Net_1c98d07dd8f7b70e16ccb9a01abf56b9c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class boost::serialization::access</definition>
+        <argsstring></argsstring>
+        <name>boost::serialization::access</name>
+        <reimplements refid="classpann_1_1Object_1c98d07dd8f7b70e16ccb9a01abf56b9c">boost::serialization::access</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Net.h" line="220" bodyfile="/home/booble/pann/trunk/src/Core/Net.h" bodystart="216" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classpann_1_1Net_1fc3d67838fb89d577abd01b9badbb1dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>pann::Net::Net</definition>
+        <argsstring>()</argsstring>
+        <name>Net</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Default constructor. Creates empty net and sets threadCount to hardware specific number (depends on available processors) Although creates bias neuron </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Net.h" line="31" bodyfile="/home/booble/pann/trunk/src/Core/Net.cpp" bodystart="9" bodyend="12"/>
+      </memberdef>
+      <memberdef kind="function" id="classpann_1_1Net_148622ed4f082f1e13dc19a592ae99acc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>pann::Net::Net</definition>
+        <argsstring>(unsigned _threads)</argsstring>
+        <name>Net</name>
+        <param>
+          <type>unsigned</type>
+          <declname>_threads</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Same as above, but threadCount is set to <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>_threads</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Net.h" line="36" bodyfile="/home/booble/pann/trunk/src/Core/Net.cpp" bodystart="14" bodyend="22"/>
+        <references refid="classpann_1_1Net_15f793f0f9a0462093637d8d7b5fe7b0f" compoundref="Net_8cpp" startline="144" endline="159">addConnection</references>
+        <references refid="classpann_1_1Net_1875e333ddaaaf4d8cc332c4ff816c584" compoundref="Net_8cpp" startline="54" endline="64">addNeuron</references>
+        <references refid="classpann_1_1Net_1cb42333b0f655e2422a959045107ea60" compoundref="Net_8h" startline="132">biasId</references>
+        <references refid="classpann_1_1ActivationFunction_1_1Linear_187335208832a774ba10892b4cfe97d09" compoundref="ActivationFunction_8h" startline="57" endline="63">pann::ActivationFunction::Linear::Instance</references>
+        <references refid="classpann_1_1Net_1dbaf91489044bf1f9ce25436f6b35c09" compoundref="Net_8h" startline="130">lastNeuronId</references>
+        <references refid="classpann_1_1Net_1076f5b0fd44096de50541c16fe5b97b3" compoundref="Net_8h" startline="131">lastWeightId</references>
+        <references refid="classpann_1_1Net_11d95cc042ab3f71840416d7aebdb1def" compoundref="Net_8h" startline="125">learningHint</references>
+        <references refid="classpann_1_1Net_1abb4547b6d16ac70f4470ed71357be6b" compoundref="Net_8cpp" startline="37" endline="51">setThreadCount</references>
+      </memberdef>
+      <memberdef kind="function" id="classpann_1_1Net_1ede55beb023c08142ca4b5974889d431" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>pann::Net::~Net</definition>
+        <argsstring>()</argsstring>
+        <name>~Net</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Net.h" line="37" bodyfile="/home/booble/pann/trunk/src/Core/Net.cpp" bodystart="24" bodyend="28"/>
+        <references refid="classpann_1_1Net_11d95cc042ab3f71840416d7aebdb1def" compoundref="Net_8h" startline="125">learningHint</references>
+      </memberdef>
+      <memberdef kind="function" id="classpann_1_1Net_17367ddcfe022477e2e99aa2115580395" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned pann::Net::getThreadCount</definition>
+        <argsstring>() const </argsstring>
+        <name>getThreadCount</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Manipulate threadCount </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Net.h" line="42" bodyfile="/home/booble/pann/trunk/src/Core/Net.cpp" bodystart="31" bodyend="34"/>
+        <references refid="classpann_1_1Net_12d41b163ab3f2171150fe8486dae44c9" compoundref="Net_8h" startline="129">threadCount</references>
+        <referencedby refid="classGLWidget_1f994f59226294ff949688422eb5cc3d3" compoundref="glwidget_8cpp" startline="157" endline="184">GLWidget::setInfoNet</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classpann_1_1Net_1abb4547b6d16ac70f4470ed71357be6b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void pann::Net::setThreadCount</definition>
+        <argsstring>(unsigned _threads)</argsstring>
+        <name>setThreadCount</name>
+        <param>
+          <type>unsigned</type>
+          <declname>_threads</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Net.h" line="43" bodyfile="/home/booble/pann/trunk/src/Core/Net.cpp" bodystart="37" bodyend="51"/>
+        <references refid="classpann_1_1Net_1fb0c8aa932da540a9e1d907508cc00ff" compoundref="Net_8h" startline="136">cache</references>
+        <references refid="classpann_1_1Net_12d41b163ab3f2171150fe8486dae44c9" compoundref="Net_8h" startline="129">threadCount</references>
+        <references refid="classpann_1_1Cache_12f52dab8b0db5569fc22847ff332345a" compoundref="Cache_8h" startline="28" endline="31">pann::Cache::touch</references>
+        <referencedby refid="TestNet_8cpp_1e66f6b31b5ad750f1fe042a706a4e3d4" compoundref="TestNet_8cpp" startline="17" endline="92">main</referencedby>
+        <referencedby refid="classpann_1_1Net_148622ed4f082f1e13dc19a592ae99acc" compoundref="Net_8cpp" startline="14" endline="22">Net</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classpann_1_1Net_1875e333ddaaaf4d8cc332c4ff816c584" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned pann::Net::addNeuron</definition>
+        <argsstring>(ActivationFunction::Base *_activationFunction)</argsstring>
+        <name>addNeuron</name>
+        <param>
+          <type><ref refid="classpann_1_1ActivationFunction_1_1Base" kindref="compound">ActivationFunction::Base</ref> *</type>
+          <declname>_activationFunction</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Manipulate neurons in network Remark: addInputNeuron adds neuron with <ref refid="classpann_1_1ActivationFunction_1_1Linear" kindref="compound">ActivationFunction::Linear</ref> </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Net.h" line="50" bodyfile="/home/booble/pann/trunk/src/Core/Net.cpp" bodystart="54" bodyend="64"/>
+        <references refid="classpann_1_1Net_1fb0c8aa932da540a9e1d907508cc00ff" compoundref="Net_8h" startline="136">cache</references>
+        <references refid="classpann_1_1Net_1dbaf91489044bf1f9ce25436f6b35c09" compoundref="Net_8h" startline="130">lastNeuronId</references>
+        <references refid="classpann_1_1Net_127693544fbd9f6d5f74b57e9bbdc9a1d" compoundref="Net_8h" startline="133">neurons</references>
+        <references refid="classpann_1_1Cache_12f52dab8b0db5569fc22847ff332345a" compoundref="Cache_8h" startline="28" endline="31">pann::Cache::touch</references>
+        <referencedby refid="classpann_1_1Net_110f0471ee473197380146330d2ee0977" compoundref="Net_8cpp" startline="67" endline="73">addInputNeuron</referencedby>
+        <referencedby refid="namespacepann_1_1NetworkModel_188223ff4c4a04103fcaefa1d899a2b42" compoundref="MultilayerPerceptron_8cpp" startline="15" endline="59">pann::NetworkModel::MultilayerPerceptron</referencedby>
+        <referencedby refid="classpann_1_1Net_148622ed4f082f1e13dc19a592ae99acc" compoundref="Net_8cpp" startline="14" endline="22">Net</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classpann_1_1Net_110f0471ee473197380146330d2ee0977" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned pann::Net::addInputNeuron</definition>
+        <argsstring>()</argsstring>
+        <name>addInputNeuron</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Net.h" line="51" bodyfile="/home/booble/pann/trunk/src/Core/Net.cpp" bodystart="67" bodyend="73"/>
+        <references refid="classpann_1_1Net_1875e333ddaaaf4d8cc332c4ff816c584" compoundref="Net_8cpp" startline="54" endline="64">addNeuron</references>
+        <references refid="classpann_1_1Net_12af39a29837c19f66e828589210c477b49a06b112c565efc5f96e41f52d8deab" compoundref="Net_8h" startline="21">InputNeuron</references>
+        <references refid="classpann_1_1ActivationFunction_1_1Linear_187335208832a774ba10892b4cfe97d09" compoundref="ActivationFunction_8h" startline="57" endline="63">pann::ActivationFunction::Linear::Instance</references>
+        <references refid="classpann_1_1Net_18776411bdc6658b5d9c4febbae7a2b27" compoundref="Net_8cpp" startline="105" endline="124">setNeuronRole</references>
+        <referencedby refid="namespacepann_1_1NetworkModel_188223ff4c4a04103fcaefa1d899a2b42" compoundref="MultilayerPerceptron_8cpp" startline="15" endline="59">pann::NetworkModel::MultilayerPerceptron</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classpann_1_1Net_1a8b5f8bc26fca890ec606e9f5d6d5943" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void pann::Net::delNeuron</definition>
+        <argsstring>(unsigned _neuronId)</argsstring>
+        <name>delNeuron</name>
+        <param>
+          <type>unsigned</type>
+          <declname>_neuronId</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Net.h" line="52" bodyfile="/home/booble/pann/trunk/src/Core/Net.cpp" bodystart="76" bodyend="102"/>
+        <references refid="classpann_1_1Net_1fb0c8aa932da540a9e1d907508cc00ff" compoundref="Net_8h" startline="136">cache</references>
+        <references refid="classpann_1_1Net_185d99fb2b386c3f284c4dfa2473cebcb" compoundref="Net_8cpp" startline="162" endline="196">delConnection</references>
+        <references refid="classpann_1_1Net_1d54642461446c1f5aba34af3c01c290c" compoundref="Net_8cpp" startline="307" endline="314">findNeuron</references>
+        <references refid="classpann_1_1Link_1843c5a79ffd161b67e1770f65eabf0556b810850c72ab26c68965db2424df30c" compoundref="Link_8h" startline="22">pann::Link::in</references>
+        <references refid="classpann_1_1Net_127693544fbd9f6d5f74b57e9bbdc9a1d" compoundref="Net_8h" startline="133">neurons</references>
+        <references refid="classpann_1_1Cache_12f52dab8b0db5569fc22847ff332345a" compoundref="Cache_8h" startline="28" endline="31">pann::Cache::touch</references>
+      </memberdef>
+      <memberdef kind="function" id="classpann_1_1Net_18776411bdc6658b5d9c4febbae7a2b27" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void pann::Net::setNeuronRole</definition>
+        <argsstring>(unsigned _neuronId, NeuronRole _newRole)</argsstring>
+        <name>setNeuronRole</name>
+        <param>
+          <type>unsigned</type>
+          <declname>_neuronId</declname>
+        </param>
+        <param>
+          <type><ref refid="classpann_1_1Net_12af39a29837c19f66e828589210c477b" kindref="member">NeuronRole</ref></type>
+          <declname>_newRole</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Can turn work neuron to be input and vice versa TODO: get rid of this functions, set threadCount as parametr to <ref refid="classpann_1_1Net_15da746a5bb40bceb85992f5a77d393e7" kindref="member">run()</ref> TODO: rewrite cache regeneration procedure to not rely on actual threadCount </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Net.h" line="59" bodyfile="/home/booble/pann/trunk/src/Core/Net.cpp" bodystart="105" bodyend="124"/>
+        <references refid="classpann_1_1Net_1fb0c8aa932da540a9e1d907508cc00ff" compoundref="Net_8h" startline="136">cache</references>
+        <references refid="classpann_1_1Net_1d54642461446c1f5aba34af3c01c290c" compoundref="Net_8cpp" startline="307" endline="314">findNeuron</references>
+        <references refid="classpann_1_1Net_12af39a29837c19f66e828589210c477b49a06b112c565efc5f96e41f52d8deab" compoundref="Net_8h" startline="21">InputNeuron</references>
+        <references refid="classpann_1_1Net_1678cf8fa54d0a7b56de7864ea2925ce7" compoundref="Net_8h" startline="135">inputNeurons</references>
+        <references refid="classpann_1_1Cache_12f52dab8b0db5569fc22847ff332345a" compoundref="Cache_8h" startline="28" endline="31">pann::Cache::touch</references>
+        <references refid="classpann_1_1Net_12af39a29837c19f66e828589210c477b8e605a7ac4e3dab20e7e4707188fa4ad" compoundref="Net_8h" startline="21">WorkNeuron</references>
+        <referencedby refid="classpann_1_1Net_110f0471ee473197380146330d2ee0977" compoundref="Net_8cpp" startline="67" endline="73">addInputNeuron</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classpann_1_1Net_171c72a853f6acb84389ad4e507c23f8c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classpann_1_1Net_12af39a29837c19f66e828589210c477b" kindref="member">NeuronRole</ref></type>
+        <definition>Net::NeuronRole pann::Net::getNeuronRole</definition>
+        <argsstring>(unsigned _neuronId) const </argsstring>
+        <name>getNeuronRole</name>
+        <param>
+          <type>unsigned</type>
+          <declname>_neuronId</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Net.h" line="60" bodyfile="/home/booble/pann/trunk/src/Core/Net.cpp" bodystart="127" bodyend="141"/>
+        <references refid="classpann_1_1Net_1d54642461446c1f5aba34af3c01c290c" compoundref="Net_8cpp" startline="307" endline="314">findNeuron</references>
+        <references refid="classpann_1_1Net_1678cf8fa54d0a7b56de7864ea2925ce7" compoundref="Net_8h" startline="135">inputNeurons</references>
+        <referencedby refid="classGLWidget_161ec77b4004fb9516acb9869566f9095" compoundref="glwidget_8cpp" startline="27" endline="87">GLWidget::calcCoords</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classpann_1_1Net_15f793f0f9a0462093637d8d7b5fe7b0f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void pann::Net::addConnection</definition>
+        <argsstring>(unsigned _from, unsigned _to, Float _weightValue=1)</argsstring>
+        <name>addConnection</name>
+        <param>
+          <type>unsigned</type>
+          <declname>_from</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>_to</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacepann_14509ba95a02d59e0a1cd5127e1c55988" kindref="member">Float</ref></type>
+          <declname>_weightValue</declname>
+          <defval>1</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Manage connections between neurons TODO: add shared connections for convolution networks </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Net.h" line="66" bodyfile="/home/booble/pann/trunk/src/Core/Net.cpp" bodystart="144" bodyend="159"/>
+        <references refid="classpann_1_1Net_1fb0c8aa932da540a9e1d907508cc00ff" compoundref="Net_8h" startline="136">cache</references>
+        <references refid="classpann_1_1Net_1d54642461446c1f5aba34af3c01c290c" compoundref="Net_8cpp" startline="307" endline="314">findNeuron</references>
+        <references refid="classpann_1_1Link_1843c5a79ffd161b67e1770f65eabf0556b810850c72ab26c68965db2424df30c" compoundref="Link_8h" startline="22">pann::Link::in</references>
+        <references refid="classpann_1_1Net_1076f5b0fd44096de50541c16fe5b97b3" compoundref="Net_8h" startline="131">lastWeightId</references>
+        <references refid="classpann_1_1Link_1843c5a79ffd161b67e1770f65eabf0550735525ef5d9a47b94c4597e7c27e522" compoundref="Link_8h" startline="22">pann::Link::out</references>
+        <references refid="classpann_1_1Cache_12f52dab8b0db5569fc22847ff332345a" compoundref="Cache_8h" startline="28" endline="31">pann::Cache::touch</references>
+        <references refid="classpann_1_1Net_112f8e99bf960304ccaee098263de6fa8" compoundref="Net_8h" startline="134">weights</references>
+        <referencedby refid="namespacepann_1_1NetworkModel_188223ff4c4a04103fcaefa1d899a2b42" compoundref="MultilayerPerceptron_8cpp" startline="15" endline="59">pann::NetworkModel::MultilayerPerceptron</referencedby>
+        <referencedby refid="classpann_1_1Net_148622ed4f082f1e13dc19a592ae99acc" compoundref="Net_8cpp" startline="14" endline="22">Net</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classpann_1_1Net_185d99fb2b386c3f284c4dfa2473cebcb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void pann::Net::delConnection</definition>
+        <argsstring>(unsigned _from, unsigned _to)</argsstring>
+        <name>delConnection</name>
+        <param>
+          <type>unsigned</type>
+          <declname>_from</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>_to</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Net.h" line="67" bodyfile="/home/booble/pann/trunk/src/Core/Net.cpp" bodystart="162" bodyend="196"/>
+        <references refid="classpann_1_1Net_1fb0c8aa932da540a9e1d907508cc00ff" compoundref="Net_8h" startline="136">cache</references>
+        <references refid="classpann_1_1Net_1d54642461446c1f5aba34af3c01c290c" compoundref="Net_8cpp" startline="307" endline="314">findNeuron</references>
+        <references refid="classpann_1_1Link_1843c5a79ffd161b67e1770f65eabf0556b810850c72ab26c68965db2424df30c" compoundref="Link_8h" startline="22">pann::Link::in</references>
+        <references refid="classpann_1_1Link_1843c5a79ffd161b67e1770f65eabf0550735525ef5d9a47b94c4597e7c27e522" compoundref="Link_8h" startline="22">pann::Link::out</references>
+        <references refid="classpann_1_1Cache_12f52dab8b0db5569fc22847ff332345a" compoundref="Cache_8h" startline="28" endline="31">pann::Cache::touch</references>
+        <references refid="classpann_1_1Net_112f8e99bf960304ccaee098263de6fa8" compoundref="Net_8h" startline="134">weights</references>
+        <referencedby refid="classpann_1_1Net_1a8b5f8bc26fca890ec606e9f5d6d5943" compoundref="Net_8cpp" startline="76" endline="102">delNeuron</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classpann_1_1Net_160ede07661fe666b8923c50da10e1cb2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void pann::Net::setNeuronOwner</definition>
+        <argsstring>(unsigned _neuron, unsigned _owner)</argsstring>
+        <name>setNeuronOwner</name>
+        <param>
+          <type>unsigned</type>
+          <declname>_neuron</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>_owner</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Manage neuron owner thread It is usually much higher then threadCount </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Net.h" line="73" bodyfile="/home/booble/pann/trunk/src/Core/Net.cpp" bodystart="199" bodyend="202"/>
+        <references refid="classpann_1_1Net_1d54642461446c1f5aba34af3c01c290c" compoundref="Net_8cpp" startline="307" endline="314">findNeuron</references>
+        <referencedby refid="namespacepann_1_1NetworkModel_188223ff4c4a04103fcaefa1d899a2b42" compoundref="MultilayerPerceptron_8cpp" startline="15" endline="59">pann::NetworkModel::MultilayerPerceptron</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classpann_1_1Net_132149f53c6ea0699bb83f3ab84a5556a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned pann::Net::getNeuronOwner</definition>
+        <argsstring>(unsigned _neuron) const </argsstring>
+        <name>getNeuronOwner</name>
+        <param>
+          <type>unsigned</type>
+          <declname>_neuron</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Net.h" line="74" bodyfile="/home/booble/pann/trunk/src/Core/Net.cpp" bodystart="205" bodyend="208"/>
+        <references refid="classpann_1_1Net_1d54642461446c1f5aba34af3c01c290c" compoundref="Net_8cpp" startline="307" endline="314">findNeuron</references>
+      </memberdef>
+      <memberdef kind="function" id="classpann_1_1Net_1710ba8f42654603324432e38a43aecb1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; unsigned &gt;</type>
+        <definition>std::vector&lt; unsigned &gt; pann::Net::getInputMap</definition>
+        <argsstring>() const </argsstring>
+        <name>getInputMap</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Return IDs of input neurons (use it in case you don&apos;t &quot;remember&quot; what neurons are input or their order) </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Net.h" line="80" bodyfile="/home/booble/pann/trunk/src/Core/Net.cpp" bodystart="211" bodyend="219"/>
+        <references refid="classpann_1_1Net_1678cf8fa54d0a7b56de7864ea2925ce7" compoundref="Net_8h" startline="135">inputNeurons</references>
+      </memberdef>
+      <memberdef kind="function" id="classpann_1_1Net_107e83643d8b5238cf322ebfd635cedda" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void pann::Net::setInput</definition>
+        <argsstring>(const std::valarray&lt; Float &gt; &amp;_input)</argsstring>
+        <name>setInput</name>
+        <param>
+          <type>const std::valarray&lt; <ref refid="namespacepann_14509ba95a02d59e0a1cd5127e1c55988" kindref="member">Float</ref> &gt; &amp;</type>
+          <declname>_input</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Add values to input neurons receptive fields </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Net.h" line="85"/>
+        <referencedby refid="TestNet_8cpp_1e66f6b31b5ad750f1fe042a706a4e3d4" compoundref="TestNet_8cpp" startline="17" endline="92">main</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classpann_1_1Net_181e50f71a229b3f94c4908b9ebb31970" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::map&lt; unsigned, <ref refid="namespacepann_14509ba95a02d59e0a1cd5127e1c55988" kindref="member">Float</ref> &gt;</type>
+        <definition>map&lt; unsigned, Float &gt; pann::Net::getOutput</definition>
+        <argsstring>() const </argsstring>
+        <name>getOutput</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns pairs&lt;input_neuron_id, it&apos;s output&gt; (only for neurons in last cache layer) </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Net.h" line="91" bodyfile="/home/booble/pann/trunk/src/Core/Net.cpp" bodystart="238" bodyend="253"/>
+        <references refid="classpann_1_1Net_1fb0c8aa932da540a9e1d907508cc00ff" compoundref="Net_8h" startline="136">cache</references>
+        <references refid="classpann_1_1NetCache_1dd41e18c50e038ff9b9cbdf249913cec" compoundref="Cache_8h" startline="61">pann::NetCache::data</references>
+        <references refid="classpann_1_1Cache_1d3b297e95711bf2b4e57a6437636bf7e" compoundref="Cache_8h" startline="38" endline="41">pann::Cache::isOk</references>
+        <references refid="classpann_1_1Net_14293d1faa37e9e2bb73b0ebdaf4a6a9e" compoundref="Net_8cpp" startline="340" endline="444">regenerateCache</references>
+        <referencedby refid="TestNet_8cpp_1e66f6b31b5ad750f1fe042a706a4e3d4" compoundref="TestNet_8cpp" startline="17" endline="92">main</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classpann_1_1Net_1bb24669b9fb9fecb3b5be29ce82a081a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void pann::Net::getOutput</definition>
+        <argsstring>(std::valarray&lt; Float &gt; &amp;_output) const </argsstring>
+        <name>getOutput</name>
+        <param>
+          <type>std::valarray&lt; <ref refid="namespacepann_14509ba95a02d59e0a1cd5127e1c55988" kindref="member">Float</ref> &gt; &amp;</type>
+          <declname>_output</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Assign neurons outputs to specified by <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>_output</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>valarray (it is slower then above version, but more useful) </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Net.h" line="97"/>
+      </memberdef>
+      <memberdef kind="function" id="classpann_1_1Net_15da746a5bb40bceb85992f5a77d393e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void pann::Net::run</definition>
+        <argsstring>(Runner *_runner)</argsstring>
+        <name>run</name>
+        <param>
+          <type><ref refid="classpann_1_1Runner" kindref="compound">Runner</ref> *</type>
+          <declname>_runner</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Apply <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>_runner</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classpann_1_1Runner" kindref="compound">Runner</ref> to each neuron, layer by layer Note: layers are computed automaticaly and stored in cache See <ref refid="classpann_1_1Net_14293d1faa37e9e2bb73b0ebdaf4a6a9e" kindref="member">regenerateCache()</ref> implementation for more details </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Net.h" line="105" bodyfile="/home/booble/pann/trunk/src/Core/Net.cpp" bodystart="267" bodyend="280"/>
+        <references refid="classpann_1_1Net_1fb0c8aa932da540a9e1d907508cc00ff" compoundref="Net_8h" startline="136">cache</references>
+        <references refid="classpann_1_1Cache_1d3b297e95711bf2b4e57a6437636bf7e" compoundref="Cache_8h" startline="38" endline="41">pann::Cache::isOk</references>
+        <references refid="classpann_1_1Net_14293d1faa37e9e2bb73b0ebdaf4a6a9e" compoundref="Net_8cpp" startline="340" endline="444">regenerateCache</references>
+        <references refid="classpann_1_1Net_17dc20310a87f924efe4c30c746b990bd" compoundref="Net_8h" startline="160" endline="187">threadBase</references>
+        <references refid="classpann_1_1Net_12d41b163ab3f2171150fe8486dae44c9" compoundref="Net_8h" startline="129">threadCount</references>
+        <referencedby refid="TestNet_8cpp_1e66f6b31b5ad750f1fe042a706a4e3d4" compoundref="TestNet_8cpp" startline="17" endline="92">main</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classpann_1_1Net_1bf7a3f67a2d7ced86b8589d69477ed96" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="classpann_1_1NetCache" kindref="compound">NetCache</ref> &amp;</type>
+        <definition>const NetCache &amp; pann::Net::getCache</definition>
+        <argsstring>() const </argsstring>
+        <name>getCache</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Public interface to private attributes (they are used while training or painting net in pann_viewer) </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Net.h" line="111" bodyfile="/home/booble/pann/trunk/src/Core/Net.cpp" bodystart="283" bodyend="286"/>
+        <references refid="classpann_1_1Net_1fb0c8aa932da540a9e1d907508cc00ff" compoundref="Net_8h" startline="136">cache</references>
+        <referencedby refid="classGLWidget_161ec77b4004fb9516acb9869566f9095" compoundref="glwidget_8cpp" startline="27" endline="87">GLWidget::calcCoords</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classpann_1_1Net_120552ffce8f342bb6cf064180780a788" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::map&lt; unsigned, <ref refid="classpann_1_1Neuron" kindref="compound">Neuron</ref> &gt; &amp;</type>
+        <definition>const map&lt; unsigned, Neuron &gt; &amp; pann::Net::getNeurons</definition>
+        <argsstring>() const </argsstring>
+        <name>getNeurons</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Net.h" line="112" bodyfile="/home/booble/pann/trunk/src/Core/Net.cpp" bodystart="289" bodyend="292"/>
+        <references refid="classpann_1_1Net_127693544fbd9f6d5f74b57e9bbdc9a1d" compoundref="Net_8h" startline="133">neurons</references>
+        <referencedby refid="classGLWidget_1eab29fc071d92db4f5ecdc899d25c1e1" compoundref="glwidget_8cpp" startline="89" endline="138">GLWidget::drawNetModel</referencedby>
+        <referencedby refid="classGLWidget_1f994f59226294ff949688422eb5cc3d3" compoundref="glwidget_8cpp" startline="157" endline="184">GLWidget::setInfoNet</referencedby>
+        <referencedby refid="classGLWidget_19a07d44b5dc052a8652b88454f3cb481" compoundref="glwidget_8cpp" startline="140" endline="155">GLWidget::setInfoNeuron</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classpann_1_1Net_1f0276c2c5d68a2c9f7d7dfde5e1aca30" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::map&lt; unsigned, <ref refid="classpann_1_1Weight" kindref="compound">Weight</ref> &gt; &amp;</type>
+        <definition>const map&lt; unsigned, Weight &gt; &amp; pann::Net::getWeights</definition>
+        <argsstring>() const </argsstring>
+        <name>getWeights</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Net.h" line="113" bodyfile="/home/booble/pann/trunk/src/Core/Net.cpp" bodystart="295" bodyend="298"/>
+        <references refid="classpann_1_1Net_112f8e99bf960304ccaee098263de6fa8" compoundref="Net_8h" startline="134">weights</references>
+        <referencedby refid="classGLWidget_1f994f59226294ff949688422eb5cc3d3" compoundref="glwidget_8cpp" startline="157" endline="184">GLWidget::setInfoNet</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classpann_1_1Net_1179bae99437bcfc80e3477a9c01e0d62" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned pann::Net::getBiasId</definition>
+        <argsstring>() const </argsstring>
+        <name>getBiasId</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get ID of bias neuron Remark: bias neuron is implemented as work neuron, with self-recurrent connection (w=1), placed at first cache layer </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Net.h" line="121" bodyfile="/home/booble/pann/trunk/src/Core/Net.cpp" bodystart="301" bodyend="304"/>
+        <references refid="classpann_1_1Net_1cb42333b0f655e2422a959045107ea60" compoundref="Net_8h" startline="132">biasId</references>
+        <referencedby refid="classGLWidget_1eab29fc071d92db4f5ecdc899d25c1e1" compoundref="glwidget_8cpp" startline="89" endline="138">GLWidget::drawNetModel</referencedby>
+        <referencedby refid="namespacepann_1_1NetworkModel_188223ff4c4a04103fcaefa1d899a2b42" compoundref="MultilayerPerceptron_8cpp" startline="15" endline="59">pann::NetworkModel::MultilayerPerceptron</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classpann_1_1Net_1ec0809d7cb83ea29f7f36492609a2de9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void pann::Net::printDebugInfo</definition>
+        <argsstring>(std::ostringstream &amp;ost) const </argsstring>
+        <name>printDebugInfo</name>
+        <reimplements refid="classpann_1_1Object_1f0039bd3a5cdbb3decfa5e33055e1a45">printDebugInfo</reimplements>
+        <param>
+          <type>std::ostringstream &amp;</type>
+          <declname>ost</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Net.h" line="192" bodyfile="/home/booble/pann/trunk/src/Core/Net.h" bodystart="191" bodyend="216"/>
+        <references refid="classpann_1_1Net_1fb0c8aa932da540a9e1d907508cc00ff" compoundref="Net_8h" startline="136">cache</references>
+        <references refid="classpann_1_1Net_1678cf8fa54d0a7b56de7864ea2925ce7" compoundref="Net_8h" startline="135">inputNeurons</references>
+        <references refid="classpann_1_1Net_1dbaf91489044bf1f9ce25436f6b35c09" compoundref="Net_8h" startline="130">lastNeuronId</references>
+        <references refid="classpann_1_1Net_1076f5b0fd44096de50541c16fe5b97b3" compoundref="Net_8h" startline="131">lastWeightId</references>
+        <references refid="classpann_1_1Net_127693544fbd9f6d5f74b57e9bbdc9a1d" compoundref="Net_8h" startline="133">neurons</references>
+        <references refid="classpann_1_1NetCache_1f776078aecabf7258b807d4d0249241a" compoundref="Cache_8h" startline="73" endline="87">pann::NetCache::printDebugInfo</references>
+        <references refid="classpann_1_1Net_12d41b163ab3f2171150fe8486dae44c9" compoundref="Net_8h" startline="129">threadCount</references>
+        <references refid="classpann_1_1Net_112f8e99bf960304ccaee098263de6fa8" compoundref="Net_8h" startline="134">weights</references>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classpann_1_1Net_1d54642461446c1f5aba34af3c01c290c" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacepann_15b285d6cead198add4f14b5b5a0b97c1" kindref="member">NeuronIter</ref></type>
+        <definition>NeuronIter pann::Net::findNeuron</definition>
+        <argsstring>(unsigned _neuronId)</argsstring>
+        <name>findNeuron</name>
+        <param>
+          <type>unsigned</type>
+          <declname>_neuronId</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns NeuronIterator for corresponding neuron ID </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Net.h" line="143" bodyfile="/home/booble/pann/trunk/src/Core/Net.cpp" bodystart="307" bodyend="314"/>
+        <references refid="classpann_1_1Net_127693544fbd9f6d5f74b57e9bbdc9a1d" compoundref="Net_8h" startline="133">neurons</references>
+        <referencedby refid="classpann_1_1Net_15f793f0f9a0462093637d8d7b5fe7b0f" compoundref="Net_8cpp" startline="144" endline="159">addConnection</referencedby>
+        <referencedby refid="classpann_1_1Net_185d99fb2b386c3f284c4dfa2473cebcb" compoundref="Net_8cpp" startline="162" endline="196">delConnection</referencedby>
+        <referencedby refid="classpann_1_1Net_1a8b5f8bc26fca890ec606e9f5d6d5943" compoundref="Net_8cpp" startline="76" endline="102">delNeuron</referencedby>
+        <referencedby refid="classpann_1_1Net_1cf7cdb61950b1d55729ceb82407b414a" compoundref="Net_8cpp" startline="317" endline="320">findNeuron</referencedby>
+        <referencedby refid="classpann_1_1Net_132149f53c6ea0699bb83f3ab84a5556a" compoundref="Net_8cpp" startline="205" endline="208">getNeuronOwner</referencedby>
+        <referencedby refid="classpann_1_1Net_171c72a853f6acb84389ad4e507c23f8c" compoundref="Net_8cpp" startline="127" endline="141">getNeuronRole</referencedby>
+        <referencedby refid="classpann_1_1Net_14293d1faa37e9e2bb73b0ebdaf4a6a9e" compoundref="Net_8cpp" startline="340" endline="444">regenerateCache</referencedby>
+        <referencedby refid="classpann_1_1Net_160ede07661fe666b8923c50da10e1cb2" compoundref="Net_8cpp" startline="199" endline="202">setNeuronOwner</referencedby>
+        <referencedby refid="classpann_1_1Net_18776411bdc6658b5d9c4febbae7a2b27" compoundref="Net_8cpp" startline="105" endline="124">setNeuronRole</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classpann_1_1Net_1cf7cdb61950b1d55729ceb82407b414a" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacepann_168751290d27789ce6f303cf55ed505ed" kindref="member">ConstNeuronIter</ref></type>
+        <definition>ConstNeuronIter pann::Net::findNeuron</definition>
+        <argsstring>(unsigned _neuronId) const </argsstring>
+        <name>findNeuron</name>
+        <param>
+          <type>unsigned</type>
+          <declname>_neuronId</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Net.h" line="144" bodyfile="/home/booble/pann/trunk/src/Core/Net.cpp" bodystart="317" bodyend="320"/>
+        <references refid="classpann_1_1Net_1d54642461446c1f5aba34af3c01c290c" compoundref="Net_8cpp" startline="307" endline="314">findNeuron</references>
+      </memberdef>
+      <memberdef kind="function" id="classpann_1_1Net_1a2f1b31c8903d98b39035bfac5237f09" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void pann::Net::formatFront</definition>
+        <argsstring>(std::vector&lt; NeuronIter &gt; &amp;_raw) const </argsstring>
+        <name>formatFront</name>
+        <param>
+          <type>std::vector&lt; <ref refid="namespacepann_15b285d6cead198add4f14b5b5a0b97c1" kindref="member">NeuronIter</ref> &gt; &amp;</type>
+          <declname>_raw</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Helper used by <ref refid="classpann_1_1Net_14293d1faa37e9e2bb73b0ebdaf4a6a9e" kindref="member">regenerateCache()</ref> </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Net.h" line="149"/>
+        <referencedby refid="classpann_1_1Net_14293d1faa37e9e2bb73b0ebdaf4a6a9e" compoundref="Net_8cpp" startline="340" endline="444">regenerateCache</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classpann_1_1Net_14293d1faa37e9e2bb73b0ebdaf4a6a9e" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void pann::Net::regenerateCache</definition>
+        <argsstring>() const </argsstring>
+        <name>regenerateCache</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This function updates cache Be extremely careful! </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Net.h" line="155" bodyfile="/home/booble/pann/trunk/src/Core/Net.cpp" bodystart="340" bodyend="444"/>
+        <references refid="classpann_1_1Net_1cb42333b0f655e2422a959045107ea60" compoundref="Net_8h" startline="132">biasId</references>
+        <references refid="classpann_1_1Net_1fb0c8aa932da540a9e1d907508cc00ff" compoundref="Net_8h" startline="136">cache</references>
+        <references refid="classpann_1_1NetCache_1dd41e18c50e038ff9b9cbdf249913cec" compoundref="Cache_8h" startline="61">pann::NetCache::data</references>
+        <references refid="classpann_1_1Net_1d54642461446c1f5aba34af3c01c290c" compoundref="Net_8cpp" startline="307" endline="314">findNeuron</references>
+        <references refid="classpann_1_1Cache_12cb636d0dcacfc734a83e665bd1c6b69" compoundref="Cache_8h" startline="33" endline="36">pann::Cache::fixed</references>
+        <references refid="classpann_1_1NetCache_1cfa966e64695ce3e11a5cd5926e1680c" compoundref="Cache_8h" startline="65" endline="69">pann::NetCache::flush</references>
+        <references refid="classpann_1_1Net_1a2f1b31c8903d98b39035bfac5237f09">formatFront</references>
+        <references refid="classpann_1_1Link_1eab757727bb6ca0cad8edb46500c3897" compoundref="Link_8h" startline="47" endline="47">pann::Link::getDirection</references>
+        <references refid="classpann_1_1Link_1282df22476d1056ecd371a2357f227c8" compoundref="Link_8h" startline="48" endline="48">pann::Link::getLatency</references>
+        <references refid="classpann_1_1Link_118a70d88ffa9fe441820c2d1c9d83579" compoundref="Link_8h" startline="45" endline="45">pann::Link::getToIter</references>
+        <references refid="classpann_1_1Link_1843c5a79ffd161b67e1770f65eabf0556b810850c72ab26c68965db2424df30c" compoundref="Link_8h" startline="22">pann::Link::in</references>
+        <references refid="classpann_1_1Net_1678cf8fa54d0a7b56de7864ea2925ce7" compoundref="Net_8h" startline="135">inputNeurons</references>
+        <referencedby refid="classpann_1_1Net_181e50f71a229b3f94c4908b9ebb31970" compoundref="Net_8cpp" startline="238" endline="253">getOutput</referencedby>
+        <referencedby refid="classpann_1_1Net_15da746a5bb40bceb85992f5a77d393e7" compoundref="Net_8cpp" startline="267" endline="280">run</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classpann_1_1Net_16c08684796771a53e67fbe93c51e188a" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class</type>
+            <declname>Archive</declname>
+            <defname>Archive</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void pann::Net::save</definition>
+        <argsstring>(Archive &amp;ar, const unsigned int version) const </argsstring>
+        <name>save</name>
+        <param>
+          <type>Archive &amp;</type>
+          <declname>ar</declname>
+        </param>
+        <param>
+          <type>const unsigned int</type>
+          <declname>version</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Net.h" line="223" bodyfile="/home/booble/pann/trunk/src/Core/Net.h" bodystart="222" bodyend="299"/>
+        <references refid="classpann_1_1Net_1cb42333b0f655e2422a959045107ea60" compoundref="Net_8h" startline="132">biasId</references>
+        <references refid="classpann_1_1Net_1fb0c8aa932da540a9e1d907508cc00ff" compoundref="Net_8h" startline="136">cache</references>
+        <references refid="classpann_1_1NetCache_1dd41e18c50e038ff9b9cbdf249913cec" compoundref="Cache_8h" startline="61">pann::NetCache::data</references>
+        <references refid="classpann_1_1Link_1eab757727bb6ca0cad8edb46500c3897" compoundref="Link_8h" startline="47" endline="47">pann::Link::getDirection</references>
+        <references refid="classpann_1_1Link_1282df22476d1056ecd371a2357f227c8" compoundref="Link_8h" startline="48" endline="48">pann::Link::getLatency</references>
+        <references refid="classpann_1_1Link_118a70d88ffa9fe441820c2d1c9d83579" compoundref="Link_8h" startline="45" endline="45">pann::Link::getToIter</references>
+        <references refid="classpann_1_1LearningHint_1_1Base_1d45edb03ed5fcfd5fec10bc768859ebf">pann::LearningHint::Base::getTypeId</references>
+        <references refid="classpann_1_1Link_10da0b96aceaf5361b289cded06778d65" compoundref="Link_8h" startline="49" endline="49">pann::Link::getWeightIter</references>
+        <references refid="classpann_1_1Net_1678cf8fa54d0a7b56de7864ea2925ce7" compoundref="Net_8h" startline="135">inputNeurons</references>
+        <references refid="classpann_1_1Net_1dbaf91489044bf1f9ce25436f6b35c09" compoundref="Net_8h" startline="130">lastNeuronId</references>
+        <references refid="classpann_1_1Net_1076f5b0fd44096de50541c16fe5b97b3" compoundref="Net_8h" startline="131">lastWeightId</references>
+        <references refid="classpann_1_1Net_11d95cc042ab3f71840416d7aebdb1def" compoundref="Net_8h" startline="125">learningHint</references>
+        <references refid="classpann_1_1Net_127693544fbd9f6d5f74b57e9bbdc9a1d" compoundref="Net_8h" startline="133">neurons</references>
+        <references refid="classpann_1_1Net_12d41b163ab3f2171150fe8486dae44c9" compoundref="Net_8h" startline="129">threadCount</references>
+        <references refid="classpann_1_1Net_112f8e99bf960304ccaee098263de6fa8" compoundref="Net_8h" startline="134">weights</references>
+      </memberdef>
+      <memberdef kind="function" id="classpann_1_1Net_1a54ff5e1cbb26acaab7a2035f6719169" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class</type>
+            <declname>Archive</declname>
+            <defname>Archive</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void pann::Net::load</definition>
+        <argsstring>(Archive &amp;ar, const unsigned int version)</argsstring>
+        <name>load</name>
+        <param>
+          <type>Archive &amp;</type>
+          <declname>ar</declname>
+        </param>
+        <param>
+          <type>const unsigned int</type>
+          <declname>version</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Net.h" line="303" bodyfile="/home/booble/pann/trunk/src/Core/Net.h" bodystart="302" bodyend="391"/>
+        <references refid="classpann_1_1Net_1cb42333b0f655e2422a959045107ea60" compoundref="Net_8h" startline="132">biasId</references>
+        <references refid="classpann_1_1Net_1fb0c8aa932da540a9e1d907508cc00ff" compoundref="Net_8h" startline="136">cache</references>
+        <references refid="classpann_1_1NetCache_1dd41e18c50e038ff9b9cbdf249913cec" compoundref="Cache_8h" startline="61">pann::NetCache::data</references>
+        <references refid="classpann_1_1Cache_12cb636d0dcacfc734a83e665bd1c6b69" compoundref="Cache_8h" startline="33" endline="36">pann::Cache::fixed</references>
+        <references refid="classpann_1_1NetCache_1cfa966e64695ce3e11a5cd5926e1680c" compoundref="Cache_8h" startline="65" endline="69">pann::NetCache::flush</references>
+        <references refid="namespacepann_1_1LearningHint_1a9049ca41b3b30b18546dbad7e6e8e9a" compoundref="LearningHint_8h" startline="124" endline="140">pann::LearningHint::getById</references>
+        <references refid="classpann_1_1Net_1678cf8fa54d0a7b56de7864ea2925ce7" compoundref="Net_8h" startline="135">inputNeurons</references>
+        <references refid="classpann_1_1Net_1dbaf91489044bf1f9ce25436f6b35c09" compoundref="Net_8h" startline="130">lastNeuronId</references>
+        <references refid="classpann_1_1Net_1076f5b0fd44096de50541c16fe5b97b3" compoundref="Net_8h" startline="131">lastWeightId</references>
+        <references refid="classpann_1_1Net_11d95cc042ab3f71840416d7aebdb1def" compoundref="Net_8h" startline="125">learningHint</references>
+        <references refid="classpann_1_1Net_127693544fbd9f6d5f74b57e9bbdc9a1d" compoundref="Net_8h" startline="133">neurons</references>
+        <references refid="classpann_1_1Net_12d41b163ab3f2171150fe8486dae44c9" compoundref="Net_8h" startline="129">threadCount</references>
+        <references refid="classpann_1_1Net_112f8e99bf960304ccaee098263de6fa8" compoundref="Net_8h" startline="134">weights</references>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classpann_1_1Net_17dc20310a87f924efe4c30c746b990bd" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void pann::Net::threadBase</definition>
+        <argsstring>(Runner *_runner, NetCache *_cache, unsigned _cur_thread_no, boost::barrier *_barrier)</argsstring>
+        <name>threadBase</name>
+        <param>
+          <type><ref refid="classpann_1_1Runner" kindref="compound">Runner</ref> *</type>
+          <declname>_runner</declname>
+        </param>
+        <param>
+          <type><ref refid="classpann_1_1NetCache" kindref="compound">NetCache</ref> *</type>
+          <declname>_cache</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>_cur_thread_no</declname>
+        </param>
+        <param>
+          <type>boost::barrier *</type>
+          <declname>_barrier</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This function is executed by work thread, instantiated from <ref refid="classpann_1_1Net_15da746a5bb40bceb85992f5a77d393e7" kindref="member">run()</ref> </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Net.h" line="161" bodyfile="/home/booble/pann/trunk/src/Core/Net.h" bodystart="160" bodyend="187"/>
+        <references refid="namespacepann_134cfd8d9243a5183902a991ae1532e370ac5753feef303274f7d3d43a04753c3" compoundref="Runner_8h" startline="15">pann::BackwardRun</references>
+        <references refid="classpann_1_1NetCache_1dd41e18c50e038ff9b9cbdf249913cec" compoundref="Cache_8h" startline="61">pann::NetCache::data</references>
+        <references refid="namespacepann_134cfd8d9243a5183902a991ae1532e3748f0cddd9d215fba8b09d2e19f2b2a75" compoundref="Runner_8h" startline="15">pann::ForwardRun</references>
+        <references refid="classpann_1_1Runner_1658262373566e4be537caffbc35d8350">pann::Runner::getDirection</references>
+        <references refid="classpann_1_1Runner_18f7c1cd84129843504cfe17f738b86d0">pann::Runner::run</references>
+        <referencedby refid="classpann_1_1Net_15da746a5bb40bceb85992f5a77d393e7" compoundref="Net_8cpp" startline="267" endline="280">run</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="272">
+        <label>pann::Object</label>
+        <link refid="classpann_1_1Object"/>
+      </node>
+      <node id="271">
+        <label>pann::Net</label>
+        <link refid="classpann_1_1Net"/>
+        <childnode refid="272" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="274">
+        <label>pann::Object</label>
+        <link refid="classpann_1_1Object"/>
+      </node>
+      <node id="275">
+        <label>pann::NetCache</label>
+        <link refid="classpann_1_1NetCache"/>
+        <childnode refid="276" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="277">
+        <label>pann::LearningHint::Base</label>
+        <link refid="classpann_1_1LearningHint_1_1Base"/>
+      </node>
+      <node id="273">
+        <label>pann::Net</label>
+        <link refid="classpann_1_1Net"/>
+        <childnode refid="274" relation="public-inheritance">
+        </childnode>
+        <childnode refid="275" relation="usage">
+          <edgelabel>cache</edgelabel>
+        </childnode>
+        <childnode refid="277" relation="usage">
+          <edgelabel>learningHint</edgelabel>
+        </childnode>
+      </node>
+      <node id="276">
+        <label>pann::Cache</label>
+        <link refid="classpann_1_1Cache"/>
+        <childnode refid="274" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/booble/pann/trunk/src/Core/Net.h" line="18" bodyfile="/home/booble/pann/trunk/src/Core/Net.h" bodystart="17" bodyend="394"/>
+    <listofallmembers>
+      <member refid="classpann_1_1Net_15f793f0f9a0462093637d8d7b5fe7b0f" prot="public" virt="non-virtual"><scope>pann::Net</scope><name>addConnection</name></member>
+      <member refid="classpann_1_1Net_110f0471ee473197380146330d2ee0977" prot="public" virt="non-virtual"><scope>pann::Net</scope><name>addInputNeuron</name></member>
+      <member refid="classpann_1_1Net_1875e333ddaaaf4d8cc332c4ff816c584" prot="public" virt="non-virtual"><scope>pann::Net</scope><name>addNeuron</name></member>
+      <member refid="classpann_1_1Net_1cb42333b0f655e2422a959045107ea60" prot="private" virt="non-virtual"><scope>pann::Net</scope><name>biasId</name></member>
+      <member refid="classpann_1_1Net_1c98d07dd8f7b70e16ccb9a01abf56b9c" prot="public" virt="non-virtual"><scope>pann::Net</scope><name>boost::serialization::access</name></member>
+      <member refid="classpann_1_1Net_1fb0c8aa932da540a9e1d907508cc00ff" prot="private" virt="non-virtual"><scope>pann::Net</scope><name>cache</name></member>
+      <member refid="classpann_1_1Net_185d99fb2b386c3f284c4dfa2473cebcb" prot="public" virt="non-virtual"><scope>pann::Net</scope><name>delConnection</name></member>
+      <member refid="classpann_1_1Net_1a8b5f8bc26fca890ec606e9f5d6d5943" prot="public" virt="non-virtual"><scope>pann::Net</scope><name>delNeuron</name></member>
+      <member refid="classpann_1_1Net_1d54642461446c1f5aba34af3c01c290c" prot="private" virt="non-virtual"><scope>pann::Net</scope><name>findNeuron</name></member>
+      <member refid="classpann_1_1Net_1cf7cdb61950b1d55729ceb82407b414a" prot="private" virt="non-virtual"><scope>pann::Net</scope><name>findNeuron</name></member>
+      <member refid="classpann_1_1Net_1a2f1b31c8903d98b39035bfac5237f09" prot="private" virt="non-virtual"><scope>pann::Net</scope><name>formatFront</name></member>
+      <member refid="classpann_1_1Net_1179bae99437bcfc80e3477a9c01e0d62" prot="public" virt="non-virtual"><scope>pann::Net</scope><name>getBiasId</name></member>
+      <member refid="classpann_1_1Net_1bf7a3f67a2d7ced86b8589d69477ed96" prot="public" virt="non-virtual"><scope>pann::Net</scope><name>getCache</name></member>
+      <member refid="classpann_1_1Net_1710ba8f42654603324432e38a43aecb1" prot="public" virt="non-virtual"><scope>pann::Net</scope><name>getInputMap</name></member>
+      <member refid="classpann_1_1Net_132149f53c6ea0699bb83f3ab84a5556a" prot="public" virt="non-virtual"><scope>pann::Net</scope><name>getNeuronOwner</name></member>
+      <member refid="classpann_1_1Net_171c72a853f6acb84389ad4e507c23f8c" prot="public" virt="non-virtual"><scope>pann::Net</scope><name>getNeuronRole</name></member>
+      <member refid="classpann_1_1Net_120552ffce8f342bb6cf064180780a788" prot="public" virt="non-virtual"><scope>pann::Net</scope><name>getNeurons</name></member>
+      <member refid="classpann_1_1Net_181e50f71a229b3f94c4908b9ebb31970" prot="public" virt="non-virtual"><scope>pann::Net</scope><name>getOutput</name></member>
+      <member refid="classpann_1_1Net_1bb24669b9fb9fecb3b5be29ce82a081a" prot="public" virt="non-virtual"><scope>pann::Net</scope><name>getOutput</name></member>
+      <member refid="classpann_1_1Net_17367ddcfe022477e2e99aa2115580395" prot="public" virt="non-virtual"><scope>pann::Net</scope><name>getThreadCount</name></member>
+      <member refid="classpann_1_1Net_1f0276c2c5d68a2c9f7d7dfde5e1aca30" prot="public" virt="non-virtual"><scope>pann::Net</scope><name>getWeights</name></member>
+      <member refid="classpann_1_1Net_12af39a29837c19f66e828589210c477b49a06b112c565efc5f96e41f52d8deab" prot="public" virt="non-virtual"><scope>pann::Net</scope><name>InputNeuron</name></member>
+      <member refid="classpann_1_1Net_1678cf8fa54d0a7b56de7864ea2925ce7" prot="private" virt="non-virtual"><scope>pann::Net</scope><name>inputNeurons</name></member>
+      <member refid="classpann_1_1Net_1dbaf91489044bf1f9ce25436f6b35c09" prot="private" virt="non-virtual"><scope>pann::Net</scope><name>lastNeuronId</name></member>
+      <member refid="classpann_1_1Net_1076f5b0fd44096de50541c16fe5b97b3" prot="private" virt="non-virtual"><scope>pann::Net</scope><name>lastWeightId</name></member>
+      <member refid="classpann_1_1Net_11d95cc042ab3f71840416d7aebdb1def" prot="public" virt="non-virtual"><scope>pann::Net</scope><name>learningHint</name></member>
+      <member refid="classpann_1_1Net_1a54ff5e1cbb26acaab7a2035f6719169" prot="private" virt="non-virtual"><scope>pann::Net</scope><name>load</name></member>
+      <member refid="classpann_1_1Net_1fc3d67838fb89d577abd01b9badbb1dc" prot="public" virt="non-virtual"><scope>pann::Net</scope><name>Net</name></member>
+      <member refid="classpann_1_1Net_148622ed4f082f1e13dc19a592ae99acc" prot="public" virt="non-virtual"><scope>pann::Net</scope><name>Net</name></member>
+      <member refid="classpann_1_1Net_12af39a29837c19f66e828589210c477b" prot="public" virt="non-virtual"><scope>pann::Net</scope><name>NeuronRole</name></member>
+      <member refid="classpann_1_1Net_127693544fbd9f6d5f74b57e9bbdc9a1d" prot="private" virt="non-virtual"><scope>pann::Net</scope><name>neurons</name></member>
+      <member refid="classpann_1_1Net_1ec0809d7cb83ea29f7f36492609a2de9" prot="public" virt="virtual"><scope>pann::Net</scope><name>printDebugInfo</name></member>
+      <member refid="classpann_1_1Net_14293d1faa37e9e2bb73b0ebdaf4a6a9e" prot="private" virt="non-virtual"><scope>pann::Net</scope><name>regenerateCache</name></member>
+      <member refid="classpann_1_1Net_15da746a5bb40bceb85992f5a77d393e7" prot="public" virt="non-virtual"><scope>pann::Net</scope><name>run</name></member>
+      <member refid="classpann_1_1Net_16c08684796771a53e67fbe93c51e188a" prot="private" virt="non-virtual"><scope>pann::Net</scope><name>save</name></member>
+      <member refid="classpann_1_1Net_107e83643d8b5238cf322ebfd635cedda" prot="public" virt="non-virtual"><scope>pann::Net</scope><name>setInput</name></member>
+      <member refid="classpann_1_1Net_160ede07661fe666b8923c50da10e1cb2" prot="public" virt="non-virtual"><scope>pann::Net</scope><name>setNeuronOwner</name></member>
+      <member refid="classpann_1_1Net_18776411bdc6658b5d9c4febbae7a2b27" prot="public" virt="non-virtual"><scope>pann::Net</scope><name>setNeuronRole</name></member>
+      <member refid="classpann_1_1Net_1abb4547b6d16ac70f4470ed71357be6b" prot="public" virt="non-virtual"><scope>pann::Net</scope><name>setThreadCount</name></member>
+      <member refid="classpann_1_1Net_17dc20310a87f924efe4c30c746b990bd" prot="private" virt="non-virtual"><scope>pann::Net</scope><name>threadBase</name></member>
+      <member refid="classpann_1_1Net_12d41b163ab3f2171150fe8486dae44c9" prot="private" virt="non-virtual"><scope>pann::Net</scope><name>threadCount</name></member>
+      <member refid="classpann_1_1Net_112f8e99bf960304ccaee098263de6fa8" prot="private" virt="non-virtual"><scope>pann::Net</scope><name>weights</name></member>
+      <member refid="classpann_1_1Net_12af39a29837c19f66e828589210c477b8e605a7ac4e3dab20e7e4707188fa4ad" prot="public" virt="non-virtual"><scope>pann::Net</scope><name>WorkNeuron</name></member>
+      <member refid="classpann_1_1Net_1ede55beb023c08142ca4b5974889d431" prot="public" virt="non-virtual"><scope>pann::Net</scope><name>~Net</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

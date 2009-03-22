@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="classpann_1_1LearningAlgorithm" kind="class" prot="public">
+    <compoundname>pann::LearningAlgorithm</compoundname>
+    <derivedcompoundref refid="classpann_1_1LMS" prot="public" virt="non-virtual">pann::LMS</derivedcompoundref>
+    <includes refid="LearningAlgorithm_8h" local="no">LearningAlgorithm.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classpann_1_1LearningAlgorithm_1acc734261a16ebfcca8309498746d497" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void pann::LearningAlgorithm::train</definition>
+        <argsstring>(Net &amp;_net, TrainData _trainData)=0</argsstring>
+        <name>train</name>
+        <param>
+          <type><ref refid="classpann_1_1Net" kindref="compound">Net</ref> &amp;</type>
+          <declname>_net</declname>
+        </param>
+        <param>
+          <type><ref refid="classpann_1_1TrainData" kindref="compound">TrainData</ref></type>
+          <declname>_trainData</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/LearningAlgorithm.h" line="18"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="241">
+        <label>pann::LearningAlgorithm</label>
+        <link refid="classpann_1_1LearningAlgorithm"/>
+      </node>
+      <node id="242">
+        <label>pann::LMS</label>
+        <link refid="classpann_1_1LMS"/>
+        <childnode refid="241" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="/home/booble/pann/trunk/src/Core/LearningAlgorithm.h" line="16" bodyfile="/home/booble/pann/trunk/src/Core/LearningAlgorithm.h" bodystart="15" bodyend="19"/>
+    <listofallmembers>
+      <member refid="classpann_1_1LearningAlgorithm_1acc734261a16ebfcca8309498746d497" prot="public" virt="pure-virtual"><scope>pann::LearningAlgorithm</scope><name>train</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

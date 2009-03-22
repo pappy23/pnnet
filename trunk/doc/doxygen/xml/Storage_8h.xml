@@ -1,0 +1,360 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="Storage_8h" kind="file">
+    <compoundname>Storage.h</compoundname>
+    <includes refid="Includes_8h" local="yes">Includes.h</includes>
+    <includes refid="Net_8h" local="yes">Net.h</includes>
+    <includes refid="Exception_8h" local="yes">Exception.h</includes>
+    <includedby refid="TestNet_8cpp" local="yes">pann/trunk/src/UnitTests/TestNet.cpp</includedby>
+    <includedby refid="main_8cpp" local="yes">pann/trunk/src/Utils/pann_viewer/main.cpp</includedby>
+    <incdepgraph>
+      <node id="2515">
+        <label>list</label>
+      </node>
+      <node id="2540">
+        <label>Exception.h</label>
+        <link refid="Exception_8h"/>
+        <childnode refid="2510" relation="include">
+        </childnode>
+      </node>
+      <node id="2517">
+        <label>valarray</label>
+      </node>
+      <node id="2543">
+        <label>ActivationFunction.h</label>
+        <link refid="ActivationFunction_8h"/>
+        <childnode refid="2510" relation="include">
+        </childnode>
+        <childnode refid="2541" relation="include">
+        </childnode>
+        <childnode refid="2540" relation="include">
+        </childnode>
+      </node>
+      <node id="2533">
+        <label>boost/serialization/map.hpp</label>
+      </node>
+      <node id="2521">
+        <label>limits</label>
+      </node>
+      <node id="2535">
+        <label>boost/serialization/vector.hpp</label>
+      </node>
+      <node id="2520">
+        <label>iterator</label>
+      </node>
+      <node id="2532">
+        <label>boost/archive/text_iarchive.hpp</label>
+      </node>
+      <node id="2547">
+        <label>LearningHint.h</label>
+        <link refid="LearningHint_8h"/>
+        <childnode refid="2510" relation="include">
+        </childnode>
+        <childnode refid="2540" relation="include">
+        </childnode>
+      </node>
+      <node id="2541">
+        <label>Type.h</label>
+        <link refid="Type_8h"/>
+        <childnode refid="2510" relation="include">
+        </childnode>
+      </node>
+      <node id="2544">
+        <label>Link.h</label>
+        <link refid="Link_8h"/>
+        <childnode refid="2510" relation="include">
+        </childnode>
+        <childnode refid="2539" relation="include">
+        </childnode>
+        <childnode refid="2545" relation="include">
+        </childnode>
+      </node>
+      <node id="2546">
+        <label>OpenGLHint.h</label>
+        <link refid="OpenGLHint_8h"/>
+        <childnode refid="2510" relation="include">
+        </childnode>
+      </node>
+      <node id="2525">
+        <label>boost/foreach.hpp</label>
+      </node>
+      <node id="2522">
+        <label>cmath</label>
+      </node>
+      <node id="2548">
+        <label>Cache.h</label>
+        <link refid="Cache_8h"/>
+        <childnode refid="2510" relation="include">
+        </childnode>
+        <childnode refid="2541" relation="include">
+        </childnode>
+        <childnode refid="2539" relation="include">
+        </childnode>
+      </node>
+      <node id="2529">
+        <label>boost/archive/xml_oarchive.hpp</label>
+      </node>
+      <node id="2518">
+        <label>string</label>
+      </node>
+      <node id="2514">
+        <label>map</label>
+      </node>
+      <node id="2526">
+        <label>boost/thread.hpp</label>
+      </node>
+      <node id="2538">
+        <label>Net.h</label>
+        <link refid="Net_8h"/>
+        <childnode refid="2510" relation="include">
+        </childnode>
+        <childnode refid="2539" relation="include">
+        </childnode>
+        <childnode refid="2542" relation="include">
+        </childnode>
+        <childnode refid="2548" relation="include">
+        </childnode>
+        <childnode refid="2549" relation="include">
+        </childnode>
+        <childnode refid="2550" relation="include">
+        </childnode>
+      </node>
+      <node id="2542">
+        <label>Neuron.h</label>
+        <link refid="Neuron_8h"/>
+        <childnode refid="2510" relation="include">
+        </childnode>
+        <childnode refid="2539" relation="include">
+        </childnode>
+        <childnode refid="2543" relation="include">
+        </childnode>
+        <childnode refid="2544" relation="include">
+        </childnode>
+        <childnode refid="2546" relation="include">
+        </childnode>
+        <childnode refid="2547" relation="include">
+        </childnode>
+      </node>
+      <node id="2513">
+        <label>fstream</label>
+      </node>
+      <node id="2510">
+        <label>Includes.h</label>
+        <link refid="Includes_8h"/>
+        <childnode refid="2511" relation="include">
+        </childnode>
+        <childnode refid="2512" relation="include">
+        </childnode>
+        <childnode refid="2513" relation="include">
+        </childnode>
+        <childnode refid="2514" relation="include">
+        </childnode>
+        <childnode refid="2515" relation="include">
+        </childnode>
+        <childnode refid="2516" relation="include">
+        </childnode>
+        <childnode refid="2517" relation="include">
+        </childnode>
+        <childnode refid="2518" relation="include">
+        </childnode>
+        <childnode refid="2519" relation="include">
+        </childnode>
+        <childnode refid="2520" relation="include">
+        </childnode>
+        <childnode refid="2521" relation="include">
+        </childnode>
+        <childnode refid="2522" relation="include">
+        </childnode>
+        <childnode refid="2523" relation="include">
+        </childnode>
+        <childnode refid="2524" relation="include">
+        </childnode>
+        <childnode refid="2525" relation="include">
+        </childnode>
+        <childnode refid="2526" relation="include">
+        </childnode>
+        <childnode refid="2527" relation="include">
+        </childnode>
+        <childnode refid="2528" relation="include">
+        </childnode>
+        <childnode refid="2529" relation="include">
+        </childnode>
+        <childnode refid="2530" relation="include">
+        </childnode>
+        <childnode refid="2531" relation="include">
+        </childnode>
+        <childnode refid="2532" relation="include">
+        </childnode>
+        <childnode refid="2533" relation="include">
+        </childnode>
+        <childnode refid="2534" relation="include">
+        </childnode>
+        <childnode refid="2535" relation="include">
+        </childnode>
+        <childnode refid="2536" relation="include">
+        </childnode>
+        <childnode refid="2537" relation="include">
+        </childnode>
+      </node>
+      <node id="2524">
+        <label>boost/any.hpp</label>
+      </node>
+      <node id="2531">
+        <label>boost/archive/text_oarchive.hpp</label>
+      </node>
+      <node id="2530">
+        <label>boost/archive/xml_iarchive.hpp</label>
+      </node>
+      <node id="2536">
+        <label>boost/serialization/version.hpp</label>
+      </node>
+      <node id="2537">
+        <label>boost/progress.hpp</label>
+      </node>
+      <node id="2549">
+        <label>Util.h</label>
+        <link refid="Util_8h"/>
+        <childnode refid="2510" relation="include">
+        </childnode>
+      </node>
+      <node id="2516">
+        <label>vector</label>
+      </node>
+      <node id="2539">
+        <label>Object.h</label>
+        <link refid="Object_8h"/>
+        <childnode refid="2510" relation="include">
+        </childnode>
+        <childnode refid="2540" relation="include">
+        </childnode>
+        <childnode refid="2541" relation="include">
+        </childnode>
+      </node>
+      <node id="2527">
+        <label>boost/thread/barrier.hpp</label>
+      </node>
+      <node id="2512">
+        <label>sstream</label>
+      </node>
+      <node id="2528">
+        <label>boost/ref.hpp</label>
+      </node>
+      <node id="2523">
+        <label>cstdlib</label>
+      </node>
+      <node id="2511">
+        <label>iostream</label>
+      </node>
+      <node id="2509">
+        <label>pann/trunk/src/Core/Storage.h</label>
+        <link refid="Storage.h"/>
+        <childnode refid="2510" relation="include">
+        </childnode>
+        <childnode refid="2538" relation="include">
+        </childnode>
+        <childnode refid="2540" relation="include">
+        </childnode>
+      </node>
+      <node id="2534">
+        <label>boost/serialization/list.hpp</label>
+      </node>
+      <node id="2519">
+        <label>algorithm</label>
+      </node>
+      <node id="2550">
+        <label>Runner.h</label>
+        <link refid="Runner_8h"/>
+        <childnode refid="2510" relation="include">
+        </childnode>
+        <childnode refid="2541" relation="include">
+        </childnode>
+        <childnode refid="2542" relation="include">
+        </childnode>
+      </node>
+      <node id="2545">
+        <label>Weight.h</label>
+        <link refid="Weight_8h"/>
+        <childnode refid="2510" relation="include">
+        </childnode>
+        <childnode refid="2539" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2553">
+        <label>pann/trunk/src/Utils/pann_viewer/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="2551">
+        <label>pann/trunk/src/Core/Storage.h</label>
+        <link refid="Storage.h"/>
+        <childnode refid="2552" relation="include">
+        </childnode>
+        <childnode refid="2553" relation="include">
+        </childnode>
+      </node>
+      <node id="2552">
+        <label>pann/trunk/src/UnitTests/TestNet.cpp</label>
+        <link refid="TestNet_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classpann_1_1Storage" prot="public">pann::Storage</innerclass>
+    <innernamespace refid="namespacepann">pann</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>class<sp/>for<sp/>saving/restoring<sp/>networks</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>STORAGE_H</highlight></codeline>
+<codeline lineno="6"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>STORAGE_H</highlight></codeline>
+<codeline lineno="7"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Includes_8h" kindref="compound">Includes.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Net_8h" kindref="compound">Net.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Exception_8h" kindref="compound">Exception.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">pann</highlight></codeline>
+<codeline lineno="13"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="14" refid="classpann_1_1Storage" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classpann_1_1Storage" kindref="compound">Storage</ref></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="17" refid="classpann_1_1Storage_11b739fe3b6c794fb911108bdd349036f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Storage_11b739fe3b6c794fb911108bdd349036f" kindref="member">save</ref>(<ref refid="classpann_1_1Net" kindref="compound">Net</ref>&amp;<sp/>obj,<sp/>std::string<sp/>filename)</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::ofstream<sp/>ofs(filename.c_str());</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(ofs.fail())</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Exception_1_1FilesystemError" kindref="compound" tooltip="Exceptionfor raising on filesystem failures (missing file etc.).">Exception::FilesystemError</ref>()&lt;&lt;</highlight><highlight class="stringliteral">&quot;Storage::save():<sp/>failed<sp/>to<sp/>open<sp/>file<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;filename&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>for<sp/>writing\n&quot;</highlight><highlight class="normal">;<sp/></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout&lt;&lt;</highlight><highlight class="stringliteral">&quot;Saving<sp/>net<sp/>to<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;filename&lt;&lt;</highlight><highlight class="stringliteral">&quot;...&quot;</highlight><highlight class="normal">&lt;&lt;std::endl;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>boost::archive::text_oarchive<sp/>oa(ofs);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>oa<sp/>&lt;&lt;<sp/>obj;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout&lt;&lt;</highlight><highlight class="stringliteral">&quot;\n\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ofs.close();</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="classpann_1_1Storage_13c5d177220f3ab22500124b8ca137234" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Storage_13c5d177220f3ab22500124b8ca137234" kindref="member">load</ref>(<ref refid="classpann_1_1Net" kindref="compound">Net</ref>&amp;<sp/>obj,<sp/>std::string<sp/>filename)</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::ifstream<sp/>ifs(filename.c_str());</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(ifs.fail())</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Exception_1_1FilesystemError" kindref="compound" tooltip="Exceptionfor raising on filesystem failures (missing file etc.).">Exception::FilesystemError</ref>()&lt;&lt;</highlight><highlight class="stringliteral">&quot;Storage::load():<sp/>failed<sp/>to<sp/>open<sp/>file<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;filename&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>for<sp/>reading\n&quot;</highlight><highlight class="normal">;<sp/></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout&lt;&lt;</highlight><highlight class="stringliteral">&quot;Loading<sp/>net<sp/>from<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;filename&lt;&lt;</highlight><highlight class="stringliteral">&quot;...&quot;</highlight><highlight class="normal">&lt;&lt;std::endl;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>boost::archive::text_iarchive<sp/>ia(ifs);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ia<sp/>&gt;&gt;<sp/>obj;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout&lt;&lt;</highlight><highlight class="stringliteral">&quot;\n\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ifs.close();</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal">};<sp/></highlight><highlight class="comment">//pann</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//STORAGE_H</highlight></codeline>
+<codeline lineno="49"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/booble/pann/trunk/src/Core/Storage.h"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="dir_5a827b428f3494ab44c418b849039840" kind="dir">
+    <compoundname>pann/trunk/src/Core/</compoundname>
+    <innerfile refid="ActivationFunction_8cpp">ActivationFunction.cpp</innerfile>
+    <innerfile refid="ActivationFunction_8h">ActivationFunction.h</innerfile>
+    <innerfile refid="Cache_8h">Cache.h</innerfile>
+    <innerfile refid="Exception_8h">Exception.h</innerfile>
+    <innerfile refid="Includes_8h">Includes.h</innerfile>
+    <innerfile refid="LearningAlgorithm_8h">LearningAlgorithm.h</innerfile>
+    <innerfile refid="LearningHint_8h">LearningHint.h</innerfile>
+    <innerfile refid="Link_8h">Link.h</innerfile>
+    <innerfile refid="LMS_8h">LMS.h</innerfile>
+    <innerfile refid="MultilayerPerceptron_8cpp">MultilayerPerceptron.cpp</innerfile>
+    <innerfile refid="Net_8cpp">Net.cpp</innerfile>
+    <innerfile refid="Net_8h">Net.h</innerfile>
+    <innerfile refid="NetworkModel_8h">NetworkModel.h</innerfile>
+    <innerfile refid="Neuron_8cpp">Neuron.cpp</innerfile>
+    <innerfile refid="Neuron_8h">Neuron.h</innerfile>
+    <innerfile refid="Object_8cpp">Object.cpp</innerfile>
+    <innerfile refid="Object_8h">Object.h</innerfile>
+    <innerfile refid="OpenGLHint_8h">OpenGLHint.h</innerfile>
+    <innerfile refid="Runner_8cpp">Runner.cpp</innerfile>
+    <innerfile refid="Runner_8h">Runner.h</innerfile>
+    <innerfile refid="Storage_8h">Storage.h</innerfile>
+    <innerfile refid="TrainData_8cpp">TrainData.cpp</innerfile>
+    <innerfile refid="TrainData_8h">TrainData.h</innerfile>
+    <innerfile refid="Type_8h">Type.h</innerfile>
+    <innerfile refid="Util_8h">Util.h</innerfile>
+    <innerfile refid="Weight_8h">Weight.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/booble/pann/trunk/src/Core/"/>
+  </compounddef>
+</doxygen>
