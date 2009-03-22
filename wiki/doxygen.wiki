@@ -1,3 +1,2 @@
 #summary Doxygen automatically generated documentation
-
-<a href="./doxygen/index.html">doxygen</a>
+http://./doxygen/index.html
