@@ -2,17 +2,43 @@
 //TestNet.cpp
 
 #include <iostream>
-#include <iomanip>
 
 #include "Includes.h"
-#include "ActivationFunction.h"
 
 using namespace std;
-using namespace pann;
 using namespace boost;
 
 class A
 {
+    virtual void test() {};
+private:
+    friend class boost::serialization::access;
+    template<class Archive>
+        void serialize(Archive & ar, const unsigned int version)
+        {
+            cout<<"A\n";
+        }
+};
+
+class Ader1 : public A
+{
+    virtual void test() {};
+public:
+    char b;
+
+private:
+    friend class boost::serialization::access;
+    template<class Archive>
+        void serialize(Archive & ar, const unsigned int version)
+        {
+            cout<<"Ader1\n";
+            ar & b;
+        }
+};
+
+class Ader2 : public A
+{
+    virtual void test() {};
 public:
     int a;
 
@@ -21,8 +47,9 @@ private:
     template<class Archive>
         void serialize(Archive & ar, const unsigned int version)
         {
+            cout<<"Ader2\n";
             ar & a;
-        };
+        }
 };
 
 class N
@@ -35,22 +62,17 @@ private:
     template<class Archive>
         void serialize(Archive & ar, const unsigned int version)
         {
+            cout<<"N\n";
             ar & af;
         };
 };
 
 int main()
 {
-    vector<N> obj1, obj2;
-        obj1.push_back(N());
-        obj1[0].af = new A();
-        obj1[0].af->a = 5;
+    N obj1, obj2;
 
-    for(int i = 1; i < 10; i++)
-    {
-        obj1.push_back(N());
-        obj1[i].af = obj1[0].af;
-    }
+    obj1.af = new Ader1;
+    (dynamic_cast<Ader1*>(obj1.af))->b = 5;
 
     {
         ofstream ofs("ser.txt"); 
@@ -64,13 +86,7 @@ int main()
         ia >> obj2;
     }
 
-    for(int i = 0; i < 10; i++)
-    {
-        obj2[i].af->a = i;
-    }
-
-    for(int i = 0; i < 10; i++)
-        cout<<obj2[i].af->a<<" ";
+    cout<<dynamic_cast<Ader1*>(obj2.af)->b<<endl;
 
     return 0;
 }

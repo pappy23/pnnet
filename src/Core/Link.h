@@ -12,7 +12,7 @@
 
 namespace pann
 {
-    class Net;
+    class Neuron;
 
     //! Link between two neurons
     class Link : public Object
@@ -23,14 +23,14 @@ namespace pann
 
         /* Private members */
     private:
-        NeuronIter to;
+        Neuron* to;
         Direction direction;
-        WeightIter w; //!< Pointer to Weight object (might be shared between different links)
+        Weight* w; //!< Pointer to Weight object (might be shared between different links)
         unsigned latency;
 
         /* Public interface */
     public:
-        Link(const NeuronIter _to, const Direction _direction, WeightIter _w, unsigned const _latency = 1) :
+        Link(Neuron* _to, const Direction _direction, Weight* _w, unsigned const _latency = 1) :
             to(_to),
             direction(_direction),
             w(_w),
@@ -42,22 +42,27 @@ namespace pann
         {
         };
 
-        NeuronIter getToIter()              { return to; };
-        ConstNeuronIter getToIter() const   { return to; };
-        Direction getDirection() const      { return direction; };
-        unsigned getLatency() const         { return latency; };
-        WeightIter getWeightIter()          { return w; };
+        Neuron* getTo()                { return to; };
+        const Neuron*  getTo() const   { return to; };
+        Direction getDirection() const { return direction; };
+        unsigned getLatency() const    { return latency; };
+        Weight* getWeight()            { return w; };
     
-        /* Debug */
-    public:
-        virtual void printDebugInfo(std::ostringstream& ost) const
-        {
-            ost<<"  Link\n";
-            ost<<"   direction: "<<direction<<std::endl;
-            ost<<"   latency: "<<latency<<std::endl;
-            //ost<<"   to: "<<to->first<<std::endl; - Neuron - incomplete class
-            w->second.printDebugInfo(ost);
-        }
+        /* Serialization */
+    private:
+        Link() { }; //default constructor for serialization
+        //Of course we can use save_construct_data/load_construct_data, but 
+        //default constructor is much simpler
+        friend class boost::serialization::access;
+        template<class Archive>
+            void serialize(Archive & ar, const unsigned int version)
+            {
+                ar & boost::serialization::base_object<Object>(*this);
+                ar & to;
+                ar & direction;
+                ar & w;
+                ar & latency;
+            };
     };
 
 }; //pann

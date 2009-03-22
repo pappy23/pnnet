@@ -6,24 +6,20 @@ using namespace std;
 
 namespace pann
 {
-    Neuron::Neuron() :
-            activationFunction(ActivationFunction::Linear::Instance()),
-            ownerThread(0),
-            receptiveField(0),
-            activationValue(activationFunction->f(0)),
-            oglHint(0),
-            learningHint(0)
+    Neuron::Neuron(unsigned _id)
     {
+        Neuron(_id, ActivationFunction::Linear::Instance());
     } //Neuron
 
-    Neuron::Neuron(ActivationFunction::Base* _activationFunction) :
-            activationFunction(_activationFunction),
-            ownerThread(0),
-            receptiveField(0),
-            activationValue(_activationFunction->f(0)),
-            oglHint(0),
-            learningHint(0)
+    Neuron::Neuron(unsigned _id, ActivationFunction::Base* _activationFunction) : Object(_id)
     {
+        activationFunction = _activationFunction;
+        ownerThread = 0;
+        receptiveField = 0;
+        activationValue = _activationFunction->f(0);
+        oglHint = 0;
+        learningHint = 0;
+        cout<<"Neuron "<<_id<<endl;;
     } //Neuron
 
     Neuron::~Neuron()
@@ -57,22 +53,22 @@ namespace pann
     } //getOwnerThread
 
     list<Link>::iterator
-    Neuron::findLink(NeuronIter _to, Link::Direction _direction)
+    Neuron::findLink(Neuron* _to, Link::Direction _direction)
     {                                                                                
-        list<Link>::iterator iter = links.begin(),                                   
-        result = links.end();                                   
+        list<Link>::iterator result = links.end();
+        list<Link>::iterator iter = links.begin();
         for(; iter != links.end(); ++iter)                                           
         {                                                                            
-            if(iter->getToIter() == _to && iter->getDirection() == _direction)                     
+            if(iter->getTo() == _to && iter->getDirection() == _direction)                     
             {                                                                        
-                if( result != links.end() ) //Multiple parallel links exist          
+                if(result != links.end()) //Multiple parallel links exist          
                     throw Exception::MultipleOccurance()<<"findLink(): detected parallel links\n";
                 else                                                                              
                     result = iter;                                                                
             }                                                                                     
         }                                                                                         
 
-        if( result == links.end() )
+        if(result == links.end())
             throw Exception::ObjectNotFound()<<"findLink(): can't find required link\n";
 
         return result;

@@ -15,17 +15,16 @@ namespace pann
     //! Base class for almoust everything
     class Object
     {
-/*  Remove attributes-related code. Respect OOP
     protected:
-        mutable std::map<std::string, boost::any> attributes; //!< left -  name, right - parametr
+        //mutable std::map<std::string, boost::any> attributes; //!< left -  name, right - parametr
         unsigned id;
 
     public:
         Object(unsigned _id = 0);
         virtual ~Object();
         
-        virtual unsigned getId();
-
+        virtual unsigned getId() const;
+/*
         //! Does attribute exist?
         //! @param _attributeName - checking attribute name
         bool is(const std::string& _attributeName) const;
@@ -42,14 +41,12 @@ namespace pann
         //! Delete all attributes
         void erase();
 */
-    public:
-        virtual void printDebugInfo(std::ostringstream& ost) const = 0;
-
     private:
         friend class boost::serialization::access;
         template<class Archive>
             void serialize(Archive & ar, const unsigned int version)
             {
+                ar & id;
                 //FIXME map<string, boost::any> won't serialize
                 //ar & attributes;
             };

@@ -19,7 +19,7 @@ namespace pann
     public:
         static Runner* Instance();
 
-        virtual void run(NeuronIter) = 0;
+        virtual void run(Neuron*) = 0;
         virtual RunDirection getDirection() = 0;
     };
 
@@ -43,7 +43,7 @@ namespace pann
             return self;
         };
 
-        virtual void run(NeuronIter _neuron)
+        virtual void run(Neuron* _neuron)
         {
         };
 
@@ -73,7 +73,7 @@ namespace pann
             return self;
         };
 
-        virtual void run(NeuronIter _neuron)
+        virtual void run(Neuron* _neuron)
         {
         };
 
@@ -103,19 +103,16 @@ namespace pann
             return self;
         };
 
-        void run(NeuronIter _neuron)
+        void run(Neuron* _neuron)
         {
-            BOOST_FOREACH( Link& link, _neuron->second.links )
+            BOOST_FOREACH( Link& link, _neuron->links )
             {
                 if(link.getDirection() == Link::in)
-                {
-                    _neuron->second.receptiveField += 
-                        ( link.getToIter()->second.activationValue * link.getWeightIter()->second.value );
-                }
+                    _neuron->receptiveField += link.getTo()->activationValue * link.getWeight()->value;
             }
 
-            _neuron->second.activationValue = _neuron->second.getActivationFunction()->f(_neuron->second.receptiveField);
-            _neuron->second.receptiveField = 0;
+            _neuron->activationValue = _neuron->getActivationFunction()->f(_neuron->receptiveField);
+            _neuron->receptiveField = 0;
         };
 
         virtual RunDirection getDirection()

@@ -7,7 +7,6 @@
 
 #include "Includes.h"
 #include "Net.h"
-#include "Util.h"
 
 class GLWidget : public QGLWidget
 {
@@ -45,7 +44,7 @@ private:
     };
     
     //Neuron decorator, stores it's 3D coordinates
-    std::map<pann::ConstNeuronIter, Coords, pann::NeuronIterCompare> coords;
+    std::map<const pann::Neuron*, Coords> coords;
 
     void calcCoords();
 

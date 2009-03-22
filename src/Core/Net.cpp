@@ -54,10 +54,10 @@ namespace pann
     Net::addNeuron(ActivationFunction::Base* _activationFunction)
     {
         cache.touch();
-
-        pair<NeuronIter, bool> result = neurons.insert( pair<unsigned, Neuron>(lastNeuronId, Neuron(_activationFunction)) );
-
-        if(!result.second)
+        pair< map<unsigned, Neuron*>::iterator, bool > result = 
+            neurons.insert( pair<unsigned, Neuron*>(lastNeuronId, new Neuron(lastNeuronId, _activationFunction)) );
+        
+        if( !result.second )
             throw Exception::ElementExists()<<"Net::addNeuron(): insertion of neuron "<<lastNeuronId<<" failed\n";
 
         return lastNeuronId++;
@@ -77,23 +77,23 @@ namespace pann
     {
         cache.touch();
 
-        NeuronIter n = findNeuron(_neuronId);
+        Neuron* n = findNeuron(_neuronId);
 
         //Delete all connections to/from current neuron
-        for(list<Link>::iterator link_iter = n->second.links.begin(); link_iter != n->second.links.end(); )
+        for(list<Link>::iterator link_iter = n->links.begin(); link_iter != n->links.end(); )
         {
             //We will delete link, so we can't use link_iter to get access to Link object
-            //Copy Link attributes unsignedo local variables
-            NeuronIter to = link_iter->getToIter();
+            //Copy Link attributes to local variables
+            Neuron* to = link_iter->getTo();
             Link::Direction dir = link_iter->getDirection();
             
             //Go to next Link (see for loop - it is without ++ statement)
             link_iter++;
 
             if(dir == Link::in)
-                delConnection(to->first, n->first);
+                delConnection(to->getId(), _neuronId);
             else
-                delConnection(n->first, to->first);
+                delConnection(_neuronId, to->getId());
         }
 
         //Actually delete Neuron object
@@ -106,15 +106,15 @@ namespace pann
     {
         cache.touch();
 
-        NeuronIter iter = findNeuron(_neuronId);
+        Neuron* n = findNeuron(_neuronId);
 
-        list< NeuronIter >::iterator inputIter = find(inputNeurons.begin(), inputNeurons.end(), iter);
+        list<Neuron*>::iterator inputIter = find(inputNeurons.begin(), inputNeurons.end(), n);
 
         switch(_newRole)
         {
             case InputNeuron:
                 if(inputIter == inputNeurons.end())
-                    inputNeurons.push_back(iter);
+                    inputNeurons.push_back(n);
                 break;
             case WorkNeuron:
                 if(inputIter != inputNeurons.end())
@@ -132,9 +132,9 @@ namespace pann
          */
         unsigned role = 0;
 
-        ConstNeuronIter iter = findNeuron(_neuronId);
+        const Neuron* n = findNeuron(_neuronId);
 
-        if(find(inputNeurons.begin(), inputNeurons.end(), iter) != inputNeurons.end())
+        if(find(inputNeurons.begin(), inputNeurons.end(), n) != inputNeurons.end())
             role+=1;
 
         return (NeuronRole)role;
@@ -145,17 +145,21 @@ namespace pann
     {
         cache.touch();
 
-        NeuronIter from = findNeuron(_from);
-        NeuronIter to = findNeuron(_to);
+        Neuron* from = findNeuron(_from);
+        Neuron* to = findNeuron(_to);
 
-        pair<WeightIter, bool> result = weights.insert( pair<unsigned, Weight>(lastWeightId++, Weight(_weightValue)) );
+        pair< map<unsigned, Weight*>::iterator, bool > result = 
+            weights.insert( pair<unsigned, Weight*>(lastWeightId, new Weight(lastWeightId, _weightValue)) );
+
+        lastWeightId++;
+
         if(!result.second)
             throw Exception::ElementExists()<<"Net::addWeight(): insertion of new weight failed\n";
 
-        from->second.links.push_back( Link(to, Link::out, result.first) );
-        to->second.links.push_back( Link(from, Link::in, result.first) );
+        from->links.push_back( Link(to, Link::out, result.first->second) );
+        to->links.push_back( Link(from, Link::in, result.first->second) );
 
-        result.first->second.usageCount = 2;
+        result.first->second->usageCount = 2;
     } //addConnection
 
     void
@@ -163,8 +167,8 @@ namespace pann
     {
         cache.touch();
         
-        NeuronIter from_niter = findNeuron(_from);
-        NeuronIter to_niter   = findNeuron(_to);
+        Neuron* from_neuron = findNeuron(_from);
+        Neuron* to_neuron   = findNeuron(_to);
 
         /* Short unsignedroduction:
          * Neuron_from               Neuron_to
@@ -175,36 +179,35 @@ namespace pann
          */
 
         //Find correspondent Links in neurons
-        list<Link>::iterator from_liter = from_niter->second.findLink(to_niter, Link::out);
-        list<Link>::iterator to_liter = to_niter->second.findLink(from_niter, Link::in);
+        list<Link>::iterator from_link = from_neuron->findLink(to_neuron, Link::out);
+        list<Link>::iterator to_link = to_neuron->findLink(from_neuron, Link::in);
 
         //weight1 (see picture) must be common for both Link objects
-        if(from_liter->getWeightIter() != to_liter->getWeightIter())
+        if(from_link->getWeight() != to_link->getWeight())
             throw Exception::Unbelievable()<<"Net::delConnection(): symmetric links don't share weight\n";
 
-        //We will delete Link objects and iterators to common weight will be lost
-        WeightIter w_iter = from_liter->getWeightIter();
+        //We will delete Link objects and pointers to common weight will be lost
+        Weight* w = from_link->getWeight();
 
         //Actually delete Link objects from Neuron_to and Neuron_from
-        from_niter->second.links.erase(from_liter);
-        to_niter->second.links.erase(to_liter);
+        from_neuron->links.erase(from_link);
+        to_neuron->links.erase(to_link);
 
         //Delete weight object if it no more used
-        if( (w_iter->second.usageCount -= 2) == 0) 
-            weights.erase(w_iter->first);
-
+        if( (w->usageCount -= 2) == 0) 
+            weights.erase(w->getId());
     } //delConnection
 
     void
     Net::setNeuronOwner(unsigned _neuron, unsigned _owner)
     {
-        findNeuron(_neuron)->second.setOwnerThread(_owner);
+        findNeuron(_neuron)->setOwnerThread(_owner);
     } //setNeuronOwner
 
     unsigned
     Net::getNeuronOwner(unsigned _neuron) const
     {
-        return findNeuron(_neuron)->second.getOwnerThread();
+        return findNeuron(_neuron)->getOwnerThread();
     } //getNeuronOwner
 
     std::vector<unsigned>
@@ -212,8 +215,8 @@ namespace pann
     {
         vector<unsigned> result;
 
-        BOOST_FOREACH( NeuronIter iter, inputNeurons)
-            result.push_back(iter->first);
+        BOOST_FOREACH( Neuron* n, inputNeurons)
+            result.push_back(n->getId());
 
         return result;
     } //getInputMap
@@ -230,8 +233,8 @@ namespace pann
                                                "Check getInputMap() output\n";
 
         unsigned i = 0;
-        BOOST_FOREACH( NeuronIter iter, inputNeurons)
-            iter->second.receptiveField += _input[i++];
+        BOOST_FOREACH( Neuron* n, inputNeurons)
+            n->receptiveField += _input[i++];
     } //setInput
 
     map<unsigned, Float>
@@ -246,8 +249,8 @@ namespace pann
             return result;
 
         BOOST_FOREACH( NetCache::ThreadTaskType& task, cache.data[cache.data.size() - 2])
-            BOOST_FOREACH( NeuronIter& iter, task )
-                result.insert(pair<unsigned, Float>(iter->first, iter->second.activationValue));
+            BOOST_FOREACH( Neuron* n, task )
+                result.insert(pair<unsigned, Float>(n->getId(), n->activationValue));
 
         return result;
     } //getOutput
@@ -285,13 +288,13 @@ namespace pann
         return cache;
     } //getCache
 
-    const map<unsigned, Neuron>& 
+    const map<unsigned, Neuron*>& 
     Net::getNeurons() const
     {
         return neurons;
     } //getNeurons
 
-    const map<unsigned, Weight>&
+    const map<unsigned, Weight*>&
     Net::getWeights() const
     {
         return weights;
@@ -303,37 +306,39 @@ namespace pann
         return biasId;
     }; //getBiasId
 
-    NeuronIter
+    Neuron*
     Net::findNeuron(unsigned _neuronId)
     {
-        NeuronIter iter = neurons.find(_neuronId);
+        map<unsigned, Neuron*>::iterator iter = neurons.find(_neuronId);
         if(neurons.end() == iter)
             throw Exception::ObjectNotFound()<<"findNeuron(): Neuron "<<_neuronId<<" not found\n";
 
-        return iter;
+        return iter->second;
     } //findNeuron
 
-    ConstNeuronIter
+    const Neuron*
     Net::findNeuron(unsigned _neuronId) const
     {
         return const_cast<Net*>(this)->findNeuron(_neuronId);
     } //findNeuron
 
     void
-    Net::formatFront(vector<NeuronIter>& _raw) const
+    Net::formatFront(vector<Neuron*>& _raw) const
     {
         cache.data.push_back( NetCache::FrontType() );
         NetCache::FrontType& tasks = cache.data[cache.data.size() - 1];
 
         for(unsigned i = 0; i < threadCount; i++)
-            tasks.push_back( vector<NeuronIter>() );
+            tasks.push_back( vector<Neuron*>() );
 
-        sort(_raw.begin(), _raw.end(), NeuronIterCompare());
-        vector<NeuronIter>::iterator it = unique(_raw.begin(), _raw.end(), NeuronIterCompare::equal);
+        //sort(_raw.begin(), _raw.end(), NeuronIterCompare());
+        sort(_raw.begin(), _raw.end()); //FIXME Caution!
+        //vector<Neuron*>::iterator it = unique(_raw.begin(), _raw.end(), NeuronIterCompare::equal);
+        vector<Neuron*>::iterator it = unique(_raw.begin(), _raw.end());
         _raw.resize( it - _raw.begin() );
 
         for(unsigned i = 0; i < _raw.size(); ++i)
-            tasks[_raw[i]->second.getOwnerThread() % threadCount].push_back(_raw[i]);
+            tasks[_raw[i]->getOwnerThread() % threadCount].push_back(_raw[i]);
     } //formatFront
 
     void
@@ -342,7 +347,7 @@ namespace pann
         cache.flush(); 
 
         //Here we will place neuron's IDs that will become front, with duplicates
-        vector<NeuronIter> rawFront;
+        vector<Neuron*> rawFront;
 
         /*
          * Function operates with "hops" attribute of every Neuron
@@ -350,19 +355,20 @@ namespace pann
          * Unfortunetly, map<unsigned, Neuron>::iterator doesn't have operator< , so
          * we shold write own comparison class for hops<>. I placed it to Utils.h
          */
-        map<NeuronIter, unsigned, NeuronIterCompare> hops;
+        //map<Neuron*, unsigned, NeuronIterCompare> hops;
+        map<Neuron*, unsigned> hops;
         
         //Put inputNeurons to front
-        BOOST_FOREACH( NeuronIter iter, inputNeurons )
+        BOOST_FOREACH( Neuron* n, inputNeurons )
         {
-            rawFront.push_back(iter);
-            hops[iter] = 1;
+            rawFront.push_back(n);
+            hops[n] = 1;
         }
         formatFront(rawFront);
         
         //Bias neuron is kind of input neuron
-        NeuronIter biasIter = const_cast<Net*>(this)->findNeuron(biasId);
-        cache.data[0][0].push_back(biasIter);
+        Neuron* biasNeuron = const_cast<Net*>(this)->findNeuron(biasId);
+        cache.data[0][0].push_back(biasNeuron);
 
         /*
          * Cache looks like this:
@@ -389,12 +395,12 @@ namespace pann
             for(unsigned i = 0; i < nCount; ++i)
             {
                 //pop_front emulation
-                NeuronIter currentNeuronIter = rawFront[0];
+                Neuron* currentNeuron = rawFront[0];
                 rawFront.erase( rawFront.begin() );
 
                 //ok, we've got cur_neuron. We will iterate through his Out links
                 //and push_back their opposite sides to rawFront
-                BOOST_FOREACH( Link& link, currentNeuronIter->second.links )
+                BOOST_FOREACH( Link& link, currentNeuron->links )
                 {
                     //Only feedforward links
                     if(link.getDirection() == Link::in)
@@ -419,14 +425,13 @@ namespace pann
                      */
 
                     //Assume that when cache becomes coherent, all neuron[hops] vars become zero
-                    if(hops[link.getToIter()] == 0)
-                        hops[link.getToIter()] = hops[currentNeuronIter] + link.getLatency();
+                    if(hops[link.getTo()] == 0)
+                        hops[link.getTo()] = hops[currentNeuron] + link.getLatency();
 
-                    if(hops[link.getToIter()] == hops[currentNeuronIter] + 1)
-                        rawFront.push_back(link.getToIter()); 
+                    if(hops[link.getTo()] == hops[currentNeuron] + 1)
+                        rawFront.push_back(link.getTo()); 
 
-                    if(hops[link.getToIter()] == hops[currentNeuronIter] && 
-                            link.getToIter()->first != currentNeuronIter->first)
+                    if(hops[link.getTo()] == hops[currentNeuron] && link.getTo() != currentNeuron)
                         throw Exception::Unbelievable()<<"Net::run(): cur_neuron.hops == to.hops. "
                                                             "There is no support for such topologies yet\n";
                 } //BOOST_FOREACH( Link )
