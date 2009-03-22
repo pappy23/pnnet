@@ -1,3 +1,3 @@
 #summary Doxygen automatically generated documentation
 
-http://pnnet.googlecode.com/svn/wiki/doxygen/index.html
+<a href="./doxygen/index.html">doxygen</a>
