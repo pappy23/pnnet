@@ -1,2 +1,0 @@
-#summary Doxygen automatically generated documentation
-http://./doxygen/index.html
