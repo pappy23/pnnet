@@ -1,0 +1,714 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="glwidget_8cpp" kind="file">
+    <compoundname>glwidget.cpp</compoundname>
+    <includes local="no">QtGui</includes>
+    <includes local="no">cmath</includes>
+    <includes refid="glwidget_8h" local="yes">glwidget.h</includes>
+    <incdepgraph>
+      <node id="2888">
+        <label>list</label>
+      </node>
+      <node id="2912">
+        <label>Exception.h</label>
+        <link refid="Exception_8h"/>
+        <childnode refid="2883" relation="include">
+        </childnode>
+      </node>
+      <node id="2890">
+        <label>valarray</label>
+      </node>
+      <node id="2876">
+        <label>pann/trunk/src/Utils/pann_viewer/glwidget.cpp</label>
+        <link refid="glwidget.cpp"/>
+        <childnode refid="2877" relation="include">
+        </childnode>
+        <childnode refid="2878" relation="include">
+        </childnode>
+        <childnode refid="2879" relation="include">
+        </childnode>
+      </node>
+      <node id="2915">
+        <label>ActivationFunction.h</label>
+        <link refid="ActivationFunction_8h"/>
+        <childnode refid="2883" relation="include">
+        </childnode>
+        <childnode refid="2913" relation="include">
+        </childnode>
+        <childnode refid="2912" relation="include">
+        </childnode>
+      </node>
+      <node id="2905">
+        <label>boost/serialization/map.hpp</label>
+      </node>
+      <node id="2894">
+        <label>limits</label>
+      </node>
+      <node id="2907">
+        <label>boost/serialization/vector.hpp</label>
+      </node>
+      <node id="2893">
+        <label>iterator</label>
+      </node>
+      <node id="2904">
+        <label>boost/archive/text_iarchive.hpp</label>
+      </node>
+      <node id="2919">
+        <label>LearningHint.h</label>
+        <link refid="LearningHint_8h"/>
+        <childnode refid="2883" relation="include">
+        </childnode>
+        <childnode refid="2912" relation="include">
+        </childnode>
+      </node>
+      <node id="2913">
+        <label>Type.h</label>
+        <link refid="Type_8h"/>
+        <childnode refid="2883" relation="include">
+        </childnode>
+      </node>
+      <node id="2916">
+        <label>Link.h</label>
+        <link refid="Link_8h"/>
+        <childnode refid="2883" relation="include">
+        </childnode>
+        <childnode refid="2911" relation="include">
+        </childnode>
+        <childnode refid="2917" relation="include">
+        </childnode>
+      </node>
+      <node id="2918">
+        <label>OpenGLHint.h</label>
+        <link refid="OpenGLHint_8h"/>
+        <childnode refid="2883" relation="include">
+        </childnode>
+      </node>
+      <node id="2897">
+        <label>boost/foreach.hpp</label>
+      </node>
+      <node id="2878">
+        <label>cmath</label>
+      </node>
+      <node id="2920">
+        <label>Cache.h</label>
+        <link refid="Cache_8h"/>
+        <childnode refid="2883" relation="include">
+        </childnode>
+        <childnode refid="2913" relation="include">
+        </childnode>
+        <childnode refid="2911" relation="include">
+        </childnode>
+      </node>
+      <node id="2901">
+        <label>boost/archive/xml_oarchive.hpp</label>
+      </node>
+      <node id="2891">
+        <label>string</label>
+      </node>
+      <node id="2882">
+        <label>QKeyEvent</label>
+      </node>
+      <node id="2887">
+        <label>map</label>
+      </node>
+      <node id="2898">
+        <label>boost/thread.hpp</label>
+      </node>
+      <node id="2910">
+        <label>Net.h</label>
+        <link refid="Net_8h"/>
+        <childnode refid="2883" relation="include">
+        </childnode>
+        <childnode refid="2911" relation="include">
+        </childnode>
+        <childnode refid="2914" relation="include">
+        </childnode>
+        <childnode refid="2920" relation="include">
+        </childnode>
+        <childnode refid="2921" relation="include">
+        </childnode>
+        <childnode refid="2922" relation="include">
+        </childnode>
+      </node>
+      <node id="2914">
+        <label>Neuron.h</label>
+        <link refid="Neuron_8h"/>
+        <childnode refid="2883" relation="include">
+        </childnode>
+        <childnode refid="2911" relation="include">
+        </childnode>
+        <childnode refid="2915" relation="include">
+        </childnode>
+        <childnode refid="2916" relation="include">
+        </childnode>
+        <childnode refid="2918" relation="include">
+        </childnode>
+        <childnode refid="2919" relation="include">
+        </childnode>
+      </node>
+      <node id="2886">
+        <label>fstream</label>
+      </node>
+      <node id="2883">
+        <label>Includes.h</label>
+        <link refid="Includes_8h"/>
+        <childnode refid="2884" relation="include">
+        </childnode>
+        <childnode refid="2885" relation="include">
+        </childnode>
+        <childnode refid="2886" relation="include">
+        </childnode>
+        <childnode refid="2887" relation="include">
+        </childnode>
+        <childnode refid="2888" relation="include">
+        </childnode>
+        <childnode refid="2889" relation="include">
+        </childnode>
+        <childnode refid="2890" relation="include">
+        </childnode>
+        <childnode refid="2891" relation="include">
+        </childnode>
+        <childnode refid="2892" relation="include">
+        </childnode>
+        <childnode refid="2893" relation="include">
+        </childnode>
+        <childnode refid="2894" relation="include">
+        </childnode>
+        <childnode refid="2878" relation="include">
+        </childnode>
+        <childnode refid="2895" relation="include">
+        </childnode>
+        <childnode refid="2896" relation="include">
+        </childnode>
+        <childnode refid="2897" relation="include">
+        </childnode>
+        <childnode refid="2898" relation="include">
+        </childnode>
+        <childnode refid="2899" relation="include">
+        </childnode>
+        <childnode refid="2900" relation="include">
+        </childnode>
+        <childnode refid="2901" relation="include">
+        </childnode>
+        <childnode refid="2902" relation="include">
+        </childnode>
+        <childnode refid="2903" relation="include">
+        </childnode>
+        <childnode refid="2904" relation="include">
+        </childnode>
+        <childnode refid="2905" relation="include">
+        </childnode>
+        <childnode refid="2906" relation="include">
+        </childnode>
+        <childnode refid="2907" relation="include">
+        </childnode>
+        <childnode refid="2908" relation="include">
+        </childnode>
+        <childnode refid="2909" relation="include">
+        </childnode>
+      </node>
+      <node id="2896">
+        <label>boost/any.hpp</label>
+      </node>
+      <node id="2903">
+        <label>boost/archive/text_oarchive.hpp</label>
+      </node>
+      <node id="2902">
+        <label>boost/archive/xml_iarchive.hpp</label>
+      </node>
+      <node id="2908">
+        <label>boost/serialization/version.hpp</label>
+      </node>
+      <node id="2909">
+        <label>boost/progress.hpp</label>
+      </node>
+      <node id="2921">
+        <label>Util.h</label>
+        <link refid="Util_8h"/>
+        <childnode refid="2883" relation="include">
+        </childnode>
+      </node>
+      <node id="2889">
+        <label>vector</label>
+      </node>
+      <node id="2911">
+        <label>Object.h</label>
+        <link refid="Object_8h"/>
+        <childnode refid="2883" relation="include">
+        </childnode>
+        <childnode refid="2912" relation="include">
+        </childnode>
+        <childnode refid="2913" relation="include">
+        </childnode>
+      </node>
+      <node id="2899">
+        <label>boost/thread/barrier.hpp</label>
+      </node>
+      <node id="2885">
+        <label>sstream</label>
+      </node>
+      <node id="2880">
+        <label>QGLWidget</label>
+      </node>
+      <node id="2900">
+        <label>boost/ref.hpp</label>
+      </node>
+      <node id="2881">
+        <label>QLabel</label>
+      </node>
+      <node id="2895">
+        <label>cstdlib</label>
+      </node>
+      <node id="2884">
+        <label>iostream</label>
+      </node>
+      <node id="2906">
+        <label>boost/serialization/list.hpp</label>
+      </node>
+      <node id="2879">
+        <label>glwidget.h</label>
+        <link refid="glwidget_8h"/>
+        <childnode refid="2880" relation="include">
+        </childnode>
+        <childnode refid="2881" relation="include">
+        </childnode>
+        <childnode refid="2882" relation="include">
+        </childnode>
+        <childnode refid="2883" relation="include">
+        </childnode>
+        <childnode refid="2910" relation="include">
+        </childnode>
+        <childnode refid="2921" relation="include">
+        </childnode>
+      </node>
+      <node id="2892">
+        <label>algorithm</label>
+      </node>
+      <node id="2922">
+        <label>Runner.h</label>
+        <link refid="Runner_8h"/>
+        <childnode refid="2883" relation="include">
+        </childnode>
+        <childnode refid="2913" relation="include">
+        </childnode>
+        <childnode refid="2914" relation="include">
+        </childnode>
+      </node>
+      <node id="2877">
+        <label>QtGui</label>
+      </node>
+      <node id="2917">
+        <label>Weight.h</label>
+        <link refid="Weight_8h"/>
+        <childnode refid="2883" relation="include">
+        </childnode>
+        <childnode refid="2911" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&lt;QtGui&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cmath&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="glwidget_8h" kindref="compound">glwidget.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal">std;</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal">pann;</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10" refid="classGLWidget_1710fcbb123255ce1bada485b26c4b312" refkind="member"><highlight class="normal"><ref refid="classGLWidget_1710fcbb123255ce1bada485b26c4b312" kindref="member">GLWidget::GLWidget</ref>(<ref refid="classpann_1_1Net" kindref="compound">Net</ref>*<sp/>_net,<sp/>QLabel*<sp/>_label,<sp/>QWidget<sp/>*parent)</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>QGLWidget(parent),<sp/>p_net(_net),<sp/>info_label(_label)</highlight></codeline>
+<codeline lineno="12"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classGLWidget_161ec77b4004fb9516acb9869566f9095" kindref="member">calcCoords</ref>();</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classGLWidget_1c4e7e44c30909b9fdd865d5b4bbb702a" kindref="member">restoreDefaults</ref>();</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classGLWidget_1eab29fc071d92db4f5ecdc899d25c1e1" kindref="member">drawNetModel</ref>();</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classGLWidget_1f994f59226294ff949688422eb5cc3d3" kindref="member">setInfoNet</ref>();</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//setInfoNeuron(1);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22" refid="classGLWidget_1535192a4262b4501e5493303834f45d3" refkind="member"><highlight class="normal"><ref refid="classGLWidget_1535192a4262b4501e5493303834f45d3" kindref="member">GLWidget::~GLWidget</ref>()</highlight></codeline>
+<codeline lineno="23"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>makeCurrent();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="classGLWidget_161ec77b4004fb9516acb9869566f9095" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classGLWidget_161ec77b4004fb9516acb9869566f9095" kindref="member">GLWidget::calcCoords</ref>()</highlight></codeline>
+<codeline lineno="28"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1NetCache" kindref="compound">NetCache</ref>&amp;<sp/>cache<sp/>=<sp/><ref refid="classGLWidget_1e9cfb3a5018251dacc5e6ee1127404a7" kindref="member">p_net</ref>-&gt;<ref refid="classpann_1_1Net_1bf7a3f67a2d7ced86b8589d69477ed96" kindref="member">getCache</ref>();</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>total_layers<sp/>=<sp/>cache.<ref refid="classpann_1_1NetCache_1dd41e18c50e038ff9b9cbdf249913cec" kindref="member">data</ref>.size();</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>total_threads<sp/>=<sp/>cache.<ref refid="classpann_1_1NetCache_1dd41e18c50e038ff9b9cbdf249913cec" kindref="member">data</ref>[0].size();</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Form<sp/>colors<sp/>for<sp/>threads</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>srand(42);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>vector&lt;QColor&gt;<sp/>threadColors;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>total_threads;<sp/>++i)</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>threadColors.push_back(QColor(200<sp/>+<sp/>rand()<sp/>%<sp/>55<sp/>,<sp/>rand()<sp/>%<sp/>100,<sp/>rand()<sp/>%<sp/>100));</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>layer<sp/>=<sp/>0;<sp/>layer<sp/>&lt;<sp/>total_layers;<sp/>++layer)</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>layer_size<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>thread<sp/>=<sp/>0;<sp/>thread<sp/>&lt;<sp/>total_threads;<sp/>++thread)</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>layer_size<sp/>+=<sp/>cache.<ref refid="classpann_1_1NetCache_1dd41e18c50e038ff9b9cbdf249913cec" kindref="member">data</ref>[layer][thread].size();</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>neuron_number<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>thread<sp/>=<sp/>0;<sp/>thread<sp/>&lt;<sp/>total_threads;<sp/>++thread)</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>cache.<ref refid="classpann_1_1NetCache_1dd41e18c50e038ff9b9cbdf249913cec" kindref="member">data</ref>[layer][thread].size();<sp/>++i)</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacepann_168751290d27789ce6f303cf55ed505ed" kindref="member">ConstNeuronIter</ref><sp/>neuronIter<sp/>=<sp/>cache.<ref refid="classpann_1_1NetCache_1dd41e18c50e038ff9b9cbdf249913cec" kindref="member">data</ref>[layer][thread][i];</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>planeRows<sp/>=<sp/>sqrt(layer_size);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>planeCols<sp/>=<sp/>layer_size<sp/>/<sp/>planeRows;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classpann_1_1OpenGLHint" kindref="compound">OpenGLHint</ref>*<sp/>oglHint<sp/>=<sp/>neuronIter-&gt;second.oglHint;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structGLWidget_1_1Coords" kindref="compound">Coords</ref><sp/>c;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(oglHint<sp/>&amp;&amp;<sp/>oglHint-&gt;<ref refid="classpann_1_1OpenGLHint_1d027bb31231826f924d94b34cc155727" kindref="member">point</ref>.<ref refid="classpann_1_1Point3d_10e8d4e3856a420aadfc360a853d5c8fd" kindref="member">x</ref>)</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>c.<ref refid="structGLWidget_1_1Coords_1ad9bc35e5c6072b31a361a76b6927c46" kindref="member">x</ref><sp/>=<sp/>oglHint-&gt;<ref refid="classpann_1_1OpenGLHint_1d027bb31231826f924d94b34cc155727" kindref="member">point</ref>.<ref refid="classpann_1_1Point3d_10e8d4e3856a420aadfc360a853d5c8fd" kindref="member">x</ref>;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>c.<ref refid="structGLWidget_1_1Coords_1ad9bc35e5c6072b31a361a76b6927c46" kindref="member">x</ref><sp/>=<sp/>(GLdouble)<sp/>(<sp/>(GLdouble)layer<sp/>-<sp/>total_layers/2.0<sp/>+<sp/>1.0)<sp/>*<sp/>100;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(oglHint<sp/>&amp;&amp;<sp/>oglHint-&gt;<ref refid="classpann_1_1OpenGLHint_1d027bb31231826f924d94b34cc155727" kindref="member">point</ref>.<ref refid="classpann_1_1Point3d_10951dd463a6738f2f9fcdf838ae14b08" kindref="member">y</ref>)</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>c.<ref refid="structGLWidget_1_1Coords_1ad9bc35e5c6072b31a361a76b6927c46" kindref="member">x</ref><sp/>=<sp/>oglHint-&gt;<ref refid="classpann_1_1OpenGLHint_1d027bb31231826f924d94b34cc155727" kindref="member">point</ref>.<ref refid="classpann_1_1Point3d_10951dd463a6738f2f9fcdf838ae14b08" kindref="member">y</ref>;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>c.<ref refid="structGLWidget_1_1Coords_12b09b44aa6765cd28df54335e8049596" kindref="member">y</ref><sp/>=<sp/>(GLdouble)<sp/>(<sp/>(GLdouble)(neuron_number<sp/>/<sp/>planeCols)<sp/>-<sp/>planeRows/2.0<sp/>+<sp/>1.0<sp/>)<sp/>*<sp/>40.0;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(oglHint<sp/>&amp;&amp;<sp/>oglHint-&gt;<ref refid="classpann_1_1OpenGLHint_1d027bb31231826f924d94b34cc155727" kindref="member">point</ref>.<ref refid="classpann_1_1Point3d_1223f584d80ae49ce8b827804929eeb47" kindref="member">z</ref>)</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>c.<ref refid="structGLWidget_1_1Coords_1ad9bc35e5c6072b31a361a76b6927c46" kindref="member">x</ref><sp/>=<sp/>oglHint-&gt;<ref refid="classpann_1_1OpenGLHint_1d027bb31231826f924d94b34cc155727" kindref="member">point</ref>.<ref refid="classpann_1_1Point3d_1223f584d80ae49ce8b827804929eeb47" kindref="member">z</ref>;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>c.<ref refid="structGLWidget_1_1Coords_111f8206bf328c5632efb0b7ae028811a" kindref="member">z</ref><sp/>=<sp/>(GLdouble)<sp/>(<sp/>(GLdouble)(neuron_number<sp/>%<sp/>planeCols)<sp/>-<sp/>planeCols/2.0<sp/>+<sp/>1.0<sp/>)<sp/>*<sp/>40.0;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="classGLWidget_1e9cfb3a5018251dacc5e6ee1127404a7" kindref="member">p_net</ref>-&gt;<ref refid="classpann_1_1Net_171c72a853f6acb84389ad4e507c23f8c" kindref="member">getNeuronRole</ref>(neuronIter-&gt;first)<sp/>==<sp/>Net::InputNeuron)</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>c.<ref refid="structGLWidget_1_1Coords_1fdd15067fa0ead4c9f8aa918308aa72f" kindref="member">color</ref><sp/>=<sp/>QColor(0,<sp/>150,<sp/>0);<sp/></highlight><highlight class="comment">//Input<sp/>neuron<sp/>color</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(layer<sp/>==<sp/>total_layers<sp/>-<sp/>2)<sp/></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>c.<ref refid="structGLWidget_1_1Coords_1fdd15067fa0ead4c9f8aa918308aa72f" kindref="member">color</ref><sp/>=<sp/>QColor(0,<sp/>0,<sp/>150);<sp/></highlight><highlight class="comment">//Output<sp/>neuron</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(oglHint<sp/>&amp;&amp;<sp/>(oglHint-&gt;<ref refid="classpann_1_1OpenGLHint_127ec4cdd08b8806818f730ff13b965e8" kindref="member">color</ref>.<ref refid="classpann_1_1Color_155c36f51e688aa86f292d23962a3fa33" kindref="member">r</ref><sp/>||<sp/>oglHint-&gt;<ref refid="classpann_1_1OpenGLHint_127ec4cdd08b8806818f730ff13b965e8" kindref="member">color</ref>.<ref refid="classpann_1_1Color_1b7e0e0306a50ce1adb53434303dfce06" kindref="member">g</ref><sp/>||<sp/>oglHint-&gt;<ref refid="classpann_1_1OpenGLHint_127ec4cdd08b8806818f730ff13b965e8" kindref="member">color</ref>.<ref refid="classpann_1_1Color_18f6daae84417efbf6798839840e4fd45" kindref="member">b</ref>))<sp/></highlight><highlight class="comment">//Regular<sp/>neuron</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>c.<ref refid="structGLWidget_1_1Coords_1fdd15067fa0ead4c9f8aa918308aa72f" kindref="member">color</ref><sp/>=<sp/>QColor(oglHint-&gt;<ref refid="classpann_1_1OpenGLHint_127ec4cdd08b8806818f730ff13b965e8" kindref="member">color</ref>.<ref refid="classpann_1_1Color_155c36f51e688aa86f292d23962a3fa33" kindref="member">r</ref>,<sp/>oglHint-&gt;<ref refid="classpann_1_1OpenGLHint_127ec4cdd08b8806818f730ff13b965e8" kindref="member">color</ref>.<ref refid="classpann_1_1Color_1b7e0e0306a50ce1adb53434303dfce06" kindref="member">g</ref>,<sp/>oglHint-&gt;<ref refid="classpann_1_1OpenGLHint_127ec4cdd08b8806818f730ff13b965e8" kindref="member">color</ref>.<ref refid="classpann_1_1Color_18f6daae84417efbf6798839840e4fd45" kindref="member">b</ref>);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>c.<ref refid="structGLWidget_1_1Coords_1fdd15067fa0ead4c9f8aa918308aa72f" kindref="member">color</ref><sp/>=<sp/>threadColors[thread];</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classGLWidget_10eac0310537c6e24b45ca6db95615129" kindref="member">coords</ref>[neuronIter]<sp/>=<sp/>c;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>neuron_number++;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89" refid="classGLWidget_1eab29fc071d92db4f5ecdc899d25c1e1" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classGLWidget_1eab29fc071d92db4f5ecdc899d25c1e1" kindref="member">GLWidget::drawNetModel</ref>()</highlight></codeline>
+<codeline lineno="90"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>GLUquadric*<sp/>q<sp/>=<sp/>gluNewQuadric();</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>gluQuadricNormals(q,<sp/>GLU_SMOOTH);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>glNewList(1,GL_COMPILE);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//For<sp/>every<sp/>neuron<sp/>draw<sp/>Link::in<sp/>connections</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>map&lt;unsigned,<sp/>Neuron&gt;::const_iterator<sp/>iter<sp/>=<sp/><ref refid="classGLWidget_1e9cfb3a5018251dacc5e6ee1127404a7" kindref="member">p_net</ref>-&gt;<ref refid="classpann_1_1Net_120552ffce8f342bb6cf064180780a788" kindref="member">getNeurons</ref>().begin();</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(;<sp/>iter<sp/>!=<sp/><ref refid="classGLWidget_1e9cfb3a5018251dacc5e6ee1127404a7" kindref="member">p_net</ref>-&gt;<ref refid="classpann_1_1Net_120552ffce8f342bb6cf064180780a788" kindref="member">getNeurons</ref>().end();<sp/>++iter)</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structGLWidget_1_1Coords" kindref="compound">Coords</ref><sp/>to_coords<sp/>=<sp/><ref refid="classGLWidget_10eac0310537c6e24b45ca6db95615129" kindref="member">coords</ref>[iter];</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Draw<sp/>neuron</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glPushMatrix();</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>qglColor(to_coords.<ref refid="structGLWidget_1_1Coords_1fdd15067fa0ead4c9f8aa918308aa72f" kindref="member">color</ref>);</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glTranslated(to_coords.<ref refid="structGLWidget_1_1Coords_1ad9bc35e5c6072b31a361a76b6927c46" kindref="member">x</ref>,<sp/>to_coords.<ref refid="structGLWidget_1_1Coords_12b09b44aa6765cd28df54335e8049596" kindref="member">y</ref>,<sp/>to_coords.<ref refid="structGLWidget_1_1Coords_111f8206bf328c5632efb0b7ae028811a" kindref="member">z</ref>);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gluSphere(q,<sp/><ref refid="classGLWidget_1081e78b842455de4d017d4611e7b5788" kindref="member">neuronRadius</ref>,<sp/>12,<sp/>12);<sp/></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glPopMatrix();</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="classGLWidget_1b8770ba1df955dcb1b99eec10fd0e008" kindref="member">drawLinks</ref>)</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Draw<sp/>it&apos;s<sp/>Link::in<sp/>connections</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>qglColor(QColor(0,<sp/>255,<sp/>0));</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>list&lt;Link&gt;::const_iterator<sp/>link_iter<sp/>=<sp/>iter-&gt;second.links.begin();</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(;<sp/>link_iter<sp/>!=<sp/>iter-&gt;second.links.end();<sp/>++link_iter)</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(link_iter-&gt;getDirection()<sp/>==<sp/>Link::out)</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">continue</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(link_iter-&gt;getToIter()-&gt;first<sp/>==<sp/><ref refid="classGLWidget_1e9cfb3a5018251dacc5e6ee1127404a7" kindref="member">p_net</ref>-&gt;<ref refid="classpann_1_1Net_1179bae99437bcfc80e3477a9c01e0d62" kindref="member">getBiasId</ref>()<sp/>&amp;&amp;<sp/>!<ref refid="classGLWidget_16de10f49b94bf985d647d08afe1257ef" kindref="member">drawBiasLinks</ref>)</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">continue</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="classGLWidget_125ad555f465a27dc2c27c58b5de9f42e" kindref="member">linkRate</ref><sp/>&gt;<sp/>1<sp/>&amp;&amp;<sp/>(rand()<sp/>%<sp/><ref refid="classGLWidget_125ad555f465a27dc2c27c58b5de9f42e" kindref="member">linkRate</ref><sp/>!=<sp/>0))</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">continue</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structGLWidget_1_1Coords" kindref="compound">Coords</ref><sp/>from_coords<sp/>=<sp/><ref refid="classGLWidget_10eac0310537c6e24b45ca6db95615129" kindref="member">coords</ref>[link_iter-&gt;getToIter()];</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glBegin(GL_LINES);</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glVertex3d(from_coords.<ref refid="structGLWidget_1_1Coords_1ad9bc35e5c6072b31a361a76b6927c46" kindref="member">x</ref>,<sp/>from_coords.<ref refid="structGLWidget_1_1Coords_12b09b44aa6765cd28df54335e8049596" kindref="member">y</ref>,<sp/>from_coords.<ref refid="structGLWidget_1_1Coords_111f8206bf328c5632efb0b7ae028811a" kindref="member">z</ref>);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glVertex3d(to_coords.<ref refid="structGLWidget_1_1Coords_1ad9bc35e5c6072b31a361a76b6927c46" kindref="member">x</ref>,<sp/>to_coords.<ref refid="structGLWidget_1_1Coords_12b09b44aa6765cd28df54335e8049596" kindref="member">y</ref>,<sp/>to_coords.<ref refid="structGLWidget_1_1Coords_111f8206bf328c5632efb0b7ae028811a" kindref="member">z</ref>);</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glEnd();</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/>glEndList();</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/>gluDeleteQuadric(q);</highlight></codeline>
+<codeline lineno="138"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140" refid="classGLWidget_19a07d44b5dc052a8652b88454f3cb481" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classGLWidget_19a07d44b5dc052a8652b88454f3cb481" kindref="member">GLWidget::setInfoNeuron</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>_id)</highlight></codeline>
+<codeline lineno="141"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Neuron" kindref="compound">Neuron</ref>*<sp/>n<sp/>=<sp/>&amp;(<ref refid="classGLWidget_1e9cfb3a5018251dacc5e6ee1127404a7" kindref="member">p_net</ref>-&gt;<ref refid="classpann_1_1Net_120552ffce8f342bb6cf064180780a788" kindref="member">getNeurons</ref>().find(_id)-&gt;second);</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/>ostringstream<sp/>ost;</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/>ost&lt;&lt;</highlight><highlight class="stringliteral">&quot;Neuron<sp/>info:\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;ID:<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;_id&lt;&lt;endl</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;ActivationFunction:<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;n-&gt;<ref refid="classpann_1_1Neuron_120445c905a8ad3e243e0945bd3595b9a" kindref="member">getActivationFunction</ref>()-&gt;<ref refid="classpann_1_1ActivationFunction_1_1Base_1110e8df25117878d2b49cc2fda35c50d" kindref="member">getName</ref>()</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/>(&quot;</highlight><highlight class="normal">&lt;&lt;n-&gt;<ref refid="classpann_1_1Neuron_120445c905a8ad3e243e0945bd3595b9a" kindref="member">getActivationFunction</ref>()-&gt;<ref refid="classpann_1_1ActivationFunction_1_1Base_1882ff77ecccf62b9c453243fe0adb63d" kindref="member">getId</ref>()&lt;&lt;</highlight><highlight class="stringliteral">&quot;)&quot;</highlight><highlight class="normal">&lt;&lt;endl</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;Owner:<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;n-&gt;<ref refid="classpann_1_1Neuron_12a426e05cdb3fbd67635a4ba57ec2bbd" kindref="member">getOwnerThread</ref>()&lt;&lt;endl</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;Receptive<sp/>field:<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;n-&gt;<ref refid="classpann_1_1Neuron_1cc966b3f4aa4ee2f158ab70196642fc4" kindref="member">receptiveField</ref>&lt;&lt;endl</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;Activation<sp/>value:<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;n-&gt;<ref refid="classpann_1_1Neuron_179899694b4dbaa30551f9f6784ddd869" kindref="member">activationValue</ref>&lt;&lt;endl</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;Links:<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;n-&gt;<ref refid="classpann_1_1Neuron_11ea45590be4c55659a776ff0acf2ac2c" kindref="member" tooltip="List of Link, both directions.">links</ref>.size()&lt;&lt;endl</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;endl;</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classGLWidget_16fa651499e538e3590c90f3410178396" kindref="member">info_label</ref>-&gt;setText(ost.str().c_str());</highlight></codeline>
+<codeline lineno="155"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157" refid="classGLWidget_1f994f59226294ff949688422eb5cc3d3" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classGLWidget_1f994f59226294ff949688422eb5cc3d3" kindref="member">GLWidget::setInfoNet</ref>()</highlight></codeline>
+<codeline lineno="158"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/>ostringstream<sp/>ost;</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/>ost&lt;&lt;</highlight><highlight class="stringliteral">&quot;Net<sp/>info:\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;Neurons:<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;<ref refid="classGLWidget_1e9cfb3a5018251dacc5e6ee1127404a7" kindref="member">p_net</ref>-&gt;<ref refid="classpann_1_1Net_120552ffce8f342bb6cf064180780a788" kindref="member">getNeurons</ref>().size()&lt;&lt;endl</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;Weights:<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;<ref refid="classGLWidget_1e9cfb3a5018251dacc5e6ee1127404a7" kindref="member">p_net</ref>-&gt;<ref refid="classpann_1_1Net_1f0276c2c5d68a2c9f7d7dfde5e1aca30" kindref="member">getWeights</ref>().size()&lt;&lt;endl</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;Threads:<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;<ref refid="classGLWidget_1e9cfb3a5018251dacc5e6ee1127404a7" kindref="member">p_net</ref>-&gt;<ref refid="classpann_1_1Net_17367ddcfe022477e2e99aa2115580395" kindref="member">getThreadCount</ref>()&lt;&lt;endl</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;endl&lt;&lt;endl;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!<ref refid="classGLWidget_1b8770ba1df955dcb1b99eec10fd0e008" kindref="member">drawLinks</ref>)</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ost&lt;&lt;</highlight><highlight class="stringliteral">&quot;Note:<sp/>links<sp/>are<sp/>not<sp/>shown&quot;</highlight><highlight class="normal">&lt;&lt;endl;</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!<ref refid="classGLWidget_16de10f49b94bf985d647d08afe1257ef" kindref="member">drawBiasLinks</ref>)</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ost&lt;&lt;</highlight><highlight class="stringliteral">&quot;Note:<sp/>bias<sp/>connections<sp/>are<sp/>not<sp/>shown&quot;</highlight><highlight class="normal">&lt;&lt;endl;</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/>ost&lt;&lt;</highlight><highlight class="stringliteral">&quot;Note:<sp/>only<sp/>every<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;<ref refid="classGLWidget_125ad555f465a27dc2c27c58b5de9f42e" kindref="member">linkRate</ref>&lt;&lt;</highlight><highlight class="stringliteral">&quot;-th<sp/>link<sp/>is<sp/>shown&quot;</highlight><highlight class="normal">&lt;&lt;endl;</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/>ost&lt;&lt;endl&lt;&lt;endl;</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/>ost&lt;&lt;</highlight><highlight class="stringliteral">&quot;Hint:<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;endl;</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/>ost&lt;&lt;</highlight><highlight class="stringliteral">&quot;&apos;W&apos;,<sp/>&apos;A&apos;,<sp/>&apos;S&apos;,<sp/>&apos;D&apos;,<sp/>drag<sp/>with<sp/>mouse<sp/>middle<sp/>button<sp/>-<sp/>move<sp/>around&quot;</highlight><highlight class="normal">&lt;&lt;endl;</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/>ost&lt;&lt;</highlight><highlight class="stringliteral">&quot;&apos;+&apos;,<sp/>&apos;-&apos;,<sp/>mouse<sp/>wheel<sp/><sp/>-<sp/>zoom&quot;</highlight><highlight class="normal">&lt;&lt;endl;</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/>ost&lt;&lt;</highlight><highlight class="stringliteral">&quot;&apos;Up&apos;,<sp/>&apos;Down&apos;,<sp/>&apos;Left&apos;,<sp/>&apos;Right&apos;<sp/>-<sp/>rotate<sp/>X-Y&quot;</highlight><highlight class="normal">&lt;&lt;endl;</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/>ost&lt;&lt;</highlight><highlight class="stringliteral">&quot;Drag<sp/>with<sp/>left<sp/>mouse<sp/>button<sp/>-<sp/>rotate<sp/>X-Y&quot;</highlight><highlight class="normal">&lt;&lt;endl;</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/>ost&lt;&lt;</highlight><highlight class="stringliteral">&quot;Drag<sp/>with<sp/>right<sp/>mouse<sp/>button<sp/>-<sp/>rotate<sp/>X-Z&quot;</highlight><highlight class="normal">&lt;&lt;endl;</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classGLWidget_16fa651499e538e3590c90f3410178396" kindref="member">info_label</ref>-&gt;setText(ost.str().c_str());</highlight></codeline>
+<codeline lineno="184"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"></highlight></codeline>
+<codeline lineno="186" refid="classGLWidget_11e1d21d000d24735432063986079ea1f" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classGLWidget_11e1d21d000d24735432063986079ea1f" kindref="member">GLWidget::normalizeAngle</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>*angle)</highlight></codeline>
+<codeline lineno="187"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(*angle<sp/>&lt;<sp/>0)</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*angle<sp/>+=<sp/>360<sp/>*<sp/>16;</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(*angle<sp/>&gt;<sp/>360<sp/>*<sp/>16)</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*angle<sp/>-=<sp/>360<sp/>*<sp/>16;</highlight></codeline>
+<codeline lineno="192"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight></codeline>
+<codeline lineno="194" refid="classGLWidget_17083404e9ab8feffb2c486f7c15308ce" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classGLWidget_17083404e9ab8feffb2c486f7c15308ce" kindref="member">GLWidget::setXRotation</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>angle)</highlight></codeline>
+<codeline lineno="195"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classGLWidget_11e1d21d000d24735432063986079ea1f" kindref="member">normalizeAngle</ref>(&amp;angle);</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(angle<sp/>!=<sp/><ref refid="classGLWidget_1603babfc4347b1d856742d2088e48427" kindref="member">xRot</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classGLWidget_1603babfc4347b1d856742d2088e48427" kindref="member">xRot</ref><sp/>=<sp/>angle;</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>updateGL();</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="201"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight></codeline>
+<codeline lineno="203" refid="classGLWidget_129012eba3cb4201f78807066f2c9dcd4" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classGLWidget_129012eba3cb4201f78807066f2c9dcd4" kindref="member">GLWidget::setYRotation</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>angle)</highlight></codeline>
+<codeline lineno="204"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classGLWidget_11e1d21d000d24735432063986079ea1f" kindref="member">normalizeAngle</ref>(&amp;angle);</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(angle<sp/>!=<sp/><ref refid="classGLWidget_19d7e08316aa483c447ef0fc0a03875c3" kindref="member">yRot</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classGLWidget_19d7e08316aa483c447ef0fc0a03875c3" kindref="member">yRot</ref><sp/>=<sp/>angle;</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>updateGL();</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="210"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"></highlight></codeline>
+<codeline lineno="212" refid="classGLWidget_16f6b4fbbcc566d999db7e53aadeba889" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classGLWidget_16f6b4fbbcc566d999db7e53aadeba889" kindref="member">GLWidget::setZRotation</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>angle)</highlight></codeline>
+<codeline lineno="213"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classGLWidget_11e1d21d000d24735432063986079ea1f" kindref="member">normalizeAngle</ref>(&amp;angle);</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(angle<sp/>!=<sp/><ref refid="classGLWidget_142f34356f5f02cab779821174a1a9700" kindref="member">zRot</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classGLWidget_142f34356f5f02cab779821174a1a9700" kindref="member">zRot</ref><sp/>=<sp/>angle;</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>updateGL();</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="219"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"></highlight></codeline>
+<codeline lineno="221" refid="classGLWidget_1e909386dd65c094be5f3aac34bb90278" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classGLWidget_1e909386dd65c094be5f3aac34bb90278" kindref="member">GLWidget::setScale</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>_scale)</highlight></codeline>
+<codeline lineno="222"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(_scale<sp/>!=<sp/><ref refid="classGLWidget_16e1f74daae4bcac37a2a2f0eda52fb78" kindref="member">scale</ref><sp/>&amp;&amp;<sp/>_scale<sp/>&gt;<sp/>0.1<sp/>&amp;&amp;<sp/>_scale<sp/>&lt;<sp/>10.0)</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classGLWidget_16e1f74daae4bcac37a2a2f0eda52fb78" kindref="member">scale</ref><sp/>=<sp/>_scale;</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>updateGL();</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="228"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"></highlight></codeline>
+<codeline lineno="230" refid="classGLWidget_1e56e2d5aa6203a927cdc046876893751" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classGLWidget_1e56e2d5aa6203a927cdc046876893751" kindref="member">GLWidget::setTranslation</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>_x,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>_y,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>_z)</highlight></codeline>
+<codeline lineno="231"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//if()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classGLWidget_1e0285a93d33f66a65efdccca45ec420c" kindref="member">xTrans</ref><sp/>=<sp/>_x;</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classGLWidget_124dd3e0a385edcb7daf49646bcb3f14e" kindref="member">yTrans</ref><sp/>=<sp/>_y;</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classGLWidget_102ff64f2b9280eb86dce9aa561a5d4b9" kindref="member">zTrans</ref><sp/>=<sp/>_z;</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>updateGL();</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="239"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"></highlight></codeline>
+<codeline lineno="241" refid="classGLWidget_1c4e7e44c30909b9fdd865d5b4bbb702a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classGLWidget_1c4e7e44c30909b9fdd865d5b4bbb702a" kindref="member">GLWidget::restoreDefaults</ref>()</highlight></codeline>
+<codeline lineno="242"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classGLWidget_1e56e2d5aa6203a927cdc046876893751" kindref="member">setTranslation</ref>(0,<sp/>0,<sp/>0);</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classGLWidget_1e909386dd65c094be5f3aac34bb90278" kindref="member">setScale</ref>(1.0);</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classGLWidget_17083404e9ab8feffb2c486f7c15308ce" kindref="member">setXRotation</ref>(0);</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classGLWidget_129012eba3cb4201f78807066f2c9dcd4" kindref="member">setYRotation</ref>(0);</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classGLWidget_16f6b4fbbcc566d999db7e53aadeba889" kindref="member">setZRotation</ref>(0);</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"></highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classGLWidget_1081e78b842455de4d017d4611e7b5788" kindref="member">neuronRadius</ref><sp/>=<sp/>7;</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classGLWidget_1b8770ba1df955dcb1b99eec10fd0e008" kindref="member">drawLinks</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classGLWidget_16de10f49b94bf985d647d08afe1257ef" kindref="member">drawBiasLinks</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classGLWidget_125ad555f465a27dc2c27c58b5de9f42e" kindref="member">linkRate</ref><sp/>=<sp/>4;</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"></highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/>updateGL();</highlight></codeline>
+<codeline lineno="255"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"></highlight></codeline>
+<codeline lineno="257" refid="classGLWidget_17fab13e8cc9fc0730ca54c08b2c923a7" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classGLWidget_17fab13e8cc9fc0730ca54c08b2c923a7" kindref="member">GLWidget::initializeGL</ref>()</highlight></codeline>
+<codeline lineno="258"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Antialiasing</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/>glEnable(GL_LINE_SMOOTH);</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/>glEnable(GL_BLEND);</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/>glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/>glHint(GL_LINE_SMOOTH_HINT,GL_NICEST);</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/>glLineWidth(1.5);</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/>glPointSize(1.0);</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"></highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Light</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/>glEnable(GL_LIGHTING);</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/>glEnable(GL_COLOR_MATERIAL);</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/>glColorMaterial(GL_FRONT_AND_BACK,<sp/>GL_AMBIENT_AND_DIFFUSE);</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/>glShadeModel(GL_SMOOTH);</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/>glEnable(GL_LIGHT0);</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/>GLfloat<sp/>position[]<sp/><sp/>=<sp/>{<sp/>-width()/5.0f,<sp/>height()/2.0f,<sp/>100.0f<sp/>,<sp/>1.0f};</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/>glLightfv(GL_LIGHT0,<sp/>GL_POSITION,<sp/>position);</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/></highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/>GLfloat<sp/>specular[]<sp/>=<sp/>{0.5f,<sp/>0.5f,<sp/>0.5f<sp/>,<sp/>1.0f};</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/>GLfloat<sp/>ambient[]<sp/><sp/>=<sp/>{0.2f,<sp/>0.2f,<sp/>0.2f<sp/>,<sp/>1.0f};</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/>GLfloat<sp/>diffuse[]<sp/><sp/>=<sp/>{0.8f,<sp/>0.8f,<sp/>0.8f<sp/>,<sp/>1.0f};</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/>glLightfv(GL_LIGHT0,<sp/>GL_SPECULAR,<sp/>specular);</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/>glLightfv(GL_LIGHT0,<sp/>GL_AMBIENT,<sp/>ambient);</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/>glLightfv(GL_LIGHT0,<sp/>GL_DIFFUSE,<sp/>diffuse);</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"></highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>specReflection[]<sp/>=<sp/>{<sp/>0.5f,<sp/>0.5f,<sp/>0.5f,<sp/>1.0f<sp/>};</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/>glMaterialfv(GL_FRONT,<sp/>GL_SPECULAR,<sp/>specReflection);</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/>glMateriali(GL_FRONT,<sp/>GL_SHININESS,<sp/>50);</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"></highlight></codeline>
+<codeline lineno="287"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="288"><highlight class="comment"><sp/><sp/><sp/><sp/>GLfloat<sp/>material_specular[]<sp/>=<sp/>{1.0f,<sp/>1.0f,<sp/>1.0f,<sp/>1.0f};</highlight></codeline>
+<codeline lineno="289"><highlight class="comment"><sp/><sp/><sp/><sp/>GLfloat<sp/>material_emission[]<sp/>=<sp/>{1.0f,<sp/>1.0f,<sp/>1.0f,<sp/>1.0f};</highlight></codeline>
+<codeline lineno="290"><highlight class="comment"><sp/><sp/><sp/><sp/>glMaterialfv(GL_FRONT_AND_BACK,<sp/>GL_SPECULAR,<sp/>material_specular);</highlight></codeline>
+<codeline lineno="291"><highlight class="comment"><sp/><sp/><sp/><sp/>glMaterialfv(GL_FRONT_AND_BACK,<sp/>GL_EMISSION,<sp/>material_emission);</highlight></codeline>
+<codeline lineno="292"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="293"><highlight class="normal"></highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/>glEnable(GL_DEPTH_TEST);</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/>glEnable(GL_CULL_FACE);</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/>glPolygonMode(GL_FRONT_AND_BACK,GL_FILL);</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"></highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/>qglClearColor(QColor::fromCmykF(0.39,<sp/>0.39,<sp/>0.0,<sp/>0.0).dark());</highlight></codeline>
+<codeline lineno="299"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"></highlight></codeline>
+<codeline lineno="301" refid="classGLWidget_1640b5570cb2b37724fd5b58a77339c5e" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classGLWidget_1640b5570cb2b37724fd5b58a77339c5e" kindref="member">GLWidget::paintGL</ref>()</highlight></codeline>
+<codeline lineno="302"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/>glClear(GL_COLOR_BUFFER_BIT<sp/>|<sp/>GL_DEPTH_BUFFER_BIT);</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/>glLoadIdentity();</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/>glTranslated(<ref refid="classGLWidget_1e0285a93d33f66a65efdccca45ec420c" kindref="member">xTrans</ref>,<sp/><ref refid="classGLWidget_124dd3e0a385edcb7daf49646bcb3f14e" kindref="member">yTrans</ref>,<sp/><ref refid="classGLWidget_102ff64f2b9280eb86dce9aa561a5d4b9" kindref="member">zTrans</ref>);</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/>glRotated(<ref refid="classGLWidget_1603babfc4347b1d856742d2088e48427" kindref="member">xRot</ref><sp/>/<sp/>16.0,<sp/>1.0,<sp/>0.0,<sp/>0.0);</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/>glRotated(<ref refid="classGLWidget_19d7e08316aa483c447ef0fc0a03875c3" kindref="member">yRot</ref><sp/>/<sp/>16.0,<sp/>0.0,<sp/>1.0,<sp/>0.0);</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/><sp/><sp/>glRotated(<ref refid="classGLWidget_142f34356f5f02cab779821174a1a9700" kindref="member">zRot</ref><sp/>/<sp/>16.0,<sp/>0.0,<sp/>0.0,<sp/>1.0);</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/>glScaled(<ref refid="classGLWidget_16e1f74daae4bcac37a2a2f0eda52fb78" kindref="member">scale</ref>,<ref refid="classGLWidget_16e1f74daae4bcac37a2a2f0eda52fb78" kindref="member">scale</ref>,<ref refid="classGLWidget_16e1f74daae4bcac37a2a2f0eda52fb78" kindref="member">scale</ref>);</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/>glCallList(1);</highlight></codeline>
+<codeline lineno="311"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"></highlight></codeline>
+<codeline lineno="313" refid="classGLWidget_1c0d2a8ecf60907a81c0d73475d851025" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classGLWidget_1c0d2a8ecf60907a81c0d73475d851025" kindref="member">GLWidget::resizeGL</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>width,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>height)</highlight></codeline>
+<codeline lineno="314"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="315"><highlight class="normal"><sp/><sp/><sp/><sp/>glViewport(0,<sp/>0,<sp/>width,<sp/>height);</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"></highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/><sp/><sp/>glMatrixMode(GL_PROJECTION);</highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp/><sp/><sp/><sp/>glLoadIdentity();</highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/>glOrtho(-width/2,width/2,<sp/>-height/2,height/2<sp/>,-(width+height),(width+height));</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/>glMatrixMode(GL_MODELVIEW);</highlight></codeline>
+<codeline lineno="321"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="322"><highlight class="normal"></highlight></codeline>
+<codeline lineno="323" refid="classGLWidget_1b144cc8064c1bbf6d0ef0646ca0bd06c" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classGLWidget_1b144cc8064c1bbf6d0ef0646ca0bd06c" kindref="member">GLWidget::mousePressEvent</ref>(QMouseEvent<sp/>*event)</highlight></codeline>
+<codeline lineno="324"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classGLWidget_19fb7fece62b92f7a0bb4167ea1e05c28" kindref="member">lastPos</ref><sp/>=<sp/></highlight><highlight class="keyword">event</highlight><highlight class="normal">-&gt;pos();</highlight></codeline>
+<codeline lineno="326"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="327"><highlight class="normal"></highlight></codeline>
+<codeline lineno="328" refid="classGLWidget_19043bac13d6f0a5307ea5c7f9b3caa50" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classGLWidget_19043bac13d6f0a5307ea5c7f9b3caa50" kindref="member">GLWidget::mouseMoveEvent</ref>(QMouseEvent<sp/>*event)</highlight></codeline>
+<codeline lineno="329"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="330"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dx<sp/>=<sp/></highlight><highlight class="keyword">event</highlight><highlight class="normal">-&gt;x()<sp/>-<sp/><ref refid="classGLWidget_19fb7fece62b92f7a0bb4167ea1e05c28" kindref="member">lastPos</ref>.x();</highlight></codeline>
+<codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dy<sp/>=<sp/></highlight><highlight class="keyword">event</highlight><highlight class="normal">-&gt;y()<sp/>-<sp/><ref refid="classGLWidget_19fb7fece62b92f7a0bb4167ea1e05c28" kindref="member">lastPos</ref>.y();</highlight></codeline>
+<codeline lineno="332"><highlight class="normal"></highlight></codeline>
+<codeline lineno="333"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(event-&gt;buttons()<sp/>&amp;<sp/>Qt::LeftButton)<sp/>{</highlight></codeline>
+<codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classGLWidget_17083404e9ab8feffb2c486f7c15308ce" kindref="member">setXRotation</ref>(<ref refid="classGLWidget_1603babfc4347b1d856742d2088e48427" kindref="member">xRot</ref><sp/>+<sp/>8<sp/>*<sp/>dy);</highlight></codeline>
+<codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classGLWidget_129012eba3cb4201f78807066f2c9dcd4" kindref="member">setYRotation</ref>(<ref refid="classGLWidget_19d7e08316aa483c447ef0fc0a03875c3" kindref="member">yRot</ref><sp/>+<sp/>8<sp/>*<sp/>dx);</highlight></codeline>
+<codeline lineno="336"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(event-&gt;buttons()<sp/>&amp;<sp/>Qt::RightButton)<sp/>{</highlight></codeline>
+<codeline lineno="337"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classGLWidget_17083404e9ab8feffb2c486f7c15308ce" kindref="member">setXRotation</ref>(<ref refid="classGLWidget_1603babfc4347b1d856742d2088e48427" kindref="member">xRot</ref><sp/>+<sp/>8<sp/>*<sp/>dy);</highlight></codeline>
+<codeline lineno="338"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classGLWidget_16f6b4fbbcc566d999db7e53aadeba889" kindref="member">setZRotation</ref>(<ref refid="classGLWidget_142f34356f5f02cab779821174a1a9700" kindref="member">zRot</ref><sp/>+<sp/>8<sp/>*<sp/>dx);</highlight></codeline>
+<codeline lineno="339"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(event-&gt;buttons()<sp/>&amp;<sp/>Qt::MidButton)<sp/>{</highlight></codeline>
+<codeline lineno="340"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classGLWidget_1e56e2d5aa6203a927cdc046876893751" kindref="member">setTranslation</ref>(<ref refid="classGLWidget_1e0285a93d33f66a65efdccca45ec420c" kindref="member">xTrans</ref><sp/>+<sp/>dx,<sp/><ref refid="classGLWidget_124dd3e0a385edcb7daf49646bcb3f14e" kindref="member">yTrans</ref><sp/>-<sp/>dy,<sp/><ref refid="classGLWidget_102ff64f2b9280eb86dce9aa561a5d4b9" kindref="member">zTrans</ref>);</highlight></codeline>
+<codeline lineno="341"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="342"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classGLWidget_19fb7fece62b92f7a0bb4167ea1e05c28" kindref="member">lastPos</ref><sp/>=<sp/></highlight><highlight class="keyword">event</highlight><highlight class="normal">-&gt;pos();</highlight></codeline>
+<codeline lineno="343"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="344"><highlight class="normal"></highlight></codeline>
+<codeline lineno="345" refid="classGLWidget_10eb3c18729eecc31ee68c020fea3a31d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classGLWidget_10eb3c18729eecc31ee68c020fea3a31d" kindref="member">GLWidget::keyPressEvent</ref>(QKeyEvent*<sp/>e)</highlight></codeline>
+<codeline lineno="346"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="347"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>rotationDelta<sp/>=<sp/>30.0;</highlight></codeline>
+<codeline lineno="348"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>scaleDelta<sp/>=<sp/>0.05;</highlight></codeline>
+<codeline lineno="349"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>translateDelta<sp/>=<sp/>10;</highlight></codeline>
+<codeline lineno="350"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="351"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal">(e-&gt;key())</highlight></codeline>
+<codeline lineno="352"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="353"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>Qt::Key_Up:</highlight></codeline>
+<codeline lineno="354"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classGLWidget_17083404e9ab8feffb2c486f7c15308ce" kindref="member">setXRotation</ref>(<ref refid="classGLWidget_1603babfc4347b1d856742d2088e48427" kindref="member">xRot</ref><sp/>+<sp/>rotationDelta);</highlight></codeline>
+<codeline lineno="355"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="356"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>Qt::Key_Down:</highlight></codeline>
+<codeline lineno="357"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classGLWidget_17083404e9ab8feffb2c486f7c15308ce" kindref="member">setXRotation</ref>(<ref refid="classGLWidget_1603babfc4347b1d856742d2088e48427" kindref="member">xRot</ref><sp/>-<sp/>rotationDelta);</highlight></codeline>
+<codeline lineno="358"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="359"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>Qt::Key_Left:</highlight></codeline>
+<codeline lineno="360"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classGLWidget_129012eba3cb4201f78807066f2c9dcd4" kindref="member">setYRotation</ref>(<ref refid="classGLWidget_19d7e08316aa483c447ef0fc0a03875c3" kindref="member">yRot</ref><sp/>+<sp/>rotationDelta);</highlight></codeline>
+<codeline lineno="361"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="362"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>Qt::Key_Right:</highlight></codeline>
+<codeline lineno="363"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classGLWidget_129012eba3cb4201f78807066f2c9dcd4" kindref="member">setYRotation</ref>(<ref refid="classGLWidget_19d7e08316aa483c447ef0fc0a03875c3" kindref="member">yRot</ref><sp/>-<sp/>rotationDelta);</highlight></codeline>
+<codeline lineno="364"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="365"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>Qt::Key_Plus:</highlight></codeline>
+<codeline lineno="366"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classGLWidget_1e909386dd65c094be5f3aac34bb90278" kindref="member">setScale</ref>(<ref refid="classGLWidget_16e1f74daae4bcac37a2a2f0eda52fb78" kindref="member">scale</ref><sp/>+<sp/>scaleDelta);</highlight></codeline>
+<codeline lineno="367"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="368"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>Qt::Key_Minus:</highlight></codeline>
+<codeline lineno="369"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classGLWidget_1e909386dd65c094be5f3aac34bb90278" kindref="member">setScale</ref>(<ref refid="classGLWidget_16e1f74daae4bcac37a2a2f0eda52fb78" kindref="member">scale</ref><sp/>-<sp/>scaleDelta);</highlight></codeline>
+<codeline lineno="370"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="371"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>Qt::Key_W:</highlight></codeline>
+<codeline lineno="372"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classGLWidget_1e56e2d5aa6203a927cdc046876893751" kindref="member">setTranslation</ref>(<ref refid="classGLWidget_1e0285a93d33f66a65efdccca45ec420c" kindref="member">xTrans</ref>,<sp/><ref refid="classGLWidget_124dd3e0a385edcb7daf49646bcb3f14e" kindref="member">yTrans</ref><sp/>-<sp/>translateDelta,<sp/><ref refid="classGLWidget_102ff64f2b9280eb86dce9aa561a5d4b9" kindref="member">zTrans</ref>);</highlight></codeline>
+<codeline lineno="373"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="374"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>Qt::Key_S:</highlight></codeline>
+<codeline lineno="375"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classGLWidget_1e56e2d5aa6203a927cdc046876893751" kindref="member">setTranslation</ref>(<ref refid="classGLWidget_1e0285a93d33f66a65efdccca45ec420c" kindref="member">xTrans</ref>,<sp/><ref refid="classGLWidget_124dd3e0a385edcb7daf49646bcb3f14e" kindref="member">yTrans</ref><sp/>+<sp/>translateDelta,<sp/><ref refid="classGLWidget_102ff64f2b9280eb86dce9aa561a5d4b9" kindref="member">zTrans</ref>);</highlight></codeline>
+<codeline lineno="376"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="377"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>Qt::Key_A:</highlight></codeline>
+<codeline lineno="378"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classGLWidget_1e56e2d5aa6203a927cdc046876893751" kindref="member">setTranslation</ref>(<ref refid="classGLWidget_1e0285a93d33f66a65efdccca45ec420c" kindref="member">xTrans</ref><sp/>+<sp/>translateDelta,<sp/><ref refid="classGLWidget_124dd3e0a385edcb7daf49646bcb3f14e" kindref="member">yTrans</ref>,<sp/><ref refid="classGLWidget_102ff64f2b9280eb86dce9aa561a5d4b9" kindref="member">zTrans</ref>);</highlight></codeline>
+<codeline lineno="379"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="380"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>Qt::Key_D:</highlight></codeline>
+<codeline lineno="381"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classGLWidget_1e56e2d5aa6203a927cdc046876893751" kindref="member">setTranslation</ref>(<ref refid="classGLWidget_1e0285a93d33f66a65efdccca45ec420c" kindref="member">xTrans</ref><sp/>-<sp/>translateDelta,<sp/><ref refid="classGLWidget_124dd3e0a385edcb7daf49646bcb3f14e" kindref="member">yTrans</ref>,<sp/><ref refid="classGLWidget_102ff64f2b9280eb86dce9aa561a5d4b9" kindref="member">zTrans</ref>);</highlight></codeline>
+<codeline lineno="382"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="383"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>Qt::Key_Space:</highlight></codeline>
+<codeline lineno="384"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classGLWidget_1c4e7e44c30909b9fdd865d5b4bbb702a" kindref="member">restoreDefaults</ref>();</highlight></codeline>
+<codeline lineno="385"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="386"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="387"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="388"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="389"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//updateGL();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="390"><highlight class="normal">}<sp/></highlight></codeline>
+<codeline lineno="391"><highlight class="normal"></highlight></codeline>
+<codeline lineno="392" refid="classGLWidget_198effc70f28102265d7aac8757b12038" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classGLWidget_198effc70f28102265d7aac8757b12038" kindref="member">GLWidget::wheelEvent</ref>(QWheelEvent*<sp/>event)</highlight></codeline>
+<codeline lineno="393"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="394"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>setTranslation(xTrans<sp/>-<sp/>x()<sp/>+<sp/>width()<sp/>/<sp/>2.0,<sp/>yTrans<sp/>+<sp/>y()<sp/>-<sp/>height()<sp/>/<sp/>2.0,<sp/>zTrans);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="395"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classGLWidget_1e909386dd65c094be5f3aac34bb90278" kindref="member">setScale</ref>(<ref refid="classGLWidget_16e1f74daae4bcac37a2a2f0eda52fb78" kindref="member">scale</ref><sp/>+<sp/>event-&gt;delta()<sp/>/<sp/>200.0);</highlight></codeline>
+<codeline lineno="396"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="397"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/booble/pann/trunk/src/Utils/pann_viewer/glwidget.cpp"/>
+  </compounddef>
+</doxygen>

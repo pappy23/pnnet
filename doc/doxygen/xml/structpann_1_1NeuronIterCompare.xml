@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="structpann_1_1NeuronIterCompare" kind="struct" prot="public">
+    <compoundname>pann::NeuronIterCompare</compoundname>
+    <includes refid="Util_8h" local="no">Util.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structpann_1_1NeuronIterCompare_16a5d5a58530774cd10de0699037c8306" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool pann::NeuronIterCompare::operator()</definition>
+        <argsstring>(const NeuronIter &amp;_lhs, const NeuronIter &amp;_rhs) const </argsstring>
+        <name>operator()</name>
+        <param>
+          <type>const <ref refid="namespacepann_15b285d6cead198add4f14b5b5a0b97c1" kindref="member">NeuronIter</ref> &amp;</type>
+          <declname>_lhs</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespacepann_15b285d6cead198add4f14b5b5a0b97c1" kindref="member">NeuronIter</ref> &amp;</type>
+          <declname>_rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Util.h" line="16" bodyfile="/home/booble/pann/trunk/src/Core/Util.h" bodystart="15" bodyend="18"/>
+      </memberdef>
+      <memberdef kind="function" id="structpann_1_1NeuronIterCompare_115bfbc88eded89bf39e93269092f73c4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool pann::NeuronIterCompare::operator()</definition>
+        <argsstring>(const ConstNeuronIter &amp;_lhs, const ConstNeuronIter &amp;_rhs) const </argsstring>
+        <name>operator()</name>
+        <param>
+          <type>const <ref refid="namespacepann_168751290d27789ce6f303cf55ed505ed" kindref="member">ConstNeuronIter</ref> &amp;</type>
+          <declname>_lhs</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespacepann_168751290d27789ce6f303cf55ed505ed" kindref="member">ConstNeuronIter</ref> &amp;</type>
+          <declname>_rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Util.h" line="21" bodyfile="/home/booble/pann/trunk/src/Core/Util.h" bodystart="20" bodyend="23"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="structpann_1_1NeuronIterCompare_1320a830b78f3060579250e68952077ad" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool pann::NeuronIterCompare::equal</definition>
+        <argsstring>(const NeuronIter &amp;_lhs, const NeuronIter &amp;_rhs)</argsstring>
+        <name>equal</name>
+        <param>
+          <type>const <ref refid="namespacepann_15b285d6cead198add4f14b5b5a0b97c1" kindref="member">NeuronIter</ref> &amp;</type>
+          <declname>_lhs</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespacepann_15b285d6cead198add4f14b5b5a0b97c1" kindref="member">NeuronIter</ref> &amp;</type>
+          <declname>_rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Util.h" line="26" bodyfile="/home/booble/pann/trunk/src/Core/Util.h" bodystart="25" bodyend="28"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/booble/pann/trunk/src/Core/Util.h" line="14" bodyfile="/home/booble/pann/trunk/src/Core/Util.h" bodystart="13" bodyend="29"/>
+    <listofallmembers>
+      <member refid="structpann_1_1NeuronIterCompare_1320a830b78f3060579250e68952077ad" prot="public" virt="non-virtual"><scope>pann::NeuronIterCompare</scope><name>equal</name></member>
+      <member refid="structpann_1_1NeuronIterCompare_16a5d5a58530774cd10de0699037c8306" prot="public" virt="non-virtual"><scope>pann::NeuronIterCompare</scope><name>operator()</name></member>
+      <member refid="structpann_1_1NeuronIterCompare_115bfbc88eded89bf39e93269092f73c4" prot="public" virt="non-virtual"><scope>pann::NeuronIterCompare</scope><name>operator()</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

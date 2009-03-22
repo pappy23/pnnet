@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="namespacepann_1_1LearningHint" kind="namespace">
+    <compoundname>pann::LearningHint</compoundname>
+    <innerclass refid="classpann_1_1LearningHint_1_1Base" prot="public">pann::LearningHint::Base</innerclass>
+    <innerclass refid="classpann_1_1LearningHint_1_1Null" prot="public">pann::LearningHint::Null</innerclass>
+    <innerclass refid="classpann_1_1LearningHint_1_1LmsNet" prot="public">pann::LearningHint::LmsNet</innerclass>
+    <innerclass refid="classpann_1_1LearningHint_1_1LmsNeuron" prot="public">pann::LearningHint::LmsNeuron</innerclass>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="namespacepann_1_1LearningHint_11af8c63761604060acd3287e6820b4fe" prot="public" static="no">
+        <name>HintId</name>
+        <enumvalue id="namespacepann_1_1LearningHint_11af8c63761604060acd3287e6820b4fe2ebf3567b8ee358b688403b8fa84cb55" prot="public">
+          <name>NullId</name>
+          <initializer> 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacepann_1_1LearningHint_11af8c63761604060acd3287e6820b4fee35188d65024635375c0cc23d9182321" prot="public">
+          <name>LmsNetId</name>
+          <initializer> 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacepann_1_1LearningHint_11af8c63761604060acd3287e6820b4fef13e2ffef2fb5ba59340a09fdab27241" prot="public">
+          <name>LmsNeuronId</name>
+          <initializer> 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Learning hint is attache to <ref refid="classpann_1_1Net" kindref="compound">Net</ref> or <ref refid="classpann_1_1Neuron" kindref="compound">Neuron</ref> and used by learning algorithms to store some algorithm-specific data Each algorithm checks whether <ref refid="classpann_1_1Net" kindref="compound">Net</ref> and <ref refid="classpann_1_1Neuron" kindref="compound">Neuron</ref> hints were created by him </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/LearningHint.h" line="18" bodyfile="/home/booble/pann/trunk/src/Core/LearningHint.h" bodystart="17" bodyend="22"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespacepann_1_1LearningHint_1a9049ca41b3b30b18546dbad7e6e8e9a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classpann_1_1LearningHint_1_1Base" kindref="compound">Base</ref> *</type>
+        <definition>Base* pann::LearningHint::getById</definition>
+        <argsstring>(HintId _id)</argsstring>
+        <name>getById</name>
+        <param>
+          <type><ref refid="namespacepann_1_1LearningHint_11af8c63761604060acd3287e6820b4fe" kindref="member">HintId</ref></type>
+          <declname>_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><ref refid="namespacepann_1_1LearningHint_1a9049ca41b3b30b18546dbad7e6e8e9a" kindref="member">getById()</ref> is used for serialization </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/LearningHint.h" line="125" bodyfile="/home/booble/pann/trunk/src/Core/LearningHint.h" bodystart="124" bodyend="140"/>
+        <references refid="namespacepann_1_1LearningHint_11af8c63761604060acd3287e6820b4fee35188d65024635375c0cc23d9182321" compoundref="LearningHint_8h" startline="20">LmsNetId</references>
+        <references refid="namespacepann_1_1LearningHint_11af8c63761604060acd3287e6820b4fef13e2ffef2fb5ba59340a09fdab27241" compoundref="LearningHint_8h" startline="21">LmsNeuronId</references>
+        <references refid="namespacepann_1_1LearningHint_11af8c63761604060acd3287e6820b4fe2ebf3567b8ee358b688403b8fa84cb55" compoundref="LearningHint_8h" startline="19">NullId</references>
+        <referencedby refid="classpann_1_1Neuron_146c3eb1f5fa7a4bf0112030b5aa4e908" compoundref="Neuron_8h" startline="103" endline="133">pann::Neuron::load</referencedby>
+        <referencedby refid="classpann_1_1Net_1a54ff5e1cbb26acaab7a2035f6719169" compoundref="Net_8h" startline="302" endline="391">pann::Net::load</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/booble/pann/trunk/src/Core/LearningHint.h" line="10"/>
+  </compounddef>
+</doxygen>

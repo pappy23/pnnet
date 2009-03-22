@@ -1,0 +1,136 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="classWindow" kind="class" prot="public">
+    <compoundname>Window</compoundname>
+    <includes refid="window_8h" local="no">window.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classWindow_182a3439ed463b4b7aa61359f54c2a6cb" prot="private" static="no" mutable="no">
+        <type><ref refid="classGLWidget" kindref="compound">GLWidget</ref> *</type>
+        <definition>GLWidget* Window::glWidget</definition>
+        <argsstring></argsstring>
+        <name>glWidget</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Utils/pann_viewer/window.h" line="20" bodyfile="/home/booble/pann/trunk/src/Utils/pann_viewer/window.h" bodystart="20" bodyend="-1"/>
+        <referencedby refid="classWindow_19bd6642abeeae72ce69a48bb3e0a0377" compoundref="window_8cpp" startline="3" endline="36">Window</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classWindow_15f4fdd6881f2b071bad324bc0e01ab36" prot="private" static="no" mutable="no">
+        <type>QLabel *</type>
+        <definition>QLabel* Window::label</definition>
+        <argsstring></argsstring>
+        <name>label</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Utils/pann_viewer/window.h" line="21" bodyfile="/home/booble/pann/trunk/src/Utils/pann_viewer/window.h" bodystart="21" bodyend="-1"/>
+        <referencedby refid="classWindow_19bd6642abeeae72ce69a48bb3e0a0377" compoundref="window_8cpp" startline="3" endline="36">Window</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classWindow_19bd6642abeeae72ce69a48bb3e0a0377" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Window::Window</definition>
+        <argsstring>(pann::Net *_net)</argsstring>
+        <name>Window</name>
+        <param>
+          <type><ref refid="classpann_1_1Net" kindref="compound">pann::Net</ref> *</type>
+          <declname>_net</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Utils/pann_viewer/window.h" line="17" bodyfile="/home/booble/pann/trunk/src/Utils/pann_viewer/window.cpp" bodystart="3" bodyend="36"/>
+        <references refid="classWindow_182a3439ed463b4b7aa61359f54c2a6cb" compoundref="window_8h" startline="20">glWidget</references>
+        <references refid="classWindow_15f4fdd6881f2b071bad324bc0e01ab36" compoundref="window_8h" startline="21">label</references>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classWindow_1be5ec54c3e14513649fbcfb57452fe12" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Window::mouseDoubleClickEvent</definition>
+        <argsstring>(QMouseEvent *event)</argsstring>
+        <name>mouseDoubleClickEvent</name>
+        <param>
+          <type>QMouseEvent *</type>
+          <declname>event</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Utils/pann_viewer/window.h" line="24" bodyfile="/home/booble/pann/trunk/src/Utils/pann_viewer/window.cpp" bodystart="86" bodyend="563"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="375">
+        <label>Window</label>
+        <link refid="classWindow"/>
+        <childnode refid="376" relation="usage">
+          <edgelabel>glWidget</edgelabel>
+        </childnode>
+      </node>
+      <node id="378">
+        <label>pann::Object</label>
+        <link refid="classpann_1_1Object"/>
+      </node>
+      <node id="379">
+        <label>pann::NetCache</label>
+        <link refid="classpann_1_1NetCache"/>
+        <childnode refid="380" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="381">
+        <label>pann::LearningHint::Base</label>
+        <link refid="classpann_1_1LearningHint_1_1Base"/>
+      </node>
+      <node id="377">
+        <label>pann::Net</label>
+        <link refid="classpann_1_1Net"/>
+        <childnode refid="378" relation="public-inheritance">
+        </childnode>
+        <childnode refid="379" relation="usage">
+          <edgelabel>cache</edgelabel>
+        </childnode>
+        <childnode refid="381" relation="usage">
+          <edgelabel>learningHint</edgelabel>
+        </childnode>
+      </node>
+      <node id="376">
+        <label>GLWidget</label>
+        <link refid="classGLWidget"/>
+        <childnode refid="377" relation="usage">
+          <edgelabel>p_net</edgelabel>
+        </childnode>
+      </node>
+      <node id="380">
+        <label>pann::Cache</label>
+        <link refid="classpann_1_1Cache"/>
+        <childnode refid="378" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/booble/pann/trunk/src/Utils/pann_viewer/window.h" line="13" bodyfile="/home/booble/pann/trunk/src/Utils/pann_viewer/window.h" bodystart="12" bodyend="25"/>
+    <listofallmembers>
+      <member refid="classWindow_182a3439ed463b4b7aa61359f54c2a6cb" prot="private" virt="non-virtual"><scope>Window</scope><name>glWidget</name></member>
+      <member refid="classWindow_15f4fdd6881f2b071bad324bc0e01ab36" prot="private" virt="non-virtual"><scope>Window</scope><name>label</name></member>
+      <member refid="classWindow_1be5ec54c3e14513649fbcfb57452fe12" prot="protected" virt="non-virtual"><scope>Window</scope><name>mouseDoubleClickEvent</name></member>
+      <member refid="classWindow_19bd6642abeeae72ce69a48bb3e0a0377" prot="public" virt="non-virtual"><scope>Window</scope><name>Window</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

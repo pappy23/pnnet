@@ -1,0 +1,12 @@
+<area shape="rect" href="$LearningAlgorithm_8h.html" title="pann/trunk/src/Core/LearningAlgorithm.h" alt="" coords="5,80,259,106">
+<area shape="rect" href="$LMS_8h.html" title="pann/trunk/src/Core/LMS.h" alt="" coords="60,154,236,181">
+<area shape="rect" href="$NetworkModel_8h.html" title="pann/trunk/src/Core/NetworkModel.h" alt="" coords="333,80,565,106">
+<area shape="rect" href="$TestNet_8cpp.html" title="pann/trunk/src/UnitTests/TestNet.cpp" alt="" coords="583,154,820,181">
+<area shape="rect" href="$Net_8cpp.html" title="pann/trunk/src/Core/Net.cpp" alt="" coords="640,80,824,106">
+<area shape="rect" href="$Storage_8h.html" title="pann/trunk/src/Core/Storage.h" alt="" coords="848,80,1043,106">
+<area shape="rect" href="$main_8cpp.html" title="pann/trunk/src/Utils/pann_viewer/main.cpp" alt="" coords="947,229,1213,256">
+<area shape="rect" href="$glwidget_8h.html" title="pann/trunk/src/Utils/pann_viewer/glwidget.h" alt="" coords="1124,80,1396,106">
+<area shape="rect" href="$window_8h.html" title="pann/trunk/src/Utils/pann_viewer/window.h" alt="" coords="1427,154,1693,181">
+<area shape="rect" href="$MultilayerPerceptron_8cpp.html" title="pann/trunk/src/Core/MultilayerPerceptron.cpp" alt="" coords="276,154,559,181">
+<area shape="rect" href="$glwidget_8cpp.html" title="pann/trunk/src/Utils/pann_viewer/glwidget.cpp" alt="" coords="1117,154,1403,181">
+<area shape="rect" href="$window_8cpp.html" title="pann/trunk/src/Utils/pann_viewer/window.cpp" alt="" coords="1420,229,1700,256">

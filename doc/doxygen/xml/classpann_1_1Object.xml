@@ -1,0 +1,154 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="classpann_1_1Object" kind="class" prot="public">
+    <compoundname>pann::Object</compoundname>
+    <derivedcompoundref refid="classpann_1_1Cache" prot="public" virt="non-virtual">pann::Cache</derivedcompoundref>
+    <derivedcompoundref refid="classpann_1_1Link" prot="public" virt="non-virtual">pann::Link</derivedcompoundref>
+    <derivedcompoundref refid="classpann_1_1Net" prot="public" virt="non-virtual">pann::Net</derivedcompoundref>
+    <derivedcompoundref refid="classpann_1_1Neuron" prot="public" virt="non-virtual">pann::Neuron</derivedcompoundref>
+    <derivedcompoundref refid="classpann_1_1TrainData" prot="public" virt="non-virtual">pann::TrainData</derivedcompoundref>
+    <derivedcompoundref refid="classpann_1_1TrainPattern" prot="public" virt="non-virtual">pann::TrainPattern</derivedcompoundref>
+    <derivedcompoundref refid="classpann_1_1Weight" prot="public" virt="non-virtual">pann::Weight</derivedcompoundref>
+    <includes refid="Object_8h" local="no">Object.h</includes>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classpann_1_1Object_1c98d07dd8f7b70e16ccb9a01abf56b9c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class boost::serialization::access</definition>
+        <argsstring></argsstring>
+        <name>boost::serialization::access</name>
+        <reimplementedby refid="classpann_1_1Weight_1c98d07dd8f7b70e16ccb9a01abf56b9c">boost::serialization::access</reimplementedby>
+        <reimplementedby refid="classpann_1_1Neuron_1c98d07dd8f7b70e16ccb9a01abf56b9c">boost::serialization::access</reimplementedby>
+        <reimplementedby refid="classpann_1_1Net_1c98d07dd8f7b70e16ccb9a01abf56b9c">boost::serialization::access</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Object.h" line="49" bodyfile="/home/booble/pann/trunk/src/Core/Object.h" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classpann_1_1Object_1f0039bd3a5cdbb3decfa5e33055e1a45" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void pann::Object::printDebugInfo</definition>
+        <argsstring>(std::ostringstream &amp;ost) const =0</argsstring>
+        <name>printDebugInfo</name>
+        <reimplementedby refid="classpann_1_1Weight_18d51519bd5723b61b32b687502aada06">printDebugInfo</reimplementedby>
+        <reimplementedby refid="classpann_1_1TrainData_1fb88f4772bc657940d41c629ef121924">printDebugInfo</reimplementedby>
+        <reimplementedby refid="classpann_1_1TrainPattern_1a4f1e7a2c806f9a03093c04788b1d21a">printDebugInfo</reimplementedby>
+        <reimplementedby refid="classpann_1_1Neuron_10017d9230fca2359b460e9a18b8a8198">printDebugInfo</reimplementedby>
+        <reimplementedby refid="classpann_1_1Net_1ec0809d7cb83ea29f7f36492609a2de9">printDebugInfo</reimplementedby>
+        <reimplementedby refid="classpann_1_1Link_11b0611d84a5fd7632fdaffac2b19b2a9">printDebugInfo</reimplementedby>
+        <reimplementedby refid="classpann_1_1NetCache_1f776078aecabf7258b807d4d0249241a">printDebugInfo</reimplementedby>
+        <reimplementedby refid="classpann_1_1Cache_16a3932a817f186bb9c73e6821608f87f">printDebugInfo</reimplementedby>
+        <param>
+          <type>std::ostringstream &amp;</type>
+          <declname>ost</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Object.h" line="46"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classpann_1_1Object_113a234c0fcd5d32d341353f1b7b3c828" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class</type>
+            <declname>Archive</declname>
+            <defname>Archive</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void pann::Object::serialize</definition>
+        <argsstring>(Archive &amp;ar, const unsigned int version)</argsstring>
+        <name>serialize</name>
+        <reimplementedby refid="classpann_1_1Weight_1ddeecbb0805615aa2ee5c20f7268e577">serialize</reimplementedby>
+        <param>
+          <type>Archive &amp;</type>
+          <declname>ar</declname>
+        </param>
+        <param>
+          <type>const unsigned int</type>
+          <declname>version</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/Object.h" line="52" bodyfile="/home/booble/pann/trunk/src/Core/Object.h" bodystart="51" bodyend="55"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Base class for almoust everything. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="314">
+        <label>pann::Neuron</label>
+        <link refid="classpann_1_1Neuron"/>
+        <childnode refid="309" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="309">
+        <label>pann::Object</label>
+        <link refid="classpann_1_1Object"/>
+      </node>
+      <node id="312">
+        <label>pann::Link</label>
+        <link refid="classpann_1_1Link"/>
+        <childnode refid="309" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="315">
+        <label>pann::TrainData</label>
+        <link refid="classpann_1_1TrainData"/>
+        <childnode refid="309" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="311">
+        <label>pann::NetCache</label>
+        <link refid="classpann_1_1NetCache"/>
+        <childnode refid="310" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="317">
+        <label>pann::Weight</label>
+        <link refid="classpann_1_1Weight"/>
+        <childnode refid="309" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="313">
+        <label>pann::Net</label>
+        <link refid="classpann_1_1Net"/>
+        <childnode refid="309" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="310">
+        <label>pann::Cache</label>
+        <link refid="classpann_1_1Cache"/>
+        <childnode refid="309" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="316">
+        <label>pann::TrainPattern</label>
+        <link refid="classpann_1_1TrainPattern"/>
+        <childnode refid="309" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="/home/booble/pann/trunk/src/Core/Object.h" line="17" bodyfile="/home/booble/pann/trunk/src/Core/Object.h" bodystart="16" bodyend="56"/>
+    <listofallmembers>
+      <member refid="classpann_1_1Object_1c98d07dd8f7b70e16ccb9a01abf56b9c" prot="public" virt="non-virtual"><scope>pann::Object</scope><name>boost::serialization::access</name></member>
+      <member refid="classpann_1_1Object_1f0039bd3a5cdbb3decfa5e33055e1a45" prot="public" virt="pure-virtual"><scope>pann::Object</scope><name>printDebugInfo</name></member>
+      <member refid="classpann_1_1Object_113a234c0fcd5d32d341353f1b7b3c828" prot="private" virt="non-virtual"><scope>pann::Object</scope><name>serialize</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

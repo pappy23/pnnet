@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="classpann_1_1TrainUtil" kind="class" prot="public">
+    <compoundname>pann::TrainUtil</compoundname>
+    <includes refid="TrainData_8h" local="no">TrainData.h</includes>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classpann_1_1TrainUtil_1f75eeef1d233dd6fcdcae4b8a813a50e" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::valarray&lt; <ref refid="namespacepann_14509ba95a02d59e0a1cd5127e1c55988" kindref="member">Float</ref> &gt;</type>
+        <definition>static std::valarray&lt;Float&gt; pann::TrainUtil::squash_copy</definition>
+        <argsstring>(const std::valarray&lt; Float &gt; &amp;_v, Float _min, Float _max)</argsstring>
+        <name>squash_copy</name>
+        <param>
+          <type>const std::valarray&lt; <ref refid="namespacepann_14509ba95a02d59e0a1cd5127e1c55988" kindref="member">Float</ref> &gt; &amp;</type>
+          <declname>_v</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacepann_14509ba95a02d59e0a1cd5127e1c55988" kindref="member">Float</ref></type>
+          <declname>_min</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacepann_14509ba95a02d59e0a1cd5127e1c55988" kindref="member">Float</ref></type>
+          <declname>_max</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/TrainData.h" line="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classpann_1_1TrainUtil_191e3a70719a0fa79512565e31a96fed1" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void pann::TrainUtil::squash</definition>
+        <argsstring>(std::valarray&lt; Float &gt; &amp;_v, Float _min, Float _max)</argsstring>
+        <name>squash</name>
+        <param>
+          <type>std::valarray&lt; <ref refid="namespacepann_14509ba95a02d59e0a1cd5127e1c55988" kindref="member">Float</ref> &gt; &amp;</type>
+          <declname>_v</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacepann_14509ba95a02d59e0a1cd5127e1c55988" kindref="member">Float</ref></type>
+          <declname>_min</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacepann_14509ba95a02d59e0a1cd5127e1c55988" kindref="member">Float</ref></type>
+          <declname>_max</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/Core/TrainData.h" line="15"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/booble/pann/trunk/src/Core/TrainData.h" line="12" bodyfile="/home/booble/pann/trunk/src/Core/TrainData.h" bodystart="11" bodyend="16"/>
+    <listofallmembers>
+      <member refid="classpann_1_1TrainUtil_191e3a70719a0fa79512565e31a96fed1" prot="public" virt="non-virtual"><scope>pann::TrainUtil</scope><name>squash</name></member>
+      <member refid="classpann_1_1TrainUtil_1f75eeef1d233dd6fcdcae4b8a813a50e" prot="public" virt="non-virtual"><scope>pann::TrainUtil</scope><name>squash_copy</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

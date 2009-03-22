@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="classpann_1_1Exception_1_1Unbelievable" kind="class" prot="public">
+    <compoundname>pann::Exception::Unbelievable</compoundname>
+    <basecompoundref refid="classpann_1_1Exception_1_1Base" prot="public" virt="non-virtual">pann::Exception::Base</basecompoundref>
+    <includes refid="Exception_8h" local="no">Exception.h</includes>
+    <briefdescription>
+<para>It&apos;s imposible in our universe! </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="363">
+        <label>pann::Exception::Base</label>
+        <link refid="classpann_1_1Exception_1_1Base"/>
+      </node>
+      <node id="362">
+        <label>pann::Exception::Unbelievable</label>
+        <link refid="classpann_1_1Exception_1_1Unbelievable"/>
+        <childnode refid="363" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="365">
+        <label>pann::Exception::Base</label>
+        <link refid="classpann_1_1Exception_1_1Base"/>
+      </node>
+      <node id="364">
+        <label>pann::Exception::Unbelievable</label>
+        <link refid="classpann_1_1Exception_1_1Unbelievable"/>
+        <childnode refid="365" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/booble/pann/trunk/src/Core/Exception.h" line="79" bodyfile="/home/booble/pann/trunk/src/Core/Exception.h" bodystart="79" bodyend="79"/>
+    <listofallmembers>
+      <member refid="classpann_1_1Exception_1_1Base_129e2607d6a8c7dc15ed6ed3cb92d3ece" prot="public" virt="non-virtual"><scope>pann::Exception::Unbelievable</scope><name>Base</name></member>
+      <member refid="classpann_1_1Exception_1_1Base_1659925e8afcb384bc88b2f5b9802e052" prot="public" virt="non-virtual"><scope>pann::Exception::Unbelievable</scope><name>Base</name></member>
+      <member refid="classpann_1_1Exception_1_1Base_1ad82b3455115377053fa357b70ac7978" prot="public" virt="virtual"><scope>pann::Exception::Unbelievable</scope><name>getText</name></member>
+      <member refid="classpann_1_1Exception_1_1Base_139525dbb840db0f93d66bb6cfa0f3089" prot="public" virt="non-virtual"><scope>pann::Exception::Unbelievable</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classpann_1_1Exception_1_1Base_1e73d382790d755edfec2289abe12a626" prot="public" virt="non-virtual"><scope>pann::Exception::Unbelievable</scope><name>text</name></member>
+      <member refid="classpann_1_1Exception_1_1Base_13795b9ad6996ac80e80e4e8179b733ab" prot="protected" virt="non-virtual"><scope>pann::Exception::Unbelievable</scope><name>textStream</name></member>
+      <member refid="classpann_1_1Exception_1_1Base_12b12cae42f85a5d694111d2bb1de315f" prot="public" virt="virtual"><scope>pann::Exception::Unbelievable</scope><name>~Base</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,485 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="Runner_8h" kind="file">
+    <compoundname>Runner.h</compoundname>
+    <includes refid="Includes_8h" local="yes">Includes.h</includes>
+    <includes refid="Type_8h" local="yes">Type.h</includes>
+    <includes refid="Neuron_8h" local="yes">Neuron.h</includes>
+    <includedby refid="Net_8h" local="yes">pann/trunk/src/Core/Net.h</includedby>
+    <includedby refid="Runner_8cpp" local="yes">pann/trunk/src/Core/Runner.cpp</includedby>
+    <incdepgraph>
+      <node id="2462">
+        <label>list</label>
+      </node>
+      <node id="2488">
+        <label>Exception.h</label>
+        <link refid="Exception_8h"/>
+        <childnode refid="2457" relation="include">
+        </childnode>
+      </node>
+      <node id="2464">
+        <label>valarray</label>
+      </node>
+      <node id="2489">
+        <label>ActivationFunction.h</label>
+        <link refid="ActivationFunction_8h"/>
+        <childnode refid="2457" relation="include">
+        </childnode>
+        <childnode refid="2485" relation="include">
+        </childnode>
+        <childnode refid="2488" relation="include">
+        </childnode>
+      </node>
+      <node id="2480">
+        <label>boost/serialization/map.hpp</label>
+      </node>
+      <node id="2468">
+        <label>limits</label>
+      </node>
+      <node id="2482">
+        <label>boost/serialization/vector.hpp</label>
+      </node>
+      <node id="2467">
+        <label>iterator</label>
+      </node>
+      <node id="2479">
+        <label>boost/archive/text_iarchive.hpp</label>
+      </node>
+      <node id="2493">
+        <label>LearningHint.h</label>
+        <link refid="LearningHint_8h"/>
+        <childnode refid="2457" relation="include">
+        </childnode>
+        <childnode refid="2488" relation="include">
+        </childnode>
+      </node>
+      <node id="2485">
+        <label>Type.h</label>
+        <link refid="Type_8h"/>
+        <childnode refid="2457" relation="include">
+        </childnode>
+      </node>
+      <node id="2490">
+        <label>Link.h</label>
+        <link refid="Link_8h"/>
+        <childnode refid="2457" relation="include">
+        </childnode>
+        <childnode refid="2487" relation="include">
+        </childnode>
+        <childnode refid="2491" relation="include">
+        </childnode>
+      </node>
+      <node id="2492">
+        <label>OpenGLHint.h</label>
+        <link refid="OpenGLHint_8h"/>
+        <childnode refid="2457" relation="include">
+        </childnode>
+      </node>
+      <node id="2472">
+        <label>boost/foreach.hpp</label>
+      </node>
+      <node id="2469">
+        <label>cmath</label>
+      </node>
+      <node id="2476">
+        <label>boost/archive/xml_oarchive.hpp</label>
+      </node>
+      <node id="2465">
+        <label>string</label>
+      </node>
+      <node id="2461">
+        <label>map</label>
+      </node>
+      <node id="2473">
+        <label>boost/thread.hpp</label>
+      </node>
+      <node id="2486">
+        <label>Neuron.h</label>
+        <link refid="Neuron_8h"/>
+        <childnode refid="2457" relation="include">
+        </childnode>
+        <childnode refid="2487" relation="include">
+        </childnode>
+        <childnode refid="2489" relation="include">
+        </childnode>
+        <childnode refid="2490" relation="include">
+        </childnode>
+        <childnode refid="2492" relation="include">
+        </childnode>
+        <childnode refid="2493" relation="include">
+        </childnode>
+      </node>
+      <node id="2460">
+        <label>fstream</label>
+      </node>
+      <node id="2457">
+        <label>Includes.h</label>
+        <link refid="Includes_8h"/>
+        <childnode refid="2458" relation="include">
+        </childnode>
+        <childnode refid="2459" relation="include">
+        </childnode>
+        <childnode refid="2460" relation="include">
+        </childnode>
+        <childnode refid="2461" relation="include">
+        </childnode>
+        <childnode refid="2462" relation="include">
+        </childnode>
+        <childnode refid="2463" relation="include">
+        </childnode>
+        <childnode refid="2464" relation="include">
+        </childnode>
+        <childnode refid="2465" relation="include">
+        </childnode>
+        <childnode refid="2466" relation="include">
+        </childnode>
+        <childnode refid="2467" relation="include">
+        </childnode>
+        <childnode refid="2468" relation="include">
+        </childnode>
+        <childnode refid="2469" relation="include">
+        </childnode>
+        <childnode refid="2470" relation="include">
+        </childnode>
+        <childnode refid="2471" relation="include">
+        </childnode>
+        <childnode refid="2472" relation="include">
+        </childnode>
+        <childnode refid="2473" relation="include">
+        </childnode>
+        <childnode refid="2474" relation="include">
+        </childnode>
+        <childnode refid="2475" relation="include">
+        </childnode>
+        <childnode refid="2476" relation="include">
+        </childnode>
+        <childnode refid="2477" relation="include">
+        </childnode>
+        <childnode refid="2478" relation="include">
+        </childnode>
+        <childnode refid="2479" relation="include">
+        </childnode>
+        <childnode refid="2480" relation="include">
+        </childnode>
+        <childnode refid="2481" relation="include">
+        </childnode>
+        <childnode refid="2482" relation="include">
+        </childnode>
+        <childnode refid="2483" relation="include">
+        </childnode>
+        <childnode refid="2484" relation="include">
+        </childnode>
+      </node>
+      <node id="2471">
+        <label>boost/any.hpp</label>
+      </node>
+      <node id="2478">
+        <label>boost/archive/text_oarchive.hpp</label>
+      </node>
+      <node id="2477">
+        <label>boost/archive/xml_iarchive.hpp</label>
+      </node>
+      <node id="2483">
+        <label>boost/serialization/version.hpp</label>
+      </node>
+      <node id="2484">
+        <label>boost/progress.hpp</label>
+      </node>
+      <node id="2463">
+        <label>vector</label>
+      </node>
+      <node id="2487">
+        <label>Object.h</label>
+        <link refid="Object_8h"/>
+        <childnode refid="2457" relation="include">
+        </childnode>
+        <childnode refid="2488" relation="include">
+        </childnode>
+        <childnode refid="2485" relation="include">
+        </childnode>
+      </node>
+      <node id="2474">
+        <label>boost/thread/barrier.hpp</label>
+      </node>
+      <node id="2459">
+        <label>sstream</label>
+      </node>
+      <node id="2475">
+        <label>boost/ref.hpp</label>
+      </node>
+      <node id="2470">
+        <label>cstdlib</label>
+      </node>
+      <node id="2458">
+        <label>iostream</label>
+      </node>
+      <node id="2481">
+        <label>boost/serialization/list.hpp</label>
+      </node>
+      <node id="2466">
+        <label>algorithm</label>
+      </node>
+      <node id="2456">
+        <label>pann/trunk/src/Core/Runner.h</label>
+        <link refid="Runner.h"/>
+        <childnode refid="2457" relation="include">
+        </childnode>
+        <childnode refid="2485" relation="include">
+        </childnode>
+        <childnode refid="2486" relation="include">
+        </childnode>
+      </node>
+      <node id="2491">
+        <label>Weight.h</label>
+        <link refid="Weight_8h"/>
+        <childnode refid="2457" relation="include">
+        </childnode>
+        <childnode refid="2487" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2499">
+        <label>pann/trunk/src/Core/MultilayerPerceptron.cpp</label>
+        <link refid="MultilayerPerceptron_8cpp"/>
+      </node>
+      <node id="2505">
+        <label>pann/trunk/src/Utils/pann_viewer/glwidget.cpp</label>
+        <link refid="glwidget_8cpp"/>
+      </node>
+      <node id="2507">
+        <label>pann/trunk/src/Utils/pann_viewer/window.cpp</label>
+        <link refid="window_8cpp"/>
+      </node>
+      <node id="2501">
+        <label>pann/trunk/src/Core/Net.cpp</label>
+        <link refid="Net_8cpp"/>
+      </node>
+      <node id="2508">
+        <label>pann/trunk/src/Core/Runner.cpp</label>
+        <link refid="Runner_8cpp"/>
+      </node>
+      <node id="2495">
+        <label>pann/trunk/src/Core/Net.h</label>
+        <link refid="Net_8h"/>
+        <childnode refid="2496" relation="include">
+        </childnode>
+        <childnode refid="2497" relation="include">
+        </childnode>
+        <childnode refid="2498" relation="include">
+        </childnode>
+        <childnode refid="2501" relation="include">
+        </childnode>
+        <childnode refid="2502" relation="include">
+        </childnode>
+        <childnode refid="2500" relation="include">
+        </childnode>
+        <childnode refid="2504" relation="include">
+        </childnode>
+        <childnode refid="2506" relation="include">
+        </childnode>
+        <childnode refid="2503" relation="include">
+        </childnode>
+      </node>
+      <node id="2497">
+        <label>pann/trunk/src/Core/LMS.h</label>
+        <link refid="LMS_8h"/>
+      </node>
+      <node id="2506">
+        <label>pann/trunk/src/Utils/pann_viewer/window.h</label>
+        <link refid="window_8h"/>
+        <childnode refid="2503" relation="include">
+        </childnode>
+        <childnode refid="2507" relation="include">
+        </childnode>
+      </node>
+      <node id="2496">
+        <label>pann/trunk/src/Core/LearningAlgorithm.h</label>
+        <link refid="LearningAlgorithm_8h"/>
+        <childnode refid="2497" relation="include">
+        </childnode>
+      </node>
+      <node id="2498">
+        <label>pann/trunk/src/Core/NetworkModel.h</label>
+        <link refid="NetworkModel_8h"/>
+        <childnode refid="2499" relation="include">
+        </childnode>
+        <childnode refid="2500" relation="include">
+        </childnode>
+      </node>
+      <node id="2503">
+        <label>pann/trunk/src/Utils/pann_viewer/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="2502">
+        <label>pann/trunk/src/Core/Storage.h</label>
+        <link refid="Storage_8h"/>
+        <childnode refid="2500" relation="include">
+        </childnode>
+        <childnode refid="2503" relation="include">
+        </childnode>
+      </node>
+      <node id="2500">
+        <label>pann/trunk/src/UnitTests/TestNet.cpp</label>
+        <link refid="TestNet_8cpp"/>
+      </node>
+      <node id="2504">
+        <label>pann/trunk/src/Utils/pann_viewer/glwidget.h</label>
+        <link refid="glwidget_8h"/>
+        <childnode refid="2505" relation="include">
+        </childnode>
+        <childnode refid="2506" relation="include">
+        </childnode>
+      </node>
+      <node id="2494">
+        <label>pann/trunk/src/Core/Runner.h</label>
+        <link refid="Runner.h"/>
+        <childnode refid="2495" relation="include">
+        </childnode>
+        <childnode refid="2508" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classpann_1_1Runner" prot="public">pann::Runner</innerclass>
+    <innerclass refid="classpann_1_1NullRunner" prot="public">pann::NullRunner</innerclass>
+    <innerclass refid="classpann_1_1NullBackpropagationRunner" prot="public">pann::NullBackpropagationRunner</innerclass>
+    <innerclass refid="classpann_1_1FeedforwardPropagationRunner" prot="public">pann::FeedforwardPropagationRunner</innerclass>
+    <innernamespace refid="namespacepann">pann</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>@file</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>Generic<sp/>runner<sp/>interface</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>RUNNER_H</highlight></codeline>
+<codeline lineno="7"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>RUNNER_H</highlight></codeline>
+<codeline lineno="8"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Includes_8h" kindref="compound">Includes.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Type_8h" kindref="compound">Type.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Neuron_8h" kindref="compound">Neuron.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">pann</highlight></codeline>
+<codeline lineno="14"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="15" refid="namespacepann_134cfd8d9243a5183902a991ae1532e37" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="namespacepann_134cfd8d9243a5183902a991ae1532e37" kindref="member">RunDirection</ref><sp/>{<sp/><ref refid="namespacepann_134cfd8d9243a5183902a991ae1532e3748f0cddd9d215fba8b09d2e19f2b2a75" kindref="member">ForwardRun</ref>,<sp/><ref refid="namespacepann_134cfd8d9243a5183902a991ae1532e370ac5753feef303274f7d3d43a04753c3" kindref="member">BackwardRun</ref><sp/>};</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17" refid="classpann_1_1Runner" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classpann_1_1Runner" kindref="compound">Runner</ref><sp/></highlight><highlight class="comment">//singleton</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Runner" kindref="compound">Runner</ref>*<sp/><ref refid="classpann_1_1Runner_1f9711798dab2451cae026fae3c3a89e2" kindref="member">Instance</ref>();</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Runner_18f7c1cd84129843504cfe17f738b86d0" kindref="member">run</ref>(<ref refid="namespacepann_15b285d6cead198add4f14b5b5a0b97c1" kindref="member">NeuronIter</ref>)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="namespacepann_134cfd8d9243a5183902a991ae1532e37" kindref="member">RunDirection</ref><sp/><ref refid="classpann_1_1Runner_1658262373566e4be537caffbc35d8350" kindref="member">getDirection</ref>()<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="classpann_1_1NullRunner" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classpann_1_1NullRunner" kindref="compound">NullRunner</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Runner" kindref="compound">Runner</ref></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="29" refid="classpann_1_1NullRunner_1d8cc52732675efc902933596fa462340" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Runner" kindref="compound">Runner</ref>*<sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="32" refid="classpann_1_1NullRunner_16010883f582f99db6e43cea15c8e75f8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classpann_1_1NullRunner_16010883f582f99db6e43cea15c8e75f8" kindref="member">NullRunner</ref>()<sp/>{<sp/>};</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="35" refid="classpann_1_1NullRunner_156e7baf943da021decbb2f59b816cbd1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classpann_1_1NullRunner_156e7baf943da021decbb2f59b816cbd1" kindref="member">~NullRunner</ref>()<sp/>{<sp/>};</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="38" refid="classpann_1_1NullRunner_1de665b491727786c110b50f85c860ca6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Runner" kindref="compound">Runner</ref>*<sp/><ref refid="classpann_1_1NullRunner_1de665b491727786c110b50f85c860ca6" kindref="member">Instance</ref>()</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!</highlight><highlight class="keyword">self</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal"><sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1NullRunner_16010883f582f99db6e43cea15c8e75f8" kindref="member">NullRunner</ref>();</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46" refid="classpann_1_1NullRunner_19a6dad0494baa4a1fec7a4adc227dd0c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1NullRunner_19a6dad0494baa4a1fec7a4adc227dd0c" kindref="member">run</ref>(<ref refid="namespacepann_15b285d6cead198add4f14b5b5a0b97c1" kindref="member">NeuronIter</ref><sp/>_neuron)</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50" refid="classpann_1_1NullRunner_1b9f4684f46b82d8a44528de10ded73e1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="namespacepann_134cfd8d9243a5183902a991ae1532e37" kindref="member">RunDirection</ref><sp/><ref refid="classpann_1_1NullRunner_1b9f4684f46b82d8a44528de10ded73e1" kindref="member">getDirection</ref>()</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespacepann_134cfd8d9243a5183902a991ae1532e3748f0cddd9d215fba8b09d2e19f2b2a75" kindref="member">ForwardRun</ref>;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56" refid="classpann_1_1NullBackpropagationRunner" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classpann_1_1NullBackpropagationRunner" kindref="compound">NullBackpropagationRunner</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Runner" kindref="compound">Runner</ref></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="59" refid="classpann_1_1NullBackpropagationRunner_1dcbaab5e12ad78534334168ec0778b67" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Runner" kindref="compound">Runner</ref>*<sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="62" refid="classpann_1_1NullBackpropagationRunner_1979c33b6622c15ef38fbf0a173134177" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classpann_1_1NullBackpropagationRunner_1979c33b6622c15ef38fbf0a173134177" kindref="member">NullBackpropagationRunner</ref>()<sp/>{<sp/>};</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="65" refid="classpann_1_1NullBackpropagationRunner_11e6e2acd2d5421fe0bbf1a128d0e9da2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classpann_1_1NullBackpropagationRunner_11e6e2acd2d5421fe0bbf1a128d0e9da2" kindref="member">~NullBackpropagationRunner</ref>()<sp/>{<sp/>};</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="68" refid="classpann_1_1NullBackpropagationRunner_11f0816746277a4898124d1aa2e86ddef" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Runner" kindref="compound">Runner</ref>*<sp/><ref refid="classpann_1_1NullBackpropagationRunner_11f0816746277a4898124d1aa2e86ddef" kindref="member">Instance</ref>()</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!</highlight><highlight class="keyword">self</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal"><sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1NullBackpropagationRunner_1979c33b6622c15ef38fbf0a173134177" kindref="member">NullBackpropagationRunner</ref>();</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76" refid="classpann_1_1NullBackpropagationRunner_1d138c075b602e3d9efa44a99971b3f6a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1NullBackpropagationRunner_1d138c075b602e3d9efa44a99971b3f6a" kindref="member">run</ref>(<ref refid="namespacepann_15b285d6cead198add4f14b5b5a0b97c1" kindref="member">NeuronIter</ref><sp/>_neuron)</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80" refid="classpann_1_1NullBackpropagationRunner_121164553e2dcf4cabb1859534dd0f0c9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="namespacepann_134cfd8d9243a5183902a991ae1532e37" kindref="member">RunDirection</ref><sp/><ref refid="classpann_1_1NullBackpropagationRunner_121164553e2dcf4cabb1859534dd0f0c9" kindref="member">getDirection</ref>()</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespacepann_134cfd8d9243a5183902a991ae1532e370ac5753feef303274f7d3d43a04753c3" kindref="member">BackwardRun</ref>;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86" refid="classpann_1_1FeedforwardPropagationRunner" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classpann_1_1FeedforwardPropagationRunner" kindref="compound">FeedforwardPropagationRunner</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Runner" kindref="compound">Runner</ref></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="89" refid="classpann_1_1FeedforwardPropagationRunner_1591a48a971fa079897e18e619b6e006f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Runner" kindref="compound">Runner</ref>*<sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="92" refid="classpann_1_1FeedforwardPropagationRunner_1b776e7d270111190a545742da9fca0c3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classpann_1_1FeedforwardPropagationRunner_1b776e7d270111190a545742da9fca0c3" kindref="member">FeedforwardPropagationRunner</ref>()<sp/>{<sp/>};</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="95" refid="classpann_1_1FeedforwardPropagationRunner_1379733952d23b9d57ee03f72f7229655" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classpann_1_1FeedforwardPropagationRunner_1379733952d23b9d57ee03f72f7229655" kindref="member">~FeedforwardPropagationRunner</ref>()<sp/>{<sp/>};</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="98" refid="classpann_1_1FeedforwardPropagationRunner_108cabe3623c089536ada6c6ca8e0a0a5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Runner" kindref="compound">Runner</ref>*<sp/><ref refid="classpann_1_1FeedforwardPropagationRunner_108cabe3623c089536ada6c6ca8e0a0a5" kindref="member">Instance</ref>()</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!</highlight><highlight class="keyword">self</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal"><sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1FeedforwardPropagationRunner_1b776e7d270111190a545742da9fca0c3" kindref="member">FeedforwardPropagationRunner</ref>();</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106" refid="classpann_1_1FeedforwardPropagationRunner_1a4fd0bba255e74c8649367744f6b7a24" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1FeedforwardPropagationRunner_1a4fd0bba255e74c8649367744f6b7a24" kindref="member">run</ref>(<ref refid="namespacepann_15b285d6cead198add4f14b5b5a0b97c1" kindref="member">NeuronIter</ref><sp/>_neuron)</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BOOST_FOREACH(<sp/><ref refid="classpann_1_1Link" kindref="compound" tooltip="Link between two neurons.">Link</ref>&amp;<sp/>link,<sp/>_neuron-&gt;second.links<sp/>)</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(link.<ref refid="classpann_1_1Link_1eab757727bb6ca0cad8edb46500c3897" kindref="member">getDirection</ref>()<sp/>==<sp/><ref refid="classpann_1_1Link_1843c5a79ffd161b67e1770f65eabf0556b810850c72ab26c68965db2424df30c" kindref="member">Link::in</ref>)</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_neuron-&gt;second.receptiveField<sp/>+=<sp/></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(<sp/>link.<ref refid="classpann_1_1Link_118a70d88ffa9fe441820c2d1c9d83579" kindref="member">getToIter</ref>()-&gt;second.activationValue<sp/>*<sp/>link.<ref refid="classpann_1_1Link_10da0b96aceaf5361b289cded06778d65" kindref="member">getWeightIter</ref>()-&gt;second.value<sp/>);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_neuron-&gt;second.activationValue<sp/>=<sp/>_neuron-&gt;second.getActivationFunction()-&gt;f(_neuron-&gt;second.receptiveField);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_neuron-&gt;second.receptiveField<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121" refid="classpann_1_1FeedforwardPropagationRunner_18e780a63e02d60e363d3baa871c2cced" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="namespacepann_134cfd8d9243a5183902a991ae1532e37" kindref="member">RunDirection</ref><sp/><ref refid="classpann_1_1FeedforwardPropagationRunner_18e780a63e02d60e363d3baa871c2cced" kindref="member">getDirection</ref>()</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespacepann_134cfd8d9243a5183902a991ae1532e3748f0cddd9d215fba8b09d2e19f2b2a75" kindref="member">ForwardRun</ref>;</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal">};<sp/></highlight><highlight class="comment">//pann</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//RUNNER_H</highlight></codeline>
+    </programlisting>
+    <location file="/home/booble/pann/trunk/src/Core/Runner.h"/>
+  </compounddef>
+</doxygen>
