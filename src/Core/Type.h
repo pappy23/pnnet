@@ -11,7 +11,7 @@
 namespace pann
 {
     typedef double Float;
-    const Float inf = std::numeric_limits<double>::infinity();
+    const Float inf = std::numeric_limits<Float>::infinity();
 
 	typedef unsigned int UINT;
 	typedef unsigned int uint;

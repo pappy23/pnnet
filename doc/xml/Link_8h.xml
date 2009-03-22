@@ -5,140 +5,314 @@
     <includes refid="Includes_8h" local="yes">Includes.h</includes>
     <includes refid="Object_8h" local="yes">Object.h</includes>
     <includes refid="Weight_8h" local="yes">Weight.h</includes>
-    <includes refid="Neuron_8h" local="yes">Neuron.h</includes>
-    <includedby refid="Neuron_8h" local="yes">pann/trunk/src/Neuron.h</includedby>
+    <includedby refid="Neuron_8h" local="yes">pann/trunk/src/Core/Neuron.h</includedby>
     <incdepgraph>
-      <node id="56">
+      <node id="354">
         <label>list</label>
       </node>
-      <node id="60">
-        <label>boost/shared_ptr.hpp</label>
-      </node>
-      <node id="57">
-        <label>string</label>
-      </node>
-      <node id="61">
-        <label>boost/weak_ptr.hpp</label>
-      </node>
-      <node id="55">
-        <label>map</label>
-      </node>
-      <node id="63">
+      <node id="378">
         <label>Exception.h</label>
         <link refid="Exception_8h"/>
-        <childnode refid="53" relation="include">
+        <childnode refid="349" relation="include">
         </childnode>
       </node>
-      <node id="59">
-        <label>boost/any.hpp</label>
+      <node id="356">
+        <label>valarray</label>
       </node>
-      <node id="52">
-        <label>pann/trunk/src/Link.h</label>
+      <node id="372">
+        <label>boost/serialization/map.hpp</label>
+      </node>
+      <node id="360">
+        <label>limits</label>
+      </node>
+      <node id="374">
+        <label>boost/serialization/vector.hpp</label>
+      </node>
+      <node id="359">
+        <label>iterator</label>
+      </node>
+      <node id="371">
+        <label>boost/archive/text_iarchive.hpp</label>
+      </node>
+      <node id="379">
+        <label>Type.h</label>
+        <link refid="Type_8h"/>
+        <childnode refid="349" relation="include">
+        </childnode>
+      </node>
+      <node id="348">
+        <label>pann/trunk/src/Core/Link.h</label>
         <link refid="Link.h"/>
-        <childnode refid="53" relation="include">
+        <childnode refid="349" relation="include">
         </childnode>
-        <childnode refid="62" relation="include">
+        <childnode refid="377" relation="include">
         </childnode>
-        <childnode refid="64" relation="include">
-        </childnode>
-        <childnode refid="65" relation="include">
+        <childnode refid="380" relation="include">
         </childnode>
       </node>
-      <node id="54">
-        <label>vector</label>
+      <node id="364">
+        <label>boost/foreach.hpp</label>
       </node>
-      <node id="62">
-        <label>Object.h</label>
-        <link refid="Object_8h"/>
-        <childnode refid="53" relation="include">
-        </childnode>
-        <childnode refid="63" relation="include">
-        </childnode>
+      <node id="361">
+        <label>cmath</label>
       </node>
-      <node id="58">
-        <label>sstream</label>
+      <node id="368">
+        <label>boost/archive/xml_oarchive.hpp</label>
       </node>
-      <node id="53">
+      <node id="357">
+        <label>string</label>
+      </node>
+      <node id="353">
+        <label>map</label>
+      </node>
+      <node id="365">
+        <label>boost/thread.hpp</label>
+      </node>
+      <node id="352">
+        <label>fstream</label>
+      </node>
+      <node id="349">
         <label>Includes.h</label>
         <link refid="Includes_8h"/>
-        <childnode refid="54" relation="include">
+        <childnode refid="350" relation="include">
         </childnode>
-        <childnode refid="55" relation="include">
+        <childnode refid="351" relation="include">
         </childnode>
-        <childnode refid="56" relation="include">
+        <childnode refid="352" relation="include">
         </childnode>
-        <childnode refid="57" relation="include">
+        <childnode refid="353" relation="include">
         </childnode>
-        <childnode refid="58" relation="include">
+        <childnode refid="354" relation="include">
         </childnode>
-        <childnode refid="59" relation="include">
+        <childnode refid="355" relation="include">
         </childnode>
-        <childnode refid="60" relation="include">
+        <childnode refid="356" relation="include">
         </childnode>
-        <childnode refid="61" relation="include">
+        <childnode refid="357" relation="include">
+        </childnode>
+        <childnode refid="358" relation="include">
+        </childnode>
+        <childnode refid="359" relation="include">
+        </childnode>
+        <childnode refid="360" relation="include">
+        </childnode>
+        <childnode refid="361" relation="include">
+        </childnode>
+        <childnode refid="362" relation="include">
+        </childnode>
+        <childnode refid="363" relation="include">
+        </childnode>
+        <childnode refid="364" relation="include">
+        </childnode>
+        <childnode refid="365" relation="include">
+        </childnode>
+        <childnode refid="366" relation="include">
+        </childnode>
+        <childnode refid="367" relation="include">
+        </childnode>
+        <childnode refid="368" relation="include">
+        </childnode>
+        <childnode refid="369" relation="include">
+        </childnode>
+        <childnode refid="370" relation="include">
+        </childnode>
+        <childnode refid="371" relation="include">
+        </childnode>
+        <childnode refid="372" relation="include">
+        </childnode>
+        <childnode refid="373" relation="include">
+        </childnode>
+        <childnode refid="374" relation="include">
+        </childnode>
+        <childnode refid="375" relation="include">
+        </childnode>
+        <childnode refid="376" relation="include">
         </childnode>
       </node>
-      <node id="66">
-        <label>ActivationFunction.h</label>
-        <link refid="ActivationFunction_8h"/>
+      <node id="363">
+        <label>boost/any.hpp</label>
       </node>
-      <node id="65">
-        <label>Neuron.h</label>
-        <link refid="Neuron_8h"/>
-        <childnode refid="53" relation="include">
+      <node id="370">
+        <label>boost/archive/text_oarchive.hpp</label>
+      </node>
+      <node id="369">
+        <label>boost/archive/xml_iarchive.hpp</label>
+      </node>
+      <node id="375">
+        <label>boost/serialization/version.hpp</label>
+      </node>
+      <node id="376">
+        <label>boost/progress.hpp</label>
+      </node>
+      <node id="355">
+        <label>vector</label>
+      </node>
+      <node id="377">
+        <label>Object.h</label>
+        <link refid="Object_8h"/>
+        <childnode refid="349" relation="include">
         </childnode>
-        <childnode refid="62" relation="include">
+        <childnode refid="378" relation="include">
         </childnode>
-        <childnode refid="66" relation="include">
-        </childnode>
-        <childnode refid="52" relation="include">
+        <childnode refid="379" relation="include">
         </childnode>
       </node>
-      <node id="64">
+      <node id="366">
+        <label>boost/thread/barrier.hpp</label>
+      </node>
+      <node id="351">
+        <label>sstream</label>
+      </node>
+      <node id="367">
+        <label>boost/ref.hpp</label>
+      </node>
+      <node id="362">
+        <label>cstdlib</label>
+      </node>
+      <node id="350">
+        <label>iostream</label>
+      </node>
+      <node id="373">
+        <label>boost/serialization/list.hpp</label>
+      </node>
+      <node id="358">
+        <label>algorithm</label>
+      </node>
+      <node id="380">
         <label>Weight.h</label>
         <link refid="Weight_8h"/>
-        <childnode refid="53" relation="include">
+        <childnode refid="349" relation="include">
         </childnode>
-        <childnode refid="62" relation="include">
+        <childnode refid="377" relation="include">
         </childnode>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="69">
-        <label>pann/trunk/src/Net.h</label>
-        <link refid="Net_8h"/>
-        <childnode refid="70" relation="include">
-        </childnode>
-        <childnode refid="71" relation="include">
-        </childnode>
+      <node id="388">
+        <label>pann/trunk/src/Core/MultilayerPerceptron.cpp</label>
+        <link refid="MultilayerPerceptron_8cpp"/>
       </node>
-      <node id="67">
-        <label>pann/trunk/src/Link.h</label>
+      <node id="394">
+        <label>pann/trunk/src/Utils/pann_viewer/glwidget.cpp</label>
+        <link refid="glwidget_8cpp"/>
+      </node>
+      <node id="396">
+        <label>pann/trunk/src/Utils/pann_viewer/window.cpp</label>
+        <link refid="window_8cpp"/>
+      </node>
+      <node id="381">
+        <label>pann/trunk/src/Core/Link.h</label>
         <link refid="Link.h"/>
-        <childnode refid="68" relation="include">
+        <childnode refid="382" relation="include">
         </childnode>
       </node>
-      <node id="72">
-        <label>pann/trunk/src/Neuron.cpp</label>
-        <link refid="Neuron_8cpp"/>
-      </node>
-      <node id="68">
-        <label>pann/trunk/src/Neuron.h</label>
-        <link refid="Neuron_8h"/>
-        <childnode refid="67" relation="include">
-        </childnode>
-        <childnode refid="69" relation="include">
-        </childnode>
-        <childnode refid="72" relation="include">
-        </childnode>
-      </node>
-      <node id="70">
-        <label>pann/trunk/src/Net.cpp</label>
+      <node id="390">
+        <label>pann/trunk/src/Core/Net.cpp</label>
         <link refid="Net_8cpp"/>
       </node>
-      <node id="71">
-        <label>pann/trunk/src/TestNet.cpp</label>
+      <node id="398">
+        <label>pann/trunk/src/Core/Runner.cpp</label>
+        <link refid="Runner_8cpp"/>
+      </node>
+      <node id="386">
+        <label>pann/trunk/src/Core/LMS.cpp</label>
+        <link refid="LMS_8cpp"/>
+      </node>
+      <node id="383">
+        <label>pann/trunk/src/Core/Net.h</label>
+        <link refid="Net_8h"/>
+        <childnode refid="384" relation="include">
+        </childnode>
+        <childnode refid="385" relation="include">
+        </childnode>
+        <childnode refid="387" relation="include">
+        </childnode>
+        <childnode refid="390" relation="include">
+        </childnode>
+        <childnode refid="391" relation="include">
+        </childnode>
+        <childnode refid="389" relation="include">
+        </childnode>
+        <childnode refid="393" relation="include">
+        </childnode>
+        <childnode refid="395" relation="include">
+        </childnode>
+        <childnode refid="392" relation="include">
+        </childnode>
+      </node>
+      <node id="382">
+        <label>pann/trunk/src/Core/Neuron.h</label>
+        <link refid="Neuron_8h"/>
+        <childnode refid="383" relation="include">
+        </childnode>
+        <childnode refid="397" relation="include">
+        </childnode>
+        <childnode refid="399" relation="include">
+        </childnode>
+      </node>
+      <node id="385">
+        <label>pann/trunk/src/Core/LMS.h</label>
+        <link refid="LMS_8h"/>
+        <childnode refid="386" relation="include">
+        </childnode>
+      </node>
+      <node id="395">
+        <label>pann/trunk/src/Utils/pann_viewer/window.h</label>
+        <link refid="window_8h"/>
+        <childnode refid="392" relation="include">
+        </childnode>
+        <childnode refid="396" relation="include">
+        </childnode>
+      </node>
+      <node id="384">
+        <label>pann/trunk/src/Core/LearningAlgorithm.h</label>
+        <link refid="LearningAlgorithm_8h"/>
+        <childnode refid="385" relation="include">
+        </childnode>
+      </node>
+      <node id="387">
+        <label>pann/trunk/src/Core/NetworkModel.h</label>
+        <link refid="NetworkModel_8h"/>
+        <childnode refid="388" relation="include">
+        </childnode>
+        <childnode refid="389" relation="include">
+        </childnode>
+      </node>
+      <node id="392">
+        <label>pann/trunk/src/Utils/pann_viewer/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="399">
+        <label>pann/trunk/src/Core/Neuron.cpp</label>
+        <link refid="Neuron_8cpp"/>
+      </node>
+      <node id="391">
+        <label>pann/trunk/src/Core/Storage.h</label>
+        <link refid="Storage_8h"/>
+        <childnode refid="389" relation="include">
+        </childnode>
+        <childnode refid="392" relation="include">
+        </childnode>
+      </node>
+      <node id="389">
+        <label>pann/trunk/src/UnitTests/TestNet.cpp</label>
         <link refid="TestNet_8cpp"/>
+      </node>
+      <node id="393">
+        <label>pann/trunk/src/Utils/pann_viewer/glwidget.h</label>
+        <link refid="glwidget_8h"/>
+        <childnode refid="394" relation="include">
+        </childnode>
+        <childnode refid="395" relation="include">
+        </childnode>
+      </node>
+      <node id="397">
+        <label>pann/trunk/src/Core/Runner.h</label>
+        <link refid="Runner_8h"/>
+        <childnode refid="383" relation="include">
+        </childnode>
+        <childnode refid="398" relation="include">
+        </childnode>
       </node>
     </invincdepgraph>
     <innerclass refid="classpann_1_1Link" prot="public">pann::Link</innerclass>
@@ -155,40 +329,61 @@
 <codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Includes_8h" kindref="compound">Includes.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Object_8h" kindref="compound">Object.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Weight_8h" kindref="compound">Weight.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Neuron_8h" kindref="compound">Neuron.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="13"><highlight class="normal"></highlight></codeline>
-<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">pann</highlight></codeline>
-<codeline lineno="15"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">Neuron;</highlight></codeline>
-<codeline lineno="17"><highlight class="normal"></highlight></codeline>
-<codeline lineno="19" refid="classpann_1_1Link" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classpann_1_1Link" kindref="compound" tooltip="Link between two neurons.">Link</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Object" kindref="compound" tooltip="Base class for almoust everything.">Object</ref></highlight></codeline>
-<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">pann</highlight></codeline>
+<codeline lineno="14"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">Net;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18" refid="classpann_1_1Link" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classpann_1_1Link" kindref="compound" tooltip="Link between two neurons.">Link</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Object" kindref="compound" tooltip="Base class for almoust everything.">Object</ref></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Public<sp/>types<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="22" refid="classpann_1_1Link_1843c5a79ffd161b67e1770f65eabf0550735525ef5d9a47b94c4597e7c27e522" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Link_1843c5a79ffd161b67e1770f65eabf055" kindref="member">Direction</ref><sp/>{<sp/><ref refid="classpann_1_1Link_1843c5a79ffd161b67e1770f65eabf0556b810850c72ab26c68965db2424df30c" kindref="member">in</ref>,<sp/><ref refid="classpann_1_1Link_1843c5a79ffd161b67e1770f65eabf0550735525ef5d9a47b94c4597e7c27e522" kindref="member">out</ref><sp/>};</highlight></codeline>
 <codeline lineno="23"><highlight class="normal"></highlight></codeline>
-<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="25" refid="classpann_1_1Link_1e3c1cbea824e8177a35201a6da1c0da2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classpann_1_1Link_1843c5a79ffd161b67e1770f65eabf055" kindref="member">Direction</ref><sp/><ref refid="classpann_1_1Link_1e3c1cbea824e8177a35201a6da1c0da2" kindref="member">direction</ref>;</highlight></codeline>
-<codeline lineno="26" refid="classpann_1_1Link_1a9ee2ffbf614efa443d3898b64d4ded8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classpann_1_1Neuron" kindref="compound">Neuron</ref>&amp;<sp/><ref refid="classpann_1_1Link_1a9ee2ffbf614efa443d3898b64d4ded8" kindref="member">to</ref>;</highlight></codeline>
-<codeline lineno="27" refid="classpann_1_1Link_1a6387ae5f79407f65a9fffa844319e00" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>boost::shared_ptr&lt;Weight&gt;<sp/><ref refid="classpann_1_1Link_1a6387ae5f79407f65a9fffa844319e00" kindref="member" tooltip="Pointer to Weight object (may be shared between different links).">w</ref>;<sp/></highlight></codeline>
-<codeline lineno="28"><highlight class="normal"></highlight></codeline>
-<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="30" refid="classpann_1_1Link_1034def4a36ce7701f08a2bc0826cda1a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classpann_1_1Link_1034def4a36ce7701f08a2bc0826cda1a" kindref="member">Link</ref>(<ref refid="classpann_1_1Neuron" kindref="compound">Neuron</ref>&amp;<sp/>_to,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Link_1843c5a79ffd161b67e1770f65eabf055" kindref="member">Direction</ref><sp/>_direction,<sp/><ref refid="classpann_1_1Weight" kindref="compound">Weight</ref>*<sp/>_w)<sp/>:</highlight></codeline>
-<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classpann_1_1Link_1a9ee2ffbf614efa443d3898b64d4ded8" kindref="member">to</ref>(_to),</highlight></codeline>
-<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classpann_1_1Link_1e3c1cbea824e8177a35201a6da1c0da2" kindref="member">direction</ref>(_direction),</highlight></codeline>
-<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classpann_1_1Link_1a6387ae5f79407f65a9fffa844319e00" kindref="member" tooltip="Pointer to Weight object (may be shared between different links).">w</ref>(_w)<sp/>{<sp/>};</highlight></codeline>
-<codeline lineno="34"><highlight class="normal"></highlight></codeline>
-<codeline lineno="35" refid="classpann_1_1Link_1d06a124eeddb33744befe239894399bc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classpann_1_1Link_1d06a124eeddb33744befe239894399bc" kindref="member">~Link</ref>()<sp/>{<sp/>};</highlight></codeline>
-<codeline lineno="36"><highlight class="normal"></highlight></codeline>
-<codeline lineno="37" refid="classpann_1_1Link_1eab757727bb6ca0cad8edb46500c3897" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Link_1843c5a79ffd161b67e1770f65eabf055" kindref="member">Direction</ref><sp/><ref refid="classpann_1_1Link_1eab757727bb6ca0cad8edb46500c3897" kindref="member">getDirection</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Link_1e3c1cbea824e8177a35201a6da1c0da2" kindref="member">direction</ref>;<sp/>};</highlight></codeline>
-<codeline lineno="38" refid="classpann_1_1Link_107b96a800aa700c832a3a401181355b1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Neuron" kindref="compound">Neuron</ref>&amp;<sp/><ref refid="classpann_1_1Link_107b96a800aa700c832a3a401181355b1" kindref="member">getTo</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Link_1a9ee2ffbf614efa443d3898b64d4ded8" kindref="member">to</ref>;<sp/>};</highlight></codeline>
-<codeline lineno="39" refid="classpann_1_1Link_1ce5a96ace22c7561e723f4248e5a41ab" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>boost::shared_ptr&lt;Weight&gt;<sp/><ref refid="classpann_1_1Link_1ce5a96ace22c7561e723f4248e5a41ab" kindref="member">getW</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Link_1a6387ae5f79407f65a9fffa844319e00" kindref="member" tooltip="Pointer to Weight object (may be shared between different links).">w</ref>;<sp/>};</highlight></codeline>
-<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
-<codeline lineno="41"><highlight class="normal"></highlight></codeline>
-<codeline lineno="42"><highlight class="normal">};<sp/></highlight><highlight class="comment">//pann</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="43"><highlight class="normal"></highlight></codeline>
-<codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//WEIGHT_H</highlight></codeline>
-<codeline lineno="45"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Private<sp/>members<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="26" refid="classpann_1_1Link_17126b05c26be8b9166fa86b894b1cdb0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacepann_15b285d6cead198add4f14b5b5a0b97c1" kindref="member">NeuronIter</ref><sp/><ref refid="classpann_1_1Link_17126b05c26be8b9166fa86b894b1cdb0" kindref="member">to</ref>;</highlight></codeline>
+<codeline lineno="27" refid="classpann_1_1Link_1e3c1cbea824e8177a35201a6da1c0da2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classpann_1_1Link_1843c5a79ffd161b67e1770f65eabf055" kindref="member">Direction</ref><sp/><ref refid="classpann_1_1Link_1e3c1cbea824e8177a35201a6da1c0da2" kindref="member">direction</ref>;</highlight></codeline>
+<codeline lineno="28" refid="classpann_1_1Link_1e5eed84c9cd7072a8361e6fd6f1265c6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacepann_1984e6dfa15df19d238ee8f5792d0cefb" kindref="member">WeightIter</ref><sp/><ref refid="classpann_1_1Link_1e5eed84c9cd7072a8361e6fd6f1265c6" kindref="member" tooltip="Pointer to Weight object (might be shared between different links).">w</ref>;<sp/></highlight></codeline>
+<codeline lineno="29" refid="classpann_1_1Link_1c4082679e8fc85a6ef441b6e567493e9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Link_1c4082679e8fc85a6ef441b6e567493e9" kindref="member">latency</ref>;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Public<sp/>interface<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="33" refid="classpann_1_1Link_141044402a668f43f06553d7da750df61" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classpann_1_1Link_141044402a668f43f06553d7da750df61" kindref="member">Link</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespacepann_15b285d6cead198add4f14b5b5a0b97c1" kindref="member">NeuronIter</ref><sp/>_to,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Link_1843c5a79ffd161b67e1770f65eabf055" kindref="member">Direction</ref><sp/>_direction,<sp/><ref refid="namespacepann_1984e6dfa15df19d238ee8f5792d0cefb" kindref="member">WeightIter</ref><sp/>_w,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>_latency<sp/>=<sp/>1)<sp/>:</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classpann_1_1Link_17126b05c26be8b9166fa86b894b1cdb0" kindref="member">to</ref>(_to),</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classpann_1_1Link_1e3c1cbea824e8177a35201a6da1c0da2" kindref="member">direction</ref>(_direction),</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classpann_1_1Link_1e5eed84c9cd7072a8361e6fd6f1265c6" kindref="member" tooltip="Pointer to Weight object (might be shared between different links).">w</ref>(_w),</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classpann_1_1Link_1c4082679e8fc85a6ef441b6e567493e9" kindref="member">latency</ref>(_latency)</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="classpann_1_1Link_1d06a124eeddb33744befe239894399bc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classpann_1_1Link_1d06a124eeddb33744befe239894399bc" kindref="member">~Link</ref>()</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="classpann_1_1Link_118a70d88ffa9fe441820c2d1c9d83579" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacepann_15b285d6cead198add4f14b5b5a0b97c1" kindref="member">NeuronIter</ref><sp/><ref refid="classpann_1_1Link_118a70d88ffa9fe441820c2d1c9d83579" kindref="member">getToIter</ref>()<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Link_17126b05c26be8b9166fa86b894b1cdb0" kindref="member">to</ref>;<sp/>};</highlight></codeline>
+<codeline lineno="46" refid="classpann_1_1Link_134704a4638bea049b149dcafdcfe93d3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacepann_168751290d27789ce6f303cf55ed505ed" kindref="member">ConstNeuronIter</ref><sp/><ref refid="classpann_1_1Link_118a70d88ffa9fe441820c2d1c9d83579" kindref="member">getToIter</ref>()</highlight><highlight class="keyword"><sp/>const<sp/><sp/><sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Link_17126b05c26be8b9166fa86b894b1cdb0" kindref="member">to</ref>;<sp/>};</highlight></codeline>
+<codeline lineno="47" refid="classpann_1_1Link_1eab757727bb6ca0cad8edb46500c3897" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classpann_1_1Link_1843c5a79ffd161b67e1770f65eabf055" kindref="member">Direction</ref><sp/><ref refid="classpann_1_1Link_1eab757727bb6ca0cad8edb46500c3897" kindref="member">getDirection</ref>()</highlight><highlight class="keyword"><sp/>const<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Link_1e3c1cbea824e8177a35201a6da1c0da2" kindref="member">direction</ref>;<sp/>};</highlight></codeline>
+<codeline lineno="48" refid="classpann_1_1Link_1282df22476d1056ecd371a2357f227c8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Link_1282df22476d1056ecd371a2357f227c8" kindref="member">getLatency</ref>()</highlight><highlight class="keyword"><sp/>const<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Link_1c4082679e8fc85a6ef441b6e567493e9" kindref="member">latency</ref>;<sp/>};</highlight></codeline>
+<codeline lineno="49" refid="classpann_1_1Link_10da0b96aceaf5361b289cded06778d65" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacepann_1984e6dfa15df19d238ee8f5792d0cefb" kindref="member">WeightIter</ref><sp/><ref refid="classpann_1_1Link_10da0b96aceaf5361b289cded06778d65" kindref="member">getWeightIter</ref>()<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Link_1e5eed84c9cd7072a8361e6fd6f1265c6" kindref="member" tooltip="Pointer to Weight object (might be shared between different links).">w</ref>;<sp/>};</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Debug<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="53" refid="classpann_1_1Link_11b0611d84a5fd7632fdaffac2b19b2a9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classpann_1_1Link_11b0611d84a5fd7632fdaffac2b19b2a9" kindref="member">printDebugInfo</ref>(std::ostringstream&amp;<sp/>ost)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="54"><highlight class="keyword"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ost&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/><sp/>Link\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ost&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/><sp/><sp/>direction:<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;<ref refid="classpann_1_1Link_1e3c1cbea824e8177a35201a6da1c0da2" kindref="member">direction</ref>&lt;&lt;std::endl;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ost&lt;&lt;</highlight><highlight class="stringliteral">&quot;<sp/><sp/><sp/>latency:<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;<ref refid="classpann_1_1Link_1c4082679e8fc85a6ef441b6e567493e9" kindref="member">latency</ref>&lt;&lt;std::endl;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//ost&lt;&lt;&quot;<sp/><sp/><sp/>to:<sp/>&quot;&lt;&lt;to-&gt;first&lt;&lt;std::endl;<sp/>-<sp/>Neuron<sp/>-<sp/>incomplete<sp/>class</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classpann_1_1Link_1e5eed84c9cd7072a8361e6fd6f1265c6" kindref="member" tooltip="Pointer to Weight object (might be shared between different links).">w</ref>-&gt;second.printDebugInfo(ost);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal">};<sp/></highlight><highlight class="comment">//pann</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//LINK_H</highlight></codeline>
+<codeline lineno="66"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="/home/booble/pann/trunk/src/Link.h"/>
+    <location file="/home/booble/pann/trunk/src/Core/Link.h"/>
   </compounddef>
 </doxygen>

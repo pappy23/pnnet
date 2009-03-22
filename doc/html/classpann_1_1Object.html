@@ -10,12 +10,13 @@
     <ul>
       <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
-      <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="classes.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
     </ul>
   </div>
   <div class="tabs">
     <ul>
+      <li><a href="classes.html"><span>Alphabetical&nbsp;List</span></a></li>
       <li><a href="annotated.html"><span>Class&nbsp;List</span></a></li>
       <li><a href="hierarchy.html"><span>Class&nbsp;Hierarchy</span></a></li>
       <li><a href="functions.html"><span>Class&nbsp;Members</span></a></li>
@@ -36,10 +37,14 @@ Inheritance diagram for pann::Object:</div>
 
 <p><center><img src="classpann_1_1Object.png" usemap="#pann::Object_map" border="0" alt=""></center>
 <map name="pann::Object_map">
-<area href="classpann_1_1Link.html" alt="pann::Link" shape="rect" coords="0,56,88,80">
-<area href="classpann_1_1Net.html" alt="pann::Net" shape="rect" coords="98,56,186,80">
-<area href="classpann_1_1Neuron.html" alt="pann::Neuron" shape="rect" coords="196,56,284,80">
-<area href="classpann_1_1Weight.html" alt="pann::Weight" shape="rect" coords="294,56,382,80">
+<area href="classpann_1_1Cache.html" alt="pann::Cache" shape="rect" coords="0,56,115,80">
+<area href="classpann_1_1Link.html" alt="pann::Link" shape="rect" coords="125,56,240,80">
+<area href="classpann_1_1Net.html" alt="pann::Net" shape="rect" coords="250,56,365,80">
+<area href="classpann_1_1Neuron.html" alt="pann::Neuron" shape="rect" coords="375,56,490,80">
+<area href="classpann_1_1TrainData.html" alt="pann::TrainData" shape="rect" coords="500,56,615,80">
+<area href="classpann_1_1TrainPattern.html" alt="pann::TrainPattern" shape="rect" coords="625,56,740,80">
+<area href="classpann_1_1Weight.html" alt="pann::Weight" shape="rect" coords="750,56,865,80">
+<area href="classpann_1_1NetCache.html" alt="pann::NetCache" shape="rect" coords="0,112,115,136">
 </map>
 </div>
 
@@ -47,35 +52,50 @@ Inheritance diagram for pann::Object:</div>
 <a href="classpann_1_1Object-members.html">List of all members.</a><table border="0" cellpadding="0" cellspacing="0">
 <tr><td></td></tr>
 <tr><td colspan="2"><br><h2>Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1Object.html#e4157eda81e363f28504b4ec9d15e196">Object</a> ()</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1Object.html#c7977c476f6c5a8929e6c90550ed0a25">Object</a> (unsigned _id=0)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">virtual&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1Object.html#461126af2f1a20fa24f1340f670c5733">~Object</a> ()</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1Object.html#ebbb9ad2f57f093fde45aad4580bf3bb">is</a> (const std::string &amp;) const </td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual unsigned&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1Object.html#fd57145143abda778d92836b1d1e4471">getId</a> ()</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Does attribute.  <a href="#ebbb9ad2f57f093fde45aad4580bf3bb"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1Object.html#ef631d297ec4d921cbf14f8d77baf63b">unset</a> (const std::string &amp;)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1Object.html#1636c5461bf78692e9f65d1b07ac0e7c">is</a> (const std::string &amp;_attributeName) const </td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Delete attribute.  <a href="#ef631d297ec4d921cbf14f8d77baf63b"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">boost::any &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1Object.html#4a44c6ffb8a172818167f0004b9a7a45">operator[]</a> (const std::string &amp;)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1Object.html#8fa5d473b8b12627957d3cdec5fdfce0">unset</a> (const std::string &amp;_attributeName)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Get reference to attribute. Create it if nonexistent.  <a href="#4a44c6ffb8a172818167f0004b9a7a45"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">boost::any &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1Object.html#44586c162aeb57fcf019e7cb4ffa63fd">operator[]</a> (const std::string &amp;_attributeName)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1Object.html#1129a3588cfdab22f8e0562d4a2a03c6">erase</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Delete all attributes.  <a href="#1129a3588cfdab22f8e0562d4a2a03c6"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1Object.html#f0039bd3a5cdbb3decfa5e33055e1a45">printDebugInfo</a> (std::ostringstream &amp;ost) const =0</td></tr>
+
 <tr><td colspan="2"><br><h2>Protected Attributes</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">std::map&lt; std::string, boost::any &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1Object.html#7eff990bb1cc771117099f8cdcd6dd33">attributes</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">left - name, right - parametr  <a href="#7eff990bb1cc771117099f8cdcd6dd33"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">unsigned&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1Object.html#a6c82ac98a12d54126d50256084ca731">id</a></td></tr>
+
+<tr><td colspan="2"><br><h2>Private Member Functions</h2></td></tr>
+<tr><td class="memTemplParams" nowrap colspan="2">template&lt;class Archive&gt; </td></tr>
+<tr><td class="memTemplItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classpann_1_1Object.html#13a234c0fcd5d32d341353f1b7b3c828">serialize</a> (Archive &amp;ar, const unsigned int version)</td></tr>
+
+<tr><td colspan="2"><br><h2>Friends</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">class&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1Object.html#c98d07dd8f7b70e16ccb9a01abf56b9c">boost::serialization::access</a></td></tr>
 
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 Base class for almoust everything. 
-<p>Definition at line <a class="el" href="Object_8h-source.html#l00015">15</a> of file <a class="el" href="Object_8h-source.html">Object.h</a>.</p>
+<p>Definition at line <a class="el" href="Object_8h-source.html#l00016">16</a> of file <a class="el" href="Object_8h-source.html">Object.h</a>.</p>
 <hr><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" name="e4157eda81e363f28504b4ec9d15e196"></a><!-- doxytag: member="pann::Object::Object" ref="e4157eda81e363f28504b4ec9d15e196" args="()" -->
+<a class="anchor" name="c7977c476f6c5a8929e6c90550ed0a25"></a><!-- doxytag: member="pann::Object::Object" ref="c7977c476f6c5a8929e6c90550ed0a25" args="(unsigned _id=0)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">pann::Object::Object           </td>
           <td>(</td>
-          <td class="paramname">          </td>
+          <td class="paramtype">unsigned&nbsp;</td>
+          <td class="paramname"> <em>_id</em> = <code>0</code>          </td>
           <td>&nbsp;)&nbsp;</td>
           <td></td>
         </tr>
@@ -106,12 +126,35 @@ Base class for almoust everything.
 
 <p>
 
-<p>Definition at line <a class="el" href="Object_8cpp-source.html#l00019">19</a> of file <a class="el" href="Object_8cpp-source.html">Object.cpp</a>.</p>
+<p>Definition at line <a class="el" href="Object_8cpp-source.html#l00020">20</a> of file <a class="el" href="Object_8cpp-source.html">Object.cpp</a>.</p>
 
 </div>
 </div><p>
 <hr><h2>Member Function Documentation</h2>
-<a class="anchor" name="ebbb9ad2f57f093fde45aad4580bf3bb"></a><!-- doxytag: member="pann::Object::is" ref="ebbb9ad2f57f093fde45aad4580bf3bb" args="(const std::string &amp;) const " -->
+<a class="anchor" name="fd57145143abda778d92836b1d1e4471"></a><!-- doxytag: member="pann::Object::getId" ref="fd57145143abda778d92836b1d1e4471" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned pann::Object::getId           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Definition at line <a class="el" href="Object_8cpp-source.html#l00025">25</a> of file <a class="el" href="Object_8cpp-source.html">Object.cpp</a>.</p>
+
+<p>References <a class="el" href="Object_8h-source.html#l00020">id</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="1636c5461bf78692e9f65d1b07ac0e7c"></a><!-- doxytag: member="pann::Object::is" ref="1636c5461bf78692e9f65d1b07ac0e7c" args="(const std::string &amp;_attributeName) const " -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -119,7 +162,7 @@ Base class for almoust everything.
           <td class="memname">bool pann::Object::is           </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&nbsp;</td>
-          <td class="paramname">          </td>
+          <td class="paramname"> <em>_attributeName</em>          </td>
           <td>&nbsp;)&nbsp;</td>
           <td> const</td>
         </tr>
@@ -128,17 +171,15 @@ Base class for almoust everything.
 <div class="memdoc">
 
 <p>
-Does attribute. 
-<p>
-<dl compact><dt><b>Parameters:</b></dt><dd>
+Does attribute exist? <dl compact><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>exist?</em>&nbsp;</td><td></td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>_attributeName</em>&nbsp;</td><td>- checking attribute name </td></tr>
   </table>
 </dl>
 
 </div>
 </div><p>
-<a class="anchor" name="ef631d297ec4d921cbf14f8d77baf63b"></a><!-- doxytag: member="pann::Object::unset" ref="ef631d297ec4d921cbf14f8d77baf63b" args="(const std::string &amp;)" -->
+<a class="anchor" name="8fa5d473b8b12627957d3cdec5fdfce0"></a><!-- doxytag: member="pann::Object::unset" ref="8fa5d473b8b12627957d3cdec5fdfce0" args="(const std::string &amp;_attributeName)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -146,7 +187,7 @@ Does attribute.
           <td class="memname">void pann::Object::unset           </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&nbsp;</td>
-          <td class="paramname">          </td>
+          <td class="paramname"> <em>_attributeName</em>          </td>
           <td>&nbsp;)&nbsp;</td>
           <td></td>
         </tr>
@@ -155,12 +196,15 @@ Does attribute.
 <div class="memdoc">
 
 <p>
-Delete attribute. 
-<p>
+Delete attribute <dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>_attributeName</em>&nbsp;</td><td>- deleting attribute name </td></tr>
+  </table>
+</dl>
 
 </div>
 </div><p>
-<a class="anchor" name="4a44c6ffb8a172818167f0004b9a7a45"></a><!-- doxytag: member="pann::Object::operator[]" ref="4a44c6ffb8a172818167f0004b9a7a45" args="(const std::string &amp;)" -->
+<a class="anchor" name="44586c162aeb57fcf019e7cb4ffa63fd"></a><!-- doxytag: member="pann::Object::operator[]" ref="44586c162aeb57fcf019e7cb4ffa63fd" args="(const std::string &amp;_attributeName)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -168,6 +212,31 @@ Delete attribute.
           <td class="memname">boost::any&amp; pann::Object::operator[]           </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&nbsp;</td>
+          <td class="paramname"> <em>_attributeName</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Get reference to attribute. Create it if nonexistent <dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>_attributeName</em>&nbsp;</td><td>- getting attribute name </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>- reference to attribute </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="1129a3588cfdab22f8e0562d4a2a03c6"></a><!-- doxytag: member="pann::Object::erase" ref="1129a3588cfdab22f8e0562d4a2a03c6" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void pann::Object::erase           </td>
+          <td>(</td>
           <td class="paramname">          </td>
           <td>&nbsp;)&nbsp;</td>
           <td></td>
@@ -177,8 +246,89 @@ Delete attribute.
 <div class="memdoc">
 
 <p>
-Get reference to attribute. Create it if nonexistent. 
+Delete all attributes. 
 <p>
+
+<p>Definition at line <a class="el" href="Object_8cpp-source.html#l00053">53</a> of file <a class="el" href="Object_8cpp-source.html">Object.cpp</a>.</p>
+
+<p>References <a class="el" href="Object_8h-source.html#l00019">attributes</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="f0039bd3a5cdbb3decfa5e33055e1a45"></a><!-- doxytag: member="pann::Object::printDebugInfo" ref="f0039bd3a5cdbb3decfa5e33055e1a45" args="(std::ostringstream &amp;ost) const =0" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void pann::Object::printDebugInfo           </td>
+          <td>(</td>
+          <td class="paramtype">std::ostringstream &amp;&nbsp;</td>
+          <td class="paramname"> <em>ost</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const<code> [pure virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Implemented in <a class="el" href="classpann_1_1Cache.html#6a3932a817f186bb9c73e6821608f87f">pann::Cache</a>, <a class="el" href="classpann_1_1NetCache.html#f776078aecabf7258b807d4d0249241a">pann::NetCache</a>, <a class="el" href="classpann_1_1Link.html#1b0611d84a5fd7632fdaffac2b19b2a9">pann::Link</a>, <a class="el" href="classpann_1_1Net.html#ec0809d7cb83ea29f7f36492609a2de9">pann::Net</a>, <a class="el" href="classpann_1_1Neuron.html#0017d9230fca2359b460e9a18b8a8198">pann::Neuron</a>, <a class="el" href="classpann_1_1TrainPattern.html#a4f1e7a2c806f9a03093c04788b1d21a">pann::TrainPattern</a>, <a class="el" href="classpann_1_1TrainData.html#fb88f4772bc657940d41c629ef121924">pann::TrainData</a>, and <a class="el" href="classpann_1_1Weight.html#8d51519bd5723b61b32b687502aada06">pann::Weight</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="13a234c0fcd5d32d341353f1b7b3c828"></a><!-- doxytag: member="pann::Object::serialize" ref="13a234c0fcd5d32d341353f1b7b3c828" args="(Archive &amp;ar, const unsigned int version)" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Archive&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void pann::Object::serialize           </td>
+          <td>(</td>
+          <td class="paramtype">Archive &amp;&nbsp;</td>
+          <td class="paramname"> <em>ar</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned int&nbsp;</td>
+          <td class="paramname"> <em>version</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline, private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Reimplemented in <a class="el" href="classpann_1_1Weight.html#ddeecbb0805615aa2ee5c20f7268e577">pann::Weight</a>.</p>
+
+<p>Definition at line <a class="el" href="Object_8h-source.html#l00050">50</a> of file <a class="el" href="Object_8h-source.html">Object.h</a>.</p>
+
+</div>
+</div><p>
+<hr><h2>Friends And Related Function Documentation</h2>
+<a class="anchor" name="c98d07dd8f7b70e16ccb9a01abf56b9c"></a><!-- doxytag: member="pann::Object::boost::serialization::access" ref="c98d07dd8f7b70e16ccb9a01abf56b9c" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">friend class boost::serialization::access<code> [friend]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Reimplemented in <a class="el" href="classpann_1_1Net.html#c98d07dd8f7b70e16ccb9a01abf56b9c">pann::Net</a>, <a class="el" href="classpann_1_1Neuron.html#c98d07dd8f7b70e16ccb9a01abf56b9c">pann::Neuron</a>, and <a class="el" href="classpann_1_1Weight.html#c98d07dd8f7b70e16ccb9a01abf56b9c">pann::Weight</a>.</p>
+
+<p>Definition at line <a class="el" href="Object_8h-source.html#l00048">48</a> of file <a class="el" href="Object_8h-source.html">Object.h</a>.</p>
 
 </div>
 </div><p>
@@ -195,15 +345,38 @@ Get reference to attribute. Create it if nonexistent.
 <div class="memdoc">
 
 <p>
+left - name, right - parametr 
+<p>
 
-<p>Definition at line <a class="el" href="Object_8h-source.html#l00031">31</a> of file <a class="el" href="Object_8h-source.html">Object.h</a>.</p>
+<p>Definition at line <a class="el" href="Object_8h-source.html#l00019">19</a> of file <a class="el" href="Object_8h-source.html">Object.h</a>.</p>
+
+<p>Referenced by <a class="el" href="Object_8cpp-source.html#l00053">erase()</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="a6c82ac98a12d54126d50256084ca731"></a><!-- doxytag: member="pann::Object::id" ref="a6c82ac98a12d54126d50256084ca731" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned <a class="el" href="classpann_1_1Object.html#a6c82ac98a12d54126d50256084ca731">pann::Object::id</a><code> [protected]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Definition at line <a class="el" href="Object_8h-source.html#l00020">20</a> of file <a class="el" href="Object_8h-source.html">Object.h</a>.</p>
+
+<p>Referenced by <a class="el" href="Object_8cpp-source.html#l00025">getId()</a>, and <a class="el" href="Net_8h-source.html#l00300">pann::Net::load()</a>.</p>
 
 </div>
 </div><p>
 <hr>The documentation for this class was generated from the following files:<ul>
-<li>pann/trunk/src/<a class="el" href="Object_8h-source.html">Object.h</a><li>pann/trunk/src/<a class="el" href="Object_8cpp-source.html">Object.cpp</a></ul>
+<li>pann/trunk/src/Core/<a class="el" href="Object_8h-source.html">Object.h</a><li>pann/trunk/src/Core/<a class="el" href="Object_8cpp-source.html">Object.cpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Mar 7 22:30:09 2009 for pann by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Sun Mar 22 10:11:33 2009 for pann by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

@@ -11,12 +11,12 @@ using boost::any;
 
 namespace pann
 {             
+/*
     Object::Object(unsigned _id)
     {                              
         id = _id;
     } //Object                      
 
-    /*virtual*/
     Object::~Object()
     {                
     } //~Object      
@@ -54,6 +54,6 @@ namespace pann
     {
         attributes.clear();
     } //erase
-
+*/
 }; //namespace pann
 

@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>pann: pann/trunk/src/Neuron.h Source File</title>
+<title>pann: pann/trunk/src/Core/Neuron.h Source File</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -10,11 +10,11 @@
     <ul>
       <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
-      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li><a href="classes.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
     </ul>
   </div>
-<h1>pann/trunk/src/Neuron.h</h1><a href="Neuron_8h.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">//Neuron.h</span>
+<h1>pann/trunk/src/Core/Neuron.h</h1><a href="Neuron_8h.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">//Neuron.h</span>
 <a name="l00002"></a>00002 
 <a name="l00003"></a>00003 <span class="preprocessor">#ifndef NEURON_H</span>
 <a name="l00004"></a>00004 <span class="preprocessor"></span><span class="preprocessor">#define NEURON_H</span>
@@ -23,34 +23,134 @@
 <a name="l00007"></a>00007 <span class="preprocessor">#include "<a class="code" href="Object_8h.html">Object.h</a>"</span>
 <a name="l00008"></a>00008 <span class="preprocessor">#include "<a class="code" href="ActivationFunction_8h.html">ActivationFunction.h</a>"</span>
 <a name="l00009"></a>00009 <span class="preprocessor">#include "<a class="code" href="Link_8h.html">Link.h</a>"</span>
-<a name="l00010"></a>00010 
-<a name="l00011"></a>00011 <span class="keyword">namespace </span>pann
-<a name="l00012"></a>00012 {
-<a name="l00013"></a><a class="code" href="classpann_1_1Neuron.html">00013</a>     <span class="keyword">class </span><a class="code" href="classpann_1_1Neuron.html">Neuron</a> : <span class="keyword">public</span> <a class="code" href="classpann_1_1Object.html" title="Base class for almoust everything.">Object</a>
-<a name="l00014"></a>00014     {
-<a name="l00015"></a>00015     <span class="keyword">protected</span>:
-<a name="l00016"></a><a class="code" href="classpann_1_1Neuron.html#42e1752d79b7d34d05ed33f1ead21231">00016</a>         <a class="code" href="classpann_1_1ActivationFunction_1_1Base.html">ActivationFunction::Base</a>&amp; <a class="code" href="classpann_1_1Neuron.html#42e1752d79b7d34d05ed33f1ead21231">activationFunction</a>;
-<a name="l00017"></a><a class="code" href="classpann_1_1Neuron.html#1ea45590be4c55659a776ff0acf2ac2c">00017</a>         std::list&lt;Link&gt; <a class="code" href="classpann_1_1Neuron.html#1ea45590be4c55659a776ff0acf2ac2c">links</a>;
-<a name="l00018"></a>00018 
-<a name="l00019"></a>00019     <span class="keyword">public</span>:
-<a name="l00020"></a><a class="code" href="classpann_1_1Neuron.html#6e13a38b70c8340e56cd144dc1878776">00020</a>         <span class="keywordtype">float</span> <a class="code" href="classpann_1_1Neuron.html#6e13a38b70c8340e56cd144dc1878776">receptiveField</a>;
-<a name="l00021"></a><a class="code" href="classpann_1_1Neuron.html#931072044f50671fe1c1588507448684">00021</a>         <span class="keywordtype">float</span> <a class="code" href="classpann_1_1Neuron.html#931072044f50671fe1c1588507448684">activationValue</a>;
-<a name="l00022"></a>00022 
-<a name="l00023"></a>00023         <a class="code" href="classpann_1_1Neuron.html#a6ad699f4ab47eaa34f792c66685ef91">Neuron</a>(<a class="code" href="classpann_1_1ActivationFunction_1_1Base.html">ActivationFunction::Base</a>&amp;); 
-<a name="l00024"></a>00024         <a class="code" href="classpann_1_1Neuron.html#e08f02385e9b8fc0b927fc28fcfda966">~Neuron</a>();
-<a name="l00025"></a>00025         
-<a name="l00026"></a>00026         <span class="keywordtype">void</span> <a class="code" href="classpann_1_1Neuron.html#ec502bd4983a165e107b63812c7a6280">connectTo</a>(<a class="code" href="classpann_1_1Neuron.html">Neuron</a>&amp;, <a class="code" href="classpann_1_1Link.html#843c5a79ffd161b67e1770f65eabf055">Link::Direction</a>, <span class="keywordtype">float</span>);
-<a name="l00027"></a>00027         <span class="keywordtype">void</span> <a class="code" href="classpann_1_1Neuron.html#ec502bd4983a165e107b63812c7a6280">connectTo</a>(<a class="code" href="classpann_1_1Neuron.html">Neuron</a>&amp;, <a class="code" href="classpann_1_1Weight.html">Weight</a>*, <a class="code" href="classpann_1_1Link.html#843c5a79ffd161b67e1770f65eabf055">Link::Direction</a>);
-<a name="l00028"></a>00028 
-<a name="l00029"></a>00029         <span class="keywordtype">float</span> <a class="code" href="classpann_1_1Neuron.html#b45846017aac9e84a989e4ba2ff6c970">activate</a>();
-<a name="l00030"></a>00030     };
-<a name="l00031"></a>00031 
-<a name="l00032"></a>00032 }; <span class="comment">//pann</span>
-<a name="l00033"></a>00033 
-<a name="l00034"></a>00034 <span class="preprocessor">#endif //NEURON_H</span>
-<a name="l00035"></a>00035 <span class="preprocessor"></span>
+<a name="l00010"></a>00010 <span class="preprocessor">#include "<a class="code" href="OpenGLHint_8h.html">OpenGLHint.h</a>"</span>
+<a name="l00011"></a>00011 <span class="preprocessor">#include "<a class="code" href="LearningHint_8h.html">LearningHint.h</a>"</span>
+<a name="l00012"></a>00012 
+<a name="l00013"></a>00013 <span class="keyword">namespace </span>pann
+<a name="l00014"></a>00014 {
+<a name="l00015"></a><a class="code" href="classpann_1_1Neuron.html">00015</a>     <span class="keyword">class </span><a class="code" href="classpann_1_1Neuron.html">Neuron</a> : <span class="keyword">public</span> <a class="code" href="classpann_1_1Object.html" title="Base class for almoust everything.">Object</a>
+<a name="l00016"></a>00016     {
+<a name="l00017"></a>00017         <span class="comment">/* Private attributes */</span>
+<a name="l00018"></a>00018     <span class="keyword">private</span>:
+<a name="l00019"></a><a class="code" href="classpann_1_1Neuron.html#bd0230c56464055cc2dcae4da86c5f73">00019</a>         <a class="code" href="classpann_1_1ActivationFunction_1_1Base.html">ActivationFunction::Base</a>* <a class="code" href="classpann_1_1Neuron.html#bd0230c56464055cc2dcae4da86c5f73">activationFunction</a>;
+<a name="l00020"></a>00020 
+<a name="l00024"></a><a class="code" href="classpann_1_1Neuron.html#b22b8940b68c650c5c11c2ee9ea777a1">00024</a>         <span class="keywordtype">unsigned</span> <a class="code" href="classpann_1_1Neuron.html#b22b8940b68c650c5c11c2ee9ea777a1">ownerThread</a>;
+<a name="l00025"></a>00025 
+<a name="l00026"></a>00026         <span class="comment">/* Public attributes</span>
+<a name="l00027"></a>00027 <span class="comment">         * Note: Neuron is usually hidden by Net,</span>
+<a name="l00028"></a>00028 <span class="comment">         * so there is nothing to worry about</span>
+<a name="l00029"></a>00029 <span class="comment">         */</span>
+<a name="l00030"></a>00030     <span class="keyword">public</span>:
+<a name="l00031"></a><a class="code" href="classpann_1_1Neuron.html#cc966b3f4aa4ee2f158ab70196642fc4">00031</a>         <a class="code" href="namespacepann.html#4509ba95a02d59e0a1cd5127e1c55988">Float</a> <a class="code" href="classpann_1_1Neuron.html#cc966b3f4aa4ee2f158ab70196642fc4">receptiveField</a>;
+<a name="l00032"></a><a class="code" href="classpann_1_1Neuron.html#79899694b4dbaa30551f9f6784ddd869">00032</a>         <a class="code" href="namespacepann.html#4509ba95a02d59e0a1cd5127e1c55988">Float</a> <a class="code" href="classpann_1_1Neuron.html#79899694b4dbaa30551f9f6784ddd869">activationValue</a>;
+<a name="l00033"></a><a class="code" href="classpann_1_1Neuron.html#1ea45590be4c55659a776ff0acf2ac2c">00033</a>         std::list&lt;Link&gt; <a class="code" href="classpann_1_1Neuron.html#1ea45590be4c55659a776ff0acf2ac2c" title="List of Link, both directions.">links</a>; 
+<a name="l00034"></a><a class="code" href="classpann_1_1Neuron.html#2b0d035a701cad63f77a19fa3c7c2ffb">00034</a>         <a class="code" href="classpann_1_1OpenGLHint.html">OpenGLHint</a>* <a class="code" href="classpann_1_1Neuron.html#2b0d035a701cad63f77a19fa3c7c2ffb">oglHint</a>;
+<a name="l00035"></a><a class="code" href="classpann_1_1Neuron.html#6af287c561d4226f59c858d4e020168c">00035</a>         <a class="code" href="classpann_1_1LearningHint_1_1Base.html">LearningHint::Base</a>* <a class="code" href="classpann_1_1Neuron.html#6af287c561d4226f59c858d4e020168c">learningHint</a>;
+<a name="l00036"></a>00036     
+<a name="l00037"></a>00037         <span class="comment">/* Public interface */</span>
+<a name="l00038"></a>00038     <span class="keyword">public</span>:
+<a name="l00039"></a>00039         <a class="code" href="classpann_1_1Neuron.html#89d63cff9e559e1cbdbdc3c9dbc2efe6">Neuron</a>();
+<a name="l00040"></a>00040         <a class="code" href="classpann_1_1Neuron.html#89d63cff9e559e1cbdbdc3c9dbc2efe6">Neuron</a>(<a class="code" href="classpann_1_1ActivationFunction_1_1Base.html">ActivationFunction::Base</a>*);
+<a name="l00041"></a>00041         <a class="code" href="classpann_1_1Neuron.html#e08f02385e9b8fc0b927fc28fcfda966">~Neuron</a>();
+<a name="l00042"></a>00042 
+<a name="l00043"></a>00043         <span class="keywordtype">void</span> <a class="code" href="classpann_1_1Neuron.html#2ec7496a4939390cc4e9c2b1b4ebfd8a">setOwnerThread</a>(<span class="keywordtype">unsigned</span> _thread);
+<a name="l00044"></a>00044         <span class="keywordtype">unsigned</span> <a class="code" href="classpann_1_1Neuron.html#2a426e05cdb3fbd67635a4ba57ec2bbd">getOwnerThread</a>() <span class="keyword">const</span>;
+<a name="l00045"></a>00045 
+<a name="l00046"></a>00046         <span class="keyword">const</span> <a class="code" href="classpann_1_1ActivationFunction_1_1Base.html">ActivationFunction::Base</a>* <a class="code" href="classpann_1_1Neuron.html#20445c905a8ad3e243e0945bd3595b9a">getActivationFunction</a>() <span class="keyword">const</span>;
+<a name="l00047"></a>00047 
+<a name="l00051"></a>00051         std::list&lt;Link&gt;::iterator <a class="code" href="classpann_1_1Neuron.html#990c18907d963acc1154bcb9c79280ab">findLink</a>(<a class="code" href="namespacepann.html#5b285d6cead198add4f14b5b5a0b97c1">NeuronIter</a> _to, <a class="code" href="classpann_1_1Link.html#843c5a79ffd161b67e1770f65eabf055">Link::Direction</a> _direction);
+<a name="l00052"></a>00052 
+<a name="l00053"></a>00053         <span class="comment">/* Debug */</span>
+<a name="l00054"></a>00054     <span class="keyword">public</span>:
+<a name="l00055"></a><a class="code" href="classpann_1_1Neuron.html#0017d9230fca2359b460e9a18b8a8198">00055</a>         <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classpann_1_1Neuron.html#0017d9230fca2359b460e9a18b8a8198">printDebugInfo</a>(std::ostringstream&amp; ost)<span class="keyword"> const</span>
+<a name="l00056"></a>00056 <span class="keyword">        </span>{
+<a name="l00057"></a>00057             ost&lt;&lt;<span class="stringliteral">" Neuron\n"</span>;
+<a name="l00058"></a>00058             ost&lt;&lt;<span class="stringliteral">"  ownerThread: "</span>&lt;&lt;<a class="code" href="classpann_1_1Neuron.html#b22b8940b68c650c5c11c2ee9ea777a1">ownerThread</a>&lt;&lt;std::endl;
+<a name="l00059"></a>00059             ost&lt;&lt;<span class="stringliteral">"  activationFunction: "</span>&lt;&lt;<a class="code" href="classpann_1_1Neuron.html#bd0230c56464055cc2dcae4da86c5f73">activationFunction</a>-&gt;<a class="code" href="classpann_1_1ActivationFunction_1_1Base.html#882ff77ecccf62b9c453243fe0adb63d">getId</a>()&lt;&lt;std::endl;
+<a name="l00060"></a>00060             std::list&lt;Link&gt;::const_iterator it = <a class="code" href="classpann_1_1Neuron.html#1ea45590be4c55659a776ff0acf2ac2c" title="List of Link, both directions.">links</a>.begin();
+<a name="l00061"></a>00061             <span class="keywordflow">for</span>(; it != <a class="code" href="classpann_1_1Neuron.html#1ea45590be4c55659a776ff0acf2ac2c" title="List of Link, both directions.">links</a>.end(); ++it)
+<a name="l00062"></a>00062             {
+<a name="l00063"></a>00063                 it-&gt;printDebugInfo(ost);
+<a name="l00064"></a>00064                 ost&lt;&lt;<span class="stringliteral">"    to: "</span>&lt;&lt;it-&gt;getToIter()-&gt;first&lt;&lt;std::endl;
+<a name="l00065"></a>00065             }
+<a name="l00066"></a><a class="code" href="classpann_1_1Neuron.html#c98d07dd8f7b70e16ccb9a01abf56b9c">00066</a>         };
+<a name="l00067"></a>00067 
+<a name="l00068"></a>00068         <span class="comment">/* Serialization */</span>
+<a name="l00069"></a>00069     <span class="keyword">private</span>:
+<a name="l00070"></a>00070         <span class="keyword">friend</span> <span class="keyword">class </span>boost::serialization::access;
+<a name="l00071"></a>00071         <span class="keyword">template</span>&lt;<span class="keyword">class</span> Archive&gt;
+<a name="l00072"></a><a class="code" href="classpann_1_1Neuron.html#f78cc590bbd2ed7392a822016b1161b0">00072</a>             <span class="keywordtype">void</span> <a class="code" href="classpann_1_1Neuron.html#f78cc590bbd2ed7392a822016b1161b0">save</a>(Archive &amp; ar, <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> version)<span class="keyword"> const</span>
+<a name="l00073"></a>00073 <span class="keyword">            </span>{
+<a name="l00074"></a>00074                 ar &amp; boost::serialization::base_object&lt;Object&gt;(*this);
+<a name="l00075"></a>00075                 <span class="keywordtype">unsigned</span> af_id = <a class="code" href="classpann_1_1Neuron.html#bd0230c56464055cc2dcae4da86c5f73">activationFunction</a>-&gt;<a class="code" href="classpann_1_1ActivationFunction_1_1Base.html#882ff77ecccf62b9c453243fe0adb63d">getId</a>();
+<a name="l00076"></a>00076                 ar &amp; af_id;
+<a name="l00077"></a>00077                 ar &amp; <a class="code" href="classpann_1_1Neuron.html#b22b8940b68c650c5c11c2ee9ea777a1">ownerThread</a>;
+<a name="l00078"></a>00078                 ar &amp; <a class="code" href="classpann_1_1Neuron.html#cc966b3f4aa4ee2f158ab70196642fc4">receptiveField</a>;
+<a name="l00079"></a>00079                 ar &amp; <a class="code" href="classpann_1_1Neuron.html#79899694b4dbaa30551f9f6784ddd869">activationValue</a>;
+<a name="l00080"></a>00080                 <span class="comment">//ar &amp; links; - Net responsibility</span>
+<a name="l00081"></a>00081 
+<a name="l00082"></a>00082                 <span class="keywordtype">bool</span> isHintAvailable;
+<a name="l00083"></a>00083                 
+<a name="l00084"></a>00084                 <span class="comment">//OpenGL hint</span>
+<a name="l00085"></a>00085                 (<a class="code" href="classpann_1_1Neuron.html#2b0d035a701cad63f77a19fa3c7c2ffb">oglHint</a> != 0) ? (isHintAvailable = <span class="keyword">true</span>) : (isHintAvailable = <span class="keyword">false</span>);
+<a name="l00086"></a>00086                 ar &amp; isHintAvailable;                    
+<a name="l00087"></a>00087                 <span class="keywordflow">if</span>(isHintAvailable)
+<a name="l00088"></a>00088                     ar &amp; (*oglHint);
+<a name="l00089"></a>00089                 
+<a name="l00090"></a>00090                 <span class="comment">//Learning hint</span>
+<a name="l00091"></a>00091                 (<a class="code" href="classpann_1_1Neuron.html#6af287c561d4226f59c858d4e020168c">learningHint</a> != 0) ? (isHintAvailable = <span class="keyword">true</span>) : (isHintAvailable = <span class="keyword">false</span>);
+<a name="l00092"></a>00092                 ar &amp; isHintAvailable;                    
+<a name="l00093"></a>00093                 <span class="keywordflow">if</span>(isHintAvailable)
+<a name="l00094"></a>00094                 {
+<a name="l00095"></a>00095                     <a class="code" href="namespacepann_1_1LearningHint.html#1af8c63761604060acd3287e6820b4fe">LearningHint::HintId</a> lhintId = <a class="code" href="classpann_1_1Neuron.html#6af287c561d4226f59c858d4e020168c">learningHint</a>-&gt;<a class="code" href="classpann_1_1LearningHint_1_1Base.html#d45edb03ed5fcfd5fec10bc768859ebf">getTypeId</a>();
+<a name="l00096"></a>00096                     ar &amp; lhintId;
+<a name="l00097"></a>00097                     ar &amp; (*learningHint);
+<a name="l00098"></a>00098                 }
+<a name="l00099"></a>00099                 
+<a name="l00100"></a>00100             };
+<a name="l00101"></a>00101 
+<a name="l00102"></a>00102         <span class="keyword">template</span>&lt;<span class="keyword">class</span> Archive&gt;
+<a name="l00103"></a><a class="code" href="classpann_1_1Neuron.html#46c3eb1f5fa7a4bf0112030b5aa4e908">00103</a>             <span class="keywordtype">void</span> <a class="code" href="classpann_1_1Neuron.html#46c3eb1f5fa7a4bf0112030b5aa4e908">load</a>(Archive &amp; ar, <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> version)
+<a name="l00104"></a>00104             {
+<a name="l00105"></a>00105                 ar &amp; boost::serialization::base_object&lt;Object&gt;(*this);
+<a name="l00106"></a>00106                 <span class="keywordtype">unsigned</span> af_id;
+<a name="l00107"></a>00107                 ar &amp; af_id;
+<a name="l00108"></a>00108                 <a class="code" href="classpann_1_1Neuron.html#bd0230c56464055cc2dcae4da86c5f73">activationFunction</a> = <a class="code" href="namespacepann_1_1LearningHint.html#a9049ca41b3b30b18546dbad7e6e8e9a">ActivationFunction::getById</a>(af_id);
+<a name="l00109"></a>00109                 ar &amp; <a class="code" href="classpann_1_1Neuron.html#b22b8940b68c650c5c11c2ee9ea777a1">ownerThread</a>;
+<a name="l00110"></a>00110                 ar &amp; <a class="code" href="classpann_1_1Neuron.html#cc966b3f4aa4ee2f158ab70196642fc4">receptiveField</a>;
+<a name="l00111"></a>00111                 ar &amp; <a class="code" href="classpann_1_1Neuron.html#79899694b4dbaa30551f9f6784ddd869">activationValue</a>;
+<a name="l00112"></a>00112                 <span class="comment">//ar &amp; links; - Net responsibility</span>
+<a name="l00113"></a>00113 
+<a name="l00114"></a>00114                 <span class="keywordtype">bool</span> isHintAvailable;
+<a name="l00115"></a>00115 
+<a name="l00116"></a>00116                 <span class="comment">//OpenGL hint</span>
+<a name="l00117"></a>00117                 ar &amp; isHintAvailable;
+<a name="l00118"></a>00118                 <span class="keywordflow">if</span>(isHintAvailable)
+<a name="l00119"></a>00119                 {
+<a name="l00120"></a>00120                     <a class="code" href="classpann_1_1Neuron.html#2b0d035a701cad63f77a19fa3c7c2ffb">oglHint</a> = <span class="keyword">new</span> <a class="code" href="classpann_1_1OpenGLHint.html">OpenGLHint</a>;
+<a name="l00121"></a>00121                     ar &amp; <a class="code" href="classpann_1_1Neuron.html#2b0d035a701cad63f77a19fa3c7c2ffb">oglHint</a>;
+<a name="l00122"></a>00122                 }
+<a name="l00123"></a>00123 
+<a name="l00124"></a>00124                 <span class="comment">//Learning hint</span>
+<a name="l00125"></a>00125                 ar &amp; isHintAvailable;
+<a name="l00126"></a>00126                 <span class="keywordflow">if</span>(isHintAvailable)
+<a name="l00127"></a>00127                 {
+<a name="l00128"></a>00128                     <a class="code" href="namespacepann_1_1LearningHint.html#1af8c63761604060acd3287e6820b4fe">LearningHint::HintId</a> lhintId;
+<a name="l00129"></a>00129                     ar &amp; lhintId;
+<a name="l00130"></a>00130                     <a class="code" href="classpann_1_1Neuron.html#6af287c561d4226f59c858d4e020168c">learningHint</a> = <a class="code" href="namespacepann_1_1LearningHint.html#a9049ca41b3b30b18546dbad7e6e8e9a">LearningHint::getById</a>(lhintId);
+<a name="l00131"></a>00131                     ar &amp; <a class="code" href="classpann_1_1Neuron.html#6af287c561d4226f59c858d4e020168c">learningHint</a>;
+<a name="l00132"></a>00132                 }
+<a name="l00133"></a>00133             };
+<a name="l00134"></a>00134 
+<a name="l00135"></a>00135         BOOST_SERIALIZATION_SPLIT_MEMBER()
+<a name="l00136"></a>00136     };
+<a name="l00137"></a>00137 
+<a name="l00138"></a>00138 }; <span class="comment">//pann</span>
+<a name="l00139"></a>00139 
+<a name="l00140"></a>00140 <span class="preprocessor">#endif //NEURON_H</span>
+<a name="l00141"></a>00141 <span class="preprocessor"></span>
 </pre></div></div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Mar 7 22:30:09 2009 for pann by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Sun Mar 22 10:11:32 2009 for pann by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

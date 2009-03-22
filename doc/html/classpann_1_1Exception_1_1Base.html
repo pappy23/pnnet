@@ -10,12 +10,13 @@
     <ul>
       <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
-      <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="classes.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
     </ul>
   </div>
   <div class="tabs">
     <ul>
+      <li><a href="classes.html"><span>Alphabetical&nbsp;List</span></a></li>
       <li><a href="annotated.html"><span>Class&nbsp;List</span></a></li>
       <li><a href="hierarchy.html"><span>Class&nbsp;Hierarchy</span></a></li>
       <li><a href="functions.html"><span>Class&nbsp;Members</span></a></li>
@@ -36,8 +37,15 @@ Inheritance diagram for pann::Exception::Base:</div>
 
 <p><center><img src="classpann_1_1Exception_1_1Base.png" usemap="#pann::Exception::Base_map" border="0" alt=""></center>
 <map name="pann::Exception::Base_map">
-<area href="classpann_1_1Exception_1_1ElementExists.html" alt="pann::Exception::ElementExists" shape="rect" coords="0,56,199,80">
-<area href="classpann_1_1Exception_1_1ObjectNotFound.html" alt="pann::Exception::ObjectNotFound" shape="rect" coords="209,56,408,80">
+<area href="classpann_1_1Exception_1_1ElementExists.html" alt="pann::Exception::ElementExists" shape="rect" coords="225,56,440,80">
+<area href="classpann_1_1Exception_1_1FilesystemError.html" alt="pann::Exception::FilesystemError" shape="rect" coords="225,112,440,136">
+<area href="classpann_1_1Exception_1_1MultipleOccurance.html" alt="pann::Exception::MultipleOccurance" shape="rect" coords="225,168,440,192">
+<area href="classpann_1_1Exception_1_1NotReady.html" alt="pann::Exception::NotReady" shape="rect" coords="225,224,440,248">
+<area href="classpann_1_1Exception_1_1ObjectNotFound.html" alt="pann::Exception::ObjectNotFound" shape="rect" coords="225,280,440,304">
+<area href="classpann_1_1Exception_1_1RangeMismatch.html" alt="pann::Exception::RangeMismatch" shape="rect" coords="225,336,440,360">
+<area href="classpann_1_1Exception_1_1SizeMismatch.html" alt="pann::Exception::SizeMismatch" shape="rect" coords="225,392,440,416">
+<area href="classpann_1_1Exception_1_1Unbelievable.html" alt="pann::Exception::Unbelievable" shape="rect" coords="225,448,440,472">
+<area href="classpann_1_1Exception_1_1Warning.html" alt="pann::Exception::Warning" shape="rect" coords="225,504,440,528">
 </map>
 </div>
 
@@ -55,6 +63,8 @@ Inheritance diagram for pann::Exception::Base:</div>
 
 <tr><td class="memTemplParams" nowrap colspan="2">template&lt;typename T&gt; </td></tr>
 <tr><td class="memTemplItemLeft" nowrap align="right" valign="top"><a class="el" href="classpann_1_1Exception_1_1Base.html">Base</a> &amp;&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classpann_1_1Exception_1_1Base.html#39525dbb840db0f93d66bb6cfa0f3089">operator&lt;&lt;</a> (const T &amp;value)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual std::string&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1Exception_1_1Base.html#ad82b3455115377053fa357b70ac7978">getText</a> ()</td></tr>
 
 <tr><td colspan="2"><br><h2>Protected Attributes</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">std::ostringstream&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1Exception_1_1Base.html#3795b9ad6996ac80e80e4e8179b733ab">textStream</a></td></tr>
@@ -103,7 +113,7 @@ Basic class for every exception.
 
 <p>
 
-<p>Definition at line <a class="el" href="Exception_8h-source.html#l00027">27</a> of file <a class="el" href="Exception_8h-source.html">Exception.h</a>.</p>
+<p>Definition at line <a class="el" href="Exception_8h-source.html#l00031">31</a> of file <a class="el" href="Exception_8h-source.html">Exception.h</a>.</p>
 
 </div>
 </div><p>
@@ -124,7 +134,7 @@ Basic class for every exception.
 
 <p>
 
-<p>Definition at line <a class="el" href="Exception_8h-source.html#l00029">29</a> of file <a class="el" href="Exception_8h-source.html">Exception.h</a>.</p>
+<p>Definition at line <a class="el" href="Exception_8h-source.html#l00033">33</a> of file <a class="el" href="Exception_8h-source.html">Exception.h</a>.</p>
 
 </div>
 </div><p>
@@ -146,11 +156,9 @@ Basic class for every exception.
 
 <p>
 
-<p>Definition at line <a class="el" href="Exception_8h-source.html#l00031">31</a> of file <a class="el" href="Exception_8h-source.html">Exception.h</a>.</p>
+<p>Definition at line <a class="el" href="Exception_8h-source.html#l00035">35</a> of file <a class="el" href="Exception_8h-source.html">Exception.h</a>.</p>
 
 <p>References <a class="el" href="Exception_8h-source.html#l00023">textStream</a>.</p>
-
-<p>Referenced by <a class="el" href="TestNet_8cpp-source.html#l00014">main()</a>.</p>
 
 </div>
 </div><p>
@@ -174,9 +182,34 @@ template&lt;typename T&gt; </div>
 
 <p>
 
-<p>Definition at line <a class="el" href="Exception_8h-source.html#l00036">36</a> of file <a class="el" href="Exception_8h-source.html">Exception.h</a>.</p>
+<p>Definition at line <a class="el" href="Exception_8h-source.html#l00040">40</a> of file <a class="el" href="Exception_8h-source.html">Exception.h</a>.</p>
 
 <p>References <a class="el" href="Exception_8h-source.html#l00023">textStream</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="ad82b3455115377053fa357b70ac7978"></a><!-- doxytag: member="pann::Exception::Base::getText" ref="ad82b3455115377053fa357b70ac7978" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::string pann::Exception::Base::getText           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline, virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Definition at line <a class="el" href="Exception_8h-source.html#l00048">48</a> of file <a class="el" href="Exception_8h-source.html">Exception.h</a>.</p>
+
+<p>References <a class="el" href="Exception_8h-source.html#l00023">textStream</a>.</p>
+
+<p>Referenced by <a class="el" href="main_8cpp-source.html#l00012">main()</a>.</p>
 
 </div>
 </div><p>
@@ -196,14 +229,14 @@ template&lt;typename T&gt; </div>
 
 <p>Definition at line <a class="el" href="Exception_8h-source.html#l00023">23</a> of file <a class="el" href="Exception_8h-source.html">Exception.h</a>.</p>
 
-<p>Referenced by <a class="el" href="Exception_8h-source.html#l00036">operator&lt;&lt;()</a>, and <a class="el" href="Exception_8h-source.html#l00031">text()</a>.</p>
+<p>Referenced by <a class="el" href="Exception_8h-source.html#l00048">getText()</a>, <a class="el" href="Exception_8h-source.html#l00040">operator&lt;&lt;()</a>, and <a class="el" href="Exception_8h-source.html#l00035">text()</a>.</p>
 
 </div>
 </div><p>
 <hr>The documentation for this class was generated from the following file:<ul>
-<li>pann/trunk/src/<a class="el" href="Exception_8h-source.html">Exception.h</a></ul>
+<li>pann/trunk/src/Core/<a class="el" href="Exception_8h-source.html">Exception.h</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Mar 7 22:30:09 2009 for pann by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Sun Mar 22 10:11:33 2009 for pann by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>
