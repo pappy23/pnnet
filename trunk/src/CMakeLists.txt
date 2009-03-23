@@ -53,7 +53,11 @@ include_directories(${PANN_SOURCES})
 
 message(STATUS "Adding files to build library")
 foreach(dir ${PANN_SOURCES})
+if (MSVC)
+    file(GLOB files RELATIVE ""  "${dir}/*.cpp" "${dir}/*.h")
+elseif(MSVC)
     file(GLOB files RELATIVE ""  "${dir}/*.cpp")
+endif(MSVC)
     foreach(filename ${files})
         set(PANN_SOURCE_FILES ${PANN_SOURCE_FILES} "${filename}")
         message(STATUS ">> ${filename}")
@@ -62,6 +66,8 @@ endforeach(dir)
 
 add_library(pann STATIC ${PANN_SOURCE_FILES})
 target_link_libraries(pann ${Boost_LIBRARIES})
+
+
 
 ############################################################################
 
