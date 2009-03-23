@@ -31,6 +31,7 @@
 #include <boost/archive/xml_iarchive.hpp>
 #include <boost/serialization/nvp.hpp>
 #include <boost/serialization/serialization.hpp>
+#include <boost/serialization/base_object.hpp> 
 #include <boost/serialization/version.hpp>
 #include <boost/serialization/tracking.hpp>
 #include <boost/serialization/level.hpp>

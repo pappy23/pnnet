@@ -17,6 +17,7 @@ namespace pann
     namespace Exception
     {
         //! Basic class for every exception
+        //TODO Inherit from std::exception or std::runtime_exception
         class Base
         {
         protected:
@@ -50,6 +51,9 @@ namespace pann
                 return textStream.str();
             };
         };
+
+        //FIXME Don't know why, but programs threat all exceptions as Exception::Base type. May be we should
+        //define constructors?
 
         //! Not critical. Simply instantiate
         class Warning : public Base { };

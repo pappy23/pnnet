@@ -66,6 +66,79 @@ BOOST_CLASS_TRACKING(pann::LearningHint::LmsNeuron, boost::serialization::track_
 
 namespace pann
 {
+    class LmsFeedforwardRunner : public Runner
+    {
+    private:
+        static Runner* self;
+
+    private:
+        LmsFeedforwardRunner() { };
+
+    public:
+        ~LmsFeedforwardRunner() { };
+
+    public:
+        static Runner* Instance()
+        {
+            if(!self)
+                self = new LmsFeedforwardRunner();
+
+            return self;
+        };
+
+        virtual void run(Neuron* _neuron)
+        {
+            LearningHint::LmsNeuron* hint = dynamic_cast<LearningHint::LmsNeuron*>(_neuron->learningHint);
+            if(!hint)
+            {
+                if(!_neuron->learningHint)
+                    delete _neuron->learningHint;
+                hint = new LearningHint::LmsNeuron;
+                _neuron->learningHint = (LearningHint::Base*)(hint);
+            }
+            //do something useful
+        };
+
+        virtual RunDirection getDirection()
+        {
+            return ForwardRun;
+        };
+    };
+
+    class LmsBackpropagationRunner : public Runner
+    {
+    private:
+        static Runner* self;
+
+    private:
+        LmsBackpropagationRunner() { };
+
+    public:
+        ~LmsBackpropagationRunner() { };
+
+    public:
+        static Runner* Instance()
+        {
+            if(!self)
+                self = new LmsBackpropagationRunner();
+
+            return self;
+        };
+
+        virtual void run(Neuron* _neuron)
+        {
+            LearningHint::LmsNeuron* hint = dynamic_cast<LearningHint::LmsNeuron*>(_neuron->learningHint);
+            if(!hint)
+                throw Exception::ObjectNotFound()<<"LmsBackpropagationRunner::run(): Feedforward run wasn't made\n";
+            //do something useful
+        };
+
+        virtual RunDirection getDirection()
+        {
+            return BackwardRun;
+        };
+    };
+
     class LMS : public LearningAlgorithm
     {
         /* Public interface */
@@ -97,6 +170,15 @@ namespace pann
             LearningHint::LmsNet* net_lh = dynamic_cast<LearningHint::LmsNet*>(_net.learningHint);
             if(!_net.learningHint || !net_lh)
                 throw Exception::ObjectNotFound()<<"LMS::train(): Net was not initialized for LMS training\n";
+
+            BOOST_FOREACH(TrainPattern& tp, _trainData.data)
+            {
+                _net.setInput(tp.input);
+                _net.run(LmsFeedforwardRunner::Instance());
+                _net.getOutput(tp.error);
+                tp.error = tp.desired_output - tp.error;
+                _net.run(LmsBackpropagationRunner::Instance());
+            }
         };
     };
 }; //pann

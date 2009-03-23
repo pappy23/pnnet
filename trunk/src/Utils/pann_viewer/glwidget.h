@@ -5,8 +5,7 @@
 #include <QLabel>
 #include <QKeyEvent>
 
-#include "Includes.h"
-#include "Net.h"
+#include "pann.h"
 
 class GLWidget : public QGLWidget
 {

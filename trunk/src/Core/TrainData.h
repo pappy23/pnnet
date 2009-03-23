@@ -34,31 +34,21 @@ namespace pann
     private:
         TrainPattern();
         void resize(unsigned input_size, unsigned output_size);
-
-        /* Debug */
-    public:
-        virtual void printDebugInfo(std::ostringstream& ost) const
-        {
-            ost<<"TrainPattern\n";
-            ost<<"  inputs: "<<input.size()<<std::endl;
-            ost<<"  desired_outputs: "<<desired_output.size()<<std::endl;
-            ost<<"  errors: "<<error.size()<<std::endl;
-        };
     };
 
     class TrainData : public Object
     {
+        /* Public interface */
+    public:
+        TrainData();
+        ~TrainData();
+
+        Float getMse() const;
+        void shuffle();
+
         /* Public members */
     public:
         std::vector<TrainPattern> data;
-
-        /* Debug */
-    public:
-        virtual void printDebugInfo(std::ostringstream& ost) const
-        {
-            ost<<"TrainData\n";
-            ost<<"  patterns: "<<data.size()<<std::endl;
-        };
     };
 
 }; //pann
