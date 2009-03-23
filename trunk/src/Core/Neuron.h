@@ -56,14 +56,15 @@ namespace pann
         template<class Archive>
             void serialize(Archive & ar, const unsigned int version)
             {
-                ar & boost::serialization::base_object<Object>(*this);
-                ar & activationFunction;
-                ar & ownerThread;
-                ar & receptiveField;
-                ar & activationValue;
-                ar & oglHint;
-                ar & learningHint;
-                ar & links;
+                //ar & boost::serialization::base_object<Object>(*this);
+                ar & BOOST_SERIALIZATION_BASE_OBJECT_NVP(Object)
+                 & BOOST_SERIALIZATION_NVP(activationFunction)
+                 & BOOST_SERIALIZATION_NVP(ownerThread)
+                 & BOOST_SERIALIZATION_NVP(receptiveField)
+                 & BOOST_SERIALIZATION_NVP(activationValue)
+                 & BOOST_SERIALIZATION_NVP(oglHint)
+                 & BOOST_SERIALIZATION_NVP(learningHint)
+                 & BOOST_SERIALIZATION_NVP(links);
             };
     };
 

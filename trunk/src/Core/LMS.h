@@ -30,7 +30,7 @@ namespace pann
                         static_cast<LmsNet*>(NULL),
                         static_cast<Base*>(NULL));
 
-                    ar & learningRate;
+                    ar & BOOST_SERIALIZATION_NVP(learningRate);
                 };
         };
 
@@ -59,7 +59,13 @@ namespace pann
                 };
         };
     };
+}; //pann
 
+BOOST_CLASS_TRACKING(pann::LearningHint::LmsNet, boost::serialization::track_never);
+BOOST_CLASS_TRACKING(pann::LearningHint::LmsNeuron, boost::serialization::track_never);
+
+namespace pann
+{
     class LMS : public LearningAlgorithm
     {
         /* Public interface */
@@ -95,8 +101,7 @@ namespace pann
     };
 }; //pann
 
-BOOST_CLASS_TRACKING(pann::LearningHint::LmsNet, boost::serialization::track_never);
-BOOST_CLASS_TRACKING(pann::LearningHint::LmsNeuron, boost::serialization::track_never);
+
 
 #endif //LMS_H
 

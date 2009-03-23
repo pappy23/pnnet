@@ -38,8 +38,8 @@ namespace pann
         template<class Archive>
             void serialize(Archive & ar, const unsigned int version)
             {
-                ar & coherent;
-                ar & data;
+                ar & BOOST_SERIALIZATION_NVP(coherent);
+                ar & BOOST_SERIALIZATION_NVP(data);
             };             
     };
 
@@ -222,16 +222,17 @@ namespace pann
         template<class Archive>
             void serialize(Archive & ar, const unsigned int version)
             {
-                ar & boost::serialization::base_object<Object>(*this);
-                ar & lastNeuronId;
-                ar & lastWeightId;
-                ar & threadCount;
-                ar & biasId;
-                ar & learningHint;
-                ar & weights;
-                ar & neurons;
-                ar & inputNeurons;
-                ar & cache;
+                //ar & boost::serialization::base_object<Object>(*this);
+                ar & BOOST_SERIALIZATION_BASE_OBJECT_NVP(Object)
+                 & BOOST_SERIALIZATION_NVP(lastNeuronId)
+                 & BOOST_SERIALIZATION_NVP(lastWeightId)
+                 & BOOST_SERIALIZATION_NVP(threadCount)
+                 & BOOST_SERIALIZATION_NVP(biasId)
+                 & BOOST_SERIALIZATION_NVP(learningHint)
+                 & BOOST_SERIALIZATION_NVP(weights)
+                 & BOOST_SERIALIZATION_NVP(neurons)
+                 & BOOST_SERIALIZATION_NVP(inputNeurons)
+                 & BOOST_SERIALIZATION_NVP(cache);
             };
     };
 

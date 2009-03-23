@@ -21,8 +21,8 @@ namespace pann
                 throw Exception::FilesystemError()<<"Storage::save(): failed to open file "<<filename<<" for writing\n"; 
 
             std::cout<<"Saving net to "<<filename<<"..."<<std::endl;
-            boost::archive::text_oarchive oa(ofs);
-            oa << obj;
+            boost::archive::xml_oarchive oa(ofs);
+            oa << BOOST_SERIALIZATION_NVP(obj);
             std::cout<<"\n\n";
 
             ofs.close();
@@ -35,8 +35,8 @@ namespace pann
                 throw Exception::FilesystemError()<<"Storage::load(): failed to open file "<<filename<<" for reading\n"; 
             
             std::cout<<"Loading net from "<<filename<<"..."<<std::endl;
-            boost::archive::text_iarchive ia(ifs);
-            ia >> obj;
+            boost::archive::xml_iarchive ia(ifs);
+            ia >> BOOST_SERIALIZATION_NVP(obj);
             std::cout<<"\n\n";
 
             ifs.close();
