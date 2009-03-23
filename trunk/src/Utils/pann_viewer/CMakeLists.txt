@@ -16,7 +16,7 @@ set(MOC_HEADERS
     )
 
 if(WIN32)
-	set(QT_QMAKE_EXECUTABLE	"C:/Qt/2009.01/qt/bin/qmake.exe")
+	set(QT_QMAKE_EXECUTABLE	"C:/Qt/4.4.2/qt/bin/qmake.exe")
 endif (WIN32)
 
 set(QT_USE_QTOPENGL 1)
@@ -32,5 +32,7 @@ if(QT4_FOUND)
 
     add_executable(pann_viewer ${SOURCES} ${UI_HEADERS} ${MOC_SRCS})
     target_link_libraries(pann_viewer ${QT_LIBRARIES} pann)
+elseif (QT4_FOUND)
+    message(FATAL_ERROR "Could not find QT package!")
 endif(QT4_FOUND)
 
