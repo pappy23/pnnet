@@ -7,8 +7,7 @@
 
 #include "glwidget.h"
 
-#include "Net.h"
-#include "Moo.h"
+#include "pann.h"
 
 class Window : public QWidget
 {

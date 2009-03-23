@@ -97,8 +97,8 @@ namespace pann
         }
 
         //Actually delete Neuron object
-        if( !neurons.erase(_neuronId) )
-            throw Exception::ObjectNotFound()<<"Net::delNeuron(): can't delete neuron "<<_neuronId<<"\n";
+        neurons.erase(n->getId());
+        delete n;
     } //delNeuron
 
     void
@@ -195,7 +195,10 @@ namespace pann
 
         //Delete weight object if it no more used
         if( (w->usageCount -= 2) == 0) 
+        {
             weights.erase(w->getId());
+            delete w;
+        }
     } //delConnection
 
     void

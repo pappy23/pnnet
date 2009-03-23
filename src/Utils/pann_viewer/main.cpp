@@ -3,9 +3,7 @@
 
 #include "window.h"
 
-#include "Net.h"
-#include "Storage.h"
-#include "Storage.h"
+#include "pann.h"
 
 using namespace pann;
 
