@@ -3,11 +3,10 @@ cmake_minimum_required(VERSION 2.6)
 project (PANN)
 
 
-#TODO: check not for OS, but for compiler (gcc)
-if (UNIX)
+if(CMAKE_COMPILER_IS_GNUCXX)
 	add_definitions(-Wall -ansi)
 #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -ansi")
-endif (UNIX)
+endif(CMAKE_COMPILER_IS_GNUCXX)
 
 set(CMAKE_VERBOSE_MAKEFILE OFF)
 
@@ -19,12 +18,10 @@ set(LIBRARY_OUTPUT_PATH "${CMAKE_BINARY_DIR}/../bin" CACHE INTERNAL "")
 if(WIN32)
 	set(BOOST_INCLUDEDIR "C:/Program Files/boost/boost_1_38")
 	set(BOOST_ROOT "C:/Program Files/boost/boost_1_38") 
-#TODO: use global variables
-else(WIN32)
+elseif(UNIX)
 	set(BOOST_INCLUDEDIR /usr/local/include/boost-1_38)
 #set(BOOST_LIBRARYDIR /usr/local/lib)
 endif(WIN32)
-
 
 set(Boost_USE_STATIC_LIBS ON)
 find_package(Boost REQUIRED COMPONENTS thread serialization date_time)
@@ -62,7 +59,8 @@ endforeach(dir)
 add_library(pann STATIC ${PANN_SOURCE_FILES})
 
 if(UNIX)
-    target_link_libraries(pann ${Boost_LIBRARIES} pthread)
+    set(Boost_LIBRARIES ${Boost_LIBRARIES} pthread)
+    target_link_libraries(pann ${Boost_LIBRARIES})
 else(UNIX)
     target_link_libraries(pann ${Boost_LIBRARIES})
 endif(UNIX)
