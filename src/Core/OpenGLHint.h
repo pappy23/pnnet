@@ -34,12 +34,12 @@ namespace pann
         template<class Archive>
             void serialize(Archive & ar, const unsigned int version)
         {
-            ar & point.x;
-            ar & point.y;
-            ar & point.z;
-            ar & color.r;
-            ar & color.g;
-            ar & color.b;
+            ar & BOOST_SERIALIZATION_NVP(point.x)
+             & BOOST_SERIALIZATION_NVP(point.y)
+             & BOOST_SERIALIZATION_NVP(point.z)
+             & BOOST_SERIALIZATION_NVP(color.r)
+             & BOOST_SERIALIZATION_NVP(color.g)
+             & BOOST_SERIALIZATION_NVP(color.b);
         };
     };
 

@@ -37,6 +37,10 @@ namespace pann
                 {
                     mlp[l].push_back(net->addNeuron(af));
                     net->setNeuronOwner(mlp[l][i], owner);
+
+                    //Add bias connection
+                    net->addConnection(net->getBiasId(), mlp[l][i], 1); //TODO rand() weight
+
                     if(++owner > threads)
                         owner = 1;
                 }
@@ -48,9 +52,6 @@ namespace pann
                     {
                         //Connection from current layer (i) to next (i+1)
                         net->addConnection(mlp[i][j], mlp[i+1][k], 1); //TODO: add rand() weight
-
-                        //Add bias connection
-                        net->addConnection(net->getBiasId(), mlp[i+1][k], 1);
                     }
             
             //May be we should save mlp for next use

@@ -19,7 +19,6 @@ namespace pann
         activationValue = _activationFunction->f(0);
         oglHint = 0;
         learningHint = 0;
-        cout<<"Neuron "<<_id<<endl;;
     } //Neuron
 
     Neuron::~Neuron()

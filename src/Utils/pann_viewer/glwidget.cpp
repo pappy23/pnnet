@@ -246,8 +246,9 @@ void GLWidget::restoreDefaults()
     setZRotation(0);
 
     neuronRadius = 7;
+    //TODO: customize this parametrs on the fly
     drawLinks = true;
-    drawBiasLinks = false;
+    drawBiasLinks = true;
     linkRate = 1;
 
     updateGL();

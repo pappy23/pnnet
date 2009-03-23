@@ -46,7 +46,7 @@ namespace pann
         template<class Archive>
             void serialize(Archive & ar, const unsigned int version)
             {
-                ar & id;
+                ar & BOOST_SERIALIZATION_NVP(id);
                 //FIXME map<string, boost::any> won't serialize
                 //ar & attributes;
             };

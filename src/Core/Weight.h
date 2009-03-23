@@ -36,9 +36,10 @@ namespace pann
         template<class Archive>
             void serialize(Archive & ar, const unsigned int version)
         {
-            ar & boost::serialization::base_object<Object>(*this);
-            ar & usageCount;
-            ar & value;
+            //ar & boost::serialization::base_object<Object>(*this);
+            ar & BOOST_SERIALIZATION_BASE_OBJECT_NVP(Object)
+             & BOOST_SERIALIZATION_NVP(usageCount)
+             & BOOST_SERIALIZATION_NVP(value);
         };
     };
 

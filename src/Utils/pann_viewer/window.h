@@ -8,6 +8,7 @@
 #include "glwidget.h"
 
 #include "Net.h"
+#include "Moo.h"
 
 class Window : public QWidget
 {
