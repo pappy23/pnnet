@@ -63,6 +63,8 @@ namespace pann
 
 BOOST_CLASS_TRACKING(pann::LearningHint::LmsNet, boost::serialization::track_never);
 BOOST_CLASS_TRACKING(pann::LearningHint::LmsNeuron, boost::serialization::track_never);
+BOOST_CLASS_EXPORT(pann::LearningHint::LmsNet);
+BOOST_CLASS_EXPORT(pann::LearningHint::LmsNeuron);
 
 namespace pann
 {
