@@ -33,6 +33,6 @@ if(QT4_FOUND)
     add_executable(pann_viewer ${SOURCES} ${UI_HEADERS} ${MOC_SRCS})
     target_link_libraries(pann_viewer ${QT_LIBRARIES} pann)
 elseif (QT4_FOUND)
-    message(FATAL_ERROR "Could not find QT package!")
+    message(STATUS "Could not find QT package!")
 endif(QT4_FOUND)
 
