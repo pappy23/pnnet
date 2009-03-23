@@ -34,6 +34,10 @@ else(Boost_FOUND)
     message(FATAL_ERROR "Could not find Boost package!")
 endif(Boost_FOUND)
 
+if(UNIX)
+    set(Boost_LIBRARIES ${Boost_LIBRARIES} pthread)
+endif(UNIX)
+
 #FIND_PACKAGE (MPI)
 #IF(MPI_FOUND)
 #        INCLUDE_DIRECTORIES ( ${MPI_INCLUDE_PATH} )
@@ -57,13 +61,7 @@ foreach(dir ${PANN_SOURCES})
 endforeach(dir)
 
 add_library(pann STATIC ${PANN_SOURCE_FILES})
-
-if(UNIX)
-    set(Boost_LIBRARIES ${Boost_LIBRARIES} pthread)
-    target_link_libraries(pann ${Boost_LIBRARIES})
-else(UNIX)
-    target_link_libraries(pann ${Boost_LIBRARIES})
-endif(UNIX)
+target_link_libraries(pann ${Boost_LIBRARIES})
 
 ############################################################################
 
