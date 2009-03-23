@@ -8,6 +8,7 @@ using namespace boost;
 
 int main()
 {
+/*
     //Constructing perceptron
     vector<unsigned> layers;
     layers.push_back(1); //input
@@ -33,7 +34,7 @@ int main()
         LMS::train(*net, td);
         cout<<"E="<<td.getMse()<<endl;
     }
-
+*/
     //Storage::save(*net, "test_lms.xml");
 
     Net* n2 = new Net;

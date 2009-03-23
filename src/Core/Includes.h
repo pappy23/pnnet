@@ -27,8 +27,8 @@
 #include <boost/progress.hpp>
 #include <boost/thread.hpp>
 #include <boost/thread/barrier.hpp>
-#include <boost/archive/xml_oarchive.hpp>
-#include <boost/archive/xml_iarchive.hpp>
+#include <boost/archive/polymorphic_xml_oarchive.hpp>
+#include <boost/archive/polymorphic_xml_iarchive.hpp>
 #include <boost/serialization/nvp.hpp>
 #include <boost/serialization/serialization.hpp>
 #include <boost/serialization/base_object.hpp> 
