@@ -223,25 +223,16 @@ namespace pann
             void serialize(Archive & ar, const unsigned int version)
             {
                 //ar & boost::serialization::base_object<Object>(*this);
-                ar & BOOST_SERIALIZATION_BASE_OBJECT_NVP(Object);
-                std::cout<<"1";
-                ar & BOOST_SERIALIZATION_NVP(lastNeuronId);
-                std::cout<<"2";
-                ar & BOOST_SERIALIZATION_NVP(lastWeightId);
-                std::cout<<"3";
-                ar & BOOST_SERIALIZATION_NVP(threadCount);
-                std::cout<<"4";
-                ar & BOOST_SERIALIZATION_NVP(biasId);
-                std::cout<<"5";
-                ar & BOOST_SERIALIZATION_NVP(weights);
-                std::cout<<"6";
-                ar & BOOST_SERIALIZATION_NVP(neurons);
-                std::cout<<"7";
-                ar & BOOST_SERIALIZATION_NVP(inputNeurons);
-                std::cout<<"8";
-                ar & BOOST_SERIALIZATION_NVP(cache);
-                std::cout<<"9";
-                ar & BOOST_SERIALIZATION_NVP(learningHint);
+                ar & BOOST_SERIALIZATION_BASE_OBJECT_NVP(Object)
+                 & BOOST_SERIALIZATION_NVP(lastNeuronId)
+                 & BOOST_SERIALIZATION_NVP(lastWeightId)
+                 & BOOST_SERIALIZATION_NVP(threadCount)
+                 & BOOST_SERIALIZATION_NVP(biasId)
+                 & BOOST_SERIALIZATION_NVP(weights)
+                 & BOOST_SERIALIZATION_NVP(neurons)
+                 & BOOST_SERIALIZATION_NVP(inputNeurons)
+                 & BOOST_SERIALIZATION_NVP(cache)
+                 & BOOST_SERIALIZATION_NVP(learningHint);
             };
     };
 

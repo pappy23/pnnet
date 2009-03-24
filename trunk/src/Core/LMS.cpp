@@ -2,8 +2,8 @@
 
 #include "LMS.h"
 
-BOOST_SERIALIZATION_FACTORY_0(pann::LearningHint::LmsNet)
-BOOST_SERIALIZATION_FACTORY_0(pann::LearningHint::LmsNeuron)
+//BOOST_SERIALIZATION_FACTORY_0(pann::LearningHint::LmsNet)
+//BOOST_SERIALIZATION_FACTORY_0(pann::LearningHint::LmsNeuron)
 BOOST_CLASS_EXPORT(pann::LearningHint::LmsNet);
 BOOST_CLASS_EXPORT(pann::LearningHint::LmsNeuron);
 
