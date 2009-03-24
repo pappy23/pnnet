@@ -36,7 +36,7 @@ int main()
     }
 
     Storage::save(*net, "test_lms.xml");
-*/
+//*/
     Net* n2 = new Net;
     Storage::load(*n2, "test_lms.xml");
 
