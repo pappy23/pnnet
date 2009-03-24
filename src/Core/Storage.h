@@ -23,7 +23,6 @@ namespace pann
             std::cout<<"Saving net to "<<filename<<"..."<<std::endl;
             boost::archive::xml_oarchive oa(ofs);
             oa << BOOST_SERIALIZATION_NVP(obj);
-            std::cout<<"\n\n";
 
             ofs.close();
         };
@@ -37,7 +36,6 @@ namespace pann
             std::cout<<"Loading net from "<<filename<<"..."<<std::endl;
             boost::archive::xml_iarchive ia(ifs);
             ia >> BOOST_SERIALIZATION_NVP(obj);
-            std::cout<<"\n\n";
 
             ifs.close();
         };

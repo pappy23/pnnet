@@ -34,9 +34,9 @@ int main()
         LMS::train(*net, td);
         cout<<"E="<<td.getMse()<<endl;
     }
-*/
-    //Storage::save(*net, "test_lms.xml");
 
+    Storage::save(*net, "test_lms.xml");
+*/
     Net* n2 = new Net;
     Storage::load(*n2, "test_lms.xml");
 
