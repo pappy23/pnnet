@@ -31,9 +31,12 @@ namespace pann
                 {
                 };
         };
+
     };
 
 }; //pann
+
+//BOOST_IS_ABSTRACT(pann::LearningHint::Base)
 
 #endif
 

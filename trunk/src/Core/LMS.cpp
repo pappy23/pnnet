@@ -1,6 +1,7 @@
 //LMS.cpp
 
 #include "LMS.h"
+#include "boost/serialization/export.hpp"
 
 //BOOST_SERIALIZATION_FACTORY_0(pann::LearningHint::LmsNet)
 //BOOST_SERIALIZATION_FACTORY_0(pann::LearningHint::LmsNeuron)

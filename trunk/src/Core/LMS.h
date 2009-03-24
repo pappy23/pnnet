@@ -27,8 +27,8 @@ namespace pann
                 void serialize(Archive & ar, const unsigned int version)
                 {
                     boost::serialization::void_cast_register<LmsNet, Base>(
-                        static_cast<LmsNet*>(NULL),
-                        static_cast<Base*>(NULL));
+                        static_cast<LmsNet*>(0),
+                        static_cast<Base*>(0));
 
                     ar & BOOST_SERIALIZATION_NVP(learningRate);
                 };

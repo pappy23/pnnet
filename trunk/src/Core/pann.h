@@ -14,8 +14,5 @@
 #include "NetworkModel.h"
 #include "Moo.h"
 
-BOOST_CLASS_EXPORT(pann::LearningHint::LmsNet);
-BOOST_CLASS_EXPORT(pann::LearningHint::LmsNeuron);
-
 #endif
 
