@@ -19,8 +19,7 @@ namespace pann
     {
         /* Public interface */
     public:
-        Weight(unsigned _id = 0, Float _value = 1) : 
-            Object(_id),
+        Weight(Float _value = 1) : 
             value(_value),
             usageCount(1) { };
         ~Weight() { };

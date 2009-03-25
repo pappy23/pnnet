@@ -10,6 +10,7 @@
 #include "Type.h"
 #include "Neuron.h"
 
+//TODO Replace Runner with anonymous function object(functor)
 namespace pann
 {
     enum RunDirection { ForwardRun, BackwardRun };
