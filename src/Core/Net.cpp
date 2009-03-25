@@ -14,7 +14,6 @@ namespace pann
     Net::Net(unsigned _threads)
     {
         lastNeuronId = 0;
-        lastWeightId = 0;
         setThreadCount(_threads);
         learningHint = 0;
         biasId = addNeuron(ActivationFunction::Linear::Instance());
@@ -55,7 +54,7 @@ namespace pann
     {
         cache.touch();
         pair< map<unsigned, Neuron*>::iterator, bool > result = 
-            neurons.insert( pair<unsigned, Neuron*>(lastNeuronId, new Neuron(lastNeuronId, _activationFunction)) );
+            neurons.insert( pair<unsigned, Neuron*>(lastNeuronId, new Neuron(_activationFunction)) );
         
         if( !result.second )
             throw Exception::ElementExists()<<"Net::addNeuron(): insertion of neuron "<<lastNeuronId<<" failed\n";
@@ -242,7 +241,7 @@ namespace pann
         if(cache.data.size() < 2)
             return result;
 
-        BOOST_FOREACH( NetCache::ThreadTaskType& task, cache.data[cache.data.size() - 2])
+        BOOST_FOREACH( const NetCache::ThreadTaskType& task, cache.data[cache.data.size() - 2])
             BOOST_FOREACH( Neuron* n, task )
                 result.insert(pair<unsigned, Float>(n->getId(), n->activationValue));
 
@@ -287,12 +286,6 @@ namespace pann
     {
         return neurons;
     } //getNeurons
-
-    const map<unsigned, Weight*>&
-    Net::getWeights() const
-    {
-        return weights;
-    } //getWeights
 
     unsigned
     Net::getBiasId() const

@@ -6,12 +6,12 @@ using namespace std;
 
 namespace pann
 {
-    Neuron::Neuron(unsigned _id)
+    Neuron::Neuron()
     {
-        Neuron(_id, ActivationFunction::Linear::Instance());
+        Neuron(ActivationFunction::Linear::Instance());
     } //Neuron
 
-    Neuron::Neuron(unsigned _id, ActivationFunction::Base* _activationFunction) : Object(_id)
+    Neuron::Neuron(ActivationFunction::Base* _activationFunction)
     {
         activationFunction = _activationFunction;
         ownerThread = 0;

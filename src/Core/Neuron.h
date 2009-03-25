@@ -36,8 +36,8 @@ namespace pann
     
         /* Public interface */
     public:
-        Neuron(unsigned _id = 0);
-        Neuron(unsigned _id, ActivationFunction::Base*);
+        Neuron();
+        Neuron(ActivationFunction::Base*);
         ~Neuron();
 
         void setOwnerThread(unsigned _thread);
