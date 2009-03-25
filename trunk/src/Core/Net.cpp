@@ -148,18 +148,12 @@ namespace pann
         Neuron* from = findNeuron(_from);
         Neuron* to = findNeuron(_to);
 
-        pair< map<unsigned, Weight*>::iterator, bool > result = 
-            weights.insert( pair<unsigned, Weight*>(lastWeightId, new Weight(lastWeightId, _weightValue)) );
+        Weight *w = new Weight(_weightValue);
 
-        lastWeightId++;
+        from->links.push_back( Link(to, Link::out, w) );
+        to->links.push_back( Link(from, Link::in, w) );
 
-        if(!result.second)
-            throw Exception::ElementExists()<<"Net::addWeight(): insertion of new weight failed\n";
-
-        from->links.push_back( Link(to, Link::out, result.first->second) );
-        to->links.push_back( Link(from, Link::in, result.first->second) );
-
-        result.first->second->usageCount = 2;
+        w->usageCount = 2;
     } //addConnection
 
     void
@@ -195,10 +189,7 @@ namespace pann
 
         //Delete weight object if it no more used
         if( (w->usageCount -= 2) == 0) 
-        {
-            weights.erase(w->getId());
             delete w;
-        }
     } //delConnection
 
     void

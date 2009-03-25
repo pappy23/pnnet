@@ -139,7 +139,6 @@ namespace pann
          */
         const NetCache& getCache() const;
         const std::map<unsigned, Neuron*>& getNeurons() const;
-        const std::map<unsigned, Weight*>& getWeights() const;
 
         /**
          * Get ID of bias neuron
@@ -157,12 +156,10 @@ namespace pann
     private:
         unsigned threadCount;
         unsigned lastNeuronId; //var to add new neurons
-        unsigned lastWeightId; //var to add new weights
         unsigned biasId;
         std::map<unsigned, Neuron*> neurons;
-        std::map<unsigned, Weight*> weights;
         std::list<Neuron*> inputNeurons;
-        NetCache mutable cache;
+        NetCache cache;
 
         /* Private methods */
     private:
@@ -228,7 +225,6 @@ namespace pann
                  & BOOST_SERIALIZATION_NVP(lastWeightId)
                  & BOOST_SERIALIZATION_NVP(threadCount)
                  & BOOST_SERIALIZATION_NVP(biasId)
-                 & BOOST_SERIALIZATION_NVP(weights)
                  & BOOST_SERIALIZATION_NVP(neurons)
                  & BOOST_SERIALIZATION_NVP(inputNeurons)
                  & BOOST_SERIALIZATION_NVP(cache)
