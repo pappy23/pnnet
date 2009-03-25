@@ -159,7 +159,7 @@ namespace pann
         unsigned biasId;
         std::map<unsigned, Neuron*> neurons;
         std::list<Neuron*> inputNeurons;
-        NetCache cache;
+        NetCache mutable cache;
 
         /* Private methods */
     private:
@@ -222,7 +222,6 @@ namespace pann
                 //ar & boost::serialization::base_object<Object>(*this);
                 ar & BOOST_SERIALIZATION_BASE_OBJECT_NVP(Object)
                  & BOOST_SERIALIZATION_NVP(lastNeuronId)
-                 & BOOST_SERIALIZATION_NVP(lastWeightId)
                  & BOOST_SERIALIZATION_NVP(threadCount)
                  & BOOST_SERIALIZATION_NVP(biasId)
                  & BOOST_SERIALIZATION_NVP(neurons)
