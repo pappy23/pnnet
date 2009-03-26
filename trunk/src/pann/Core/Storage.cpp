@@ -9,28 +9,38 @@ namespace pann
 {
     namespace Storage
     {
-        void save(Net& _obj, string _filename)
+        void save(Net& _obj, string _filename) throw(E<Exception::FilesystemError>)
         {
             ofstream ofs(_filename.c_str());
             if(ofs.fail())
-                throw Exception::FilesystemError()<<"Storage::save(): failed to open file "<<_filename<<" for writing\n"; 
+                throw E<Exception::FilesystemError>()<<"Storage::save(): failed to open file "<<_filename<<" for writing\n"; 
 
             cout<<"Saving net to "<<_filename<<"..."<<endl;
             xml_oarchive oa(ofs);
-            oa << BOOST_SERIALIZATION_NVP(_obj);
+            try {
+                oa << BOOST_SERIALIZATION_NVP(_obj);
+          //  } catch(boost::archive::archive_exception& e) {
+            } catch(...) {
+                throw E<Exception::FilesystemError>()<<"Storage::save(): failed to save net. Boost exception thrown.\n";
+            }
 
             ofs.close();
         } //save
 
-        void load(Net& _obj, string _filename)
+        void load(Net& _obj, string _filename) throw(E<Exception::FilesystemError>)
         {
             ifstream ifs(_filename.c_str());
             if(ifs.fail())
-                throw Exception::FilesystemError()<<"Storage::load(): failed to open file "<<_filename<<" for reading\n"; 
+                throw E<Exception::FilesystemError>()<<"Storage::load(): failed to open file "<<_filename<<" for reading\n"; 
             
             cout<<"Loading net from "<<_filename<<"..."<<endl;
             xml_iarchive ia(ifs);
-            ia >> BOOST_SERIALIZATION_NVP(_obj);
+            try {
+                ia >> BOOST_SERIALIZATION_NVP(_obj);
+          //  } catch(boost::archive::archive_exception& e) {
+            } catch(...) {
+                throw E<Exception::FilesystemError>()<<"Storage::load(): failed to load net. Boost exception thrown.\n";
+            }
 
             ifs.close();
         } //load

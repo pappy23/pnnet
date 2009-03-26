@@ -35,22 +35,23 @@ namespace pann
     
         /* Public interface */
     public:
-        Neuron(ActivationFunction::Base*);
-        virtual ~Neuron();
+        Neuron(ActivationFunction::Base*) throw();
+        virtual ~Neuron() throw();
 
-        void setOwnerThread(unsigned _thread);
-        unsigned getOwnerThread() const;
+        void setOwnerThread(unsigned _thread) throw(E<Exception::RangeMismatch>);
+        unsigned getOwnerThread() const throw();
 
-        const ActivationFunction::Base* getActivationFunction() const;
+        const ActivationFunction::Base* getActivationFunction() const throw();
 
         /**
          * Helper. Finds and returns Link* for Neuron _to
          */
-        std::list<Link>::iterator findLink(Neuron* _to, Link::Direction _direction);
+        std::list<Link>::iterator findLink(Neuron* _to, Link::Direction _direction) 
+            throw(E<Exception::MultipleOccurance>, E<Exception::ObjectNotFound>);
 
         /* Serialization */
     private:
-        Neuron() {};
+        Neuron() throw() {};
         friend class boost::serialization::access;
         template<class Archive>
             void serialize(Archive & ar, const unsigned int version)

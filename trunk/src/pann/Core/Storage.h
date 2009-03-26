@@ -13,8 +13,8 @@ namespace pann
 {
     namespace Storage
     {
-        void save(Net& _obj, std::string _filename);
-        void load(Net& _obj, std::string _filename);
+        void save(Net& _obj, std::string _filename) throw(E<Exception::FilesystemError>);
+        void load(Net& _obj, std::string _filename) throw(E<Exception::FilesystemError>);
     }; //Storage
 
 }; //pann

@@ -61,7 +61,7 @@ namespace pann
     LmsBackpropagationRunner::run(Neuron* _neuron)
     {
         if(!_neuron->learningHint.is(LmsAttributes::LMS))
-            throw Exception::ObjectNotFound()<<"LmsBackpropagationRunner::run(): Feedforward run wasn't made\n";
+            throw E<Exception::ObjectNotFound>()<<"LmsBackpropagationRunner::run(): Feedforward run wasn't made\n";
 
         //do something useful
         

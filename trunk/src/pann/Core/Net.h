@@ -28,68 +28,68 @@ namespace pann
          * hardware specific number (depends on available processors)
          * Although creates bias neuron
          */
-        Net();
+        Net() throw();
 
         /**
          * Same as above, but threadCount is set to @param _threads
          */
-        Net(unsigned _threads);
-        ~Net();
+        Net(unsigned _threads) throw();
+        virtual ~Net() throw();
 
         /**
          * Manipulate threadCount
          */
-        unsigned getThreadCount() const;
-        void setThreadCount(unsigned _threads);
+        unsigned getThreadCount() const throw();
+        void setThreadCount(unsigned _threads) throw(E<Exception::RangeMismatch>);
 
         /**
          * Manipulate neurons in network
          * Remark: addInputNeuron adds neuron with
          * ActivationFunction::Linear
          */
-        unsigned addNeuron(ActivationFunction::Base* _activationFunction);
-        unsigned addInputNeuron();
-        void delNeuron(unsigned _neuronId);
+        unsigned addNeuron(ActivationFunction::Base* _activationFunction) throw();
+        unsigned addInputNeuron() throw();
+        void delNeuron(unsigned _neuronId) throw();
 
         /**
          * Can turn work neuron to be input and vice versa
          * TODO: get rid of this functions, set threadCount as parametr to run()
          * TODO: rewrite cache regeneration procedure to not rely on actual threadCount
          */
-        void setNeuronRole(unsigned _neuronId, NeuronRole _newRole);
-        NeuronRole getNeuronRole(unsigned _neuronId) const;
+        void setNeuronRole(unsigned _neuronId, NeuronRole _newRole) throw();
+        NeuronRole getNeuronRole(unsigned _neuronId) const throw();
 
         /**
          * Manage connections between neurons
          * TODO: add shared connections for convolution networks
          */
-        void addConnection(unsigned _from, unsigned _to, Float _weightValue = 1);
-        void delConnection(unsigned _from, unsigned _to);
+        void addConnection(unsigned _from, unsigned _to, Float _weightValue = 1) throw();
+        void delConnection(unsigned _from, unsigned _to) throw();
 
         /**
          * Manage neuron owner thread
          * It is usually much higher then threadCount
          */
-        void setNeuronOwner(unsigned _neuron, unsigned _owner);
-        unsigned getNeuronOwner(unsigned _neuron) const;
+        void setNeuronOwner(unsigned _neuron, unsigned _owner) throw();
+        unsigned getNeuronOwner(unsigned _neuron) const throw();
 
         /**
          * Add values to input neurons receptive fields
          */
-        void setInput(const std::valarray<Float>& _input);
+        void setInput(const std::valarray<Float>& _input) throw(E<Exception::SizeMismatch>);
         //TODO setInput and getOutput with vector<id>
 
         /**
          * Returns pairs<input_neuron_id, it's output>
          * (only for neurons in last cache layer)
          */
-        std::map<unsigned, Float> getOutput() const;
+        std::map<unsigned, Float> getOutput() const throw();
 
         /**
          * Assign neurons outputs to specified by @param _output valarray
          * (it is slower then above version, but more useful)
          */
-        void getOutput(std::valarray<Float>& _output) const;
+        void getOutput(std::valarray<Float>& _output) const throw();
 
         /**
          * Apply @param _runner Runner to each neuron,
@@ -97,14 +97,14 @@ namespace pann
          * Note: layers are computed automaticaly and stored in cache
          * See regenerateCache() implementation for more details
          */
-        void run(Runner* _runner);
+        void run(Runner* _runner) throw();
 
         /**
          * Public interface to private attributes
          * (they are used while training or painting net in pann_viewer)
          */
-        const NetCache& getCache() const;
-        const std::map<unsigned, Neuron*>& getNeurons() const;
+        const NetCache& getCache() const throw();
+        const std::map<unsigned, Neuron*>& getNeurons() const throw();
 
         /**
          * Get ID of bias neuron
@@ -112,7 +112,7 @@ namespace pann
          * with self-recurrent connection (w=1), placed 
          * at first cache layer
          */
-        unsigned getBiasId() const;
+        unsigned getBiasId() const throw();
 
         /* Public members */
     public:
@@ -132,31 +132,31 @@ namespace pann
         /**
          * Returns Neuron* for corresponding neuron ID
          */
-        Neuron* findNeuron(unsigned _neuronId);
-        const Neuron* findNeuron(unsigned _neuronId) const;
+        Neuron* findNeuron(unsigned _neuronId) throw(E<Exception::ObjectNotFound>);
+        const Neuron* findNeuron(unsigned _neuronId) const throw();
 
         /**
          * Real net modificators
          */
-        unsigned addNeuron(Neuron* _neuron);
-        void delNeuron(Neuron* _neuron);
+        unsigned addNeuron(Neuron* _neuron) throw(E<Exception::ElementExists>);
+        void delNeuron(Neuron* _neuron) throw();
 
-        void setNeuronRole(Neuron* _neuron, NeuronRole _newRole);
-        NeuronRole getNeuronRole(const Neuron* _neuron) const;
+        void setNeuronRole(Neuron* _neuron, NeuronRole _newRole) throw();
+        NeuronRole getNeuronRole(const Neuron* _neuron) const throw();
         
-        void addConnection(Neuron* _from, Neuron* _to, Weight* _weight);
-        void delConnection(Neuron* _from, Neuron* _to);
+        void addConnection(Neuron* _from, Neuron* _to, Weight* _weight) throw();
+        void delConnection(Neuron* _from, Neuron* _to) throw(E<Exception::Unbelievable>);
 
         /**
          * Helper used by regenerateCache()
          */
-        void formatFront(std::vector<Neuron*>& _raw) const;
+        void formatFront(std::vector<Neuron*>& _raw) const throw();
 
         /**
          * This function updates cache
          * Be extremely careful!
          */
-        void regenerateCache() const;
+        void regenerateCache() const throw(E<Exception::Unbelievable>);
 
         /**
          * This function is executed by work thread, instantiated from run()
