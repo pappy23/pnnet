@@ -12,6 +12,7 @@
 #include "Core/Moo.h"
 #include "Core/OpenGlHint.h"
 #include "TrainData/TrainData.h"
+#include "NetworkModels/MultilayerPerceptron.h"
 
 #endif
 

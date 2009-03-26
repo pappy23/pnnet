@@ -60,7 +60,5 @@ namespace pann
 
 }; //pann
 
-BOOST_CLASS_TRACKING(pann::Attributes, boost::serialization::track_never);
-
 #endif
 

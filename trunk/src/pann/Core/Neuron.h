@@ -35,9 +35,8 @@ namespace pann
     
         /* Public interface */
     public:
-        Neuron();
         Neuron(ActivationFunction::Base*);
-        ~Neuron();
+        virtual ~Neuron();
 
         void setOwnerThread(unsigned _thread);
         unsigned getOwnerThread() const;
@@ -51,6 +50,7 @@ namespace pann
 
         /* Serialization */
     private:
+        Neuron() {};
         friend class boost::serialization::access;
         template<class Archive>
             void serialize(Archive & ar, const unsigned int version)

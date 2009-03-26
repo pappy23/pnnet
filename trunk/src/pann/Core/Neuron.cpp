@@ -6,11 +6,6 @@ using namespace std;
 
 namespace pann
 {
-    Neuron::Neuron()
-    {
-        Neuron(0);
-    } //Neuron
-
     Neuron::Neuron(ActivationFunction::Base* _activationFunction)
     {
         activationFunction = _activationFunction;

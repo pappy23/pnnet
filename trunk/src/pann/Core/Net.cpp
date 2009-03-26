@@ -288,6 +288,8 @@ namespace pann
 
         _from->links.push_back( Link(_to, Link::out, _weight) );
         _to->links.push_back( Link(_from, Link::in, _weight) );
+
+        _weight->usageCount += 2;
     } //addConnection
 
     void
@@ -311,11 +313,15 @@ namespace pann
         if(from_link->getWeight() != to_link->getWeight())
             throw Exception::Unbelievable()<<"Net::delConnection(): symmetric links don't share weight\n";
 
+        Weight* w = from_link->getWeight();
+
         //Actually delete Link objects from Neuron_to and Neuron_from
         _from->links.erase(from_link);
         _to->links.erase(to_link);
 
-        //Link will automatically delete Weight object
+        //Delete weight object if it no more used
+        if( (w->usageCount -= 2) == 0)
+            delete w;
     } //delConnection
 
     void
