@@ -3,12 +3,7 @@
 #include <iostream>
 #include <iomanip>
 
-#include "Includes.h"
-#include "Type.h"
-#include "Net.h"
-#include "Storage.h"
-#include "NetworkModel.h"
-#include "TrainData.h"
+#include "pann.h"
 
 using namespace std;
 using namespace pann;

@@ -24,13 +24,10 @@ namespace pann
     void
     LmsFeedforwardRunner::run(Neuron* _neuron)
     {
-        if(_neuron->learningHint || !_neuron->learningHint->is(Attributes::LMS))
-            delete _neuron->learningHint;
-        
-        if(!_neuron->learningHint)
+        if(!_neuron->learningHint.is(LmsAttributes::LMS))
         {
-            _neuron->learningHint = new Attributes;
-            (*_neuron->learningHint)[Attributes::LMS] = 1.0;
+            _neuron->learningHint.erase();
+            _neuron->learningHint[LmsAttributes::LMS] = 1.0;
         }
 
         //do something useful
@@ -63,7 +60,7 @@ namespace pann
     void
     LmsBackpropagationRunner::run(Neuron* _neuron)
     {
-        if(!_neuron->learningHint || !_neuron->learningHint->is(Attributes::LMS))
+        if(!_neuron->learningHint.is(LmsAttributes::LMS))
             throw Exception::ObjectNotFound()<<"LmsBackpropagationRunner::run(): Feedforward run wasn't made\n";
 
         //do something useful

@@ -5,7 +5,7 @@
 #include "Core/Includes.h"
 #include "Core/Runner.h"
 #include "Core/Neuron.h"
-#include "Core/Attributes.h"
+#include "LmsAttributes.h"
 
 namespace pann
 {
@@ -32,10 +32,10 @@ namespace pann
         static Runner* self;
 
     private:
-        LmsBackpropagationRunner() { };
+        LmsBackpropagationRunner();
 
     public:
-        ~LmsBackpropagationRunner() { };
+        ~LmsBackpropagationRunner();
 
     public:
         static Runner* Instance();

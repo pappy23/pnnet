@@ -311,9 +311,6 @@ namespace pann
         if(from_link->getWeight() != to_link->getWeight())
             throw Exception::Unbelievable()<<"Net::delConnection(): symmetric links don't share weight\n";
 
-        //We will delete Link objects and pointers to common weight will be lost
-        Weight* w = from_link->getWeight();
-
         //Actually delete Link objects from Neuron_to and Neuron_from
         _from->links.erase(from_link);
         _to->links.erase(to_link);

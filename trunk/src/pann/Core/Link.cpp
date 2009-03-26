@@ -4,7 +4,7 @@
 
 namespace pann
 {
-    Link::Link(Neuron* _to, const Direction _direction, Weight* _w, unsigned const _latency = 1)
+    Link::Link(Neuron* _to, const Link::Direction _direction, Weight* _w, unsigned const _latency) throw()
     {
         to = _to;
         direction = _direction;
@@ -14,37 +14,37 @@ namespace pann
         w->usageCount++;
     } //Link
 
-    ~Link()
+    Link::~Link() throw()
     {
         if( (w->usageCount--) == 0)
             delete w;
     } //~Link
 
     Neuron*
-    Link::getTo()
+    Link::getTo() throw()
     {
         return to;
     } //getTo
 
     const Neuron*
-    Link::getTo() const
+    Link::getTo() const throw()
     {
         return to;
     } //getTo
 
-    Direction
-    Link::getDirection() const
+    Link::Direction
+    Link::getDirection() const throw()
     {
         return direction;
     } //getDirection
     unsigned 
-    getLatency() const
+    Link::getLatency() const throw()
     {
         return latency;
     } //getLatency
     
     Weight*
-    getWeight()
+    Link::getWeight() throw()
     {
         return w;
     } //getWeight

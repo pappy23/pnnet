@@ -4,17 +4,15 @@
 
 namespace pann
 {
-    Weight::Weight(Float _value)
+    Weight::Weight(Float _value) throw()
     {
         value = _value;
         usageCount = 0;
     } //Weight
 
-    Weight::~Weight()
+    Weight::~Weight() throw()
     {
     } //~Weight
 
 }; //pann
-
-#endif //WEIGHT_H
 

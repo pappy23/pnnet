@@ -52,32 +52,31 @@ void GLWidget::calcCoords()
                 unsigned planeRows = sqrt(layer_size);
                 unsigned planeCols = layer_size / planeRows;
 
-                OpenGLHint* oglHint = neuronIter->oglHint;
+                const Attributes& oglHint = neuronIter->oglHint;
                 Coords c;
 
-                if(oglHint && oglHint->point.x)
-                    c.x = oglHint->point.x;
+                if(oglHint.is(OpenGlHint::coord_x))
+                    c.x = oglHint[OpenGlHint::coord_x];
                 else
                     c.x = (GLdouble) ( (GLdouble)layer - total_layers/2.0 + 1.0) * 100;
 
-                if(oglHint && oglHint->point.y)
-                    c.x = oglHint->point.y;
+                if(oglHint.is(OpenGlHint::coord_y))
+                    c.y = oglHint[OpenGlHint::coord_y];
                 else
                     c.y = (GLdouble) ( (GLdouble)(neuron_number / planeCols) - planeRows/2.0 + 1.0 ) * 40.0;
                 
-                if(oglHint && oglHint->point.z)
-                    c.x = oglHint->point.z;
+                if(oglHint.is(OpenGlHint::coord_z))
+                    c.z = oglHint[OpenGlHint::coord_z];
                 else
                     c.z = (GLdouble) ( (GLdouble)(neuron_number % planeCols) - planeCols/2.0 + 1.0 ) * 40.0;
 
-                if(p_net->getNeuronRole(neuronIter->getId()) == Net::InputNeuron)
-                    c.color = QColor(0, 150, 0); //Input neuron color
-                else if(layer == total_layers - 2) 
-                    c.color = QColor(0, 0, 150); //Output neuron
-                else if(oglHint && (oglHint->color.r || oglHint->color.g || oglHint->color.b)) //Regular neuron
-                    c.color = QColor(oglHint->color.r, oglHint->color.g, oglHint->color.b);
-                else
-                    c.color = threadColors[thread];
+                c.color = threadColors[thread];
+                if(oglHint.is(OpenGlHint::color_r))
+                    c.color.setRed(oglHint[OpenGlHint::color_r]);
+                if(oglHint.is(OpenGlHint::color_g))
+                    c.color.setGreen(oglHint[OpenGlHint::color_g]);
+                if(oglHint.is(OpenGlHint::color_b))
+                    c.color.setBlue(oglHint[OpenGlHint::color_b]);
 
                 coords[neuronIter] = c;
                 neuron_number++;
@@ -93,6 +92,8 @@ void GLWidget::drawNetModel()
 
     glNewList(1,GL_COMPILE);
     
+    const Neuron* biasNeuron = (p_net->getNeurons().find(p_net->getBiasId()))->second;
+
     //For every neuron draw Link::in connections
     map<unsigned, Neuron*>::const_iterator iter = p_net->getNeurons().begin();
     for(; iter != p_net->getNeurons().end(); ++iter)
@@ -116,7 +117,7 @@ void GLWidget::drawNetModel()
                 if(link_iter->getDirection() == Link::out)
                     continue;
 
-                if(link_iter->getTo()->getId() == p_net->getBiasId() && !drawBiasLinks)
+                if(link_iter->getTo() == biasNeuron && !drawBiasLinks)
                     continue;
 
                 if(linkRate > 1 && (rand() % linkRate != 0))
@@ -158,7 +159,6 @@ void GLWidget::setInfoNet()
     ostringstream ost;
     ost<<"Net info:\n"
         <<"Neurons: "<<p_net->getNeurons().size()<<endl
-        <<"Weights: "<<p_net->getWeights().size()<<endl
         <<"Threads: "<<p_net->getThreadCount()<<endl
         <<endl<<endl;
 

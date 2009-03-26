@@ -20,6 +20,8 @@ namespace pann
         class Base : public std::exception
         {
         public:
+            Base() throw();
+            Base(const Base& _rvalue) throw();
             virtual ~Base() throw();
 
             template<typename T> Base& operator<<(const T& value) throw()
@@ -32,23 +34,16 @@ namespace pann
             virtual const char* what() const throw();
 
         protected:
-            Base() throw();
-            Base(Base& _rvalue) throw();
-
-        protected:
             std::ostringstream textStream;
 
         };
-
-        //FIXME Don't know why, but programs threat all exceptions as Exception::Base type. May be we should
-        //define constructors?
 
         //! Not critical. Simply instantiate
         class Warning : public Base
         {
         public:
             Warning() throw() : Base() {};
-            Warning(Warning& _rvalue) : Base(_rvalue) throw() {};
+            Warning(const Warning& _rvalue) throw() : Base(_rvalue) {};
             virtual ~Warning() throw()
             {
                 std::cerr<<what();
@@ -60,7 +55,7 @@ namespace pann
         {
         public:
             ObjectNotFound() throw() : Base() {};
-            ObjectNotFound(ObjectNotFound& _rvalue) : Base(_rvalue) throw() {};
+            ObjectNotFound(const ObjectNotFound& _rvalue) throw() : Base(_rvalue) {};
             virtual ~ObjectNotFound() throw();
         }; 
         
@@ -69,7 +64,7 @@ namespace pann
         {
         public:
             ElementExists() throw() : Base() {};
-            ElementExists(ElementExists& _rvalue) : Base(_rvalue) throw() {};
+            ElementExists(const ElementExists& _rvalue) throw() : Base(_rvalue) {};
             virtual ~ElementExists() throw();
         }; 
 
@@ -78,7 +73,7 @@ namespace pann
         {
         public:
             MultipleOccurance() throw() : Base() {};
-            MultipleOccurance(MultipleOccurance& _rvalue) : Base(_rvalue) throw() {};
+            MultipleOccurance(const MultipleOccurance& _rvalue) throw() : Base(_rvalue) {};
             virtual ~MultipleOccurance() throw();
         }; 
 
@@ -87,7 +82,7 @@ namespace pann
         {
         public:
             SizeMismatch() throw() : Base() {};
-            SizeMismatch(SizeMismatch& _rvalue) : Base(_rvalue) throw() {};
+            SizeMismatch(const SizeMismatch& _rvalue) throw() : Base(_rvalue) {};
             virtual ~SizeMismatch() throw();
         }; 
 
@@ -96,7 +91,7 @@ namespace pann
         {
         public:
             RangeMismatch() throw() : Base() {};
-            RangeMismatch(RangeMismatch& _rvalue) : Base(_rvalue) throw() {};
+            RangeMismatch(const RangeMismatch& _rvalue) throw() : Base(_rvalue) {};
             virtual ~RangeMismatch() throw();
         }; 
 
@@ -105,7 +100,7 @@ namespace pann
         {
         public:
             NotReady() throw() : Base() {};
-            NotReady(NotReady& _rvalue) : Base(_rvalue) throw() {};
+            NotReady(const NotReady& _rvalue) throw() : Base(_rvalue) {};
             virtual ~NotReady() throw();
         }; 
 
@@ -114,7 +109,7 @@ namespace pann
         {
         public:
             FilesystemError() throw() : Base() {};
-            FilesystemError(FilesystemError& _rvalue) : Base(_rvalue) throw() {};
+            FilesystemError(const FilesystemError& _rvalue) throw() : Base(_rvalue) {};
             virtual ~FilesystemError() throw();
         }; 
 
@@ -123,7 +118,7 @@ namespace pann
         {
         public:
             Unbelievable() throw() : Base() {};
-            Unbelievable(Unbelievable& _rvalue) : Base(_rvalue) throw() {};
+            Unbelievable(const Unbelievable& _rvalue) throw() : Base(_rvalue) {};
             virtual ~Unbelievable() throw();
         }; 
 

@@ -2,7 +2,7 @@
 #ifndef OBOJECT_H
 #define OBOJECT_H
 
-//#include "Includes.h"
+#include "Includes.h"
 
 namespace pann
 {
@@ -11,6 +11,14 @@ namespace pann
     public:
         Object();
         virtual ~Object();
+
+        /* Serialization */
+    private:
+        friend class boost::serialization::access;
+        template<class Archive>
+            void serialize(Archive & ar, const unsigned int version)
+            {
+            };
     };
 
 }; //pann
