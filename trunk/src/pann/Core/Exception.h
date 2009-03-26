@@ -16,6 +16,14 @@ namespace pann
      */
     namespace Exception
     {
+        template<class E, class T>
+            E const & operator<<(E & _e, const T& _value) throw()
+        {
+            _e.textStream << _value;
+
+            return _e;
+        };
+
         //! Basic class for every exception
         class Base : public std::exception
         {
@@ -23,19 +31,14 @@ namespace pann
             Base() throw();
             Base(const Base& _rvalue) throw();
             virtual ~Base() throw();
-
-            template<typename T> Base& operator<<(const T& value) throw()
-            {
-                textStream << value;
-
-                return *this;
-            };
-
             virtual const char* what() const throw();
 
         protected:
             std::ostringstream textStream;
 
+        private:
+            template<class E, class T>
+                friend E const & operator<<(E const & _e, const T& _value) throw();
         };
 
         //! Not critical. Simply instantiate
