@@ -5,6 +5,7 @@
     <innerfile refid="TestBoost_8cpp">TestBoost.cpp</innerfile>
     <innerfile refid="TestBoostMPI_8cpp">TestBoostMPI.cpp</innerfile>
     <innerfile refid="TestIntSize_8cpp">TestIntSize.cpp</innerfile>
+    <innerfile refid="TestLms_8cpp">TestLms.cpp</innerfile>
     <innerfile refid="TestNet_8cpp">TestNet.cpp</innerfile>
     <innerfile refid="TestOMP_8cpp">TestOMP.cpp</innerfile>
     <innerfile refid="TestSerialization_8cpp">TestSerialization.cpp</innerfile>

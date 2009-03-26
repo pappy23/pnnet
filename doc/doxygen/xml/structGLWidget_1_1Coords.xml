@@ -14,9 +14,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Utils/pann_viewer/glwidget.h" line="43" bodyfile="/home/booble/pann/trunk/src/Utils/pann_viewer/glwidget.h" bodystart="43" bodyend="-1"/>
-        <referencedby refid="classGLWidget_161ec77b4004fb9516acb9869566f9095" compoundref="glwidget_8cpp" startline="27" endline="87">GLWidget::calcCoords</referencedby>
-        <referencedby refid="classGLWidget_1eab29fc071d92db4f5ecdc899d25c1e1" compoundref="glwidget_8cpp" startline="89" endline="138">GLWidget::drawNetModel</referencedby>
+        <location file="/home/booble/pann/trunk/src/Utils/pann_viewer/glwidget.h" line="41" bodyfile="/home/booble/pann/trunk/src/Utils/pann_viewer/glwidget.h" bodystart="41" bodyend="-1"/>
+        <referencedby refid="classGLWidget_161ec77b4004fb9516acb9869566f9095" compoundref="glwidget_8cpp" startline="27" endline="86">GLWidget::calcCoords</referencedby>
+        <referencedby refid="classGLWidget_1eab29fc071d92db4f5ecdc899d25c1e1" compoundref="glwidget_8cpp" startline="88" endline="139">GLWidget::drawNetModel</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structGLWidget_1_1Coords_12b09b44aa6765cd28df54335e8049596" prot="public" static="no" mutable="no">
         <type>GLdouble</type>
@@ -29,9 +29,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Utils/pann_viewer/glwidget.h" line="43" bodyfile="/home/booble/pann/trunk/src/Utils/pann_viewer/glwidget.h" bodystart="43" bodyend="-1"/>
-        <referencedby refid="classGLWidget_161ec77b4004fb9516acb9869566f9095" compoundref="glwidget_8cpp" startline="27" endline="87">GLWidget::calcCoords</referencedby>
-        <referencedby refid="classGLWidget_1eab29fc071d92db4f5ecdc899d25c1e1" compoundref="glwidget_8cpp" startline="89" endline="138">GLWidget::drawNetModel</referencedby>
+        <location file="/home/booble/pann/trunk/src/Utils/pann_viewer/glwidget.h" line="41" bodyfile="/home/booble/pann/trunk/src/Utils/pann_viewer/glwidget.h" bodystart="41" bodyend="-1"/>
+        <referencedby refid="classGLWidget_161ec77b4004fb9516acb9869566f9095" compoundref="glwidget_8cpp" startline="27" endline="86">GLWidget::calcCoords</referencedby>
+        <referencedby refid="classGLWidget_1eab29fc071d92db4f5ecdc899d25c1e1" compoundref="glwidget_8cpp" startline="88" endline="139">GLWidget::drawNetModel</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structGLWidget_1_1Coords_111f8206bf328c5632efb0b7ae028811a" prot="public" static="no" mutable="no">
         <type>GLdouble</type>
@@ -44,9 +44,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Utils/pann_viewer/glwidget.h" line="43" bodyfile="/home/booble/pann/trunk/src/Utils/pann_viewer/glwidget.h" bodystart="43" bodyend="-1"/>
-        <referencedby refid="classGLWidget_161ec77b4004fb9516acb9869566f9095" compoundref="glwidget_8cpp" startline="27" endline="87">GLWidget::calcCoords</referencedby>
-        <referencedby refid="classGLWidget_1eab29fc071d92db4f5ecdc899d25c1e1" compoundref="glwidget_8cpp" startline="89" endline="138">GLWidget::drawNetModel</referencedby>
+        <location file="/home/booble/pann/trunk/src/Utils/pann_viewer/glwidget.h" line="41" bodyfile="/home/booble/pann/trunk/src/Utils/pann_viewer/glwidget.h" bodystart="41" bodyend="-1"/>
+        <referencedby refid="classGLWidget_161ec77b4004fb9516acb9869566f9095" compoundref="glwidget_8cpp" startline="27" endline="86">GLWidget::calcCoords</referencedby>
+        <referencedby refid="classGLWidget_1eab29fc071d92db4f5ecdc899d25c1e1" compoundref="glwidget_8cpp" startline="88" endline="139">GLWidget::drawNetModel</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structGLWidget_1_1Coords_1fdd15067fa0ead4c9f8aa918308aa72f" prot="public" static="no" mutable="no">
         <type>QColor</type>
@@ -59,16 +59,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Utils/pann_viewer/glwidget.h" line="44" bodyfile="/home/booble/pann/trunk/src/Utils/pann_viewer/glwidget.h" bodystart="44" bodyend="-1"/>
-        <referencedby refid="classGLWidget_161ec77b4004fb9516acb9869566f9095" compoundref="glwidget_8cpp" startline="27" endline="87">GLWidget::calcCoords</referencedby>
-        <referencedby refid="classGLWidget_1eab29fc071d92db4f5ecdc899d25c1e1" compoundref="glwidget_8cpp" startline="89" endline="138">GLWidget::drawNetModel</referencedby>
+        <location file="/home/booble/pann/trunk/src/Utils/pann_viewer/glwidget.h" line="42" bodyfile="/home/booble/pann/trunk/src/Utils/pann_viewer/glwidget.h" bodystart="42" bodyend="-1"/>
+        <referencedby refid="classGLWidget_161ec77b4004fb9516acb9869566f9095" compoundref="glwidget_8cpp" startline="27" endline="86">GLWidget::calcCoords</referencedby>
+        <referencedby refid="classGLWidget_1eab29fc071d92db4f5ecdc899d25c1e1" compoundref="glwidget_8cpp" startline="88" endline="139">GLWidget::drawNetModel</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/booble/pann/trunk/src/Utils/pann_viewer/glwidget.h" line="42" bodyfile="/home/booble/pann/trunk/src/Utils/pann_viewer/glwidget.h" bodystart="41" bodyend="45"/>
+    <location file="/home/booble/pann/trunk/src/Utils/pann_viewer/glwidget.h" line="40" bodyfile="/home/booble/pann/trunk/src/Utils/pann_viewer/glwidget.h" bodystart="39" bodyend="43"/>
     <listofallmembers>
       <member refid="structGLWidget_1_1Coords_1fdd15067fa0ead4c9f8aa918308aa72f" prot="public" virt="non-virtual"><scope>GLWidget::Coords</scope><name>color</name></member>
       <member refid="structGLWidget_1_1Coords_1ad9bc35e5c6072b31a361a76b6927c46" prot="public" virt="non-virtual"><scope>GLWidget::Coords</scope><name>x</name></member>

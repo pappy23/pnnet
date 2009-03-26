@@ -24,24 +24,27 @@
 </div>
 <div class="contents">
 <h1>pann::Link Member List</h1>This is the complete list of members for <a class="el" href="classpann_1_1Link.html">pann::Link</a>, including all inherited members.<p><table>
-  <tr class="memlist"><td><a class="el" href="classpann_1_1Object.html#c98d07dd8f7b70e16ccb9a01abf56b9c">boost::serialization::access</a> class</td><td><a class="el" href="classpann_1_1Object.html">pann::Object</a></td><td><code> [friend]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="classpann_1_1Link.html#c98d07dd8f7b70e16ccb9a01abf56b9c">boost::serialization::access</a> class</td><td><a class="el" href="classpann_1_1Link.html">pann::Link</a></td><td><code> [friend]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="classpann_1_1Link.html#843c5a79ffd161b67e1770f65eabf055">Direction</a> enum name</td><td><a class="el" href="classpann_1_1Link.html">pann::Link</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classpann_1_1Link.html#e3c1cbea824e8177a35201a6da1c0da2">direction</a></td><td><a class="el" href="classpann_1_1Link.html">pann::Link</a></td><td><code> [private]</code></td></tr>
-  <tr class="memlist"><td><a class="el" href="classpann_1_1Link.html#eab757727bb6ca0cad8edb46500c3897">getDirection</a>() const </td><td><a class="el" href="classpann_1_1Link.html">pann::Link</a></td><td><code> [inline]</code></td></tr>
-  <tr class="memlist"><td><a class="el" href="classpann_1_1Link.html#282df22476d1056ecd371a2357f227c8">getLatency</a>() const </td><td><a class="el" href="classpann_1_1Link.html">pann::Link</a></td><td><code> [inline]</code></td></tr>
-  <tr class="memlist"><td><a class="el" href="classpann_1_1Link.html#18a70d88ffa9fe441820c2d1c9d83579">getToIter</a>()</td><td><a class="el" href="classpann_1_1Link.html">pann::Link</a></td><td><code> [inline]</code></td></tr>
-  <tr class="memlist"><td><a class="el" href="classpann_1_1Link.html#34704a4638bea049b149dcafdcfe93d3">getToIter</a>() const </td><td><a class="el" href="classpann_1_1Link.html">pann::Link</a></td><td><code> [inline]</code></td></tr>
-  <tr class="memlist"><td><a class="el" href="classpann_1_1Link.html#0da0b96aceaf5361b289cded06778d65">getWeightIter</a>()</td><td><a class="el" href="classpann_1_1Link.html">pann::Link</a></td><td><code> [inline]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="classpann_1_1Link.html#87348d85a5295f03b9851b2da57800aa">getDirection</a>() const </td><td><a class="el" href="classpann_1_1Link.html">pann::Link</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="classpann_1_1Link.html#282df22476d1056ecd371a2357f227c8">getLatency</a>() const </td><td><a class="el" href="classpann_1_1Link.html">pann::Link</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="classpann_1_1Link.html#7989e38d6778c229f4db756fe116cbd6">getTo</a>()</td><td><a class="el" href="classpann_1_1Link.html">pann::Link</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="classpann_1_1Link.html#b6ca60ca92361423e8ba3b0f52a0374f">getTo</a>() const </td><td><a class="el" href="classpann_1_1Link.html">pann::Link</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="classpann_1_1Link.html#107ab03c0bd18afc8eacb1077cbb47c5">getWeight</a>()</td><td><a class="el" href="classpann_1_1Link.html">pann::Link</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classpann_1_1Link.html#843c5a79ffd161b67e1770f65eabf0556b810850c72ab26c68965db2424df30c">in</a> enum value</td><td><a class="el" href="classpann_1_1Link.html">pann::Link</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classpann_1_1Link.html#c4082679e8fc85a6ef441b6e567493e9">latency</a></td><td><a class="el" href="classpann_1_1Link.html">pann::Link</a></td><td><code> [private]</code></td></tr>
-  <tr class="memlist"><td><a class="el" href="classpann_1_1Link.html#41044402a668f43f06553d7da750df61">Link</a>(const NeuronIter _to, const Direction _direction, WeightIter _w, unsigned const _latency=1)</td><td><a class="el" href="classpann_1_1Link.html">pann::Link</a></td><td><code> [inline]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="classpann_1_1Link.html#6fe6e2f0189674bc72457577df964869">Link</a>(Neuron *_to, const Direction _direction, Weight *_w, unsigned const _latency=1)</td><td><a class="el" href="classpann_1_1Link.html">pann::Link</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="classpann_1_1Link.html#f3e85e337a19c68fc43838815fcff900">Link</a>()</td><td><a class="el" href="classpann_1_1Link.html">pann::Link</a></td><td><code> [inline, private]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="classpann_1_1Object.html#e4157eda81e363f28504b4ec9d15e196">Object</a>()</td><td><a class="el" href="classpann_1_1Object.html">pann::Object</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classpann_1_1Link.html#843c5a79ffd161b67e1770f65eabf0550735525ef5d9a47b94c4597e7c27e522">out</a> enum value</td><td><a class="el" href="classpann_1_1Link.html">pann::Link</a></td><td></td></tr>
-  <tr class="memlist"><td><a class="el" href="classpann_1_1Link.html#1b0611d84a5fd7632fdaffac2b19b2a9">printDebugInfo</a>(std::ostringstream &amp;ost) const </td><td><a class="el" href="classpann_1_1Link.html">pann::Link</a></td><td><code> [inline, virtual]</code></td></tr>
-  <tr class="memlist"><td><a class="el" href="classpann_1_1Link.html#7126b05c26be8b9166fa86b894b1cdb0">to</a></td><td><a class="el" href="classpann_1_1Link.html">pann::Link</a></td><td><code> [private]</code></td></tr>
-  <tr class="memlist"><td><a class="el" href="classpann_1_1Link.html#e5eed84c9cd7072a8361e6fd6f1265c6">w</a></td><td><a class="el" href="classpann_1_1Link.html">pann::Link</a></td><td><code> [private]</code></td></tr>
-  <tr class="memlist"><td><a class="el" href="classpann_1_1Link.html#d06a124eeddb33744befe239894399bc">~Link</a>()</td><td><a class="el" href="classpann_1_1Link.html">pann::Link</a></td><td><code> [inline]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="classpann_1_1Link.html#7aee4460f2f6f3e09d3e7d457c56578c">serialize</a>(Archive &amp;ar, const unsigned int version)</td><td><a class="el" href="classpann_1_1Link.html">pann::Link</a></td><td><code> [inline, private]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="classpann_1_1Link.html#2db2a65a456ac419da7cae6c8d4d8399">to</a></td><td><a class="el" href="classpann_1_1Link.html">pann::Link</a></td><td><code> [private]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="classpann_1_1Link.html#e9b45216441647effa01fc5223d34a14">w</a></td><td><a class="el" href="classpann_1_1Link.html">pann::Link</a></td><td><code> [private]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="classpann_1_1Link.html#d06a124eeddb33744befe239894399bc">~Link</a>()</td><td><a class="el" href="classpann_1_1Link.html">pann::Link</a></td><td><code> [virtual]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="classpann_1_1Object.html#461126af2f1a20fa24f1340f670c5733">~Object</a>()</td><td><a class="el" href="classpann_1_1Object.html">pann::Object</a></td><td><code> [virtual]</code></td></tr>
 </table></div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sun Mar 22 11:32:19 2009 for pann by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Thu Mar 26 21:15:58 2009 for pann by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

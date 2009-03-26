@@ -4,43 +4,93 @@
     <compoundname>pann::Exception::Warning</compoundname>
     <basecompoundref refid="classpann_1_1Exception_1_1Base" prot="public" virt="non-virtual">pann::Exception::Base</basecompoundref>
     <includes refid="Exception_8h" local="no">Exception.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classpann_1_1Exception_1_1Warning_1acd3290594a63cce83dfae974b0f00fa" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>pann::Exception::Warning::Warning</definition>
+        <argsstring>()</argsstring>
+        <name>Warning</name>
+        <exceptions> throw ()</exceptions>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/pann/Core/Exception.h" line="48" bodyfile="/home/booble/pann/trunk/src/pann/Core/Exception.h" bodystart="48" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="classpann_1_1Exception_1_1Warning_1a0ded074204dafb83ec586b23151953e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>pann::Exception::Warning::Warning</definition>
+        <argsstring>(const Warning &amp;_rvalue)</argsstring>
+        <name>Warning</name>
+        <param>
+          <type>const <ref refid="classpann_1_1Exception_1_1Warning" kindref="compound">Warning</ref> &amp;</type>
+          <declname>_rvalue</declname>
+        </param>
+        <exceptions> throw ()</exceptions>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/pann/Core/Exception.h" line="49" bodyfile="/home/booble/pann/trunk/src/pann/Core/Exception.h" bodystart="49" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="classpann_1_1Exception_1_1Warning_141aa0289bbc946994bdc5c2da647631f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual pann::Exception::Warning::~Warning</definition>
+        <argsstring>()</argsstring>
+        <name>~Warning</name>
+        <exceptions> throw ()</exceptions>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/pann/Core/Exception.h" line="51" bodyfile="/home/booble/pann/trunk/src/pann/Core/Exception.h" bodystart="50" bodyend="53"/>
+        <references refid="classpann_1_1Exception_1_1Base_1814afcfe425f55f02e39f1fea05bcbe9" compoundref="Exception_8cpp" startline="23" endline="26">pann::Exception::Base::what</references>
+      </memberdef>
+      </sectiondef>
     <briefdescription>
 <para>Not critical. Simply instantiate. </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="366">
+      <node id="350">
         <label>pann::Exception::Warning</label>
         <link refid="classpann_1_1Exception_1_1Warning"/>
-        <childnode refid="367" relation="public-inheritance">
+        <childnode refid="351" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="367">
+      <node id="351">
         <label>pann::Exception::Base</label>
         <link refid="classpann_1_1Exception_1_1Base"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="368">
+      <node id="352">
         <label>pann::Exception::Warning</label>
         <link refid="classpann_1_1Exception_1_1Warning"/>
-        <childnode refid="369" relation="public-inheritance">
+        <childnode refid="353" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="369">
+      <node id="353">
         <label>pann::Exception::Base</label>
         <link refid="classpann_1_1Exception_1_1Base"/>
       </node>
     </collaborationgraph>
-    <location file="/home/booble/pann/trunk/src/Core/Exception.h" line="55" bodyfile="/home/booble/pann/trunk/src/Core/Exception.h" bodystart="55" bodyend="55"/>
+    <location file="/home/booble/pann/trunk/src/pann/Core/Exception.h" line="46" bodyfile="/home/booble/pann/trunk/src/pann/Core/Exception.h" bodystart="45" bodyend="54"/>
     <listofallmembers>
       <member refid="classpann_1_1Exception_1_1Base_129e2607d6a8c7dc15ed6ed3cb92d3ece" prot="public" virt="non-virtual"><scope>pann::Exception::Warning</scope><name>Base</name></member>
-      <member refid="classpann_1_1Exception_1_1Base_1659925e8afcb384bc88b2f5b9802e052" prot="public" virt="non-virtual"><scope>pann::Exception::Warning</scope><name>Base</name></member>
-      <member refid="classpann_1_1Exception_1_1Base_1ad82b3455115377053fa357b70ac7978" prot="public" virt="virtual"><scope>pann::Exception::Warning</scope><name>getText</name></member>
-      <member refid="classpann_1_1Exception_1_1Base_139525dbb840db0f93d66bb6cfa0f3089" prot="public" virt="non-virtual"><scope>pann::Exception::Warning</scope><name>operator&lt;&lt;</name></member>
-      <member refid="classpann_1_1Exception_1_1Base_1e73d382790d755edfec2289abe12a626" prot="public" virt="non-virtual"><scope>pann::Exception::Warning</scope><name>text</name></member>
+      <member refid="classpann_1_1Exception_1_1Base_184c37510b2617297090fb7bbd2520fc8" prot="public" virt="non-virtual"><scope>pann::Exception::Warning</scope><name>Base</name></member>
       <member refid="classpann_1_1Exception_1_1Base_13795b9ad6996ac80e80e4e8179b733ab" prot="protected" virt="non-virtual"><scope>pann::Exception::Warning</scope><name>textStream</name></member>
-      <member refid="classpann_1_1Exception_1_1Base_12b12cae42f85a5d694111d2bb1de315f" prot="public" virt="virtual"><scope>pann::Exception::Warning</scope><name>~Base</name></member>
+      <member refid="classpann_1_1Exception_1_1Warning_1acd3290594a63cce83dfae974b0f00fa" prot="public" virt="non-virtual"><scope>pann::Exception::Warning</scope><name>Warning</name></member>
+      <member refid="classpann_1_1Exception_1_1Warning_1a0ded074204dafb83ec586b23151953e" prot="public" virt="non-virtual"><scope>pann::Exception::Warning</scope><name>Warning</name></member>
+      <member refid="classpann_1_1Exception_1_1Base_1814afcfe425f55f02e39f1fea05bcbe9" prot="public" virt="virtual"><scope>pann::Exception::Warning</scope><name>what</name></member>
+      <member refid="classpann_1_1Exception_1_1Base_10ae22e27956edb603976595cda354b7b" prot="public" virt="virtual"><scope>pann::Exception::Warning</scope><name>~Base</name></member>
+      <member refid="classpann_1_1Exception_1_1Warning_141aa0289bbc946994bdc5c2da647631f" prot="public" virt="virtual"><scope>pann::Exception::Warning</scope><name>~Warning</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

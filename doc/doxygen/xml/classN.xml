@@ -14,8 +14,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/UnitTests/TestSerialization.cpp" line="31" bodyfile="/home/booble/pann/trunk/src/UnitTests/TestSerialization.cpp" bodystart="31" bodyend="-1"/>
-        <referencedby refid="classN_10697832f854e511643076957badb1df2" compoundref="TestSerialization_8cpp" startline="36" endline="39">serialize</referencedby>
+        <location file="/home/booble/pann/trunk/src/UnitTests/TestSerialization.cpp" line="58" bodyfile="/home/booble/pann/trunk/src/UnitTests/TestSerialization.cpp" bodystart="58" bodyend="-1"/>
+        <referencedby refid="TestSerialization_8cpp_1e66f6b31b5ad750f1fe042a706a4e3d4" compoundref="TestSerialization_8cpp" startline="70" endline="92">main</referencedby>
+        <referencedby refid="classN_10697832f854e511643076957badb1df2" compoundref="TestSerialization_8cpp" startline="63" endline="67">serialize</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="friend">
@@ -30,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/UnitTests/TestSerialization.cpp" line="34" bodyfile="/home/booble/pann/trunk/src/UnitTests/TestSerialization.cpp" bodystart="34" bodyend="-1"/>
+        <location file="/home/booble/pann/trunk/src/UnitTests/TestSerialization.cpp" line="61" bodyfile="/home/booble/pann/trunk/src/UnitTests/TestSerialization.cpp" bodystart="61" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -60,8 +61,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/UnitTests/TestSerialization.cpp" line="37" bodyfile="/home/booble/pann/trunk/src/UnitTests/TestSerialization.cpp" bodystart="36" bodyend="39"/>
-        <references refid="classN_128730570164b084e340eb0aa4d5cc206" compoundref="TestSerialization_8cpp" startline="31">af</references>
+        <location file="/home/booble/pann/trunk/src/UnitTests/TestSerialization.cpp" line="64" bodyfile="/home/booble/pann/trunk/src/UnitTests/TestSerialization.cpp" bodystart="63" bodyend="67"/>
+        <references refid="classN_128730570164b084e340eb0aa4d5cc206" compoundref="TestSerialization_8cpp" startline="58">af</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -69,19 +70,19 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="270">
+      <node id="274">
         <label>A</label>
         <link refid="classA"/>
       </node>
-      <node id="269">
+      <node id="273">
         <label>N</label>
         <link refid="classN"/>
-        <childnode refid="270" relation="usage">
+        <childnode refid="274" relation="usage">
           <edgelabel>af</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="/home/booble/pann/trunk/src/UnitTests/TestSerialization.cpp" line="29" bodyfile="/home/booble/pann/trunk/src/UnitTests/TestSerialization.cpp" bodystart="28" bodyend="40"/>
+    <location file="/home/booble/pann/trunk/src/UnitTests/TestSerialization.cpp" line="56" bodyfile="/home/booble/pann/trunk/src/UnitTests/TestSerialization.cpp" bodystart="55" bodyend="68"/>
     <listofallmembers>
       <member refid="classN_128730570164b084e340eb0aa4d5cc206" prot="public" virt="non-virtual"><scope>N</scope><name>af</name></member>
       <member refid="classN_1c98d07dd8f7b70e16ccb9a01abf56b9c" prot="public" virt="non-virtual"><scope>N</scope><name>boost::serialization::access</name></member>

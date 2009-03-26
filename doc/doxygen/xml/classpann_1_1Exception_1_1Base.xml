@@ -24,109 +24,109 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/Exception.h" line="23" bodyfile="/home/booble/pann/trunk/src/Core/Exception.h" bodystart="23" bodyend="-1"/>
-        <referencedby refid="classpann_1_1Exception_1_1Base_1ad82b3455115377053fa357b70ac7978" compoundref="Exception_8h" startline="48" endline="51">getText</referencedby>
-        <referencedby refid="classpann_1_1Exception_1_1Base_139525dbb840db0f93d66bb6cfa0f3089" compoundref="Exception_8h" startline="40" endline="46">operator&lt;&lt;</referencedby>
-        <referencedby refid="classpann_1_1Exception_1_1Base_1e73d382790d755edfec2289abe12a626" compoundref="Exception_8h" startline="35" endline="38">text</referencedby>
+        <location file="/home/booble/pann/trunk/src/pann/Core/Exception.h" line="37" bodyfile="/home/booble/pann/trunk/src/pann/Core/Exception.h" bodystart="37" bodyend="-1"/>
+        <referencedby refid="classpann_1_1Exception_1_1Base_1814afcfe425f55f02e39f1fea05bcbe9" compoundref="Exception_8cpp" startline="23" endline="26">what</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="classpann_1_1Exception_1_1Base_129e2607d6a8c7dc15ed6ed3cb92d3ece" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classpann_1_1Exception_1_1Base_129e2607d6a8c7dc15ed6ed3cb92d3ece" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>pann::Exception::Base::Base</definition>
         <argsstring>()</argsstring>
         <name>Base</name>
+        <exceptions> throw ()</exceptions>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/Exception.h" line="27" bodyfile="/home/booble/pann/trunk/src/Core/Exception.h" bodystart="26" bodyend="29"/>
+        <location file="/home/booble/pann/trunk/src/pann/Core/Exception.h" line="31" bodyfile="/home/booble/pann/trunk/src/pann/Core/Exception.cpp" bodystart="9" bodyend="11"/>
       </memberdef>
-      <memberdef kind="function" id="classpann_1_1Exception_1_1Base_1659925e8afcb384bc88b2f5b9802e052" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classpann_1_1Exception_1_1Base_184c37510b2617297090fb7bbd2520fc8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>pann::Exception::Base::Base</definition>
-        <argsstring>(Base &amp;_rvalue)</argsstring>
+        <argsstring>(const Base &amp;_rvalue)</argsstring>
         <name>Base</name>
         <param>
-          <type><ref refid="classpann_1_1Exception_1_1Base" kindref="compound">Base</ref> &amp;</type>
+          <type>const <ref refid="classpann_1_1Exception_1_1Base" kindref="compound">Base</ref> &amp;</type>
           <declname>_rvalue</declname>
         </param>
+        <exceptions> throw ()</exceptions>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/Exception.h" line="31" bodyfile="/home/booble/pann/trunk/src/Core/Exception.h" bodystart="31" bodyend="31"/>
+        <location file="/home/booble/pann/trunk/src/pann/Core/Exception.h" line="32" bodyfile="/home/booble/pann/trunk/src/pann/Core/Exception.cpp" bodystart="13" bodyend="16"/>
       </memberdef>
-      <memberdef kind="function" id="classpann_1_1Exception_1_1Base_12b12cae42f85a5d694111d2bb1de315f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="classpann_1_1Exception_1_1Base_10ae22e27956edb603976595cda354b7b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
-        <definition>virtual pann::Exception::Base::~Base</definition>
+        <definition>pann::Exception::Base::~Base</definition>
         <argsstring>()</argsstring>
         <name>~Base</name>
+        <exceptions> throw ()</exceptions>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/Exception.h" line="33" bodyfile="/home/booble/pann/trunk/src/Core/Exception.h" bodystart="33" bodyend="33"/>
+        <location file="/home/booble/pann/trunk/src/pann/Core/Exception.h" line="33" bodyfile="/home/booble/pann/trunk/src/pann/Core/Exception.cpp" bodystart="18" bodyend="20"/>
       </memberdef>
-      <memberdef kind="function" id="classpann_1_1Exception_1_1Base_1e73d382790d755edfec2289abe12a626" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>std::string</type>
-        <definition>std::string pann::Exception::Base::text</definition>
-        <argsstring>()</argsstring>
-        <name>text</name>
+      <memberdef kind="function" id="classpann_1_1Exception_1_1Base_1814afcfe425f55f02e39f1fea05bcbe9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>const char *</type>
+        <definition>const char * pann::Exception::Base::what</definition>
+        <argsstring>() const </argsstring>
+        <name>what</name>
+        <exceptions> throw ()</exceptions>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/Exception.h" line="36" bodyfile="/home/booble/pann/trunk/src/Core/Exception.h" bodystart="35" bodyend="38"/>
-        <references refid="classpann_1_1Exception_1_1Base_13795b9ad6996ac80e80e4e8179b733ab" compoundref="Exception_8h" startline="23">textStream</references>
+        <location file="/home/booble/pann/trunk/src/pann/Core/Exception.h" line="34" bodyfile="/home/booble/pann/trunk/src/pann/Core/Exception.cpp" bodystart="23" bodyend="26"/>
+        <references refid="classpann_1_1Exception_1_1Base_13795b9ad6996ac80e80e4e8179b733ab" compoundref="Exception_8h" startline="37">textStream</references>
+        <referencedby refid="main_8cpp_10ddf1224851353fc92bfbff6f499fa97" compoundref="main_8cpp" startline="10" endline="37">main</referencedby>
+        <referencedby refid="classpann_1_1Exception_1_1Warning_141aa0289bbc946994bdc5c2da647631f" compoundref="Exception_8h" startline="50" endline="53">pann::Exception::Warning::~Warning</referencedby>
       </memberdef>
-      <memberdef kind="function" id="classpann_1_1Exception_1_1Base_139525dbb840db0f93d66bb6cfa0f3089" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classpann_1_1Exception_1_1Base_1bb7155278e12a8f39270a1fccc505059" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
-            <type>typename</type>
+            <type>class</type>
+            <declname>E</declname>
+            <defname>E</defname>
+          </param>
+          <param>
+            <type>class</type>
             <declname>T</declname>
             <defname>T</defname>
           </param>
         </templateparamlist>
-        <type><ref refid="classpann_1_1Exception_1_1Base" kindref="compound">Base</ref> &amp;</type>
-        <definition>Base&amp; pann::Exception::Base::operator&lt;&lt;</definition>
-        <argsstring>(const T &amp;value)</argsstring>
+        <type>friend E const &amp;</type>
+        <definition>E const&amp; operator&lt;&lt;</definition>
+        <argsstring>(E const &amp;_e, const T &amp;_value)</argsstring>
         <name>operator&lt;&lt;</name>
         <param>
-          <type>const T &amp;</type>
-          <declname>value</declname>
+          <type>E const &amp;</type>
+          <declname>_e</declname>
         </param>
+        <param>
+          <type>const T &amp;</type>
+          <declname>_value</declname>
+        </param>
+        <exceptions> throw ()</exceptions>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/Exception.h" line="41" bodyfile="/home/booble/pann/trunk/src/Core/Exception.h" bodystart="40" bodyend="46"/>
-        <references refid="classpann_1_1Exception_1_1Base_13795b9ad6996ac80e80e4e8179b733ab" compoundref="Exception_8h" startline="23">textStream</references>
-      </memberdef>
-      <memberdef kind="function" id="classpann_1_1Exception_1_1Base_1ad82b3455115377053fa357b70ac7978" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
-        <type>std::string</type>
-        <definition>virtual std::string pann::Exception::Base::getText</definition>
-        <argsstring>()</argsstring>
-        <name>getText</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/Exception.h" line="49" bodyfile="/home/booble/pann/trunk/src/Core/Exception.h" bodystart="48" bodyend="51"/>
-        <references refid="classpann_1_1Exception_1_1Base_13795b9ad6996ac80e80e4e8179b733ab" compoundref="Exception_8h" startline="23">textStream</references>
-        <referencedby refid="main_8cpp_10ddf1224851353fc92bfbff6f499fa97" compoundref="main_8cpp" startline="12" endline="39">main</referencedby>
+        <location file="/home/booble/pann/trunk/src/pann/Core/Exception.h" line="41"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -134,74 +134,73 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="204">
+      <node id="206">
         <label>pann::Exception::FilesystemError</label>
         <link refid="classpann_1_1Exception_1_1FilesystemError"/>
-        <childnode refid="202" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="209">
-        <label>pann::Exception::SizeMismatch</label>
-        <link refid="classpann_1_1Exception_1_1SizeMismatch"/>
-        <childnode refid="202" relation="public-inheritance">
+        <childnode refid="204" relation="public-inheritance">
         </childnode>
       </node>
       <node id="211">
-        <label>pann::Exception::Warning</label>
-        <link refid="classpann_1_1Exception_1_1Warning"/>
-        <childnode refid="202" relation="public-inheritance">
+        <label>pann::Exception::SizeMismatch</label>
+        <link refid="classpann_1_1Exception_1_1SizeMismatch"/>
+        <childnode refid="204" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="203">
-        <label>pann::Exception::ElementExists</label>
-        <link refid="classpann_1_1Exception_1_1ElementExists"/>
-        <childnode refid="202" relation="public-inheritance">
+      <node id="213">
+        <label>pann::Exception::Warning</label>
+        <link refid="classpann_1_1Exception_1_1Warning"/>
+        <childnode refid="204" relation="public-inheritance">
         </childnode>
       </node>
       <node id="205">
-        <label>pann::Exception::MultipleOccurance</label>
-        <link refid="classpann_1_1Exception_1_1MultipleOccurance"/>
-        <childnode refid="202" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="208">
-        <label>pann::Exception::RangeMismatch</label>
-        <link refid="classpann_1_1Exception_1_1RangeMismatch"/>
-        <childnode refid="202" relation="public-inheritance">
+        <label>pann::Exception::ElementExists</label>
+        <link refid="classpann_1_1Exception_1_1ElementExists"/>
+        <childnode refid="204" relation="public-inheritance">
         </childnode>
       </node>
       <node id="207">
-        <label>pann::Exception::ObjectNotFound</label>
-        <link refid="classpann_1_1Exception_1_1ObjectNotFound"/>
-        <childnode refid="202" relation="public-inheritance">
+        <label>pann::Exception::MultipleOccurance</label>
+        <link refid="classpann_1_1Exception_1_1MultipleOccurance"/>
+        <childnode refid="204" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="202">
+      <node id="210">
+        <label>pann::Exception::RangeMismatch</label>
+        <link refid="classpann_1_1Exception_1_1RangeMismatch"/>
+        <childnode refid="204" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="209">
+        <label>pann::Exception::ObjectNotFound</label>
+        <link refid="classpann_1_1Exception_1_1ObjectNotFound"/>
+        <childnode refid="204" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="204">
         <label>pann::Exception::Base</label>
         <link refid="classpann_1_1Exception_1_1Base"/>
       </node>
-      <node id="210">
+      <node id="212">
         <label>pann::Exception::Unbelievable</label>
         <link refid="classpann_1_1Exception_1_1Unbelievable"/>
-        <childnode refid="202" relation="public-inheritance">
+        <childnode refid="204" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="206">
+      <node id="208">
         <label>pann::Exception::NotReady</label>
         <link refid="classpann_1_1Exception_1_1NotReady"/>
-        <childnode refid="202" relation="public-inheritance">
+        <childnode refid="204" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
-    <location file="/home/booble/pann/trunk/src/Core/Exception.h" line="21" bodyfile="/home/booble/pann/trunk/src/Core/Exception.h" bodystart="20" bodyend="52"/>
+    <location file="/home/booble/pann/trunk/src/pann/Core/Exception.h" line="29" bodyfile="/home/booble/pann/trunk/src/pann/Core/Exception.h" bodystart="28" bodyend="42"/>
     <listofallmembers>
       <member refid="classpann_1_1Exception_1_1Base_129e2607d6a8c7dc15ed6ed3cb92d3ece" prot="public" virt="non-virtual"><scope>pann::Exception::Base</scope><name>Base</name></member>
-      <member refid="classpann_1_1Exception_1_1Base_1659925e8afcb384bc88b2f5b9802e052" prot="public" virt="non-virtual"><scope>pann::Exception::Base</scope><name>Base</name></member>
-      <member refid="classpann_1_1Exception_1_1Base_1ad82b3455115377053fa357b70ac7978" prot="public" virt="virtual"><scope>pann::Exception::Base</scope><name>getText</name></member>
-      <member refid="classpann_1_1Exception_1_1Base_139525dbb840db0f93d66bb6cfa0f3089" prot="public" virt="non-virtual"><scope>pann::Exception::Base</scope><name>operator&lt;&lt;</name></member>
-      <member refid="classpann_1_1Exception_1_1Base_1e73d382790d755edfec2289abe12a626" prot="public" virt="non-virtual"><scope>pann::Exception::Base</scope><name>text</name></member>
+      <member refid="classpann_1_1Exception_1_1Base_184c37510b2617297090fb7bbd2520fc8" prot="public" virt="non-virtual"><scope>pann::Exception::Base</scope><name>Base</name></member>
+      <member refid="classpann_1_1Exception_1_1Base_1bb7155278e12a8f39270a1fccc505059" prot="private" virt="non-virtual"><scope>pann::Exception::Base</scope><name>operator&lt;&lt;</name></member>
       <member refid="classpann_1_1Exception_1_1Base_13795b9ad6996ac80e80e4e8179b733ab" prot="protected" virt="non-virtual"><scope>pann::Exception::Base</scope><name>textStream</name></member>
-      <member refid="classpann_1_1Exception_1_1Base_12b12cae42f85a5d694111d2bb1de315f" prot="public" virt="virtual"><scope>pann::Exception::Base</scope><name>~Base</name></member>
+      <member refid="classpann_1_1Exception_1_1Base_1814afcfe425f55f02e39f1fea05bcbe9" prot="public" virt="virtual"><scope>pann::Exception::Base</scope><name>what</name></member>
+      <member refid="classpann_1_1Exception_1_1Base_10ae22e27956edb603976595cda354b7b" prot="public" virt="virtual"><scope>pann::Exception::Base</scope><name>~Base</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

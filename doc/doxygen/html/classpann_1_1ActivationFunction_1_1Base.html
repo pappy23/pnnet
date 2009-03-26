@@ -39,8 +39,6 @@ Inheritance diagram for pann::ActivationFunction::Base:</div>
 <a href="classpann_1_1ActivationFunction_1_1Base-members.html">List of all members.</a><table border="0" cellpadding="0" cellspacing="0">
 <tr><td></td></tr>
 <tr><td colspan="2"><br><h2>Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual unsigned&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1ActivationFunction_1_1Base.html#882ff77ecccf62b9c453243fe0adb63d">getId</a> () const =0</td></tr>
-
 <tr><td class="memItemLeft" nowrap align="right" valign="top">virtual std::string&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1ActivationFunction_1_1Base.html#110e8df25117878d2b49cc2fda35c50d">getName</a> () const =0</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">virtual <a class="el" href="namespacepann.html#4509ba95a02d59e0a1cd5127e1c55988">Float</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1ActivationFunction_1_1Base.html#6f8d64be53a32ddfe46abb3501849628">f</a> (<a class="el" href="namespacepann.html#4509ba95a02d59e0a1cd5127e1c55988">Float</a>) const =0</td></tr>
@@ -49,6 +47,9 @@ Inheritance diagram for pann::ActivationFunction::Base:</div>
 
 <tr><td colspan="2"><br><h2>Static Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">static <a class="el" href="classpann_1_1ActivationFunction_1_1Base.html">Base</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1ActivationFunction_1_1Base.html#5bce1a2f357da69638b97f6d3ef73395">Instance</a> ()</td></tr>
+
+<tr><td colspan="2"><br><h2>Friends</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">class&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1ActivationFunction_1_1Base.html#c98d07dd8f7b70e16ccb9a01abf56b9c">boost::serialization::access</a></td></tr>
 
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
@@ -76,29 +77,6 @@ All activation functions inherit <a class="el" href="classpann_1_1ActivationFunc
 
 </div>
 </div><p>
-<a class="anchor" name="882ff77ecccf62b9c453243fe0adb63d"></a><!-- doxytag: member="pann::ActivationFunction::Base::getId" ref="882ff77ecccf62b9c453243fe0adb63d" args="() const =0" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual unsigned pann::ActivationFunction::Base::getId           </td>
-          <td>(</td>
-          <td class="paramname">          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td> const<code> [pure virtual]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-
-<p>Implemented in <a class="el" href="classpann_1_1ActivationFunction_1_1Linear.html#e9dfd60ec5f8a0cd6c17ef4404add5c4">pann::ActivationFunction::Linear</a>, <a class="el" href="classpann_1_1ActivationFunction_1_1Threshold.html#e3178b402d5bad3ff7d34355415a15b9">pann::ActivationFunction::Threshold</a>, and <a class="el" href="classpann_1_1ActivationFunction_1_1TanH.html#ad4c5d74bcba084a30a5dbf8103e60bb">pann::ActivationFunction::TanH</a>.</p>
-
-<p>Referenced by <a class="el" href="Neuron_8h-source.html#l00055">pann::Neuron::printDebugInfo()</a>, <a class="el" href="Neuron_8h-source.html#l00072">pann::Neuron::save()</a>, and <a class="el" href="glwidget_8cpp-source.html#l00140">GLWidget::setInfoNeuron()</a>.</p>
-
-</div>
-</div><p>
 <a class="anchor" name="110e8df25117878d2b49cc2fda35c50d"></a><!-- doxytag: member="pann::ActivationFunction::Base::getName" ref="110e8df25117878d2b49cc2fda35c50d" args="() const =0" -->
 <div class="memitem">
 <div class="memproto">
@@ -118,7 +96,7 @@ All activation functions inherit <a class="el" href="classpann_1_1ActivationFunc
 
 <p>Implemented in <a class="el" href="classpann_1_1ActivationFunction_1_1Linear.html#789c99e6a5c5002af46b6a028fd17a74">pann::ActivationFunction::Linear</a>, <a class="el" href="classpann_1_1ActivationFunction_1_1Threshold.html#78703fca497f9efdb5f1760d3f50852d">pann::ActivationFunction::Threshold</a>, and <a class="el" href="classpann_1_1ActivationFunction_1_1TanH.html#4cab8e9156979208d43bb42dbd3e2bef">pann::ActivationFunction::TanH</a>.</p>
 
-<p>Referenced by <a class="el" href="glwidget_8cpp-source.html#l00140">GLWidget::setInfoNeuron()</a>.</p>
+<p>Referenced by <a class="el" href="glwidget_8cpp-source.html#l00141">GLWidget::setInfoNeuron()</a>.</p>
 
 </div>
 </div><p>
@@ -141,6 +119,8 @@ All activation functions inherit <a class="el" href="classpann_1_1ActivationFunc
 <p>
 
 <p>Implemented in <a class="el" href="classpann_1_1ActivationFunction_1_1Linear.html#7c10cdc08b0bbbb26b68a55c249da4c7">pann::ActivationFunction::Linear</a>, <a class="el" href="classpann_1_1ActivationFunction_1_1Threshold.html#b5c50e74b8f93770f466274f1ebc0fb0">pann::ActivationFunction::Threshold</a>, and <a class="el" href="classpann_1_1ActivationFunction_1_1TanH.html#55414f73736900fc25446ac7bbd66b81">pann::ActivationFunction::TanH</a>.</p>
+
+<p>Referenced by <a class="el" href="Neuron_8cpp-source.html#l00009">pann::Neuron::Neuron()</a>, and <a class="el" href="Runner_8cpp-source.html#l00090">pann::FeedforwardPropagationRunner::run()</a>.</p>
 
 </div>
 </div><p>
@@ -166,10 +146,30 @@ All activation functions inherit <a class="el" href="classpann_1_1ActivationFunc
 
 </div>
 </div><p>
-<hr>The documentation for this class was generated from the following file:<ul>
-<li>pann/trunk/src/Core/<a class="el" href="ActivationFunction_8h-source.html">ActivationFunction.h</a></ul>
+<hr><h2>Friends And Related Function Documentation</h2>
+<a class="anchor" name="c98d07dd8f7b70e16ccb9a01abf56b9c"></a><!-- doxytag: member="pann::ActivationFunction::Base::boost::serialization::access" ref="c98d07dd8f7b70e16ccb9a01abf56b9c" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">friend class boost::serialization::access<code> [friend]</code>          </td>
+        </tr>
+      </table>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sun Mar 22 11:32:23 2009 for pann by&nbsp;
+<div class="memdoc">
+
+<p>
+
+<p>Reimplemented in <a class="el" href="classpann_1_1ActivationFunction_1_1Linear.html#c98d07dd8f7b70e16ccb9a01abf56b9c">pann::ActivationFunction::Linear</a>, <a class="el" href="classpann_1_1ActivationFunction_1_1Threshold.html#c98d07dd8f7b70e16ccb9a01abf56b9c">pann::ActivationFunction::Threshold</a>, and <a class="el" href="classpann_1_1ActivationFunction_1_1TanH.html#c98d07dd8f7b70e16ccb9a01abf56b9c">pann::ActivationFunction::TanH</a>.</p>
+
+<p>Definition at line <a class="el" href="ActivationFunction_8h-source.html#l00036">36</a> of file <a class="el" href="ActivationFunction_8h-source.html">ActivationFunction.h</a>.</p>
+
+</div>
+</div><p>
+<hr>The documentation for this class was generated from the following file:<ul>
+<li>pann/trunk/src/pann/Core/<a class="el" href="ActivationFunction_8h-source.html">ActivationFunction.h</a></ul>
+</div>
+<hr size="1"><address style="text-align: right;"><small>Generated on Thu Mar 26 21:16:03 2009 for pann by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

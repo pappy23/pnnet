@@ -70,7 +70,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Utils/pann_viewer/window.h" line="24" bodyfile="/home/booble/pann/trunk/src/Utils/pann_viewer/window.cpp" bodystart="86" bodyend="563"/>
+        <location file="/home/booble/pann/trunk/src/Utils/pann_viewer/window.h" line="24" bodyfile="/home/booble/pann/trunk/src/Utils/pann_viewer/window.cpp" bodystart="38" bodyend="41"/>
+        <references refid="namespacepann_12dda3d8a0fa21b478ba4f08d6aa187d5" compoundref="Moo_8cpp" startline="9" endline="457">pann::moo</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -78,50 +79,52 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="375">
+      <node id="359">
         <label>Window</label>
         <link refid="classWindow"/>
-        <childnode refid="376" relation="usage">
+        <childnode refid="360" relation="usage">
           <edgelabel>glWidget</edgelabel>
         </childnode>
       </node>
-      <node id="378">
+      <node id="362">
         <label>pann::Object</label>
         <link refid="classpann_1_1Object"/>
       </node>
-      <node id="379">
+      <node id="363">
         <label>pann::NetCache</label>
         <link refid="classpann_1_1NetCache"/>
-        <childnode refid="380" relation="public-inheritance">
+        <childnode refid="364" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="381">
-        <label>pann::LearningHint::Base</label>
-        <link refid="classpann_1_1LearningHint_1_1Base"/>
-      </node>
-      <node id="377">
+      <node id="361">
         <label>pann::Net</label>
         <link refid="classpann_1_1Net"/>
-        <childnode refid="378" relation="public-inheritance">
+        <childnode refid="362" relation="public-inheritance">
         </childnode>
-        <childnode refid="379" relation="usage">
+        <childnode refid="363" relation="usage">
           <edgelabel>cache</edgelabel>
         </childnode>
-        <childnode refid="381" relation="usage">
+        <childnode refid="365" relation="usage">
           <edgelabel>learningHint</edgelabel>
         </childnode>
       </node>
-      <node id="376">
+      <node id="360">
         <label>GLWidget</label>
         <link refid="classGLWidget"/>
-        <childnode refid="377" relation="usage">
+        <childnode refid="361" relation="usage">
           <edgelabel>p_net</edgelabel>
         </childnode>
       </node>
-      <node id="380">
+      <node id="364">
         <label>pann::Cache</label>
         <link refid="classpann_1_1Cache"/>
-        <childnode refid="378" relation="public-inheritance">
+        <childnode refid="362" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="365">
+        <label>pann::Attributes</label>
+        <link refid="classpann_1_1Attributes"/>
+        <childnode refid="362" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>

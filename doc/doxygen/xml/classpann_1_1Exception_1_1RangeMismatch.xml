@@ -4,43 +4,92 @@
     <compoundname>pann::Exception::RangeMismatch</compoundname>
     <basecompoundref refid="classpann_1_1Exception_1_1Base" prot="public" virt="non-virtual">pann::Exception::Base</basecompoundref>
     <includes refid="Exception_8h" local="no">Exception.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classpann_1_1Exception_1_1RangeMismatch_17eff1ff62a54ce4be6f4bae6dc330f47" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>pann::Exception::RangeMismatch::RangeMismatch</definition>
+        <argsstring>()</argsstring>
+        <name>RangeMismatch</name>
+        <exceptions> throw ()</exceptions>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/pann/Core/Exception.h" line="96" bodyfile="/home/booble/pann/trunk/src/pann/Core/Exception.h" bodystart="96" bodyend="96"/>
+      </memberdef>
+      <memberdef kind="function" id="classpann_1_1Exception_1_1RangeMismatch_1e652e31cbcc3ba8f38ebf592f7eb6111" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>pann::Exception::RangeMismatch::RangeMismatch</definition>
+        <argsstring>(const RangeMismatch &amp;_rvalue)</argsstring>
+        <name>RangeMismatch</name>
+        <param>
+          <type>const <ref refid="classpann_1_1Exception_1_1RangeMismatch" kindref="compound">RangeMismatch</ref> &amp;</type>
+          <declname>_rvalue</declname>
+        </param>
+        <exceptions> throw ()</exceptions>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/pann/Core/Exception.h" line="97" bodyfile="/home/booble/pann/trunk/src/pann/Core/Exception.h" bodystart="97" bodyend="97"/>
+      </memberdef>
+      <memberdef kind="function" id="classpann_1_1Exception_1_1RangeMismatch_1b5288403f97579f5148a2fea19db73e3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual pann::Exception::RangeMismatch::~RangeMismatch</definition>
+        <argsstring>()</argsstring>
+        <name>~RangeMismatch</name>
+        <exceptions> throw ()</exceptions>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/pann/Core/Exception.h" line="98" bodyfile="/home/booble/pann/trunk/src/pann/Core/Exception.h" bodystart="98" bodyend="98"/>
+      </memberdef>
+      </sectiondef>
     <briefdescription>
 <para>Argument out of range. </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="329">
+      <node id="319">
         <label>pann::Exception::RangeMismatch</label>
         <link refid="classpann_1_1Exception_1_1RangeMismatch"/>
-        <childnode refid="330" relation="public-inheritance">
+        <childnode refid="320" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="330">
+      <node id="320">
         <label>pann::Exception::Base</label>
         <link refid="classpann_1_1Exception_1_1Base"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="331">
+      <node id="321">
         <label>pann::Exception::RangeMismatch</label>
         <link refid="classpann_1_1Exception_1_1RangeMismatch"/>
-        <childnode refid="332" relation="public-inheritance">
+        <childnode refid="322" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="332">
+      <node id="322">
         <label>pann::Exception::Base</label>
         <link refid="classpann_1_1Exception_1_1Base"/>
       </node>
     </collaborationgraph>
-    <location file="/home/booble/pann/trunk/src/Core/Exception.h" line="70" bodyfile="/home/booble/pann/trunk/src/Core/Exception.h" bodystart="70" bodyend="70"/>
+    <location file="/home/booble/pann/trunk/src/pann/Core/Exception.h" line="94" bodyfile="/home/booble/pann/trunk/src/pann/Core/Exception.h" bodystart="93" bodyend="99"/>
     <listofallmembers>
       <member refid="classpann_1_1Exception_1_1Base_129e2607d6a8c7dc15ed6ed3cb92d3ece" prot="public" virt="non-virtual"><scope>pann::Exception::RangeMismatch</scope><name>Base</name></member>
-      <member refid="classpann_1_1Exception_1_1Base_1659925e8afcb384bc88b2f5b9802e052" prot="public" virt="non-virtual"><scope>pann::Exception::RangeMismatch</scope><name>Base</name></member>
-      <member refid="classpann_1_1Exception_1_1Base_1ad82b3455115377053fa357b70ac7978" prot="public" virt="virtual"><scope>pann::Exception::RangeMismatch</scope><name>getText</name></member>
-      <member refid="classpann_1_1Exception_1_1Base_139525dbb840db0f93d66bb6cfa0f3089" prot="public" virt="non-virtual"><scope>pann::Exception::RangeMismatch</scope><name>operator&lt;&lt;</name></member>
-      <member refid="classpann_1_1Exception_1_1Base_1e73d382790d755edfec2289abe12a626" prot="public" virt="non-virtual"><scope>pann::Exception::RangeMismatch</scope><name>text</name></member>
+      <member refid="classpann_1_1Exception_1_1Base_184c37510b2617297090fb7bbd2520fc8" prot="public" virt="non-virtual"><scope>pann::Exception::RangeMismatch</scope><name>Base</name></member>
+      <member refid="classpann_1_1Exception_1_1RangeMismatch_17eff1ff62a54ce4be6f4bae6dc330f47" prot="public" virt="non-virtual"><scope>pann::Exception::RangeMismatch</scope><name>RangeMismatch</name></member>
+      <member refid="classpann_1_1Exception_1_1RangeMismatch_1e652e31cbcc3ba8f38ebf592f7eb6111" prot="public" virt="non-virtual"><scope>pann::Exception::RangeMismatch</scope><name>RangeMismatch</name></member>
       <member refid="classpann_1_1Exception_1_1Base_13795b9ad6996ac80e80e4e8179b733ab" prot="protected" virt="non-virtual"><scope>pann::Exception::RangeMismatch</scope><name>textStream</name></member>
-      <member refid="classpann_1_1Exception_1_1Base_12b12cae42f85a5d694111d2bb1de315f" prot="public" virt="virtual"><scope>pann::Exception::RangeMismatch</scope><name>~Base</name></member>
+      <member refid="classpann_1_1Exception_1_1Base_1814afcfe425f55f02e39f1fea05bcbe9" prot="public" virt="virtual"><scope>pann::Exception::RangeMismatch</scope><name>what</name></member>
+      <member refid="classpann_1_1Exception_1_1Base_10ae22e27956edb603976595cda354b7b" prot="public" virt="virtual"><scope>pann::Exception::RangeMismatch</scope><name>~Base</name></member>
+      <member refid="classpann_1_1Exception_1_1RangeMismatch_1b5288403f97579f5148a2fea19db73e3" prot="public" virt="virtual"><scope>pann::Exception::RangeMismatch</scope><name>~RangeMismatch</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

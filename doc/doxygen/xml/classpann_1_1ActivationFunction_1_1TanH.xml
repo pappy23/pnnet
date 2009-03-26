@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/ActivationFunction.h" line="131" bodyfile="/home/booble/pann/trunk/src/Core/ActivationFunction.h" bodystart="131" bodyend="-1"/>
+        <location file="/home/booble/pann/trunk/src/pann/Core/ActivationFunction.h" line="151" bodyfile="/home/booble/pann/trunk/src/pann/Core/ActivationFunction.h" bodystart="151" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-attrib">
@@ -33,8 +33,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/ActivationFunction.h" line="134" bodyfile="/home/booble/pann/trunk/src/Core/ActivationFunction.h" bodystart="134" bodyend="-1"/>
-        <referencedby refid="classpann_1_1ActivationFunction_1_1TanH_155414f73736900fc25446ac7bbd66b81" compoundref="ActivationFunction_8h" startline="155" endline="158">f</referencedby>
+        <location file="/home/booble/pann/trunk/src/pann/Core/ActivationFunction.h" line="154" bodyfile="/home/booble/pann/trunk/src/pann/Core/ActivationFunction.h" bodystart="154" bodyend="-1"/>
+        <referencedby refid="classpann_1_1ActivationFunction_1_1TanH_155414f73736900fc25446ac7bbd66b81" compoundref="ActivationFunction_8h" startline="174" endline="177">f</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classpann_1_1ActivationFunction_1_1TanH_1ad78b3bdbe04010bc7da87e4a748ddf2" prot="public" static="yes" mutable="no">
         <type>const <ref refid="namespacepann_14509ba95a02d59e0a1cd5127e1c55988" kindref="member">Float</ref></type>
@@ -48,8 +48,24 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/ActivationFunction.h" line="135" bodyfile="/home/booble/pann/trunk/src/Core/ActivationFunction.h" bodystart="135" bodyend="-1"/>
-        <referencedby refid="classpann_1_1ActivationFunction_1_1TanH_155414f73736900fc25446ac7bbd66b81" compoundref="ActivationFunction_8h" startline="155" endline="158">f</referencedby>
+        <location file="/home/booble/pann/trunk/src/pann/Core/ActivationFunction.h" line="155" bodyfile="/home/booble/pann/trunk/src/pann/Core/ActivationFunction.h" bodystart="155" bodyend="-1"/>
+        <referencedby refid="classpann_1_1ActivationFunction_1_1TanH_155414f73736900fc25446ac7bbd66b81" compoundref="ActivationFunction_8h" startline="174" endline="177">f</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classpann_1_1ActivationFunction_1_1TanH_1c98d07dd8f7b70e16ccb9a01abf56b9c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class boost::serialization::access</definition>
+        <argsstring></argsstring>
+        <name>boost::serialization::access</name>
+        <reimplements refid="classpann_1_1ActivationFunction_1_1Base_1c98d07dd8f7b70e16ccb9a01abf56b9c">boost::serialization::access</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/pann/Core/ActivationFunction.h" line="186" bodyfile="/home/booble/pann/trunk/src/pann/Core/ActivationFunction.h" bodystart="186" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -64,8 +80,36 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/ActivationFunction.h" line="138" bodyfile="/home/booble/pann/trunk/src/Core/ActivationFunction.h" bodystart="138" bodyend="138"/>
-        <referencedby refid="classpann_1_1ActivationFunction_1_1TanH_1f0d5c84687ea2693631c44ee1e4448fd" compoundref="ActivationFunction_8h" startline="144" endline="150">Instance</referencedby>
+        <location file="/home/booble/pann/trunk/src/pann/Core/ActivationFunction.h" line="158" bodyfile="/home/booble/pann/trunk/src/pann/Core/ActivationFunction.h" bodystart="158" bodyend="158"/>
+        <referencedby refid="classpann_1_1ActivationFunction_1_1TanH_1f0d5c84687ea2693631c44ee1e4448fd" compoundref="ActivationFunction_8h" startline="164" endline="170">Instance</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classpann_1_1ActivationFunction_1_1TanH_14642d0bed60986492d6f95d1bc97aeb3" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class</type>
+            <declname>Archive</declname>
+            <defname>Archive</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void pann::ActivationFunction::TanH::serialize</definition>
+        <argsstring>(Archive &amp;ar, const unsigned int version)</argsstring>
+        <name>serialize</name>
+        <param>
+          <type>Archive &amp;</type>
+          <declname>ar</declname>
+        </param>
+        <param>
+          <type>const unsigned int</type>
+          <declname>version</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/pann/Core/ActivationFunction.h" line="189" bodyfile="/home/booble/pann/trunk/src/pann/Core/ActivationFunction.h" bodystart="188" bodyend="193"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -80,21 +124,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/ActivationFunction.h" line="141" bodyfile="/home/booble/pann/trunk/src/Core/ActivationFunction.h" bodystart="141" bodyend="141"/>
-      </memberdef>
-      <memberdef kind="function" id="classpann_1_1ActivationFunction_1_1TanH_1ad4c5d74bcba084a30a5dbf8103e60bb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>unsigned</type>
-        <definition>virtual unsigned pann::ActivationFunction::TanH::getId</definition>
-        <argsstring>() const </argsstring>
-        <name>getId</name>
-        <reimplements refid="classpann_1_1ActivationFunction_1_1Base_1882ff77ecccf62b9c453243fe0adb63d">getId</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/ActivationFunction.h" line="152" bodyfile="/home/booble/pann/trunk/src/Core/ActivationFunction.h" bodystart="152" bodyend="152"/>
+        <location file="/home/booble/pann/trunk/src/pann/Core/ActivationFunction.h" line="161" bodyfile="/home/booble/pann/trunk/src/pann/Core/ActivationFunction.h" bodystart="161" bodyend="161"/>
       </memberdef>
       <memberdef kind="function" id="classpann_1_1ActivationFunction_1_1TanH_14cab8e9156979208d43bb42dbd3e2bef" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>std::string</type>
@@ -108,7 +138,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/ActivationFunction.h" line="153" bodyfile="/home/booble/pann/trunk/src/Core/ActivationFunction.h" bodystart="153" bodyend="153"/>
+        <location file="/home/booble/pann/trunk/src/pann/Core/ActivationFunction.h" line="172" bodyfile="/home/booble/pann/trunk/src/pann/Core/ActivationFunction.h" bodystart="172" bodyend="172"/>
       </memberdef>
       <memberdef kind="function" id="classpann_1_1ActivationFunction_1_1TanH_155414f73736900fc25446ac7bbd66b81" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="namespacepann_14509ba95a02d59e0a1cd5127e1c55988" kindref="member">Float</ref></type>
@@ -126,9 +156,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/ActivationFunction.h" line="156" bodyfile="/home/booble/pann/trunk/src/Core/ActivationFunction.h" bodystart="155" bodyend="158"/>
-        <references refid="classpann_1_1ActivationFunction_1_1TanH_1c7e768b6f7fa190e08716a77a097dbd1" compoundref="ActivationFunction_8h" startline="134">a</references>
-        <references refid="classpann_1_1ActivationFunction_1_1TanH_1ad78b3bdbe04010bc7da87e4a748ddf2" compoundref="ActivationFunction_8h" startline="135">b</references>
+        <location file="/home/booble/pann/trunk/src/pann/Core/ActivationFunction.h" line="175" bodyfile="/home/booble/pann/trunk/src/pann/Core/ActivationFunction.h" bodystart="174" bodyend="177"/>
+        <references refid="classpann_1_1ActivationFunction_1_1TanH_1c7e768b6f7fa190e08716a77a097dbd1" compoundref="ActivationFunction_8h" startline="154">a</references>
+        <references refid="classpann_1_1ActivationFunction_1_1TanH_1ad78b3bdbe04010bc7da87e4a748ddf2" compoundref="ActivationFunction_8h" startline="155">b</references>
       </memberdef>
       <memberdef kind="function" id="classpann_1_1ActivationFunction_1_1TanH_123cd96f9359967ea0c7bfe4b0ee09598" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="namespacepann_14509ba95a02d59e0a1cd5127e1c55988" kindref="member">Float</ref></type>
@@ -145,7 +175,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/ActivationFunction.h" line="161" bodyfile="/home/booble/pann/trunk/src/Core/ActivationFunction.h" bodystart="160" bodyend="163"/>
+        <location file="/home/booble/pann/trunk/src/pann/Core/ActivationFunction.h" line="180" bodyfile="/home/booble/pann/trunk/src/pann/Core/ActivationFunction.h" bodystart="179" bodyend="182"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -161,52 +191,52 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/ActivationFunction.h" line="145" bodyfile="/home/booble/pann/trunk/src/Core/ActivationFunction.h" bodystart="144" bodyend="150"/>
-        <references refid="classpann_1_1ActivationFunction_1_1TanH_134e21fc187d57fcf395bf87b2337d187" compoundref="ActivationFunction_8h" startline="138" endline="138">TanH</references>
-        <referencedby refid="namespacepann_1_1ActivationFunction_12287da8b90c9142021227b425e5085f9" compoundref="ActivationFunction_8cpp" startline="21" endline="37">pann::ActivationFunction::getById</referencedby>
+        <location file="/home/booble/pann/trunk/src/pann/Core/ActivationFunction.h" line="165" bodyfile="/home/booble/pann/trunk/src/pann/Core/ActivationFunction.h" bodystart="164" bodyend="170"/>
+        <references refid="classpann_1_1ActivationFunction_1_1TanH_134e21fc187d57fcf395bf87b2337d187" compoundref="ActivationFunction_8h" startline="158" endline="158">TanH</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-<para>Hyperbolic tangent function id = 3 y = a*tanh(b*x) </para>    </detaileddescription>
+<para>Hyperbolic tangent function y = a*tanh(b*x) </para>    </detaileddescription>
     <inheritancegraph>
-      <node id="344">
+      <node id="334">
         <label>pann::ActivationFunction::TanH</label>
         <link refid="classpann_1_1ActivationFunction_1_1TanH"/>
-        <childnode refid="345" relation="public-inheritance">
+        <childnode refid="335" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="345">
+      <node id="335">
         <label>pann::ActivationFunction::Base</label>
         <link refid="classpann_1_1ActivationFunction_1_1Base"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="346">
+      <node id="336">
         <label>pann::ActivationFunction::TanH</label>
         <link refid="classpann_1_1ActivationFunction_1_1TanH"/>
-        <childnode refid="347" relation="public-inheritance">
+        <childnode refid="337" relation="public-inheritance">
         </childnode>
-        <childnode refid="347" relation="usage">
+        <childnode refid="337" relation="usage">
           <edgelabel>self</edgelabel>
         </childnode>
       </node>
-      <node id="347">
+      <node id="337">
         <label>pann::ActivationFunction::Base</label>
         <link refid="classpann_1_1ActivationFunction_1_1Base"/>
       </node>
     </collaborationgraph>
-    <location file="/home/booble/pann/trunk/src/Core/ActivationFunction.h" line="129" bodyfile="/home/booble/pann/trunk/src/Core/ActivationFunction.h" bodystart="128" bodyend="164"/>
+    <location file="/home/booble/pann/trunk/src/pann/Core/ActivationFunction.h" line="149" bodyfile="/home/booble/pann/trunk/src/pann/Core/ActivationFunction.h" bodystart="148" bodyend="194"/>
     <listofallmembers>
       <member refid="classpann_1_1ActivationFunction_1_1TanH_1c7e768b6f7fa190e08716a77a097dbd1" prot="public" virt="non-virtual"><scope>pann::ActivationFunction::TanH</scope><name>a</name></member>
       <member refid="classpann_1_1ActivationFunction_1_1TanH_1ad78b3bdbe04010bc7da87e4a748ddf2" prot="public" virt="non-virtual"><scope>pann::ActivationFunction::TanH</scope><name>b</name></member>
+      <member refid="classpann_1_1ActivationFunction_1_1TanH_1c98d07dd8f7b70e16ccb9a01abf56b9c" prot="public" virt="non-virtual"><scope>pann::ActivationFunction::TanH</scope><name>boost::serialization::access</name></member>
       <member refid="classpann_1_1ActivationFunction_1_1TanH_123cd96f9359967ea0c7bfe4b0ee09598" prot="public" virt="virtual"><scope>pann::ActivationFunction::TanH</scope><name>derivative</name></member>
       <member refid="classpann_1_1ActivationFunction_1_1TanH_155414f73736900fc25446ac7bbd66b81" prot="public" virt="virtual"><scope>pann::ActivationFunction::TanH</scope><name>f</name></member>
-      <member refid="classpann_1_1ActivationFunction_1_1TanH_1ad4c5d74bcba084a30a5dbf8103e60bb" prot="public" virt="virtual"><scope>pann::ActivationFunction::TanH</scope><name>getId</name></member>
       <member refid="classpann_1_1ActivationFunction_1_1TanH_14cab8e9156979208d43bb42dbd3e2bef" prot="public" virt="virtual"><scope>pann::ActivationFunction::TanH</scope><name>getName</name></member>
       <member refid="classpann_1_1ActivationFunction_1_1TanH_1f0d5c84687ea2693631c44ee1e4448fd" prot="public" virt="non-virtual"><scope>pann::ActivationFunction::TanH</scope><name>Instance</name></member>
       <member refid="classpann_1_1ActivationFunction_1_1TanH_17dad50a0e249730be0f378180bfe4e21" prot="private" virt="non-virtual"><scope>pann::ActivationFunction::TanH</scope><name>self</name></member>
+      <member refid="classpann_1_1ActivationFunction_1_1TanH_14642d0bed60986492d6f95d1bc97aeb3" prot="private" virt="non-virtual"><scope>pann::ActivationFunction::TanH</scope><name>serialize</name></member>
       <member refid="classpann_1_1ActivationFunction_1_1TanH_134e21fc187d57fcf395bf87b2337d187" prot="private" virt="non-virtual"><scope>pann::ActivationFunction::TanH</scope><name>TanH</name></member>
       <member refid="classpann_1_1ActivationFunction_1_1TanH_1e00c1612c0d3778c0202e9f364de17fd" prot="public" virt="non-virtual"><scope>pann::ActivationFunction::TanH</scope><name>~TanH</name></member>
     </listofallmembers>

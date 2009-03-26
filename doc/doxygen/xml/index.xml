@@ -1,64 +1,80 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.5.6">
   <compound refid="classA" kind="class"><name>A</name>
-    <member refid="classA_149a53415abd8f1b26235579cc805a15f" kind="variable"><name>a</name></member>
     <member refid="classA_1c98d07dd8f7b70e16ccb9a01abf56b9c" kind="friend"><name>boost::serialization::access</name></member>
+    <member refid="classA_11a592b3c31f807b534809ac7cb5c66ac" kind="function"><name>test</name></member>
     <member refid="classA_1c67ea05708b62131de07d0d0f8808ecd" kind="function"><name>serialize</name></member>
   </compound>
+  <compound refid="classAder1" kind="class"><name>Ader1</name>
+    <member refid="classAder1_1f1d07697d97ec0345b2a9de4e74a15eb" kind="variable"><name>b</name></member>
+    <member refid="classAder1_1c98d07dd8f7b70e16ccb9a01abf56b9c" kind="friend"><name>boost::serialization::access</name></member>
+    <member refid="classAder1_1850cf40119e9793c5584388a6ccb02a3" kind="function"><name>test</name></member>
+    <member refid="classAder1_1746da025b482888b941b2b26902a99f5" kind="function"><name>serialize</name></member>
+  </compound>
+  <compound refid="classAder2" kind="class"><name>Ader2</name>
+    <member refid="classAder2_1aa8b778d5d51da45dfa0b0f66c3dd9e4" kind="variable"><name>a</name></member>
+    <member refid="classAder2_1c98d07dd8f7b70e16ccb9a01abf56b9c" kind="friend"><name>boost::serialization::access</name></member>
+    <member refid="classAder2_1ded5ab13c7844a013f951c870df9576b" kind="function"><name>test</name></member>
+    <member refid="classAder2_1d135cb5af07c2014bfcc9acd02004156" kind="function"><name>serialize</name></member>
+  </compound>
+  <compound refid="classpann_1_1Attributes" kind="class"><name>pann::Attributes</name>
+    <member refid="classpann_1_1Attributes_1563b0dfe3e7a7395cde28f500e1216fc" kind="variable"><name>attributes</name></member>
+    <member refid="classpann_1_1Attributes_1c98d07dd8f7b70e16ccb9a01abf56b9c" kind="friend"><name>boost::serialization::access</name></member>
+    <member refid="classpann_1_1Attributes_187edb477721500b7f09c789c2cff935e" kind="function"><name>Attributes</name></member>
+    <member refid="classpann_1_1Attributes_13fd82bf578b4955bd969d7c643451954" kind="function"><name>~Attributes</name></member>
+    <member refid="classpann_1_1Attributes_1e201854aa854542575d4a204b3d9a831" kind="function"><name>is</name></member>
+    <member refid="classpann_1_1Attributes_18092e1414670b70fd2d2e025eb4409f0" kind="function"><name>unset</name></member>
+    <member refid="classpann_1_1Attributes_143d2625e9ff70b7ae6d8041c9b44b208" kind="function"><name>operator[]</name></member>
+    <member refid="classpann_1_1Attributes_1a99f210ecbfeb33bebdefc5b6b7a21be" kind="function"><name>operator[]</name></member>
+    <member refid="classpann_1_1Attributes_145795ecc846737d3bf21df95ea104a51" kind="function"><name>erase</name></member>
+    <member refid="classpann_1_1Attributes_1fa2f75fbbc7c17357f7f5f4a1a2a4942" kind="function"><name>serialize</name></member>
+  </compound>
   <compound refid="classpann_1_1ActivationFunction_1_1Base" kind="class"><name>pann::ActivationFunction::Base</name>
+    <member refid="classpann_1_1ActivationFunction_1_1Base_1c98d07dd8f7b70e16ccb9a01abf56b9c" kind="friend"><name>boost::serialization::access</name></member>
     <member refid="classpann_1_1ActivationFunction_1_1Base_15bce1a2f357da69638b97f6d3ef73395" kind="function"><name>Instance</name></member>
-    <member refid="classpann_1_1ActivationFunction_1_1Base_1882ff77ecccf62b9c453243fe0adb63d" kind="function"><name>getId</name></member>
     <member refid="classpann_1_1ActivationFunction_1_1Base_1110e8df25117878d2b49cc2fda35c50d" kind="function"><name>getName</name></member>
     <member refid="classpann_1_1ActivationFunction_1_1Base_16f8d64be53a32ddfe46abb3501849628" kind="function"><name>f</name></member>
     <member refid="classpann_1_1ActivationFunction_1_1Base_1eb85eeb7e4058df1b5ca45ad15745ad8" kind="function"><name>derivative</name></member>
   </compound>
-  <compound refid="classpann_1_1LearningHint_1_1Base" kind="class"><name>pann::LearningHint::Base</name>
-    <member refid="classpann_1_1LearningHint_1_1Base_1c98d07dd8f7b70e16ccb9a01abf56b9c" kind="friend"><name>boost::serialization::access</name></member>
-    <member refid="classpann_1_1LearningHint_1_1Base_15b07e8a92401b5b1eb7b8bf3df4092ef" kind="function"><name>Base</name></member>
-    <member refid="classpann_1_1LearningHint_1_1Base_14805bfc0c0280ea2e0c3aa16f4aba24a" kind="function"><name>~Base</name></member>
-    <member refid="classpann_1_1LearningHint_1_1Base_1d45edb03ed5fcfd5fec10bc768859ebf" kind="function"><name>getTypeId</name></member>
-    <member refid="classpann_1_1LearningHint_1_1Base_111cb8fd2accd56deced056a4b2ab1fed" kind="function"><name>serialize</name></member>
-  </compound>
   <compound refid="classpann_1_1Exception_1_1Base" kind="class"><name>pann::Exception::Base</name>
     <member refid="classpann_1_1Exception_1_1Base_13795b9ad6996ac80e80e4e8179b733ab" kind="variable"><name>textStream</name></member>
     <member refid="classpann_1_1Exception_1_1Base_129e2607d6a8c7dc15ed6ed3cb92d3ece" kind="function"><name>Base</name></member>
-    <member refid="classpann_1_1Exception_1_1Base_1659925e8afcb384bc88b2f5b9802e052" kind="function"><name>Base</name></member>
-    <member refid="classpann_1_1Exception_1_1Base_12b12cae42f85a5d694111d2bb1de315f" kind="function"><name>~Base</name></member>
-    <member refid="classpann_1_1Exception_1_1Base_1e73d382790d755edfec2289abe12a626" kind="function"><name>text</name></member>
-    <member refid="classpann_1_1Exception_1_1Base_139525dbb840db0f93d66bb6cfa0f3089" kind="function"><name>operator&lt;&lt;</name></member>
-    <member refid="classpann_1_1Exception_1_1Base_1ad82b3455115377053fa357b70ac7978" kind="function"><name>getText</name></member>
+    <member refid="classpann_1_1Exception_1_1Base_184c37510b2617297090fb7bbd2520fc8" kind="function"><name>Base</name></member>
+    <member refid="classpann_1_1Exception_1_1Base_10ae22e27956edb603976595cda354b7b" kind="function"><name>~Base</name></member>
+    <member refid="classpann_1_1Exception_1_1Base_1814afcfe425f55f02e39f1fea05bcbe9" kind="function"><name>what</name></member>
+    <member refid="classpann_1_1Exception_1_1Base_1bb7155278e12a8f39270a1fccc505059" kind="friend"><name>operator&lt;&lt;</name></member>
   </compound>
   <compound refid="classpann_1_1Cache" kind="class"><name>pann::Cache</name>
     <member refid="classpann_1_1Cache_1f56a02e0a8a5a3870cbc9bcdebc6bac3" kind="variable"><name>coherent</name></member>
     <member refid="classpann_1_1Cache_13d6ae9eb1692dc039ae0189cb89695cd" kind="function"><name>Cache</name></member>
-    <member refid="classpann_1_1Cache_1873c83b4eccabedace0e37902e65c5b1" kind="function"><name>~Cache</name></member>
+    <member refid="classpann_1_1Cache_1105c56226c726053bd981895b3c0bc52" kind="function"><name>~Cache</name></member>
     <member refid="classpann_1_1Cache_13623bbb1e91cfa41440cab5840312c5a" kind="function"><name>flush</name></member>
     <member refid="classpann_1_1Cache_12f52dab8b0db5569fc22847ff332345a" kind="function"><name>touch</name></member>
     <member refid="classpann_1_1Cache_12cb636d0dcacfc734a83e665bd1c6b69" kind="function"><name>fixed</name></member>
     <member refid="classpann_1_1Cache_1d3b297e95711bf2b4e57a6437636bf7e" kind="function"><name>isOk</name></member>
-    <member refid="classpann_1_1Cache_16a3932a817f186bb9c73e6821608f87f" kind="function"><name>printDebugInfo</name></member>
-  </compound>
-  <compound refid="classpann_1_1Color" kind="class"><name>pann::Color</name>
-    <member refid="classpann_1_1Color_155c36f51e688aa86f292d23962a3fa33" kind="variable"><name>r</name></member>
-    <member refid="classpann_1_1Color_1b7e0e0306a50ce1adb53434303dfce06" kind="variable"><name>g</name></member>
-    <member refid="classpann_1_1Color_18f6daae84417efbf6798839840e4fd45" kind="variable"><name>b</name></member>
   </compound>
   <compound refid="classpann_1_1Exception_1_1ElementExists" kind="class"><name>pann::Exception::ElementExists</name>
+    <member refid="classpann_1_1Exception_1_1ElementExists_1332ff039b90661dbcb780d0443233c47" kind="function"><name>ElementExists</name></member>
+    <member refid="classpann_1_1Exception_1_1ElementExists_1939493ccb5270fd68aa388c999780f48" kind="function"><name>ElementExists</name></member>
+    <member refid="classpann_1_1Exception_1_1ElementExists_13d3cb4626c8a84e95fa2afc981519564" kind="function"><name>~ElementExists</name></member>
   </compound>
   <compound refid="classpann_1_1FeedforwardPropagationRunner" kind="class"><name>pann::FeedforwardPropagationRunner</name>
     <member refid="classpann_1_1FeedforwardPropagationRunner_1591a48a971fa079897e18e619b6e006f" kind="variable"><name>self</name></member>
     <member refid="classpann_1_1FeedforwardPropagationRunner_1b776e7d270111190a545742da9fca0c3" kind="function"><name>FeedforwardPropagationRunner</name></member>
     <member refid="classpann_1_1FeedforwardPropagationRunner_1379733952d23b9d57ee03f72f7229655" kind="function"><name>~FeedforwardPropagationRunner</name></member>
-    <member refid="classpann_1_1FeedforwardPropagationRunner_1a4fd0bba255e74c8649367744f6b7a24" kind="function"><name>run</name></member>
-    <member refid="classpann_1_1FeedforwardPropagationRunner_18e780a63e02d60e363d3baa871c2cced" kind="function"><name>getDirection</name></member>
-    <member refid="classpann_1_1FeedforwardPropagationRunner_108cabe3623c089536ada6c6ca8e0a0a5" kind="function"><name>Instance</name></member>
+    <member refid="classpann_1_1FeedforwardPropagationRunner_19eb4f177f66db617505317f74a895845" kind="function"><name>run</name></member>
+    <member refid="classpann_1_1FeedforwardPropagationRunner_145a573a29d8c8c74eeb2de8b89a8ee49" kind="function"><name>getDirection</name></member>
+    <member refid="classpann_1_1FeedforwardPropagationRunner_155d04987bb6f63b7f1743f2882ee4858" kind="function"><name>Instance</name></member>
   </compound>
   <compound refid="classpann_1_1Exception_1_1FilesystemError" kind="class"><name>pann::Exception::FilesystemError</name>
+    <member refid="classpann_1_1Exception_1_1FilesystemError_1efbd2f79ca600f1846c9241784448855" kind="function"><name>FilesystemError</name></member>
+    <member refid="classpann_1_1Exception_1_1FilesystemError_10093755faf4e808668a588ea8ad1360f" kind="function"><name>FilesystemError</name></member>
+    <member refid="classpann_1_1Exception_1_1FilesystemError_1de1ce500722821be1a9c1e1bb6bd43a8" kind="function"><name>~FilesystemError</name></member>
   </compound>
   <compound refid="classGLWidget" kind="class"><name>GLWidget</name>
     <member refid="classGLWidget_1e9cfb3a5018251dacc5e6ee1127404a7" kind="variable"><name>p_net</name></member>
     <member refid="classGLWidget_16fa651499e538e3590c90f3410178396" kind="variable"><name>info_label</name></member>
-    <member refid="classGLWidget_10eac0310537c6e24b45ca6db95615129" kind="variable"><name>coords</name></member>
+    <member refid="classGLWidget_1ece6c9b82c3e9cb8a388ed980e16260e" kind="variable"><name>coords</name></member>
     <member refid="classGLWidget_1603babfc4347b1d856742d2088e48427" kind="variable"><name>xRot</name></member>
     <member refid="classGLWidget_19d7e08316aa483c447ef0fc0a03875c3" kind="variable"><name>yRot</name></member>
     <member refid="classGLWidget_142f34356f5f02cab779821174a1a9700" kind="variable"><name>zRot</name></member>
@@ -103,9 +119,10 @@
   </compound>
   <compound refid="classpann_1_1ActivationFunction_1_1Linear" kind="class"><name>pann::ActivationFunction::Linear</name>
     <member refid="classpann_1_1ActivationFunction_1_1Linear_1cea52657f802cdd1431e6a6a96602a28" kind="variable"><name>self</name></member>
+    <member refid="classpann_1_1ActivationFunction_1_1Linear_1c98d07dd8f7b70e16ccb9a01abf56b9c" kind="friend"><name>boost::serialization::access</name></member>
     <member refid="classpann_1_1ActivationFunction_1_1Linear_1079ba5cd17eb672ba923aea2b8b7c3d3" kind="function"><name>Linear</name></member>
+    <member refid="classpann_1_1ActivationFunction_1_1Linear_1ab4b1ec65998fb28602d84a53fc0edec" kind="function"><name>serialize</name></member>
     <member refid="classpann_1_1ActivationFunction_1_1Linear_14c3ae3c29c9c9b3213356ca1846220e3" kind="function"><name>~Linear</name></member>
-    <member refid="classpann_1_1ActivationFunction_1_1Linear_1e9dfd60ec5f8a0cd6c17ef4404add5c4" kind="function"><name>getId</name></member>
     <member refid="classpann_1_1ActivationFunction_1_1Linear_1789c99e6a5c5002af46b6a028fd17a74" kind="function"><name>getName</name></member>
     <member refid="classpann_1_1ActivationFunction_1_1Linear_17c10cdc08b0bbbb26b68a55c249da4c7" kind="function"><name>f</name></member>
     <member refid="classpann_1_1ActivationFunction_1_1Linear_1da93c5387a4f54d5a44ba57007382b14" kind="function"><name>derivative</name></member>
@@ -115,39 +132,45 @@
     <member refid="classpann_1_1Link_1843c5a79ffd161b67e1770f65eabf055" kind="enum"><name>Direction</name></member>
     <member refid="classpann_1_1Link_1843c5a79ffd161b67e1770f65eabf0556b810850c72ab26c68965db2424df30c" kind="enumvalue"><name>in</name></member>
     <member refid="classpann_1_1Link_1843c5a79ffd161b67e1770f65eabf0550735525ef5d9a47b94c4597e7c27e522" kind="enumvalue"><name>out</name></member>
-    <member refid="classpann_1_1Link_17126b05c26be8b9166fa86b894b1cdb0" kind="variable"><name>to</name></member>
+    <member refid="classpann_1_1Link_12db2a65a456ac419da7cae6c8d4d8399" kind="variable"><name>to</name></member>
     <member refid="classpann_1_1Link_1e3c1cbea824e8177a35201a6da1c0da2" kind="variable"><name>direction</name></member>
-    <member refid="classpann_1_1Link_1e5eed84c9cd7072a8361e6fd6f1265c6" kind="variable"><name>w</name></member>
+    <member refid="classpann_1_1Link_1e9b45216441647effa01fc5223d34a14" kind="variable"><name>w</name></member>
     <member refid="classpann_1_1Link_1c4082679e8fc85a6ef441b6e567493e9" kind="variable"><name>latency</name></member>
-    <member refid="classpann_1_1Link_141044402a668f43f06553d7da750df61" kind="function"><name>Link</name></member>
+    <member refid="classpann_1_1Link_1c98d07dd8f7b70e16ccb9a01abf56b9c" kind="friend"><name>boost::serialization::access</name></member>
+    <member refid="classpann_1_1Link_16fe6e2f0189674bc72457577df964869" kind="function"><name>Link</name></member>
     <member refid="classpann_1_1Link_1d06a124eeddb33744befe239894399bc" kind="function"><name>~Link</name></member>
-    <member refid="classpann_1_1Link_118a70d88ffa9fe441820c2d1c9d83579" kind="function"><name>getToIter</name></member>
-    <member refid="classpann_1_1Link_134704a4638bea049b149dcafdcfe93d3" kind="function"><name>getToIter</name></member>
-    <member refid="classpann_1_1Link_1eab757727bb6ca0cad8edb46500c3897" kind="function"><name>getDirection</name></member>
+    <member refid="classpann_1_1Link_17989e38d6778c229f4db756fe116cbd6" kind="function"><name>getTo</name></member>
+    <member refid="classpann_1_1Link_1b6ca60ca92361423e8ba3b0f52a0374f" kind="function"><name>getTo</name></member>
+    <member refid="classpann_1_1Link_187348d85a5295f03b9851b2da57800aa" kind="function"><name>getDirection</name></member>
     <member refid="classpann_1_1Link_1282df22476d1056ecd371a2357f227c8" kind="function"><name>getLatency</name></member>
-    <member refid="classpann_1_1Link_10da0b96aceaf5361b289cded06778d65" kind="function"><name>getWeightIter</name></member>
-    <member refid="classpann_1_1Link_11b0611d84a5fd7632fdaffac2b19b2a9" kind="function"><name>printDebugInfo</name></member>
+    <member refid="classpann_1_1Link_1107ab03c0bd18afc8eacb1077cbb47c5" kind="function"><name>getWeight</name></member>
+    <member refid="classpann_1_1Link_1f3e85e337a19c68fc43838815fcff900" kind="function"><name>Link</name></member>
+    <member refid="classpann_1_1Link_17aee4460f2f6f3e09d3e7d457c56578c" kind="function"><name>serialize</name></member>
   </compound>
-  <compound refid="classpann_1_1LMS" kind="class"><name>pann::LMS</name>
-    <member refid="classpann_1_1LMS_120595ff86bcd64ca2945f9ba440d978a" kind="function"><name>init</name></member>
-    <member refid="classpann_1_1LMS_1e618a8632489d1a7d19ec742fb37ca93" kind="function"><name>train</name></member>
+  <compound refid="classpann_1_1Lms" kind="class"><name>pann::Lms</name>
+    <member refid="classpann_1_1Lms_143d29f5de0fbc3634489f1fd0429a828" kind="function"><name>init</name></member>
+    <member refid="classpann_1_1Lms_1879db9e61cab0e90c8bc6841442c2ca7" kind="function"><name>train</name></member>
   </compound>
-  <compound refid="classpann_1_1LearningHint_1_1LmsNet" kind="class"><name>pann::LearningHint::LmsNet</name>
-    <member refid="classpann_1_1LearningHint_1_1LmsNet_19af70d771c8f6ae5c645d596ff461724" kind="variable"><name>learningRate</name></member>
-    <member refid="classpann_1_1LearningHint_1_1LmsNet_1c98d07dd8f7b70e16ccb9a01abf56b9c" kind="friend"><name>boost::serialization::access</name></member>
-    <member refid="classpann_1_1LearningHint_1_1LmsNet_10921cecf27e8a224ba4ef0954432ec0a" kind="function"><name>LmsNet</name></member>
-    <member refid="classpann_1_1LearningHint_1_1LmsNet_1328405f016bf4cfbf5a3e54493d1fc33" kind="function"><name>~LmsNet</name></member>
-    <member refid="classpann_1_1LearningHint_1_1LmsNet_13a173a62fe76d98825ddbdd6f22a6300" kind="function"><name>getTypeId</name></member>
-    <member refid="classpann_1_1LearningHint_1_1LmsNet_16f5ede450a9851f27e3ac23dc9571ea9" kind="function"><name>serialize</name></member>
+  <compound refid="classpann_1_1LmsBackpropagationRunner" kind="class"><name>pann::LmsBackpropagationRunner</name>
+    <member refid="classpann_1_1LmsBackpropagationRunner_19b09bf1bbe8d04834c0ad4ae336eafb7" kind="variable"><name>self</name></member>
+    <member refid="classpann_1_1LmsBackpropagationRunner_1965e6fb890cdcf923cc74e184fcc74b2" kind="function"><name>LmsBackpropagationRunner</name></member>
+    <member refid="classpann_1_1LmsBackpropagationRunner_11068b72c5b8a1391636053b7e36b2f8a" kind="function"><name>~LmsBackpropagationRunner</name></member>
+    <member refid="classpann_1_1LmsBackpropagationRunner_1e32c86eb1c9535a49220bdb984da51d7" kind="function"><name>run</name></member>
+    <member refid="classpann_1_1LmsBackpropagationRunner_1142fb4e60bdd8e25fe569a4076119b08" kind="function"><name>getDirection</name></member>
+    <member refid="classpann_1_1LmsBackpropagationRunner_1d0a009ce1052f6f3b6fa1b7517bcbd26" kind="function"><name>Instance</name></member>
   </compound>
-  <compound refid="classpann_1_1LearningHint_1_1LmsNeuron" kind="class"><name>pann::LearningHint::LmsNeuron</name>
-    <member refid="classpann_1_1LearningHint_1_1LmsNeuron_1c98d07dd8f7b70e16ccb9a01abf56b9c" kind="friend"><name>boost::serialization::access</name></member>
-    <member refid="classpann_1_1LearningHint_1_1LmsNeuron_1d8bc232ee95c4d47a32e4b47483f842c" kind="function"><name>LmsNeuron</name></member>
-    <member refid="classpann_1_1LearningHint_1_1LmsNeuron_18fad17084a444be0fe9b5acb05778bf4" kind="function"><name>~LmsNeuron</name></member>
-    <member refid="classpann_1_1LearningHint_1_1LmsNeuron_18f91c2d97338e83c79bdad11af4f7ca2" kind="function"><name>getTypeId</name></member>
-    <member refid="classpann_1_1LearningHint_1_1LmsNeuron_19941668d36cdd596692e248c6d65a55b" kind="function"><name>serialize</name></member>
+  <compound refid="classpann_1_1LmsFeedforwardRunner" kind="class"><name>pann::LmsFeedforwardRunner</name>
+    <member refid="classpann_1_1LmsFeedforwardRunner_19029ea97c8b69d547dbae39e61fca1aa" kind="variable"><name>self</name></member>
+    <member refid="classpann_1_1LmsFeedforwardRunner_14431ec582f808bcc0a4c802164453ba5" kind="function"><name>LmsFeedforwardRunner</name></member>
+    <member refid="classpann_1_1LmsFeedforwardRunner_1eb00e5750b4659215516e8a80af89bcc" kind="function"><name>~LmsFeedforwardRunner</name></member>
+    <member refid="classpann_1_1LmsFeedforwardRunner_135678dfa10d23aa6fccbd065acac53ed" kind="function"><name>run</name></member>
+    <member refid="classpann_1_1LmsFeedforwardRunner_1346f6895448418cdf321172f0011d901" kind="function"><name>getDirection</name></member>
+    <member refid="classpann_1_1LmsFeedforwardRunner_1687a2143207cde9247c89ee3e0ac78dd" kind="function"><name>Instance</name></member>
   </compound>
   <compound refid="classpann_1_1Exception_1_1MultipleOccurance" kind="class"><name>pann::Exception::MultipleOccurance</name>
+    <member refid="classpann_1_1Exception_1_1MultipleOccurance_145f25d33b1ceda0cc2c4de86951f7e9a" kind="function"><name>MultipleOccurance</name></member>
+    <member refid="classpann_1_1Exception_1_1MultipleOccurance_13c713aeae985faafe524c7b8f422dc8a" kind="function"><name>MultipleOccurance</name></member>
+    <member refid="classpann_1_1Exception_1_1MultipleOccurance_1d4efa512461e1d0f9520d3755afa3865" kind="function"><name>~MultipleOccurance</name></member>
   </compound>
   <compound refid="classN" kind="class"><name>N</name>
     <member refid="classN_128730570164b084e340eb0aa4d5cc206" kind="variable"><name>af</name></member>
@@ -158,14 +181,12 @@
     <member refid="classpann_1_1Net_12af39a29837c19f66e828589210c477b" kind="enum"><name>NeuronRole</name></member>
     <member refid="classpann_1_1Net_12af39a29837c19f66e828589210c477b8e605a7ac4e3dab20e7e4707188fa4ad" kind="enumvalue"><name>WorkNeuron</name></member>
     <member refid="classpann_1_1Net_12af39a29837c19f66e828589210c477b49a06b112c565efc5f96e41f52d8deab" kind="enumvalue"><name>InputNeuron</name></member>
-    <member refid="classpann_1_1Net_11d95cc042ab3f71840416d7aebdb1def" kind="variable"><name>learningHint</name></member>
+    <member refid="classpann_1_1Net_1884cab0d8add3ac395f3e9fc05352117" kind="variable"><name>learningHint</name></member>
     <member refid="classpann_1_1Net_12d41b163ab3f2171150fe8486dae44c9" kind="variable"><name>threadCount</name></member>
     <member refid="classpann_1_1Net_1dbaf91489044bf1f9ce25436f6b35c09" kind="variable"><name>lastNeuronId</name></member>
-    <member refid="classpann_1_1Net_1076f5b0fd44096de50541c16fe5b97b3" kind="variable"><name>lastWeightId</name></member>
+    <member refid="classpann_1_1Net_17d4b75a7b2f347dfae9873783995a031" kind="variable"><name>neurons</name></member>
+    <member refid="classpann_1_1Net_1492456d4b645a1bbd82904131021ef9c" kind="variable"><name>inputNeurons</name></member>
     <member refid="classpann_1_1Net_1cb42333b0f655e2422a959045107ea60" kind="variable"><name>biasId</name></member>
-    <member refid="classpann_1_1Net_127693544fbd9f6d5f74b57e9bbdc9a1d" kind="variable"><name>neurons</name></member>
-    <member refid="classpann_1_1Net_112f8e99bf960304ccaee098263de6fa8" kind="variable"><name>weights</name></member>
-    <member refid="classpann_1_1Net_1678cf8fa54d0a7b56de7864ea2925ce7" kind="variable"><name>inputNeurons</name></member>
     <member refid="classpann_1_1Net_1fb0c8aa932da540a9e1d907508cc00ff" kind="variable"><name>cache</name></member>
     <member refid="classpann_1_1Net_1c98d07dd8f7b70e16ccb9a01abf56b9c" kind="friend"><name>boost::serialization::access</name></member>
     <member refid="classpann_1_1Net_1fc3d67838fb89d577abd01b9badbb1dc" kind="function"><name>Net</name></member>
@@ -182,30 +203,33 @@
     <member refid="classpann_1_1Net_185d99fb2b386c3f284c4dfa2473cebcb" kind="function"><name>delConnection</name></member>
     <member refid="classpann_1_1Net_160ede07661fe666b8923c50da10e1cb2" kind="function"><name>setNeuronOwner</name></member>
     <member refid="classpann_1_1Net_132149f53c6ea0699bb83f3ab84a5556a" kind="function"><name>getNeuronOwner</name></member>
-    <member refid="classpann_1_1Net_1710ba8f42654603324432e38a43aecb1" kind="function"><name>getInputMap</name></member>
     <member refid="classpann_1_1Net_107e83643d8b5238cf322ebfd635cedda" kind="function"><name>setInput</name></member>
     <member refid="classpann_1_1Net_181e50f71a229b3f94c4908b9ebb31970" kind="function"><name>getOutput</name></member>
     <member refid="classpann_1_1Net_1bb24669b9fb9fecb3b5be29ce82a081a" kind="function"><name>getOutput</name></member>
     <member refid="classpann_1_1Net_15da746a5bb40bceb85992f5a77d393e7" kind="function"><name>run</name></member>
     <member refid="classpann_1_1Net_1bf7a3f67a2d7ced86b8589d69477ed96" kind="function"><name>getCache</name></member>
-    <member refid="classpann_1_1Net_120552ffce8f342bb6cf064180780a788" kind="function"><name>getNeurons</name></member>
-    <member refid="classpann_1_1Net_1f0276c2c5d68a2c9f7d7dfde5e1aca30" kind="function"><name>getWeights</name></member>
+    <member refid="classpann_1_1Net_1fb4b451068cb8cc61ca154f2e7da5521" kind="function"><name>getNeurons</name></member>
     <member refid="classpann_1_1Net_1179bae99437bcfc80e3477a9c01e0d62" kind="function"><name>getBiasId</name></member>
-    <member refid="classpann_1_1Net_1ec0809d7cb83ea29f7f36492609a2de9" kind="function"><name>printDebugInfo</name></member>
-    <member refid="classpann_1_1Net_1d54642461446c1f5aba34af3c01c290c" kind="function"><name>findNeuron</name></member>
-    <member refid="classpann_1_1Net_1cf7cdb61950b1d55729ceb82407b414a" kind="function"><name>findNeuron</name></member>
-    <member refid="classpann_1_1Net_1a2f1b31c8903d98b39035bfac5237f09" kind="function"><name>formatFront</name></member>
+    <member refid="classpann_1_1Net_1a27681fc7cf4be20ff2530c9f29598a2" kind="function"><name>findNeuron</name></member>
+    <member refid="classpann_1_1Net_1f1c5afc970cce2383733c92faf15335d" kind="function"><name>findNeuron</name></member>
+    <member refid="classpann_1_1Net_14245470034fed308639db679cc959a80" kind="function"><name>addNeuron</name></member>
+    <member refid="classpann_1_1Net_104e1e3370fadc8c678a94540b2b25fca" kind="function"><name>delNeuron</name></member>
+    <member refid="classpann_1_1Net_13083da8b48eb6d04e79c86050c708312" kind="function"><name>setNeuronRole</name></member>
+    <member refid="classpann_1_1Net_102a808ac0c1fb419fc982987bff8f9af" kind="function"><name>getNeuronRole</name></member>
+    <member refid="classpann_1_1Net_18520f33a65cf6e31668d0fa44dfe6165" kind="function"><name>addConnection</name></member>
+    <member refid="classpann_1_1Net_13af6a3cb55eec4e7fa254d980705140c" kind="function"><name>delConnection</name></member>
+    <member refid="classpann_1_1Net_1ab688b11e6e516aa926be5b412d490c3" kind="function"><name>formatFront</name></member>
     <member refid="classpann_1_1Net_14293d1faa37e9e2bb73b0ebdaf4a6a9e" kind="function"><name>regenerateCache</name></member>
-    <member refid="classpann_1_1Net_16c08684796771a53e67fbe93c51e188a" kind="function"><name>save</name></member>
-    <member refid="classpann_1_1Net_1a54ff5e1cbb26acaab7a2035f6719169" kind="function"><name>load</name></member>
+    <member refid="classpann_1_1Net_1efbc7b6a44fc533ee008ed8901fdb366" kind="function"><name>serialize</name></member>
     <member refid="classpann_1_1Net_17dc20310a87f924efe4c30c746b990bd" kind="function"><name>threadBase</name></member>
   </compound>
   <compound refid="classpann_1_1NetCache" kind="class"><name>pann::NetCache</name>
-    <member refid="classpann_1_1NetCache_126b4ca3dc6f2c0dac775cff86ef891af" kind="typedef"><name>ThreadTaskType</name></member>
+    <member refid="classpann_1_1NetCache_1d58265499cd8d4ef6c4a0fb79e751365" kind="typedef"><name>ThreadTaskType</name></member>
     <member refid="classpann_1_1NetCache_125a54be011377684c4cd5876d0dc3ecf" kind="typedef"><name>FrontType</name></member>
     <member refid="classpann_1_1NetCache_1dd41e18c50e038ff9b9cbdf249913cec" kind="variable"><name>data</name></member>
-    <member refid="classpann_1_1NetCache_1cfa966e64695ce3e11a5cd5926e1680c" kind="function"><name>flush</name></member>
-    <member refid="classpann_1_1NetCache_1f776078aecabf7258b807d4d0249241a" kind="function"><name>printDebugInfo</name></member>
+    <member refid="classpann_1_1NetCache_1c98d07dd8f7b70e16ccb9a01abf56b9c" kind="friend"><name>boost::serialization::access</name></member>
+    <member refid="classpann_1_1NetCache_1db49b27edd3dbae9338535c8aeeabde1" kind="function"><name>flush</name></member>
+    <member refid="classpann_1_1NetCache_1e1b920aad0f5cf8567e1936d9c62ea87" kind="function"><name>serialize</name></member>
   </compound>
   <compound refid="classpann_1_1Neuron" kind="class"><name>pann::Neuron</name>
     <member refid="classpann_1_1Neuron_1bd0230c56464055cc2dcae4da86c5f73" kind="variable"><name>activationFunction</name></member>
@@ -213,89 +237,73 @@
     <member refid="classpann_1_1Neuron_1cc966b3f4aa4ee2f158ab70196642fc4" kind="variable"><name>receptiveField</name></member>
     <member refid="classpann_1_1Neuron_179899694b4dbaa30551f9f6784ddd869" kind="variable"><name>activationValue</name></member>
     <member refid="classpann_1_1Neuron_11ea45590be4c55659a776ff0acf2ac2c" kind="variable"><name>links</name></member>
-    <member refid="classpann_1_1Neuron_12b0d035a701cad63f77a19fa3c7c2ffb" kind="variable"><name>oglHint</name></member>
-    <member refid="classpann_1_1Neuron_16af287c561d4226f59c858d4e020168c" kind="variable"><name>learningHint</name></member>
+    <member refid="classpann_1_1Neuron_1cb99c66b9a3c4c5c54611c34300ab252" kind="variable"><name>oglHint</name></member>
+    <member refid="classpann_1_1Neuron_123c8a6b7ac44957aa3929ce70125d772" kind="variable"><name>learningHint</name></member>
     <member refid="classpann_1_1Neuron_1c98d07dd8f7b70e16ccb9a01abf56b9c" kind="friend"><name>boost::serialization::access</name></member>
-    <member refid="classpann_1_1Neuron_189d63cff9e559e1cbdbdc3c9dbc2efe6" kind="function"><name>Neuron</name></member>
     <member refid="classpann_1_1Neuron_1eb0f836051ce56055b3fd7ca3ade67dd" kind="function"><name>Neuron</name></member>
     <member refid="classpann_1_1Neuron_1e08f02385e9b8fc0b927fc28fcfda966" kind="function"><name>~Neuron</name></member>
     <member refid="classpann_1_1Neuron_12ec7496a4939390cc4e9c2b1b4ebfd8a" kind="function"><name>setOwnerThread</name></member>
     <member refid="classpann_1_1Neuron_12a426e05cdb3fbd67635a4ba57ec2bbd" kind="function"><name>getOwnerThread</name></member>
     <member refid="classpann_1_1Neuron_120445c905a8ad3e243e0945bd3595b9a" kind="function"><name>getActivationFunction</name></member>
-    <member refid="classpann_1_1Neuron_1990c18907d963acc1154bcb9c79280ab" kind="function"><name>findLink</name></member>
-    <member refid="classpann_1_1Neuron_10017d9230fca2359b460e9a18b8a8198" kind="function"><name>printDebugInfo</name></member>
-    <member refid="classpann_1_1Neuron_1f78cc590bbd2ed7392a822016b1161b0" kind="function"><name>save</name></member>
-    <member refid="classpann_1_1Neuron_146c3eb1f5fa7a4bf0112030b5aa4e908" kind="function"><name>load</name></member>
-  </compound>
-  <compound refid="structpann_1_1NeuronIterCompare" kind="struct"><name>pann::NeuronIterCompare</name>
-    <member refid="structpann_1_1NeuronIterCompare_16a5d5a58530774cd10de0699037c8306" kind="function"><name>operator()</name></member>
-    <member refid="structpann_1_1NeuronIterCompare_115bfbc88eded89bf39e93269092f73c4" kind="function"><name>operator()</name></member>
-    <member refid="structpann_1_1NeuronIterCompare_1320a830b78f3060579250e68952077ad" kind="function"><name>equal</name></member>
+    <member refid="classpann_1_1Neuron_1c38530608054d8bdb17d930a72b362bd" kind="function"><name>findLink</name></member>
+    <member refid="classpann_1_1Neuron_189d63cff9e559e1cbdbdc3c9dbc2efe6" kind="function"><name>Neuron</name></member>
+    <member refid="classpann_1_1Neuron_1856883a5ae179f2af44ad9abec28f9ad" kind="function"><name>serialize</name></member>
   </compound>
   <compound refid="classpann_1_1Exception_1_1NotReady" kind="class"><name>pann::Exception::NotReady</name>
-  </compound>
-  <compound refid="classpann_1_1LearningHint_1_1Null" kind="class"><name>pann::LearningHint::Null</name>
-    <member refid="classpann_1_1LearningHint_1_1Null_1c98d07dd8f7b70e16ccb9a01abf56b9c" kind="friend"><name>boost::serialization::access</name></member>
-    <member refid="classpann_1_1LearningHint_1_1Null_19951735bae3b28e103a09c12d6120f1a" kind="function"><name>Null</name></member>
-    <member refid="classpann_1_1LearningHint_1_1Null_18e7f026c1aada98ac96402e64957509b" kind="function"><name>~Null</name></member>
-    <member refid="classpann_1_1LearningHint_1_1Null_1450d0f425f0377d1ee0aa552478b7dd4" kind="function"><name>getTypeId</name></member>
-    <member refid="classpann_1_1LearningHint_1_1Null_154e285e23de80fe268476b07e4592ad8" kind="function"><name>serialize</name></member>
+    <member refid="classpann_1_1Exception_1_1NotReady_156c3280400906b6da2dac838140e6d8a" kind="function"><name>NotReady</name></member>
+    <member refid="classpann_1_1Exception_1_1NotReady_1a11f10867e72293f1acccfddfb874a4b" kind="function"><name>NotReady</name></member>
+    <member refid="classpann_1_1Exception_1_1NotReady_1cc52799828ca550aaef1420ea852e3b1" kind="function"><name>~NotReady</name></member>
   </compound>
   <compound refid="classpann_1_1NullBackpropagationRunner" kind="class"><name>pann::NullBackpropagationRunner</name>
     <member refid="classpann_1_1NullBackpropagationRunner_1dcbaab5e12ad78534334168ec0778b67" kind="variable"><name>self</name></member>
     <member refid="classpann_1_1NullBackpropagationRunner_1979c33b6622c15ef38fbf0a173134177" kind="function"><name>NullBackpropagationRunner</name></member>
     <member refid="classpann_1_1NullBackpropagationRunner_11e6e2acd2d5421fe0bbf1a128d0e9da2" kind="function"><name>~NullBackpropagationRunner</name></member>
-    <member refid="classpann_1_1NullBackpropagationRunner_1d138c075b602e3d9efa44a99971b3f6a" kind="function"><name>run</name></member>
-    <member refid="classpann_1_1NullBackpropagationRunner_121164553e2dcf4cabb1859534dd0f0c9" kind="function"><name>getDirection</name></member>
-    <member refid="classpann_1_1NullBackpropagationRunner_11f0816746277a4898124d1aa2e86ddef" kind="function"><name>Instance</name></member>
+    <member refid="classpann_1_1NullBackpropagationRunner_1bddc991254df3d1daea3f1a2824471e8" kind="function"><name>run</name></member>
+    <member refid="classpann_1_1NullBackpropagationRunner_10fdf6af585d5ae933fa59bc5974a08aa" kind="function"><name>getDirection</name></member>
+    <member refid="classpann_1_1NullBackpropagationRunner_1745f10fc6b7b63451826434b89b29e38" kind="function"><name>Instance</name></member>
   </compound>
   <compound refid="classpann_1_1NullRunner" kind="class"><name>pann::NullRunner</name>
     <member refid="classpann_1_1NullRunner_1d8cc52732675efc902933596fa462340" kind="variable"><name>self</name></member>
     <member refid="classpann_1_1NullRunner_16010883f582f99db6e43cea15c8e75f8" kind="function"><name>NullRunner</name></member>
     <member refid="classpann_1_1NullRunner_156e7baf943da021decbb2f59b816cbd1" kind="function"><name>~NullRunner</name></member>
-    <member refid="classpann_1_1NullRunner_19a6dad0494baa4a1fec7a4adc227dd0c" kind="function"><name>run</name></member>
-    <member refid="classpann_1_1NullRunner_1b9f4684f46b82d8a44528de10ded73e1" kind="function"><name>getDirection</name></member>
-    <member refid="classpann_1_1NullRunner_1de665b491727786c110b50f85c860ca6" kind="function"><name>Instance</name></member>
+    <member refid="classpann_1_1NullRunner_12d633bbbddcf603e56bf5bef739c47ca" kind="function"><name>run</name></member>
+    <member refid="classpann_1_1NullRunner_12afa869e0a6540ceb537e5289b99c209" kind="function"><name>getDirection</name></member>
+    <member refid="classpann_1_1NullRunner_1acbffbb3fe5bd8bc6b0a6c873ac6ec9b" kind="function"><name>Instance</name></member>
   </compound>
   <compound refid="classpann_1_1Object" kind="class"><name>pann::Object</name>
     <member refid="classpann_1_1Object_1c98d07dd8f7b70e16ccb9a01abf56b9c" kind="friend"><name>boost::serialization::access</name></member>
-    <member refid="classpann_1_1Object_1f0039bd3a5cdbb3decfa5e33055e1a45" kind="function"><name>printDebugInfo</name></member>
+    <member refid="classpann_1_1Object_1e4157eda81e363f28504b4ec9d15e196" kind="function"><name>Object</name></member>
+    <member refid="classpann_1_1Object_1461126af2f1a20fa24f1340f670c5733" kind="function"><name>~Object</name></member>
     <member refid="classpann_1_1Object_113a234c0fcd5d32d341353f1b7b3c828" kind="function"><name>serialize</name></member>
   </compound>
   <compound refid="classpann_1_1Exception_1_1ObjectNotFound" kind="class"><name>pann::Exception::ObjectNotFound</name>
-  </compound>
-  <compound refid="classpann_1_1OpenGLHint" kind="class"><name>pann::OpenGLHint</name>
-    <member refid="classpann_1_1OpenGLHint_127ec4cdd08b8806818f730ff13b965e8" kind="variable"><name>color</name></member>
-    <member refid="classpann_1_1OpenGLHint_1d027bb31231826f924d94b34cc155727" kind="variable"><name>point</name></member>
-    <member refid="classpann_1_1OpenGLHint_1c98d07dd8f7b70e16ccb9a01abf56b9c" kind="friend"><name>boost::serialization::access</name></member>
-    <member refid="classpann_1_1OpenGLHint_1a1170d712442c44710f687fd54cdc910" kind="function"><name>OpenGLHint</name></member>
-    <member refid="classpann_1_1OpenGLHint_16998b32ec3bd36b8fb7718133b424626" kind="function"><name>serialize</name></member>
-  </compound>
-  <compound refid="classpann_1_1Point3d" kind="class"><name>pann::Point3d</name>
-    <member refid="classpann_1_1Point3d_10e8d4e3856a420aadfc360a853d5c8fd" kind="variable"><name>x</name></member>
-    <member refid="classpann_1_1Point3d_10951dd463a6738f2f9fcdf838ae14b08" kind="variable"><name>y</name></member>
-    <member refid="classpann_1_1Point3d_1223f584d80ae49ce8b827804929eeb47" kind="variable"><name>z</name></member>
+    <member refid="classpann_1_1Exception_1_1ObjectNotFound_1ae4716a65995694f991a8d8fc8e1023f" kind="function"><name>ObjectNotFound</name></member>
+    <member refid="classpann_1_1Exception_1_1ObjectNotFound_12444ef1c2d6645fa0f7f8ba82950a0a1" kind="function"><name>ObjectNotFound</name></member>
+    <member refid="classpann_1_1Exception_1_1ObjectNotFound_18fb12c5f04599643af2f5ebb50390b72" kind="function"><name>~ObjectNotFound</name></member>
   </compound>
   <compound refid="classpann_1_1Exception_1_1RangeMismatch" kind="class"><name>pann::Exception::RangeMismatch</name>
+    <member refid="classpann_1_1Exception_1_1RangeMismatch_17eff1ff62a54ce4be6f4bae6dc330f47" kind="function"><name>RangeMismatch</name></member>
+    <member refid="classpann_1_1Exception_1_1RangeMismatch_1e652e31cbcc3ba8f38ebf592f7eb6111" kind="function"><name>RangeMismatch</name></member>
+    <member refid="classpann_1_1Exception_1_1RangeMismatch_1b5288403f97579f5148a2fea19db73e3" kind="function"><name>~RangeMismatch</name></member>
   </compound>
   <compound refid="classpann_1_1Runner" kind="class"><name>pann::Runner</name>
     <member refid="classpann_1_1Runner_1f9711798dab2451cae026fae3c3a89e2" kind="function"><name>Instance</name></member>
-    <member refid="classpann_1_1Runner_18f7c1cd84129843504cfe17f738b86d0" kind="function"><name>run</name></member>
+    <member refid="classpann_1_1Runner_1881c47937a701cbdb6cfc82b6f13d001" kind="function"><name>run</name></member>
     <member refid="classpann_1_1Runner_1658262373566e4be537caffbc35d8350" kind="function"><name>getDirection</name></member>
   </compound>
   <compound refid="classpann_1_1Exception_1_1SizeMismatch" kind="class"><name>pann::Exception::SizeMismatch</name>
-  </compound>
-  <compound refid="classpann_1_1Storage" kind="class"><name>pann::Storage</name>
-    <member refid="classpann_1_1Storage_11b739fe3b6c794fb911108bdd349036f" kind="function"><name>save</name></member>
-    <member refid="classpann_1_1Storage_13c5d177220f3ab22500124b8ca137234" kind="function"><name>load</name></member>
+    <member refid="classpann_1_1Exception_1_1SizeMismatch_1f3a7dd1ba8b6f3261a0ee9f7507539b9" kind="function"><name>SizeMismatch</name></member>
+    <member refid="classpann_1_1Exception_1_1SizeMismatch_1d4dbe9e224ca25ad572105236efa1357" kind="function"><name>SizeMismatch</name></member>
+    <member refid="classpann_1_1Exception_1_1SizeMismatch_16c5989fce1532aab570ffbd883860b7c" kind="function"><name>~SizeMismatch</name></member>
   </compound>
   <compound refid="classpann_1_1ActivationFunction_1_1TanH" kind="class"><name>pann::ActivationFunction::TanH</name>
     <member refid="classpann_1_1ActivationFunction_1_1TanH_17dad50a0e249730be0f378180bfe4e21" kind="variable"><name>self</name></member>
     <member refid="classpann_1_1ActivationFunction_1_1TanH_1c7e768b6f7fa190e08716a77a097dbd1" kind="variable"><name>a</name></member>
     <member refid="classpann_1_1ActivationFunction_1_1TanH_1ad78b3bdbe04010bc7da87e4a748ddf2" kind="variable"><name>b</name></member>
+    <member refid="classpann_1_1ActivationFunction_1_1TanH_1c98d07dd8f7b70e16ccb9a01abf56b9c" kind="friend"><name>boost::serialization::access</name></member>
     <member refid="classpann_1_1ActivationFunction_1_1TanH_134e21fc187d57fcf395bf87b2337d187" kind="function"><name>TanH</name></member>
+    <member refid="classpann_1_1ActivationFunction_1_1TanH_14642d0bed60986492d6f95d1bc97aeb3" kind="function"><name>serialize</name></member>
     <member refid="classpann_1_1ActivationFunction_1_1TanH_1e00c1612c0d3778c0202e9f364de17fd" kind="function"><name>~TanH</name></member>
-    <member refid="classpann_1_1ActivationFunction_1_1TanH_1ad4c5d74bcba084a30a5dbf8103e60bb" kind="function"><name>getId</name></member>
     <member refid="classpann_1_1ActivationFunction_1_1TanH_14cab8e9156979208d43bb42dbd3e2bef" kind="function"><name>getName</name></member>
     <member refid="classpann_1_1ActivationFunction_1_1TanH_155414f73736900fc25446ac7bbd66b81" kind="function"><name>f</name></member>
     <member refid="classpann_1_1ActivationFunction_1_1TanH_123cd96f9359967ea0c7bfe4b0ee09598" kind="function"><name>derivative</name></member>
@@ -303,9 +311,10 @@
   </compound>
   <compound refid="classpann_1_1ActivationFunction_1_1Threshold" kind="class"><name>pann::ActivationFunction::Threshold</name>
     <member refid="classpann_1_1ActivationFunction_1_1Threshold_13d4877deed0b1835b17b48303ac7aebb" kind="variable"><name>self</name></member>
+    <member refid="classpann_1_1ActivationFunction_1_1Threshold_1c98d07dd8f7b70e16ccb9a01abf56b9c" kind="friend"><name>boost::serialization::access</name></member>
     <member refid="classpann_1_1ActivationFunction_1_1Threshold_1dd8dd134551c6658d5f5875542555188" kind="function"><name>Threshold</name></member>
+    <member refid="classpann_1_1ActivationFunction_1_1Threshold_11fd9da29f3ca9759afcad9fb2f2cda36" kind="function"><name>serialize</name></member>
     <member refid="classpann_1_1ActivationFunction_1_1Threshold_15b18d8698572d4e9a48fec210db6393a" kind="function"><name>~Threshold</name></member>
-    <member refid="classpann_1_1ActivationFunction_1_1Threshold_1e3178b402d5bad3ff7d34355415a15b9" kind="function"><name>getId</name></member>
     <member refid="classpann_1_1ActivationFunction_1_1Threshold_178703fca497f9efdb5f1760d3f50852d" kind="function"><name>getName</name></member>
     <member refid="classpann_1_1ActivationFunction_1_1Threshold_1b5c50e74b8f93770f466274f1ebc0fb0" kind="function"><name>f</name></member>
     <member refid="classpann_1_1ActivationFunction_1_1Threshold_19f7c90eff2ed5fdac54e28965350cc6c" kind="function"><name>derivative</name></member>
@@ -313,7 +322,10 @@
   </compound>
   <compound refid="classpann_1_1TrainData" kind="class"><name>pann::TrainData</name>
     <member refid="classpann_1_1TrainData_12ea76b5d1bbcd58600b1eb241ad2037b" kind="variable"><name>data</name></member>
-    <member refid="classpann_1_1TrainData_1fb88f4772bc657940d41c629ef121924" kind="function"><name>printDebugInfo</name></member>
+    <member refid="classpann_1_1TrainData_1434e8ea16bc09257bb1f23a391883ec2" kind="function"><name>TrainData</name></member>
+    <member refid="classpann_1_1TrainData_1bb1034398c4ce6b25dc1ff2797eec7c2" kind="function"><name>~TrainData</name></member>
+    <member refid="classpann_1_1TrainData_14e26ce6fd32682902cd5a16dc1fc9f3e" kind="function"><name>getMse</name></member>
+    <member refid="classpann_1_1TrainData_18ffb69cc9890ea55f51b110ef2de36ad" kind="function"><name>shuffle</name></member>
   </compound>
   <compound refid="classpann_1_1TrainPattern" kind="class"><name>pann::TrainPattern</name>
     <member refid="classpann_1_1TrainPattern_123f266ded7dfe0c52d0a5a6b69eb5e90" kind="variable"><name>input</name></member>
@@ -322,17 +334,17 @@
     <member refid="classpann_1_1TrainPattern_14a545b0aec3a11d2fecc0bc88fd855ed" kind="function"><name>TrainPattern</name></member>
     <member refid="classpann_1_1TrainPattern_105bee37107706ef329474a01b3c89ea0" kind="function"><name>~TrainPattern</name></member>
     <member refid="classpann_1_1TrainPattern_14d489b191263eff4b9b965113b0ef7ce" kind="function"><name>getMse</name></member>
-    <member refid="classpann_1_1TrainPattern_1a4f1e7a2c806f9a03093c04788b1d21a" kind="function"><name>printDebugInfo</name></member>
-    <member refid="classpann_1_1TrainPattern_16483e8b22416d53fe13825ab978128d4" kind="function"><name>TrainPattern</name></member>
     <member refid="classpann_1_1TrainPattern_178175c630caf5c10edbb792a9ea78ad9" kind="function"><name>resize</name></member>
   </compound>
-  <compound refid="classpann_1_1TrainUtil" kind="class"><name>pann::TrainUtil</name>
-    <member refid="classpann_1_1TrainUtil_1f75eeef1d233dd6fcdcae4b8a813a50e" kind="function"><name>squash_copy</name></member>
-    <member refid="classpann_1_1TrainUtil_191e3a70719a0fa79512565e31a96fed1" kind="function"><name>squash</name></member>
-  </compound>
   <compound refid="classpann_1_1Exception_1_1Unbelievable" kind="class"><name>pann::Exception::Unbelievable</name>
+    <member refid="classpann_1_1Exception_1_1Unbelievable_156c7a3c75b1ad9259083ce9cd2f68c22" kind="function"><name>Unbelievable</name></member>
+    <member refid="classpann_1_1Exception_1_1Unbelievable_1798ff50f2beb3f1993125efd2bb8f339" kind="function"><name>Unbelievable</name></member>
+    <member refid="classpann_1_1Exception_1_1Unbelievable_12d7c29b7849bb5b0aa0de7749b38fc9d" kind="function"><name>~Unbelievable</name></member>
   </compound>
   <compound refid="classpann_1_1Exception_1_1Warning" kind="class"><name>pann::Exception::Warning</name>
+    <member refid="classpann_1_1Exception_1_1Warning_1acd3290594a63cce83dfae974b0f00fa" kind="function"><name>Warning</name></member>
+    <member refid="classpann_1_1Exception_1_1Warning_1a0ded074204dafb83ec586b23151953e" kind="function"><name>Warning</name></member>
+    <member refid="classpann_1_1Exception_1_1Warning_141aa0289bbc946994bdc5c2da647631f" kind="function"><name>~Warning</name></member>
   </compound>
   <compound refid="classpann_1_1Weight" kind="class"><name>pann::Weight</name>
     <member refid="classpann_1_1Weight_1adb717ef6de485b68780db2b50974493" kind="variable"><name>value</name></member>
@@ -340,7 +352,6 @@
     <member refid="classpann_1_1Weight_1c98d07dd8f7b70e16ccb9a01abf56b9c" kind="friend"><name>boost::serialization::access</name></member>
     <member refid="classpann_1_1Weight_126a5478691b78eceda1b83ce7e8e7df5" kind="function"><name>Weight</name></member>
     <member refid="classpann_1_1Weight_1f75b6811195515ec566ce022eea3aec8" kind="function"><name>~Weight</name></member>
-    <member refid="classpann_1_1Weight_18d51519bd5723b61b32b687502aada06" kind="function"><name>printDebugInfo</name></member>
     <member refid="classpann_1_1Weight_1ddeecbb0805615aa2ee5c20f7268e577" kind="function"><name>serialize</name></member>
   </compound>
   <compound refid="classWindow" kind="class"><name>Window</name>
@@ -351,42 +362,71 @@
   </compound>
   <compound refid="namespaceboost" kind="namespace"><name>boost</name>
   </compound>
+  <compound refid="namespaceboost_1_1archive" kind="namespace"><name>boost::archive</name>
+  </compound>
   <compound refid="namespacepann" kind="namespace"><name>pann</name>
     <member refid="namespacepann_134cfd8d9243a5183902a991ae1532e37" kind="enum"><name>RunDirection</name></member>
     <member refid="namespacepann_134cfd8d9243a5183902a991ae1532e3748f0cddd9d215fba8b09d2e19f2b2a75" kind="enumvalue"><name>ForwardRun</name></member>
     <member refid="namespacepann_134cfd8d9243a5183902a991ae1532e370ac5753feef303274f7d3d43a04753c3" kind="enumvalue"><name>BackwardRun</name></member>
+    <member refid="namespacepann_1b552db0436949a9bd5f8fedbcace1d6c" kind="typedef"><name>AttributeNameHash</name></member>
+    <member refid="namespacepann_1c8fdbf8f6ceb6c5334a9598bca7a7539" kind="typedef"><name>AttributeType</name></member>
     <member refid="namespacepann_14509ba95a02d59e0a1cd5127e1c55988" kind="typedef"><name>Float</name></member>
     <member refid="namespacepann_1f9b7c48b4a4f08d45e05c1c9a7d4a08b" kind="typedef"><name>UINT</name></member>
     <member refid="namespacepann_1e5d2e2854d3f59b30c0149d3303296d4" kind="typedef"><name>uint</name></member>
-    <member refid="namespacepann_15b285d6cead198add4f14b5b5a0b97c1" kind="typedef"><name>NeuronIter</name></member>
-    <member refid="namespacepann_168751290d27789ce6f303cf55ed505ed" kind="typedef"><name>ConstNeuronIter</name></member>
-    <member refid="namespacepann_1984e6dfa15df19d238ee8f5792d0cefb" kind="typedef"><name>WeightIter</name></member>
-    <member refid="namespacepann_13b249ab143ae3f41cf6adbedc59525c0" kind="typedef"><name>ConstWeightIter</name></member>
     <member refid="namespacepann_1681692849fa08fe4251447c25500d75c" kind="variable"><name>inf</name></member>
+    <member refid="namespacepann_1544eb5795f2f627415230a12843cc4bf" kind="function"><name>hash</name></member>
+    <member refid="namespacepann_12dda3d8a0fa21b478ba4f08d6aa187d5" kind="function"><name>moo</name></member>
   </compound>
   <compound refid="namespacepann_1_1ActivationFunction" kind="namespace"><name>pann::ActivationFunction</name>
-    <member refid="namespacepann_1_1ActivationFunction_12287da8b90c9142021227b425e5085f9" kind="function"><name>getById</name></member>
   </compound>
   <compound refid="namespacepann_1_1Exception" kind="namespace"><name>pann::Exception</name>
+    <member refid="namespacepann_1_1Exception_14b0dd33bc7fedcb69df051d8fcc1142d" kind="function"><name>operator&lt;&lt;</name></member>
   </compound>
-  <compound refid="namespacepann_1_1LearningHint" kind="namespace"><name>pann::LearningHint</name>
-    <member refid="namespacepann_1_1LearningHint_11af8c63761604060acd3287e6820b4fe" kind="enum"><name>HintId</name></member>
-    <member refid="namespacepann_1_1LearningHint_11af8c63761604060acd3287e6820b4fe2ebf3567b8ee358b688403b8fa84cb55" kind="enumvalue"><name>NullId</name></member>
-    <member refid="namespacepann_1_1LearningHint_11af8c63761604060acd3287e6820b4fee35188d65024635375c0cc23d9182321" kind="enumvalue"><name>LmsNetId</name></member>
-    <member refid="namespacepann_1_1LearningHint_11af8c63761604060acd3287e6820b4fef13e2ffef2fb5ba59340a09fdab27241" kind="enumvalue"><name>LmsNeuronId</name></member>
-    <member refid="namespacepann_1_1LearningHint_1a9049ca41b3b30b18546dbad7e6e8e9a" kind="function"><name>getById</name></member>
+  <compound refid="namespacepann_1_1LmsAttributes" kind="namespace"><name>pann::LmsAttributes</name>
+    <member refid="namespacepann_1_1LmsAttributes_19f281883ceb2b67f5391773af1a4e07c" kind="variable"><name>LMS</name></member>
   </compound>
   <compound refid="namespacepann_1_1NetworkModel" kind="namespace"><name>pann::NetworkModel</name>
     <member refid="namespacepann_1_1NetworkModel_188223ff4c4a04103fcaefa1d899a2b42" kind="function"><name>MultilayerPerceptron</name></member>
     <member refid="namespacepann_1_1NetworkModel_1369d4aceda1cb3120941d43a984a52ae" kind="function"><name>MultilayerPerceptron</name></member>
   </compound>
+  <compound refid="namespacepann_1_1OpenGlHint" kind="namespace"><name>pann::OpenGlHint</name>
+    <member refid="namespacepann_1_1OpenGlHint_1a1c748fd4adb71664a0f2a999431a5af" kind="variable"><name>color_r</name></member>
+    <member refid="namespacepann_1_1OpenGlHint_19356e7455fac044dc2025bf8a800e8b9" kind="variable"><name>color_g</name></member>
+    <member refid="namespacepann_1_1OpenGlHint_1f3a67ef20bb12d4fdd9ccab5a59c6f9c" kind="variable"><name>color_b</name></member>
+    <member refid="namespacepann_1_1OpenGlHint_1fd4ad4d2739f17b13a35bfb3e782709d" kind="variable"><name>coord_x</name></member>
+    <member refid="namespacepann_1_1OpenGlHint_115d9ede55a66ccc489f8d2619f3ea47f" kind="variable"><name>coord_y</name></member>
+    <member refid="namespacepann_1_1OpenGlHint_113533fbff52e09dcb580c45a5d42edf1" kind="variable"><name>coord_z</name></member>
+  </compound>
+  <compound refid="namespacepann_1_1Storage" kind="namespace"><name>pann::Storage</name>
+    <member refid="namespacepann_1_1Storage_1a440213a058167b550a6bef0b4b342fb" kind="function"><name>save</name></member>
+    <member refid="namespacepann_1_1Storage_1a5c1559bb38760f3ad3f6b140a39d421" kind="function"><name>load</name></member>
+    <member refid="namespacepann_1_1Storage_19875c6a40cbb64cbf81dd225e6a74aa2" kind="function"><name>save</name></member>
+    <member refid="namespacepann_1_1Storage_1b86a9cc510185de122002ea137bb0e66" kind="function"><name>load</name></member>
+  </compound>
+  <compound refid="namespacepann_1_1TrainUtil" kind="namespace"><name>pann::TrainUtil</name>
+    <member refid="namespacepann_1_1TrainUtil_10b182d2529a192b449dd65a535ebfe27" kind="function"><name>squash_copy</name></member>
+    <member refid="namespacepann_1_1TrainUtil_139b7f4b9b053bb0b2f1bb95c413125fb" kind="function"><name>squash</name></member>
+    <member refid="namespacepann_1_1TrainUtil_186196c637f9b0ba2375c4f222e6e02f5" kind="function"><name>squash_copy</name></member>
+    <member refid="namespacepann_1_1TrainUtil_1d760c7af34ba5f645423d933bb9be473" kind="function"><name>squash</name></member>
+  </compound>
   <compound refid="namespacestd" kind="namespace"><name>std</name>
   </compound>
   <compound refid="ActivationFunction_8cpp" kind="file"><name>ActivationFunction.cpp</name>
+    <member refid="ActivationFunction_8cpp_1f81868eb4e3fcd96b0c1fa62f66380ce" kind="function"><name>BOOST_CLASS_EXPORT</name></member>
+    <member refid="ActivationFunction_8cpp_1882a388c0002426049fb88eebfb08486" kind="function"><name>BOOST_CLASS_EXPORT</name></member>
+    <member refid="ActivationFunction_8cpp_183f6f01c3564508a69304fd1b6c6cdc0" kind="function"><name>BOOST_CLASS_EXPORT</name></member>
   </compound>
   <compound refid="ActivationFunction_8h" kind="file"><name>ActivationFunction.h</name>
   </compound>
+  <compound refid="Attributes_8cpp" kind="file"><name>Attributes.cpp</name>
+  </compound>
+  <compound refid="Attributes_8h" kind="file"><name>Attributes.h</name>
+  </compound>
+  <compound refid="Cache_8cpp" kind="file"><name>Cache.cpp</name>
+  </compound>
   <compound refid="Cache_8h" kind="file"><name>Cache.h</name>
+  </compound>
+  <compound refid="Exception_8cpp" kind="file"><name>Exception.cpp</name>
   </compound>
   <compound refid="Exception_8h" kind="file"><name>Exception.h</name>
   </compound>
@@ -394,19 +434,21 @@
   </compound>
   <compound refid="LearningAlgorithm_8h" kind="file"><name>LearningAlgorithm.h</name>
   </compound>
-  <compound refid="LearningHint_8h" kind="file"><name>LearningHint.h</name>
+  <compound refid="Link_8cpp" kind="file"><name>Link.cpp</name>
   </compound>
   <compound refid="Link_8h" kind="file"><name>Link.h</name>
   </compound>
-  <compound refid="LMS_8h" kind="file"><name>LMS.h</name>
+  <compound refid="Moo_8cpp" kind="file"><name>Moo.cpp</name>
   </compound>
-  <compound refid="MultilayerPerceptron_8cpp" kind="file"><name>MultilayerPerceptron.cpp</name>
+  <compound refid="Moo_8h" kind="file"><name>Moo.h</name>
   </compound>
   <compound refid="Net_8cpp" kind="file"><name>Net.cpp</name>
   </compound>
   <compound refid="Net_8h" kind="file"><name>Net.h</name>
   </compound>
-  <compound refid="NetworkModel_8h" kind="file"><name>NetworkModel.h</name>
+  <compound refid="NetCache_8cpp" kind="file"><name>NetCache.cpp</name>
+  </compound>
+  <compound refid="NetCache_8h" kind="file"><name>NetCache.h</name>
   </compound>
   <compound refid="Neuron_8cpp" kind="file"><name>Neuron.cpp</name>
   </compound>
@@ -416,23 +458,51 @@
   </compound>
   <compound refid="Object_8h" kind="file"><name>Object.h</name>
   </compound>
-  <compound refid="OpenGLHint_8h" kind="file"><name>OpenGLHint.h</name>
+  <compound refid="OpenGlHint_8h" kind="file"><name>OpenGlHint.h</name>
   </compound>
   <compound refid="Runner_8cpp" kind="file"><name>Runner.cpp</name>
   </compound>
   <compound refid="Runner_8h" kind="file"><name>Runner.h</name>
   </compound>
+  <compound refid="Storage_8cpp" kind="file"><name>Storage.cpp</name>
+  </compound>
   <compound refid="Storage_8h" kind="file"><name>Storage.h</name>
+  </compound>
+  <compound refid="Type_8h" kind="file"><name>Type.h</name>
+  </compound>
+  <compound refid="Weight_8cpp" kind="file"><name>Weight.cpp</name>
+  </compound>
+  <compound refid="Weight_8h" kind="file"><name>Weight.h</name>
+  </compound>
+  <compound refid="Lms_8h" kind="file"><name>Lms.h</name>
+  </compound>
+  <compound refid="LmsAlgorithm_8cpp" kind="file"><name>LmsAlgorithm.cpp</name>
+  </compound>
+  <compound refid="LmsAlgorithm_8h" kind="file"><name>LmsAlgorithm.h</name>
+  </compound>
+  <compound refid="LmsAttributes_8h" kind="file"><name>LmsAttributes.h</name>
+  </compound>
+  <compound refid="LmsRunner_8cpp" kind="file"><name>LmsRunner.cpp</name>
+  </compound>
+  <compound refid="LmsRunner_8h" kind="file"><name>LmsRunner.h</name>
+  </compound>
+  <compound refid="MultilayerPerceptron_8cpp" kind="file"><name>MultilayerPerceptron.cpp</name>
+  </compound>
+  <compound refid="MultilayerPerceptron_8h" kind="file"><name>MultilayerPerceptron.h</name>
+  </compound>
+  <compound refid="pann_8h" kind="file"><name>pann.h</name>
   </compound>
   <compound refid="TrainData_8cpp" kind="file"><name>TrainData.cpp</name>
   </compound>
   <compound refid="TrainData_8h" kind="file"><name>TrainData.h</name>
   </compound>
-  <compound refid="Type_8h" kind="file"><name>Type.h</name>
+  <compound refid="TrainPattern_8cpp" kind="file"><name>TrainPattern.cpp</name>
   </compound>
-  <compound refid="Util_8h" kind="file"><name>Util.h</name>
+  <compound refid="TrainPattern_8h" kind="file"><name>TrainPattern.h</name>
   </compound>
-  <compound refid="Weight_8h" kind="file"><name>Weight.h</name>
+  <compound refid="TrainUtil_8cpp" kind="file"><name>TrainUtil.cpp</name>
+  </compound>
+  <compound refid="TrainUtil_8h" kind="file"><name>TrainUtil.h</name>
   </compound>
   <compound refid="TestBoost_8cpp" kind="file"><name>TestBoost.cpp</name>
     <member refid="TestBoost_8cpp_127a1864e1f4693766ae2596e6e205731" kind="function"><name>hello</name></member>
@@ -444,6 +514,9 @@
   <compound refid="TestIntSize_8cpp" kind="file"><name>TestIntSize.cpp</name>
     <member refid="TestIntSize_8cpp_14bc4d985ff91f595213de9ea43d20363" kind="variable"><name>char_min</name></member>
     <member refid="TestIntSize_8cpp_1840291bc02cba5474a4cb46a9b9566fe" kind="function"><name>main</name></member>
+  </compound>
+  <compound refid="TestLms_8cpp" kind="file"><name>TestLms.cpp</name>
+    <member refid="TestLms_8cpp_1e66f6b31b5ad750f1fe042a706a4e3d4" kind="function"><name>main</name></member>
   </compound>
   <compound refid="TestNet_8cpp" kind="file"><name>TestNet.cpp</name>
     <member refid="TestNet_8cpp_1e66f6b31b5ad750f1fe042a706a4e3d4" kind="function"><name>main</name></member>
@@ -466,13 +539,23 @@
   </compound>
   <compound refid="window_8h" kind="file"><name>window.h</name>
   </compound>
-  <compound refid="dir_5a827b428f3494ab44c418b849039840" kind="dir"><name>pann/trunk/src/Core/</name>
+  <compound refid="dir_908d5782c7d891e3b097cdb16bab1c2c" kind="dir"><name>pann/trunk/src/pann/Core/</name>
+  </compound>
+  <compound refid="dir_a983e4e9cc28c0eb376ca8ae1081df84" kind="dir"><name>pann/trunk/src/pann/LearningAlgorithms/</name>
+  </compound>
+  <compound refid="dir_635edf781cf138523b1933567f3adb72" kind="dir"><name>pann/trunk/src/pann/LearningAlgorithms/Lms/</name>
+  </compound>
+  <compound refid="dir_0c481205657a5b21f93f2b2b7a6821b3" kind="dir"><name>pann/trunk/src/pann/NetworkModels/</name>
+  </compound>
+  <compound refid="dir_96edbd1a0014f6e805955ca70a401c69" kind="dir"><name>pann/trunk/src/pann/</name>
   </compound>
   <compound refid="dir_6be0afb293d99ecd3276240ba5ea30d1" kind="dir"><name>pann/</name>
   </compound>
   <compound refid="dir_aa05299a41aad6612ad590312b2f57c2" kind="dir"><name>pann/trunk/src/Utils/pann_viewer/</name>
   </compound>
   <compound refid="dir_985e7303d6a346035771b276499bc9a7" kind="dir"><name>pann/trunk/src/</name>
+  </compound>
+  <compound refid="dir_9026d2356f484a3e3566d14db032837f" kind="dir"><name>pann/trunk/src/pann/TrainData/</name>
   </compound>
   <compound refid="dir_beaa11142bdac03fdf48f69aaa2d8210" kind="dir"><name>pann/trunk/</name>
   </compound>

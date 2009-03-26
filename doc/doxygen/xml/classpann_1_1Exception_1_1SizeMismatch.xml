@@ -4,43 +4,92 @@
     <compoundname>pann::Exception::SizeMismatch</compoundname>
     <basecompoundref refid="classpann_1_1Exception_1_1Base" prot="public" virt="non-virtual">pann::Exception::Base</basecompoundref>
     <includes refid="Exception_8h" local="no">Exception.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classpann_1_1Exception_1_1SizeMismatch_1f3a7dd1ba8b6f3261a0ee9f7507539b9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>pann::Exception::SizeMismatch::SizeMismatch</definition>
+        <argsstring>()</argsstring>
+        <name>SizeMismatch</name>
+        <exceptions> throw ()</exceptions>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/pann/Core/Exception.h" line="87" bodyfile="/home/booble/pann/trunk/src/pann/Core/Exception.h" bodystart="87" bodyend="87"/>
+      </memberdef>
+      <memberdef kind="function" id="classpann_1_1Exception_1_1SizeMismatch_1d4dbe9e224ca25ad572105236efa1357" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>pann::Exception::SizeMismatch::SizeMismatch</definition>
+        <argsstring>(const SizeMismatch &amp;_rvalue)</argsstring>
+        <name>SizeMismatch</name>
+        <param>
+          <type>const <ref refid="classpann_1_1Exception_1_1SizeMismatch" kindref="compound">SizeMismatch</ref> &amp;</type>
+          <declname>_rvalue</declname>
+        </param>
+        <exceptions> throw ()</exceptions>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/pann/Core/Exception.h" line="88" bodyfile="/home/booble/pann/trunk/src/pann/Core/Exception.h" bodystart="88" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="classpann_1_1Exception_1_1SizeMismatch_16c5989fce1532aab570ffbd883860b7c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual pann::Exception::SizeMismatch::~SizeMismatch</definition>
+        <argsstring>()</argsstring>
+        <name>~SizeMismatch</name>
+        <exceptions> throw ()</exceptions>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/pann/Core/Exception.h" line="89" bodyfile="/home/booble/pann/trunk/src/pann/Core/Exception.h" bodystart="89" bodyend="89"/>
+      </memberdef>
+      </sectiondef>
     <briefdescription>
 <para>Count of elements mismatch. </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="338">
+      <node id="330">
         <label>pann::Exception::SizeMismatch</label>
         <link refid="classpann_1_1Exception_1_1SizeMismatch"/>
-        <childnode refid="339" relation="public-inheritance">
+        <childnode refid="331" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="339">
+      <node id="331">
         <label>pann::Exception::Base</label>
         <link refid="classpann_1_1Exception_1_1Base"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="340">
+      <node id="332">
         <label>pann::Exception::SizeMismatch</label>
         <link refid="classpann_1_1Exception_1_1SizeMismatch"/>
-        <childnode refid="341" relation="public-inheritance">
+        <childnode refid="333" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="341">
+      <node id="333">
         <label>pann::Exception::Base</label>
         <link refid="classpann_1_1Exception_1_1Base"/>
       </node>
     </collaborationgraph>
-    <location file="/home/booble/pann/trunk/src/Core/Exception.h" line="67" bodyfile="/home/booble/pann/trunk/src/Core/Exception.h" bodystart="67" bodyend="67"/>
+    <location file="/home/booble/pann/trunk/src/pann/Core/Exception.h" line="85" bodyfile="/home/booble/pann/trunk/src/pann/Core/Exception.h" bodystart="84" bodyend="90"/>
     <listofallmembers>
       <member refid="classpann_1_1Exception_1_1Base_129e2607d6a8c7dc15ed6ed3cb92d3ece" prot="public" virt="non-virtual"><scope>pann::Exception::SizeMismatch</scope><name>Base</name></member>
-      <member refid="classpann_1_1Exception_1_1Base_1659925e8afcb384bc88b2f5b9802e052" prot="public" virt="non-virtual"><scope>pann::Exception::SizeMismatch</scope><name>Base</name></member>
-      <member refid="classpann_1_1Exception_1_1Base_1ad82b3455115377053fa357b70ac7978" prot="public" virt="virtual"><scope>pann::Exception::SizeMismatch</scope><name>getText</name></member>
-      <member refid="classpann_1_1Exception_1_1Base_139525dbb840db0f93d66bb6cfa0f3089" prot="public" virt="non-virtual"><scope>pann::Exception::SizeMismatch</scope><name>operator&lt;&lt;</name></member>
-      <member refid="classpann_1_1Exception_1_1Base_1e73d382790d755edfec2289abe12a626" prot="public" virt="non-virtual"><scope>pann::Exception::SizeMismatch</scope><name>text</name></member>
+      <member refid="classpann_1_1Exception_1_1Base_184c37510b2617297090fb7bbd2520fc8" prot="public" virt="non-virtual"><scope>pann::Exception::SizeMismatch</scope><name>Base</name></member>
+      <member refid="classpann_1_1Exception_1_1SizeMismatch_1f3a7dd1ba8b6f3261a0ee9f7507539b9" prot="public" virt="non-virtual"><scope>pann::Exception::SizeMismatch</scope><name>SizeMismatch</name></member>
+      <member refid="classpann_1_1Exception_1_1SizeMismatch_1d4dbe9e224ca25ad572105236efa1357" prot="public" virt="non-virtual"><scope>pann::Exception::SizeMismatch</scope><name>SizeMismatch</name></member>
       <member refid="classpann_1_1Exception_1_1Base_13795b9ad6996ac80e80e4e8179b733ab" prot="protected" virt="non-virtual"><scope>pann::Exception::SizeMismatch</scope><name>textStream</name></member>
-      <member refid="classpann_1_1Exception_1_1Base_12b12cae42f85a5d694111d2bb1de315f" prot="public" virt="virtual"><scope>pann::Exception::SizeMismatch</scope><name>~Base</name></member>
+      <member refid="classpann_1_1Exception_1_1Base_1814afcfe425f55f02e39f1fea05bcbe9" prot="public" virt="virtual"><scope>pann::Exception::SizeMismatch</scope><name>what</name></member>
+      <member refid="classpann_1_1Exception_1_1Base_10ae22e27956edb603976595cda354b7b" prot="public" virt="virtual"><scope>pann::Exception::SizeMismatch</scope><name>~Base</name></member>
+      <member refid="classpann_1_1Exception_1_1SizeMismatch_16c5989fce1532aab570ffbd883860b7c" prot="public" virt="virtual"><scope>pann::Exception::SizeMismatch</scope><name>~SizeMismatch</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

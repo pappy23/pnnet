@@ -35,14 +35,14 @@ Inheritance diagram for pann::Link:</div>
 <div class="dynsection">
 <p><center><img src="classpann_1_1Link__inherit__graph.png" border="0" usemap="#pann_1_1Link__inherit__map" alt="Inheritance graph"></center>
 <map name="pann_1_1Link__inherit__map">
-<area shape="rect" href="classpann_1_1Object.html" title="Base class for almoust everything." alt="" coords="5,5,101,32"></map>
+<area shape="rect" href="classpann_1_1Object.html" title="pann::Object" alt="" coords="5,5,101,32"></map>
 <center><font size="2">[<a href="graph_legend.html">legend</a>]</font></center></div>
 <div class="dynheader">
 Collaboration diagram for pann::Link:</div>
 <div class="dynsection">
 <p><center><img src="classpann_1_1Link__coll__graph.png" border="0" usemap="#pann_1_1Link__coll__map" alt="Collaboration graph"></center>
 <map name="pann_1_1Link__coll__map">
-<area shape="rect" href="classpann_1_1Object.html" title="Base class for almoust everything." alt="" coords="5,5,101,32"></map>
+<area shape="rect" href="classpann_1_1Object.html" title="pann::Object" alt="" coords="32,5,128,32"><area shape="rect" href="classpann_1_1Neuron.html" title="pann::Neuron" alt="" coords="81,189,180,216"><area shape="rect" href="classpann_1_1Attributes.html" title="pann::Attributes" alt="" coords="256,83,368,109"><area shape="rect" href="classpann_1_1Weight.html" title="pann::Weight" alt="" coords="353,136,449,163"><area shape="rect" href="classpann_1_1ActivationFunction_1_1Base.html" title="pann::ActivationFunction::Base" alt="" coords="29,83,232,109"></map>
 <center><font size="2">[<a href="graph_legend.html">legend</a>]</font></center></div>
 
 <p>
@@ -54,31 +54,38 @@ Collaboration diagram for pann::Link:</div>
  }</td></tr>
 
 <tr><td colspan="2"><br><h2>Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1Link.html#41044402a668f43f06553d7da750df61">Link</a> (const <a class="el" href="namespacepann.html#5b285d6cead198add4f14b5b5a0b97c1">NeuronIter</a> _to, const <a class="el" href="classpann_1_1Link.html#843c5a79ffd161b67e1770f65eabf055">Direction</a> _direction, <a class="el" href="namespacepann.html#984e6dfa15df19d238ee8f5792d0cefb">WeightIter</a> _w, unsigned const _latency=1)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1Link.html#6fe6e2f0189674bc72457577df964869">Link</a> (<a class="el" href="classpann_1_1Neuron.html">Neuron</a> *_to, const <a class="el" href="classpann_1_1Link.html#843c5a79ffd161b67e1770f65eabf055">Direction</a> _direction, <a class="el" href="classpann_1_1Weight.html">Weight</a> *_w, unsigned const _latency=1)  throw ()</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1Link.html#d06a124eeddb33744befe239894399bc">~Link</a> ()</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1Link.html#d06a124eeddb33744befe239894399bc">~Link</a> ()  throw ()</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="namespacepann.html#5b285d6cead198add4f14b5b5a0b97c1">NeuronIter</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1Link.html#18a70d88ffa9fe441820c2d1c9d83579">getToIter</a> ()</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="classpann_1_1Neuron.html">Neuron</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1Link.html#7989e38d6778c229f4db756fe116cbd6">getTo</a> ()  throw ()</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="namespacepann.html#68751290d27789ce6f303cf55ed505ed">ConstNeuronIter</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1Link.html#34704a4638bea049b149dcafdcfe93d3">getToIter</a> () const </td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">const <a class="el" href="classpann_1_1Neuron.html">Neuron</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1Link.html#b6ca60ca92361423e8ba3b0f52a0374f">getTo</a> () const   throw ()</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="classpann_1_1Link.html#843c5a79ffd161b67e1770f65eabf055">Direction</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1Link.html#eab757727bb6ca0cad8edb46500c3897">getDirection</a> () const </td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="classpann_1_1Link.html#843c5a79ffd161b67e1770f65eabf055">Direction</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1Link.html#87348d85a5295f03b9851b2da57800aa">getDirection</a> () const   throw ()</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">unsigned&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1Link.html#282df22476d1056ecd371a2357f227c8">getLatency</a> () const </td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">unsigned&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1Link.html#282df22476d1056ecd371a2357f227c8">getLatency</a> () const   throw ()</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="namespacepann.html#984e6dfa15df19d238ee8f5792d0cefb">WeightIter</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1Link.html#0da0b96aceaf5361b289cded06778d65">getWeightIter</a> ()</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="classpann_1_1Weight.html">Weight</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1Link.html#107ab03c0bd18afc8eacb1077cbb47c5">getWeight</a> ()  throw ()</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1Link.html#1b0611d84a5fd7632fdaffac2b19b2a9">printDebugInfo</a> (std::ostringstream &amp;ost) const </td></tr>
+<tr><td colspan="2"><br><h2>Private Member Functions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1Link.html#f3e85e337a19c68fc43838815fcff900">Link</a> ()</td></tr>
+
+<tr><td class="memTemplParams" nowrap colspan="2">template&lt;class Archive&gt; </td></tr>
+<tr><td class="memTemplItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classpann_1_1Link.html#7aee4460f2f6f3e09d3e7d457c56578c">serialize</a> (Archive &amp;ar, const unsigned int version)</td></tr>
 
 <tr><td colspan="2"><br><h2>Private Attributes</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="namespacepann.html#5b285d6cead198add4f14b5b5a0b97c1">NeuronIter</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1Link.html#7126b05c26be8b9166fa86b894b1cdb0">to</a></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="classpann_1_1Neuron.html">Neuron</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1Link.html#2db2a65a456ac419da7cae6c8d4d8399">to</a></td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="classpann_1_1Link.html#843c5a79ffd161b67e1770f65eabf055">Direction</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1Link.html#e3c1cbea824e8177a35201a6da1c0da2">direction</a></td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="namespacepann.html#984e6dfa15df19d238ee8f5792d0cefb">WeightIter</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1Link.html#e5eed84c9cd7072a8361e6fd6f1265c6">w</a></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="classpann_1_1Weight.html">Weight</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1Link.html#e9b45216441647effa01fc5223d34a14">w</a></td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Pointer to <a class="el" href="classpann_1_1Weight.html">Weight</a> object (might be shared between different links).  <a href="#e5eed84c9cd7072a8361e6fd6f1265c6"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Pointer to <a class="el" href="classpann_1_1Weight.html">Weight</a> object (might be shared between different links).  <a href="#e9b45216441647effa01fc5223d34a14"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">unsigned&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1Link.html#c4082679e8fc85a6ef441b6e567493e9">latency</a></td></tr>
+
+<tr><td colspan="2"><br><h2>Friends</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">class&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1Link.html#c98d07dd8f7b70e16ccb9a01abf56b9c">boost::serialization::access</a></td></tr>
 
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
@@ -111,14 +118,14 @@ Collaboration diagram for pann::Link:</div>
 </div>
 </div><p>
 <hr><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" name="41044402a668f43f06553d7da750df61"></a><!-- doxytag: member="pann::Link::Link" ref="41044402a668f43f06553d7da750df61" args="(const NeuronIter _to, const Direction _direction, WeightIter _w, unsigned const _latency=1)" -->
+<a class="anchor" name="6fe6e2f0189674bc72457577df964869"></a><!-- doxytag: member="pann::Link::Link" ref="6fe6e2f0189674bc72457577df964869" args="(Neuron *_to, const Direction _direction, Weight *_w, unsigned const _latency=1)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">pann::Link::Link           </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespacepann.html#5b285d6cead198add4f14b5b5a0b97c1">NeuronIter</a>&nbsp;</td>
+          <td class="paramtype"><a class="el" href="classpann_1_1Neuron.html">Neuron</a> *&nbsp;</td>
           <td class="paramname"> <em>_to</em>, </td>
         </tr>
         <tr>
@@ -130,7 +137,7 @@ Collaboration diagram for pann::Link:</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespacepann.html#984e6dfa15df19d238ee8f5792d0cefb">WeightIter</a>&nbsp;</td>
+          <td class="paramtype"><a class="el" href="classpann_1_1Weight.html">Weight</a> *&nbsp;</td>
           <td class="paramname"> <em>_w</em>, </td>
         </tr>
         <tr>
@@ -142,7 +149,7 @@ Collaboration diagram for pann::Link:</div>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td></td><td><code> [inline]</code></td>
+          <td></td><td></td><td>  throw ()</td>
         </tr>
       </table>
 </div>
@@ -150,7 +157,7 @@ Collaboration diagram for pann::Link:</div>
 
 <p>
 
-<p>Definition at line <a class="el" href="Link_8h-source.html#l00033">33</a> of file <a class="el" href="Link_8h-source.html">Link.h</a>.</p>
+<p>Definition at line <a class="el" href="Link_8cpp-source.html#l00007">7</a> of file <a class="el" href="Link_8cpp-source.html">Link.cpp</a>.</p>
 
 </div>
 </div><p>
@@ -163,7 +170,7 @@ Collaboration diagram for pann::Link:</div>
           <td>(</td>
           <td class="paramname">          </td>
           <td>&nbsp;)&nbsp;</td>
-          <td><code> [inline]</code></td>
+          <td>  throw ()<code> [virtual]</code></td>
         </tr>
       </table>
 </div>
@@ -171,21 +178,20 @@ Collaboration diagram for pann::Link:</div>
 
 <p>
 
-<p>Definition at line <a class="el" href="Link_8h-source.html#l00041">41</a> of file <a class="el" href="Link_8h-source.html">Link.h</a>.</p>
+<p>Definition at line <a class="el" href="Link_8cpp-source.html#l00015">15</a> of file <a class="el" href="Link_8cpp-source.html">Link.cpp</a>.</p>
 
 </div>
 </div><p>
-<hr><h2>Member Function Documentation</h2>
-<a class="anchor" name="18a70d88ffa9fe441820c2d1c9d83579"></a><!-- doxytag: member="pann::Link::getToIter" ref="18a70d88ffa9fe441820c2d1c9d83579" args="()" -->
+<a class="anchor" name="f3e85e337a19c68fc43838815fcff900"></a><!-- doxytag: member="pann::Link::Link" ref="f3e85e337a19c68fc43838815fcff900" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="namespacepann.html#5b285d6cead198add4f14b5b5a0b97c1">NeuronIter</a> pann::Link::getToIter           </td>
+          <td class="memname">pann::Link::Link           </td>
           <td>(</td>
           <td class="paramname">          </td>
           <td>&nbsp;)&nbsp;</td>
-          <td><code> [inline]</code></td>
+          <td><code> [inline, private]</code></td>
         </tr>
       </table>
 </div>
@@ -195,22 +201,19 @@ Collaboration diagram for pann::Link:</div>
 
 <p>Definition at line <a class="el" href="Link_8h-source.html#l00045">45</a> of file <a class="el" href="Link_8h-source.html">Link.h</a>.</p>
 
-<p>References <a class="el" href="Link_8h-source.html#l00026">to</a>.</p>
-
-<p>Referenced by <a class="el" href="Net_8cpp-source.html#l00340">pann::Net::regenerateCache()</a>, <a class="el" href="Runner_8h-source.html#l00106">pann::FeedforwardPropagationRunner::run()</a>, and <a class="el" href="Net_8h-source.html#l00222">pann::Net::save()</a>.</p>
-
 </div>
 </div><p>
-<a class="anchor" name="34704a4638bea049b149dcafdcfe93d3"></a><!-- doxytag: member="pann::Link::getToIter" ref="34704a4638bea049b149dcafdcfe93d3" args="() const " -->
+<hr><h2>Member Function Documentation</h2>
+<a class="anchor" name="7989e38d6778c229f4db756fe116cbd6"></a><!-- doxytag: member="pann::Link::getTo" ref="7989e38d6778c229f4db756fe116cbd6" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="namespacepann.html#68751290d27789ce6f303cf55ed505ed">ConstNeuronIter</a> pann::Link::getToIter           </td>
+          <td class="memname"><a class="el" href="classpann_1_1Neuron.html">Neuron</a> * pann::Link::getTo           </td>
           <td>(</td>
           <td class="paramname">          </td>
           <td>&nbsp;)&nbsp;</td>
-          <td> const<code> [inline]</code></td>
+          <td>  throw ()</td>
         </tr>
       </table>
 </div>
@@ -218,22 +221,24 @@ Collaboration diagram for pann::Link:</div>
 
 <p>
 
-<p>Definition at line <a class="el" href="Link_8h-source.html#l00046">46</a> of file <a class="el" href="Link_8h-source.html">Link.h</a>.</p>
+<p>Definition at line <a class="el" href="Link_8cpp-source.html#l00020">20</a> of file <a class="el" href="Link_8cpp-source.html">Link.cpp</a>.</p>
 
 <p>References <a class="el" href="Link_8h-source.html#l00026">to</a>.</p>
 
+<p>Referenced by <a class="el" href="Net_8cpp-source.html#l00347">pann::Net::regenerateCache()</a>, and <a class="el" href="Runner_8cpp-source.html#l00090">pann::FeedforwardPropagationRunner::run()</a>.</p>
+
 </div>
 </div><p>
-<a class="anchor" name="eab757727bb6ca0cad8edb46500c3897"></a><!-- doxytag: member="pann::Link::getDirection" ref="eab757727bb6ca0cad8edb46500c3897" args="() const " -->
+<a class="anchor" name="b6ca60ca92361423e8ba3b0f52a0374f"></a><!-- doxytag: member="pann::Link::getTo" ref="b6ca60ca92361423e8ba3b0f52a0374f" args="() const " -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classpann_1_1Link.html#843c5a79ffd161b67e1770f65eabf055">Direction</a> pann::Link::getDirection           </td>
+          <td class="memname">const <a class="el" href="classpann_1_1Neuron.html">Neuron</a> * pann::Link::getTo           </td>
           <td>(</td>
           <td class="paramname">          </td>
           <td>&nbsp;)&nbsp;</td>
-          <td> const<code> [inline]</code></td>
+          <td> const  throw ()</td>
         </tr>
       </table>
 </div>
@@ -241,11 +246,34 @@ Collaboration diagram for pann::Link:</div>
 
 <p>
 
-<p>Definition at line <a class="el" href="Link_8h-source.html#l00047">47</a> of file <a class="el" href="Link_8h-source.html">Link.h</a>.</p>
+<p>Definition at line <a class="el" href="Link_8cpp-source.html#l00026">26</a> of file <a class="el" href="Link_8cpp-source.html">Link.cpp</a>.</p>
+
+<p>References <a class="el" href="Link_8h-source.html#l00026">to</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="87348d85a5295f03b9851b2da57800aa"></a><!-- doxytag: member="pann::Link::getDirection" ref="87348d85a5295f03b9851b2da57800aa" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classpann_1_1Link.html#843c5a79ffd161b67e1770f65eabf055">Link::Direction</a> pann::Link::getDirection           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const  throw ()</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Definition at line <a class="el" href="Link_8cpp-source.html#l00032">32</a> of file <a class="el" href="Link_8cpp-source.html">Link.cpp</a>.</p>
 
 <p>References <a class="el" href="Link_8h-source.html#l00027">direction</a>.</p>
 
-<p>Referenced by <a class="el" href="Net_8cpp-source.html#l00340">pann::Net::regenerateCache()</a>, <a class="el" href="Runner_8h-source.html#l00106">pann::FeedforwardPropagationRunner::run()</a>, and <a class="el" href="Net_8h-source.html#l00222">pann::Net::save()</a>.</p>
+<p>Referenced by <a class="el" href="Net_8cpp-source.html#l00347">pann::Net::regenerateCache()</a>, and <a class="el" href="Runner_8cpp-source.html#l00090">pann::FeedforwardPropagationRunner::run()</a>.</p>
 
 </div>
 </div><p>
@@ -258,7 +286,7 @@ Collaboration diagram for pann::Link:</div>
           <td>(</td>
           <td class="paramname">          </td>
           <td>&nbsp;)&nbsp;</td>
-          <td> const<code> [inline]</code></td>
+          <td> const  throw ()</td>
         </tr>
       </table>
 </div>
@@ -266,24 +294,24 @@ Collaboration diagram for pann::Link:</div>
 
 <p>
 
-<p>Definition at line <a class="el" href="Link_8h-source.html#l00048">48</a> of file <a class="el" href="Link_8h-source.html">Link.h</a>.</p>
+<p>Definition at line <a class="el" href="Link_8cpp-source.html#l00037">37</a> of file <a class="el" href="Link_8cpp-source.html">Link.cpp</a>.</p>
 
 <p>References <a class="el" href="Link_8h-source.html#l00029">latency</a>.</p>
 
-<p>Referenced by <a class="el" href="Net_8cpp-source.html#l00340">pann::Net::regenerateCache()</a>, and <a class="el" href="Net_8h-source.html#l00222">pann::Net::save()</a>.</p>
+<p>Referenced by <a class="el" href="Net_8cpp-source.html#l00347">pann::Net::regenerateCache()</a>.</p>
 
 </div>
 </div><p>
-<a class="anchor" name="0da0b96aceaf5361b289cded06778d65"></a><!-- doxytag: member="pann::Link::getWeightIter" ref="0da0b96aceaf5361b289cded06778d65" args="()" -->
+<a class="anchor" name="107ab03c0bd18afc8eacb1077cbb47c5"></a><!-- doxytag: member="pann::Link::getWeight" ref="107ab03c0bd18afc8eacb1077cbb47c5" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="namespacepann.html#984e6dfa15df19d238ee8f5792d0cefb">WeightIter</a> pann::Link::getWeightIter           </td>
+          <td class="memname"><a class="el" href="classpann_1_1Weight.html">Weight</a> * pann::Link::getWeight           </td>
           <td>(</td>
           <td class="paramname">          </td>
           <td>&nbsp;)&nbsp;</td>
-          <td><code> [inline]</code></td>
+          <td>  throw ()</td>
         </tr>
       </table>
 </div>
@@ -291,25 +319,58 @@ Collaboration diagram for pann::Link:</div>
 
 <p>
 
-<p>Definition at line <a class="el" href="Link_8h-source.html#l00049">49</a> of file <a class="el" href="Link_8h-source.html">Link.h</a>.</p>
+<p>Definition at line <a class="el" href="Link_8cpp-source.html#l00043">43</a> of file <a class="el" href="Link_8cpp-source.html">Link.cpp</a>.</p>
 
 <p>References <a class="el" href="Link_8h-source.html#l00028">w</a>.</p>
 
-<p>Referenced by <a class="el" href="Runner_8h-source.html#l00106">pann::FeedforwardPropagationRunner::run()</a>, and <a class="el" href="Net_8h-source.html#l00222">pann::Net::save()</a>.</p>
+<p>Referenced by <a class="el" href="Runner_8cpp-source.html#l00090">pann::FeedforwardPropagationRunner::run()</a>.</p>
 
 </div>
 </div><p>
-<a class="anchor" name="1b0611d84a5fd7632fdaffac2b19b2a9"></a><!-- doxytag: member="pann::Link::printDebugInfo" ref="1b0611d84a5fd7632fdaffac2b19b2a9" args="(std::ostringstream &amp;ost) const " -->
+<a class="anchor" name="7aee4460f2f6f3e09d3e7d457c56578c"></a><!-- doxytag: member="pann::Link::serialize" ref="7aee4460f2f6f3e09d3e7d457c56578c" args="(Archive &amp;ar, const unsigned int version)" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Archive&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void pann::Link::serialize           </td>
+          <td>(</td>
+          <td class="paramtype">Archive &amp;&nbsp;</td>
+          <td class="paramname"> <em>ar</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned int&nbsp;</td>
+          <td class="paramname"> <em>version</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline, private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Reimplemented from <a class="el" href="classpann_1_1Object.html#13a234c0fcd5d32d341353f1b7b3c828">pann::Object</a>.</p>
+
+<p>Definition at line <a class="el" href="Link_8h-source.html#l00050">50</a> of file <a class="el" href="Link_8h-source.html">Link.h</a>.</p>
+
+<p>References <a class="el" href="Link_8h-source.html#l00027">direction</a>, <a class="el" href="Link_8h-source.html#l00029">latency</a>, <a class="el" href="Link_8h-source.html#l00026">to</a>, and <a class="el" href="Link_8h-source.html#l00028">w</a>.</p>
+
+</div>
+</div><p>
+<hr><h2>Friends And Related Function Documentation</h2>
+<a class="anchor" name="c98d07dd8f7b70e16ccb9a01abf56b9c"></a><!-- doxytag: member="pann::Link::boost::serialization::access" ref="c98d07dd8f7b70e16ccb9a01abf56b9c" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">virtual void pann::Link::printDebugInfo           </td>
-          <td>(</td>
-          <td class="paramtype">std::ostringstream &amp;&nbsp;</td>
-          <td class="paramname"> <em>ost</em>          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td> const<code> [inline, virtual]</code></td>
+          <td class="memname">friend class boost::serialization::access<code> [friend]</code>          </td>
         </tr>
       </table>
 </div>
@@ -317,21 +378,19 @@ Collaboration diagram for pann::Link:</div>
 
 <p>
 
-<p>Implements <a class="el" href="classpann_1_1Object.html#f0039bd3a5cdbb3decfa5e33055e1a45">pann::Object</a>.</p>
+<p>Reimplemented from <a class="el" href="classpann_1_1Object.html#c98d07dd8f7b70e16ccb9a01abf56b9c">pann::Object</a>.</p>
 
-<p>Definition at line <a class="el" href="Link_8h-source.html#l00053">53</a> of file <a class="el" href="Link_8h-source.html">Link.h</a>.</p>
-
-<p>References <a class="el" href="Link_8h-source.html#l00027">direction</a>, <a class="el" href="Link_8h-source.html#l00029">latency</a>, and <a class="el" href="Link_8h-source.html#l00028">w</a>.</p>
+<p>Definition at line <a class="el" href="Link_8h-source.html#l00045">45</a> of file <a class="el" href="Link_8h-source.html">Link.h</a>.</p>
 
 </div>
 </div><p>
 <hr><h2>Member Data Documentation</h2>
-<a class="anchor" name="7126b05c26be8b9166fa86b894b1cdb0"></a><!-- doxytag: member="pann::Link::to" ref="7126b05c26be8b9166fa86b894b1cdb0" args="" -->
+<a class="anchor" name="2db2a65a456ac419da7cae6c8d4d8399"></a><!-- doxytag: member="pann::Link::to" ref="2db2a65a456ac419da7cae6c8d4d8399" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="namespacepann.html#5b285d6cead198add4f14b5b5a0b97c1">NeuronIter</a> <a class="el" href="classpann_1_1Link.html#7126b05c26be8b9166fa86b894b1cdb0">pann::Link::to</a><code> [private]</code>          </td>
+          <td class="memname"><a class="el" href="classpann_1_1Neuron.html">Neuron</a>* <a class="el" href="classpann_1_1Link.html#2db2a65a456ac419da7cae6c8d4d8399">pann::Link::to</a><code> [private]</code>          </td>
         </tr>
       </table>
 </div>
@@ -341,7 +400,7 @@ Collaboration diagram for pann::Link:</div>
 
 <p>Definition at line <a class="el" href="Link_8h-source.html#l00026">26</a> of file <a class="el" href="Link_8h-source.html">Link.h</a>.</p>
 
-<p>Referenced by <a class="el" href="Link_8h-source.html#l00045">getToIter()</a>.</p>
+<p>Referenced by <a class="el" href="Link_8cpp-source.html#l00020">getTo()</a>, and <a class="el" href="Link_8h-source.html#l00050">serialize()</a>.</p>
 
 </div>
 </div><p>
@@ -360,16 +419,16 @@ Collaboration diagram for pann::Link:</div>
 
 <p>Definition at line <a class="el" href="Link_8h-source.html#l00027">27</a> of file <a class="el" href="Link_8h-source.html">Link.h</a>.</p>
 
-<p>Referenced by <a class="el" href="Link_8h-source.html#l00047">getDirection()</a>, and <a class="el" href="Link_8h-source.html#l00053">printDebugInfo()</a>.</p>
+<p>Referenced by <a class="el" href="Link_8cpp-source.html#l00032">getDirection()</a>, and <a class="el" href="Link_8h-source.html#l00050">serialize()</a>.</p>
 
 </div>
 </div><p>
-<a class="anchor" name="e5eed84c9cd7072a8361e6fd6f1265c6"></a><!-- doxytag: member="pann::Link::w" ref="e5eed84c9cd7072a8361e6fd6f1265c6" args="" -->
+<a class="anchor" name="e9b45216441647effa01fc5223d34a14"></a><!-- doxytag: member="pann::Link::w" ref="e9b45216441647effa01fc5223d34a14" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="namespacepann.html#984e6dfa15df19d238ee8f5792d0cefb">WeightIter</a> <a class="el" href="classpann_1_1Link.html#e5eed84c9cd7072a8361e6fd6f1265c6">pann::Link::w</a><code> [private]</code>          </td>
+          <td class="memname"><a class="el" href="classpann_1_1Weight.html">Weight</a>* <a class="el" href="classpann_1_1Link.html#e9b45216441647effa01fc5223d34a14">pann::Link::w</a><code> [private]</code>          </td>
         </tr>
       </table>
 </div>
@@ -381,7 +440,7 @@ Pointer to <a class="el" href="classpann_1_1Weight.html">Weight</a> object (migh
 
 <p>Definition at line <a class="el" href="Link_8h-source.html#l00028">28</a> of file <a class="el" href="Link_8h-source.html">Link.h</a>.</p>
 
-<p>Referenced by <a class="el" href="Link_8h-source.html#l00049">getWeightIter()</a>, and <a class="el" href="Link_8h-source.html#l00053">printDebugInfo()</a>.</p>
+<p>Referenced by <a class="el" href="Link_8cpp-source.html#l00043">getWeight()</a>, and <a class="el" href="Link_8h-source.html#l00050">serialize()</a>.</p>
 
 </div>
 </div><p>
@@ -400,14 +459,14 @@ Pointer to <a class="el" href="classpann_1_1Weight.html">Weight</a> object (migh
 
 <p>Definition at line <a class="el" href="Link_8h-source.html#l00029">29</a> of file <a class="el" href="Link_8h-source.html">Link.h</a>.</p>
 
-<p>Referenced by <a class="el" href="Link_8h-source.html#l00048">getLatency()</a>, and <a class="el" href="Link_8h-source.html#l00053">printDebugInfo()</a>.</p>
+<p>Referenced by <a class="el" href="Link_8cpp-source.html#l00037">getLatency()</a>, and <a class="el" href="Link_8h-source.html#l00050">serialize()</a>.</p>
 
 </div>
 </div><p>
-<hr>The documentation for this class was generated from the following file:<ul>
-<li>pann/trunk/src/Core/<a class="el" href="Link_8h-source.html">Link.h</a></ul>
+<hr>The documentation for this class was generated from the following files:<ul>
+<li>pann/trunk/src/pann/Core/<a class="el" href="Link_8h-source.html">Link.h</a><li>pann/trunk/src/pann/Core/<a class="el" href="Link_8cpp-source.html">Link.cpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sun Mar 22 11:32:19 2009 for pann by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Thu Mar 26 21:15:58 2009 for pann by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

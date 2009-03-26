@@ -6,6 +6,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/booble/pann/trunk/src/Core/MultilayerPerceptron.cpp" line="6"/>
+    <location file="/home/booble/pann/trunk/src/pann/Core/Net.cpp" line="5"/>
   </compounddef>
 </doxygen>

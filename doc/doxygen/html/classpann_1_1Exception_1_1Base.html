@@ -42,26 +42,25 @@ Inheritance diagram for pann::Exception::Base:</div>
 <a href="classpann_1_1Exception_1_1Base-members.html">List of all members.</a><table border="0" cellpadding="0" cellspacing="0">
 <tr><td></td></tr>
 <tr><td colspan="2"><br><h2>Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1Exception_1_1Base.html#29e2607d6a8c7dc15ed6ed3cb92d3ece">Base</a> ()</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1Exception_1_1Base.html#29e2607d6a8c7dc15ed6ed3cb92d3ece">Base</a> ()  throw ()</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1Exception_1_1Base.html#659925e8afcb384bc88b2f5b9802e052">Base</a> (<a class="el" href="classpann_1_1Exception_1_1Base.html">Base</a> &amp;_rvalue)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1Exception_1_1Base.html#84c37510b2617297090fb7bbd2520fc8">Base</a> (const <a class="el" href="classpann_1_1Exception_1_1Base.html">Base</a> &amp;_rvalue)  throw ()</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1Exception_1_1Base.html#2b12cae42f85a5d694111d2bb1de315f">~Base</a> ()</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1Exception_1_1Base.html#0ae22e27956edb603976595cda354b7b">~Base</a> ()  throw ()</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">std::string&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1Exception_1_1Base.html#e73d382790d755edfec2289abe12a626">text</a> ()</td></tr>
-
-<tr><td class="memTemplParams" nowrap colspan="2">template&lt;typename T&gt; </td></tr>
-<tr><td class="memTemplItemLeft" nowrap align="right" valign="top"><a class="el" href="classpann_1_1Exception_1_1Base.html">Base</a> &amp;&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classpann_1_1Exception_1_1Base.html#39525dbb840db0f93d66bb6cfa0f3089">operator&lt;&lt;</a> (const T &amp;value)</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual std::string&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1Exception_1_1Base.html#ad82b3455115377053fa357b70ac7978">getText</a> ()</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1Exception_1_1Base.html#814afcfe425f55f02e39f1fea05bcbe9">what</a> () const   throw ()</td></tr>
 
 <tr><td colspan="2"><br><h2>Protected Attributes</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">std::ostringstream&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1Exception_1_1Base.html#3795b9ad6996ac80e80e4e8179b733ab">textStream</a></td></tr>
 
+<tr><td colspan="2"><br><h2>Friends</h2></td></tr>
+<tr><td class="memTemplParams" nowrap colspan="2">template&lt;class E, class T&gt; </td></tr>
+<tr><td class="memTemplItemLeft" nowrap align="right" valign="top">E const &amp;&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classpann_1_1Exception_1_1Base.html#bb7155278e12a8f39270a1fccc505059">operator&lt;&lt;</a> (E const &amp;_e, const T &amp;_value)  throw ()</td></tr>
+
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 Basic class for every exception. 
-<p>Definition at line <a class="el" href="Exception_8h-source.html#l00020">20</a> of file <a class="el" href="Exception_8h-source.html">Exception.h</a>.</p>
+<p>Definition at line <a class="el" href="Exception_8h-source.html#l00028">28</a> of file <a class="el" href="Exception_8h-source.html">Exception.h</a>.</p>
 <hr><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" name="29e2607d6a8c7dc15ed6ed3cb92d3ece"></a><!-- doxytag: member="pann::Exception::Base::Base" ref="29e2607d6a8c7dc15ed6ed3cb92d3ece" args="()" -->
 <div class="memitem">
@@ -72,7 +71,7 @@ Basic class for every exception.
           <td>(</td>
           <td class="paramname">          </td>
           <td>&nbsp;)&nbsp;</td>
-          <td><code> [inline]</code></td>
+          <td>  throw ()</td>
         </tr>
       </table>
 </div>
@@ -80,21 +79,21 @@ Basic class for every exception.
 
 <p>
 
-<p>Definition at line <a class="el" href="Exception_8h-source.html#l00026">26</a> of file <a class="el" href="Exception_8h-source.html">Exception.h</a>.</p>
+<p>Definition at line <a class="el" href="Exception_8cpp-source.html#l00009">9</a> of file <a class="el" href="Exception_8cpp-source.html">Exception.cpp</a>.</p>
 
 </div>
 </div><p>
-<a class="anchor" name="659925e8afcb384bc88b2f5b9802e052"></a><!-- doxytag: member="pann::Exception::Base::Base" ref="659925e8afcb384bc88b2f5b9802e052" args="(Base &amp;_rvalue)" -->
+<a class="anchor" name="84c37510b2617297090fb7bbd2520fc8"></a><!-- doxytag: member="pann::Exception::Base::Base" ref="84c37510b2617297090fb7bbd2520fc8" args="(const Base &amp;_rvalue)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">pann::Exception::Base::Base           </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classpann_1_1Exception_1_1Base.html">Base</a> &amp;&nbsp;</td>
+          <td class="paramtype">const <a class="el" href="classpann_1_1Exception_1_1Base.html">Base</a> &amp;&nbsp;</td>
           <td class="paramname"> <em>_rvalue</em>          </td>
           <td>&nbsp;)&nbsp;</td>
-          <td><code> [inline]</code></td>
+          <td>  throw ()</td>
         </tr>
       </table>
 </div>
@@ -102,20 +101,20 @@ Basic class for every exception.
 
 <p>
 
-<p>Definition at line <a class="el" href="Exception_8h-source.html#l00031">31</a> of file <a class="el" href="Exception_8h-source.html">Exception.h</a>.</p>
+<p>Definition at line <a class="el" href="Exception_8cpp-source.html#l00013">13</a> of file <a class="el" href="Exception_8cpp-source.html">Exception.cpp</a>.</p>
 
 </div>
 </div><p>
-<a class="anchor" name="2b12cae42f85a5d694111d2bb1de315f"></a><!-- doxytag: member="pann::Exception::Base::~Base" ref="2b12cae42f85a5d694111d2bb1de315f" args="()" -->
+<a class="anchor" name="0ae22e27956edb603976595cda354b7b"></a><!-- doxytag: member="pann::Exception::Base::~Base" ref="0ae22e27956edb603976595cda354b7b" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">virtual pann::Exception::Base::~Base           </td>
+          <td class="memname">pann::Exception::Base::~Base           </td>
           <td>(</td>
           <td class="paramname">          </td>
           <td>&nbsp;)&nbsp;</td>
-          <td><code> [inline, virtual]</code></td>
+          <td>  throw ()<code> [virtual]</code></td>
         </tr>
       </table>
 </div>
@@ -123,21 +122,21 @@ Basic class for every exception.
 
 <p>
 
-<p>Definition at line <a class="el" href="Exception_8h-source.html#l00033">33</a> of file <a class="el" href="Exception_8h-source.html">Exception.h</a>.</p>
+<p>Definition at line <a class="el" href="Exception_8cpp-source.html#l00018">18</a> of file <a class="el" href="Exception_8cpp-source.html">Exception.cpp</a>.</p>
 
 </div>
 </div><p>
 <hr><h2>Member Function Documentation</h2>
-<a class="anchor" name="e73d382790d755edfec2289abe12a626"></a><!-- doxytag: member="pann::Exception::Base::text" ref="e73d382790d755edfec2289abe12a626" args="()" -->
+<a class="anchor" name="814afcfe425f55f02e39f1fea05bcbe9"></a><!-- doxytag: member="pann::Exception::Base::what" ref="814afcfe425f55f02e39f1fea05bcbe9" args="() const " -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::string pann::Exception::Base::text           </td>
+          <td class="memname">const char * pann::Exception::Base::what           </td>
           <td>(</td>
           <td class="paramname">          </td>
           <td>&nbsp;)&nbsp;</td>
-          <td><code> [inline]</code></td>
+          <td> const  throw ()<code> [virtual]</code></td>
         </tr>
       </table>
 </div>
@@ -145,60 +144,43 @@ Basic class for every exception.
 
 <p>
 
-<p>Definition at line <a class="el" href="Exception_8h-source.html#l00035">35</a> of file <a class="el" href="Exception_8h-source.html">Exception.h</a>.</p>
+<p>Definition at line <a class="el" href="Exception_8cpp-source.html#l00023">23</a> of file <a class="el" href="Exception_8cpp-source.html">Exception.cpp</a>.</p>
 
-<p>References <a class="el" href="Exception_8h-source.html#l00023">textStream</a>.</p>
+<p>References <a class="el" href="Exception_8h-source.html#l00037">textStream</a>.</p>
+
+<p>Referenced by <a class="el" href="main_8cpp-source.html#l00010">main()</a>, and <a class="el" href="Exception_8h-source.html#l00050">pann::Exception::Warning::~Warning()</a>.</p>
 
 </div>
 </div><p>
-<a class="anchor" name="39525dbb840db0f93d66bb6cfa0f3089"></a><!-- doxytag: member="pann::Exception::Base::operator&lt;&lt;" ref="39525dbb840db0f93d66bb6cfa0f3089" args="(const T &amp;value)" -->
+<hr><h2>Friends And Related Function Documentation</h2>
+<a class="anchor" name="bb7155278e12a8f39270a1fccc505059"></a><!-- doxytag: member="pann::Exception::Base::operator&lt;&lt;" ref="bb7155278e12a8f39270a1fccc505059" args="(E const &amp;_e, const T &amp;_value)" -->
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T&gt; </div>
+template&lt;class E, class T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classpann_1_1Exception_1_1Base.html">Base</a>&amp; pann::Exception::Base::operator&lt;&lt;           </td>
+          <td class="memname">E const&amp; operator&lt;&lt;           </td>
           <td>(</td>
+          <td class="paramtype">E const &amp;&nbsp;</td>
+          <td class="paramname"> <em>_e</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">const T &amp;&nbsp;</td>
-          <td class="paramname"> <em>value</em>          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td><code> [inline]</code></td>
+          <td class="paramname"> <em>_value</em></td><td>&nbsp;</td>
         </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-
-<p>Definition at line <a class="el" href="Exception_8h-source.html#l00040">40</a> of file <a class="el" href="Exception_8h-source.html">Exception.h</a>.</p>
-
-<p>References <a class="el" href="Exception_8h-source.html#l00023">textStream</a>.</p>
-
-</div>
-</div><p>
-<a class="anchor" name="ad82b3455115377053fa357b70ac7978"></a><!-- doxytag: member="pann::Exception::Base::getText" ref="ad82b3455115377053fa357b70ac7978" args="()" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
         <tr>
-          <td class="memname">virtual std::string pann::Exception::Base::getText           </td>
-          <td>(</td>
-          <td class="paramname">          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td><code> [inline, virtual]</code></td>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td>  throw ()<code> [friend]</code></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
 <p>
-
-<p>Definition at line <a class="el" href="Exception_8h-source.html#l00048">48</a> of file <a class="el" href="Exception_8h-source.html">Exception.h</a>.</p>
-
-<p>References <a class="el" href="Exception_8h-source.html#l00023">textStream</a>.</p>
-
-<p>Referenced by <a class="el" href="main_8cpp-source.html#l00012">main()</a>.</p>
 
 </div>
 </div><p>
@@ -216,16 +198,16 @@ template&lt;typename T&gt; </div>
 
 <p>
 
-<p>Definition at line <a class="el" href="Exception_8h-source.html#l00023">23</a> of file <a class="el" href="Exception_8h-source.html">Exception.h</a>.</p>
+<p>Definition at line <a class="el" href="Exception_8h-source.html#l00037">37</a> of file <a class="el" href="Exception_8h-source.html">Exception.h</a>.</p>
 
-<p>Referenced by <a class="el" href="Exception_8h-source.html#l00048">getText()</a>, <a class="el" href="Exception_8h-source.html#l00040">operator&lt;&lt;()</a>, and <a class="el" href="Exception_8h-source.html#l00035">text()</a>.</p>
+<p>Referenced by <a class="el" href="Exception_8cpp-source.html#l00023">what()</a>.</p>
 
 </div>
 </div><p>
-<hr>The documentation for this class was generated from the following file:<ul>
-<li>pann/trunk/src/Core/<a class="el" href="Exception_8h-source.html">Exception.h</a></ul>
+<hr>The documentation for this class was generated from the following files:<ul>
+<li>pann/trunk/src/pann/Core/<a class="el" href="Exception_8h-source.html">Exception.h</a><li>pann/trunk/src/pann/Core/<a class="el" href="Exception_8cpp-source.html">Exception.cpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sun Mar 22 11:32:24 2009 for pann by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Thu Mar 26 21:16:03 2009 for pann by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>
