@@ -56,7 +56,7 @@ namespace pann
         public:
             ObjectNotFound() throw() : Base() {};
             ObjectNotFound(const ObjectNotFound& _rvalue) throw() : Base(_rvalue) {};
-            virtual ~ObjectNotFound() throw();
+            virtual ~ObjectNotFound() throw() {};
         }; 
         
         //! Trying to add already existent element
@@ -65,7 +65,7 @@ namespace pann
         public:
             ElementExists() throw() : Base() {};
             ElementExists(const ElementExists& _rvalue) throw() : Base(_rvalue) {};
-            virtual ~ElementExists() throw();
+            virtual ~ElementExists() throw() {};
         }; 
 
         //! Multiple elements exist, but onlyone allowed; ex: parallel links between neurons are not allowed
@@ -74,7 +74,7 @@ namespace pann
         public:
             MultipleOccurance() throw() : Base() {};
             MultipleOccurance(const MultipleOccurance& _rvalue) throw() : Base(_rvalue) {};
-            virtual ~MultipleOccurance() throw();
+            virtual ~MultipleOccurance() throw() {};
         }; 
 
         //! Count of elements mismatch
@@ -83,7 +83,7 @@ namespace pann
         public:
             SizeMismatch() throw() : Base() {};
             SizeMismatch(const SizeMismatch& _rvalue) throw() : Base(_rvalue) {};
-            virtual ~SizeMismatch() throw();
+            virtual ~SizeMismatch() throw() {};
         }; 
 
         //! Argument out of range
@@ -92,7 +92,7 @@ namespace pann
         public:
             RangeMismatch() throw() : Base() {};
             RangeMismatch(const RangeMismatch& _rvalue) throw() : Base(_rvalue) {};
-            virtual ~RangeMismatch() throw();
+            virtual ~RangeMismatch() throw() {};
         }; 
 
         //! Requested not computed value
@@ -101,7 +101,7 @@ namespace pann
         public:
             NotReady() throw() : Base() {};
             NotReady(const NotReady& _rvalue) throw() : Base(_rvalue) {};
-            virtual ~NotReady() throw();
+            virtual ~NotReady() throw() {};
         }; 
 
         //! Exceptionfor raising on filesystem failures (missing file etc.) 
@@ -110,7 +110,7 @@ namespace pann
         public:
             FilesystemError() throw() : Base() {};
             FilesystemError(const FilesystemError& _rvalue) throw() : Base(_rvalue) {};
-            virtual ~FilesystemError() throw();
+            virtual ~FilesystemError() throw() {};
         }; 
 
         //! It's imposible in our universe!
@@ -119,7 +119,7 @@ namespace pann
         public:
             Unbelievable() throw() : Base() {};
             Unbelievable(const Unbelievable& _rvalue) throw() : Base(_rvalue) {};
-            virtual ~Unbelievable() throw();
+            virtual ~Unbelievable() throw() {};
         }; 
 
     }; //Exception

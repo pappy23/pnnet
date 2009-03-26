@@ -12,7 +12,7 @@ using namespace boost;
 int main()
 {
     const unsigned runs_count = 3;
-    const unsigned layers_count = 2;
+    const unsigned layers_count = 10;
     const unsigned threads_count = 2;
 
     TrainPattern tp(1, 1);
@@ -22,7 +22,7 @@ int main()
         vector<unsigned> layers;
         layers.push_back(1);
         for(unsigned i = 0; i < layers_count; ++i)
-            layers.push_back(2);
+            layers.push_back(25);
         layers.push_back(1);
 
         Net* net = NetworkModel::MultilayerPerceptron(layers, ActivationFunction::TanH::Instance());
@@ -48,14 +48,7 @@ int main()
         //Output
         valarray<Float> output;
         net->getOutput(output);
-        cout<<"Test output: "<<setprecision(5)<<fixed<<output[0]<<endl;
-        
-        //Debug
-        {
-        ostringstream ost;
-        //net->printDebugInfo(ost);
-        cout<<ost.str();
-        }
+        //cout<<"Test output: "<<setprecision(5)<<fixed<<output[0]<<endl;
     
         //Serialization test
         Storage::save(*net, "test_net.xml");
@@ -68,14 +61,8 @@ int main()
     Net net2;
     cout<<"New net...OK\n";
     Storage::load(net2, "test_net.xml");
+    cout<<"Loading done\n";
 
-    //Debug
-    {
-    ostringstream ost;
-    //net2.printDebugInfo(ost);
-    cout<<ost.str();
-    }
-    
     //Test run()
     {
         progress_timer t;
@@ -84,8 +71,7 @@ int main()
         //Output
         valarray<Float> output;
         net2.getOutput(output);
-        cout<<"Test output: "<<setprecision(5)<<fixed<<output[0]<<endl;
-        
+        //cout<<"Test output: "<<setprecision(5)<<fixed<<output[0]<<endl;
     }
 
     return 0;

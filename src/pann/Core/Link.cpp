@@ -10,14 +10,10 @@ namespace pann
         direction = _direction;
         w = _w;
         latency = _latency;
-
-        w->usageCount++;
     } //Link
 
     Link::~Link() throw()
     {
-        if( (w->usageCount--) == 0)
-            delete w;
     } //~Link
 
     Neuron*
