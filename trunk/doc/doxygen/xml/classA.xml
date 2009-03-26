@@ -2,38 +2,41 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
   <compounddef id="classA" kind="class" prot="public">
     <compoundname>A</compoundname>
-      <sectiondef kind="public-attrib">
-      <memberdef kind="variable" id="classA_149a53415abd8f1b26235579cc805a15f" prot="public" static="no" mutable="no">
-        <type>int</type>
-        <definition>int A::a</definition>
-        <argsstring></argsstring>
-        <name>a</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/UnitTests/TestSerialization.cpp" line="17" bodyfile="/home/booble/pann/trunk/src/UnitTests/TestSerialization.cpp" bodystart="17" bodyend="-1"/>
-        <referencedby refid="classA_1c67ea05708b62131de07d0d0f8808ecd" compoundref="TestSerialization_8cpp" startline="22" endline="25">serialize</referencedby>
-      </memberdef>
-      </sectiondef>
+    <derivedcompoundref refid="classAder1" prot="public" virt="non-virtual">Ader1</derivedcompoundref>
+    <derivedcompoundref refid="classAder2" prot="public" virt="non-virtual">Ader2</derivedcompoundref>
       <sectiondef kind="friend">
       <memberdef kind="friend" id="classA_1c98d07dd8f7b70e16ccb9a01abf56b9c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>friend class</type>
         <definition>friend class boost::serialization::access</definition>
         <argsstring></argsstring>
         <name>boost::serialization::access</name>
+        <reimplementedby refid="classAder2_1c98d07dd8f7b70e16ccb9a01abf56b9c">boost::serialization::access</reimplementedby>
+        <reimplementedby refid="classAder1_1c98d07dd8f7b70e16ccb9a01abf56b9c">boost::serialization::access</reimplementedby>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/UnitTests/TestSerialization.cpp" line="20" bodyfile="/home/booble/pann/trunk/src/UnitTests/TestSerialization.cpp" bodystart="20" bodyend="-1"/>
+        <location file="/home/booble/pann/trunk/src/UnitTests/TestSerialization.cpp" line="15" bodyfile="/home/booble/pann/trunk/src/UnitTests/TestSerialization.cpp" bodystart="13" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
+      <memberdef kind="function" id="classA_11a592b3c31f807b534809ac7cb5c66ac" prot="private" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void A::test</definition>
+        <argsstring>()</argsstring>
+        <name>test</name>
+        <reimplementedby refid="classAder2_1ded5ab13c7844a013f951c870df9576b">test</reimplementedby>
+        <reimplementedby refid="classAder1_1850cf40119e9793c5584388a6ccb02a3">test</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/UnitTests/TestSerialization.cpp" line="13" bodyfile="/home/booble/pann/trunk/src/UnitTests/TestSerialization.cpp" bodystart="13" bodyend="13"/>
+      </memberdef>
       <memberdef kind="function" id="classA_1c67ea05708b62131de07d0d0f8808ecd" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
@@ -46,6 +49,8 @@
         <definition>void A::serialize</definition>
         <argsstring>(Archive &amp;ar, const unsigned int version)</argsstring>
         <name>serialize</name>
+        <reimplementedby refid="classAder2_1d135cb5af07c2014bfcc9acd02004156">serialize</reimplementedby>
+        <reimplementedby refid="classAder1_1746da025b482888b941b2b26902a99f5">serialize</reimplementedby>
         <param>
           <type>Archive &amp;</type>
           <declname>ar</declname>
@@ -60,19 +65,36 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/UnitTests/TestSerialization.cpp" line="23" bodyfile="/home/booble/pann/trunk/src/UnitTests/TestSerialization.cpp" bodystart="22" bodyend="25"/>
-        <references refid="classA_149a53415abd8f1b26235579cc805a15f" compoundref="TestSerialization_8cpp" startline="17">a</references>
+        <location file="/home/booble/pann/trunk/src/UnitTests/TestSerialization.cpp" line="18" bodyfile="/home/booble/pann/trunk/src/UnitTests/TestSerialization.cpp" bodystart="17" bodyend="20"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/booble/pann/trunk/src/UnitTests/TestSerialization.cpp" line="15" bodyfile="/home/booble/pann/trunk/src/UnitTests/TestSerialization.cpp" bodystart="14" bodyend="26"/>
+    <inheritancegraph>
+      <node id="183">
+        <label>A</label>
+        <link refid="classA"/>
+      </node>
+      <node id="184">
+        <label>Ader1</label>
+        <link refid="classAder1"/>
+        <childnode refid="183" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="185">
+        <label>Ader2</label>
+        <link refid="classAder2"/>
+        <childnode refid="183" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="/home/booble/pann/trunk/src/UnitTests/TestSerialization.cpp" line="12" bodyfile="/home/booble/pann/trunk/src/UnitTests/TestSerialization.cpp" bodystart="11" bodyend="21"/>
     <listofallmembers>
-      <member refid="classA_149a53415abd8f1b26235579cc805a15f" prot="public" virt="non-virtual"><scope>A</scope><name>a</name></member>
       <member refid="classA_1c98d07dd8f7b70e16ccb9a01abf56b9c" prot="public" virt="non-virtual"><scope>A</scope><name>boost::serialization::access</name></member>
       <member refid="classA_1c67ea05708b62131de07d0d0f8808ecd" prot="private" virt="non-virtual"><scope>A</scope><name>serialize</name></member>
+      <member refid="classA_11a592b3c31f807b534809ac7cb5c66ac" prot="private" virt="virtual"><scope>A</scope><name>test</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

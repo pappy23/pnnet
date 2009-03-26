@@ -19,8 +19,7 @@
 <h1>pann/trunk/src/Utils/pann_viewer/main.cpp File Reference</h1><code>#include &lt;QApplication&gt;</code><br>
 <code>#include &lt;QMessageBox&gt;</code><br>
 <code>#include &quot;<a class="el" href="window_8h-source.html">window.h</a>&quot;</code><br>
-<code>#include &quot;<a class="el" href="Net_8h-source.html">Net.h</a>&quot;</code><br>
-<code>#include &quot;<a class="el" href="Storage_8h-source.html">Storage.h</a>&quot;</code><br>
+<code>#include &quot;<a class="el" href="pann_8h-source.html">pann.h</a>&quot;</code><br>
 
 <p>
 <div class="dynheader">
@@ -28,7 +27,7 @@ Include dependency graph for main.cpp:</div>
 <div class="dynsection">
 <p><center><img src="main_8cpp__incl.png" border="0" usemap="#pann/trunk/src/Utils/pann_viewer/main.cpp_map" alt=""></center>
 <map name="pann/trunk/src/Utils/pann_viewer/main.cpp_map">
-<area shape="rect" href="window_8h.html" title="window.h" alt="" coords="1037,80,1109,107"><area shape="rect" href="Net_8h.html" title="Net.h" alt="" coords="1147,229,1197,256"><area shape="rect" href="Storage_8h.html" title="Storage.h" alt="" coords="1395,155,1472,181"><area shape="rect" href="glwidget_8h.html" title="glwidget.h" alt="" coords="757,155,837,181"><area shape="rect" href="Includes_8h.html" title="Includes.h" alt="" coords="1091,677,1171,704"><area shape="rect" href="Util_8h.html" title="Util.h" alt="" coords="781,304,832,331"><area shape="rect" href="Object_8h.html" title="Object.h" alt="" coords="1381,528,1451,555"><area shape="rect" href="Neuron_8h.html" title="Neuron.h" alt="" coords="1171,379,1243,405"><area shape="rect" href="Cache_8h.html" title="Cache.h" alt="" coords="1453,453,1523,480"><area shape="rect" href="Runner_8h.html" title="Runner.h" alt="" coords="1097,304,1169,331"><area shape="rect" href="Exception_8h.html" title="Exception.h" alt="" coords="1371,603,1461,629"><area shape="rect" href="Type_8h.html" title="Type.h" alt="" coords="1237,603,1296,629"><area shape="rect" href="ActivationFunction_8h.html" title="ActivationFunction.h" alt="" coords="1219,528,1357,555"><area shape="rect" href="Link_8h.html" title="Link.h" alt="" coords="1221,453,1277,480"><area shape="rect" href="OpenGLHint_8h.html" title="OpenGLHint.h" alt="" coords="989,528,1093,555"></map>
+<area shape="rect" href="window_8h.html" title="window.h" alt="" coords="1299,80,1371,107"><area shape="rect" href="pann_8h.html" title="pann.h" alt="" coords="1372,229,1431,256"><area shape="rect" href="glwidget_8h.html" title="glwidget.h" alt="" coords="1256,155,1336,181"><area shape="rect" href="Includes_8h.html" title="Core/Includes.h" alt="" coords="1313,453,1425,480"><area shape="rect" href="Type_8h.html" title="Core/Type.h" alt="" coords="1487,379,1577,405"><area shape="rect" href="Net_8h.html" title="Core/Net.h" alt="" coords="1184,379,1267,405"><area shape="rect" href="Storage_8h.html" title="Core/Storage.h" alt="" coords="1020,304,1127,331"><area shape="rect" href="Moo_8h.html" title="Core/Moo.h" alt="" coords="1368,379,1456,405"><area shape="rect" href="OpenGlHint_8h.html" title="Core/OpenGlHint.h" alt="" coords="1676,379,1807,405"><area shape="rect" href="TrainData_8h.html" title="TrainData/TrainData.h" alt="" coords="1569,304,1716,331"><area shape="rect" href="MultilayerPerceptron_8h.html" title="NetworkModels/MultilayerPerceptron.h" alt="" coords="1201,304,1444,331"></map>
 </div>
 
 <p>
@@ -66,9 +65,9 @@ Include dependency graph for main.cpp:</div>
 
 <p>
 
-<p>Definition at line <a class="el" href="main_8cpp-source.html#l00012">12</a> of file <a class="el" href="main_8cpp-source.html">main.cpp</a>.</p>
+<p>Definition at line <a class="el" href="main_8cpp-source.html#l00010">10</a> of file <a class="el" href="main_8cpp-source.html">main.cpp</a>.</p>
 
-<p>References <a class="el" href="Exception_8h-source.html#l00048">pann::Exception::Base::getText()</a>.</p>
+<p>References <a class="el" href="namespacepann_1_1Storage.html#b86a9cc510185de122002ea137bb0e66">pann::Storage::load()</a>, and <a class="el" href="Exception_8cpp-source.html#l00023">pann::Exception::Base::what()</a>.</p>
 
 <p>
 <div class="dynheader">
@@ -76,13 +75,13 @@ Here is the call graph for this function:</div>
 <div class="dynsection">
 <p><center><img src="main_8cpp_0ddf1224851353fc92bfbff6f499fa97_cgraph.png" border="0" usemap="#main_8cpp_0ddf1224851353fc92bfbff6f499fa97_cgraph_map" alt=""></center>
 <map name="main_8cpp_0ddf1224851353fc92bfbff6f499fa97_cgraph_map">
-<area shape="rect" href="classpann_1_1Exception_1_1Base.html#ad82b3455115377053fa357b70ac7978" title="pann::Exception::Base::getText" alt="" coords="105,5,308,32"></map>
+<area shape="rect" href="namespacepann_1_1Storage.html#b86a9cc510185de122002ea137bb0e66" title="pann::Storage::load" alt="" coords="132,5,265,32"><area shape="rect" href="classpann_1_1Exception_1_1Base.html#814afcfe425f55f02e39f1fea05bcbe9" title="pann::Exception::Base::what" alt="" coords="105,56,292,83"></map>
 </div>
 
 </div>
 </div><p>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sun Mar 22 11:32:15 2009 for pann by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Thu Mar 26 21:15:55 2009 for pann by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

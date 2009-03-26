@@ -27,13 +27,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/Link.h" line="22" bodyfile="/home/booble/pann/trunk/src/Core/Link.h" bodystart="22" bodyend="22"/>
+        <location file="/home/booble/pann/trunk/src/pann/Core/Link.h" line="22" bodyfile="/home/booble/pann/trunk/src/pann/Core/Link.h" bodystart="22" bodyend="22"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="classpann_1_1Link_17126b05c26be8b9166fa86b894b1cdb0" prot="private" static="no" mutable="no">
-        <type><ref refid="namespacepann_15b285d6cead198add4f14b5b5a0b97c1" kindref="member">NeuronIter</ref></type>
-        <definition>NeuronIter pann::Link::to</definition>
+      <memberdef kind="variable" id="classpann_1_1Link_12db2a65a456ac419da7cae6c8d4d8399" prot="private" static="no" mutable="no">
+        <type><ref refid="classpann_1_1Neuron" kindref="compound">Neuron</ref> *</type>
+        <definition>Neuron* pann::Link::to</definition>
         <argsstring></argsstring>
         <name>to</name>
         <briefdescription>
@@ -42,8 +42,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/Link.h" line="26" bodyfile="/home/booble/pann/trunk/src/Core/Link.h" bodystart="26" bodyend="-1"/>
-        <referencedby refid="classpann_1_1Link_118a70d88ffa9fe441820c2d1c9d83579" compoundref="Link_8h" startline="45" endline="45">getToIter</referencedby>
+        <location file="/home/booble/pann/trunk/src/pann/Core/Link.h" line="26" bodyfile="/home/booble/pann/trunk/src/pann/Core/Link.h" bodystart="26" bodyend="-1"/>
+        <referencedby refid="classpann_1_1Link_17989e38d6778c229f4db756fe116cbd6" compoundref="Link_8cpp" startline="20" endline="23">getTo</referencedby>
+        <referencedby refid="classpann_1_1Link_17aee4460f2f6f3e09d3e7d457c56578c" compoundref="Link_8h" startline="50" endline="57">serialize</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classpann_1_1Link_1e3c1cbea824e8177a35201a6da1c0da2" prot="private" static="no" mutable="no">
         <type><ref refid="classpann_1_1Link_1843c5a79ffd161b67e1770f65eabf055" kindref="member">Direction</ref></type>
@@ -56,13 +57,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/Link.h" line="27" bodyfile="/home/booble/pann/trunk/src/Core/Link.h" bodystart="27" bodyend="-1"/>
-        <referencedby refid="classpann_1_1Link_1eab757727bb6ca0cad8edb46500c3897" compoundref="Link_8h" startline="47" endline="47">getDirection</referencedby>
-        <referencedby refid="classpann_1_1Link_11b0611d84a5fd7632fdaffac2b19b2a9" compoundref="Link_8h" startline="53" endline="60">printDebugInfo</referencedby>
+        <location file="/home/booble/pann/trunk/src/pann/Core/Link.h" line="27" bodyfile="/home/booble/pann/trunk/src/pann/Core/Link.h" bodystart="27" bodyend="-1"/>
+        <referencedby refid="classpann_1_1Link_187348d85a5295f03b9851b2da57800aa" compoundref="Link_8cpp" startline="32" endline="35">getDirection</referencedby>
+        <referencedby refid="classpann_1_1Link_17aee4460f2f6f3e09d3e7d457c56578c" compoundref="Link_8h" startline="50" endline="57">serialize</referencedby>
       </memberdef>
-      <memberdef kind="variable" id="classpann_1_1Link_1e5eed84c9cd7072a8361e6fd6f1265c6" prot="private" static="no" mutable="no">
-        <type><ref refid="namespacepann_1984e6dfa15df19d238ee8f5792d0cefb" kindref="member">WeightIter</ref></type>
-        <definition>WeightIter pann::Link::w</definition>
+      <memberdef kind="variable" id="classpann_1_1Link_1e9b45216441647effa01fc5223d34a14" prot="private" static="no" mutable="no">
+        <type><ref refid="classpann_1_1Weight" kindref="compound">Weight</ref> *</type>
+        <definition>Weight* pann::Link::w</definition>
         <argsstring></argsstring>
         <name>w</name>
         <briefdescription>
@@ -71,9 +72,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/Link.h" line="28" bodyfile="/home/booble/pann/trunk/src/Core/Link.h" bodystart="28" bodyend="-1"/>
-        <referencedby refid="classpann_1_1Link_10da0b96aceaf5361b289cded06778d65" compoundref="Link_8h" startline="49" endline="49">getWeightIter</referencedby>
-        <referencedby refid="classpann_1_1Link_11b0611d84a5fd7632fdaffac2b19b2a9" compoundref="Link_8h" startline="53" endline="60">printDebugInfo</referencedby>
+        <location file="/home/booble/pann/trunk/src/pann/Core/Link.h" line="28" bodyfile="/home/booble/pann/trunk/src/pann/Core/Link.h" bodystart="28" bodyend="-1"/>
+        <referencedby refid="classpann_1_1Link_1107ab03c0bd18afc8eacb1077cbb47c5" compoundref="Link_8cpp" startline="43" endline="46">getWeight</referencedby>
+        <referencedby refid="classpann_1_1Link_17aee4460f2f6f3e09d3e7d457c56578c" compoundref="Link_8h" startline="50" endline="57">serialize</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classpann_1_1Link_1c4082679e8fc85a6ef441b6e567493e9" prot="private" static="no" mutable="no">
         <type>unsigned</type>
@@ -86,19 +87,35 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/Link.h" line="29" bodyfile="/home/booble/pann/trunk/src/Core/Link.h" bodystart="29" bodyend="-1"/>
-        <referencedby refid="classpann_1_1Link_1282df22476d1056ecd371a2357f227c8" compoundref="Link_8h" startline="48" endline="48">getLatency</referencedby>
-        <referencedby refid="classpann_1_1Link_11b0611d84a5fd7632fdaffac2b19b2a9" compoundref="Link_8h" startline="53" endline="60">printDebugInfo</referencedby>
+        <location file="/home/booble/pann/trunk/src/pann/Core/Link.h" line="29" bodyfile="/home/booble/pann/trunk/src/pann/Core/Link.h" bodystart="29" bodyend="-1"/>
+        <referencedby refid="classpann_1_1Link_1282df22476d1056ecd371a2357f227c8" compoundref="Link_8cpp" startline="37" endline="40">getLatency</referencedby>
+        <referencedby refid="classpann_1_1Link_17aee4460f2f6f3e09d3e7d457c56578c" compoundref="Link_8h" startline="50" endline="57">serialize</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classpann_1_1Link_1c98d07dd8f7b70e16ccb9a01abf56b9c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class boost::serialization::access</definition>
+        <argsstring></argsstring>
+        <name>boost::serialization::access</name>
+        <reimplements refid="classpann_1_1Object_1c98d07dd8f7b70e16ccb9a01abf56b9c">boost::serialization::access</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/pann/Core/Link.h" line="48" bodyfile="/home/booble/pann/trunk/src/pann/Core/Link.h" bodystart="45" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="classpann_1_1Link_141044402a668f43f06553d7da750df61" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classpann_1_1Link_16fe6e2f0189674bc72457577df964869" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>pann::Link::Link</definition>
-        <argsstring>(const NeuronIter _to, const Direction _direction, WeightIter _w, unsigned const _latency=1)</argsstring>
+        <argsstring>(Neuron *_to, const Direction _direction, Weight *_w, unsigned const _latency=1)</argsstring>
         <name>Link</name>
         <param>
-          <type>const <ref refid="namespacepann_15b285d6cead198add4f14b5b5a0b97c1" kindref="member">NeuronIter</ref></type>
+          <type><ref refid="classpann_1_1Neuron" kindref="compound">Neuron</ref> *</type>
           <declname>_to</declname>
         </param>
         <param>
@@ -106,7 +123,7 @@
           <declname>_direction</declname>
         </param>
         <param>
-          <type><ref refid="namespacepann_1984e6dfa15df19d238ee8f5792d0cefb" kindref="member">WeightIter</ref></type>
+          <type><ref refid="classpann_1_1Weight" kindref="compound">Weight</ref> *</type>
           <declname>_w</declname>
         </param>
         <param>
@@ -114,116 +131,145 @@
           <declname>_latency</declname>
           <defval>1</defval>
         </param>
+        <exceptions> throw ()</exceptions>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/Link.h" line="38" bodyfile="/home/booble/pann/trunk/src/Core/Link.h" bodystart="33" bodyend="39"/>
+        <location file="/home/booble/pann/trunk/src/pann/Core/Link.h" line="33" bodyfile="/home/booble/pann/trunk/src/pann/Core/Link.cpp" bodystart="7" bodyend="13"/>
       </memberdef>
-      <memberdef kind="function" id="classpann_1_1Link_1d06a124eeddb33744befe239894399bc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classpann_1_1Link_1d06a124eeddb33744befe239894399bc" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
         <definition>pann::Link::~Link</definition>
         <argsstring>()</argsstring>
         <name>~Link</name>
+        <exceptions> throw ()</exceptions>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/Link.h" line="42" bodyfile="/home/booble/pann/trunk/src/Core/Link.h" bodystart="41" bodyend="43"/>
+        <location file="/home/booble/pann/trunk/src/pann/Core/Link.h" line="34" bodyfile="/home/booble/pann/trunk/src/pann/Core/Link.cpp" bodystart="15" bodyend="17"/>
       </memberdef>
-      <memberdef kind="function" id="classpann_1_1Link_118a70d88ffa9fe441820c2d1c9d83579" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="namespacepann_15b285d6cead198add4f14b5b5a0b97c1" kindref="member">NeuronIter</ref></type>
-        <definition>NeuronIter pann::Link::getToIter</definition>
+      <memberdef kind="function" id="classpann_1_1Link_17989e38d6778c229f4db756fe116cbd6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classpann_1_1Neuron" kindref="compound">Neuron</ref> *</type>
+        <definition>Neuron * pann::Link::getTo</definition>
         <argsstring>()</argsstring>
-        <name>getToIter</name>
+        <name>getTo</name>
+        <exceptions> throw ()</exceptions>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/Link.h" line="45" bodyfile="/home/booble/pann/trunk/src/Core/Link.h" bodystart="45" bodyend="45"/>
-        <references refid="classpann_1_1Link_17126b05c26be8b9166fa86b894b1cdb0" compoundref="Link_8h" startline="26">to</references>
-        <referencedby refid="classpann_1_1Net_14293d1faa37e9e2bb73b0ebdaf4a6a9e" compoundref="Net_8cpp" startline="340" endline="444">pann::Net::regenerateCache</referencedby>
-        <referencedby refid="classpann_1_1FeedforwardPropagationRunner_1a4fd0bba255e74c8649367744f6b7a24" compoundref="Runner_8h" startline="106" endline="119">pann::FeedforwardPropagationRunner::run</referencedby>
-        <referencedby refid="classpann_1_1Net_16c08684796771a53e67fbe93c51e188a" compoundref="Net_8h" startline="222" endline="299">pann::Net::save</referencedby>
+        <location file="/home/booble/pann/trunk/src/pann/Core/Link.h" line="36" bodyfile="/home/booble/pann/trunk/src/pann/Core/Link.cpp" bodystart="20" bodyend="23"/>
+        <references refid="classpann_1_1Link_12db2a65a456ac419da7cae6c8d4d8399" compoundref="Link_8h" startline="26">to</references>
+        <referencedby refid="classpann_1_1Net_14293d1faa37e9e2bb73b0ebdaf4a6a9e" compoundref="Net_8cpp" startline="347" endline="451">pann::Net::regenerateCache</referencedby>
+        <referencedby refid="classpann_1_1FeedforwardPropagationRunner_19eb4f177f66db617505317f74a895845" compoundref="Runner_8cpp" startline="90" endline="100">pann::FeedforwardPropagationRunner::run</referencedby>
       </memberdef>
-      <memberdef kind="function" id="classpann_1_1Link_134704a4638bea049b149dcafdcfe93d3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="namespacepann_168751290d27789ce6f303cf55ed505ed" kindref="member">ConstNeuronIter</ref></type>
-        <definition>ConstNeuronIter pann::Link::getToIter</definition>
+      <memberdef kind="function" id="classpann_1_1Link_1b6ca60ca92361423e8ba3b0f52a0374f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="classpann_1_1Neuron" kindref="compound">Neuron</ref> *</type>
+        <definition>const Neuron * pann::Link::getTo</definition>
         <argsstring>() const </argsstring>
-        <name>getToIter</name>
+        <name>getTo</name>
+        <exceptions> throw ()</exceptions>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/Link.h" line="46" bodyfile="/home/booble/pann/trunk/src/Core/Link.h" bodystart="46" bodyend="46"/>
-        <references refid="classpann_1_1Link_17126b05c26be8b9166fa86b894b1cdb0" compoundref="Link_8h" startline="26">to</references>
+        <location file="/home/booble/pann/trunk/src/pann/Core/Link.h" line="37" bodyfile="/home/booble/pann/trunk/src/pann/Core/Link.cpp" bodystart="26" bodyend="29"/>
+        <references refid="classpann_1_1Link_12db2a65a456ac419da7cae6c8d4d8399" compoundref="Link_8h" startline="26">to</references>
       </memberdef>
-      <memberdef kind="function" id="classpann_1_1Link_1eab757727bb6ca0cad8edb46500c3897" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classpann_1_1Link_187348d85a5295f03b9851b2da57800aa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classpann_1_1Link_1843c5a79ffd161b67e1770f65eabf055" kindref="member">Direction</ref></type>
-        <definition>Direction pann::Link::getDirection</definition>
+        <definition>Link::Direction pann::Link::getDirection</definition>
         <argsstring>() const </argsstring>
         <name>getDirection</name>
+        <exceptions> throw ()</exceptions>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/Link.h" line="47" bodyfile="/home/booble/pann/trunk/src/Core/Link.h" bodystart="47" bodyend="47"/>
+        <location file="/home/booble/pann/trunk/src/pann/Core/Link.h" line="39" bodyfile="/home/booble/pann/trunk/src/pann/Core/Link.cpp" bodystart="32" bodyend="35"/>
         <references refid="classpann_1_1Link_1e3c1cbea824e8177a35201a6da1c0da2" compoundref="Link_8h" startline="27">direction</references>
-        <referencedby refid="classpann_1_1Net_14293d1faa37e9e2bb73b0ebdaf4a6a9e" compoundref="Net_8cpp" startline="340" endline="444">pann::Net::regenerateCache</referencedby>
-        <referencedby refid="classpann_1_1FeedforwardPropagationRunner_1a4fd0bba255e74c8649367744f6b7a24" compoundref="Runner_8h" startline="106" endline="119">pann::FeedforwardPropagationRunner::run</referencedby>
-        <referencedby refid="classpann_1_1Net_16c08684796771a53e67fbe93c51e188a" compoundref="Net_8h" startline="222" endline="299">pann::Net::save</referencedby>
+        <referencedby refid="classpann_1_1Net_14293d1faa37e9e2bb73b0ebdaf4a6a9e" compoundref="Net_8cpp" startline="347" endline="451">pann::Net::regenerateCache</referencedby>
+        <referencedby refid="classpann_1_1FeedforwardPropagationRunner_19eb4f177f66db617505317f74a895845" compoundref="Runner_8cpp" startline="90" endline="100">pann::FeedforwardPropagationRunner::run</referencedby>
       </memberdef>
-      <memberdef kind="function" id="classpann_1_1Link_1282df22476d1056ecd371a2357f227c8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classpann_1_1Link_1282df22476d1056ecd371a2357f227c8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>unsigned</type>
         <definition>unsigned pann::Link::getLatency</definition>
         <argsstring>() const </argsstring>
         <name>getLatency</name>
+        <exceptions> throw ()</exceptions>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/Link.h" line="48" bodyfile="/home/booble/pann/trunk/src/Core/Link.h" bodystart="48" bodyend="48"/>
+        <location file="/home/booble/pann/trunk/src/pann/Core/Link.h" line="40" bodyfile="/home/booble/pann/trunk/src/pann/Core/Link.cpp" bodystart="37" bodyend="40"/>
         <references refid="classpann_1_1Link_1c4082679e8fc85a6ef441b6e567493e9" compoundref="Link_8h" startline="29">latency</references>
-        <referencedby refid="classpann_1_1Net_14293d1faa37e9e2bb73b0ebdaf4a6a9e" compoundref="Net_8cpp" startline="340" endline="444">pann::Net::regenerateCache</referencedby>
-        <referencedby refid="classpann_1_1Net_16c08684796771a53e67fbe93c51e188a" compoundref="Net_8h" startline="222" endline="299">pann::Net::save</referencedby>
+        <referencedby refid="classpann_1_1Net_14293d1faa37e9e2bb73b0ebdaf4a6a9e" compoundref="Net_8cpp" startline="347" endline="451">pann::Net::regenerateCache</referencedby>
       </memberdef>
-      <memberdef kind="function" id="classpann_1_1Link_10da0b96aceaf5361b289cded06778d65" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="namespacepann_1984e6dfa15df19d238ee8f5792d0cefb" kindref="member">WeightIter</ref></type>
-        <definition>WeightIter pann::Link::getWeightIter</definition>
+      <memberdef kind="function" id="classpann_1_1Link_1107ab03c0bd18afc8eacb1077cbb47c5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classpann_1_1Weight" kindref="compound">Weight</ref> *</type>
+        <definition>Weight * pann::Link::getWeight</definition>
         <argsstring>()</argsstring>
-        <name>getWeightIter</name>
+        <name>getWeight</name>
+        <exceptions> throw ()</exceptions>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/Link.h" line="49" bodyfile="/home/booble/pann/trunk/src/Core/Link.h" bodystart="49" bodyend="49"/>
-        <references refid="classpann_1_1Link_1e5eed84c9cd7072a8361e6fd6f1265c6" compoundref="Link_8h" startline="28">w</references>
-        <referencedby refid="classpann_1_1FeedforwardPropagationRunner_1a4fd0bba255e74c8649367744f6b7a24" compoundref="Runner_8h" startline="106" endline="119">pann::FeedforwardPropagationRunner::run</referencedby>
-        <referencedby refid="classpann_1_1Net_16c08684796771a53e67fbe93c51e188a" compoundref="Net_8h" startline="222" endline="299">pann::Net::save</referencedby>
+        <location file="/home/booble/pann/trunk/src/pann/Core/Link.h" line="41" bodyfile="/home/booble/pann/trunk/src/pann/Core/Link.cpp" bodystart="43" bodyend="46"/>
+        <references refid="classpann_1_1Link_1e9b45216441647effa01fc5223d34a14" compoundref="Link_8h" startline="28">w</references>
+        <referencedby refid="classpann_1_1FeedforwardPropagationRunner_19eb4f177f66db617505317f74a895845" compoundref="Runner_8cpp" startline="90" endline="100">pann::FeedforwardPropagationRunner::run</referencedby>
       </memberdef>
-      <memberdef kind="function" id="classpann_1_1Link_11b0611d84a5fd7632fdaffac2b19b2a9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classpann_1_1Link_1f3e85e337a19c68fc43838815fcff900" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>pann::Link::Link</definition>
+        <argsstring>()</argsstring>
+        <name>Link</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/pann/Core/Link.h" line="45" bodyfile="/home/booble/pann/trunk/src/pann/Core/Link.h" bodystart="45" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="classpann_1_1Link_17aee4460f2f6f3e09d3e7d457c56578c" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class</type>
+            <declname>Archive</declname>
+            <defname>Archive</defname>
+          </param>
+        </templateparamlist>
         <type>void</type>
-        <definition>virtual void pann::Link::printDebugInfo</definition>
-        <argsstring>(std::ostringstream &amp;ost) const </argsstring>
-        <name>printDebugInfo</name>
-        <reimplements refid="classpann_1_1Object_1f0039bd3a5cdbb3decfa5e33055e1a45">printDebugInfo</reimplements>
+        <definition>void pann::Link::serialize</definition>
+        <argsstring>(Archive &amp;ar, const unsigned int version)</argsstring>
+        <name>serialize</name>
+        <reimplements refid="classpann_1_1Object_113a234c0fcd5d32d341353f1b7b3c828">serialize</reimplements>
         <param>
-          <type>std::ostringstream &amp;</type>
-          <declname>ost</declname>
+          <type>Archive &amp;</type>
+          <declname>ar</declname>
+        </param>
+        <param>
+          <type>const unsigned int</type>
+          <declname>version</declname>
         </param>
         <briefdescription>
         </briefdescription>
@@ -231,10 +277,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/Link.h" line="54" bodyfile="/home/booble/pann/trunk/src/Core/Link.h" bodystart="53" bodyend="60"/>
+        <location file="/home/booble/pann/trunk/src/pann/Core/Link.h" line="51" bodyfile="/home/booble/pann/trunk/src/pann/Core/Link.h" bodystart="50" bodyend="57"/>
         <references refid="classpann_1_1Link_1e3c1cbea824e8177a35201a6da1c0da2" compoundref="Link_8h" startline="27">direction</references>
         <references refid="classpann_1_1Link_1c4082679e8fc85a6ef441b6e567493e9" compoundref="Link_8h" startline="29">latency</references>
-        <references refid="classpann_1_1Link_1e5eed84c9cd7072a8361e6fd6f1265c6" compoundref="Link_8h" startline="28">w</references>
+        <references refid="classpann_1_1Link_12db2a65a456ac419da7cae6c8d4d8399" compoundref="Link_8h" startline="26">to</references>
+        <references refid="classpann_1_1Link_1e9b45216441647effa01fc5223d34a14" compoundref="Link_8h" startline="28">w</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -254,6 +301,23 @@
       </node>
     </inheritancegraph>
     <collaborationgraph>
+      <node id="252">
+        <label>pann::Neuron</label>
+        <link refid="classpann_1_1Neuron"/>
+        <childnode refid="251" relation="public-inheritance">
+        </childnode>
+        <childnode refid="253" relation="usage">
+          <edgelabel>activationFunction</edgelabel>
+        </childnode>
+        <childnode refid="254" relation="usage">
+          <edgelabel>learningHint
+oglHint</edgelabel>
+        </childnode>
+      </node>
+      <node id="253">
+        <label>pann::ActivationFunction::Base</label>
+        <link refid="classpann_1_1ActivationFunction_1_1Base"/>
+      </node>
       <node id="251">
         <label>pann::Object</label>
         <link refid="classpann_1_1Object"/>
@@ -263,26 +327,47 @@
         <link refid="classpann_1_1Link"/>
         <childnode refid="251" relation="public-inheritance">
         </childnode>
+        <childnode refid="252" relation="usage">
+          <edgelabel>to</edgelabel>
+        </childnode>
+        <childnode refid="255" relation="usage">
+          <edgelabel>w</edgelabel>
+        </childnode>
+      </node>
+      <node id="255">
+        <label>pann::Weight</label>
+        <link refid="classpann_1_1Weight"/>
+        <childnode refid="251" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="254">
+        <label>pann::Attributes</label>
+        <link refid="classpann_1_1Attributes"/>
+        <childnode refid="251" relation="public-inheritance">
+        </childnode>
       </node>
     </collaborationgraph>
-    <location file="/home/booble/pann/trunk/src/Core/Link.h" line="19" bodyfile="/home/booble/pann/trunk/src/Core/Link.h" bodystart="18" bodyend="61"/>
+    <location file="/home/booble/pann/trunk/src/pann/Core/Link.h" line="19" bodyfile="/home/booble/pann/trunk/src/pann/Core/Link.h" bodystart="18" bodyend="58"/>
     <listofallmembers>
-      <member refid="classpann_1_1Object_1c98d07dd8f7b70e16ccb9a01abf56b9c" prot="public" virt="non-virtual"><scope>pann::Link</scope><name>boost::serialization::access</name></member>
+      <member refid="classpann_1_1Link_1c98d07dd8f7b70e16ccb9a01abf56b9c" prot="public" virt="non-virtual"><scope>pann::Link</scope><name>boost::serialization::access</name></member>
       <member refid="classpann_1_1Link_1843c5a79ffd161b67e1770f65eabf055" prot="public" virt="non-virtual"><scope>pann::Link</scope><name>Direction</name></member>
       <member refid="classpann_1_1Link_1e3c1cbea824e8177a35201a6da1c0da2" prot="private" virt="non-virtual"><scope>pann::Link</scope><name>direction</name></member>
-      <member refid="classpann_1_1Link_1eab757727bb6ca0cad8edb46500c3897" prot="public" virt="non-virtual"><scope>pann::Link</scope><name>getDirection</name></member>
+      <member refid="classpann_1_1Link_187348d85a5295f03b9851b2da57800aa" prot="public" virt="non-virtual"><scope>pann::Link</scope><name>getDirection</name></member>
       <member refid="classpann_1_1Link_1282df22476d1056ecd371a2357f227c8" prot="public" virt="non-virtual"><scope>pann::Link</scope><name>getLatency</name></member>
-      <member refid="classpann_1_1Link_118a70d88ffa9fe441820c2d1c9d83579" prot="public" virt="non-virtual"><scope>pann::Link</scope><name>getToIter</name></member>
-      <member refid="classpann_1_1Link_134704a4638bea049b149dcafdcfe93d3" prot="public" virt="non-virtual"><scope>pann::Link</scope><name>getToIter</name></member>
-      <member refid="classpann_1_1Link_10da0b96aceaf5361b289cded06778d65" prot="public" virt="non-virtual"><scope>pann::Link</scope><name>getWeightIter</name></member>
+      <member refid="classpann_1_1Link_17989e38d6778c229f4db756fe116cbd6" prot="public" virt="non-virtual"><scope>pann::Link</scope><name>getTo</name></member>
+      <member refid="classpann_1_1Link_1b6ca60ca92361423e8ba3b0f52a0374f" prot="public" virt="non-virtual"><scope>pann::Link</scope><name>getTo</name></member>
+      <member refid="classpann_1_1Link_1107ab03c0bd18afc8eacb1077cbb47c5" prot="public" virt="non-virtual"><scope>pann::Link</scope><name>getWeight</name></member>
       <member refid="classpann_1_1Link_1843c5a79ffd161b67e1770f65eabf0556b810850c72ab26c68965db2424df30c" prot="public" virt="non-virtual"><scope>pann::Link</scope><name>in</name></member>
       <member refid="classpann_1_1Link_1c4082679e8fc85a6ef441b6e567493e9" prot="private" virt="non-virtual"><scope>pann::Link</scope><name>latency</name></member>
-      <member refid="classpann_1_1Link_141044402a668f43f06553d7da750df61" prot="public" virt="non-virtual"><scope>pann::Link</scope><name>Link</name></member>
+      <member refid="classpann_1_1Link_16fe6e2f0189674bc72457577df964869" prot="public" virt="non-virtual"><scope>pann::Link</scope><name>Link</name></member>
+      <member refid="classpann_1_1Link_1f3e85e337a19c68fc43838815fcff900" prot="private" virt="non-virtual"><scope>pann::Link</scope><name>Link</name></member>
+      <member refid="classpann_1_1Object_1e4157eda81e363f28504b4ec9d15e196" prot="public" virt="non-virtual"><scope>pann::Link</scope><name>Object</name></member>
       <member refid="classpann_1_1Link_1843c5a79ffd161b67e1770f65eabf0550735525ef5d9a47b94c4597e7c27e522" prot="public" virt="non-virtual"><scope>pann::Link</scope><name>out</name></member>
-      <member refid="classpann_1_1Link_11b0611d84a5fd7632fdaffac2b19b2a9" prot="public" virt="virtual"><scope>pann::Link</scope><name>printDebugInfo</name></member>
-      <member refid="classpann_1_1Link_17126b05c26be8b9166fa86b894b1cdb0" prot="private" virt="non-virtual"><scope>pann::Link</scope><name>to</name></member>
-      <member refid="classpann_1_1Link_1e5eed84c9cd7072a8361e6fd6f1265c6" prot="private" virt="non-virtual"><scope>pann::Link</scope><name>w</name></member>
-      <member refid="classpann_1_1Link_1d06a124eeddb33744befe239894399bc" prot="public" virt="non-virtual"><scope>pann::Link</scope><name>~Link</name></member>
+      <member refid="classpann_1_1Link_17aee4460f2f6f3e09d3e7d457c56578c" prot="private" virt="non-virtual"><scope>pann::Link</scope><name>serialize</name></member>
+      <member refid="classpann_1_1Link_12db2a65a456ac419da7cae6c8d4d8399" prot="private" virt="non-virtual"><scope>pann::Link</scope><name>to</name></member>
+      <member refid="classpann_1_1Link_1e9b45216441647effa01fc5223d34a14" prot="private" virt="non-virtual"><scope>pann::Link</scope><name>w</name></member>
+      <member refid="classpann_1_1Link_1d06a124eeddb33744befe239894399bc" prot="public" virt="virtual"><scope>pann::Link</scope><name>~Link</name></member>
+      <member refid="classpann_1_1Object_1461126af2f1a20fa24f1340f670c5733" prot="public" virt="virtual"><scope>pann::Link</scope><name>~Object</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

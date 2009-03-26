@@ -48,8 +48,6 @@ Collaboration diagram for pann::ActivationFunction::TanH:</div>
 <tr><td colspan="2"><br><h2>Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1ActivationFunction_1_1TanH.html#e00c1612c0d3778c0202e9f364de17fd">~TanH</a> ()</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual unsigned&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1ActivationFunction_1_1TanH.html#ad4c5d74bcba084a30a5dbf8103e60bb">getId</a> () const </td></tr>
-
 <tr><td class="memItemLeft" nowrap align="right" valign="top">virtual std::string&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1ActivationFunction_1_1TanH.html#4cab8e9156979208d43bb42dbd3e2bef">getName</a> () const </td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">virtual <a class="el" href="namespacepann.html#4509ba95a02d59e0a1cd5127e1c55988">Float</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1ActivationFunction_1_1TanH.html#55414f73736900fc25446ac7bbd66b81">f</a> (<a class="el" href="namespacepann.html#4509ba95a02d59e0a1cd5127e1c55988">Float</a> _x) const </td></tr>
@@ -67,13 +65,19 @@ Collaboration diagram for pann::ActivationFunction::TanH:</div>
 <tr><td colspan="2"><br><h2>Private Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1ActivationFunction_1_1TanH.html#34e21fc187d57fcf395bf87b2337d187">TanH</a> ()</td></tr>
 
+<tr><td class="memTemplParams" nowrap colspan="2">template&lt;class Archive&gt; </td></tr>
+<tr><td class="memTemplItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classpann_1_1ActivationFunction_1_1TanH.html#4642d0bed60986492d6f95d1bc97aeb3">serialize</a> (Archive &amp;ar, const unsigned int version)</td></tr>
+
 <tr><td colspan="2"><br><h2>Static Private Attributes</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">static <a class="el" href="classpann_1_1ActivationFunction_1_1Base.html">Base</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1ActivationFunction_1_1TanH.html#7dad50a0e249730be0f378180bfe4e21">self</a> = 0</td></tr>
 
+<tr><td colspan="2"><br><h2>Friends</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">class&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1ActivationFunction_1_1TanH.html#c98d07dd8f7b70e16ccb9a01abf56b9c">boost::serialization::access</a></td></tr>
+
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
-Hyperbolic tangent function id = 3 y = a*tanh(b*x) 
-<p>Definition at line <a class="el" href="ActivationFunction_8h-source.html#l00128">128</a> of file <a class="el" href="ActivationFunction_8h-source.html">ActivationFunction.h</a>.</p>
+Hyperbolic tangent function y = a*tanh(b*x) 
+<p>Definition at line <a class="el" href="ActivationFunction_8h-source.html#l00148">148</a> of file <a class="el" href="ActivationFunction_8h-source.html">ActivationFunction.h</a>.</p>
 <hr><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" name="34e21fc187d57fcf395bf87b2337d187"></a><!-- doxytag: member="pann::ActivationFunction::TanH::TanH" ref="34e21fc187d57fcf395bf87b2337d187" args="()" -->
 <div class="memitem">
@@ -92,9 +96,9 @@ Hyperbolic tangent function id = 3 y = a*tanh(b*x)
 
 <p>
 
-<p>Definition at line <a class="el" href="ActivationFunction_8h-source.html#l00138">138</a> of file <a class="el" href="ActivationFunction_8h-source.html">ActivationFunction.h</a>.</p>
+<p>Definition at line <a class="el" href="ActivationFunction_8h-source.html#l00158">158</a> of file <a class="el" href="ActivationFunction_8h-source.html">ActivationFunction.h</a>.</p>
 
-<p>Referenced by <a class="el" href="ActivationFunction_8h-source.html#l00144">Instance()</a>.</p>
+<p>Referenced by <a class="el" href="ActivationFunction_8h-source.html#l00164">Instance()</a>.</p>
 
 </div>
 </div><p>
@@ -115,7 +119,7 @@ Hyperbolic tangent function id = 3 y = a*tanh(b*x)
 
 <p>
 
-<p>Definition at line <a class="el" href="ActivationFunction_8h-source.html#l00141">141</a> of file <a class="el" href="ActivationFunction_8h-source.html">ActivationFunction.h</a>.</p>
+<p>Definition at line <a class="el" href="ActivationFunction_8h-source.html#l00161">161</a> of file <a class="el" href="ActivationFunction_8h-source.html">ActivationFunction.h</a>.</p>
 
 </div>
 </div><p>
@@ -139,11 +143,9 @@ Hyperbolic tangent function id = 3 y = a*tanh(b*x)
 
 <p>Reimplemented from <a class="el" href="classpann_1_1ActivationFunction_1_1Base.html#5bce1a2f357da69638b97f6d3ef73395">pann::ActivationFunction::Base</a>.</p>
 
-<p>Definition at line <a class="el" href="ActivationFunction_8h-source.html#l00144">144</a> of file <a class="el" href="ActivationFunction_8h-source.html">ActivationFunction.h</a>.</p>
+<p>Definition at line <a class="el" href="ActivationFunction_8h-source.html#l00164">164</a> of file <a class="el" href="ActivationFunction_8h-source.html">ActivationFunction.h</a>.</p>
 
-<p>References <a class="el" href="ActivationFunction_8h-source.html#l00138">TanH()</a>.</p>
-
-<p>Referenced by <a class="el" href="ActivationFunction_8cpp-source.html#l00021">pann::ActivationFunction::getById()</a>.</p>
+<p>References <a class="el" href="ActivationFunction_8h-source.html#l00158">TanH()</a>.</p>
 
 <p>
 <div class="dynheader">
@@ -153,29 +155,6 @@ Here is the call graph for this function:</div>
 <map name="classpann_1_1ActivationFunction_1_1TanH_f0d5c84687ea2693631c44ee1e4448fd_cgraph_map">
 <area shape="rect" href="classpann_1_1ActivationFunction_1_1TanH.html#34e21fc187d57fcf395bf87b2337d187" title="pann::ActivationFunction::TanH::TanH" alt="" coords="316,5,556,32"></map>
 </div>
-
-</div>
-</div><p>
-<a class="anchor" name="ad4c5d74bcba084a30a5dbf8103e60bb"></a><!-- doxytag: member="pann::ActivationFunction::TanH::getId" ref="ad4c5d74bcba084a30a5dbf8103e60bb" args="() const " -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual unsigned pann::ActivationFunction::TanH::getId           </td>
-          <td>(</td>
-          <td class="paramname">          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td> const<code> [inline, virtual]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-
-<p>Implements <a class="el" href="classpann_1_1ActivationFunction_1_1Base.html#882ff77ecccf62b9c453243fe0adb63d">pann::ActivationFunction::Base</a>.</p>
-
-<p>Definition at line <a class="el" href="ActivationFunction_8h-source.html#l00152">152</a> of file <a class="el" href="ActivationFunction_8h-source.html">ActivationFunction.h</a>.</p>
 
 </div>
 </div><p>
@@ -198,7 +177,7 @@ Here is the call graph for this function:</div>
 
 <p>Implements <a class="el" href="classpann_1_1ActivationFunction_1_1Base.html#110e8df25117878d2b49cc2fda35c50d">pann::ActivationFunction::Base</a>.</p>
 
-<p>Definition at line <a class="el" href="ActivationFunction_8h-source.html#l00153">153</a> of file <a class="el" href="ActivationFunction_8h-source.html">ActivationFunction.h</a>.</p>
+<p>Definition at line <a class="el" href="ActivationFunction_8h-source.html#l00172">172</a> of file <a class="el" href="ActivationFunction_8h-source.html">ActivationFunction.h</a>.</p>
 
 </div>
 </div><p>
@@ -222,9 +201,9 @@ Here is the call graph for this function:</div>
 
 <p>Implements <a class="el" href="classpann_1_1ActivationFunction_1_1Base.html#6f8d64be53a32ddfe46abb3501849628">pann::ActivationFunction::Base</a>.</p>
 
-<p>Definition at line <a class="el" href="ActivationFunction_8h-source.html#l00155">155</a> of file <a class="el" href="ActivationFunction_8h-source.html">ActivationFunction.h</a>.</p>
+<p>Definition at line <a class="el" href="ActivationFunction_8h-source.html#l00174">174</a> of file <a class="el" href="ActivationFunction_8h-source.html">ActivationFunction.h</a>.</p>
 
-<p>References <a class="el" href="ActivationFunction_8h-source.html#l00134">a</a>, and <a class="el" href="ActivationFunction_8h-source.html#l00135">b</a>.</p>
+<p>References <a class="el" href="ActivationFunction_8h-source.html#l00154">a</a>, and <a class="el" href="ActivationFunction_8h-source.html#l00155">b</a>.</p>
 
 </div>
 </div><p>
@@ -248,7 +227,60 @@ Here is the call graph for this function:</div>
 
 <p>Implements <a class="el" href="classpann_1_1ActivationFunction_1_1Base.html#eb85eeb7e4058df1b5ca45ad15745ad8">pann::ActivationFunction::Base</a>.</p>
 
-<p>Definition at line <a class="el" href="ActivationFunction_8h-source.html#l00160">160</a> of file <a class="el" href="ActivationFunction_8h-source.html">ActivationFunction.h</a>.</p>
+<p>Definition at line <a class="el" href="ActivationFunction_8h-source.html#l00179">179</a> of file <a class="el" href="ActivationFunction_8h-source.html">ActivationFunction.h</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="4642d0bed60986492d6f95d1bc97aeb3"></a><!-- doxytag: member="pann::ActivationFunction::TanH::serialize" ref="4642d0bed60986492d6f95d1bc97aeb3" args="(Archive &amp;ar, const unsigned int version)" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Archive&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void pann::ActivationFunction::TanH::serialize           </td>
+          <td>(</td>
+          <td class="paramtype">Archive &amp;&nbsp;</td>
+          <td class="paramname"> <em>ar</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned int&nbsp;</td>
+          <td class="paramname"> <em>version</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline, private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Definition at line <a class="el" href="ActivationFunction_8h-source.html#l00188">188</a> of file <a class="el" href="ActivationFunction_8h-source.html">ActivationFunction.h</a>.</p>
+
+</div>
+</div><p>
+<hr><h2>Friends And Related Function Documentation</h2>
+<a class="anchor" name="c98d07dd8f7b70e16ccb9a01abf56b9c"></a><!-- doxytag: member="pann::ActivationFunction::TanH::boost::serialization::access" ref="c98d07dd8f7b70e16ccb9a01abf56b9c" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">friend class boost::serialization::access<code> [friend]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Reimplemented from <a class="el" href="classpann_1_1ActivationFunction_1_1Base.html#c98d07dd8f7b70e16ccb9a01abf56b9c">pann::ActivationFunction::Base</a>.</p>
+
+<p>Definition at line <a class="el" href="ActivationFunction_8h-source.html#l00186">186</a> of file <a class="el" href="ActivationFunction_8h-source.html">ActivationFunction.h</a>.</p>
 
 </div>
 </div><p>
@@ -266,7 +298,7 @@ Here is the call graph for this function:</div>
 
 <p>
 
-<p>Definition at line <a class="el" href="ActivationFunction_8h-source.html#l00131">131</a> of file <a class="el" href="ActivationFunction_8h-source.html">ActivationFunction.h</a>.</p>
+<p>Definition at line <a class="el" href="ActivationFunction_8h-source.html#l00151">151</a> of file <a class="el" href="ActivationFunction_8h-source.html">ActivationFunction.h</a>.</p>
 
 </div>
 </div><p>
@@ -283,9 +315,9 @@ Here is the call graph for this function:</div>
 
 <p>
 
-<p>Definition at line <a class="el" href="ActivationFunction_8h-source.html#l00134">134</a> of file <a class="el" href="ActivationFunction_8h-source.html">ActivationFunction.h</a>.</p>
+<p>Definition at line <a class="el" href="ActivationFunction_8h-source.html#l00154">154</a> of file <a class="el" href="ActivationFunction_8h-source.html">ActivationFunction.h</a>.</p>
 
-<p>Referenced by <a class="el" href="ActivationFunction_8h-source.html#l00155">f()</a>.</p>
+<p>Referenced by <a class="el" href="ActivationFunction_8h-source.html#l00174">f()</a>.</p>
 
 </div>
 </div><p>
@@ -302,16 +334,16 @@ Here is the call graph for this function:</div>
 
 <p>
 
-<p>Definition at line <a class="el" href="ActivationFunction_8h-source.html#l00135">135</a> of file <a class="el" href="ActivationFunction_8h-source.html">ActivationFunction.h</a>.</p>
+<p>Definition at line <a class="el" href="ActivationFunction_8h-source.html#l00155">155</a> of file <a class="el" href="ActivationFunction_8h-source.html">ActivationFunction.h</a>.</p>
 
-<p>Referenced by <a class="el" href="ActivationFunction_8h-source.html#l00155">f()</a>.</p>
+<p>Referenced by <a class="el" href="ActivationFunction_8h-source.html#l00174">f()</a>.</p>
 
 </div>
 </div><p>
 <hr>The documentation for this class was generated from the following files:<ul>
-<li>pann/trunk/src/Core/<a class="el" href="ActivationFunction_8h-source.html">ActivationFunction.h</a><li>pann/trunk/src/Core/<a class="el" href="ActivationFunction_8cpp-source.html">ActivationFunction.cpp</a></ul>
+<li>pann/trunk/src/pann/Core/<a class="el" href="ActivationFunction_8h-source.html">ActivationFunction.h</a><li>pann/trunk/src/pann/Core/<a class="el" href="ActivationFunction_8cpp-source.html">ActivationFunction.cpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sun Mar 22 11:32:24 2009 for pann by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Thu Mar 26 21:16:03 2009 for pann by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

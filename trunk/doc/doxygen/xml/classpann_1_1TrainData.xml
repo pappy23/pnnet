@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
   <compounddef id="classpann_1_1TrainData" kind="class" prot="public">
     <compoundname>pann::TrainData</compoundname>
-    <basecompoundref refid="classpann_1_1Object" prot="public" virt="non-virtual">pann::Object</basecompoundref>
     <includes refid="TrainData_8h" local="no">TrainData.h</includes>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="classpann_1_1TrainData_12ea76b5d1bbcd58600b1eb241ad2037b" prot="public" static="no" mutable="no">
@@ -16,64 +15,81 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/TrainData.h" line="53" bodyfile="/home/booble/pann/trunk/src/Core/TrainData.h" bodystart="53" bodyend="-1"/>
-        <referencedby refid="classpann_1_1TrainData_1fb88f4772bc657940d41c629ef121924" compoundref="TrainData_8h" startline="57" endline="61">printDebugInfo</referencedby>
+        <location file="/home/booble/pann/trunk/src/pann/TrainData/TrainData.h" line="22" bodyfile="/home/booble/pann/trunk/src/pann/TrainData/TrainData.h" bodystart="22" bodyend="-1"/>
+        <referencedby refid="classpann_1_1TrainData_14e26ce6fd32682902cd5a16dc1fc9f3e" compoundref="TrainData_8cpp" startline="18" endline="30">getMse</referencedby>
+        <referencedby refid="classpann_1_1TrainData_18ffb69cc9890ea55f51b110ef2de36ad" compoundref="TrainData_8cpp" startline="33" endline="36">shuffle</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="classpann_1_1TrainData_1fb88f4772bc657940d41c629ef121924" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>void</type>
-        <definition>virtual void pann::TrainData::printDebugInfo</definition>
-        <argsstring>(std::ostringstream &amp;ost) const </argsstring>
-        <name>printDebugInfo</name>
-        <reimplements refid="classpann_1_1Object_1f0039bd3a5cdbb3decfa5e33055e1a45">printDebugInfo</reimplements>
-        <param>
-          <type>std::ostringstream &amp;</type>
-          <declname>ost</declname>
-        </param>
+      <memberdef kind="function" id="classpann_1_1TrainData_1434e8ea16bc09257bb1f23a391883ec2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>pann::TrainData::TrainData</definition>
+        <argsstring>()</argsstring>
+        <name>TrainData</name>
+        <exceptions> throw ()</exceptions>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/TrainData.h" line="58" bodyfile="/home/booble/pann/trunk/src/Core/TrainData.h" bodystart="57" bodyend="61"/>
-        <references refid="classpann_1_1TrainData_12ea76b5d1bbcd58600b1eb241ad2037b" compoundref="TrainData_8h" startline="53">data</references>
+        <location file="/home/booble/pann/trunk/src/pann/TrainData/TrainData.h" line="14" bodyfile="/home/booble/pann/trunk/src/pann/TrainData/TrainData.cpp" bodystart="9" bodyend="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classpann_1_1TrainData_1bb1034398c4ce6b25dc1ff2797eec7c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>pann::TrainData::~TrainData</definition>
+        <argsstring>()</argsstring>
+        <name>~TrainData</name>
+        <exceptions> throw ()</exceptions>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/pann/TrainData/TrainData.h" line="15" bodyfile="/home/booble/pann/trunk/src/pann/TrainData/TrainData.cpp" bodystart="13" bodyend="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classpann_1_1TrainData_14e26ce6fd32682902cd5a16dc1fc9f3e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacepann_14509ba95a02d59e0a1cd5127e1c55988" kindref="member">Float</ref></type>
+        <definition>Float pann::TrainData::getMse</definition>
+        <argsstring>() const </argsstring>
+        <name>getMse</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/pann/TrainData/TrainData.h" line="17" bodyfile="/home/booble/pann/trunk/src/pann/TrainData/TrainData.cpp" bodystart="18" bodyend="30"/>
+        <references refid="classpann_1_1TrainData_12ea76b5d1bbcd58600b1eb241ad2037b" compoundref="TrainData_8h" startline="22">data</references>
+      </memberdef>
+      <memberdef kind="function" id="classpann_1_1TrainData_18ffb69cc9890ea55f51b110ef2de36ad" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void pann::TrainData::shuffle</definition>
+        <argsstring>()</argsstring>
+        <name>shuffle</name>
+        <exceptions> throw ()</exceptions>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/pann/TrainData/TrainData.h" line="18" bodyfile="/home/booble/pann/trunk/src/pann/TrainData/TrainData.cpp" bodystart="33" bodyend="36"/>
+        <references refid="classpann_1_1TrainData_12ea76b5d1bbcd58600b1eb241ad2037b" compoundref="TrainData_8h" startline="22">data</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="353">
-        <label>pann::Object</label>
-        <link refid="classpann_1_1Object"/>
-      </node>
-      <node id="352">
-        <label>pann::TrainData</label>
-        <link refid="classpann_1_1TrainData"/>
-        <childnode refid="353" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="355">
-        <label>pann::Object</label>
-        <link refid="classpann_1_1Object"/>
-      </node>
-      <node id="354">
-        <label>pann::TrainData</label>
-        <link refid="classpann_1_1TrainData"/>
-        <childnode refid="355" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
-    <location file="/home/booble/pann/trunk/src/Core/TrainData.h" line="50" bodyfile="/home/booble/pann/trunk/src/Core/TrainData.h" bodystart="49" bodyend="62"/>
+    <location file="/home/booble/pann/trunk/src/pann/TrainData/TrainData.h" line="11" bodyfile="/home/booble/pann/trunk/src/pann/TrainData/TrainData.h" bodystart="10" bodyend="23"/>
     <listofallmembers>
-      <member refid="classpann_1_1Object_1c98d07dd8f7b70e16ccb9a01abf56b9c" prot="public" virt="non-virtual"><scope>pann::TrainData</scope><name>boost::serialization::access</name></member>
       <member refid="classpann_1_1TrainData_12ea76b5d1bbcd58600b1eb241ad2037b" prot="public" virt="non-virtual"><scope>pann::TrainData</scope><name>data</name></member>
-      <member refid="classpann_1_1TrainData_1fb88f4772bc657940d41c629ef121924" prot="public" virt="virtual"><scope>pann::TrainData</scope><name>printDebugInfo</name></member>
+      <member refid="classpann_1_1TrainData_14e26ce6fd32682902cd5a16dc1fc9f3e" prot="public" virt="non-virtual"><scope>pann::TrainData</scope><name>getMse</name></member>
+      <member refid="classpann_1_1TrainData_18ffb69cc9890ea55f51b110ef2de36ad" prot="public" virt="non-virtual"><scope>pann::TrainData</scope><name>shuffle</name></member>
+      <member refid="classpann_1_1TrainData_1434e8ea16bc09257bb1f23a391883ec2" prot="public" virt="non-virtual"><scope>pann::TrainData</scope><name>TrainData</name></member>
+      <member refid="classpann_1_1TrainData_1bb1034398c4ce6b25dc1ff2797eec7c2" prot="public" virt="virtual"><scope>pann::TrainData</scope><name>~TrainData</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

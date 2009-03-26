@@ -32,14 +32,14 @@ Inheritance diagram for pann::Runner:</div>
 <div class="dynsection">
 <p><center><img src="classpann_1_1Runner__inherit__graph.png" border="0" usemap="#pann_1_1Runner__inherit__map" alt="Inheritance graph"></center>
 <map name="pann_1_1Runner__inherit__map">
-<area shape="rect" href="classpann_1_1FeedforwardPropagationRunner.html" title="pann::FeedforwardPropagationRunner" alt="" coords="153,6,391,32"><area shape="rect" href="classpann_1_1NullBackpropagationRunner.html" title="pann::NullBackpropagationRunner" alt="" coords="164,56,380,83"><area shape="rect" href="classpann_1_1NullRunner.html" title="pann::NullRunner" alt="" coords="212,107,332,134"></map>
+<area shape="rect" href="classpann_1_1FeedforwardPropagationRunner.html" title="pann::FeedforwardPropagationRunner" alt="" coords="153,5,391,32"><area shape="rect" href="classpann_1_1LmsBackpropagationRunner.html" title="pann::LmsBackpropagationRunner" alt="" coords="163,56,381,83"><area shape="rect" href="classpann_1_1LmsFeedforwardRunner.html" title="pann::LmsFeedforwardRunner" alt="" coords="175,107,369,133"><area shape="rect" href="classpann_1_1NullBackpropagationRunner.html" title="pann::NullBackpropagationRunner" alt="" coords="164,157,380,184"><area shape="rect" href="classpann_1_1NullRunner.html" title="pann::NullRunner" alt="" coords="212,208,332,235"></map>
 <center><font size="2">[<a href="graph_legend.html">legend</a>]</font></center></div>
 
 <p>
 <a href="classpann_1_1Runner-members.html">List of all members.</a><table border="0" cellpadding="0" cellspacing="0">
 <tr><td></td></tr>
 <tr><td colspan="2"><br><h2>Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1Runner.html#8f7c1cd84129843504cfe17f738b86d0">run</a> (<a class="el" href="namespacepann.html#5b285d6cead198add4f14b5b5a0b97c1">NeuronIter</a>)=0</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1Runner.html#881c47937a701cbdb6cfc82b6f13d001">run</a> (<a class="el" href="classpann_1_1Neuron.html">Neuron</a> *)=0</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">virtual <a class="el" href="namespacepann.html#34cfd8d9243a5183902a991ae1532e37">RunDirection</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1Runner.html#658262373566e4be537caffbc35d8350">getDirection</a> ()=0</td></tr>
 
@@ -68,18 +68,18 @@ Inheritance diagram for pann::Runner:</div>
 
 <p>
 
-<p>Reimplemented in <a class="el" href="classpann_1_1NullRunner.html#de665b491727786c110b50f85c860ca6">pann::NullRunner</a>, <a class="el" href="classpann_1_1NullBackpropagationRunner.html#1f0816746277a4898124d1aa2e86ddef">pann::NullBackpropagationRunner</a>, and <a class="el" href="classpann_1_1FeedforwardPropagationRunner.html#08cabe3623c089536ada6c6ca8e0a0a5">pann::FeedforwardPropagationRunner</a>.</p>
+<p>Reimplemented in <a class="el" href="classpann_1_1NullRunner.html#acbffbb3fe5bd8bc6b0a6c873ac6ec9b">pann::NullRunner</a>, <a class="el" href="classpann_1_1NullBackpropagationRunner.html#745f10fc6b7b63451826434b89b29e38">pann::NullBackpropagationRunner</a>, <a class="el" href="classpann_1_1FeedforwardPropagationRunner.html#55d04987bb6f63b7f1743f2882ee4858">pann::FeedforwardPropagationRunner</a>, <a class="el" href="classpann_1_1LmsFeedforwardRunner.html#687a2143207cde9247c89ee3e0ac78dd">pann::LmsFeedforwardRunner</a>, and <a class="el" href="classpann_1_1LmsBackpropagationRunner.html#d0a009ce1052f6f3b6fa1b7517bcbd26">pann::LmsBackpropagationRunner</a>.</p>
 
 </div>
 </div><p>
-<a class="anchor" name="8f7c1cd84129843504cfe17f738b86d0"></a><!-- doxytag: member="pann::Runner::run" ref="8f7c1cd84129843504cfe17f738b86d0" args="(NeuronIter)=0" -->
+<a class="anchor" name="881c47937a701cbdb6cfc82b6f13d001"></a><!-- doxytag: member="pann::Runner::run" ref="881c47937a701cbdb6cfc82b6f13d001" args="(Neuron *)=0" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">virtual void pann::Runner::run           </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="namespacepann.html#5b285d6cead198add4f14b5b5a0b97c1">NeuronIter</a>&nbsp;</td>
+          <td class="paramtype"><a class="el" href="classpann_1_1Neuron.html">Neuron</a> *&nbsp;</td>
           <td class="paramname">          </td>
           <td>&nbsp;)&nbsp;</td>
           <td><code> [pure virtual]</code></td>
@@ -90,9 +90,9 @@ Inheritance diagram for pann::Runner:</div>
 
 <p>
 
-<p>Implemented in <a class="el" href="classpann_1_1NullRunner.html#9a6dad0494baa4a1fec7a4adc227dd0c">pann::NullRunner</a>, <a class="el" href="classpann_1_1NullBackpropagationRunner.html#d138c075b602e3d9efa44a99971b3f6a">pann::NullBackpropagationRunner</a>, and <a class="el" href="classpann_1_1FeedforwardPropagationRunner.html#a4fd0bba255e74c8649367744f6b7a24">pann::FeedforwardPropagationRunner</a>.</p>
+<p>Implemented in <a class="el" href="classpann_1_1NullRunner.html#2d633bbbddcf603e56bf5bef739c47ca">pann::NullRunner</a>, <a class="el" href="classpann_1_1NullBackpropagationRunner.html#bddc991254df3d1daea3f1a2824471e8">pann::NullBackpropagationRunner</a>, <a class="el" href="classpann_1_1FeedforwardPropagationRunner.html#9eb4f177f66db617505317f74a895845">pann::FeedforwardPropagationRunner</a>, <a class="el" href="classpann_1_1LmsFeedforwardRunner.html#35678dfa10d23aa6fccbd065acac53ed">pann::LmsFeedforwardRunner</a>, and <a class="el" href="classpann_1_1LmsBackpropagationRunner.html#e32c86eb1c9535a49220bdb984da51d7">pann::LmsBackpropagationRunner</a>.</p>
 
-<p>Referenced by <a class="el" href="Net_8h-source.html#l00160">pann::Net::threadBase()</a>.</p>
+<p>Referenced by <a class="el" href="Net_8h-source.html#l00164">pann::Net::threadBase()</a>.</p>
 
 </div>
 </div><p>
@@ -113,16 +113,16 @@ Inheritance diagram for pann::Runner:</div>
 
 <p>
 
-<p>Implemented in <a class="el" href="classpann_1_1NullRunner.html#b9f4684f46b82d8a44528de10ded73e1">pann::NullRunner</a>, <a class="el" href="classpann_1_1NullBackpropagationRunner.html#21164553e2dcf4cabb1859534dd0f0c9">pann::NullBackpropagationRunner</a>, and <a class="el" href="classpann_1_1FeedforwardPropagationRunner.html#8e780a63e02d60e363d3baa871c2cced">pann::FeedforwardPropagationRunner</a>.</p>
+<p>Implemented in <a class="el" href="classpann_1_1NullRunner.html#2afa869e0a6540ceb537e5289b99c209">pann::NullRunner</a>, <a class="el" href="classpann_1_1NullBackpropagationRunner.html#0fdf6af585d5ae933fa59bc5974a08aa">pann::NullBackpropagationRunner</a>, <a class="el" href="classpann_1_1FeedforwardPropagationRunner.html#45a573a29d8c8c74eeb2de8b89a8ee49">pann::FeedforwardPropagationRunner</a>, <a class="el" href="classpann_1_1LmsFeedforwardRunner.html#346f6895448418cdf321172f0011d901">pann::LmsFeedforwardRunner</a>, and <a class="el" href="classpann_1_1LmsBackpropagationRunner.html#142fb4e60bdd8e25fe569a4076119b08">pann::LmsBackpropagationRunner</a>.</p>
 
-<p>Referenced by <a class="el" href="Net_8h-source.html#l00160">pann::Net::threadBase()</a>.</p>
+<p>Referenced by <a class="el" href="Net_8h-source.html#l00164">pann::Net::threadBase()</a>.</p>
 
 </div>
 </div><p>
 <hr>The documentation for this class was generated from the following file:<ul>
-<li>pann/trunk/src/Core/<a class="el" href="Runner_8h-source.html">Runner.h</a></ul>
+<li>pann/trunk/src/pann/Core/<a class="el" href="Runner_8h-source.html">Runner.h</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sun Mar 22 11:32:21 2009 for pann by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Thu Mar 26 21:16:01 2009 for pann by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

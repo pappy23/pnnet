@@ -6,32 +6,10 @@
     <innerclass refid="classpann_1_1ActivationFunction_1_1Linear" prot="public">pann::ActivationFunction::Linear</innerclass>
     <innerclass refid="classpann_1_1ActivationFunction_1_1Threshold" prot="public">pann::ActivationFunction::Threshold</innerclass>
     <innerclass refid="classpann_1_1ActivationFunction_1_1TanH" prot="public">pann::ActivationFunction::TanH</innerclass>
-      <sectiondef kind="func">
-      <memberdef kind="function" id="namespacepann_1_1ActivationFunction_12287da8b90c9142021227b425e5085f9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classpann_1_1ActivationFunction_1_1Base" kindref="compound">Base</ref> *</type>
-        <definition>Base * pann::ActivationFunction::getById</definition>
-        <argsstring>(const unsigned id)</argsstring>
-        <name>getById</name>
-        <param>
-          <type>const unsigned</type>
-          <declname>id</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/ActivationFunction.cpp" line="22" bodyfile="/home/booble/pann/trunk/src/Core/ActivationFunction.cpp" bodystart="21" bodyend="37"/>
-        <references refid="classpann_1_1ActivationFunction_1_1TanH_1f0d5c84687ea2693631c44ee1e4448fd" compoundref="ActivationFunction_8h" startline="144" endline="150">pann::ActivationFunction::TanH::Instance</references>
-        <references refid="classpann_1_1ActivationFunction_1_1Threshold_1a132088780dc2b151c7c0b5ae3850b0b" compoundref="ActivationFunction_8h" startline="97" endline="103">pann::ActivationFunction::Threshold::Instance</references>
-        <references refid="classpann_1_1ActivationFunction_1_1Linear_187335208832a774ba10892b4cfe97d09" compoundref="ActivationFunction_8h" startline="57" endline="63">pann::ActivationFunction::Linear::Instance</references>
-      </memberdef>
-      </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/booble/pann/trunk/src/Core/ActivationFunction.cpp" line="11"/>
+    <location file="/home/booble/pann/trunk/src/pann/Core/ActivationFunction.cpp" line="15"/>
   </compounddef>
 </doxygen>

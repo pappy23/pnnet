@@ -2,12 +2,11 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
   <compounddef id="classpann_1_1Object" kind="class" prot="public">
     <compoundname>pann::Object</compoundname>
+    <derivedcompoundref refid="classpann_1_1Attributes" prot="public" virt="non-virtual">pann::Attributes</derivedcompoundref>
     <derivedcompoundref refid="classpann_1_1Cache" prot="public" virt="non-virtual">pann::Cache</derivedcompoundref>
     <derivedcompoundref refid="classpann_1_1Link" prot="public" virt="non-virtual">pann::Link</derivedcompoundref>
     <derivedcompoundref refid="classpann_1_1Net" prot="public" virt="non-virtual">pann::Net</derivedcompoundref>
     <derivedcompoundref refid="classpann_1_1Neuron" prot="public" virt="non-virtual">pann::Neuron</derivedcompoundref>
-    <derivedcompoundref refid="classpann_1_1TrainData" prot="public" virt="non-virtual">pann::TrainData</derivedcompoundref>
-    <derivedcompoundref refid="classpann_1_1TrainPattern" prot="public" virt="non-virtual">pann::TrainPattern</derivedcompoundref>
     <derivedcompoundref refid="classpann_1_1Weight" prot="public" virt="non-virtual">pann::Weight</derivedcompoundref>
     <includes refid="Object_8h" local="no">Object.h</includes>
       <sectiondef kind="friend">
@@ -18,41 +17,45 @@
         <name>boost::serialization::access</name>
         <reimplementedby refid="classpann_1_1Weight_1c98d07dd8f7b70e16ccb9a01abf56b9c">boost::serialization::access</reimplementedby>
         <reimplementedby refid="classpann_1_1Neuron_1c98d07dd8f7b70e16ccb9a01abf56b9c">boost::serialization::access</reimplementedby>
+        <reimplementedby refid="classpann_1_1NetCache_1c98d07dd8f7b70e16ccb9a01abf56b9c">boost::serialization::access</reimplementedby>
         <reimplementedby refid="classpann_1_1Net_1c98d07dd8f7b70e16ccb9a01abf56b9c">boost::serialization::access</reimplementedby>
+        <reimplementedby refid="classpann_1_1Link_1c98d07dd8f7b70e16ccb9a01abf56b9c">boost::serialization::access</reimplementedby>
+        <reimplementedby refid="classpann_1_1Attributes_1c98d07dd8f7b70e16ccb9a01abf56b9c">boost::serialization::access</reimplementedby>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/Object.h" line="49" bodyfile="/home/booble/pann/trunk/src/Core/Object.h" bodystart="49" bodyend="-1"/>
+        <location file="/home/booble/pann/trunk/src/pann/Core/Object.h" line="17" bodyfile="/home/booble/pann/trunk/src/pann/Core/Object.h" bodystart="17" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="classpann_1_1Object_1f0039bd3a5cdbb3decfa5e33055e1a45" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>void</type>
-        <definition>virtual void pann::Object::printDebugInfo</definition>
-        <argsstring>(std::ostringstream &amp;ost) const =0</argsstring>
-        <name>printDebugInfo</name>
-        <reimplementedby refid="classpann_1_1Weight_18d51519bd5723b61b32b687502aada06">printDebugInfo</reimplementedby>
-        <reimplementedby refid="classpann_1_1TrainData_1fb88f4772bc657940d41c629ef121924">printDebugInfo</reimplementedby>
-        <reimplementedby refid="classpann_1_1TrainPattern_1a4f1e7a2c806f9a03093c04788b1d21a">printDebugInfo</reimplementedby>
-        <reimplementedby refid="classpann_1_1Neuron_10017d9230fca2359b460e9a18b8a8198">printDebugInfo</reimplementedby>
-        <reimplementedby refid="classpann_1_1Net_1ec0809d7cb83ea29f7f36492609a2de9">printDebugInfo</reimplementedby>
-        <reimplementedby refid="classpann_1_1Link_11b0611d84a5fd7632fdaffac2b19b2a9">printDebugInfo</reimplementedby>
-        <reimplementedby refid="classpann_1_1NetCache_1f776078aecabf7258b807d4d0249241a">printDebugInfo</reimplementedby>
-        <reimplementedby refid="classpann_1_1Cache_16a3932a817f186bb9c73e6821608f87f">printDebugInfo</reimplementedby>
-        <param>
-          <type>std::ostringstream &amp;</type>
-          <declname>ost</declname>
-        </param>
+      <memberdef kind="function" id="classpann_1_1Object_1e4157eda81e363f28504b4ec9d15e196" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>pann::Object::Object</definition>
+        <argsstring>()</argsstring>
+        <name>Object</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/Object.h" line="46"/>
+        <location file="/home/booble/pann/trunk/src/pann/Core/Object.h" line="12" bodyfile="/home/booble/pann/trunk/src/pann/Core/Object.cpp" bodystart="7" bodyend="9"/>
+      </memberdef>
+      <memberdef kind="function" id="classpann_1_1Object_1461126af2f1a20fa24f1340f670c5733" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>pann::Object::~Object</definition>
+        <argsstring>()</argsstring>
+        <name>~Object</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/pann/Core/Object.h" line="13" bodyfile="/home/booble/pann/trunk/src/pann/Core/Object.cpp" bodystart="11" bodyend="13"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -69,6 +72,11 @@
         <argsstring>(Archive &amp;ar, const unsigned int version)</argsstring>
         <name>serialize</name>
         <reimplementedby refid="classpann_1_1Weight_1ddeecbb0805615aa2ee5c20f7268e577">serialize</reimplementedby>
+        <reimplementedby refid="classpann_1_1Neuron_1856883a5ae179f2af44ad9abec28f9ad">serialize</reimplementedby>
+        <reimplementedby refid="classpann_1_1NetCache_1e1b920aad0f5cf8567e1936d9c62ea87">serialize</reimplementedby>
+        <reimplementedby refid="classpann_1_1Net_1efbc7b6a44fc533ee008ed8901fdb366">serialize</reimplementedby>
+        <reimplementedby refid="classpann_1_1Link_17aee4460f2f6f3e09d3e7d457c56578c">serialize</reimplementedby>
+        <reimplementedby refid="classpann_1_1Attributes_1fa2f75fbbc7c17357f7f5f4a1a2a4942">serialize</reimplementedby>
         <param>
           <type>Archive &amp;</type>
           <declname>ar</declname>
@@ -83,72 +91,67 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/Object.h" line="52" bodyfile="/home/booble/pann/trunk/src/Core/Object.h" bodystart="51" bodyend="55"/>
+        <location file="/home/booble/pann/trunk/src/pann/Core/Object.h" line="20" bodyfile="/home/booble/pann/trunk/src/pann/Core/Object.h" bodystart="19" bodyend="21"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para>Base class for almoust everything. </para>    </briefdescription>
+    </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="314">
+      <node id="312">
         <label>pann::Neuron</label>
         <link refid="classpann_1_1Neuron"/>
-        <childnode refid="309" relation="public-inheritance">
+        <childnode refid="306" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="309">
+      <node id="306">
         <label>pann::Object</label>
         <link refid="classpann_1_1Object"/>
       </node>
-      <node id="312">
+      <node id="310">
         <label>pann::Link</label>
         <link refid="classpann_1_1Link"/>
-        <childnode refid="309" relation="public-inheritance">
+        <childnode refid="306" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="315">
-        <label>pann::TrainData</label>
-        <link refid="classpann_1_1TrainData"/>
-        <childnode refid="309" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="311">
+      <node id="309">
         <label>pann::NetCache</label>
         <link refid="classpann_1_1NetCache"/>
-        <childnode refid="310" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="317">
-        <label>pann::Weight</label>
-        <link refid="classpann_1_1Weight"/>
-        <childnode refid="309" relation="public-inheritance">
+        <childnode refid="308" relation="public-inheritance">
         </childnode>
       </node>
       <node id="313">
+        <label>pann::Weight</label>
+        <link refid="classpann_1_1Weight"/>
+        <childnode refid="306" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="311">
         <label>pann::Net</label>
         <link refid="classpann_1_1Net"/>
-        <childnode refid="309" relation="public-inheritance">
+        <childnode refid="306" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="310">
+      <node id="308">
         <label>pann::Cache</label>
         <link refid="classpann_1_1Cache"/>
-        <childnode refid="309" relation="public-inheritance">
+        <childnode refid="306" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="316">
-        <label>pann::TrainPattern</label>
-        <link refid="classpann_1_1TrainPattern"/>
-        <childnode refid="309" relation="public-inheritance">
+      <node id="307">
+        <label>pann::Attributes</label>
+        <link refid="classpann_1_1Attributes"/>
+        <childnode refid="306" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
-    <location file="/home/booble/pann/trunk/src/Core/Object.h" line="17" bodyfile="/home/booble/pann/trunk/src/Core/Object.h" bodystart="16" bodyend="56"/>
+    <location file="/home/booble/pann/trunk/src/pann/Core/Object.h" line="10" bodyfile="/home/booble/pann/trunk/src/pann/Core/Object.h" bodystart="9" bodyend="22"/>
     <listofallmembers>
       <member refid="classpann_1_1Object_1c98d07dd8f7b70e16ccb9a01abf56b9c" prot="public" virt="non-virtual"><scope>pann::Object</scope><name>boost::serialization::access</name></member>
-      <member refid="classpann_1_1Object_1f0039bd3a5cdbb3decfa5e33055e1a45" prot="public" virt="pure-virtual"><scope>pann::Object</scope><name>printDebugInfo</name></member>
+      <member refid="classpann_1_1Object_1e4157eda81e363f28504b4ec9d15e196" prot="public" virt="non-virtual"><scope>pann::Object</scope><name>Object</name></member>
       <member refid="classpann_1_1Object_113a234c0fcd5d32d341353f1b7b3c828" prot="private" virt="non-virtual"><scope>pann::Object</scope><name>serialize</name></member>
+      <member refid="classpann_1_1Object_1461126af2f1a20fa24f1340f670c5733" prot="public" virt="virtual"><scope>pann::Object</scope><name>~Object</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

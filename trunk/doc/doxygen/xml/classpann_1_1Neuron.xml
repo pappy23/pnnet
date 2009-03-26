@@ -16,11 +16,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/Neuron.h" line="19" bodyfile="/home/booble/pann/trunk/src/Core/Neuron.h" bodystart="19" bodyend="-1"/>
-        <referencedby refid="classpann_1_1Neuron_120445c905a8ad3e243e0945bd3595b9a" compoundref="Neuron_8cpp" startline="54" endline="57">getActivationFunction</referencedby>
-        <referencedby refid="classpann_1_1Neuron_146c3eb1f5fa7a4bf0112030b5aa4e908" compoundref="Neuron_8h" startline="103" endline="133">load</referencedby>
-        <referencedby refid="classpann_1_1Neuron_10017d9230fca2359b460e9a18b8a8198" compoundref="Neuron_8h" startline="55" endline="66">printDebugInfo</referencedby>
-        <referencedby refid="classpann_1_1Neuron_1f78cc590bbd2ed7392a822016b1161b0" compoundref="Neuron_8h" startline="72" endline="100">save</referencedby>
+        <location file="/home/booble/pann/trunk/src/pann/Core/Neuron.h" line="18" bodyfile="/home/booble/pann/trunk/src/pann/Core/Neuron.h" bodystart="18" bodyend="-1"/>
+        <referencedby refid="classpann_1_1Neuron_120445c905a8ad3e243e0945bd3595b9a" compoundref="Neuron_8cpp" startline="37" endline="40">getActivationFunction</referencedby>
+        <referencedby refid="classpann_1_1Neuron_1eb0f836051ce56055b3fd7ca3ade67dd" compoundref="Neuron_8cpp" startline="9" endline="15">Neuron</referencedby>
+        <referencedby refid="classpann_1_1Neuron_1856883a5ae179f2af44ad9abec28f9ad" compoundref="Neuron_8h" startline="56" endline="66">serialize</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classpann_1_1Neuron_1b22b8940b68c650c5c11c2ee9ea777a1" prot="private" static="no" mutable="no">
         <type>unsigned</type>
@@ -33,12 +32,11 @@
 <para>Thread with this number will take care of our <ref refid="classpann_1_1Neuron" kindref="compound">Neuron</ref> </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/Neuron.h" line="24" bodyfile="/home/booble/pann/trunk/src/Core/Neuron.h" bodystart="24" bodyend="-1"/>
-        <referencedby refid="classpann_1_1Neuron_12a426e05cdb3fbd67635a4ba57ec2bbd" compoundref="Neuron_8cpp" startline="48" endline="51">getOwnerThread</referencedby>
-        <referencedby refid="classpann_1_1Neuron_146c3eb1f5fa7a4bf0112030b5aa4e908" compoundref="Neuron_8h" startline="103" endline="133">load</referencedby>
-        <referencedby refid="classpann_1_1Neuron_10017d9230fca2359b460e9a18b8a8198" compoundref="Neuron_8h" startline="55" endline="66">printDebugInfo</referencedby>
-        <referencedby refid="classpann_1_1Neuron_1f78cc590bbd2ed7392a822016b1161b0" compoundref="Neuron_8h" startline="72" endline="100">save</referencedby>
-        <referencedby refid="classpann_1_1Neuron_12ec7496a4939390cc4e9c2b1b4ebfd8a" compoundref="Neuron_8cpp" startline="39" endline="45">setOwnerThread</referencedby>
+        <location file="/home/booble/pann/trunk/src/pann/Core/Neuron.h" line="23" bodyfile="/home/booble/pann/trunk/src/pann/Core/Neuron.h" bodystart="23" bodyend="-1"/>
+        <referencedby refid="classpann_1_1Neuron_12a426e05cdb3fbd67635a4ba57ec2bbd" compoundref="Neuron_8cpp" startline="31" endline="34">getOwnerThread</referencedby>
+        <referencedby refid="classpann_1_1Neuron_1eb0f836051ce56055b3fd7ca3ade67dd" compoundref="Neuron_8cpp" startline="9" endline="15">Neuron</referencedby>
+        <referencedby refid="classpann_1_1Neuron_1856883a5ae179f2af44ad9abec28f9ad" compoundref="Neuron_8h" startline="56" endline="66">serialize</referencedby>
+        <referencedby refid="classpann_1_1Neuron_12ec7496a4939390cc4e9c2b1b4ebfd8a" compoundref="Neuron_8cpp" startline="22" endline="28">setOwnerThread</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-attrib">
@@ -53,10 +51,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/Neuron.h" line="31" bodyfile="/home/booble/pann/trunk/src/Core/Neuron.h" bodystart="31" bodyend="-1"/>
-        <referencedby refid="classpann_1_1Neuron_146c3eb1f5fa7a4bf0112030b5aa4e908" compoundref="Neuron_8h" startline="103" endline="133">load</referencedby>
-        <referencedby refid="classpann_1_1Neuron_1f78cc590bbd2ed7392a822016b1161b0" compoundref="Neuron_8h" startline="72" endline="100">save</referencedby>
-        <referencedby refid="classGLWidget_19a07d44b5dc052a8652b88454f3cb481" compoundref="glwidget_8cpp" startline="140" endline="155">GLWidget::setInfoNeuron</referencedby>
+        <location file="/home/booble/pann/trunk/src/pann/Core/Neuron.h" line="30" bodyfile="/home/booble/pann/trunk/src/pann/Core/Neuron.h" bodystart="30" bodyend="-1"/>
+        <referencedby refid="classpann_1_1Neuron_1eb0f836051ce56055b3fd7ca3ade67dd" compoundref="Neuron_8cpp" startline="9" endline="15">Neuron</referencedby>
+        <referencedby refid="classpann_1_1FeedforwardPropagationRunner_19eb4f177f66db617505317f74a895845" compoundref="Runner_8cpp" startline="90" endline="100">pann::FeedforwardPropagationRunner::run</referencedby>
+        <referencedby refid="classpann_1_1Neuron_1856883a5ae179f2af44ad9abec28f9ad" compoundref="Neuron_8h" startline="56" endline="66">serialize</referencedby>
+        <referencedby refid="classGLWidget_19a07d44b5dc052a8652b88454f3cb481" compoundref="glwidget_8cpp" startline="141" endline="155">GLWidget::setInfoNeuron</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classpann_1_1Neuron_179899694b4dbaa30551f9f6784ddd869" prot="public" static="no" mutable="no">
         <type><ref refid="namespacepann_14509ba95a02d59e0a1cd5127e1c55988" kindref="member">Float</ref></type>
@@ -69,10 +68,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/Neuron.h" line="32" bodyfile="/home/booble/pann/trunk/src/Core/Neuron.h" bodystart="32" bodyend="-1"/>
-        <referencedby refid="classpann_1_1Neuron_146c3eb1f5fa7a4bf0112030b5aa4e908" compoundref="Neuron_8h" startline="103" endline="133">load</referencedby>
-        <referencedby refid="classpann_1_1Neuron_1f78cc590bbd2ed7392a822016b1161b0" compoundref="Neuron_8h" startline="72" endline="100">save</referencedby>
-        <referencedby refid="classGLWidget_19a07d44b5dc052a8652b88454f3cb481" compoundref="glwidget_8cpp" startline="140" endline="155">GLWidget::setInfoNeuron</referencedby>
+        <location file="/home/booble/pann/trunk/src/pann/Core/Neuron.h" line="31" bodyfile="/home/booble/pann/trunk/src/pann/Core/Neuron.h" bodystart="31" bodyend="-1"/>
+        <referencedby refid="classpann_1_1Neuron_1eb0f836051ce56055b3fd7ca3ade67dd" compoundref="Neuron_8cpp" startline="9" endline="15">Neuron</referencedby>
+        <referencedby refid="classpann_1_1FeedforwardPropagationRunner_19eb4f177f66db617505317f74a895845" compoundref="Runner_8cpp" startline="90" endline="100">pann::FeedforwardPropagationRunner::run</referencedby>
+        <referencedby refid="classpann_1_1Neuron_1856883a5ae179f2af44ad9abec28f9ad" compoundref="Neuron_8h" startline="56" endline="66">serialize</referencedby>
+        <referencedby refid="classGLWidget_19a07d44b5dc052a8652b88454f3cb481" compoundref="glwidget_8cpp" startline="141" endline="155">GLWidget::setInfoNeuron</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classpann_1_1Neuron_11ea45590be4c55659a776ff0acf2ac2c" prot="public" static="no" mutable="no">
         <type>std::list&lt; <ref refid="classpann_1_1Link" kindref="compound">Link</ref> &gt;</type>
@@ -85,14 +85,19 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/Neuron.h" line="33" bodyfile="/home/booble/pann/trunk/src/Core/Neuron.h" bodystart="33" bodyend="-1"/>
-        <referencedby refid="classpann_1_1Neuron_1990c18907d963acc1154bcb9c79280ab" compoundref="Neuron_8cpp" startline="60" endline="79">findLink</referencedby>
-        <referencedby refid="classpann_1_1Neuron_10017d9230fca2359b460e9a18b8a8198" compoundref="Neuron_8h" startline="55" endline="66">printDebugInfo</referencedby>
-        <referencedby refid="classGLWidget_19a07d44b5dc052a8652b88454f3cb481" compoundref="glwidget_8cpp" startline="140" endline="155">GLWidget::setInfoNeuron</referencedby>
+        <location file="/home/booble/pann/trunk/src/pann/Core/Neuron.h" line="32" bodyfile="/home/booble/pann/trunk/src/pann/Core/Neuron.h" bodystart="32" bodyend="-1"/>
+        <referencedby refid="classpann_1_1Net_18520f33a65cf6e31668d0fa44dfe6165" compoundref="Net_8cpp" startline="285" endline="293">pann::Net::addConnection</referencedby>
+        <referencedby refid="classpann_1_1Net_13af6a3cb55eec4e7fa254d980705140c" compoundref="Net_8cpp" startline="296" endline="325">pann::Net::delConnection</referencedby>
+        <referencedby refid="classpann_1_1Net_104e1e3370fadc8c678a94540b2b25fca" compoundref="Net_8cpp" startline="225" endline="247">pann::Net::delNeuron</referencedby>
+        <referencedby refid="classpann_1_1Neuron_1c38530608054d8bdb17d930a72b362bd" compoundref="Neuron_8cpp" startline="43" endline="62">findLink</referencedby>
+        <referencedby refid="classpann_1_1Net_14293d1faa37e9e2bb73b0ebdaf4a6a9e" compoundref="Net_8cpp" startline="347" endline="451">pann::Net::regenerateCache</referencedby>
+        <referencedby refid="classpann_1_1FeedforwardPropagationRunner_19eb4f177f66db617505317f74a895845" compoundref="Runner_8cpp" startline="90" endline="100">pann::FeedforwardPropagationRunner::run</referencedby>
+        <referencedby refid="classpann_1_1Neuron_1856883a5ae179f2af44ad9abec28f9ad" compoundref="Neuron_8h" startline="56" endline="66">serialize</referencedby>
+        <referencedby refid="classGLWidget_19a07d44b5dc052a8652b88454f3cb481" compoundref="glwidget_8cpp" startline="141" endline="155">GLWidget::setInfoNeuron</referencedby>
       </memberdef>
-      <memberdef kind="variable" id="classpann_1_1Neuron_12b0d035a701cad63f77a19fa3c7c2ffb" prot="public" static="no" mutable="no">
-        <type><ref refid="classpann_1_1OpenGLHint" kindref="compound">OpenGLHint</ref> *</type>
-        <definition>OpenGLHint* pann::Neuron::oglHint</definition>
+      <memberdef kind="variable" id="classpann_1_1Neuron_1cb99c66b9a3c4c5c54611c34300ab252" prot="public" static="no" mutable="no">
+        <type><ref refid="classpann_1_1Attributes" kindref="compound">Attributes</ref></type>
+        <definition>Attributes pann::Neuron::oglHint</definition>
         <argsstring></argsstring>
         <name>oglHint</name>
         <briefdescription>
@@ -101,14 +106,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/Neuron.h" line="34" bodyfile="/home/booble/pann/trunk/src/Core/Neuron.h" bodystart="34" bodyend="-1"/>
-        <referencedby refid="classpann_1_1Neuron_146c3eb1f5fa7a4bf0112030b5aa4e908" compoundref="Neuron_8h" startline="103" endline="133">load</referencedby>
-        <referencedby refid="classpann_1_1Neuron_1f78cc590bbd2ed7392a822016b1161b0" compoundref="Neuron_8h" startline="72" endline="100">save</referencedby>
-        <referencedby refid="classpann_1_1Neuron_1e08f02385e9b8fc0b927fc28fcfda966" compoundref="Neuron_8cpp" startline="29" endline="36">~Neuron</referencedby>
+        <location file="/home/booble/pann/trunk/src/pann/Core/Neuron.h" line="33" bodyfile="/home/booble/pann/trunk/src/pann/Core/Neuron.h" bodystart="33" bodyend="-1"/>
+        <referencedby refid="classGLWidget_161ec77b4004fb9516acb9869566f9095" compoundref="glwidget_8cpp" startline="27" endline="86">GLWidget::calcCoords</referencedby>
+        <referencedby refid="classpann_1_1Neuron_1856883a5ae179f2af44ad9abec28f9ad" compoundref="Neuron_8h" startline="56" endline="66">serialize</referencedby>
       </memberdef>
-      <memberdef kind="variable" id="classpann_1_1Neuron_16af287c561d4226f59c858d4e020168c" prot="public" static="no" mutable="no">
-        <type><ref refid="classpann_1_1LearningHint_1_1Base" kindref="compound">LearningHint::Base</ref> *</type>
-        <definition>LearningHint::Base* pann::Neuron::learningHint</definition>
+      <memberdef kind="variable" id="classpann_1_1Neuron_123c8a6b7ac44957aa3929ce70125d772" prot="public" static="no" mutable="no">
+        <type><ref refid="classpann_1_1Attributes" kindref="compound">Attributes</ref></type>
+        <definition>Attributes pann::Neuron::learningHint</definition>
         <argsstring></argsstring>
         <name>learningHint</name>
         <briefdescription>
@@ -117,10 +121,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/Neuron.h" line="35" bodyfile="/home/booble/pann/trunk/src/Core/Neuron.h" bodystart="35" bodyend="-1"/>
-        <referencedby refid="classpann_1_1Neuron_146c3eb1f5fa7a4bf0112030b5aa4e908" compoundref="Neuron_8h" startline="103" endline="133">load</referencedby>
-        <referencedby refid="classpann_1_1Neuron_1f78cc590bbd2ed7392a822016b1161b0" compoundref="Neuron_8h" startline="72" endline="100">save</referencedby>
-        <referencedby refid="classpann_1_1Neuron_1e08f02385e9b8fc0b927fc28fcfda966" compoundref="Neuron_8cpp" startline="29" endline="36">~Neuron</referencedby>
+        <location file="/home/booble/pann/trunk/src/pann/Core/Neuron.h" line="34" bodyfile="/home/booble/pann/trunk/src/pann/Core/Neuron.h" bodystart="34" bodyend="-1"/>
+        <referencedby refid="classpann_1_1LmsBackpropagationRunner_1e32c86eb1c9535a49220bdb984da51d7" compoundref="LmsRunner_8cpp" startline="61" endline="68">pann::LmsBackpropagationRunner::run</referencedby>
+        <referencedby refid="classpann_1_1LmsFeedforwardRunner_135678dfa10d23aa6fccbd065acac53ed" compoundref="LmsRunner_8cpp" startline="25" endline="35">pann::LmsFeedforwardRunner::run</referencedby>
+        <referencedby refid="classpann_1_1Neuron_1856883a5ae179f2af44ad9abec28f9ad" compoundref="Neuron_8h" startline="56" endline="66">serialize</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="friend">
@@ -136,23 +140,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/Neuron.h" line="70" bodyfile="/home/booble/pann/trunk/src/Core/Neuron.h" bodystart="66" bodyend="-1"/>
+        <location file="/home/booble/pann/trunk/src/pann/Core/Neuron.h" line="54" bodyfile="/home/booble/pann/trunk/src/pann/Core/Neuron.h" bodystart="53" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="classpann_1_1Neuron_189d63cff9e559e1cbdbdc3c9dbc2efe6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type></type>
-        <definition>pann::Neuron::Neuron</definition>
-        <argsstring>()</argsstring>
-        <name>Neuron</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/Neuron.h" line="39" bodyfile="/home/booble/pann/trunk/src/Core/Neuron.cpp" bodystart="9" bodyend="17"/>
-      </memberdef>
       <memberdef kind="function" id="classpann_1_1Neuron_1eb0f836051ce56055b3fd7ca3ade67dd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>pann::Neuron::Neuron</definition>
@@ -168,9 +159,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/Neuron.h" line="40" bodyfile="/home/booble/pann/trunk/src/Core/Neuron.cpp" bodystart="19" bodyend="27"/>
+        <location file="/home/booble/pann/trunk/src/pann/Core/Neuron.h" line="38" bodyfile="/home/booble/pann/trunk/src/pann/Core/Neuron.cpp" bodystart="9" bodyend="15"/>
+        <references refid="classpann_1_1Neuron_1bd0230c56464055cc2dcae4da86c5f73" compoundref="Neuron_8h" startline="18">activationFunction</references>
+        <references refid="classpann_1_1Neuron_179899694b4dbaa30551f9f6784ddd869" compoundref="Neuron_8h" startline="31">activationValue</references>
+        <references refid="classpann_1_1ActivationFunction_1_1Base_16f8d64be53a32ddfe46abb3501849628">pann::ActivationFunction::Base::f</references>
+        <references refid="classpann_1_1Neuron_1b22b8940b68c650c5c11c2ee9ea777a1" compoundref="Neuron_8h" startline="23">ownerThread</references>
+        <references refid="classpann_1_1Neuron_1cc966b3f4aa4ee2f158ab70196642fc4" compoundref="Neuron_8h" startline="30">receptiveField</references>
       </memberdef>
-      <memberdef kind="function" id="classpann_1_1Neuron_1e08f02385e9b8fc0b927fc28fcfda966" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classpann_1_1Neuron_1e08f02385e9b8fc0b927fc28fcfda966" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
         <definition>pann::Neuron::~Neuron</definition>
         <argsstring>()</argsstring>
@@ -181,9 +177,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/Neuron.h" line="41" bodyfile="/home/booble/pann/trunk/src/Core/Neuron.cpp" bodystart="29" bodyend="36"/>
-        <references refid="classpann_1_1Neuron_16af287c561d4226f59c858d4e020168c" compoundref="Neuron_8h" startline="35">learningHint</references>
-        <references refid="classpann_1_1Neuron_12b0d035a701cad63f77a19fa3c7c2ffb" compoundref="Neuron_8h" startline="34">oglHint</references>
+        <location file="/home/booble/pann/trunk/src/pann/Core/Neuron.h" line="39" bodyfile="/home/booble/pann/trunk/src/pann/Core/Neuron.cpp" bodystart="17" bodyend="19"/>
       </memberdef>
       <memberdef kind="function" id="classpann_1_1Neuron_12ec7496a4939390cc4e9c2b1b4ebfd8a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -200,8 +194,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/Neuron.h" line="43" bodyfile="/home/booble/pann/trunk/src/Core/Neuron.cpp" bodystart="39" bodyend="45"/>
-        <references refid="classpann_1_1Neuron_1b22b8940b68c650c5c11c2ee9ea777a1" compoundref="Neuron_8h" startline="24">ownerThread</references>
+        <location file="/home/booble/pann/trunk/src/pann/Core/Neuron.h" line="41" bodyfile="/home/booble/pann/trunk/src/pann/Core/Neuron.cpp" bodystart="22" bodyend="28"/>
+        <references refid="classpann_1_1Neuron_1b22b8940b68c650c5c11c2ee9ea777a1" compoundref="Neuron_8h" startline="23">ownerThread</references>
+        <referencedby refid="classpann_1_1Net_160ede07661fe666b8923c50da10e1cb2" compoundref="Net_8cpp" startline="101" endline="104">pann::Net::setNeuronOwner</referencedby>
       </memberdef>
       <memberdef kind="function" id="classpann_1_1Neuron_12a426e05cdb3fbd67635a4ba57ec2bbd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>unsigned</type>
@@ -214,9 +209,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/Neuron.h" line="44" bodyfile="/home/booble/pann/trunk/src/Core/Neuron.cpp" bodystart="48" bodyend="51"/>
-        <references refid="classpann_1_1Neuron_1b22b8940b68c650c5c11c2ee9ea777a1" compoundref="Neuron_8h" startline="24">ownerThread</references>
-        <referencedby refid="classGLWidget_19a07d44b5dc052a8652b88454f3cb481" compoundref="glwidget_8cpp" startline="140" endline="155">GLWidget::setInfoNeuron</referencedby>
+        <location file="/home/booble/pann/trunk/src/pann/Core/Neuron.h" line="42" bodyfile="/home/booble/pann/trunk/src/pann/Core/Neuron.cpp" bodystart="31" bodyend="34"/>
+        <references refid="classpann_1_1Neuron_1b22b8940b68c650c5c11c2ee9ea777a1" compoundref="Neuron_8h" startline="23">ownerThread</references>
+        <referencedby refid="classpann_1_1Net_132149f53c6ea0699bb83f3ab84a5556a" compoundref="Net_8cpp" startline="107" endline="110">pann::Net::getNeuronOwner</referencedby>
+        <referencedby refid="classGLWidget_19a07d44b5dc052a8652b88454f3cb481" compoundref="glwidget_8cpp" startline="141" endline="155">GLWidget::setInfoNeuron</referencedby>
       </memberdef>
       <memberdef kind="function" id="classpann_1_1Neuron_120445c905a8ad3e243e0945bd3595b9a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const <ref refid="classpann_1_1ActivationFunction_1_1Base" kindref="compound">ActivationFunction::Base</ref> *</type>
@@ -229,17 +225,18 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/Neuron.h" line="46" bodyfile="/home/booble/pann/trunk/src/Core/Neuron.cpp" bodystart="54" bodyend="57"/>
-        <references refid="classpann_1_1Neuron_1bd0230c56464055cc2dcae4da86c5f73" compoundref="Neuron_8h" startline="19">activationFunction</references>
-        <referencedby refid="classGLWidget_19a07d44b5dc052a8652b88454f3cb481" compoundref="glwidget_8cpp" startline="140" endline="155">GLWidget::setInfoNeuron</referencedby>
+        <location file="/home/booble/pann/trunk/src/pann/Core/Neuron.h" line="44" bodyfile="/home/booble/pann/trunk/src/pann/Core/Neuron.cpp" bodystart="37" bodyend="40"/>
+        <references refid="classpann_1_1Neuron_1bd0230c56464055cc2dcae4da86c5f73" compoundref="Neuron_8h" startline="18">activationFunction</references>
+        <referencedby refid="classpann_1_1FeedforwardPropagationRunner_19eb4f177f66db617505317f74a895845" compoundref="Runner_8cpp" startline="90" endline="100">pann::FeedforwardPropagationRunner::run</referencedby>
+        <referencedby refid="classGLWidget_19a07d44b5dc052a8652b88454f3cb481" compoundref="glwidget_8cpp" startline="141" endline="155">GLWidget::setInfoNeuron</referencedby>
       </memberdef>
-      <memberdef kind="function" id="classpann_1_1Neuron_1990c18907d963acc1154bcb9c79280ab" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classpann_1_1Neuron_1c38530608054d8bdb17d930a72b362bd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::list&lt; <ref refid="classpann_1_1Link" kindref="compound">Link</ref> &gt;::iterator</type>
         <definition>list&lt; Link &gt;::iterator pann::Neuron::findLink</definition>
-        <argsstring>(NeuronIter _to, Link::Direction _direction)</argsstring>
+        <argsstring>(Neuron *_to, Link::Direction _direction)</argsstring>
         <name>findLink</name>
         <param>
-          <type><ref refid="namespacepann_15b285d6cead198add4f14b5b5a0b97c1" kindref="member">NeuronIter</ref></type>
+          <type><ref refid="classpann_1_1Neuron" kindref="compound">Neuron</ref> *</type>
           <declname>_to</declname>
         </param>
         <param>
@@ -249,73 +246,29 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>Helper. Finds and returns iterator to list&lt;&gt; links for NeuronIter _to </para>        </detaileddescription>
+<para>Helper. Finds and returns Link* for <ref refid="classpann_1_1Neuron" kindref="compound">Neuron</ref> _to </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/Neuron.h" line="51" bodyfile="/home/booble/pann/trunk/src/Core/Neuron.cpp" bodystart="60" bodyend="79"/>
-        <references refid="classpann_1_1Neuron_11ea45590be4c55659a776ff0acf2ac2c" compoundref="Neuron_8h" startline="33">links</references>
-      </memberdef>
-      <memberdef kind="function" id="classpann_1_1Neuron_10017d9230fca2359b460e9a18b8a8198" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>void</type>
-        <definition>virtual void pann::Neuron::printDebugInfo</definition>
-        <argsstring>(std::ostringstream &amp;ost) const </argsstring>
-        <name>printDebugInfo</name>
-        <reimplements refid="classpann_1_1Object_1f0039bd3a5cdbb3decfa5e33055e1a45">printDebugInfo</reimplements>
-        <param>
-          <type>std::ostringstream &amp;</type>
-          <declname>ost</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/Neuron.h" line="56" bodyfile="/home/booble/pann/trunk/src/Core/Neuron.h" bodystart="55" bodyend="66"/>
-        <references refid="classpann_1_1Neuron_1bd0230c56464055cc2dcae4da86c5f73" compoundref="Neuron_8h" startline="19">activationFunction</references>
-        <references refid="classpann_1_1ActivationFunction_1_1Base_1882ff77ecccf62b9c453243fe0adb63d">pann::ActivationFunction::Base::getId</references>
-        <references refid="classpann_1_1Neuron_11ea45590be4c55659a776ff0acf2ac2c" compoundref="Neuron_8h" startline="33">links</references>
-        <references refid="classpann_1_1Neuron_1b22b8940b68c650c5c11c2ee9ea777a1" compoundref="Neuron_8h" startline="24">ownerThread</references>
+        <location file="/home/booble/pann/trunk/src/pann/Core/Neuron.h" line="49" bodyfile="/home/booble/pann/trunk/src/pann/Core/Neuron.cpp" bodystart="43" bodyend="62"/>
+        <references refid="classpann_1_1Neuron_11ea45590be4c55659a776ff0acf2ac2c" compoundref="Neuron_8h" startline="32">links</references>
+        <referencedby refid="classpann_1_1Net_13af6a3cb55eec4e7fa254d980705140c" compoundref="Net_8cpp" startline="296" endline="325">pann::Net::delConnection</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
-      <memberdef kind="function" id="classpann_1_1Neuron_1f78cc590bbd2ed7392a822016b1161b0" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <templateparamlist>
-          <param>
-            <type>class</type>
-            <declname>Archive</declname>
-            <defname>Archive</defname>
-          </param>
-        </templateparamlist>
-        <type>void</type>
-        <definition>void pann::Neuron::save</definition>
-        <argsstring>(Archive &amp;ar, const unsigned int version) const </argsstring>
-        <name>save</name>
-        <param>
-          <type>Archive &amp;</type>
-          <declname>ar</declname>
-        </param>
-        <param>
-          <type>const unsigned int</type>
-          <declname>version</declname>
-        </param>
+      <memberdef kind="function" id="classpann_1_1Neuron_189d63cff9e559e1cbdbdc3c9dbc2efe6" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>pann::Neuron::Neuron</definition>
+        <argsstring>()</argsstring>
+        <name>Neuron</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/Neuron.h" line="73" bodyfile="/home/booble/pann/trunk/src/Core/Neuron.h" bodystart="72" bodyend="100"/>
-        <references refid="classpann_1_1Neuron_1bd0230c56464055cc2dcae4da86c5f73" compoundref="Neuron_8h" startline="19">activationFunction</references>
-        <references refid="classpann_1_1Neuron_179899694b4dbaa30551f9f6784ddd869" compoundref="Neuron_8h" startline="32">activationValue</references>
-        <references refid="classpann_1_1ActivationFunction_1_1Base_1882ff77ecccf62b9c453243fe0adb63d">pann::ActivationFunction::Base::getId</references>
-        <references refid="classpann_1_1LearningHint_1_1Base_1d45edb03ed5fcfd5fec10bc768859ebf">pann::LearningHint::Base::getTypeId</references>
-        <references refid="classpann_1_1Neuron_16af287c561d4226f59c858d4e020168c" compoundref="Neuron_8h" startline="35">learningHint</references>
-        <references refid="classpann_1_1Neuron_12b0d035a701cad63f77a19fa3c7c2ffb" compoundref="Neuron_8h" startline="34">oglHint</references>
-        <references refid="classpann_1_1Neuron_1b22b8940b68c650c5c11c2ee9ea777a1" compoundref="Neuron_8h" startline="24">ownerThread</references>
-        <references refid="classpann_1_1Neuron_1cc966b3f4aa4ee2f158ab70196642fc4" compoundref="Neuron_8h" startline="31">receptiveField</references>
+        <location file="/home/booble/pann/trunk/src/pann/Core/Neuron.h" line="53" bodyfile="/home/booble/pann/trunk/src/pann/Core/Neuron.h" bodystart="53" bodyend="53"/>
       </memberdef>
-      <memberdef kind="function" id="classpann_1_1Neuron_146c3eb1f5fa7a4bf0112030b5aa4e908" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classpann_1_1Neuron_1856883a5ae179f2af44ad9abec28f9ad" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>class</type>
@@ -324,9 +277,10 @@
           </param>
         </templateparamlist>
         <type>void</type>
-        <definition>void pann::Neuron::load</definition>
+        <definition>void pann::Neuron::serialize</definition>
         <argsstring>(Archive &amp;ar, const unsigned int version)</argsstring>
-        <name>load</name>
+        <name>serialize</name>
+        <reimplements refid="classpann_1_1Object_113a234c0fcd5d32d341353f1b7b3c828">serialize</reimplements>
         <param>
           <type>Archive &amp;</type>
           <declname>ar</declname>
@@ -341,14 +295,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/Neuron.h" line="104" bodyfile="/home/booble/pann/trunk/src/Core/Neuron.h" bodystart="103" bodyend="133"/>
-        <references refid="classpann_1_1Neuron_1bd0230c56464055cc2dcae4da86c5f73" compoundref="Neuron_8h" startline="19">activationFunction</references>
-        <references refid="classpann_1_1Neuron_179899694b4dbaa30551f9f6784ddd869" compoundref="Neuron_8h" startline="32">activationValue</references>
-        <references refid="namespacepann_1_1LearningHint_1a9049ca41b3b30b18546dbad7e6e8e9a" compoundref="LearningHint_8h" startline="124" endline="140">pann::LearningHint::getById</references>
-        <references refid="classpann_1_1Neuron_16af287c561d4226f59c858d4e020168c" compoundref="Neuron_8h" startline="35">learningHint</references>
-        <references refid="classpann_1_1Neuron_12b0d035a701cad63f77a19fa3c7c2ffb" compoundref="Neuron_8h" startline="34">oglHint</references>
-        <references refid="classpann_1_1Neuron_1b22b8940b68c650c5c11c2ee9ea777a1" compoundref="Neuron_8h" startline="24">ownerThread</references>
-        <references refid="classpann_1_1Neuron_1cc966b3f4aa4ee2f158ab70196642fc4" compoundref="Neuron_8h" startline="31">receptiveField</references>
+        <location file="/home/booble/pann/trunk/src/pann/Core/Neuron.h" line="57" bodyfile="/home/booble/pann/trunk/src/pann/Core/Neuron.h" bodystart="56" bodyend="66"/>
+        <references refid="classpann_1_1Neuron_1bd0230c56464055cc2dcae4da86c5f73" compoundref="Neuron_8h" startline="18">activationFunction</references>
+        <references refid="classpann_1_1Neuron_179899694b4dbaa30551f9f6784ddd869" compoundref="Neuron_8h" startline="31">activationValue</references>
+        <references refid="classpann_1_1Neuron_123c8a6b7ac44957aa3929ce70125d772" compoundref="Neuron_8h" startline="34">learningHint</references>
+        <references refid="classpann_1_1Neuron_11ea45590be4c55659a776ff0acf2ac2c" compoundref="Neuron_8h" startline="32">links</references>
+        <references refid="classpann_1_1Neuron_1cb99c66b9a3c4c5c54611c34300ab252" compoundref="Neuron_8h" startline="33">oglHint</references>
+        <references refid="classpann_1_1Neuron_1b22b8940b68c650c5c11c2ee9ea777a1" compoundref="Neuron_8h" startline="23">ownerThread</references>
+        <references refid="classpann_1_1Neuron_1cc966b3f4aa4ee2f158ab70196642fc4" compoundref="Neuron_8h" startline="30">receptiveField</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -356,84 +310,66 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="284">
+      <node id="288">
         <label>pann::Neuron</label>
         <link refid="classpann_1_1Neuron"/>
-        <childnode refid="285" relation="public-inheritance">
+        <childnode refid="289" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="285">
+      <node id="289">
         <label>pann::Object</label>
         <link refid="classpann_1_1Object"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="286">
+      <node id="290">
         <label>pann::Neuron</label>
         <link refid="classpann_1_1Neuron"/>
-        <childnode refid="287" relation="public-inheritance">
-        </childnode>
-        <childnode refid="288" relation="usage">
-          <edgelabel>activationFunction</edgelabel>
-        </childnode>
-        <childnode refid="289" relation="usage">
-          <edgelabel>oglHint</edgelabel>
+        <childnode refid="291" relation="public-inheritance">
         </childnode>
         <childnode refid="292" relation="usage">
-          <edgelabel>learningHint</edgelabel>
+          <edgelabel>activationFunction</edgelabel>
         </childnode>
-      </node>
-      <node id="288">
-        <label>pann::ActivationFunction::Base</label>
-        <link refid="classpann_1_1ActivationFunction_1_1Base"/>
-      </node>
-      <node id="287">
-        <label>pann::Object</label>
-        <link refid="classpann_1_1Object"/>
-      </node>
-      <node id="289">
-        <label>pann::OpenGLHint</label>
-        <link refid="classpann_1_1OpenGLHint"/>
-        <childnode refid="290" relation="usage">
-          <edgelabel>point</edgelabel>
-        </childnode>
-        <childnode refid="291" relation="usage">
-          <edgelabel>color</edgelabel>
+        <childnode refid="293" relation="usage">
+          <edgelabel>learningHint
+oglHint</edgelabel>
         </childnode>
       </node>
       <node id="292">
-        <label>pann::LearningHint::Base</label>
-        <link refid="classpann_1_1LearningHint_1_1Base"/>
+        <label>pann::ActivationFunction::Base</label>
+        <link refid="classpann_1_1ActivationFunction_1_1Base"/>
       </node>
       <node id="291">
-        <label>pann::Color</label>
-        <link refid="classpann_1_1Color"/>
+        <label>pann::Object</label>
+        <link refid="classpann_1_1Object"/>
       </node>
-      <node id="290">
-        <label>pann::Point3d</label>
-        <link refid="classpann_1_1Point3d"/>
+      <node id="293">
+        <label>pann::Attributes</label>
+        <link refid="classpann_1_1Attributes"/>
+        <childnode refid="291" relation="public-inheritance">
+        </childnode>
       </node>
     </collaborationgraph>
-    <location file="/home/booble/pann/trunk/src/Core/Neuron.h" line="16" bodyfile="/home/booble/pann/trunk/src/Core/Neuron.h" bodystart="15" bodyend="136"/>
+    <location file="/home/booble/pann/trunk/src/pann/Core/Neuron.h" line="15" bodyfile="/home/booble/pann/trunk/src/pann/Core/Neuron.h" bodystart="14" bodyend="67"/>
     <listofallmembers>
       <member refid="classpann_1_1Neuron_1bd0230c56464055cc2dcae4da86c5f73" prot="private" virt="non-virtual"><scope>pann::Neuron</scope><name>activationFunction</name></member>
       <member refid="classpann_1_1Neuron_179899694b4dbaa30551f9f6784ddd869" prot="public" virt="non-virtual"><scope>pann::Neuron</scope><name>activationValue</name></member>
       <member refid="classpann_1_1Neuron_1c98d07dd8f7b70e16ccb9a01abf56b9c" prot="public" virt="non-virtual"><scope>pann::Neuron</scope><name>boost::serialization::access</name></member>
-      <member refid="classpann_1_1Neuron_1990c18907d963acc1154bcb9c79280ab" prot="public" virt="non-virtual"><scope>pann::Neuron</scope><name>findLink</name></member>
+      <member refid="classpann_1_1Neuron_1c38530608054d8bdb17d930a72b362bd" prot="public" virt="non-virtual"><scope>pann::Neuron</scope><name>findLink</name></member>
       <member refid="classpann_1_1Neuron_120445c905a8ad3e243e0945bd3595b9a" prot="public" virt="non-virtual"><scope>pann::Neuron</scope><name>getActivationFunction</name></member>
       <member refid="classpann_1_1Neuron_12a426e05cdb3fbd67635a4ba57ec2bbd" prot="public" virt="non-virtual"><scope>pann::Neuron</scope><name>getOwnerThread</name></member>
-      <member refid="classpann_1_1Neuron_16af287c561d4226f59c858d4e020168c" prot="public" virt="non-virtual"><scope>pann::Neuron</scope><name>learningHint</name></member>
+      <member refid="classpann_1_1Neuron_123c8a6b7ac44957aa3929ce70125d772" prot="public" virt="non-virtual"><scope>pann::Neuron</scope><name>learningHint</name></member>
       <member refid="classpann_1_1Neuron_11ea45590be4c55659a776ff0acf2ac2c" prot="public" virt="non-virtual"><scope>pann::Neuron</scope><name>links</name></member>
-      <member refid="classpann_1_1Neuron_146c3eb1f5fa7a4bf0112030b5aa4e908" prot="private" virt="non-virtual"><scope>pann::Neuron</scope><name>load</name></member>
-      <member refid="classpann_1_1Neuron_189d63cff9e559e1cbdbdc3c9dbc2efe6" prot="public" virt="non-virtual"><scope>pann::Neuron</scope><name>Neuron</name></member>
       <member refid="classpann_1_1Neuron_1eb0f836051ce56055b3fd7ca3ade67dd" prot="public" virt="non-virtual"><scope>pann::Neuron</scope><name>Neuron</name></member>
-      <member refid="classpann_1_1Neuron_12b0d035a701cad63f77a19fa3c7c2ffb" prot="public" virt="non-virtual"><scope>pann::Neuron</scope><name>oglHint</name></member>
+      <member refid="classpann_1_1Neuron_189d63cff9e559e1cbdbdc3c9dbc2efe6" prot="private" virt="non-virtual"><scope>pann::Neuron</scope><name>Neuron</name></member>
+      <member refid="classpann_1_1Object_1e4157eda81e363f28504b4ec9d15e196" prot="public" virt="non-virtual"><scope>pann::Neuron</scope><name>Object</name></member>
+      <member refid="classpann_1_1Neuron_1cb99c66b9a3c4c5c54611c34300ab252" prot="public" virt="non-virtual"><scope>pann::Neuron</scope><name>oglHint</name></member>
       <member refid="classpann_1_1Neuron_1b22b8940b68c650c5c11c2ee9ea777a1" prot="private" virt="non-virtual"><scope>pann::Neuron</scope><name>ownerThread</name></member>
-      <member refid="classpann_1_1Neuron_10017d9230fca2359b460e9a18b8a8198" prot="public" virt="virtual"><scope>pann::Neuron</scope><name>printDebugInfo</name></member>
       <member refid="classpann_1_1Neuron_1cc966b3f4aa4ee2f158ab70196642fc4" prot="public" virt="non-virtual"><scope>pann::Neuron</scope><name>receptiveField</name></member>
-      <member refid="classpann_1_1Neuron_1f78cc590bbd2ed7392a822016b1161b0" prot="private" virt="non-virtual"><scope>pann::Neuron</scope><name>save</name></member>
+      <member refid="classpann_1_1Neuron_1856883a5ae179f2af44ad9abec28f9ad" prot="private" virt="non-virtual"><scope>pann::Neuron</scope><name>serialize</name></member>
       <member refid="classpann_1_1Neuron_12ec7496a4939390cc4e9c2b1b4ebfd8a" prot="public" virt="non-virtual"><scope>pann::Neuron</scope><name>setOwnerThread</name></member>
-      <member refid="classpann_1_1Neuron_1e08f02385e9b8fc0b927fc28fcfda966" prot="public" virt="non-virtual"><scope>pann::Neuron</scope><name>~Neuron</name></member>
+      <member refid="classpann_1_1Neuron_1e08f02385e9b8fc0b927fc28fcfda966" prot="public" virt="virtual"><scope>pann::Neuron</scope><name>~Neuron</name></member>
+      <member refid="classpann_1_1Object_1461126af2f1a20fa24f1340f670c5733" prot="public" virt="virtual"><scope>pann::Neuron</scope><name>~Object</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

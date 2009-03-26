@@ -48,8 +48,6 @@ Collaboration diagram for pann::ActivationFunction::Threshold:</div>
 <tr><td colspan="2"><br><h2>Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1ActivationFunction_1_1Threshold.html#5b18d8698572d4e9a48fec210db6393a">~Threshold</a> ()</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual unsigned&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1ActivationFunction_1_1Threshold.html#e3178b402d5bad3ff7d34355415a15b9">getId</a> () const </td></tr>
-
 <tr><td class="memItemLeft" nowrap align="right" valign="top">virtual std::string&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1ActivationFunction_1_1Threshold.html#78703fca497f9efdb5f1760d3f50852d">getName</a> () const </td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">virtual <a class="el" href="namespacepann.html#4509ba95a02d59e0a1cd5127e1c55988">Float</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1ActivationFunction_1_1Threshold.html#b5c50e74b8f93770f466274f1ebc0fb0">f</a> (<a class="el" href="namespacepann.html#4509ba95a02d59e0a1cd5127e1c55988">Float</a> _x) const </td></tr>
@@ -62,13 +60,19 @@ Collaboration diagram for pann::ActivationFunction::Threshold:</div>
 <tr><td colspan="2"><br><h2>Private Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1ActivationFunction_1_1Threshold.html#dd8dd134551c6658d5f5875542555188">Threshold</a> ()</td></tr>
 
+<tr><td class="memTemplParams" nowrap colspan="2">template&lt;class Archive&gt; </td></tr>
+<tr><td class="memTemplItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classpann_1_1ActivationFunction_1_1Threshold.html#1fd9da29f3ca9759afcad9fb2f2cda36">serialize</a> (Archive &amp;ar, const unsigned int version)</td></tr>
+
 <tr><td colspan="2"><br><h2>Static Private Attributes</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">static <a class="el" href="classpann_1_1ActivationFunction_1_1Base.html">Base</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1ActivationFunction_1_1Threshold.html#3d4877deed0b1835b17b48303ac7aebb">self</a> = 0</td></tr>
 
+<tr><td colspan="2"><br><h2>Friends</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">class&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpann_1_1ActivationFunction_1_1Threshold.html#c98d07dd8f7b70e16ccb9a01abf56b9c">boost::serialization::access</a></td></tr>
+
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
-MacCalloc-Pitz threshold function id = 2 y = 0, x &lt;0 y = 1, x&gt;=0 
-<p>Definition at line <a class="el" href="ActivationFunction_8h-source.html#l00085">85</a> of file <a class="el" href="ActivationFunction_8h-source.html">ActivationFunction.h</a>.</p>
+MacCalloc-Pitz threshold function y = 0, x &lt;0 y = 1, x&gt;=0 
+<p>Definition at line <a class="el" href="ActivationFunction_8h-source.html#l00096">96</a> of file <a class="el" href="ActivationFunction_8h-source.html">ActivationFunction.h</a>.</p>
 <hr><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" name="dd8dd134551c6658d5f5875542555188"></a><!-- doxytag: member="pann::ActivationFunction::Threshold::Threshold" ref="dd8dd134551c6658d5f5875542555188" args="()" -->
 <div class="memitem">
@@ -87,9 +91,9 @@ MacCalloc-Pitz threshold function id = 2 y = 0, x &lt;0 y = 1, x&gt;=0
 
 <p>
 
-<p>Definition at line <a class="el" href="ActivationFunction_8h-source.html#l00091">91</a> of file <a class="el" href="ActivationFunction_8h-source.html">ActivationFunction.h</a>.</p>
+<p>Definition at line <a class="el" href="ActivationFunction_8h-source.html#l00102">102</a> of file <a class="el" href="ActivationFunction_8h-source.html">ActivationFunction.h</a>.</p>
 
-<p>Referenced by <a class="el" href="ActivationFunction_8h-source.html#l00097">Instance()</a>.</p>
+<p>Referenced by <a class="el" href="ActivationFunction_8h-source.html#l00108">Instance()</a>.</p>
 
 </div>
 </div><p>
@@ -110,7 +114,7 @@ MacCalloc-Pitz threshold function id = 2 y = 0, x &lt;0 y = 1, x&gt;=0
 
 <p>
 
-<p>Definition at line <a class="el" href="ActivationFunction_8h-source.html#l00094">94</a> of file <a class="el" href="ActivationFunction_8h-source.html">ActivationFunction.h</a>.</p>
+<p>Definition at line <a class="el" href="ActivationFunction_8h-source.html#l00105">105</a> of file <a class="el" href="ActivationFunction_8h-source.html">ActivationFunction.h</a>.</p>
 
 </div>
 </div><p>
@@ -134,11 +138,9 @@ MacCalloc-Pitz threshold function id = 2 y = 0, x &lt;0 y = 1, x&gt;=0
 
 <p>Reimplemented from <a class="el" href="classpann_1_1ActivationFunction_1_1Base.html#5bce1a2f357da69638b97f6d3ef73395">pann::ActivationFunction::Base</a>.</p>
 
-<p>Definition at line <a class="el" href="ActivationFunction_8h-source.html#l00097">97</a> of file <a class="el" href="ActivationFunction_8h-source.html">ActivationFunction.h</a>.</p>
+<p>Definition at line <a class="el" href="ActivationFunction_8h-source.html#l00108">108</a> of file <a class="el" href="ActivationFunction_8h-source.html">ActivationFunction.h</a>.</p>
 
-<p>References <a class="el" href="ActivationFunction_8h-source.html#l00091">Threshold()</a>.</p>
-
-<p>Referenced by <a class="el" href="ActivationFunction_8cpp-source.html#l00021">pann::ActivationFunction::getById()</a>.</p>
+<p>References <a class="el" href="ActivationFunction_8h-source.html#l00102">Threshold()</a>.</p>
 
 <p>
 <div class="dynheader">
@@ -148,29 +150,6 @@ Here is the call graph for this function:</div>
 <map name="classpann_1_1ActivationFunction_1_1Threshold_a132088780dc2b151c7c0b5ae3850b0b_cgraph_map">
 <area shape="rect" href="classpann_1_1ActivationFunction_1_1Threshold.html#dd8dd134551c6658d5f5875542555188" title="pann::ActivationFunction::Threshold::Threshold" alt="" coords="341,5,637,32"></map>
 </div>
-
-</div>
-</div><p>
-<a class="anchor" name="e3178b402d5bad3ff7d34355415a15b9"></a><!-- doxytag: member="pann::ActivationFunction::Threshold::getId" ref="e3178b402d5bad3ff7d34355415a15b9" args="() const " -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual unsigned pann::ActivationFunction::Threshold::getId           </td>
-          <td>(</td>
-          <td class="paramname">          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td> const<code> [inline, virtual]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-
-<p>Implements <a class="el" href="classpann_1_1ActivationFunction_1_1Base.html#882ff77ecccf62b9c453243fe0adb63d">pann::ActivationFunction::Base</a>.</p>
-
-<p>Definition at line <a class="el" href="ActivationFunction_8h-source.html#l00105">105</a> of file <a class="el" href="ActivationFunction_8h-source.html">ActivationFunction.h</a>.</p>
 
 </div>
 </div><p>
@@ -193,7 +172,7 @@ Here is the call graph for this function:</div>
 
 <p>Implements <a class="el" href="classpann_1_1ActivationFunction_1_1Base.html#110e8df25117878d2b49cc2fda35c50d">pann::ActivationFunction::Base</a>.</p>
 
-<p>Definition at line <a class="el" href="ActivationFunction_8h-source.html#l00106">106</a> of file <a class="el" href="ActivationFunction_8h-source.html">ActivationFunction.h</a>.</p>
+<p>Definition at line <a class="el" href="ActivationFunction_8h-source.html#l00116">116</a> of file <a class="el" href="ActivationFunction_8h-source.html">ActivationFunction.h</a>.</p>
 
 </div>
 </div><p>
@@ -217,7 +196,7 @@ Here is the call graph for this function:</div>
 
 <p>Implements <a class="el" href="classpann_1_1ActivationFunction_1_1Base.html#6f8d64be53a32ddfe46abb3501849628">pann::ActivationFunction::Base</a>.</p>
 
-<p>Definition at line <a class="el" href="ActivationFunction_8h-source.html#l00108">108</a> of file <a class="el" href="ActivationFunction_8h-source.html">ActivationFunction.h</a>.</p>
+<p>Definition at line <a class="el" href="ActivationFunction_8h-source.html#l00118">118</a> of file <a class="el" href="ActivationFunction_8h-source.html">ActivationFunction.h</a>.</p>
 
 </div>
 </div><p>
@@ -241,9 +220,62 @@ Here is the call graph for this function:</div>
 
 <p>Implements <a class="el" href="classpann_1_1ActivationFunction_1_1Base.html#eb85eeb7e4058df1b5ca45ad15745ad8">pann::ActivationFunction::Base</a>.</p>
 
-<p>Definition at line <a class="el" href="ActivationFunction_8h-source.html#l00115">115</a> of file <a class="el" href="ActivationFunction_8h-source.html">ActivationFunction.h</a>.</p>
+<p>Definition at line <a class="el" href="ActivationFunction_8h-source.html#l00125">125</a> of file <a class="el" href="ActivationFunction_8h-source.html">ActivationFunction.h</a>.</p>
 
 <p>References <a class="el" href="Type_8h-source.html#l00014">pann::inf</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="1fd9da29f3ca9759afcad9fb2f2cda36"></a><!-- doxytag: member="pann::ActivationFunction::Threshold::serialize" ref="1fd9da29f3ca9759afcad9fb2f2cda36" args="(Archive &amp;ar, const unsigned int version)" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Archive&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void pann::ActivationFunction::Threshold::serialize           </td>
+          <td>(</td>
+          <td class="paramtype">Archive &amp;&nbsp;</td>
+          <td class="paramname"> <em>ar</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned int&nbsp;</td>
+          <td class="paramname"> <em>version</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline, private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Definition at line <a class="el" href="ActivationFunction_8h-source.html#l00136">136</a> of file <a class="el" href="ActivationFunction_8h-source.html">ActivationFunction.h</a>.</p>
+
+</div>
+</div><p>
+<hr><h2>Friends And Related Function Documentation</h2>
+<a class="anchor" name="c98d07dd8f7b70e16ccb9a01abf56b9c"></a><!-- doxytag: member="pann::ActivationFunction::Threshold::boost::serialization::access" ref="c98d07dd8f7b70e16ccb9a01abf56b9c" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">friend class boost::serialization::access<code> [friend]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Reimplemented from <a class="el" href="classpann_1_1ActivationFunction_1_1Base.html#c98d07dd8f7b70e16ccb9a01abf56b9c">pann::ActivationFunction::Base</a>.</p>
+
+<p>Definition at line <a class="el" href="ActivationFunction_8h-source.html#l00134">134</a> of file <a class="el" href="ActivationFunction_8h-source.html">ActivationFunction.h</a>.</p>
 
 </div>
 </div><p>
@@ -261,14 +293,14 @@ Here is the call graph for this function:</div>
 
 <p>
 
-<p>Definition at line <a class="el" href="ActivationFunction_8h-source.html#l00088">88</a> of file <a class="el" href="ActivationFunction_8h-source.html">ActivationFunction.h</a>.</p>
+<p>Definition at line <a class="el" href="ActivationFunction_8h-source.html#l00099">99</a> of file <a class="el" href="ActivationFunction_8h-source.html">ActivationFunction.h</a>.</p>
 
 </div>
 </div><p>
 <hr>The documentation for this class was generated from the following files:<ul>
-<li>pann/trunk/src/Core/<a class="el" href="ActivationFunction_8h-source.html">ActivationFunction.h</a><li>pann/trunk/src/Core/<a class="el" href="ActivationFunction_8cpp-source.html">ActivationFunction.cpp</a></ul>
+<li>pann/trunk/src/pann/Core/<a class="el" href="ActivationFunction_8h-source.html">ActivationFunction.h</a><li>pann/trunk/src/pann/Core/<a class="el" href="ActivationFunction_8cpp-source.html">ActivationFunction.cpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sun Mar 22 11:32:24 2009 for pann by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Thu Mar 26 21:16:03 2009 for pann by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

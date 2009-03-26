@@ -6,6 +6,24 @@
     <derivedcompoundref refid="classpann_1_1ActivationFunction_1_1TanH" prot="public" virt="non-virtual">pann::ActivationFunction::TanH</derivedcompoundref>
     <derivedcompoundref refid="classpann_1_1ActivationFunction_1_1Threshold" prot="public" virt="non-virtual">pann::ActivationFunction::Threshold</derivedcompoundref>
     <includes refid="ActivationFunction_8h" local="no">ActivationFunction.h</includes>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classpann_1_1ActivationFunction_1_1Base_1c98d07dd8f7b70e16ccb9a01abf56b9c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class boost::serialization::access</definition>
+        <argsstring></argsstring>
+        <name>boost::serialization::access</name>
+        <reimplementedby refid="classpann_1_1ActivationFunction_1_1TanH_1c98d07dd8f7b70e16ccb9a01abf56b9c">boost::serialization::access</reimplementedby>
+        <reimplementedby refid="classpann_1_1ActivationFunction_1_1Threshold_1c98d07dd8f7b70e16ccb9a01abf56b9c">boost::serialization::access</reimplementedby>
+        <reimplementedby refid="classpann_1_1ActivationFunction_1_1Linear_1c98d07dd8f7b70e16ccb9a01abf56b9c">boost::serialization::access</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/pann/Core/ActivationFunction.h" line="36" bodyfile="/home/booble/pann/trunk/src/pann/Core/ActivationFunction.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
       <sectiondef kind="public-static-func">
       <memberdef kind="function" id="classpann_1_1ActivationFunction_1_1Base_15bce1a2f357da69638b97f6d3ef73395" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classpann_1_1ActivationFunction_1_1Base" kindref="compound">Base</ref> *</type>
@@ -21,29 +39,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/ActivationFunction.h" line="27"/>
+        <location file="/home/booble/pann/trunk/src/pann/Core/ActivationFunction.h" line="27"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="classpann_1_1ActivationFunction_1_1Base_1882ff77ecccf62b9c453243fe0adb63d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>unsigned</type>
-        <definition>virtual unsigned pann::ActivationFunction::Base::getId</definition>
-        <argsstring>() const =0</argsstring>
-        <name>getId</name>
-        <reimplementedby refid="classpann_1_1ActivationFunction_1_1TanH_1ad4c5d74bcba084a30a5dbf8103e60bb">getId</reimplementedby>
-        <reimplementedby refid="classpann_1_1ActivationFunction_1_1Threshold_1e3178b402d5bad3ff7d34355415a15b9">getId</reimplementedby>
-        <reimplementedby refid="classpann_1_1ActivationFunction_1_1Linear_1e9dfd60ec5f8a0cd6c17ef4404add5c4">getId</reimplementedby>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/ActivationFunction.h" line="29"/>
-        <referencedby refid="classpann_1_1Neuron_10017d9230fca2359b460e9a18b8a8198" compoundref="Neuron_8h" startline="55" endline="66">pann::Neuron::printDebugInfo</referencedby>
-        <referencedby refid="classpann_1_1Neuron_1f78cc590bbd2ed7392a822016b1161b0" compoundref="Neuron_8h" startline="72" endline="100">pann::Neuron::save</referencedby>
-        <referencedby refid="classGLWidget_19a07d44b5dc052a8652b88454f3cb481" compoundref="glwidget_8cpp" startline="140" endline="155">GLWidget::setInfoNeuron</referencedby>
-      </memberdef>
       <memberdef kind="function" id="classpann_1_1ActivationFunction_1_1Base_1110e8df25117878d2b49cc2fda35c50d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::string</type>
         <definition>virtual std::string pann::ActivationFunction::Base::getName</definition>
@@ -58,8 +57,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/ActivationFunction.h" line="30"/>
-        <referencedby refid="classGLWidget_19a07d44b5dc052a8652b88454f3cb481" compoundref="glwidget_8cpp" startline="140" endline="155">GLWidget::setInfoNeuron</referencedby>
+        <location file="/home/booble/pann/trunk/src/pann/Core/ActivationFunction.h" line="29"/>
+        <referencedby refid="classGLWidget_19a07d44b5dc052a8652b88454f3cb481" compoundref="glwidget_8cpp" startline="141" endline="155">GLWidget::setInfoNeuron</referencedby>
       </memberdef>
       <memberdef kind="function" id="classpann_1_1ActivationFunction_1_1Base_16f8d64be53a32ddfe46abb3501849628" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="namespacepann_14509ba95a02d59e0a1cd5127e1c55988" kindref="member">Float</ref></type>
@@ -78,7 +77,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/ActivationFunction.h" line="32"/>
+        <location file="/home/booble/pann/trunk/src/pann/Core/ActivationFunction.h" line="31"/>
+        <referencedby refid="classpann_1_1Neuron_1eb0f836051ce56055b3fd7ca3ade67dd" compoundref="Neuron_8cpp" startline="9" endline="15">pann::Neuron::Neuron</referencedby>
+        <referencedby refid="classpann_1_1FeedforwardPropagationRunner_19eb4f177f66db617505317f74a895845" compoundref="Runner_8cpp" startline="90" endline="100">pann::FeedforwardPropagationRunner::run</referencedby>
       </memberdef>
       <memberdef kind="function" id="classpann_1_1ActivationFunction_1_1Base_1eb85eeb7e4058df1b5ca45ad15745ad8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="namespacepann_14509ba95a02d59e0a1cd5127e1c55988" kindref="member">Float</ref></type>
@@ -97,7 +98,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/ActivationFunction.h" line="33"/>
+        <location file="/home/booble/pann/trunk/src/pann/Core/ActivationFunction.h" line="32"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -105,34 +106,34 @@
     <detaileddescription>
 <para>All activation functions inherit <ref refid="classpann_1_1ActivationFunction_1_1Base" kindref="compound">ActivationFunction::Base</ref> and implement <ref refid="classpann_1_1ActivationFunction_1_1Base_15bce1a2f357da69638b97f6d3ef73395" kindref="member">Instance()</ref> method <ref refid="classpann_1_1ActivationFunction_1_1Base" kindref="compound">Base</ref> is a singleton pattern </para>    </detaileddescription>
     <inheritancegraph>
-      <node id="195">
+      <node id="201">
         <label>pann::ActivationFunction::TanH</label>
         <link refid="classpann_1_1ActivationFunction_1_1TanH"/>
-        <childnode refid="193" relation="public-inheritance">
+        <childnode refid="199" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="193">
+      <node id="199">
         <label>pann::ActivationFunction::Base</label>
         <link refid="classpann_1_1ActivationFunction_1_1Base"/>
       </node>
-      <node id="196">
+      <node id="202">
         <label>pann::ActivationFunction::Threshold</label>
         <link refid="classpann_1_1ActivationFunction_1_1Threshold"/>
-        <childnode refid="193" relation="public-inheritance">
+        <childnode refid="199" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="194">
+      <node id="200">
         <label>pann::ActivationFunction::Linear</label>
         <link refid="classpann_1_1ActivationFunction_1_1Linear"/>
-        <childnode refid="193" relation="public-inheritance">
+        <childnode refid="199" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
-    <location file="/home/booble/pann/trunk/src/Core/ActivationFunction.h" line="23" bodyfile="/home/booble/pann/trunk/src/Core/ActivationFunction.h" bodystart="22" bodyend="34"/>
+    <location file="/home/booble/pann/trunk/src/pann/Core/ActivationFunction.h" line="23" bodyfile="/home/booble/pann/trunk/src/pann/Core/ActivationFunction.h" bodystart="22" bodyend="37"/>
     <listofallmembers>
+      <member refid="classpann_1_1ActivationFunction_1_1Base_1c98d07dd8f7b70e16ccb9a01abf56b9c" prot="public" virt="non-virtual"><scope>pann::ActivationFunction::Base</scope><name>boost::serialization::access</name></member>
       <member refid="classpann_1_1ActivationFunction_1_1Base_1eb85eeb7e4058df1b5ca45ad15745ad8" prot="public" virt="pure-virtual"><scope>pann::ActivationFunction::Base</scope><name>derivative</name></member>
       <member refid="classpann_1_1ActivationFunction_1_1Base_16f8d64be53a32ddfe46abb3501849628" prot="public" virt="pure-virtual"><scope>pann::ActivationFunction::Base</scope><name>f</name></member>
-      <member refid="classpann_1_1ActivationFunction_1_1Base_1882ff77ecccf62b9c453243fe0adb63d" prot="public" virt="pure-virtual"><scope>pann::ActivationFunction::Base</scope><name>getId</name></member>
       <member refid="classpann_1_1ActivationFunction_1_1Base_1110e8df25117878d2b49cc2fda35c50d" prot="public" virt="pure-virtual"><scope>pann::ActivationFunction::Base</scope><name>getName</name></member>
       <member refid="classpann_1_1ActivationFunction_1_1Base_15bce1a2f357da69638b97f6d3ef73395" prot="public" virt="non-virtual"><scope>pann::ActivationFunction::Base</scope><name>Instance</name></member>
     </listofallmembers>

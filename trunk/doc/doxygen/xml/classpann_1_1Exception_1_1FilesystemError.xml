@@ -4,6 +4,54 @@
     <compoundname>pann::Exception::FilesystemError</compoundname>
     <basecompoundref refid="classpann_1_1Exception_1_1Base" prot="public" virt="non-virtual">pann::Exception::Base</basecompoundref>
     <includes refid="Exception_8h" local="no">Exception.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classpann_1_1Exception_1_1FilesystemError_1efbd2f79ca600f1846c9241784448855" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>pann::Exception::FilesystemError::FilesystemError</definition>
+        <argsstring>()</argsstring>
+        <name>FilesystemError</name>
+        <exceptions> throw ()</exceptions>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/pann/Core/Exception.h" line="114" bodyfile="/home/booble/pann/trunk/src/pann/Core/Exception.h" bodystart="114" bodyend="114"/>
+      </memberdef>
+      <memberdef kind="function" id="classpann_1_1Exception_1_1FilesystemError_10093755faf4e808668a588ea8ad1360f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>pann::Exception::FilesystemError::FilesystemError</definition>
+        <argsstring>(const FilesystemError &amp;_rvalue)</argsstring>
+        <name>FilesystemError</name>
+        <param>
+          <type>const <ref refid="classpann_1_1Exception_1_1FilesystemError" kindref="compound">FilesystemError</ref> &amp;</type>
+          <declname>_rvalue</declname>
+        </param>
+        <exceptions> throw ()</exceptions>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/pann/Core/Exception.h" line="115" bodyfile="/home/booble/pann/trunk/src/pann/Core/Exception.h" bodystart="115" bodyend="115"/>
+      </memberdef>
+      <memberdef kind="function" id="classpann_1_1Exception_1_1FilesystemError_1de1ce500722821be1a9c1e1bb6bd43a8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual pann::Exception::FilesystemError::~FilesystemError</definition>
+        <argsstring>()</argsstring>
+        <name>~FilesystemError</name>
+        <exceptions> throw ()</exceptions>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/pann/Core/Exception.h" line="116" bodyfile="/home/booble/pann/trunk/src/pann/Core/Exception.h" bodystart="116" bodyend="116"/>
+      </memberdef>
+      </sectiondef>
     <briefdescription>
 <para>Exceptionfor raising on filesystem failures (missing file etc.). </para>    </briefdescription>
     <detaileddescription>
@@ -32,15 +80,16 @@
         <link refid="classpann_1_1Exception_1_1Base"/>
       </node>
     </collaborationgraph>
-    <location file="/home/booble/pann/trunk/src/Core/Exception.h" line="76" bodyfile="/home/booble/pann/trunk/src/Core/Exception.h" bodystart="76" bodyend="76"/>
+    <location file="/home/booble/pann/trunk/src/pann/Core/Exception.h" line="112" bodyfile="/home/booble/pann/trunk/src/pann/Core/Exception.h" bodystart="111" bodyend="117"/>
     <listofallmembers>
       <member refid="classpann_1_1Exception_1_1Base_129e2607d6a8c7dc15ed6ed3cb92d3ece" prot="public" virt="non-virtual"><scope>pann::Exception::FilesystemError</scope><name>Base</name></member>
-      <member refid="classpann_1_1Exception_1_1Base_1659925e8afcb384bc88b2f5b9802e052" prot="public" virt="non-virtual"><scope>pann::Exception::FilesystemError</scope><name>Base</name></member>
-      <member refid="classpann_1_1Exception_1_1Base_1ad82b3455115377053fa357b70ac7978" prot="public" virt="virtual"><scope>pann::Exception::FilesystemError</scope><name>getText</name></member>
-      <member refid="classpann_1_1Exception_1_1Base_139525dbb840db0f93d66bb6cfa0f3089" prot="public" virt="non-virtual"><scope>pann::Exception::FilesystemError</scope><name>operator&lt;&lt;</name></member>
-      <member refid="classpann_1_1Exception_1_1Base_1e73d382790d755edfec2289abe12a626" prot="public" virt="non-virtual"><scope>pann::Exception::FilesystemError</scope><name>text</name></member>
+      <member refid="classpann_1_1Exception_1_1Base_184c37510b2617297090fb7bbd2520fc8" prot="public" virt="non-virtual"><scope>pann::Exception::FilesystemError</scope><name>Base</name></member>
+      <member refid="classpann_1_1Exception_1_1FilesystemError_1efbd2f79ca600f1846c9241784448855" prot="public" virt="non-virtual"><scope>pann::Exception::FilesystemError</scope><name>FilesystemError</name></member>
+      <member refid="classpann_1_1Exception_1_1FilesystemError_10093755faf4e808668a588ea8ad1360f" prot="public" virt="non-virtual"><scope>pann::Exception::FilesystemError</scope><name>FilesystemError</name></member>
       <member refid="classpann_1_1Exception_1_1Base_13795b9ad6996ac80e80e4e8179b733ab" prot="protected" virt="non-virtual"><scope>pann::Exception::FilesystemError</scope><name>textStream</name></member>
-      <member refid="classpann_1_1Exception_1_1Base_12b12cae42f85a5d694111d2bb1de315f" prot="public" virt="virtual"><scope>pann::Exception::FilesystemError</scope><name>~Base</name></member>
+      <member refid="classpann_1_1Exception_1_1Base_1814afcfe425f55f02e39f1fea05bcbe9" prot="public" virt="virtual"><scope>pann::Exception::FilesystemError</scope><name>what</name></member>
+      <member refid="classpann_1_1Exception_1_1Base_10ae22e27956edb603976595cda354b7b" prot="public" virt="virtual"><scope>pann::Exception::FilesystemError</scope><name>~Base</name></member>
+      <member refid="classpann_1_1Exception_1_1FilesystemError_1de1ce500722821be1a9c1e1bb6bd43a8" prot="public" virt="virtual"><scope>pann::Exception::FilesystemError</scope><name>~FilesystemError</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

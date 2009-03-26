@@ -17,7 +17,23 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/ActivationFunction.h" line="88" bodyfile="/home/booble/pann/trunk/src/Core/ActivationFunction.h" bodystart="88" bodyend="-1"/>
+        <location file="/home/booble/pann/trunk/src/pann/Core/ActivationFunction.h" line="99" bodyfile="/home/booble/pann/trunk/src/pann/Core/ActivationFunction.h" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classpann_1_1ActivationFunction_1_1Threshold_1c98d07dd8f7b70e16ccb9a01abf56b9c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class boost::serialization::access</definition>
+        <argsstring></argsstring>
+        <name>boost::serialization::access</name>
+        <reimplements refid="classpann_1_1ActivationFunction_1_1Base_1c98d07dd8f7b70e16ccb9a01abf56b9c">boost::serialization::access</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/pann/Core/ActivationFunction.h" line="134" bodyfile="/home/booble/pann/trunk/src/pann/Core/ActivationFunction.h" bodystart="134" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -32,8 +48,36 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/ActivationFunction.h" line="91" bodyfile="/home/booble/pann/trunk/src/Core/ActivationFunction.h" bodystart="91" bodyend="91"/>
-        <referencedby refid="classpann_1_1ActivationFunction_1_1Threshold_1a132088780dc2b151c7c0b5ae3850b0b" compoundref="ActivationFunction_8h" startline="97" endline="103">Instance</referencedby>
+        <location file="/home/booble/pann/trunk/src/pann/Core/ActivationFunction.h" line="102" bodyfile="/home/booble/pann/trunk/src/pann/Core/ActivationFunction.h" bodystart="102" bodyend="102"/>
+        <referencedby refid="classpann_1_1ActivationFunction_1_1Threshold_1a132088780dc2b151c7c0b5ae3850b0b" compoundref="ActivationFunction_8h" startline="108" endline="114">Instance</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classpann_1_1ActivationFunction_1_1Threshold_11fd9da29f3ca9759afcad9fb2f2cda36" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class</type>
+            <declname>Archive</declname>
+            <defname>Archive</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void pann::ActivationFunction::Threshold::serialize</definition>
+        <argsstring>(Archive &amp;ar, const unsigned int version)</argsstring>
+        <name>serialize</name>
+        <param>
+          <type>Archive &amp;</type>
+          <declname>ar</declname>
+        </param>
+        <param>
+          <type>const unsigned int</type>
+          <declname>version</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/booble/pann/trunk/src/pann/Core/ActivationFunction.h" line="137" bodyfile="/home/booble/pann/trunk/src/pann/Core/ActivationFunction.h" bodystart="136" bodyend="141"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -48,21 +92,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/ActivationFunction.h" line="94" bodyfile="/home/booble/pann/trunk/src/Core/ActivationFunction.h" bodystart="94" bodyend="94"/>
-      </memberdef>
-      <memberdef kind="function" id="classpann_1_1ActivationFunction_1_1Threshold_1e3178b402d5bad3ff7d34355415a15b9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>unsigned</type>
-        <definition>virtual unsigned pann::ActivationFunction::Threshold::getId</definition>
-        <argsstring>() const </argsstring>
-        <name>getId</name>
-        <reimplements refid="classpann_1_1ActivationFunction_1_1Base_1882ff77ecccf62b9c453243fe0adb63d">getId</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/ActivationFunction.h" line="105" bodyfile="/home/booble/pann/trunk/src/Core/ActivationFunction.h" bodystart="105" bodyend="105"/>
+        <location file="/home/booble/pann/trunk/src/pann/Core/ActivationFunction.h" line="105" bodyfile="/home/booble/pann/trunk/src/pann/Core/ActivationFunction.h" bodystart="105" bodyend="105"/>
       </memberdef>
       <memberdef kind="function" id="classpann_1_1ActivationFunction_1_1Threshold_178703fca497f9efdb5f1760d3f50852d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>std::string</type>
@@ -76,7 +106,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/ActivationFunction.h" line="106" bodyfile="/home/booble/pann/trunk/src/Core/ActivationFunction.h" bodystart="106" bodyend="106"/>
+        <location file="/home/booble/pann/trunk/src/pann/Core/ActivationFunction.h" line="116" bodyfile="/home/booble/pann/trunk/src/pann/Core/ActivationFunction.h" bodystart="116" bodyend="116"/>
       </memberdef>
       <memberdef kind="function" id="classpann_1_1ActivationFunction_1_1Threshold_1b5c50e74b8f93770f466274f1ebc0fb0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="namespacepann_14509ba95a02d59e0a1cd5127e1c55988" kindref="member">Float</ref></type>
@@ -94,7 +124,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/ActivationFunction.h" line="109" bodyfile="/home/booble/pann/trunk/src/Core/ActivationFunction.h" bodystart="108" bodyend="113"/>
+        <location file="/home/booble/pann/trunk/src/pann/Core/ActivationFunction.h" line="119" bodyfile="/home/booble/pann/trunk/src/pann/Core/ActivationFunction.h" bodystart="118" bodyend="123"/>
       </memberdef>
       <memberdef kind="function" id="classpann_1_1ActivationFunction_1_1Threshold_19f7c90eff2ed5fdac54e28965350cc6c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="namespacepann_14509ba95a02d59e0a1cd5127e1c55988" kindref="member">Float</ref></type>
@@ -112,7 +142,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/ActivationFunction.h" line="116" bodyfile="/home/booble/pann/trunk/src/Core/ActivationFunction.h" bodystart="115" bodyend="120"/>
+        <location file="/home/booble/pann/trunk/src/pann/Core/ActivationFunction.h" line="126" bodyfile="/home/booble/pann/trunk/src/pann/Core/ActivationFunction.h" bodystart="125" bodyend="130"/>
         <references refid="namespacepann_1681692849fa08fe4251447c25500d75c" compoundref="Type_8h" startline="14">pann::inf</references>
       </memberdef>
       </sectiondef>
@@ -129,50 +159,50 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/ActivationFunction.h" line="98" bodyfile="/home/booble/pann/trunk/src/Core/ActivationFunction.h" bodystart="97" bodyend="103"/>
-        <references refid="classpann_1_1ActivationFunction_1_1Threshold_1dd8dd134551c6658d5f5875542555188" compoundref="ActivationFunction_8h" startline="91" endline="91">Threshold</references>
-        <referencedby refid="namespacepann_1_1ActivationFunction_12287da8b90c9142021227b425e5085f9" compoundref="ActivationFunction_8cpp" startline="21" endline="37">pann::ActivationFunction::getById</referencedby>
+        <location file="/home/booble/pann/trunk/src/pann/Core/ActivationFunction.h" line="109" bodyfile="/home/booble/pann/trunk/src/pann/Core/ActivationFunction.h" bodystart="108" bodyend="114"/>
+        <references refid="classpann_1_1ActivationFunction_1_1Threshold_1dd8dd134551c6658d5f5875542555188" compoundref="ActivationFunction_8h" startline="102" endline="102">Threshold</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-<para>MacCalloc-Pitz threshold function id = 2 y = 0, x &lt;0 y = 1, x&gt;=0 </para>    </detaileddescription>
+<para>MacCalloc-Pitz threshold function y = 0, x &lt;0 y = 1, x&gt;=0 </para>    </detaileddescription>
     <inheritancegraph>
-      <node id="349">
+      <node id="339">
         <label>pann::ActivationFunction::Base</label>
         <link refid="classpann_1_1ActivationFunction_1_1Base"/>
       </node>
-      <node id="348">
+      <node id="338">
         <label>pann::ActivationFunction::Threshold</label>
         <link refid="classpann_1_1ActivationFunction_1_1Threshold"/>
-        <childnode refid="349" relation="public-inheritance">
+        <childnode refid="339" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="351">
+      <node id="341">
         <label>pann::ActivationFunction::Base</label>
         <link refid="classpann_1_1ActivationFunction_1_1Base"/>
       </node>
-      <node id="350">
+      <node id="340">
         <label>pann::ActivationFunction::Threshold</label>
         <link refid="classpann_1_1ActivationFunction_1_1Threshold"/>
-        <childnode refid="351" relation="public-inheritance">
+        <childnode refid="341" relation="public-inheritance">
         </childnode>
-        <childnode refid="351" relation="usage">
+        <childnode refid="341" relation="usage">
           <edgelabel>self</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="/home/booble/pann/trunk/src/Core/ActivationFunction.h" line="86" bodyfile="/home/booble/pann/trunk/src/Core/ActivationFunction.h" bodystart="85" bodyend="121"/>
+    <location file="/home/booble/pann/trunk/src/pann/Core/ActivationFunction.h" line="97" bodyfile="/home/booble/pann/trunk/src/pann/Core/ActivationFunction.h" bodystart="96" bodyend="142"/>
     <listofallmembers>
+      <member refid="classpann_1_1ActivationFunction_1_1Threshold_1c98d07dd8f7b70e16ccb9a01abf56b9c" prot="public" virt="non-virtual"><scope>pann::ActivationFunction::Threshold</scope><name>boost::serialization::access</name></member>
       <member refid="classpann_1_1ActivationFunction_1_1Threshold_19f7c90eff2ed5fdac54e28965350cc6c" prot="public" virt="virtual"><scope>pann::ActivationFunction::Threshold</scope><name>derivative</name></member>
       <member refid="classpann_1_1ActivationFunction_1_1Threshold_1b5c50e74b8f93770f466274f1ebc0fb0" prot="public" virt="virtual"><scope>pann::ActivationFunction::Threshold</scope><name>f</name></member>
-      <member refid="classpann_1_1ActivationFunction_1_1Threshold_1e3178b402d5bad3ff7d34355415a15b9" prot="public" virt="virtual"><scope>pann::ActivationFunction::Threshold</scope><name>getId</name></member>
       <member refid="classpann_1_1ActivationFunction_1_1Threshold_178703fca497f9efdb5f1760d3f50852d" prot="public" virt="virtual"><scope>pann::ActivationFunction::Threshold</scope><name>getName</name></member>
       <member refid="classpann_1_1ActivationFunction_1_1Threshold_1a132088780dc2b151c7c0b5ae3850b0b" prot="public" virt="non-virtual"><scope>pann::ActivationFunction::Threshold</scope><name>Instance</name></member>
       <member refid="classpann_1_1ActivationFunction_1_1Threshold_13d4877deed0b1835b17b48303ac7aebb" prot="private" virt="non-virtual"><scope>pann::ActivationFunction::Threshold</scope><name>self</name></member>
+      <member refid="classpann_1_1ActivationFunction_1_1Threshold_11fd9da29f3ca9759afcad9fb2f2cda36" prot="private" virt="non-virtual"><scope>pann::ActivationFunction::Threshold</scope><name>serialize</name></member>
       <member refid="classpann_1_1ActivationFunction_1_1Threshold_1dd8dd134551c6658d5f5875542555188" prot="private" virt="non-virtual"><scope>pann::ActivationFunction::Threshold</scope><name>Threshold</name></member>
       <member refid="classpann_1_1ActivationFunction_1_1Threshold_15b18d8698572d4e9a48fec210db6393a" prot="public" virt="non-virtual"><scope>pann::ActivationFunction::Threshold</scope><name>~Threshold</name></member>
     </listofallmembers>

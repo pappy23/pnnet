@@ -3,6 +3,8 @@
   <compounddef id="classpann_1_1Runner" kind="class" prot="public">
     <compoundname>pann::Runner</compoundname>
     <derivedcompoundref refid="classpann_1_1FeedforwardPropagationRunner" prot="public" virt="non-virtual">pann::FeedforwardPropagationRunner</derivedcompoundref>
+    <derivedcompoundref refid="classpann_1_1LmsBackpropagationRunner" prot="public" virt="non-virtual">pann::LmsBackpropagationRunner</derivedcompoundref>
+    <derivedcompoundref refid="classpann_1_1LmsFeedforwardRunner" prot="public" virt="non-virtual">pann::LmsFeedforwardRunner</derivedcompoundref>
     <derivedcompoundref refid="classpann_1_1NullBackpropagationRunner" prot="public" virt="non-virtual">pann::NullBackpropagationRunner</derivedcompoundref>
     <derivedcompoundref refid="classpann_1_1NullRunner" prot="public" virt="non-virtual">pann::NullRunner</derivedcompoundref>
     <includes refid="Runner_8h" local="no">Runner.h</includes>
@@ -12,29 +14,33 @@
         <definition>static Runner* pann::Runner::Instance</definition>
         <argsstring>()</argsstring>
         <name>Instance</name>
-        <reimplementedby refid="classpann_1_1FeedforwardPropagationRunner_108cabe3623c089536ada6c6ca8e0a0a5">Instance</reimplementedby>
-        <reimplementedby refid="classpann_1_1NullBackpropagationRunner_11f0816746277a4898124d1aa2e86ddef">Instance</reimplementedby>
-        <reimplementedby refid="classpann_1_1NullRunner_1de665b491727786c110b50f85c860ca6">Instance</reimplementedby>
+        <reimplementedby refid="classpann_1_1LmsBackpropagationRunner_1d0a009ce1052f6f3b6fa1b7517bcbd26">Instance</reimplementedby>
+        <reimplementedby refid="classpann_1_1LmsFeedforwardRunner_1687a2143207cde9247c89ee3e0ac78dd">Instance</reimplementedby>
+        <reimplementedby refid="classpann_1_1FeedforwardPropagationRunner_155d04987bb6f63b7f1743f2882ee4858">Instance</reimplementedby>
+        <reimplementedby refid="classpann_1_1NullBackpropagationRunner_1745f10fc6b7b63451826434b89b29e38">Instance</reimplementedby>
+        <reimplementedby refid="classpann_1_1NullRunner_1acbffbb3fe5bd8bc6b0a6c873ac6ec9b">Instance</reimplementedby>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/Runner.h" line="20"/>
+        <location file="/home/booble/pann/trunk/src/pann/Core/Runner.h" line="20"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="classpann_1_1Runner_18f7c1cd84129843504cfe17f738b86d0" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classpann_1_1Runner_1881c47937a701cbdb6cfc82b6f13d001" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
         <definition>virtual void pann::Runner::run</definition>
-        <argsstring>(NeuronIter)=0</argsstring>
+        <argsstring>(Neuron *)=0</argsstring>
         <name>run</name>
-        <reimplementedby refid="classpann_1_1FeedforwardPropagationRunner_1a4fd0bba255e74c8649367744f6b7a24">run</reimplementedby>
-        <reimplementedby refid="classpann_1_1NullBackpropagationRunner_1d138c075b602e3d9efa44a99971b3f6a">run</reimplementedby>
-        <reimplementedby refid="classpann_1_1NullRunner_19a6dad0494baa4a1fec7a4adc227dd0c">run</reimplementedby>
+        <reimplementedby refid="classpann_1_1LmsBackpropagationRunner_1e32c86eb1c9535a49220bdb984da51d7">run</reimplementedby>
+        <reimplementedby refid="classpann_1_1LmsFeedforwardRunner_135678dfa10d23aa6fccbd065acac53ed">run</reimplementedby>
+        <reimplementedby refid="classpann_1_1FeedforwardPropagationRunner_19eb4f177f66db617505317f74a895845">run</reimplementedby>
+        <reimplementedby refid="classpann_1_1NullBackpropagationRunner_1bddc991254df3d1daea3f1a2824471e8">run</reimplementedby>
+        <reimplementedby refid="classpann_1_1NullRunner_12d633bbbddcf603e56bf5bef739c47ca">run</reimplementedby>
         <param>
-          <type><ref refid="namespacepann_15b285d6cead198add4f14b5b5a0b97c1" kindref="member">NeuronIter</ref></type>
+          <type><ref refid="classpann_1_1Neuron" kindref="compound">Neuron</ref> *</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -42,25 +48,27 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/Runner.h" line="22"/>
-        <referencedby refid="classpann_1_1Net_17dc20310a87f924efe4c30c746b990bd" compoundref="Net_8h" startline="160" endline="187">pann::Net::threadBase</referencedby>
+        <location file="/home/booble/pann/trunk/src/pann/Core/Runner.h" line="21"/>
+        <referencedby refid="classpann_1_1Net_17dc20310a87f924efe4c30c746b990bd" compoundref="Net_8h" startline="164" endline="191">pann::Net::threadBase</referencedby>
       </memberdef>
       <memberdef kind="function" id="classpann_1_1Runner_1658262373566e4be537caffbc35d8350" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="namespacepann_134cfd8d9243a5183902a991ae1532e37" kindref="member">RunDirection</ref></type>
         <definition>virtual RunDirection pann::Runner::getDirection</definition>
         <argsstring>()=0</argsstring>
         <name>getDirection</name>
-        <reimplementedby refid="classpann_1_1FeedforwardPropagationRunner_18e780a63e02d60e363d3baa871c2cced">getDirection</reimplementedby>
-        <reimplementedby refid="classpann_1_1NullBackpropagationRunner_121164553e2dcf4cabb1859534dd0f0c9">getDirection</reimplementedby>
-        <reimplementedby refid="classpann_1_1NullRunner_1b9f4684f46b82d8a44528de10ded73e1">getDirection</reimplementedby>
+        <reimplementedby refid="classpann_1_1LmsBackpropagationRunner_1142fb4e60bdd8e25fe569a4076119b08">getDirection</reimplementedby>
+        <reimplementedby refid="classpann_1_1LmsFeedforwardRunner_1346f6895448418cdf321172f0011d901">getDirection</reimplementedby>
+        <reimplementedby refid="classpann_1_1FeedforwardPropagationRunner_145a573a29d8c8c74eeb2de8b89a8ee49">getDirection</reimplementedby>
+        <reimplementedby refid="classpann_1_1NullBackpropagationRunner_10fdf6af585d5ae933fa59bc5974a08aa">getDirection</reimplementedby>
+        <reimplementedby refid="classpann_1_1NullRunner_12afa869e0a6540ceb537e5289b99c209">getDirection</reimplementedby>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/booble/pann/trunk/src/Core/Runner.h" line="23"/>
-        <referencedby refid="classpann_1_1Net_17dc20310a87f924efe4c30c746b990bd" compoundref="Net_8h" startline="160" endline="187">pann::Net::threadBase</referencedby>
+        <location file="/home/booble/pann/trunk/src/pann/Core/Runner.h" line="22"/>
+        <referencedby refid="classpann_1_1Net_17dc20310a87f924efe4c30c746b990bd" compoundref="Net_8h" startline="164" endline="191">pann::Net::threadBase</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -68,34 +76,46 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="333">
+      <node id="326">
+        <label>pann::LmsFeedforwardRunner</label>
+        <link refid="classpann_1_1LmsFeedforwardRunner"/>
+        <childnode refid="323" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="323">
         <label>pann::Runner</label>
         <link refid="classpann_1_1Runner"/>
       </node>
-      <node id="334">
+      <node id="324">
         <label>pann::FeedforwardPropagationRunner</label>
         <link refid="classpann_1_1FeedforwardPropagationRunner"/>
-        <childnode refid="333" relation="public-inheritance">
+        <childnode refid="323" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="336">
+      <node id="328">
         <label>pann::NullRunner</label>
         <link refid="classpann_1_1NullRunner"/>
-        <childnode refid="333" relation="public-inheritance">
+        <childnode refid="323" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="335">
+      <node id="325">
+        <label>pann::LmsBackpropagationRunner</label>
+        <link refid="classpann_1_1LmsBackpropagationRunner"/>
+        <childnode refid="323" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="327">
         <label>pann::NullBackpropagationRunner</label>
         <link refid="classpann_1_1NullBackpropagationRunner"/>
-        <childnode refid="333" relation="public-inheritance">
+        <childnode refid="323" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
-    <location file="/home/booble/pann/trunk/src/Core/Runner.h" line="18" bodyfile="/home/booble/pann/trunk/src/Core/Runner.h" bodystart="17" bodyend="24"/>
+    <location file="/home/booble/pann/trunk/src/pann/Core/Runner.h" line="18" bodyfile="/home/booble/pann/trunk/src/pann/Core/Runner.h" bodystart="17" bodyend="23"/>
     <listofallmembers>
       <member refid="classpann_1_1Runner_1658262373566e4be537caffbc35d8350" prot="public" virt="pure-virtual"><scope>pann::Runner</scope><name>getDirection</name></member>
       <member refid="classpann_1_1Runner_1f9711798dab2451cae026fae3c3a89e2" prot="public" virt="non-virtual"><scope>pann::Runner</scope><name>Instance</name></member>
-      <member refid="classpann_1_1Runner_18f7c1cd84129843504cfe17f738b86d0" prot="public" virt="pure-virtual"><scope>pann::Runner</scope><name>run</name></member>
+      <member refid="classpann_1_1Runner_1881c47937a701cbdb6cfc82b6f13d001" prot="public" virt="pure-virtual"><scope>pann::Runner</scope><name>run</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>
