@@ -23,7 +23,7 @@ elseif(UNIX)
 #set(BOOST_LIBRARYDIR /usr/local/lib)
 endif(WIN32)
 
-set(Boost_USE_STATIC_LIBS ON)
+set(Boost_USE_STATIC_LIBS OFF)
 find_package(Boost REQUIRED COMPONENTS thread serialization date_time)
 
 if(Boost_FOUND)
@@ -62,7 +62,7 @@ endforeach(dir)
 #########################################################################
 
 include_directories(${PANN_SOURCES})
-add_library(pann STATIC ${PANN_SOURCE_FILES})
+add_library(pann SHARED ${PANN_SOURCE_FILES})
 target_link_libraries(pann ${Boost_LIBRARIES})
 
 #########################################################################
