@@ -14,7 +14,7 @@ namespace pann
         TrainPattern(unsigned input_size, unsigned output_size) throw();
         virtual ~TrainPattern() throw();
 
-        Float getMse() const throw(Exception::SizeMismatch);
+        Float getMse() const throw(E<Exception::SizeMismatch>);
 
         /* Public members */
     public:

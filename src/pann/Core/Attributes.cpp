@@ -5,7 +5,7 @@
 namespace pann
 {             
     AttributeNameHash
-    hash(const char* _name)
+    hash(const char* _name) throw()
     {
         static boost::hash<std::string> hasher;
         return hasher(_name);
@@ -29,10 +29,10 @@ namespace pann
     } //is              
 
     void
-    Attributes::unset(const AttributeNameHash _attributeName) throw(Exception::ObjectNotFound)
+    Attributes::unset(const AttributeNameHash _attributeName) throw(E<Exception::ObjectNotFound>)
     {                                          
         if(!attributes.erase(_attributeName))
-            throw Exception::ObjectNotFound()<<"Attributes::unset(): attribute "<<_attributeName<<" not found\n";  
+            throw E<Exception::ObjectNotFound>()<<"Attributes::unset(): attribute "<<_attributeName<<" not found\n";  
     } //unset                                  
 
     
@@ -43,11 +43,11 @@ namespace pann
     } //operator[]
    
     const AttributeType&
-    Attributes::operator[](const AttributeNameHash _attributeName) const throw(Exception::ObjectNotFound)
+    Attributes::operator[](const AttributeNameHash _attributeName) const throw(E<Exception::ObjectNotFound>)
     {
         std::map<AttributeNameHash, AttributeType>::const_iterator iter = attributes.find(_attributeName);
         if(iter == attributes.end())
-            throw Exception::ObjectNotFound()<<"Attributes::get(): attribute "<<_attributeName<<" not found\n";  
+            throw E<Exception::ObjectNotFound>()<<"Attributes::get(): attribute "<<_attributeName<<" not found\n";  
         
         return iter->second;
     } //get

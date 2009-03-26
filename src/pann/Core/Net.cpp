@@ -6,12 +6,12 @@ using namespace std;
 
 namespace pann
 {
-    Net::Net()
+    Net::Net() throw()
     {
         Net::Net(0);
     } //Net
 
-    Net::Net(unsigned _threads)
+    Net::Net(unsigned _threads) throw()
     {
         lastNeuronId = 0;
         setThreadCount(_threads);
@@ -19,18 +19,18 @@ namespace pann
         addConnection(biasId, biasId, 1);
     } //Net
 
-    Net::~Net()
+    Net::~Net() throw()
     {
     } //~Net
 
     unsigned
-    Net::getThreadCount() const
+    Net::getThreadCount() const throw()
     {
         return threadCount;
     } //getThreadCount
 
     void
-    Net::setThreadCount(unsigned _threads)
+    Net::setThreadCount(unsigned _threads) throw(E<Exception::RangeMismatch>)
     {
         cache.touch();
 
@@ -41,19 +41,19 @@ namespace pann
         }
 
         if(_threads < 1 || _threads > 64)
-            throw Exception::RangeMismatch()<<"Net::run(): currently only up to 64 concurrent threads supported\n";
+            throw E<Exception::RangeMismatch>()<<"Net::run(): currently only up to 64 concurrent threads supported\n";
 
         threadCount = _threads;
     } //setThreadCount
 
     unsigned
-    Net::addNeuron(ActivationFunction::Base* _activationFunction)
+    Net::addNeuron(ActivationFunction::Base* _activationFunction) throw()
     {
         return addNeuron(new Neuron(_activationFunction));
     } //addNeuron
 
     unsigned
-    Net::addInputNeuron()
+    Net::addInputNeuron() throw()
     {
         unsigned neuronId = addNeuron(ActivationFunction::Linear::Instance());
         setNeuronRole(neuronId, Net::InputNeuron);
@@ -62,7 +62,7 @@ namespace pann
     } //addInputNeuron
 
     void
-    Net::delNeuron(unsigned _neuronId)
+    Net::delNeuron(unsigned _neuronId) throw()
     {
         Neuron* n = findNeuron(_neuronId);
 
@@ -74,50 +74,50 @@ namespace pann
     } //delNeuron
 
     void
-    Net::setNeuronRole(unsigned _neuronId, NeuronRole _newRole)
+    Net::setNeuronRole(unsigned _neuronId, NeuronRole _newRole) throw()
     {
         setNeuronRole(findNeuron(_neuronId), _newRole);
     } //setNeuronRole
 
     Net::NeuronRole
-    Net::getNeuronRole(unsigned _neuronId) const
+    Net::getNeuronRole(unsigned _neuronId) const throw()
     {
         return getNeuronRole(findNeuron(_neuronId));
     } //getNeuronRole
 
     void
-    Net::addConnection(unsigned _from, unsigned _to, Float _weightValue)
+    Net::addConnection(unsigned _from, unsigned _to, Float _weightValue) throw()
     {
         addConnection(findNeuron(_from), findNeuron(_to), new Weight(_weightValue));
     } //addConnection
 
     void
-    Net::delConnection(unsigned _from, unsigned _to)
+    Net::delConnection(unsigned _from, unsigned _to) throw()
     {
         delConnection(findNeuron(_from), findNeuron(_to));
     } //delConnection
 
     void
-    Net::setNeuronOwner(unsigned _neuron, unsigned _owner)
+    Net::setNeuronOwner(unsigned _neuron, unsigned _owner) throw()
     {
         findNeuron(_neuron)->setOwnerThread(_owner);
     } //setNeuronOwner
 
     unsigned
-    Net::getNeuronOwner(unsigned _neuron) const
+    Net::getNeuronOwner(unsigned _neuron) const throw()
     {
         return findNeuron(_neuron)->getOwnerThread();
     } //getNeuronOwner
 
     void
-    Net::setInput(const valarray<Float>& _input)
+    Net::setInput(const valarray<Float>& _input) throw(E<Exception::SizeMismatch>)
     {
         if(_input.size() < inputNeurons.size())
-            throw Exception::SizeMismatch()<<"setInput(): Supplied input size is smaller "
+            throw E<Exception::SizeMismatch>()<<"setInput(): Supplied input size is smaller "
                                                           "then number of input neurons\n";
 
         if(_input.size() > inputNeurons.size())
-            Exception::Warning()<<"setInput(): Input size is bigger then input neurons count. "
+            E<Exception::Warning>()<<"setInput(): Input size is bigger then input neurons count. "
                                                "Check getInputMap() output\n";
 
         unsigned i = 0;
@@ -127,7 +127,7 @@ namespace pann
 
     //TODO Needs major rewrite
     map<unsigned, Float>
-    Net::getOutput() const
+    Net::getOutput() const throw()
     {
         map<unsigned, Float> result;
 
@@ -146,7 +146,7 @@ namespace pann
     } //getOutput
 
     void
-    Net::getOutput(valarray<Float>& _output) const
+    Net::getOutput(valarray<Float>& _output) const throw()
     {
         map<unsigned, Float> output = getOutput();
         _output.resize(output.size());
@@ -157,7 +157,7 @@ namespace pann
     } //getOutput
 
     void
-    Net::run(Runner* _runner)
+    Net::run(Runner* _runner) throw()
     {
         if( !cache.isOk() )
             regenerateCache();
@@ -174,41 +174,41 @@ namespace pann
     } //run
 
     const NetCache& 
-    Net::getCache() const
+    Net::getCache() const throw()
     {
         return cache;
     } //getCache
 
     const map<unsigned, Neuron*>& 
-    Net::getNeurons() const
+    Net::getNeurons() const throw()
     {
         return neurons;
     } //getNeurons
 
     unsigned
-    Net::getBiasId() const
+    Net::getBiasId() const throw()
     {
         return biasId;
     }; //getBiasId
 
     Neuron*
-    Net::findNeuron(unsigned _neuronId)
+    Net::findNeuron(unsigned _neuronId) throw(E<Exception::ObjectNotFound>)
     {
         map<unsigned, Neuron*>::iterator iter = neurons.find(_neuronId);
         if(neurons.end() == iter)
-            throw Exception::ObjectNotFound()<<"findNeuron(): Neuron "<<_neuronId<<" not found\n";
+            throw E<Exception::ObjectNotFound>()<<"findNeuron(): Neuron "<<_neuronId<<" not found\n";
 
         return iter->second;
     } //findNeuron
 
     const Neuron*
-    Net::findNeuron(unsigned _neuronId) const
+    Net::findNeuron(unsigned _neuronId) const throw()
     {
         return const_cast<Net*>(this)->findNeuron(_neuronId);
     } //findNeuron
 
     unsigned
-    Net::addNeuron(Neuron* _neuron)
+    Net::addNeuron(Neuron* _neuron) throw(E<Exception::ElementExists>)
     {
         cache.touch();
 
@@ -216,13 +216,13 @@ namespace pann
             neurons.insert( pair<unsigned, Neuron*>(lastNeuronId, _neuron) );
         
         if( !result.second )
-            throw Exception::ElementExists()<<"Net::addNeuron(): insertion of neuron "<<lastNeuronId<<" failed\n";
+            throw E<Exception::ElementExists>()<<"Net::addNeuron(): insertion of neuron "<<lastNeuronId<<" failed\n";
 
         return lastNeuronId++;
     } //addNeuron
 
     void
-    Net::delNeuron(Neuron* _neuron)
+    Net::delNeuron(Neuron* _neuron) throw()
     {
         cache.touch();
 
@@ -247,7 +247,7 @@ namespace pann
     } //delNeuron
 
     void
-    Net::setNeuronRole(Neuron* _neuron, NeuronRole _newRole)
+    Net::setNeuronRole(Neuron* _neuron, NeuronRole _newRole) throw()
     {
         cache.touch();
 
@@ -267,7 +267,7 @@ namespace pann
     } //setNeuronRole
 
     Net::NeuronRole
-    Net::getNeuronRole(const Neuron* _neuron) const
+    Net::getNeuronRole(const Neuron* _neuron) const throw()
     {
         /*
          * 0 - work neuron
@@ -282,7 +282,7 @@ namespace pann
     } //getNeuronRole
 
     void
-    Net::addConnection(Neuron* _from, Neuron* _to, Weight* _weight)
+    Net::addConnection(Neuron* _from, Neuron* _to, Weight* _weight) throw()
     {
         cache.touch();
 
@@ -293,7 +293,7 @@ namespace pann
     } //addConnection
 
     void
-    Net::delConnection(Neuron* _from, Neuron* _to)
+    Net::delConnection(Neuron* _from, Neuron* _to) throw(E<Exception::Unbelievable>)
     {
         cache.touch();
 
@@ -311,7 +311,7 @@ namespace pann
 
         //weight1 (see picture) must be common for both Link objects
         if(from_link->getWeight() != to_link->getWeight())
-            throw Exception::Unbelievable()<<"Net::delConnection(): symmetric links don't share weight\n";
+            throw E<Exception::Unbelievable>()<<"Net::delConnection(): symmetric links don't share weight\n";
 
         Weight* w = from_link->getWeight();
 
@@ -325,7 +325,7 @@ namespace pann
     } //delConnection
 
     void
-    Net::formatFront(vector<Neuron*>& _raw) const
+    Net::formatFront(vector<Neuron*>& _raw) const throw()
     {
         cache.data.push_back( NetCache::FrontType() );
         NetCache::FrontType& tasks = cache.data[cache.data.size() - 1];
@@ -344,7 +344,7 @@ namespace pann
     } //formatFront
 
     void
-    Net::regenerateCache() const
+    Net::regenerateCache() const throw(E<Exception::Unbelievable>)
     {
         cache.flush(); 
 
@@ -434,7 +434,7 @@ namespace pann
                         rawFront.push_back(link.getTo()); 
 
                     if(hops[link.getTo()] == hops[currentNeuron] && link.getTo() != currentNeuron)
-                        throw Exception::Unbelievable()<<"Net::run(): cur_neuron.hops == to.hops. "
+                        throw E<Exception::Unbelievable>()<<"Net::run(): cur_neuron.hops == to.hops. "
                                                             "There is no support for such topologies yet\n";
                 } //BOOST_FOREACH( Link )
 

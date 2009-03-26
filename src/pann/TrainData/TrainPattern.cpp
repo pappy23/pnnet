@@ -22,10 +22,10 @@ namespace pann
     } //resize  
 
     Float
-    TrainPattern::getMse() const throw(Exception::SizeMismatch)
+    TrainPattern::getMse() const throw(E<Exception::SizeMismatch>)
     {
         if(desired_output.size() != error.size())
-            throw Exception::SizeMismatch()<<"TrainPattern::getMse(): Error size doesn't match desired_output\n";
+            throw E<Exception::SizeMismatch>()<<"TrainPattern::getMse(): Error size doesn't match desired_output\n";
 
         return (Float) ((error*error).sum()) / error.size();
     } //getMse
