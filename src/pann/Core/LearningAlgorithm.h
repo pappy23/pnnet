@@ -1,0 +1,24 @@
+/**
+ * @file
+ * Abstract for all learning algorithms
+ */
+
+#ifndef LEARNINGALGORITHM_H
+#define LEARNINGALGORITHM_H
+
+#include "Includes.h"
+#include "TrainData.h"
+#include "Net.h"
+
+namespace pann
+{
+    class LearningAlgorithm
+    {
+    public:
+        virtual void train(Net& _net, TrainData _trainData) = 0;
+    };
+
+}; //pann
+
+#endif
+
