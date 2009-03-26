@@ -6,11 +6,11 @@ using namespace std;
 
 namespace pann
 {             
-    TrainData::TrainData()
+    TrainData::TrainData() throw()
     {
     } //TrainData
 
-    TrainData::~TrainData()
+    TrainData::~TrainData() throw()
     {
     } //~TrainData
 
@@ -30,7 +30,7 @@ namespace pann
     } //getMse
 
     void
-    TrainData::shuffle()
+    TrainData::shuffle() throw()
     {
         random_shuffle(data.begin(), data.end());
     } //shuffle

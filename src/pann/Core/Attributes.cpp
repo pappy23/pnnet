@@ -5,21 +5,22 @@
 namespace pann
 {             
     AttributeNameHash
-    hash(char* _name)
+    hash(const char* _name)
     {
-        return boost::hash(_name);
+        static boost::hash<std::string> hasher;
+        return hasher(_name);
     } //hash
 
-    Attributes::Attributes()
+    Attributes::Attributes() throw()
     {                              
     } //Attributes                      
 
-    Attributes::~Attributes()
+    Attributes::~Attributes() throw()
     {                
     } //~Attributes      
 
     bool
-    Attributes::is(const AttributeName _attributeName) const
+    Attributes::is(const AttributeNameHash _attributeName) const throw()
     {                                             
         if (attributes.find(_attributeName) == attributes.end())
             return false;                           
@@ -28,20 +29,30 @@ namespace pann
     } //is              
 
     void
-    Attributes::unset(const AttributeName _attributeName)
+    Attributes::unset(const AttributeNameHash _attributeName) throw(Exception::ObjectNotFound)
     {                                          
         if(!attributes.erase(_attributeName))
-            throw Exception::AttributesNotFound()<<"Attributes::unset(): attribute "<<_attributeName<<" not found\n";  
+            throw Exception::ObjectNotFound()<<"Attributes::unset(): attribute "<<_attributeName<<" not found\n";  
     } //unset                                  
 
     
     AttributeType&
-    Attributes::operator[](const AttributeName _attributeName)
+    Attributes::operator[](const AttributeNameHash _attributeName) throw()
     {
         return attributes[_attributeName];
     } //operator[]
    
-    void Attributes::erase()
+    const AttributeType&
+    Attributes::operator[](const AttributeNameHash _attributeName) const throw(Exception::ObjectNotFound)
+    {
+        std::map<AttributeNameHash, AttributeType>::const_iterator iter = attributes.find(_attributeName);
+        if(iter == attributes.end())
+            throw Exception::ObjectNotFound()<<"Attributes::get(): attribute "<<_attributeName<<" not found\n";  
+        
+        return iter->second;
+    } //get
+
+    void Attributes::erase() throw()
     {
         attributes.clear();
     } //erase

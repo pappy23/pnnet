@@ -10,6 +10,7 @@
 #include "Core/Net.h"
 #include "Core/Storage.h"
 #include "Core/Moo.h"
+#include "Core/OpenGlHint.h"
 #include "TrainData/TrainData.h"
 
 #endif

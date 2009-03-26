@@ -11,7 +11,7 @@ namespace pann
     typedef std::size_t AttributeNameHash;
     typedef Float AttributeType;
 
-    AttributeNameHash hash(char* _name);
+    AttributeNameHash hash(const char* _name);
 
     class Attributes : public Object
     {
@@ -32,12 +32,17 @@ namespace pann
 
         //! Delete attribute
         //! @param _attributeName - deleting attribute name
-        void unset(const AttributeNameHash _attributeName) throw(Exception::AttributesNotFound);
+        void unset(const AttributeNameHash _attributeName) throw(Exception::ObjectNotFound);
 
         //! Get reference to attribute. Create it if nonexistent
         //! @param _attributeName - getting attribute name
         //! @return - reference to attribute
         AttributeType& operator[](const AttributeNameHash _attributeName) throw();
+
+        /**
+         * Get attribute. Nonintrusive version of operator[]
+         */
+        const AttributeType& operator[](const AttributeNameHash _attributeName) const throw(Exception::ObjectNotFound);
 
         //! Delete all attributes
         void erase() throw();

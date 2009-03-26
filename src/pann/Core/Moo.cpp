@@ -6,7 +6,7 @@ using std::cout;
 
 namespace pann
 {             
-    void moo()
+    void moo() throw()
     {
         static int pic = 2;
 

@@ -7,6 +7,7 @@
 #define WEIGHT_H
 
 #include "Includes.h"
+#include "Type.h"
 #include "Object.h"
 
 namespace pann

@@ -48,24 +48,24 @@ endif(UNIX)
 
 ############################################################################
 
-set(PANN_SOURCES Core)
-include_directories(${PANN_SOURCES})
+set(PANN_SOURCES "pann")
 
 message(STATUS "Adding files to build library")
 foreach(dir ${PANN_SOURCES})
-    file(GLOB files RELATIVE ""  "${dir}/*.cpp" "${dir}/*.h")
+    file(GLOB_RECURSE files RELATIVE ""  "${dir}/*.cpp" "${dir}/*.h")
     foreach(filename ${files})
         set(PANN_SOURCE_FILES ${PANN_SOURCE_FILES} "${filename}")
         message(STATUS ">> ${filename}")
     endforeach(filename)
 endforeach(dir)
 
+#########################################################################
+
+include_directories(${PANN_SOURCES})
 add_library(pann STATIC ${PANN_SOURCE_FILES})
 target_link_libraries(pann ${Boost_LIBRARIES})
 
-
-
-############################################################################
+#########################################################################
 
 subdirs(Utils UnitTests)
 

@@ -24,8 +24,8 @@ int main(int argc, char *argv[])
 
     try {
         Storage::load(*net, argv[1]);
-    } catch(Exception::Base& e) { //TODO catch(FilesystemError)
-        err_msg.setText(e.getText().c_str());
+    } catch(Exception::FilesystemError& e) {
+        err_msg.setText(e.what());
         err_msg.exec();
         return -1;
     }

@@ -6,21 +6,21 @@ namespace pann
 {
     namespace Exception
     {
-        Base::Base()
+        Base::Base() throw()
         {
         } //Base
 
-        Base(Base& _rvalue) 
+        Base::Base(const Base& _rvalue) throw()
         {
-            textStream = _rvalue.textStream.str();
+            textStream << _rvalue.textStream.str();
         } //Base
 
-        Base::~Base()
+        Base::~Base() throw()
         {
         } //~Base
 
         const char*
-        Base::what() const
+        Base::what() const throw()
         {
             return textStream.str().c_str();
         } //what
@@ -28,4 +28,3 @@ namespace pann
     }; //Exception
 }; //pann
 
-#endif
