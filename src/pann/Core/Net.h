@@ -77,19 +77,18 @@ namespace pann
          * Add values to input neurons receptive fields
          */
         void setInput(const std::valarray<Float>& _input) throw(E<Exception::SizeMismatch>);
-        //TODO setInput and getOutput with vector<id>
-
-        /**
-         * Returns pairs<input_neuron_id, it's output>
-         * (only for neurons in last cache layer)
-         */
-        std::map<unsigned, Float> getOutput() const throw();
+        void setInput(unsigned _neuronId, Float _value) throw();
 
         /**
          * Assign neurons outputs to specified by @param _output valarray
          * (it is slower then above version, but more useful)
          */
         void getOutput(std::valarray<Float>& _output) const throw();
+
+        /**
+         * Returns activationValue of neuron specified by ID
+         */
+        Float getOutput(unsigned _neuronId) const throw();
 
         /**
          * Apply @param _runner Runner to each neuron,

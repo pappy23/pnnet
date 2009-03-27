@@ -125,35 +125,29 @@ namespace pann
             n->receptiveField += _input[i++];
     } //setInput
 
-    //TODO Needs major rewrite
-    map<unsigned, Float>
-    Net::getOutput() const throw()
+    void
+    Net::setInput(unsigned _neuronId, Float _value) throw()
     {
-        map<unsigned, Float> result;
+        findNeuron(_neuronId)->receptiveField += _value;
+    } //setInput
 
-        if( !cache.isOk() )
-            regenerateCache();
-
-        if(cache.data.size() < 2)
-            return result;
-
-        /*
-        BOOST_FOREACH( const NetCache::ThreadTaskType& task, cache.data[cache.data.size() - 2])
-            BOOST_FOREACH( Neuron* n, task )
-                result.insert(pair<unsigned, Float>(n->getId(), n->activationValue));
-        */
-        return result;
-    } //getOutput
-
+    //TODO: write me
     void
     Net::getOutput(valarray<Float>& _output) const throw()
     {
-        map<unsigned, Float> output = getOutput();
-        _output.resize(output.size());
+        /*
+        _output.resize(cache.data[cache.data.size() - 2]output.size());
 
         unsigned i = 0;
         for(map<unsigned, Float>::const_iterator iter = output.begin(); iter != output.end(); ++iter)
             _output[i++] = iter->second;
+        */
+    } //getOutput
+
+    Float
+    Net::getOutput(unsigned _neuronId) const throw()
+    {
+        return findNeuron(_neuronId)->activationValue;
     } //getOutput
 
     void
