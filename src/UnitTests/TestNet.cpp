@@ -48,7 +48,7 @@ int main()
         //Output
         valarray<Float> output;
         net->getOutput(output);
-        //cout<<"Test output: "<<setprecision(5)<<fixed<<output[0]<<endl;
+        cout<<"Test output: "<<setprecision(5)<<fixed<<output[0]<<endl;
     
         //Serialization test
         Storage::save(*net, "test_net.xml");
@@ -71,7 +71,7 @@ int main()
         //Output
         valarray<Float> output;
         net2.getOutput(output);
-        //cout<<"Test output: "<<setprecision(5)<<fixed<<output[0]<<endl;
+        cout<<"Test output: "<<setprecision(5)<<fixed<<output[0]<<endl;
     }
 
     return 0;

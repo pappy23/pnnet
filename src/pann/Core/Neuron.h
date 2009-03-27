@@ -22,6 +22,8 @@ namespace pann
          */
         unsigned ownerThread;
 
+        unsigned id;
+
         /* Public attributes
          * Note: Neuron is usually hidden by Net,
          * so there is nothing to worry about
@@ -35,8 +37,10 @@ namespace pann
     
         /* Public interface */
     public:
-        Neuron(ActivationFunction::Base*) throw();
+        Neuron(unsigned _id, ActivationFunction::Base*) throw();
         virtual ~Neuron() throw();
+
+        unsigned getId() const throw();
 
         void setOwnerThread(unsigned _thread) throw(E<Exception::RangeMismatch>);
         unsigned getOwnerThread() const throw();

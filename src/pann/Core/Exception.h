@@ -16,35 +16,32 @@ namespace pann
      */
     namespace Exception
     {
-        //! Basic class for every exception
-        class Base : public std::exception {};
-
         //! Not critical. Simply instantiate
-        class Warning : public Base {};
+        class Warning {};
 
         //! Reference to unexistent object was requested
-        class ObjectNotFound : public Base {}; 
+        class ObjectNotFound {}; 
         
         //! Trying to add already existent element
-        class ElementExists  : public Base {}; 
+        class ElementExists {}; 
 
         //! Multiple elements exist, but onlyone allowed; ex: parallel links between neurons are not allowed
-        class MultipleOccurance  : public Base {}; 
+        class MultipleOccurance {}; 
 
         //! Count of elements mismatch
-        class SizeMismatch  : public Base {}; 
+        class SizeMismatch {}; 
 
         //! Argument out of range
-        class RangeMismatch  : public Base {}; 
+        class RangeMismatch {}; 
 
         //! Requested not computed value
-        class NotReady  : public Base {}; 
+        class NotReady {}; 
 
         //! Exceptionfor raising on filesystem failures (missing file etc.) 
-        class FilesystemError  : public Base {}; 
+        class FilesystemError {}; 
 
         //! It's imposible in our universe!
-        class Unbelievable  : public Base {}; 
+        class Unbelievable {}; 
 
     }; //Exception
 
@@ -94,7 +91,7 @@ namespace pann
     E<C>::operator<<(const T& _value) throw()
     {
         textStream << _value;
-        std::cerr << _value << std::endl;
+        std::cerr << _value;
 
         return *this;
     } //operator<<

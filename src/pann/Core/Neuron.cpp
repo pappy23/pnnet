@@ -6,8 +6,9 @@ using namespace std;
 
 namespace pann
 {
-    Neuron::Neuron(ActivationFunction::Base* _activationFunction) throw()
+    Neuron::Neuron(unsigned _id, ActivationFunction::Base* _activationFunction) throw()
     {
+        id = _id;
         activationFunction = _activationFunction;
         ownerThread = 0;
         receptiveField = 0;
@@ -17,6 +18,12 @@ namespace pann
     Neuron::~Neuron() throw()
     {
     } //~Neuron
+
+    unsigned
+    Neuron::getId() const throw()
+    {
+        return id;
+    } //getId
 
     void
     Neuron::setOwnerThread(unsigned _thread) throw(E<Exception::RangeMismatch>)

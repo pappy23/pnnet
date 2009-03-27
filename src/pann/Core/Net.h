@@ -47,7 +47,7 @@ namespace pann
          * Remark: addInputNeuron adds neuron with
          * ActivationFunction::Linear
          */
-        unsigned addNeuron(ActivationFunction::Base* _activationFunction) throw();
+        unsigned addNeuron(ActivationFunction::Base* _activationFunction) throw(E<Exception::ElementExists>);
         unsigned addInputNeuron() throw();
         void delNeuron(unsigned _neuronId) throw();
 
@@ -84,10 +84,6 @@ namespace pann
          * (it is slower then above version, but more useful)
          */
         void getOutput(std::valarray<Float>& _output) const throw();
-
-        /**
-         * Returns activationValue of neuron specified by ID
-         */
         Float getOutput(unsigned _neuronId) const throw();
 
         /**
@@ -137,7 +133,6 @@ namespace pann
         /**
          * Real net modificators
          */
-        unsigned addNeuron(Neuron* _neuron) throw(E<Exception::ElementExists>);
         void delNeuron(Neuron* _neuron) throw();
 
         void setNeuronRole(Neuron* _neuron, NeuronRole _newRole) throw();

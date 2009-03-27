@@ -47,12 +47,6 @@ namespace pann
     } //setThreadCount
 
     unsigned
-    Net::addNeuron(ActivationFunction::Base* _activationFunction) throw()
-    {
-        return addNeuron(new Neuron(_activationFunction));
-    } //addNeuron
-
-    unsigned
     Net::addInputNeuron() throw()
     {
         unsigned neuronId = addNeuron(ActivationFunction::Linear::Instance());
@@ -60,6 +54,20 @@ namespace pann
 
         return neuronId;
     } //addInputNeuron
+
+    unsigned
+    Net::addNeuron(ActivationFunction::Base* _activationFunction) throw(E<Exception::ElementExists>)
+    {
+        cache.touch();
+
+        pair< map<unsigned, Neuron*>::iterator, bool > result = 
+            neurons.insert( pair<unsigned, Neuron*>(lastNeuronId, new Neuron(lastNeuronId, _activationFunction)) );
+        
+        if( !result.second )
+            throw E<Exception::ElementExists>()<<"Net::addNeuron(): insertion of neuron "<<lastNeuronId<<" failed\n";
+
+        return lastNeuronId++;
+    } //addNeuron
 
     void
     Net::delNeuron(unsigned _neuronId) throw()
@@ -131,17 +139,21 @@ namespace pann
         findNeuron(_neuronId)->receptiveField += _value;
     } //setInput
 
-    //TODO: write me
     void
     Net::getOutput(valarray<Float>& _output) const throw()
     {
-        /*
-        _output.resize(cache.data[cache.data.size() - 2]output.size());
+        unsigned last_layer = cache.data.size() - 2;
+
+        unsigned output_size = 0;
+        for(unsigned i = 0; i < threadCount; ++i)
+            output_size += cache.data[last_layer][i].size();
+
+        _output.resize(output_size);
 
         unsigned i = 0;
-        for(map<unsigned, Float>::const_iterator iter = output.begin(); iter != output.end(); ++iter)
-            _output[i++] = iter->second;
-        */
+        for(unsigned t = 0; t < threadCount; ++t)
+            for(unsigned n = 0; n < cache.data[last_layer][t].size(); ++n)
+                _output[i++] = cache.data[last_layer][t][n]->activationValue;
     } //getOutput
 
     Float
@@ -200,20 +212,6 @@ namespace pann
     {
         return const_cast<Net*>(this)->findNeuron(_neuronId);
     } //findNeuron
-
-    unsigned
-    Net::addNeuron(Neuron* _neuron) throw(E<Exception::ElementExists>)
-    {
-        cache.touch();
-
-        pair< map<unsigned, Neuron*>::iterator, bool > result = 
-            neurons.insert( pair<unsigned, Neuron*>(lastNeuronId, _neuron) );
-        
-        if( !result.second )
-            throw E<Exception::ElementExists>()<<"Net::addNeuron(): insertion of neuron "<<lastNeuronId<<" failed\n";
-
-        return lastNeuronId++;
-    } //addNeuron
 
     void
     Net::delNeuron(Neuron* _neuron) throw()
