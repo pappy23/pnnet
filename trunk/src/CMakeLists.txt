@@ -22,7 +22,7 @@ elseif(UNIX)
 #set(BOOST_LIBRARYDIR /usr/local/lib)
 endif(WIN32)
 
-set(Boost_USE_STATIC_LIBS OFF)
+set(Boost_USE_STATIC_LIBS ON)
 find_package(Boost REQUIRED COMPONENTS thread serialization date_time)
 
 if(Boost_FOUND)

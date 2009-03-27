@@ -49,7 +49,7 @@ namespace pann
     }; //Exception
 
     template<class C>
-    class E
+    class E : public std::exception
     {
     public:
         E() throw();
