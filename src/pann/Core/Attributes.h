@@ -16,11 +16,7 @@ namespace pann
     class Attributes : public Object
     {
     protected:
-        //TODO Replace map<> with map<> and reimplement public methods so
-        //they check wether map<> is NULL. It can decrease memory usage when
-        //attributes not in use and simplify using of Attributes object,
-        //hiding pointer details
-        std::map<AttributeNameHash, AttributeType> attributes;
+        std::map<AttributeNameHash, AttributeType>* attributes;
 
     public:
         Attributes() throw();

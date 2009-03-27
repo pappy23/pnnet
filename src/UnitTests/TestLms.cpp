@@ -8,7 +8,7 @@ using namespace boost;
 
 int main()
 {
-/*
+//*
     //Constructing perceptron
     vector<unsigned> layers;
     layers.push_back(1); //input
@@ -30,8 +30,8 @@ int main()
     for(unsigned i = 0; i < 10; ++i)
     {
         td.shuffle();
-        LMS::init(*net);
-        LMS::train(*net, td);
+        Lms::init(*net);
+        Lms::train(*net, td);
         cout<<"E="<<td.getMse()<<endl;
     }
 

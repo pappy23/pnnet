@@ -13,16 +13,19 @@ namespace pann
 
     Attributes::Attributes() throw()
     {                              
+        attributes = 0;
     } //Attributes                      
 
     Attributes::~Attributes() throw()
     {                
+        if(attributes)
+            delete attributes;
     } //~Attributes      
 
     bool
     Attributes::is(const AttributeNameHash _attributeName) const throw()
     {                                             
-        if (attributes.find(_attributeName) == attributes.end())
+        if (!attributes || attributes->find(_attributeName) == attributes->end())
             return false;                           
 
         return true;
@@ -31,7 +34,7 @@ namespace pann
     void
     Attributes::unset(const AttributeNameHash _attributeName) throw(E<Exception::ObjectNotFound>)
     {                                          
-        if(!attributes.erase(_attributeName))
+        if(!attributes || !attributes->erase(_attributeName))
             throw E<Exception::ObjectNotFound>()<<"Attributes::unset(): attribute "<<_attributeName<<" not found\n";  
     } //unset                                  
 
@@ -39,14 +42,20 @@ namespace pann
     AttributeType&
     Attributes::operator[](const AttributeNameHash _attributeName) throw()
     {
-        return attributes[_attributeName];
+        if(!attributes)
+            attributes = new std::map<AttributeNameHash, AttributeType>();
+
+        return (*attributes)[_attributeName];
     } //operator[]
    
     const AttributeType&
     Attributes::operator[](const AttributeNameHash _attributeName) const throw(E<Exception::ObjectNotFound>)
     {
-        std::map<AttributeNameHash, AttributeType>::const_iterator iter = attributes.find(_attributeName);
-        if(iter == attributes.end())
+        if(!attributes)
+            throw E<Exception::ObjectNotFound>()<<"Attributes::get(): attribute "<<_attributeName<<" not found\n";  
+
+        std::map<AttributeNameHash, AttributeType>::const_iterator iter = attributes->find(_attributeName);
+        if(iter == attributes->end())
             throw E<Exception::ObjectNotFound>()<<"Attributes::get(): attribute "<<_attributeName<<" not found\n";  
         
         return iter->second;
@@ -54,7 +63,7 @@ namespace pann
 
     void Attributes::erase() throw()
     {
-        attributes.clear();
+        delete attributes;
     } //erase
 
 }; //namespace pann
