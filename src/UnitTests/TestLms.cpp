@@ -23,7 +23,7 @@ int main()
     {
         TrainPattern tp(1, 1);
         tp.input[0] = i;
-        tp.desired_output[0] = -i;
+        tp.desired_output[0] = - (Float) i / 10.0;
         td.data.push_back(tp);
     }
 
@@ -32,14 +32,18 @@ int main()
         td.shuffle();
         Lms::init(*net);
         Lms::train(*net, td);
+        cout<<"Train data:\n";
+        for(unsigned i = 0; i < td.data.size(); ++i)
+            cout<<fixed<<setprecision(3)<<"I="<<td.data[i].input[0]<<"\tT="<<td.data[i].desired_output[0]<<"\tE="<<td.data[i].error[0]<<endl;
         cout<<"E="<<td.getMse()<<endl;
     }
 
-    Storage::save(*net, "test_lms.xml");
 //*/
+/*
+    Storage::save(*net, "test_lms.xml");
     Net* n2 = new Net;
     Storage::load(*n2, "test_lms.xml");
-
+*/
     return 0;
 }
 

@@ -34,7 +34,14 @@ namespace pann
         }
 
         //do something useful
+        BOOST_FOREACH( Link& link, _neuron->links )
+        {
+            if(link.getDirection() == Link::in)
+                _neuron->receptiveField += link.getTo()->activationValue * link.getWeight()->value;
+        }
 
+        _neuron->activationValue = _neuron->getActivationFunction()->f(_neuron->receptiveField);
+        _neuron->receptiveField = 0;
     } //run
 
     RunDirection

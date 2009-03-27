@@ -27,6 +27,11 @@ namespace pann
          * All data is used for training and no testing performed
          */
         static void train(Net& _net, TrainData& _trainData);
+
+    private:
+        //TODO Place it in separate common module
+        static Float randFloat(Float _min, Float _max) throw();
+        static void randomizeWeightsGauss(Net& _net, Float _min, Float _max) throw();
     };
 }; //pann
 
