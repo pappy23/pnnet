@@ -325,9 +325,7 @@ namespace pann
         for(unsigned i = 0; i < threadCount; i++)
             tasks.push_back( vector<Neuron*>() );
 
-        //sort(_raw.begin(), _raw.end(), NeuronIterCompare());
-        sort(_raw.begin(), _raw.end()); //FIXME Caution!
-        //vector<Neuron*>::iterator it = unique(_raw.begin(), _raw.end(), NeuronIterCompare::equal);
+        sort(_raw.begin(), _raw.end());
         vector<Neuron*>::iterator it = unique(_raw.begin(), _raw.end());
         _raw.resize( it - _raw.begin() );
 

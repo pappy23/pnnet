@@ -13,6 +13,7 @@
 #include "Core/OpenGlHint.h"
 #include "TrainData/TrainData.h"
 #include "NetworkModels/MultilayerPerceptron.h"
+#include "LearningAlgorithms/Lms.h"
 
 #endif
 

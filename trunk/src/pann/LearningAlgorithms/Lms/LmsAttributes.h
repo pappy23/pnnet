@@ -8,6 +8,7 @@ namespace pann
     namespace LmsAttributes
     {
         const AttributeNameHash LMS = hash("LMS");
+        const AttributeNameHash learningRate = hash("learningRate");
     }; //Attributes
 }; //pann
 

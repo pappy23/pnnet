@@ -9,6 +9,7 @@ namespace pann
 {
     namespace Storage
     {
+        //TODO Make switch between binary/xml format, because sml takes too much space
         void save(Net& _obj, string _filename) throw(E<Exception::FilesystemError>)
         {
             ofstream ofs(_filename.c_str());
