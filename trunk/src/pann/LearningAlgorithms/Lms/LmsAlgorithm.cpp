@@ -2,6 +2,8 @@
 
 #include "LmsAlgorithm.h"
 
+using namespace std;
+
 namespace pann
 {
     void
@@ -14,6 +16,8 @@ namespace pann
         }
 
         _net.learningHint[LmsAttributes::learningRate] = 0.03;
+
+        Lms::randomizeWeightsGauss(_net, -0.03, 0.03);
     } //init
 
     void
@@ -31,6 +35,30 @@ namespace pann
             _net.run(LmsBackpropagationRunner::Instance());
         }
     } //train
+
+    Float
+    Lms::randFloat(Float _min, Float _max) throw()
+    {
+        //TODO use boost::random for this (for ex. Mersenne twister)
+        return ( (_max - _min) * ( (Float) rand() / (RAND_MAX+1) ) ) + _min;
+    } //randFloat
+
+    void
+    Lms::randomizeWeightsGauss(Net& _net, Float _min, Float _max) throw()
+    {
+        map<unsigned, Neuron*>::const_iterator n_iter = _net.getNeurons().begin();
+        for(; n_iter != _net.getNeurons().end(); ++n_iter)
+        {
+            list<Link>::const_iterator l_iter = n_iter->second->links.begin();
+            for(; l_iter != n_iter->second->links.end(); ++l_iter)
+            {
+                if(l_iter->getDirection() == Link::in)
+                {
+                    const_cast<Link&>(*l_iter).getWeight()->value = randFloat(_min, _max);
+                }
+            }
+        }
+    } //randomizeWeightsGauss
 
 }; //pann
 
