@@ -15,8 +15,7 @@ namespace pann
     {
         lastNeuronId = 0;
         setThreadCount(_threads);
-        biasId = addNeuron(ActivationFunction::Linear::Instance());
-        addConnection(biasId, biasId, 1);
+        biasId = addNeuron(ActivationFunction::Bias::Instance());
     } //Net
 
     Net::~Net() throw()
@@ -130,30 +129,26 @@ namespace pann
 
         unsigned i = 0;
         BOOST_FOREACH( Neuron* n, inputNeurons)
-            n->receptiveField += _input[i++];
+            n->receptiveField = _input[i++];
     } //setInput
 
     void
     Net::setInput(unsigned _neuronId, Float _value) throw()
     {
-        findNeuron(_neuronId)->receptiveField += _value;
+        findNeuron(_neuronId)->receptiveField = _value;
     } //setInput
 
     void
     Net::getOutput(valarray<Float>& _output) const throw()
     {
-        unsigned last_layer = cache.data.size() - 2;
+        map<unsigned, const Neuron*> output_neurons = getOutputNeurons();
 
-        unsigned output_size = 0;
-        for(unsigned i = 0; i < threadCount; ++i)
-            output_size += cache.data[last_layer][i].size();
-
-        _output.resize(output_size);
+        _output.resize(output_neurons.size());
 
         unsigned i = 0;
-        for(unsigned t = 0; t < threadCount; ++t)
-            for(unsigned n = 0; n < cache.data[last_layer][t].size(); ++n)
-                _output[i++] = cache.data[last_layer][t][n]->activationValue;
+        map<unsigned, const Neuron*>::const_iterator iter = output_neurons.begin();
+        for(; iter != output_neurons.end(); ++iter)
+            _output[i++] = iter->second->activationValue;
     } //getOutput
 
     Float
@@ -182,6 +177,9 @@ namespace pann
     const NetCache& 
     Net::getCache() const throw()
     {
+        if(!cache.isOk())
+            const_cast<Net*>(this)->regenerateCache();
+
         return cache;
     } //getCache
 
@@ -190,6 +188,36 @@ namespace pann
     {
         return neurons;
     } //getNeurons
+
+    map<unsigned, const Neuron*>
+    Net::getInputNeurons() const throw()
+    {
+        map<unsigned, const Neuron*> result;
+        BOOST_FOREACH( const Neuron* n, inputNeurons )
+            result.insert(pair<unsigned, const Neuron*>(n->getId(), n));
+
+        return result;
+    } //getInputNeurons
+
+    map<unsigned, const Neuron*>
+    Net::getOutputNeurons() const throw()
+    {
+        map<unsigned, const Neuron*> result;
+
+        unsigned last_layer = cache.data.size() - 2;
+        
+        if(last_layer < 0)
+            return result;
+
+        for(unsigned t = 0; t < threadCount; ++t)
+            for(unsigned n = 0; n < cache.data[last_layer][t].size(); ++n)
+            {
+                Neuron* neuron = cache.data[last_layer][t][n];
+                result.insert(pair<unsigned, const Neuron*>(neuron->getId(), neuron));
+            }
+
+        return result;
+    } //getOutputNeurons
 
     unsigned
     Net::getBiasId() const throw()

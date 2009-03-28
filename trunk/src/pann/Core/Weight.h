@@ -27,6 +27,7 @@ namespace pann
     public:
         Float value; ///< weight itself
         unsigned usageCount; ///< Used by weight update algorithms for shared weights
+        Attributes learningHint;
 
         /* Serialization */
     private:
@@ -37,7 +38,8 @@ namespace pann
             //ar & boost::serialization::base_object<Object>(*this);
             ar & BOOST_SERIALIZATION_BASE_OBJECT_NVP(Object)
              & BOOST_SERIALIZATION_NVP(usageCount)
-             & BOOST_SERIALIZATION_NVP(value);
+             & BOOST_SERIALIZATION_NVP(value)
+             & BOOST_SERIALIZATION_NVP(learningHint);
         };
     };
 

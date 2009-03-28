@@ -24,16 +24,47 @@ namespace pann
         public:
             //Returns reference to ActivationFunction object. It is always the same
             //Only one object of class Base exist at a time
-            static Base* Instance();
+            static Base* Instance() throw();
 
-            virtual std::string getName() const = 0;
-
-            virtual Float f(Float) const = 0;
-            virtual Float derivative(Float) const = 0;
+            virtual Float f(Float) const throw() = 0;
+            virtual Float derivative(Float) const throw() = 0;
 
         /* Serialization */
         private:
             friend class boost::serialization::access;
+        };
+
+        /**
+         * Special function for bias neuron
+         * y = 1
+         * dy/dx = 0
+         */
+        class Bias : public Base
+        {
+        private:
+            static Base* self;
+
+		private:
+			Bias() throw();
+
+        public:
+			~Bias() throw();
+
+        public:
+            static Base* Instance() throw();
+            virtual Float f(Float _x) const throw();
+            virtual Float derivative(Float) const throw();
+
+            /* Serialization */
+        private:
+            friend class boost::serialization::access;
+            template<class Archive>
+                void serialize(Archive & ar, const unsigned int version)
+                {
+                     boost::serialization::void_cast_register<Bias, Base>(
+                        static_cast<Bias*>(NULL),
+                        static_cast<Base*>(NULL));
+                };
         };
 
         /**
@@ -47,34 +78,15 @@ namespace pann
             static Base* self;
 
 		private:
-			Linear() { };
+			Linear() throw();
 
         public:
-			~Linear()
-            {
-                self = 0;
-            };
+			~Linear() throw();
 
         public:
-            static Base* Instance()
-            {
-                if(!self)
-                    self = new Linear();
-
-                return self;
-            };
-
-            virtual std::string getName() const { return "Linear"; };
-
-            virtual Float f(Float _x) const
-            {
-                return _x;
-            } //f
-
-            virtual Float derivative(Float) const
-            {
-                return 0;
-            } //derivative
+            static Base* Instance() throw();
+            virtual Float f(Float _x) const throw();
+            virtual Float derivative(Float) const throw();
 
             /* Serialization */
         private:
@@ -99,35 +111,15 @@ namespace pann
             static Base* self;
 
 		private:
-			Threshold() {};
+			Threshold() throw();
 
         public:
-			~Threshold() {};
+			~Threshold() throw();
 
         public:
-            static Base* Instance()
-            {
-                if(!self)
-                    self = new Threshold();
-
-                return self;
-            };
-
-            virtual std::string getName() const { return "Threshold"; };
-
-            virtual Float f(Float _x) const
-            {
-                if(_x < 0)
-                    return 0;
-                return 1;
-            } //f
-
-            virtual Float derivative(Float _x) const
-            {
-                if(_x == 0)
-                    return inf;
-                return 0;
-            } //derivative
+            static Base* Instance() throw();
+            virtual Float f(Float _x) const throw();
+            virtual Float derivative(Float) const throw();
 
             /* Serialization */
         private:
@@ -155,31 +147,15 @@ namespace pann
             static const Float b;
 
 		private:
-			TanH() {};
+			TanH() throw();
 
         public:
-			~TanH() {};
+			~TanH() throw();
 
         public:
-            static Base* Instance()
-            {
-                if(!self)
-                    self = new TanH();
-
-                return self;
-            };
-
-            virtual std::string getName() const { return "TanH"; };
-
-            virtual Float f(Float _x) const
-            {
-                return a * std::tanh( b * _x );
-            } //f
-
-            virtual Float derivative(Float) const
-            {
-                return 0;
-            } //derivative
+            static Base* Instance() throw();
+            virtual Float f(Float _x) const throw();
+            virtual Float derivative(Float) const throw();
  
             /* Serialization */
         private:
