@@ -29,7 +29,6 @@ namespace pann
          * so there is nothing to worry about
          */
     public:
-        Float receptiveField;
         Float activationValue;
         std::list<Link> links; //!< List of Link, both directions
         Attributes oglHint;
@@ -62,7 +61,6 @@ namespace pann
             {
                 ar & BOOST_SERIALIZATION_BASE_OBJECT_NVP(Object)
                  & BOOST_SERIALIZATION_NVP(ownerThread)
-                 & BOOST_SERIALIZATION_NVP(receptiveField)
                  & BOOST_SERIALIZATION_NVP(activationValue)
                  & BOOST_SERIALIZATION_NVP(oglHint)
                  & BOOST_SERIALIZATION_NVP(learningHint)

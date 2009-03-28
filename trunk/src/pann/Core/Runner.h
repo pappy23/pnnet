@@ -12,13 +12,15 @@
 
 namespace pann
 {
+    class Net;
+
     enum RunDirection { ForwardRun, BackwardRun };
 
     class Runner //singleton
     {
     public:
         static Runner* Instance();
-        virtual void run(Neuron*) = 0;
+        virtual void run(Neuron*, const Net*) = 0;
         virtual RunDirection getDirection() = 0;
     };
 
@@ -35,7 +37,7 @@ namespace pann
 
     public:
         static Runner* Instance();
-        virtual void run(Neuron* _neuron);
+        virtual void run(Neuron* _neuron, const Net* _net);
         virtual RunDirection getDirection();
     };
 
@@ -52,7 +54,7 @@ namespace pann
 
     public:
         static Runner* Instance();
-        virtual void run(Neuron* _neuron);
+        virtual void run(Neuron* _neuron, const Net* _net);
         virtual RunDirection getDirection();
     };
 
@@ -69,7 +71,7 @@ namespace pann
 
     public:
         static Runner* Instance();
-        virtual void run(Neuron* _neuron);
+        virtual void run(Neuron* _neuron, const Net* _net);
         virtual RunDirection getDirection();
     };
 

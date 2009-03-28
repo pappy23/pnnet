@@ -15,7 +15,8 @@ namespace pann
     {
         lastNeuronId = 0;
         setThreadCount(_threads);
-        biasId = addNeuron(ActivationFunction::Bias::Instance());
+        biasId = addNeuron(0);
+        setInput(biasId, 1);
     } //Net
 
     Net::~Net() throw()
@@ -48,7 +49,7 @@ namespace pann
     unsigned
     Net::addInputNeuron() throw()
     {
-        unsigned neuronId = addNeuron(ActivationFunction::Linear::Instance());
+        unsigned neuronId = addNeuron(0);
         setNeuronRole(neuronId, Net::InputNeuron);
 
         return neuronId;
@@ -129,13 +130,13 @@ namespace pann
 
         unsigned i = 0;
         BOOST_FOREACH( Neuron* n, inputNeurons)
-            n->receptiveField = _input[i++];
+            n->activationValue = _input[i++];
     } //setInput
 
     void
     Net::setInput(unsigned _neuronId, Float _value) throw()
     {
-        findNeuron(_neuronId)->receptiveField = _value;
+        findNeuron(_neuronId)->activationValue = _value;
     } //setInput
 
     void
@@ -168,7 +169,7 @@ namespace pann
 
         //We must give parameters by pointer, because boost will copy all arguments to thread
         for(unsigned thread = 0; thread < threadCount; ++thread)
-            threadPool.add_thread( new boost::thread(Net::threadBase, _runner, &cache, thread, &barrier) );
+            threadPool.add_thread( new boost::thread(Net::threadBase, _runner, this, thread, &barrier) );
         
         //wait for threads to finish
         threadPool.join_all();
@@ -202,6 +203,9 @@ namespace pann
     map<unsigned, const Neuron*>
     Net::getOutputNeurons() const throw()
     {
+        if(!cache.isOk())
+            regenerateCache();
+
         map<unsigned, const Neuron*> result;
 
         unsigned last_layer = cache.data.size() - 2;

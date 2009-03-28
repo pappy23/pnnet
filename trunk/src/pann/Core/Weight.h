@@ -9,6 +9,7 @@
 #include "Includes.h"
 #include "Type.h"
 #include "Object.h"
+#include "Attributes.h"
 
 namespace pann
 {

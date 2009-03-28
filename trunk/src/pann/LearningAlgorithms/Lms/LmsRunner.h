@@ -5,7 +5,11 @@
 #include "Core/Includes.h"
 #include "Core/Runner.h"
 #include "Core/Neuron.h"
+#include "Core/Net.h"
 #include "LmsAttributes.h"
+
+//TODO Document all algorithms! Don't forget to mention, that algorithms may be not correct,
+//TODO especially for not obvious topologies. For ex. no tests with recurrent networks were made
 
 namespace pann
 {
@@ -22,7 +26,7 @@ namespace pann
 
     public:
         static Runner* Instance() throw();
-        virtual void run(Neuron* _neuron) throw();
+        virtual void run(Neuron* _neuron, const Net* _net) throw();
         virtual RunDirection getDirection() throw();
     };
 
@@ -39,7 +43,7 @@ namespace pann
 
     public:
         static Runner* Instance() throw();
-        virtual void run(Neuron* _neuron) throw(E<Exception::NotReady>);
+        virtual void run(Neuron* _neuron, const Net* _net) throw(E<Exception::NotReady>);
         virtual RunDirection getDirection() throw();
     };
 }; //pann
