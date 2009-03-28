@@ -100,6 +100,9 @@ namespace pann
          */
         const NetCache& getCache() const throw();
         const std::map<unsigned, Neuron*>& getNeurons() const throw();
+        std::map<unsigned, const Neuron*> getInputNeurons() const throw();
+        std::map<unsigned, const Neuron*> getOutputNeurons() const throw();
+
 
         /**
          * Get ID of bias neuron

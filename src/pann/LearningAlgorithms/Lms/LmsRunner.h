@@ -15,15 +15,15 @@ namespace pann
         static Runner* self;
 
     private:
-        LmsFeedforwardRunner();
+        LmsFeedforwardRunner() throw();
 
     public:
-        ~LmsFeedforwardRunner();
+        ~LmsFeedforwardRunner() throw();
 
     public:
-        static Runner* Instance();
-        virtual void run(Neuron* _neuron);
-        virtual RunDirection getDirection();
+        static Runner* Instance() throw();
+        virtual void run(Neuron* _neuron) throw();
+        virtual RunDirection getDirection() throw();
     };
 
     class LmsBackpropagationRunner : public Runner
@@ -32,15 +32,15 @@ namespace pann
         static Runner* self;
 
     private:
-        LmsBackpropagationRunner();
+        LmsBackpropagationRunner() throw();
 
     public:
-        ~LmsBackpropagationRunner();
+        ~LmsBackpropagationRunner() throw();
 
     public:
-        static Runner* Instance();
-        virtual void run(Neuron* _neuron);
-        virtual RunDirection getDirection();
+        static Runner* Instance() throw();
+        virtual void run(Neuron* _neuron) throw(E<Exception::NotReady>);
+        virtual RunDirection getDirection() throw();
     };
 }; //pann
 

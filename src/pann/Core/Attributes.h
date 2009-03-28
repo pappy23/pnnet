@@ -8,6 +8,8 @@
 
 namespace pann
 {
+    //TODO  parent attributes, not serializable?
+
     typedef std::size_t AttributeNameHash;
     typedef Float AttributeType;
 

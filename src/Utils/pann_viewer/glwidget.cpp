@@ -144,7 +144,6 @@ void GLWidget::setInfoNeuron(unsigned _id)
     ostringstream ost;
     ost<<"Neuron info:\n"
         <<"ID: "<<_id<<endl
-        <<"ActivationFunction: "<<n->getActivationFunction()->getName()<<endl
         <<"Owner: "<<n->getOwnerThread()<<endl
         <<"Receptive field: "<<n->receptiveField<<endl
         <<"Activation value: "<<n->activationValue<<endl
