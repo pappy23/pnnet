@@ -62,6 +62,7 @@ namespace pann
         /**
          * Manage connections between neurons
          * TODO: add shared connections for convolution networks
+         * TODO: add connections with different latencies (shortcut links)
          */
         void addConnection(unsigned _from, unsigned _to, Float _weightValue = 1) throw();
         void delConnection(unsigned _from, unsigned _to) throw();
@@ -158,18 +159,21 @@ namespace pann
         /**
          * This function is executed by work thread, instantiated from run()
          */
-        static void threadBase(Runner* _runner, NetCache* _cache, unsigned _cur_thread_no, boost::barrier* _barrier)
+        static void threadBase(Runner* _runner, const Net* _net, unsigned _cur_thread_no, boost::barrier* _barrier)
         {
             RunDirection dir = _runner->getDirection();
+            const NetCache* _cache = &(_net->getCache());
 
             unsigned layer;
             (dir == ForwardRun) ?  (layer = 0) : (layer = _cache->data.size() - 2);
 
             do {
                 //Process current layer
-                NetCache::ThreadTaskType* task = &_cache->data[layer][_cur_thread_no];
+                const NetCache::ThreadTaskType* task = &_cache->data[layer][_cur_thread_no];
                 for(unsigned i = 0; i < task->size(); ++i)
-                    _runner->run( (*task)[i] );
+                    _runner->run( (*task)[i], _net ); //We pass Net* to runner, because 
+                                                      //learning algorithms require 
+                                                      //read-only access to Net attributes
 
                 //Wait for other threads
                 _barrier->wait();

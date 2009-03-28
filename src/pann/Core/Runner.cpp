@@ -27,7 +27,7 @@ namespace pann
     } //Instance
 
     void
-    NullRunner::run(Neuron* _neuron)
+    NullRunner::run(Neuron* _neuron, const Net* _net)
     {
     } //run
 
@@ -57,7 +57,7 @@ namespace pann
     } //Instance
 
     void
-    NullBackpropagationRunner::run(Neuron* _neuron)
+    NullBackpropagationRunner::run(Neuron* _neuron, const Net* _net)
     {
     } //run
 
@@ -87,16 +87,20 @@ namespace pann
     } //Instance
 
     void
-    FeedforwardPropagationRunner::run(Neuron* _neuron)
+    FeedforwardPropagationRunner::run(Neuron* _neuron, const Net* _net)
     {
+        if(!_neuron->getActivationFunction())
+            return;
+
+        Float receptiveField = 0;
+
         BOOST_FOREACH( Link& link, _neuron->links )
         {
             if(link.getDirection() == Link::in)
-                _neuron->receptiveField += link.getTo()->activationValue * link.getWeight()->value;
+                receptiveField += link.getTo()->activationValue * link.getWeight()->value;
         }
 
-        _neuron->activationValue = _neuron->getActivationFunction()->f(_neuron->receptiveField);
-        _neuron->receptiveField = 0;
+        _neuron->activationValue = _neuron->getActivationFunction()->f(receptiveField);
     } //run
 
     RunDirection

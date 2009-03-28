@@ -7,12 +7,17 @@ namespace pann
 {
     namespace LmsAttributes
     {
+        //Net
         const AttributeNameHash LMS = hash("LmsAttributes::LMS");
         const AttributeNameHash learningRate = hash("LmsAttributes::learningRate");
         const AttributeNameHash learningMomentum = hash("LmsAttributes::learningMomentum");
-        const AttributeNameHash localGradient = hash("LmsAttributes::localGradient");
-        const AttributeNameHash error = hash("LmsAttributes::error");
+
+        //Neuron
         const AttributeNameHash lastReceptiveField = hash("LmsAttributes::lastReceptiveField");
+        const AttributeNameHash error = hash("LmsAttributes::error");
+        const AttributeNameHash localGradient = hash("LmsAttributes::localGradient");
+
+        //Weight
         const AttributeNameHash lastDeltaW = hash("LmsAttributes::lastDeltaW");
     }; //Attributes
 }; //pann

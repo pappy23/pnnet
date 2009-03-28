@@ -27,7 +27,7 @@ namespace pann
     } //Instance
 
     void
-    LmsFeedforwardRunner::run(Neuron* _neuron) throw()
+    LmsFeedforwardRunner::run(Neuron* _neuron, const Net* _net) throw()
     {
         if(!_neuron->learningHint.is(LMS))
         {
@@ -35,15 +35,22 @@ namespace pann
             _neuron->learningHint[LMS] = 1.0;
         }
 
+        if(!_neuron->getActivationFunction())
+        {
+            _neuron->learningHint[lastReceptiveField] = _neuron->activationValue;
+            return;
+        }
+
+        Float receptiveField = 0;
+
         BOOST_FOREACH( Link& link, _neuron->links )
         {
             if(link.getDirection() == Link::in)
-                _neuron->receptiveField += link.getTo()->activationValue * link.getWeight()->value;
+                receptiveField += link.getTo()->activationValue * link.getWeight()->value;
         }
 
-        _neuron->activationValue = _neuron->getActivationFunction()->f(_neuron->receptiveField);
-        _neuron->learningHint[lastReceptiveField] = _neuron->receptiveField;
-        _neuron->receptiveField = 0;
+        _neuron->activationValue = _neuron->getActivationFunction()->f(receptiveField);
+        _neuron->learningHint[lastReceptiveField] = receptiveField;
     } //run
 
     RunDirection
@@ -70,9 +77,10 @@ namespace pann
     } //Instance
 
     void
-    LmsBackpropagationRunner::run(Neuron* _neuron) throw(E<Exception::NotReady>)
+    LmsBackpropagationRunner::run(Neuron* _neuron, const Net* _net) throw(E<Exception::NotReady>)
     {
         Attributes& neuron_hint = _neuron->learningHint;
+        const Attributes& net_hint = _net->learningHint;
 
         if(!neuron_hint.is(LMS))
             throw E<Exception::NotReady>()<<"LmsBackpropagationRunner::run(): Feedforward run wasn't made\n";
@@ -90,11 +98,10 @@ namespace pann
                     link.getTo()->learningHint[localGradient] * link.getWeight()->value;
         }
 
-        //_neuron->activationValue = _neuron->getActivationFunction()->f(_neuron->receptiveField);
-        
         //Save actual local gradient value
-        neuron_hint[localGradient] = 
-            neuron_hint[localGradient] * _neuron->getActivationFunction()->derivative(neuron_hint[lastReceptiveField]);
+        //Note: we assume that input neuron has activation function y=x, so y'=1
+        if(_neuron->getActivationFunction()) 
+            neuron_hint[localGradient] *= _neuron->getActivationFunction()->derivative(neuron_hint[lastReceptiveField]);
         
         //Update weights
         BOOST_FOREACH( Link& link, _neuron->links )
@@ -109,14 +116,18 @@ namespace pann
                     w->learningHint[LMS] = 1.0;
                 }
 
-                //TODO decide how to organize access from Runner to network attributes
-                Float dw = neuron_hint[learningMomentum] * w->learningHint[lastDeltaW] 
-                    + net.learningHint[learningRate] * neuron_hint[localGradient] * _neuron->activationValue;
+                Float dw = net_hint[learningMomentum] * w->learningHint[lastDeltaW]
+                    + net_hint[learningRate] * neuron_hint[localGradient] * _neuron->activationValue;
+
+                w->learningHint[lastDeltaW] = dw;
+
+                w->value += dw;
 
 //            dw = a * prev_dw + lrate * localGradient * activationValue; 
             }
         }
         
+                std::cout<<"1";
     } //run
 
     RunDirection

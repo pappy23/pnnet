@@ -11,8 +11,9 @@ namespace pann
         id = _id;
         activationFunction = _activationFunction;
         ownerThread = 0;
-        receptiveField = 0;
-        activationValue = _activationFunction->f(0);
+        
+        if(activationFunction)
+            activationValue = _activationFunction->f(0);
     } //Neuron
 
     Neuron::~Neuron() throw()
