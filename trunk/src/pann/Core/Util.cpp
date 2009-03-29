@@ -66,14 +66,16 @@ namespace pann
         void
         randomizeWeightsGauss(Net& _net, Float _min, Float _max) throw()
         {
-            std::map<unsigned, Neuron*>::const_iterator n_iter = _net.getNeurons().begin();
-            for(; n_iter != _net.getNeurons().end(); ++n_iter)
-            {
-                std::list<Link>::const_iterator l_iter = n_iter->second->links.begin();
-                for(; l_iter != n_iter->second->links.end(); ++l_iter)
-                    if(l_iter->getDirection() == Link::in)
-                        const_cast<Link&>(*l_iter).getWeight()->value = rand(_min, _max);
-            }
+            const NetCache& cache = _net.getCache();
+
+            for(unsigned layer = 0; layer < cache.layers.size(); ++layer)
+                for(unsigned n = 0; n < cache.layers[layer].size(); ++n)
+                {
+                    std::list<Link>::const_iterator l_iter = cache.layers[layer][n]->links.begin();
+                    for(; l_iter != cache.layers[layer][n]->links.end(); ++l_iter)
+                        if(l_iter->getDirection() == Link::in)
+                            const_cast<Link&>(*l_iter).getWeight()->value = rand(_min, _max);
+                }
         } //randomizeWeightsGauss
 
     }; //Util

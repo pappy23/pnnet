@@ -13,7 +13,6 @@ int main()
 {
     const unsigned runs_count = 3;
     const unsigned layers_count = 10;
-    const unsigned threads_count = 2;
 
     TrainPattern tp(1, 1);
     tp.input[0] = -100;
@@ -26,7 +25,6 @@ int main()
         layers.push_back(1);
 
         Net* net = NetworkModel::MultilayerPerceptron(layers, ActivationFunction::TanH::Instance());
-        net->setThreadCount(threads_count);
 
         cout<<"MLP ready\n";
 

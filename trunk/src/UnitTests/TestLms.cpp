@@ -28,13 +28,13 @@ int main()
     }
 
     Lms::init(*net);
-    for(unsigned i = 0; i < 1000; ++i)
+    for(unsigned i = 0; i < 10; ++i)
     {
         td.shuffle();
         Lms::train(*net, td);
-//        cout<<"Train data:\n";
-//        for(unsigned i = 0; i < td.data.size(); ++i)
-//            cout<<fixed<<setprecision(3)<<"I="<<td.data[i].input[0]<<"\tT="<<td.data[i].desired_output[0]<<"\tE="<<td.data[i].error[0]<<endl;
+        cout<<"Train data:\n";
+        for(unsigned i = 0; i < td.data.size(); ++i)
+            cout<<fixed<<setprecision(3)<<"I="<<td.data[i].input[0]<<"\tT="<<td.data[i].desired_output[0]<<"\tE="<<td.data[i].error[0]<<endl;
         cout<<fixed<<setprecision(4)<<"E="<<td.getMse()<<endl;
     }
 
