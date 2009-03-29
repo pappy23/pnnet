@@ -8,9 +8,9 @@
 
 namespace pann
 {
-    //TODO  parent attributes, not serializable?
-
-    typedef std::size_t AttributeNameHash;
+    //TODO test performance and memory usage when using string or size_t as attribute key
+    typedef std::string AttributeNameHash;
+    //typedef std::size_t AttributeNameHash;
     typedef Float AttributeType;
 
     AttributeNameHash hash(const char* _name) throw();

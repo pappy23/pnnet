@@ -5,7 +5,6 @@
 
 #include "ActivationFunction.h"
 
-BOOST_CLASS_EXPORT(pann::ActivationFunction::Bias);
 BOOST_CLASS_EXPORT(pann::ActivationFunction::Linear);
 BOOST_CLASS_EXPORT(pann::ActivationFunction::Threshold);
 BOOST_CLASS_EXPORT(pann::ActivationFunction::TanH);
@@ -14,38 +13,6 @@ namespace pann
 {
     namespace ActivationFunction
     {
-        Base* Bias::self = 0;
-
-        Bias::Bias() throw()
-        {
-        } //Bias
-
-        Bias::~Bias() throw()
-        {
-            self = 0;
-        } //~Bias
-
-        Base*
-        Bias::Instance() throw()
-        {
-            if(!self)
-                self = new Bias();
-
-            return self;
-        } //Instance
-
-        Float
-        Bias::f(Float _x) const throw()
-        {
-            return 1;
-        } //f
-
-        Float 
-        Bias::derivative(Float) const throw()
-        {
-            return 0;
-        } //derivative
-
         Base* Linear::self = 0;
 
         Linear::Linear() throw()
@@ -73,10 +40,10 @@ namespace pann
         } //f
 
         Float
-        Linear::derivative(Float) const throw()
+        Linear::derivative_dy(Float) const throw()
         {
             return 0;
-        } //derivative
+        } //derivative_dy
 
         Base* Threshold::self = 0;
 
@@ -107,12 +74,10 @@ namespace pann
         } //f
 
         Float
-        Threshold::derivative(Float _x) const throw()
+        Threshold::derivative_dy(Float) const throw()
         {
-            if(_x == 0)
-                return inf;
             return 0;
-        } //derivative
+        } //derivative_dy
 
         Base* TanH::self = 0;
         const Float TanH::a = 1.7159;
@@ -143,11 +108,10 @@ namespace pann
         } //f
 
         Float
-        TanH::derivative(Float _x) const throw()
+        TanH::derivative_dy(Float _y) const throw()
         {
-            //FIXME
-            return 0;
-        } //derivative
+            return b/a * (a - _y) * (a + _y);
+        } //derivative_dy
 
     }; //ActivationFunction
 }; //pann

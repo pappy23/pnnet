@@ -27,44 +27,11 @@ namespace pann
             static Base* Instance() throw();
 
             virtual Float f(Float) const throw() = 0;
-            virtual Float derivative(Float) const throw() = 0;
+            virtual Float derivative_dy(Float) const throw() = 0;
 
         /* Serialization */
         private:
             friend class boost::serialization::access;
-        };
-
-        /**
-         * Special function for bias neuron
-         * y = 1
-         * dy/dx = 0
-         */
-        class Bias : public Base
-        {
-        private:
-            static Base* self;
-
-		private:
-			Bias() throw();
-
-        public:
-			~Bias() throw();
-
-        public:
-            static Base* Instance() throw();
-            virtual Float f(Float _x) const throw();
-            virtual Float derivative(Float) const throw();
-
-            /* Serialization */
-        private:
-            friend class boost::serialization::access;
-            template<class Archive>
-                void serialize(Archive & ar, const unsigned int version)
-                {
-                     boost::serialization::void_cast_register<Bias, Base>(
-                        static_cast<Bias*>(NULL),
-                        static_cast<Base*>(NULL));
-                };
         };
 
         /**
@@ -86,7 +53,7 @@ namespace pann
         public:
             static Base* Instance() throw();
             virtual Float f(Float _x) const throw();
-            virtual Float derivative(Float) const throw();
+            virtual Float derivative_dy(Float) const throw();
 
             /* Serialization */
         private:
@@ -119,7 +86,7 @@ namespace pann
         public:
             static Base* Instance() throw();
             virtual Float f(Float _x) const throw();
-            virtual Float derivative(Float) const throw();
+            virtual Float derivative_dy(Float) const throw();
 
             /* Serialization */
         private:
@@ -155,7 +122,7 @@ namespace pann
         public:
             static Base* Instance() throw();
             virtual Float f(Float _x) const throw();
-            virtual Float derivative(Float) const throw();
+            virtual Float derivative_dy(Float) const throw();
  
             /* Serialization */
         private:
