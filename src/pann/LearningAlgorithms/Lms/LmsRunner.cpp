@@ -79,8 +79,8 @@ namespace pann
     void
     LmsBackpropagationRunner::run(Neuron* _neuron, const Net* _net) throw(E<Exception::NotReady>)
     {
-        Attributes& neuron_hint = _neuron->learningHint;
-        const Attributes& net_hint = _net->learningHint;
+        Attributes& neuron_hint = _neuron->learningHint; //Parametrs specific to current neuron
+        const Attributes& net_hint = _net->learningHint; //Global learning parameters
 
         if(!neuron_hint.is(LMS))
             throw E<Exception::NotReady>()<<"LmsBackpropagationRunner::run(): Feedforward run wasn't made\n";
@@ -97,17 +97,22 @@ namespace pann
                 neuron_hint[localGradient] += 
                     link.getTo()->learningHint[localGradient] * link.getWeight()->value;
         }
+        //Now neuron_hint[localGradient] contains error (known error for outer layer and weighted sum of
+        //local gradients of all upstream neurons)
 
         //Save actual local gradient value
         //Note: we assume that input neuron has activation function y=x, so y'=1
         if(_neuron->getActivationFunction()) 
-            neuron_hint[localGradient] *= _neuron->getActivationFunction()->derivative(neuron_hint[lastReceptiveField]);
+            neuron_hint[localGradient] *= _neuron->getActivationFunction()->derivative_dy(_neuron->activationValue);
+        //grad = error * df(receptiveField)/dx, but df/dx usually less preferable then df/dy,
+        //grad = error * df(activationValue)/dy (see Simon Haykin, 2nd edition, p235)
         
         //Update weights
         BOOST_FOREACH( Link& link, _neuron->links )
         {
             if(link.getDirection() == Link::out);
             {
+                //TODO: shared weights
                 Weight* w = const_cast<Weight*>(link.getWeight());
 
                 if(!w->learningHint.is(LMS))
@@ -116,6 +121,7 @@ namespace pann
                     w->learningHint[LMS] = 1.0;
                 }
 
+                //See Haykin, p241
                 Float dw = net_hint[learningMomentum] * w->learningHint[lastDeltaW]
                     + net_hint[learningRate] * neuron_hint[localGradient] * _neuron->activationValue;
 
@@ -123,11 +129,8 @@ namespace pann
 
                 w->value += dw;
 
-//            dw = a * prev_dw + lrate * localGradient * activationValue; 
             }
         }
-        
-                std::cout<<"1";
     } //run
 
     RunDirection

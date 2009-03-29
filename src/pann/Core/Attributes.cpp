@@ -7,8 +7,11 @@ namespace pann
     AttributeNameHash
     hash(const char* _name) throw()
     {
-        static boost::hash<std::string> hasher;
-        return hasher(_name);
+        return std::string(_name);
+
+        //See Attributes.h TODO
+        //static boost::hash<std::string> hasher;
+        //return hasher(_name);
     } //hash
 
     Attributes::Attributes() throw()
