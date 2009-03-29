@@ -27,7 +27,7 @@ namespace pann
         if(!_net.learningHint.is(LmsAttributes::LMS))
             throw E<Exception::ObjectNotFound>()<<"LMS::train(): Net was not initialized for LMS training\n";
 
-        map<unsigned, const Neuron*> output_neurons = _net.getOutputNeurons();
+        const vector<Neuron*>& output_neurons = _net.getCache().layers[_net.getCache().layers.size() - 1];
 
         BOOST_FOREACH(TrainPattern& tp, _trainData.data)
         {
@@ -37,16 +37,11 @@ namespace pann
             tp.error = tp.desired_output - tp.error;
             
             //Put error information to output neurons
-            unsigned i = 0;
-            map<unsigned, const Neuron*>::iterator iter = output_neurons.begin();
-            for(; iter != output_neurons.end(); ++iter)
-                const_cast<Neuron*>(iter->second)->learningHint[LmsAttributes::error] = tp.error[i++];
+            for(unsigned i = 0; i < output_neurons.size(); ++i)
+                output_neurons[i]->learningHint[LmsAttributes::error] = tp.error[i];
 
             _net.run(LmsBackpropagationRunner::Instance());
         }
-        //TODO
-        //1) calculate error for each iutput neuron
-        //2) gradient descent
     } //train
 
 }; //pann

@@ -15,7 +15,7 @@ namespace pann
      * Abstract cache object
      * In reality every class should inherit own SuperDuperCache from this class
      */
-    class Cache : public Object
+    class Cache
     {
         /* Public interface */
     public:
@@ -30,6 +30,15 @@ namespace pann
         /* Protected attributes */
     protected:
         bool coherent;
+
+        /* Serialization */
+    private:
+        friend class boost::serialization::access;
+        template<class Archive>
+            void serialize(Archive & ar, const unsigned int version)
+            {
+                ar & BOOST_SERIALIZATION_NVP(coherent);
+            };             
     };
 
 }; //pann

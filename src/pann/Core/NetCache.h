@@ -12,12 +12,11 @@ namespace pann
     {
         /* Public types */
     public:
-        typedef std::vector<Neuron*> ThreadTaskType;
-        typedef std::vector<ThreadTaskType> FrontType;
+        typedef std::vector<Neuron*> FrontType;
 
         /* Public members */
     public:
-        std::vector<FrontType> data;
+        std::vector<FrontType> layers;
 
         /* Public interface */
     public:
@@ -29,8 +28,8 @@ namespace pann
         template<class Archive>
             void serialize(Archive & ar, const unsigned int version)
             {
-                ar & BOOST_SERIALIZATION_NVP(coherent);
-                ar & BOOST_SERIALIZATION_NVP(data);
+                ar & BOOST_SERIALIZATION_BASE_OBJECT_NVP(Cache)
+                   & BOOST_SERIALIZATION_NVP(layers);
             };             
     };
 }; //pann

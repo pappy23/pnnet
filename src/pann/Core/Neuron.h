@@ -17,11 +17,6 @@ namespace pann
     private:
         ActivationFunction::Base* activationFunction;
 
-        /**
-         * Thread with this number will take care of our Neuron
-         */
-        unsigned ownerThread;
-
         unsigned id;
 
         /* Public attributes
@@ -40,10 +35,6 @@ namespace pann
         virtual ~Neuron() throw();
 
         unsigned getId() const throw();
-
-        void setOwnerThread(unsigned _thread) throw(E<Exception::RangeMismatch>);
-        unsigned getOwnerThread() const throw();
-
         const ActivationFunction::Base* getActivationFunction() const throw();
 
         /**
@@ -60,7 +51,6 @@ namespace pann
             void serialize(Archive & ar, const unsigned int version)
             {
                 ar & BOOST_SERIALIZATION_BASE_OBJECT_NVP(Object)
-                 & BOOST_SERIALIZATION_NVP(ownerThread)
                  & BOOST_SERIALIZATION_NVP(activationValue)
                  & BOOST_SERIALIZATION_NVP(oglHint)
                  & BOOST_SERIALIZATION_NVP(learningHint)

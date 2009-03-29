@@ -35,6 +35,8 @@ namespace pann
             _neuron->learningHint[LMS] = 1.0;
         }
 
+        //Usually we don't need to do anything with input neurons, but lastReceptiveField
+        //is required by LMS even for them
         if(!_neuron->getActivationFunction())
         {
             _neuron->learningHint[lastReceptiveField] = _neuron->activationValue;
@@ -86,7 +88,7 @@ namespace pann
             throw E<Exception::NotReady>()<<"LmsBackpropagationRunner::run(): Feedforward run wasn't made\n";
 
         //Accumulate error value in [localGradient]
-        if(neuron_hint.is(error))
+        if(neuron_hint.is(error)) //output neuron
             neuron_hint[localGradient] = neuron_hint[error];
         else
             neuron_hint[localGradient] = 0;
@@ -98,7 +100,7 @@ namespace pann
                     link.getTo()->learningHint[localGradient] * link.getWeight()->value;
         }
         //Now neuron_hint[localGradient] contains error (known error for outer layer and weighted sum of
-        //local gradients of all upstream neurons)
+        //local gradients of all upstream neurons for other layers)
 
         //Save actual local gradient value
         //Note: we assume that input neuron has activation function y=x, so y'=1

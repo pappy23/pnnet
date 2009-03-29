@@ -10,7 +10,6 @@ namespace pann
     {
         id = _id;
         activationFunction = _activationFunction;
-        ownerThread = 0;
         
         if(activationFunction)
             activationValue = _activationFunction->f(0);
@@ -25,21 +24,6 @@ namespace pann
     {
         return id;
     } //getId
-
-    void
-    Neuron::setOwnerThread(unsigned _thread) throw(E<Exception::RangeMismatch>)
-    {
-        if(0 > _thread || _thread > 100)
-            throw E<Exception::RangeMismatch>()<<"Neuron::setOwnerThread(): thread must be between 0 and 100\n";
-
-        ownerThread =_thread;
-    } //setOwnerThread
-
-    unsigned
-    Neuron::getOwnerThread() const throw()
-    {
-        return ownerThread;
-    } //getOwnerThread
 
     const ActivationFunction::Base*
     Neuron::getActivationFunction() const throw()
