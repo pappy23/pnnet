@@ -93,11 +93,13 @@ namespace pann
             return;
 
         Float receptiveField = 0;
+        if(_neuron->bias)
+            receptiveField += _neuron->bias->value;
 
         BOOST_FOREACH( Link& link, _neuron->links )
         {
             if(link.getDirection() == Link::in)
-                receptiveField += link.getTo()->activationValue * link.getWeight()->value;
+                receptiveField += link.getTo()->activationValue * link.weight->value;
         }
 
         _neuron->activationValue = _neuron->getActivationFunction()->f(receptiveField);

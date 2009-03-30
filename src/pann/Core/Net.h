@@ -10,7 +10,6 @@
 #include "NetCache.h"
 #include "Runner.h"
 
-//TODO: add shared weight function addConnection()
 //TODO: documentation is not up to date
 
 namespace pann
@@ -30,33 +29,27 @@ namespace pann
 
         /**
          * Manipulate neurons in network
-         * Remark: addInputNeuron adds neuron with
-         * ActivationFunction::Linear
          */
-        unsigned addNeuron(ActivationFunction::Base* _activationFunction) throw(E<Exception::ElementExists>);
-        unsigned addInputNeuron() throw();
-        void delNeuron(unsigned _neuronId) throw();
+        void addInputNeuron(Neuron*) throw();
+        void removeNeuron(Neuron* _neuron) throw();
 
         /**
          * Manage connections between neurons
-         * TODO: add shared connections for convolution networks
          * TODO: add connections with different latencies (shortcut links)
          */
-        void addConnection(unsigned _from, unsigned _to, Float _weightValue = 1) throw();
-        void delConnection(unsigned _from, unsigned _to) throw();
+        Weight* addConnection(Neuron* _from, Neuron* _to, Weight* _weight = 0) throw();
+        void delConnection(Neuron* _from, Neuron* _to) throw(E<Exception::Unbelievable>);
 
         /**
          * Add values to input neurons receptive fields
          */
         void setInput(const std::valarray<Float>& _input) throw(E<Exception::SizeMismatch>);
-        void setInput(unsigned _neuronId, Float _value) throw();
 
         /**
          * Assign neurons outputs to specified by @param _output valarray
          * (it is slower then above version, but more useful)
          */
         void getOutput(std::valarray<Float>& _output) const throw();
-        Float getOutput(unsigned _neuronId) const throw();
 
         /**
          * Apply @param _runner Runner to each neuron,
@@ -72,14 +65,6 @@ namespace pann
          */
         const NetCache& getCache() const throw();
 
-        /**
-         * Get ID of bias neuron
-         * Remark: bias neuron is implemented as work neuron, 
-         * with self-recurrent connection (w=1), placed 
-         * at first cache layer
-         */
-        unsigned getBiasId() const throw();
-
         /* Public members */
     public:
         Attributes learningHint;
@@ -87,26 +72,11 @@ namespace pann
         /* Private members */
     private:
         unsigned lastNeuronId; //var to add new neurons
-        std::map<unsigned, Neuron*> neurons;
         std::list<Neuron*> inputNeurons;
-        unsigned biasId;
         NetCache mutable cache;
 
         /* Private methods */
     private:
-        /**
-         * Returns Neuron* for corresponding neuron ID
-         */
-        Neuron* findNeuron(unsigned _neuronId) throw(E<Exception::ObjectNotFound>);
-        const Neuron* findNeuron(unsigned _neuronId) const throw();
-        std::map<unsigned, const Neuron*> getOutputNeurons() const throw();
-
-        /**
-         * Real net modificators
-         */
-        void addConnection(Neuron* _from, Neuron* _to, Weight* _weight) throw();
-        void delConnection(Neuron* _from, Neuron* _to) throw(E<Exception::Unbelievable>);
-
         /**
          * Helper used by regenerateCache()
          */
@@ -133,8 +103,6 @@ namespace pann
             {
                 ar & BOOST_SERIALIZATION_BASE_OBJECT_NVP(Object)
                  & BOOST_SERIALIZATION_NVP(lastNeuronId)
-                 & BOOST_SERIALIZATION_NVP(biasId)
-                 & BOOST_SERIALIZATION_NVP(neurons)
                  & BOOST_SERIALIZATION_NVP(inputNeurons)
                  & BOOST_SERIALIZATION_NVP(cache)
                  & BOOST_SERIALIZATION_NVP(learningHint);

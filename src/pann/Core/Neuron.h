@@ -17,24 +17,19 @@ namespace pann
     private:
         ActivationFunction::Base* activationFunction;
 
-        unsigned id;
-
-        /* Public attributes
-         * Note: Neuron is usually hidden by Net,
-         * so there is nothing to worry about
-         */
+        /* Public attributes */
     public:
         Float activationValue;
         std::list<Link> links; //!< List of Link, both directions
+        Weight* bias;
         Attributes oglHint;
         Attributes learningHint;
     
         /* Public interface */
     public:
-        Neuron(unsigned _id, ActivationFunction::Base*) throw();
+        Neuron(ActivationFunction::Base*) throw();
         virtual ~Neuron() throw();
 
-        unsigned getId() const throw();
         const ActivationFunction::Base* getActivationFunction() const throw();
 
         /**
@@ -51,11 +46,12 @@ namespace pann
             void serialize(Archive & ar, const unsigned int version)
             {
                 ar & BOOST_SERIALIZATION_BASE_OBJECT_NVP(Object)
+                 & BOOST_SERIALIZATION_NVP(activationFunction)
                  & BOOST_SERIALIZATION_NVP(activationValue)
-                 & BOOST_SERIALIZATION_NVP(oglHint)
-                 & BOOST_SERIALIZATION_NVP(learningHint)
                  & BOOST_SERIALIZATION_NVP(links)
-                 & BOOST_SERIALIZATION_NVP(activationFunction);
+                 & BOOST_SERIALIZATION_NVP(bias)
+                 & BOOST_SERIALIZATION_NVP(oglHint)
+                 & BOOST_SERIALIZATION_NVP(learningHint);
             };
     };
 

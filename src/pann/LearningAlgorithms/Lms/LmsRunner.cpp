@@ -44,11 +44,13 @@ namespace pann
         }
 
         Float receptiveField = 0;
+        if(_neuron->bias)
+            receptiveField += _neuron->bias->value;
 
         BOOST_FOREACH( Link& link, _neuron->links )
         {
             if(link.getDirection() == Link::in)
-                receptiveField += link.getTo()->activationValue * link.getWeight()->value;
+                receptiveField += link.getTo()->activationValue * link.weight->value;
         }
 
         _neuron->activationValue = _neuron->getActivationFunction()->f(receptiveField);
@@ -81,6 +83,7 @@ namespace pann
     void
     LmsBackpropagationRunner::run(Neuron* _neuron, const Net* _net) throw(E<Exception::NotReady>)
     {
+        //std::cout<<"\n\ncall"<<_neuron<<"\naf: "<<_neuron->getActivationFunction()<<"\n";
         Attributes& neuron_hint = _neuron->learningHint; //Parametrs specific to current neuron
         const Attributes& net_hint = _net->learningHint; //Global learning parameters
 
@@ -97,8 +100,9 @@ namespace pann
         {
             if(link.getDirection() == Link::out)
                 neuron_hint[localGradient] += 
-                    link.getTo()->learningHint[localGradient] * link.getWeight()->value;
+                    link.getTo()->learningHint[localGradient] * link.weight->value;
         }
+        //std::cout<<"error: "<<neuron_hint[localGradient]<<std::endl;
         //Now neuron_hint[localGradient] contains error (known error for outer layer and weighted sum of
         //local gradients of all upstream neurons for other layers)
 
@@ -108,14 +112,17 @@ namespace pann
             neuron_hint[localGradient] *= _neuron->getActivationFunction()->derivative_dy(_neuron->activationValue);
         //grad = error * df(receptiveField)/dx, but df/dx usually less preferable then df/dy,
         //grad = error * df(activationValue)/dy (see Simon Haykin, 2nd edition, p235)
+        //std::cout<<"grad: "<<neuron_hint[localGradient]<<std::endl;
         
         //Update weights
         BOOST_FOREACH( Link& link, _neuron->links )
         {
-            if(link.getDirection() == Link::out);
+            //std::cout<<"*";
+            if(link.getDirection() == Link::out)
             {
+                //std::cout<<"&\nav="<<_neuron->activationValue<<"\n";
                 //TODO: shared weights
-                Weight* w = const_cast<Weight*>(link.getWeight());
+                Weight* w = const_cast<Weight*>(link.weight);
 
                 if(!w->learningHint.is(LMS))
                 {
@@ -128,10 +135,31 @@ namespace pann
                     + net_hint[learningRate] * neuron_hint[localGradient] * _neuron->activationValue;
 
                 w->learningHint[lastDeltaW] = dw;
+                //std::cout<<std::fixed<<std::setprecision(10)<<"dw: "<<dw<<std::endl;
 
                 w->value += dw;
-
             }
+        }
+
+        //Update bias weight
+        if(_neuron->bias)
+        {
+            Weight* w = _neuron->bias;
+
+            if(!w->learningHint.is(LMS))
+            {
+                w->learningHint.erase();
+                w->learningHint[LMS] = 1.0;
+            }
+
+            //?????????
+            Float dw = net_hint[learningMomentum] * w->learningHint[lastDeltaW]
+                + net_hint[learningRate] * neuron_hint[localGradient] * w->value;
+
+            w->learningHint[lastDeltaW] = dw;
+
+            w->value += dw;
+            //std::cout<<"dww: "<<dw<<std::endl;
         }
     } //run
 

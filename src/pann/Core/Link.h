@@ -25,12 +25,15 @@ namespace pann
     private:
         Neuron* to;
         Direction direction;
-        Weight* w; //!< Pointer to Weight object (might be shared between different links)
         unsigned latency;
+
+        /* Public members */
+    public:
+        Weight* weight; //!< Pointer to Weight object (might be shared between different links)
 
         /* Public interface */
     public:
-        Link(Neuron* _to, const Direction _direction, Weight* _w, unsigned const _latency = 1) throw();
+        Link(Neuron* _to, const Direction _direction, Weight* _weight, unsigned const _latency = 1) throw();
         virtual ~Link() throw();
 
         Neuron* getTo() throw();  
@@ -38,7 +41,6 @@ namespace pann
 
         Direction getDirection() const throw();
         unsigned getLatency() const throw();
-        Weight* getWeight() throw();   
     
         /* Serialization */
     private:
@@ -52,8 +54,8 @@ namespace pann
                 ar & BOOST_SERIALIZATION_BASE_OBJECT_NVP(Object)
                  & BOOST_SERIALIZATION_NVP(to)
                  & BOOST_SERIALIZATION_NVP(direction)
-                 & BOOST_SERIALIZATION_NVP(w)
-                 & BOOST_SERIALIZATION_NVP(latency);
+                 & BOOST_SERIALIZATION_NVP(latency)
+                 & BOOST_SERIALIZATION_NVP(weight);
             };
     };
 
