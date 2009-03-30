@@ -9,43 +9,24 @@ namespace pann
     Net::Net() throw()
     {
         lastNeuronId = 0;
-        biasId = addNeuron(0);
-        setInput(biasId, 1);
     } //Net
 
     Net::~Net() throw()
     {
     } //~Net
 
-    unsigned
-    Net::addInputNeuron() throw()
+    void 
+    Net::addInputNeuron(Neuron* _neuron) throw()
     {
-        unsigned neuronId = addNeuron(0);
-        inputNeurons.push_back( findNeuron(neuronId) );
+        cache.touch();
 
-        return neuronId;
+        inputNeurons.push_back(_neuron);
     } //addInputNeuron
 
-    unsigned
-    Net::addNeuron(ActivationFunction::Base* _activationFunction) throw(E<Exception::ElementExists>)
-    {
-        cache.touch();
-
-        pair< map<unsigned, Neuron*>::iterator, bool > result = 
-            neurons.insert( pair<unsigned, Neuron*>(lastNeuronId, new Neuron(lastNeuronId, _activationFunction)) );
-        
-        if( !result.second )
-            throw E<Exception::ElementExists>()<<"Net::addNeuron(): insertion of neuron "<<lastNeuronId<<" failed\n";
-
-        return lastNeuronId++;
-    } //addNeuron
-
     void
-    Net::delNeuron(unsigned _neuronId) throw()
+    Net::removeNeuron(Neuron* _neuron) throw()
     {
         cache.touch();
-
-        Neuron* _neuron = findNeuron(_neuronId);
 
         //Delete all connections to/from current neuron
         for(list<Link>::iterator link_iter = _neuron->links.begin(); link_iter != _neuron->links.end(); )
@@ -68,22 +49,54 @@ namespace pann
         list<Neuron*>::iterator iter = find(inputNeurons.begin(), inputNeurons.end(), _neuron);
         if(iter != inputNeurons.end())
             inputNeurons.erase(iter);
-
-        neurons.erase(_neuronId);
-
-        delete _neuron;
     } //delNeuron
 
-    void
-    Net::addConnection(unsigned _from, unsigned _to, Float _weightValue) throw()
+    Weight*
+    Net::addConnection(Neuron* _from, Neuron* _to, Weight* _weight) throw()
     {
-        addConnection(findNeuron(_from), findNeuron(_to), new Weight(_weightValue));
+        cache.touch();
+
+        if(!_weight)
+            _weight = new Weight();
+
+        _from->links.push_back( Link(_to, Link::out, _weight) );
+        _to->links.push_back( Link(_from, Link::in, _weight) );
+
+        _weight->usageCount += 2;
+
+        return _weight;
     } //addConnection
 
     void
-    Net::delConnection(unsigned _from, unsigned _to) throw()
+    Net::delConnection(Neuron* _from, Neuron* _to) throw(E<Exception::Unbelievable>)
     {
-        delConnection(findNeuron(_from), findNeuron(_to));
+        cache.touch();
+
+        /* Short unsignedroduction:
+         * Neuron_from               Neuron_to
+         *  Link                      Link
+         *    to =>Neuron2              to =>Neuron1
+         *    w  =>weight1              w  =>weight1
+         *    dir=>out                  dir=>in
+         */
+
+        //Find correspondent Links in neurons
+        list<Link>::iterator from_link = _from->findLink(_to, Link::out);
+        list<Link>::iterator to_link = _to->findLink(_from, Link::in);
+
+        //weight1 (see picture) must be common for both Link objects
+        if(from_link->weight != to_link->weight)
+            throw E<Exception::Unbelievable>()<<"Net::delConnection(): symmetric links don't share weight\n";
+
+        Weight* w = from_link->weight;
+
+        //Actually delete Link objects from Neuron_to and Neuron_from
+        _from->links.erase(from_link);
+        _to->links.erase(to_link);
+
+        //Delete weight object if it no more used
+        if( (w->usageCount -= 2) == 0)
+            delete w;
     } //delConnection
 
     void
@@ -103,28 +116,16 @@ namespace pann
     } //setInput
 
     void
-    Net::setInput(unsigned _neuronId, Float _value) throw()
-    {
-        findNeuron(_neuronId)->activationValue = _value;
-    } //setInput
-
-    void
     Net::getOutput(valarray<Float>& _output) const throw()
     {
-        map<unsigned, const Neuron*> output_neurons = getOutputNeurons();
+        if(!cache.isOk())
+            regenerateCache();
 
-        _output.resize(output_neurons.size());
+        unsigned output_size = cache.layers.back().size();
+        _output.resize(output_size);
 
-        unsigned i = 0;
-        map<unsigned, const Neuron*>::const_iterator iter = output_neurons.begin();
-        for(; iter != output_neurons.end(); ++iter)
-            _output[i++] = iter->second->activationValue;
-    } //getOutput
-
-    Float
-    Net::getOutput(unsigned _neuronId) const throw()
-    {
-        return findNeuron(_neuronId)->activationValue;
+        for(unsigned i = 0; i < output_size; ++i)
+            _output[i] = cache.layers.back()[i]->activationValue;
     } //getOutput
 
     void
@@ -155,91 +156,6 @@ namespace pann
 
         return cache;
     } //getCache
-
-    unsigned
-    Net::getBiasId() const throw()
-    {
-        return biasId;
-    }; //getBiasId
-
-    Neuron*
-    Net::findNeuron(unsigned _neuronId) throw(E<Exception::ObjectNotFound>)
-    {
-        map<unsigned, Neuron*>::iterator iter = neurons.find(_neuronId);
-        if(neurons.end() == iter)
-            throw E<Exception::ObjectNotFound>()<<"findNeuron(): Neuron "<<_neuronId<<" not found\n";
-
-        return iter->second;
-    } //findNeuron
-
-    const Neuron*
-    Net::findNeuron(unsigned _neuronId) const throw()
-    {
-        return const_cast<Net*>(this)->findNeuron(_neuronId);
-    } //findNeuron
-
-    map<unsigned, const Neuron*>
-    Net::getOutputNeurons() const throw()
-    {
-        if(!cache.isOk())
-            regenerateCache();
-
-        map<unsigned, const Neuron*> result;
-
-        unsigned last_layer = cache.layers.size() - 2;
-        
-        if(last_layer < 0)
-            return result;
-
-        vector<Neuron*>::const_iterator iter = cache.layers[last_layer].begin();
-        for(; iter != cache.layers[last_layer].end(); ++iter)
-            result.insert(pair<unsigned, const Neuron*>( (*iter)->getId(), *iter ));
-
-        return result;
-    } //getOutputNeurons
-
-    void
-    Net::addConnection(Neuron* _from, Neuron* _to, Weight* _weight) throw()
-    {
-        cache.touch();
-
-        _from->links.push_back( Link(_to, Link::out, _weight) );
-        _to->links.push_back( Link(_from, Link::in, _weight) );
-
-        _weight->usageCount += 2;
-    } //addConnection
-
-    void
-    Net::delConnection(Neuron* _from, Neuron* _to) throw(E<Exception::Unbelievable>)
-    {
-        cache.touch();
-
-        /* Short unsignedroduction:
-         * Neuron_from               Neuron_to
-         *  Link                      Link
-         *    to =>Neuron2              to =>Neuron1
-         *    w  =>weight1              w  =>weight1
-         *    dir=>out                  dir=>in
-         */
-
-        //Find correspondent Links in neurons
-        list<Link>::iterator from_link = _from->findLink(_to, Link::out);
-        list<Link>::iterator to_link = _to->findLink(_from, Link::in);
-
-        //weight1 (see picture) must be common for both Link objects
-        if(from_link->getWeight() != to_link->getWeight())
-            throw E<Exception::Unbelievable>()<<"Net::delConnection(): symmetric links don't share weight\n";
-
-        Weight* w = from_link->getWeight();
-
-        //Actually delete Link objects from Neuron_to and Neuron_from
-        _from->links.erase(from_link);
-        _to->links.erase(to_link);
-
-        //Delete weight object if it no more used
-        if( (w->usageCount -= 2) == 0)
-            delete w;
-    } //delConnection
 
     void
     Net::formatFront(vector<Neuron*>& _raw) const throw()

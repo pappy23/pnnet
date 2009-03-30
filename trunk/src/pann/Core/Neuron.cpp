@@ -6,10 +6,10 @@ using namespace std;
 
 namespace pann
 {
-    Neuron::Neuron(unsigned _id, ActivationFunction::Base* _activationFunction) throw()
+    Neuron::Neuron(ActivationFunction::Base* _activationFunction) throw()
     {
-        id = _id;
         activationFunction = _activationFunction;
+        bias = 0;
         
         if(activationFunction)
             activationValue = _activationFunction->f(0);
@@ -18,12 +18,6 @@ namespace pann
     Neuron::~Neuron() throw()
     {
     } //~Neuron
-
-    unsigned
-    Neuron::getId() const throw()
-    {
-        return id;
-    } //getId
 
     const ActivationFunction::Base*
     Neuron::getActivationFunction() const throw()

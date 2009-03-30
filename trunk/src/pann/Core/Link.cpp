@@ -8,7 +8,7 @@ namespace pann
     {
         to = _to;
         direction = _direction;
-        w = _w;
+        weight = _w;
         latency = _latency;
     } //Link
 
@@ -38,12 +38,6 @@ namespace pann
     {
         return latency;
     } //getLatency
-    
-    Weight*
-    Link::getWeight() throw()
-    {
-        return w;
-    } //getWeight
 
 }; //pann
 

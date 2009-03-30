@@ -15,6 +15,7 @@ namespace pann
             _net.learningHint[LmsAttributes::LMS] = 1.0;
         }
 
+        //Set algorithm defaults. User can override them after init()
         _net.learningHint[LmsAttributes::learningRate] = 0.03;
         _net.learningHint[LmsAttributes::learningMomentum] = 0.1;
 
@@ -27,7 +28,7 @@ namespace pann
         if(!_net.learningHint.is(LmsAttributes::LMS))
             throw E<Exception::ObjectNotFound>()<<"LMS::train(): Net was not initialized for LMS training\n";
 
-        const vector<Neuron*>& output_neurons = _net.getCache().layers[_net.getCache().layers.size() - 1];
+        const vector<Neuron*>& output_neurons = _net.getCache().layers.back();
 
         BOOST_FOREACH(TrainPattern& tp, _trainData.data)
         {
@@ -40,7 +41,7 @@ namespace pann
             for(unsigned i = 0; i < output_neurons.size(); ++i)
                 output_neurons[i]->learningHint[LmsAttributes::error] = tp.error[i];
 
-            _net.run(LmsBackpropagationRunner::Instance());
+            _net.run(LmsBackpropagationRunner::Instance(), 1);
         }
     } //train
 
