@@ -45,6 +45,7 @@ namespace pann
         template<class Archive>
             void serialize(Archive & ar, const unsigned int version)
             {
+                std::cout<<"Neuron\n";
                 ar & BOOST_SERIALIZATION_BASE_OBJECT_NVP(Object)
                  & BOOST_SERIALIZATION_NVP(activationFunction)
                  & BOOST_SERIALIZATION_NVP(activationValue)

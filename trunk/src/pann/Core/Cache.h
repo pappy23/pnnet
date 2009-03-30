@@ -37,6 +37,7 @@ namespace pann
         template<class Archive>
             void serialize(Archive & ar, const unsigned int version)
             {
+                std::cout<<"Cache\n";
                 ar & BOOST_SERIALIZATION_NVP(coherent);
             };             
     };

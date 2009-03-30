@@ -130,6 +130,7 @@ namespace pann
             template<class Archive>
                 void serialize(Archive & ar, const unsigned int version)
                 {
+                    std::cout<<"AF\n";
                      boost::serialization::void_cast_register<TanH, Base>(
                         static_cast<TanH*>(NULL),
                         static_cast<Base*>(NULL));

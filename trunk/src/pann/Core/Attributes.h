@@ -51,6 +51,7 @@ namespace pann
         template<class Archive>
             void serialize(Archive & ar, const unsigned int version)
             {
+                std::cout<<"Attributes\n";
                 ar & BOOST_SERIALIZATION_BASE_OBJECT_NVP(Object)
                    & BOOST_SERIALIZATION_NVP(attributes);
             };

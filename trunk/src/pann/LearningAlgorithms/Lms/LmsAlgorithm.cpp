@@ -16,7 +16,7 @@ namespace pann
         }
 
         //Set algorithm defaults. User can override them after init()
-        _net.learningHint[LmsAttributes::learningRate] = 0.03;
+        _net.learningHint[LmsAttributes::learningRate] = 0.3;
         _net.learningHint[LmsAttributes::learningMomentum] = 0.1;
 
         Util::randomizeWeightsGauss(_net, -0.03, 0.03);

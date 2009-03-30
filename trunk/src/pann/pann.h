@@ -12,6 +12,7 @@
 #include "Core/Moo.h"
 #include "Core/Attributes.h"
 #include "Core/OpenGlHint.h"
+#include "Core/ActivationFunction.h"
 #include "TrainData/TrainData.h"
 #include "NetworkModels/MultilayerPerceptron.h"
 #include "LearningAlgorithms/Lms.h"
