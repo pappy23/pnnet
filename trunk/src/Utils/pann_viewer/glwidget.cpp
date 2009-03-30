@@ -71,6 +71,8 @@ void GLWidget::calcCoords()
 void GLWidget::drawNetModel()
 {
     NetInfo net_info;
+    net_info.neurons = 0;
+    net_info.links = 0;
 
     GLUquadric* q = gluNewQuadric();
     gluQuadricNormals(q, GLU_SMOOTH);
@@ -89,6 +91,7 @@ void GLWidget::drawNetModel()
         glTranslated(to_coords.x, to_coords.y, to_coords.z);
         gluSphere(q, neuronRadius, 12, 12); 
         glPopMatrix();
+        net_info.neurons++;
 
         if(drawLinks)
         {
@@ -99,6 +102,8 @@ void GLWidget::drawNetModel()
             {
                 if(link_iter->getDirection() == Link::out)
                     continue;
+
+                net_info.links++;
 
                 if(linkRate > 1 && (rand() % linkRate != 0))
                     continue;
