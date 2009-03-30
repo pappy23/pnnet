@@ -14,6 +14,7 @@
 #include "Core/OpenGlHint.h"
 #include "Core/ActivationFunction.h"
 #include "TrainData/TrainData.h"
+#include "TrainData/TrainDataGenerator.h"
 #include "NetworkModels/MultilayerPerceptron.h"
 #include "LearningAlgorithms/Lms.h"
 
