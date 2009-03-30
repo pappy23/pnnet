@@ -7,6 +7,12 @@
 
 #include "pann.h"
 
+struct NetInfo
+{
+    unsigned neurons;
+    unsigned links;
+};
+
 class GLWidget : public QGLWidget
 {
     Q_OBJECT
@@ -48,7 +54,7 @@ private:
     void calcCoords();
 
     void setInfoNeuron(unsigned); //fill info label with Neuron info
-    void setInfoNet(); //fill info label with Net info
+    void setInfoNet(NetInfo _net_info); //fill info label with Net info
 
     void normalizeAngle(int *angle);
 
@@ -70,7 +76,6 @@ private:
     float zTrans;
     
     //Params
-    bool drawBiasLinks;
     bool drawLinks;
     float neuronRadius;
     unsigned linkRate;

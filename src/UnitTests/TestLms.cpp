@@ -12,24 +12,23 @@ int main()
     //Constructing perceptron
     vector<unsigned> layers;
     layers.push_back(1); //input
-    for(unsigned i = 0; i < 1; ++i)
+    for(unsigned i = 0; i < 2; ++i)
         layers.push_back(5);
     layers.push_back(1); //output
     Net* net = NetworkModel::MultilayerPerceptron(layers, ActivationFunction::TanH::Instance());
 
     //Data
     TrainData td;
-    for(unsigned i = 1; i < 10; ++i)
+    for(signed i = -5; i < 6; ++i)
     {
         TrainPattern tp(1, 1);
         tp.input[0] = (Float) i / 10.0;
-        tp.desired_output[0] =  tp.input[0] * tp.input[0];
+        tp.desired_output[0] =  i*i/100.0;
         td.data.push_back(tp);
     }
 
     Lms::init(*net);
-    Storage::save(*net, "test_lms.xml");
-    for(unsigned i = 0; i < 10000; ++i)
+    for(unsigned i = 0; i < 1000; ++i)
     {
         td.shuffle();
         Lms::train(*net, td);
@@ -40,6 +39,7 @@ int main()
     }
 
 //*/
+    Storage::save(*net, "test_lms.xml");
 /*
     Net* n2 = new Net;
     Storage::load(*n2, "test_lms.xml");

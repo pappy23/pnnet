@@ -28,6 +28,7 @@ namespace pann
         template<class Archive>
             void serialize(Archive & ar, const unsigned int version)
             {
+                std::cout<<"NetCache\n";
                 ar & BOOST_SERIALIZATION_BASE_OBJECT_NVP(Cache)
                    & BOOST_SERIALIZATION_NVP(layers);
             };             
