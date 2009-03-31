@@ -131,7 +131,7 @@ namespace pann
                 }
 
                 //See Haykin, p241
-                Float dw = net_hint[learningMomentum] * w->learningHint[lastDeltaW]
+                Float dw = //net_hint[learningMomentum] * w->learningHint[lastDeltaW]
                     + net_hint[learningRate] * neuron_hint[localGradient] * _neuron->activationValue;
 
                 w->learningHint[lastDeltaW] = dw;

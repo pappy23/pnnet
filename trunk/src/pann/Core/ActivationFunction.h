@@ -14,6 +14,8 @@ namespace pann
 {
     namespace ActivationFunction
     {
+        void boost_export() throw();
+
         /**
          * All activation functions inherit ActivationFunction::Base
          * and implement Instance() method
