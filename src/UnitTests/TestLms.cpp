@@ -8,7 +8,7 @@ using namespace boost;
 
 Float func(Float _x)
 {
-    return _x / 2.0;
+    return _x / 10.0;
 }
 
 int main()
@@ -17,8 +17,8 @@ int main()
     //Constructing perceptron
     vector<unsigned> layers;
     layers.push_back(1); //input
-    for(unsigned i = 0; i < 4; ++i)
-        layers.push_back(2);
+    for(unsigned i = 0; i < 0; ++i)
+        layers.push_back(1);
     layers.push_back(1); //output
     Net* net = NetworkModel::MultilayerPerceptron(layers, ActivationFunction::TanH::Instance());
 
@@ -26,11 +26,11 @@ int main()
     //boost::function<Float (Float)> f = (_1 += 10); //boost::lambda::bind( (Float (*)(Float))sin, _1 );
     
     //boost::function<Float (Float)> f = boost::bind( (Float (*)(Float))func, _1);
-    TrainData* td = DataGenerator::generateFromFunction(-3.0, +3.0, 100, func);
+    TrainData* td = DataGenerator::generateFromFunction(-3.0, +3.0, 10, func);
 
     Lms::init(*net);
-    net->learningHint[LmsAttributes::learningRate] = 0.01;
-    for(unsigned i = 0; i < 1000; ++i)
+    net->learningHint[LmsAttributes::learningRate] = 0.1;
+    for(unsigned i = 0; i < 100; ++i)
     {
         td->shuffle();
         Lms::train(*net, *td);

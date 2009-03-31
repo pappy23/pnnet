@@ -51,7 +51,7 @@ set(PANN_SOURCES "pann")
 
 message(STATUS "Adding files to build library")
 foreach(dir ${PANN_SOURCES})
-    file(GLOB_RECURSE files RELATIVE ""  "${dir}/*.cpp" "${dir}/*.h")
+    file(GLOB_RECURSE files RELATIVE ""  "${dir}/*.cpp" "${dir}/*.cc" "${dir}/*.h" "${dir}/*.hpp")
     foreach(filename ${files})
         set(PANN_SOURCE_FILES ${PANN_SOURCE_FILES} "${filename}")
         message(STATUS ">> ${filename}")

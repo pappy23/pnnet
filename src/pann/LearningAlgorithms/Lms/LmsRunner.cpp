@@ -136,7 +136,7 @@ namespace pann
                 //See Haykin, p241
                 //Ni -> Nj
                 //dWj(n) = a*(Wj(n-1)) + learning_rate * local_gradient_j * Yi
-                Float dw = //net_hint[learningMomentum] * w->learningHint[lastDeltaW]
+                Float dw = net_hint[learningMomentum] * w->learningHint[lastDeltaW]
                     + net_hint[learningRate] * neuron_hint[localGradient] * link.getTo()->activationValue;
 
                 w->learningHint[lastDeltaW] = dw;
@@ -157,9 +157,7 @@ namespace pann
                 w->learningHint[LMS] = 1.0;
             }
 
-            //?????????
-            //TODO
-            Float dw = //net_hint[learningMomentum] * w->learningHint[lastDeltaW]
+            Float dw = net_hint[learningMomentum] * w->learningHint[lastDeltaW]
                 + net_hint[learningRate] * neuron_hint[localGradient];
 
             w->learningHint[lastDeltaW] = dw;
