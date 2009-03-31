@@ -13,10 +13,15 @@
 #include "Core/Attributes.h"
 #include "Core/OpenGlHint.h"
 #include "Core/ActivationFunction.h"
+
 #include "TrainData/TrainData.h"
 #include "TrainData/TrainDataGenerator.h"
+
 #include "NetworkModels/MultilayerPerceptron.h"
+
 #include "LearningAlgorithms/Lms.h"
+
+#include "Gnuplot/gnuplot_i.hpp"
 
 #endif
 
