@@ -9,8 +9,6 @@ using namespace pann;
 
 int main(int argc, char *argv[])
 {
-    ActivationFunction::TanH::Instance();
-
     QApplication app(argc, argv);
     QMessageBox err_msg;
 

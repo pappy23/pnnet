@@ -27,7 +27,8 @@ namespace pann
         if(desired_output.size() != error.size())
             throw E<Exception::SizeMismatch>()<<"TrainPattern::getMse(): Error size doesn't match desired_output\n";
 
-        return (Float) ((error*error).sum()) / error.size();
+        //See Haykin, p225
+        return (Float) ((error*error).sum()) / 2.0;
     } //getMse
 
 }; //namespace pann

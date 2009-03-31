@@ -90,12 +90,14 @@ namespace pann
         if(!neuron_hint.is(LMS))
             throw E<Exception::NotReady>()<<"LmsBackpropagationRunner::run(): Feedforward run wasn't made\n";
 
-        //Accumulate error value in [localGradient]
+        //local_gradient = desired_output - actual_output = error - for output neuron
+        //local_gradient = weighted sum of upstream neurons local_gradients
         if(neuron_hint.is(error)) //output neuron
             neuron_hint[localGradient] = neuron_hint[error];
         else
             neuron_hint[localGradient] = 0;
 
+        //std::cout<<"error: "<<neuron_hint[localGradient]<<std::endl;
         BOOST_FOREACH( Link& link, _neuron->links )
         {
             if(link.getDirection() == Link::out)
@@ -107,7 +109,8 @@ namespace pann
         //local gradients of all upstream neurons for other layers)
 
         //Save actual local gradient value
-        //Note: we assume that input neuron has activation function y=x, so y'=1
+        //Note: we assume that input neuron(it's activation function = 0) 
+        //has activation function y = x, so dy/dx = 1
         if(_neuron->getActivationFunction()) 
             neuron_hint[localGradient] *= _neuron->getActivationFunction()->derivative_dy(_neuron->activationValue);
         //grad = error * df(receptiveField)/dx, but df/dx usually less preferable then df/dy,
@@ -118,7 +121,7 @@ namespace pann
         BOOST_FOREACH( Link& link, _neuron->links )
         {
             //std::cout<<"*";
-            if(link.getDirection() == Link::out)
+            if(link.getDirection() == Link::in)
             {
                 //std::cout<<"&\nav="<<_neuron->activationValue<<"\n";
                 //TODO: shared weights
@@ -131,8 +134,10 @@ namespace pann
                 }
 
                 //See Haykin, p241
+                //Ni -> Nj
+                //dWj(n) = a*(Wj(n-1)) + learning_rate * local_gradient_j * Yi
                 Float dw = //net_hint[learningMomentum] * w->learningHint[lastDeltaW]
-                    + net_hint[learningRate] * neuron_hint[localGradient] * _neuron->activationValue;
+                    + net_hint[learningRate] * neuron_hint[localGradient] * link.getTo()->activationValue;
 
                 w->learningHint[lastDeltaW] = dw;
                 //std::cout<<std::fixed<<std::setprecision(10)<<"dw: "<<dw<<std::endl;
@@ -153,8 +158,9 @@ namespace pann
             }
 
             //?????????
-            Float dw = net_hint[learningMomentum] * w->learningHint[lastDeltaW]
-                + net_hint[learningRate] * neuron_hint[localGradient] * w->value;
+            //TODO
+            Float dw = //net_hint[learningMomentum] * w->learningHint[lastDeltaW]
+                + net_hint[learningRate] * neuron_hint[localGradient];
 
             w->learningHint[lastDeltaW] = dw;
 
