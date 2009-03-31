@@ -37,7 +37,7 @@ namespace pann
                     mlp[l].push_back(n);
 
                     //Add bias
-                    //n->bias = new Weight(1);
+                    n->bias = new Weight(1);
                 }
        
             //Connections
