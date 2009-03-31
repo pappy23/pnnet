@@ -13,6 +13,15 @@ namespace pann
 {
     namespace ActivationFunction
     {
+        void
+        boost_export() throw()
+        {
+            //Current registration is very dirty, may be one time i'll fix it :)
+            Linear::Instance();
+            Threshold::Instance();
+            TanH::Instance();
+        } //boost_export
+
         Base* Linear::self = 0;
 
         Linear::Linear() throw()
