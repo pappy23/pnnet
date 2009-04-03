@@ -51,7 +51,7 @@ namespace pann
         Float
         Linear::derivative_dy(Float) const throw()
         {
-            return 0;
+            return 1;
         } //derivative_dy
 
         Base* Threshold::self = 0;

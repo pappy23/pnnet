@@ -33,7 +33,14 @@ namespace pann
             for(unsigned l = 1; l < layers.size(); ++l)
                 for(unsigned i = 0; i < layers[l]; ++i)
                 {
-                    Neuron* n = new Neuron(ActivationFunction::TanH::Instance());
+                    ActivationFunction::Base *af;
+
+                    if(l == layers.size() - 1) //Last layer is Linear
+                        af = ActivationFunction::Linear::Instance();
+                    else
+                        af = ActivationFunction::TanH::Instance();
+
+                    Neuron* n = new Neuron(af);
                     mlp[l].push_back(n);
 
                     //Add bias
