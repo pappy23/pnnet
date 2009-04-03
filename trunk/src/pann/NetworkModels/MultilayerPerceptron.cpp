@@ -8,43 +8,43 @@ namespace pann
 {
     namespace NetworkModel
     {
-        Net* MultilayerPerceptron(vector<unsigned> layers, ActivationFunction::Base* af)
+        Net* MultilayerPerceptron(vector<unsigned> _layers, ActivationFunction::Base* _af)
         {
             Net* net = new Net();
      
-            if(layers.size() == 0)
+            if(_layers.size() == 0)
                 return net;
 
-            vector< vector<Neuron*> > mlp(layers.size());
+            vector< vector<Neuron*> > mlp(_layers.size());
 
             //Input neurons
-            for(unsigned i = 0; i < layers[0]; ++i)
+            for(unsigned i = 0; i < _layers[0]; ++i)
             {
                 Neuron* n = new Neuron(0);
                 mlp[0].push_back(n);
                 net->addInputNeuron(n);
             }
 
-            if(layers.size() < 2)
+            if(_layers.size() < 2)
                 return net;
 
             //Layers
             //TODO: OpenGlHint
-            for(unsigned l = 1; l < layers.size(); ++l)
-                for(unsigned i = 0; i < layers[l]; ++i)
+            for(unsigned l = 1; l < _layers.size(); ++l)
+                for(unsigned i = 0; i < _layers[l]; ++i)
                 {
                     ActivationFunction::Base *af;
 
-                    if(l == layers.size() - 1) //Last layer is Linear
-                        af = ActivationFunction::Linear::Instance();
-                    else
+                    if(l == _layers.size() - 1) //Last layer is Linear
                         af = ActivationFunction::TanH::Instance();
+                    else
+                        af = _af;
 
                     Neuron* n = new Neuron(af);
                     mlp[l].push_back(n);
 
                     //Add bias
-                    n->bias = new Weight(1);
+                    //n->bias = new Weight(1);
                 }
        
             //Connections

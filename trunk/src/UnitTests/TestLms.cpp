@@ -6,9 +6,11 @@ using namespace std;
 using namespace pann;
 using namespace boost;
 
+void test(Net* net, Float start, Float stop, Float step);
+
 Float func(Float _x)
 {
-    return _x * _x;
+    return sqrt(abs(_x));
 }
 
 int main()
@@ -18,7 +20,7 @@ int main()
     vector<unsigned> layers;
     layers.push_back(1); //input
     for(unsigned i = 0; i < 2; ++i)
-        layers.push_back(10);
+        layers.push_back(5);
     layers.push_back(1); //output
     Net* net = NetworkModel::MultilayerPerceptron(layers, ActivationFunction::TanH::Instance());
 
@@ -27,8 +29,10 @@ int main()
     //boost::function<Float (Float)> f = boost::bind( (Float (*)(Float))func, _1);
 
     //Learning
-    const unsigned epochs = 50;
+    const unsigned epochs = 5000;
     vector<Float> train_error_info; //MSE
+
+    TrainData& td = *(DataGenerator::generateFromFunction(-3.0, +3.0, 10, func));
 
     Lms::init(*net);
     net->learningHint[LmsAttributes::learningRate] = 0.01;
@@ -38,22 +42,39 @@ int main()
     {
         ++progress;
 
-        TrainData& td = *(DataGenerator::generateFromFunction(-3.0, +3.0, 100, func));
-        //td->shuffle();
+        td.shuffle();
         
         Lms::train(*net, td);
         
         train_error_info.push_back(td.getMse());
     }
 
+    test(net, -3.0, +3.0, +0.01);
+
     //Save trained net
     Storage::save(*net, "test_lms.xml");
 
+    //Plotting error graph
+    try {
+        Gnuplot gp_err("lines");
+        gp_err.set_title("Error by epoch");
+        gp_err.plot_x(train_error_info);
+
+        cout<<"Press ENTER to exit...";
+        cin.get();
+
+    } catch(GnuplotException e) {
+        cout << e.what() << endl;
+    }
+
+    return 0;
+}
+
+void test(Net* net, Float start, Float stop, Float step)
+{
     //Test
-    const Float start = -3.0;
-    const Float stop  = +3.0;
-    const Float step  =  0.1;
-    TrainPattern test_info((stop-start)/step, (stop-start)/step);
+    vector<Float> input, output, desired_output, error;
+
     unsigned i = 0;
     for(Float x = start; x < stop; x += step, ++i)
     {
@@ -65,21 +86,18 @@ int main()
         net->run(FeedforwardPropagationRunner::Instance());
         net->getOutput(tmp.error); //actual output
 
-        test_info.input[i] = tmp.input[0];
-        test_info.desired_output[i] = tmp.desired_output[0];
-        test_info.error[i] = tmp.desired_output[0] - tmp.error[0];
+        input.push_back(tmp.input[0]);
+        desired_output.push_back(tmp.desired_output[0]);
+        output.push_back(tmp.error[0]);
+        error.push_back(tmp.desired_output[0] - tmp.error[0]);
     }
 
     try {
-        Gnuplot gp_err("lines");
-        gp_err.set_title("Error by epoch");
-        gp_err.plot_x(train_error_info);
-
         Gnuplot gp_test("points");
         gp_test.set_title("Test");
-        gp_test.set_smooth().plot_xy(test_info.input, test_info.error, "Error");
-        gp_test.set_smooth().plot_xy(test_info.input, test_info.desired_output, "Desired output");
-        gp_test.set_smooth().plot_xy(test_info.input, test_info.desired_output - test_info.error, "Output");
+        gp_test.set_smooth().plot_xy(input, error, "Error");
+        gp_test.set_smooth().plot_xy(input, desired_output, "Desired output");
+        gp_test.set_smooth().plot_xy(input, output, "Output");
 
         cout<<"Press ENTER to exit...";
         cin.get();
@@ -88,11 +106,4 @@ int main()
         cout << e.what() << endl;
     }
 
-//*/
-/*
-    Net* n2 = new Net;
-    Storage::load(*n2, "test_lms.xml");
-*/
-    return 0;
-}
-
+}; //test

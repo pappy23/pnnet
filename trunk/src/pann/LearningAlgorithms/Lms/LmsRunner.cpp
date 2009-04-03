@@ -118,10 +118,12 @@ namespace pann
         //std::cout<<"grad: "<<neuron_hint[localGradient]<<std::endl;
         
         //Update weights
+        //Comment: Na --w--> Nb
+        //w is updated while processing Na
         BOOST_FOREACH( Link& link, _neuron->links )
         {
             //std::cout<<"*";
-            if(link.getDirection() == Link::in)
+            if(link.getDirection() == Link::out)
             {
                 //std::cout<<"&\nav="<<_neuron->activationValue<<"\n";
                 //TODO: shared weights
@@ -137,7 +139,7 @@ namespace pann
                 //Ni -> Nj
                 //dWj(n) = a*(Wj(n-1)) + learning_rate * local_gradient_j * Yi
                 Float dw = net_hint[learningMomentum] * w->learningHint[lastDeltaW]
-                    + net_hint[learningRate] * neuron_hint[localGradient] * link.getTo()->activationValue;
+                    + net_hint[learningRate] * link.getTo()->learningHint[localGradient] * _neuron->activationValue;
 
                 w->learningHint[lastDeltaW] = dw;
                 //std::cout<<std::fixed<<std::setprecision(10)<<"dw: "<<dw<<std::endl;
