@@ -8,7 +8,7 @@ using namespace boost;
 
 Float func(Float _x)
 {
-    return sin(_x);
+    return _x * _x;
 }
 
 int main()
@@ -18,7 +18,7 @@ int main()
     vector<unsigned> layers;
     layers.push_back(1); //input
     for(unsigned i = 0; i < 2; ++i)
-        layers.push_back(50);
+        layers.push_back(10);
     layers.push_back(1); //output
     Net* net = NetworkModel::MultilayerPerceptron(layers, ActivationFunction::TanH::Instance());
 
@@ -27,7 +27,7 @@ int main()
     //boost::function<Float (Float)> f = boost::bind( (Float (*)(Float))func, _1);
 
     //Learning
-    const unsigned epochs = 20;
+    const unsigned epochs = 50;
     vector<Float> train_error_info; //MSE
 
     Lms::init(*net);
