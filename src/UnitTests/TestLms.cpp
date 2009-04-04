@@ -10,7 +10,7 @@ void test(Net* net, Float start, Float stop, Float step);
 
 Float func(Float _x)
 {
-    return sqrt(abs(_x));
+    return sin(_x);
 }
 
 int main()
@@ -19,8 +19,7 @@ int main()
     //Constructing perceptron
     vector<unsigned> layers;
     layers.push_back(1); //input
-    for(unsigned i = 0; i < 2; ++i)
-        layers.push_back(5);
+    layers.push_back(50);
     layers.push_back(1); //output
     Net* net = NetworkModel::MultilayerPerceptron(layers, ActivationFunction::TanH::Instance());
 
@@ -29,15 +28,18 @@ int main()
     //boost::function<Float (Float)> f = boost::bind( (Float (*)(Float))func, _1);
 
     //Learning
-    const unsigned epochs = 5000;
+    const unsigned epochs = 500;
     vector<Float> train_error_info; //MSE
 
-    TrainData& td = *(DataGenerator::generateFromFunction(-3.0, +3.0, 10, func));
+    TrainData& td = *(DataGenerator::generateFromFunction(-3.5, +3.5, 100, func));
 
     Lms::init(*net);
-    net->learningHint[LmsAttributes::learningRate] = 0.01;
+    net->learningHint[LmsAttributes::learningRate] = 0.1;
+    net->learningHint[LmsAttributes::learningMomentum] = 0.5;
     
     boost::progress_display progress(epochs);
+    {
+    boost::progress_timer t;
     for(unsigned i = 0; i < epochs; ++i)
     {
         ++progress;
@@ -47,9 +49,11 @@ int main()
         Lms::train(*net, td);
         
         train_error_info.push_back(td.getMse());
+        //cout<<td.getMse()<<endl;
+    }
     }
 
-    test(net, -3.0, +3.0, +0.01);
+    test(net, -3.5, +3.5, +0.01);
 
     //Save trained net
     Storage::save(*net, "test_lms.xml");
@@ -86,8 +90,8 @@ void test(Net* net, Float start, Float stop, Float step)
         net->run(FeedforwardPropagationRunner::Instance());
         net->getOutput(tmp.error); //actual output
 
-        input.push_back(tmp.input[0]);
-        desired_output.push_back(tmp.desired_output[0]);
+        input.push_back(x);
+        desired_output.push_back(func(x));
         output.push_back(tmp.error[0]);
         error.push_back(tmp.desired_output[0] - tmp.error[0]);
     }

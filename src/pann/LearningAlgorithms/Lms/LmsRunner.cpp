@@ -83,7 +83,7 @@ namespace pann
     void
     LmsBackpropagationRunner::run(Neuron* _neuron, const Net* _net) throw(E<Exception::NotReady>)
     {
-        //std::cout<<"\n\ncall"<<_neuron<<"\naf: "<<_neuron->getActivationFunction()<<"\n";
+        ///std::cout<<"\n\ncall"<<_neuron<<"\naf: "<<_neuron->getActivationFunction()<<"\n";
         Attributes& neuron_hint = _neuron->learningHint; //Parametrs specific to current neuron
         const Attributes& net_hint = _net->learningHint; //Global learning parameters
 
@@ -97,14 +97,14 @@ namespace pann
         else
             neuron_hint[localGradient] = 0;
 
-        //std::cout<<"error: "<<neuron_hint[localGradient]<<std::endl;
+        ///std::cout<<"error: "<<neuron_hint[localGradient]<<std::endl;
         BOOST_FOREACH( Link& link, _neuron->links )
         {
             if(link.getDirection() == Link::out)
                 neuron_hint[localGradient] += 
                     link.getTo()->learningHint[localGradient] * link.weight->value;
         }
-        //std::cout<<"error: "<<neuron_hint[localGradient]<<std::endl;
+        ///std::cout<<"error: "<<neuron_hint[localGradient]<<std::endl;
         //Now neuron_hint[localGradient] contains error (known error for outer layer and weighted sum of
         //local gradients of all upstream neurons for other layers)
 
@@ -115,17 +115,17 @@ namespace pann
             neuron_hint[localGradient] *= _neuron->getActivationFunction()->derivative_dy(_neuron->activationValue);
         //grad = error * df(receptiveField)/dx, but df/dx usually less preferable then df/dy,
         //grad = error * df(activationValue)/dy (see Simon Haykin, 2nd edition, p235)
-        //std::cout<<"grad: "<<neuron_hint[localGradient]<<std::endl;
+        ///std::cout<<"grad: "<<neuron_hint[localGradient]<<std::endl;
         
         //Update weights
         //Comment: Na --w--> Nb
         //w is updated while processing Na
         BOOST_FOREACH( Link& link, _neuron->links )
         {
-            //std::cout<<"*";
+            ///std::cout<<"*";
             if(link.getDirection() == Link::out)
             {
-                //std::cout<<"&\nav="<<_neuron->activationValue<<"\n";
+                ///std::cout<<"&\nav="<<_neuron->activationValue<<"\n";
                 //TODO: shared weights
                 Weight* w = const_cast<Weight*>(link.weight);
 
@@ -138,13 +138,21 @@ namespace pann
                 //See Haykin, p241
                 //Ni -> Nj
                 //dWj(n) = a*(Wj(n-1)) + learning_rate * local_gradient_j * Yi
-                Float dw = net_hint[learningMomentum] * w->learningHint[lastDeltaW]
-                    + net_hint[learningRate] * link.getTo()->learningHint[localGradient] * _neuron->activationValue;
-
-                w->learningHint[lastDeltaW] = dw;
-                //std::cout<<std::fixed<<std::setprecision(10)<<"dw: "<<dw<<std::endl;
-
-                w->value += dw;
+                Float dw = net_hint[learningRate] * link.getTo()->learningHint[localGradient] * _neuron->activationValue;
+                
+                if(w->usageCount == 2)
+                {
+                    //Cuurently there is no way to make lastDeltaW threads safe
+                    dw += net_hint[learningMomentum] * w->learningHint[lastDeltaW];
+                    w->learningHint[lastDeltaW] = dw;
+                    w->value += dw;
+                }
+                else
+                {
+                    boost::mutex::scoped_lock lock(w->mutex);
+                    w->value += dw;
+                }
+                ///std::cout<<std::fixed<<std::setprecision(10)<<"dw: "<<dw<<std::endl;
             }
         }
 
@@ -165,7 +173,7 @@ namespace pann
             w->learningHint[lastDeltaW] = dw;
 
             w->value += dw;
-            //std::cout<<"dww: "<<dw<<std::endl;
+            ///std::cout<<"dww: "<<dw<<std::endl;
         }
     } //run
 
