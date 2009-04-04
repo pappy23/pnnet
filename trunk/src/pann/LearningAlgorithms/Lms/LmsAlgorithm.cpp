@@ -41,7 +41,7 @@ namespace pann
             for(unsigned i = 0; i < output_neurons.size(); ++i)
                 output_neurons[i]->learningHint[LmsAttributes::error] = tp.error[i];
 
-            _net.run(LmsBackpropagationRunner::Instance(), 1);
+            _net.run(LmsBackpropagationRunner::Instance());
         }
     } //train
 

@@ -36,7 +36,7 @@ namespace pann
                     ActivationFunction::Base *af;
 
                     if(l == _layers.size() - 1) //Last layer is Linear
-                        af = ActivationFunction::TanH::Instance();
+                        af = ActivationFunction::Linear::Instance();
                     else
                         af = _af;
 
@@ -44,7 +44,7 @@ namespace pann
                     mlp[l].push_back(n);
 
                     //Add bias
-                    //n->bias = new Weight(1);
+                    n->bias = new Weight(1);
                 }
        
             //Connections

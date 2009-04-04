@@ -26,6 +26,7 @@ namespace pann
 
         /* Public members */
     public:
+        boost::mutex mutex;
         Float value; ///< weight itself
         unsigned usageCount; ///< Used by weight update algorithms for shared weights
         Attributes learningHint;
