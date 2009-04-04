@@ -10,7 +10,7 @@ void test(Net* net, Float start, Float stop, Float step);
 
 Float func(Float _x)
 {
-    return sin(_x);
+    return _x * _x / 50.0;
 }
 
 int main()
@@ -28,7 +28,7 @@ int main()
     //boost::function<Float (Float)> f = boost::bind( (Float (*)(Float))func, _1);
 
     //Learning
-    const unsigned epochs = 500;
+    const unsigned epochs = 5;
     vector<Float> train_error_info; //MSE
 
     TrainData& td = *(DataGenerator::generateFromFunction(-3.5, +3.5, 100, func));
