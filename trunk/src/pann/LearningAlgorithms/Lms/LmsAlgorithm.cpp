@@ -19,7 +19,7 @@ namespace pann
         _net.learningHint[LmsAttributes::learningRate] = 0.3;
         _net.learningHint[LmsAttributes::learningMomentum] = 0.1;
 
-        Util::randomizeWeightsGauss(_net, -0.03, 0.03);
+        Util::randomizeWeightsGauss(_net, -0.3, 0.3);
     } //init
 
     void
