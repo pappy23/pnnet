@@ -19,8 +19,9 @@ int main()
     //Constructing perceptron
     vector<unsigned> layers;
     layers.push_back(1); //input  - no act. fcn
-    layers.push_back(3); //hidden - tanh
-    layers.push_back(2); //hidden - tanh
+    layers.push_back(50); //hidden - tanh
+    layers.push_back(50); //hidden - tanh
+    layers.push_back(50); //output - linear
     layers.push_back(1); //output - linear
     Net* net = NetworkModel::MultilayerPerceptron(layers, ActivationFunction::TanH::Instance());
 
@@ -56,12 +57,13 @@ int main()
     }
     }
 
-    test(net, -2.0, +2.0, +0.01);
+    //test(net, -2.0, +2.0, +0.01);
 
     //Save trained net
     Storage::save(*net, "test_lms.xml");
 
     //Plotting error graph
+    /*
     try {
         Gnuplot gp_err("lines");
         gp_err.set_title("Error by epoch");
@@ -73,7 +75,7 @@ int main()
     } catch(GnuplotException e) {
         cout << e.what() << endl;
     }
-
+    */
     return 0;
 }
 
