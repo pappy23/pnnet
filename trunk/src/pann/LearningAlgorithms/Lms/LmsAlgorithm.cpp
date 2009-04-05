@@ -33,7 +33,7 @@ namespace pann
         BOOST_FOREACH(TrainPattern& tp, _trainData.data)
         {
             _net.setInput(tp.input);
-            _net.run(LmsFeedforwardRunner::Instance());
+            _net.run(LmsFeedforwardRunner::Instance(), 8);
             _net.getOutput(tp.error);
             tp.error = tp.desired_output - tp.error;
             
@@ -41,7 +41,7 @@ namespace pann
             for(unsigned i = 0; i < output_neurons.size(); ++i)
                 output_neurons[i]->learningHint[LmsAttributes::error] = tp.error[i];
 
-            _net.run(LmsBackpropagationRunner::Instance());
+            _net.run(LmsBackpropagationRunner::Instance(), 8);
         }
     } //train
 
