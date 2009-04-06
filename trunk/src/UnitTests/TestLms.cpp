@@ -19,9 +19,9 @@ int main()
     //Constructing perceptron
     vector<unsigned> layers;
     layers.push_back(1); //input  - no act. fcn
-    layers.push_back(50); //hidden - tanh
-    layers.push_back(50); //hidden - tanh
-    layers.push_back(50); //output - linear
+    layers.push_back(1000); //hidden - tanh
+    layers.push_back(1000); //hidden - tanh
+    layers.push_back(1000); //output - linear
     layers.push_back(1); //output - linear
     Net* net = NetworkModel::MultilayerPerceptron(layers, ActivationFunction::TanH::Instance());
 
@@ -30,7 +30,7 @@ int main()
     //boost::function<Float (Float)> f = boost::bind( (Float (*)(Float))func, _1);
 
     //Learning
-    const unsigned epochs = 1000;
+    const unsigned epochs = 1;
     vector<Float> train_error_info; //MSE
 
     TrainData& td = *(DataGenerator::generateFromFunction(-1.0, +1.0, 10, func));
@@ -39,28 +39,30 @@ int main()
     net->learningHint[LmsAttributes::learningRate] = 0.2;
     net->learningHint[LmsAttributes::learningMomentum] = 0.5;
     
-    boost::progress_display progress(epochs);
+    //boost::progress_display progress(epochs);
+    for(unsigned i = 1; i < 5; ++i)
     {
-    boost::progress_timer t;
-    for(unsigned i = 0; i < epochs; ++i)
-    {
-        ++progress;
+        //++progress;
 
-        td.shuffle();
+        //td.shuffle();
         
-        Lms::train(*net, td);
+        cout<<i<<" threads\n";
+        struct timeval start, stop;
+        gettimeofday(&start, 0);
+        Lms::train(*net, td, i);
+        gettimeofday(&stop, 0);
+        cout<<"TimeDiff: "<<(stop.tv_sec-start.tv_sec)<<"sec "<<(stop.tv_usec-start.tv_usec)<<"usec\n";
         
-        train_error_info.push_back(td.getMse());
+        //train_error_info.push_back(td.getMse());
 //        cout<<td.getMse()<<endl;
 //        if(i % (epochs / 5 + 1) == 0)
   //          test(net, -1.0, +1.0, +0.01);
-    }
     }
 
     //test(net, -2.0, +2.0, +0.01);
 
     //Save trained net
-    Storage::save(*net, "test_lms.xml");
+    //Storage::save(*net, "test_lms.xml");
 
     //Plotting error graph
     /*
