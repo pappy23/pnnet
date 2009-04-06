@@ -19,7 +19,7 @@ if(WIN32)
 	set(BOOST_ROOT "C:/Program Files/boost/boost_1_38") 
 elseif(UNIX)
 	set(BOOST_INCLUDEDIR /usr/local/include/boost-1_38)
-#set(BOOST_LIBRARYDIR /usr/local/lib)
+    #set(BOOST_LIBRARYDIR /usr/local/lib)
 endif(WIN32)
 
 set(Boost_USE_STATIC_LIBS ON)
