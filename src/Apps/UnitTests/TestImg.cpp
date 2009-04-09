@@ -103,7 +103,7 @@ int main(int argc, char* argv[])
     net->learningHint[LmsAttributes::learningMomentum] = 0.1;
     Util::randomizeWeightsGauss(*net, -0.1, 0.1);
     
-    const unsigned epochs = 1000;
+    const unsigned epochs = 100;
     progress_display progress(epochs);
     for(unsigned i = 1; i < epochs; ++i)
     {
@@ -111,7 +111,6 @@ int main(int argc, char* argv[])
         td.shuffle();
         Lms::train(*net, td);
         train_error_info.push_back(td.getMse());
-        cout<<td.getMse()<<endl;
     }
 
     //Plotting error graph
@@ -120,7 +119,7 @@ int main(int argc, char* argv[])
         gp_err.set_title("Error by epoch");
         gp_err.plot_x(train_error_info);
 
-        cout<<"Press ENTER to exit...";
+        cout<<"\nPress ENTER to exit...";
         cin.get();
 
     } catch(GnuplotException e) {
