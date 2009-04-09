@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "pann.h"
+#include "gnuplot_i.hpp"
 
 using namespace std;
 using namespace pann;
@@ -31,12 +32,13 @@ int main()
     Lms::init(*net);
     net->learningHint[LmsAttributes::learningRate] = 0.1;
     net->learningHint[LmsAttributes::learningMomentum] = 0.5;
+    Util::randomizeWeightsGauss(*net, -0.3, 0.3);
     
     vector<Float> train_error_info; //MSE
     for(unsigned i = 1; i < epochs; ++i)
     {
         td.shuffle();
-        Lms::train(*net, td, 2);
+        Lms::train(*net, td);
         
         train_error_info.push_back(td.getMse());
     }

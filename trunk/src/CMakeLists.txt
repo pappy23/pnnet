@@ -45,26 +45,8 @@ endif(UNIX)
 #    MESSAGE(FATAL_ERROR "Could not find MPI!")
 #ENDIF(MPI_FOUND)
 
-############################################################################
-
-set(PANN_SOURCES "pann")
-
-message(STATUS "Adding files to build library")
-foreach(dir ${PANN_SOURCES})
-    file(GLOB_RECURSE files RELATIVE ""  "${dir}/*.cpp" "${dir}/*.cc" "${dir}/*.h" "${dir}/*.hpp")
-    foreach(filename ${files})
-        set(PANN_SOURCE_FILES ${PANN_SOURCE_FILES} "${filename}")
-        message(STATUS ">> ${filename}")
-    endforeach(filename)
-endforeach(dir)
-
 #########################################################################
 
-include_directories(${PANN_SOURCES})
-add_library(pann STATIC ${PANN_SOURCE_FILES})
-target_link_libraries(pann ${Boost_LIBRARIES})
-
-#########################################################################
-
-subdirs(Utils Apps gnuplot-cpp)
+include_directories(pann gnuplot-cpp)
+subdirs(Apps gnuplot-cpp pann)
 

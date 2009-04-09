@@ -21,7 +21,5 @@
 
 #include "LearningAlgorithms/Lms.h"
 
-#include "Gnuplot/gnuplot_i.hpp"
-
 #endif
 
