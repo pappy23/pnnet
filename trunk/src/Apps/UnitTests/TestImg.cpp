@@ -62,10 +62,11 @@ int main(int argc, char* argv[])
 
         try {
             TrainPattern tp(300, 3);
-            tp.input = jpeg2valarray(lexical_cast<string>(i) + ".jpg", 10, 10);
+            tp.input = Util::squash_copy(jpeg2valarray(lexical_cast<string>(i) + ".jpg", 10, 10), -1.5, +1.5);
             tp.desired_output[0] = images[i][0];
             tp.desired_output[1] = images[i][1];
             tp.desired_output[2] = images[i][2];
+            Util::squash(tp.desired_output, -1.5, +1.5);
             td.data.push_back(tp);
         } catch(...) {
             cout<<"Failed to read "<<i<<".jpg\n";
@@ -98,9 +99,9 @@ int main(int argc, char* argv[])
     vector<Float> train_error_info; //MSE
 
     Lms::init(*net);
-    net->learningHint[LmsAttributes::learningRate] = 0.2;
-    net->learningHint[LmsAttributes::learningMomentum] = 0.5;
-    Util::randomizeWeightsGauss(*net, -0.3, 0.3);
+    net->learningHint[LmsAttributes::learningRate] = 0.01;
+    net->learningHint[LmsAttributes::learningMomentum] = 0.1;
+    Util::randomizeWeightsGauss(*net, -0.1, 0.1);
     
     const unsigned epochs = 1000;
     progress_display progress(epochs);
@@ -110,6 +111,7 @@ int main(int argc, char* argv[])
         td.shuffle();
         Lms::train(*net, td);
         train_error_info.push_back(td.getMse());
+        cout<<td.getMse()<<endl;
     }
 
     //Plotting error graph
