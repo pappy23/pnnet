@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "pann.h"
+#include "gnuplot_i.hpp"
 
 using namespace std;
 using namespace pann;
