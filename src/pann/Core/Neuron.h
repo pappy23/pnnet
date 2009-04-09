@@ -20,6 +20,7 @@ namespace pann
         /* Public attributes */
     public:
         Float activationValue;
+        //TODO: make links private to prevent user from modifying connections
         std::list<Link> links; //!< List of Link, both directions
         Weight* bias;
         Attributes oglHint;

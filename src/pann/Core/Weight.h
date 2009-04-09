@@ -28,6 +28,7 @@ namespace pann
     public:
         boost::mutex mutex;
         Float value; ///< weight itself
+        //TODO: make it private. User is dummy
         unsigned usageCount; ///< Used by weight update algorithms for shared weights
         Attributes learningHint;
 

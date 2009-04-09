@@ -18,7 +18,7 @@ namespace pann
          * sets different parametrs, such as learning rate,
          * momentum etc.
          */
-        static void init(Net& _net /* Params */);
+        static void init(Net& _net);
 
         /**
          * Does one forward propagation and backpropagation,
@@ -27,7 +27,7 @@ namespace pann
          * else - batch learning.
          * All data is used for training and no testing performed
          */
-        static void train(Net& _net, TrainData& _trainData, int t);
+        static void train(Net& _net, TrainData& _trainData);
     };
 }; //pann
 
