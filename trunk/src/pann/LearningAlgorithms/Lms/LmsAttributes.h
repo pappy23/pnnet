@@ -9,8 +9,8 @@ namespace pann
     {
         //Net
         const AttributeNameHash LMS = hash("LmsAttributes::LMS");
-        const AttributeNameHash learningRate = hash("LmsAttributes::learningRate");
-        const AttributeNameHash learningMomentum = hash("LmsAttributes::learningMomentum");
+        const AttributeNameHash learningRate = hash("LmsAttributes::learningRate"); //Weight can override
+        const AttributeNameHash learningMomentum = hash("LmsAttributes::learningMomentum"); //Weight can override
 
         //Neuron
         const AttributeNameHash lastReceptiveField = hash("LmsAttributes::lastReceptiveField");

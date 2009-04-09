@@ -38,6 +38,7 @@ int main()
     Lms::init(*net);
     net->learningHint[LmsAttributes::learningRate] = 0.2;
     net->learningHint[LmsAttributes::learningMomentum] = 0.5;
+    Util::randomizeWeightsGauss(_net, -0.3, 0.3);
     Lms::train(*net, td, 4); //dry run to create all learning structures
     
     //boost::progress_display progress(epochs);

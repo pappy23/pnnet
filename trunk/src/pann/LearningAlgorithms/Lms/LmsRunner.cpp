@@ -127,7 +127,8 @@ namespace pann
             {
                 ///std::cout<<"&\nav="<<_neuron->activationValue<<"\n";
                 //TODO: shared weights
-                Weight* w = const_cast<Weight*>(link.weight);
+                Weight* w = link.weight;
+                boost::mutex::scoped_lock lock(w->mutex);
 
                 if(!w->learningHint.is(LMS))
                 {
@@ -142,16 +143,12 @@ namespace pann
                 
                 if(w->usageCount == 2)
                 {
-                    //Cuurently there is no way to make lastDeltaW threads safe
+                    //Currently there is no way to make lastDeltaW thread safe
                     dw += net_hint[learningMomentum] * w->learningHint[lastDeltaW];
                     w->learningHint[lastDeltaW] = dw;
-                    w->value += dw;
                 }
-                else
-                {
-                    boost::mutex::scoped_lock lock(w->mutex);
-                    w->value += dw;
-                }
+
+                w->value += dw * 2.0 / (Float)w->usageCount;
                 ///std::cout<<std::fixed<<std::setprecision(10)<<"dw: "<<dw<<std::endl;
             }
         }

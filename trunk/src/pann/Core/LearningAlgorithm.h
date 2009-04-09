@@ -15,7 +15,7 @@ namespace pann
     class LearningAlgorithm
     {
     public:
-        virtual void train(Net& _net, TrainData _trainData, int t) = 0;
+        virtual void train(Net& _net, TrainData _trainData) = 0;
     };
 
 }; //pann
