@@ -10,6 +10,7 @@ target_link_libraries(TestNet pann)
 add_executable(TestLms TestLms.cpp)
 target_link_libraries(TestLms pann gnuplot-cpp)
 
+#TODO: move jpeg utils to Core/Utils.h and check jpeg in global CMakeLists.txt
 find_package(JPEG)
 if(JPEG_FOUND)
     add_executable(TestImg TestImg.cpp)
