@@ -45,4 +45,4 @@
 #include <boost/serialization/map.hpp>
 #include <boost/serialization/list.hpp>
 #include <boost/serialization/vector.hpp>
-
+#include <boost/gil/gil_all.hpp>
