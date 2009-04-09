@@ -30,7 +30,6 @@ int main()
     //boost::function<Float (Float)> f = boost::bind( (Float (*)(Float))func, _1);
 
     //Learning
-    const unsigned epochs = 1;
     vector<Float> train_error_info; //MSE
 
     TrainData& td = *(DataGenerator::generateFromFunction(-1.0, +1.0, 10, func));
@@ -38,8 +37,8 @@ int main()
     Lms::init(*net);
     net->learningHint[LmsAttributes::learningRate] = 0.2;
     net->learningHint[LmsAttributes::learningMomentum] = 0.5;
-    Util::randomizeWeightsGauss(_net, -0.3, 0.3);
-    Lms::train(*net, td, 4); //dry run to create all learning structures
+    Util::randomizeWeightsGauss(*net, -0.3, 0.3);
+    Lms::train(*net, td); //dry run to create all learning structures
     
     //boost::progress_display progress(epochs);
     for(unsigned i = 1; i < 9; ++i)
@@ -51,7 +50,7 @@ int main()
         cout<<i<<" threads\n";
         struct timeval start, stop;
         gettimeofday(&start, 0);
-        Lms::train(*net, td, i);
+        Lms::train(*net, td);
         gettimeofday(&stop, 0);
         cout<<"TimeDiff: "<<(stop.tv_sec-start.tv_sec)<<"sec "<<(stop.tv_usec-start.tv_usec)<<"usec\n";
         

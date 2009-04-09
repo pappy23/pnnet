@@ -66,5 +66,5 @@ target_link_libraries(pann ${Boost_LIBRARIES})
 
 #########################################################################
 
-subdirs(Utils UnitTests)
+subdirs(Utils Apps gnuplot-cpp)
 
