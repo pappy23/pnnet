@@ -90,8 +90,8 @@ namespace pann
             for(unsigned layer = 0; layer < cache.layers.size(); ++layer)
                 for(unsigned n = 0; n < cache.layers[layer].size(); ++n)
                 {
-                    unsigned C = cache.layers[layer][n]->links.size() / 2;
-                    if(C == 0) C = 1;
+                    Float C = sqrt(Float(cache.layers[layer][n]->links.size() / 2.0));
+                    if(C == 0) C = 10.0;
 
                     //Tune bias values
                     if(cache.layers[layer][n]->bias)

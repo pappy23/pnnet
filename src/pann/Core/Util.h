@@ -20,10 +20,11 @@ namespace pann
         void randomizeWeightsGauss(Net& _net, Float _min = -0.3, Float _max = +0.3) throw();
 
         /**
-         * Weight is random number from [_min/C; _max/C]
+         * Weight is random number from [_min/sqrt(C); _max/sqrt(C)]
          * C - number of inputs in current neuron
          * _min = -2.4, _max = 2.4 is good choise
          * See Gradien-Based Learning Applied to Document Recognition, Yann LeCun, app1, p.41
+         * See S. Haykin, p252
          */
         void randomizeWeightsAccordingToInputsCount(Net& _net, Float _min = -2.4, Float _max = +2.4) throw();
     }; //Util
