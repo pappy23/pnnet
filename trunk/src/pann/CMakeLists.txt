@@ -11,5 +11,5 @@ foreach(dir ${PANN_SOURCES})
 endforeach(dir)
 
 add_library(pann STATIC ${PANN_SOURCE_FILES})
-target_link_libraries(pann ${Boost_LIBRARIES})
+target_link_libraries(pann ${Boost_LIBRARIES} ${JPEG_LIBRARIES})
 

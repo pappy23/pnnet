@@ -34,6 +34,7 @@
 #include <boost/lambda/bind.hpp>
 #include <boost/random.hpp>
 #include <boost/function.hpp>
+#include <boost/lexical_cast.hpp>
 #include <boost/archive/xml_oarchive.hpp>
 #include <boost/archive/xml_iarchive.hpp>
 #include <boost/serialization/nvp.hpp>
@@ -47,4 +48,6 @@
 #include <boost/serialization/vector.hpp>
 #include <boost/gil/gil_all.hpp>
 #include <boost/gil/extension/io/jpeg_io.hpp>
-#include <boost/lexical_cast.hpp>
+#include <boost/gil/extension/numeric/sampler.hpp>
+#include <boost/gil/extension/numeric/resample.hpp>
+

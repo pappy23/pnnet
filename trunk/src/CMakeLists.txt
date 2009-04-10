@@ -37,6 +37,8 @@ if(UNIX)
     set(Boost_LIBRARIES ${Boost_LIBRARIES} pthread)
 endif(UNIX)
 
+#########################################################################
+
 #FIND_PACKAGE (MPI)
 #IF(MPI_FOUND)
 #        INCLUDE_DIRECTORIES ( ${MPI_INCLUDE_PATH} )
@@ -44,6 +46,19 @@ endif(UNIX)
 #ELSE(MPI_FOUND)
 #    MESSAGE(FATAL_ERROR "Could not find MPI!")
 #ENDIF(MPI_FOUND)
+
+#########################################################################
+
+find_package(JPEG REQUIRED)
+
+#########################################################################
+
+if(WIN32)
+	set(QT_QMAKE_EXECUTABLE	"C:/Qt/4.4.2/qt/bin/qmake.exe")
+endif(WIN32)
+
+set(QT_USE_QTOPENGL 1)
+find_package(Qt4)
 
 #########################################################################
 

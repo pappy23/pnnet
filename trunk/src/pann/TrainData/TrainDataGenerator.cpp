@@ -2,6 +2,10 @@
 
 #include "TrainDataGenerator.h"
 
+using namespace std;
+using namespace boost;
+using namespace boost::gil;
+
 namespace pann
 {
     namespace DataGenerator
@@ -21,6 +25,40 @@ namespace pann
 
             return td;
         } //generateFromFunction
+
+        valarray<Float>
+        jpeg_rgb2valarray(string _filename, unsigned _width, unsigned _height)
+        {
+            rgb8_image_t img;
+            jpeg_read_image(_filename, img);
+
+            if(_width == 0 and _height == 0)
+            {
+                _width = view(img).width();
+                _height = view(img).height();
+            }
+            
+            //TODO: fix resampling
+            //Scale the image to (_width)x(_height) pixels using bilinear resampling
+            //rgb8_image_t scaled_img(_width, _height);
+            //resize_view(const_view(img), view(scaled_img), bilinear_sampler());
+            //rgb8_view_t v = view(scaled_img);
+            rgb8_view_t v = view(img);
+
+            valarray<Float> result(_width * _height * 3);
+
+            unsigned i = 0;
+            rgb8_view_t::iterator iter = v.begin();
+            for(; iter != v.end() and i < _width * _height * 3; ++iter)
+            {
+                result[i+0] = at_c<0>(*iter); //r
+                result[i+1] = at_c<1>(*iter); //g
+                result[i+2] = at_c<2>(*iter); //b
+                i += 3;
+            }
+
+            return result;
+        } //jpeg2valarray
 
     }; //DataGenerator
 }; //pann
