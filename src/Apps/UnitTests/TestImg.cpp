@@ -15,27 +15,6 @@ void rgb2jpeg(int _r, int _g, int _b, string _filename, int _w, int _h)
     jpeg_write_view(_filename, view(img));
 } //rgb2jpeg
 
-valarray<Float> jpeg2valarray(string _filename, unsigned _width, unsigned _height)
-{
-    valarray<Float> result(_width * _height * 3);
-    
-    rgb8_image_t img;
-    jpeg_read_image(_filename, img);
-    rgb8_view_t v = view(img); //TODO subview
-
-    unsigned i = 0;
-    rgb8_view_t::iterator iter = v.begin();
-    for(; iter != v.end(); ++iter)
-    {
-        result[i+0] = at_c<0>(*iter); //r
-        result[i+1] = at_c<1>(*iter); //g
-        result[i+2] = at_c<2>(*iter); //b
-        i += 3;
-    }
-
-    return result;
-} //jpeg2valarray
-
 Float func(Float _x)
 {
     return _x * _x;
@@ -62,7 +41,9 @@ int main(int argc, char* argv[])
 
         try {
             TrainPattern tp(300, 3);
-            tp.input = Util::squash_copy(jpeg2valarray(lexical_cast<string>(i) + ".jpg", 10, 10), -1.5, +1.5);
+            tp.input = Util::squash_copy(
+                    DataGenerator::jpeg_rgb2valarray(lexical_cast<string>(i) + ".jpg", 10, 10), 
+            -1.5, +1.5);
             tp.desired_output[0] = images[i][0];
             tp.desired_output[1] = images[i][1];
             tp.desired_output[2] = images[i][2];
