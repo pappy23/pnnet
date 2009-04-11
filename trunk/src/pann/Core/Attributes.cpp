@@ -4,16 +4,19 @@
 
 namespace pann
 {             
-    AttributeNameHash
+    AttributeHash
     hash(const char* _name) throw()
     {
-        return std::string(_name);
-
-        //See Attributes.h TODO
-        //static boost::hash<std::string> hasher;
-        //return hasher(_name);
+        //return std::string(_name);
+        static boost::hash<std::string> hasher;
+        return hasher(_name);
     } //hash
 
+    bool operator<(const AttributeName& _lhs, const AttributeName& _rhs)
+    {
+        return (_lhs.name + _lhs.group < _rhs.name + _rhs.group);
+    };
+        
     Attributes::Attributes() throw()
     {                              
         attributes = 0;
@@ -26,40 +29,43 @@ namespace pann
     } //~Attributes      
 
     bool
-    Attributes::is(const AttributeNameHash _attributeName) const throw()
+    Attributes::is(const AttributeName _attributeName) const throw()
     {                                             
-        if (!attributes || attributes->find(_attributeName) == attributes->end())
+        if(!attributes)
             return false;                           
+        
+        if(attributes->find(_attributeName) == attributes->end())
+            return false;
 
         return true;
     } //is              
 
     void
-    Attributes::unset(const AttributeNameHash _attributeName) throw(E<Exception::ObjectNotFound>)
+    Attributes::unset(const AttributeName _attributeName) throw(E<Exception::ObjectNotFound>)
     {                                          
         if(!attributes || !attributes->erase(_attributeName))
-            throw E<Exception::ObjectNotFound>()<<"Attributes::unset(): attribute "<<_attributeName<<" not found\n";  
+            throw E<Exception::ObjectNotFound>()<<"Attributes::unset(): attribute "<<_attributeName.name<<" not found\n";  
     } //unset                                  
 
     
     AttributeType&
-    Attributes::operator[](const AttributeNameHash _attributeName) throw()
+    Attributes::operator[](const AttributeName _attributeName) throw()
     {
         if(!attributes)
-            attributes = new std::map<AttributeNameHash, AttributeType>();
+            attributes = new std::map<AttributeName, AttributeType>();
 
         return (*attributes)[_attributeName];
     } //operator[]
    
     const AttributeType&
-    Attributes::operator[](const AttributeNameHash _attributeName) const throw(E<Exception::ObjectNotFound>)
+    Attributes::operator[](const AttributeName _attributeName) const throw(E<Exception::ObjectNotFound>)
     {
         if(!attributes)
-            throw E<Exception::ObjectNotFound>()<<"Attributes::get(): attribute "<<_attributeName<<" not found\n";  
+            throw E<Exception::ObjectNotFound>()<<"Attributes::get(): attribute "<<_attributeName.name<<" not found\n";  
 
-        std::map<AttributeNameHash, AttributeType>::const_iterator iter = attributes->find(_attributeName);
+        std::map<AttributeName, AttributeType>::const_iterator iter = attributes->find(_attributeName);
         if(iter == attributes->end())
-            throw E<Exception::ObjectNotFound>()<<"Attributes::get(): attribute "<<_attributeName<<" not found\n";  
+            throw E<Exception::ObjectNotFound>()<<"Attributes::get(): attribute "<<_attributeName.name<<" not found\n";  
         
         return iter->second;
     } //get
@@ -68,6 +74,14 @@ namespace pann
     {
         delete attributes;
     } //erase
+
+    void Attributes::erase(AttributeHash _groupName) throw()
+    {
+        std::map<AttributeName, AttributeType>::iterator iter = attributes->begin();
+        for(; iter != attributes->end(); ++iter)
+            if(iter->first.group == _groupName)
+                attributes->erase(iter);
+    } //eraseGroup
 
 }; //namespace pann
 

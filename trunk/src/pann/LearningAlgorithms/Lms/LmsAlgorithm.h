@@ -4,6 +4,7 @@
 
 #include "Core/Includes.h"
 #include "Core/LearningAlgorithm.h"
+#include "Core/AttributesManager.h"
 #include "Core/Util.h"
 #include "LmsRunner.h"
 

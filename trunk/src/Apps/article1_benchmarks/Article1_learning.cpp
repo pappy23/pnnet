@@ -30,8 +30,9 @@ int main()
     TrainData& td = *(DataGenerator::generateFromFunction(-3.0, +3.0, 20, func));
 
     Lms::init(*net);
-    net->learningHint[LmsAttributes::learningRate] = 0.1;
-    net->learningHint[LmsAttributes::learningMomentum] = 0.5;
+    AttributesManager net_hint(net);
+    net_hint[LmsAttributes::learningRate] = 0.1;
+    net_hint[LmsAttributes::learningMomentum] = 0.5;
     Util::randomizeWeightsGauss(*net, -0.3, 0.3);
     
     vector<Float> train_error_info; //MSE

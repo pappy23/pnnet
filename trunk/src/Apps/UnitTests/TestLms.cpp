@@ -36,8 +36,9 @@ int main()
     TrainData& td = *(DataGenerator::generateFromFunction(-1.0, +1.0, 10, func));
 
     Lms::init(*net);
-    net->learningHint[LmsAttributes::learningRate] = 0.2;
-    net->learningHint[LmsAttributes::learningMomentum] = 0.5;
+    AttributesManager net_hint(net);
+    net_hint[LmsAttributes::learningRate] = 0.2;
+    net_hint[LmsAttributes::learningMomentum] = 0.5;
     Util::randomizeWeightsGauss(*net, -0.3, 0.3);
     Lms::train(*net, td); //dry run to create all learning structures
     

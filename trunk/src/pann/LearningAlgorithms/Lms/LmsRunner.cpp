@@ -3,6 +3,7 @@
 #include "LmsRunner.h"
 
 using namespace pann::LmsAttributes;
+using namespace pann::AttributesDeclaration;
 
 namespace pann
 {
@@ -29,17 +30,19 @@ namespace pann
     void
     LmsFeedforwardRunner::run(Neuron* _neuron, const Net* _net) throw()
     {
-        if(!_neuron->learningHint.is(LMS))
+        AttributesManager neuron_attrs(_neuron);
+
+        if(!neuron_attrs.is(LMS))
         {
-            _neuron->learningHint.erase();
-            _neuron->learningHint[LMS] = 1.0;
+            neuron_attrs.erase(AlgorithmSpecificLearningParameters);
+            neuron_attrs[LMS] = 1.0;
         }
 
         //Usually we don't need to do anything with input neurons, but lastReceptiveField
         //is required by LMS even for them
         if(!_neuron->getActivationFunction())
         {
-            _neuron->learningHint[lastReceptiveField] = _neuron->activationValue;
+            neuron_attrs[lastReceptiveField] = _neuron->activationValue;
             return;
         }
 
@@ -54,7 +57,7 @@ namespace pann
         }
 
         _neuron->activationValue = _neuron->getActivationFunction()->f(receptiveField);
-        _neuron->learningHint[lastReceptiveField] = receptiveField;
+        neuron_attrs[lastReceptiveField] = receptiveField;
     } //run
 
     RunDirection
@@ -83,9 +86,7 @@ namespace pann
     void
     LmsBackpropagationRunner::run(Neuron* _neuron, const Net* _net) throw(E<Exception::NotReady>)
     {
-        ///std::cout<<"\n\ncall"<<_neuron<<"\naf: "<<_neuron->getActivationFunction()<<"\n";
-        Attributes& neuron_hint = _neuron->learningHint; //Parametrs specific to current neuron
-        const Attributes& net_hint = _net->learningHint; //Global learning parameters
+        AttributesManager neuron_hint(_neuron, _net);
 
         if(!neuron_hint.is(LMS))
             throw E<Exception::NotReady>()<<"LmsBackpropagationRunner::run(): Feedforward run wasn't made\n";
@@ -97,14 +98,14 @@ namespace pann
         else
             neuron_hint[localGradient] = 0;
 
-        ///std::cout<<"error: "<<neuron_hint[localGradient]<<std::endl;
         BOOST_FOREACH( Link& link, _neuron->links )
         {
             if(link.getDirection() == Link::out)
-                neuron_hint[localGradient] += 
-                    link.getTo()->learningHint[localGradient] * link.weight->value;
+            {
+                AttributesManager to_neuron_hint(link.getTo());
+                neuron_hint[localGradient] += to_neuron_hint[localGradient] * link.weight->value;
+            }
         }
-        ///std::cout<<"error: "<<neuron_hint[localGradient]<<std::endl;
         //Now neuron_hint[localGradient] contains error (known error for outer layer and weighted sum of
         //local gradients of all upstream neurons for other layers)
 
@@ -115,41 +116,38 @@ namespace pann
             neuron_hint[localGradient] *= _neuron->getActivationFunction()->derivative_dy(_neuron->activationValue);
         //grad = error * df(receptiveField)/dx, but df/dx usually less preferable then df/dy,
         //grad = error * df(activationValue)/dy (see Simon Haykin, 2nd edition, p235)
-        ///std::cout<<"grad: "<<neuron_hint[localGradient]<<std::endl;
         
         //Update weights
         //Comment: Na --w--> Nb
         //w is updated while processing Na
         BOOST_FOREACH( Link& link, _neuron->links )
         {
-            ///std::cout<<"*";
             if(link.getDirection() == Link::out)
             {
-                ///std::cout<<"&\nav="<<_neuron->activationValue<<"\n";
                 //TODO: shared weights
                 Weight* w = link.weight;
+                AttributesManager w_hint(w, _neuron, _net);
                 boost::mutex::scoped_lock lock(w->mutex);
 
-                if(!w->learningHint.is(LMS))
+                if(!w_hint.is(LMS))
                 {
-                    w->learningHint.erase();
-                    w->learningHint[LMS] = 1.0;
+                    w_hint.erase(AlgorithmSpecificLearningParameters);
+                    w_hint[LMS] = 1.0;
                 }
 
                 //See Haykin, p241
                 //Ni -> Nj
                 //dWj(n) = a*(Wj(n-1)) + learning_rate * local_gradient_j * Yi
-                Float dw = net_hint[learningRate] * link.getTo()->learningHint[localGradient] * _neuron->activationValue;
+                Float dw = w_hint[learningRate] * AttributesManager(link.getTo())[localGradient] * _neuron->activationValue;
                 
                 if(w->usageCount == 2)
                 {
                     //Currently there is no way to make lastDeltaW thread safe
-                    dw += net_hint[learningMomentum] * w->learningHint[lastDeltaW];
-                    w->learningHint[lastDeltaW] = dw;
+                    dw += w_hint[learningMomentum] * w_hint[lastDeltaW];
+                    w_hint[lastDeltaW] = dw;
                 }
 
                 w->value += dw * 2.0 / (Float)w->usageCount;
-                ///std::cout<<std::fixed<<std::setprecision(10)<<"dw: "<<dw<<std::endl;
             }
         }
 
@@ -157,20 +155,20 @@ namespace pann
         if(_neuron->bias)
         {
             Weight* w = _neuron->bias;
+            AttributesManager w_hint(w, _neuron, _net);
 
-            if(!w->learningHint.is(LMS))
+            if(!w_hint.is(LMS))
             {
-                w->learningHint.erase();
-                w->learningHint[LMS] = 1.0;
+                w_hint.erase(AlgorithmSpecificLearningParameters);
+                w_hint[LMS] = 1.0;
             }
 
-            Float dw = net_hint[learningMomentum] * w->learningHint[lastDeltaW]
-                + net_hint[learningRate] * neuron_hint[localGradient];
+            Float dw = w_hint[learningMomentum] * w_hint[lastDeltaW]
+                + w_hint[learningRate] * neuron_hint[localGradient];
 
-            w->learningHint[lastDeltaW] = dw;
+            w_hint[lastDeltaW] = dw;
 
             w->value += dw;
-            ///std::cout<<"dww: "<<dw<<std::endl;
         }
     } //run
 

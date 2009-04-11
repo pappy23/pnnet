@@ -37,7 +37,7 @@ void GLWidget::calcCoords()
             unsigned planeRows = sqrt(layer_size);
             unsigned planeCols = layer_size / planeRows;
 
-            const Attributes& oglHint = neuron->oglHint;
+            const AttributesManager oglHint(const_cast<Neuron*>(neuron));
             Coords c;
 
             if(oglHint.is(OpenGlHint::coord_x))

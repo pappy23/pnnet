@@ -3,6 +3,7 @@
 
 #include "Includes.h"
 #include "Object.h"
+#include "Attributes.h"
 
 namespace pann
 {
@@ -12,10 +13,12 @@ namespace pann
         AttributesManager(Object*, ...) throw();
         ~AttributesManager() throw();
 
-        bool is(const AttributeNameHash _attributeName) const throw();
-        void unset(const AttributeNameHash _attributeName) throw(E<Exception::ObjectNotFound>);
-        AttributeType& operator[](const AttributeNameHash _attributeName) throw();
-        const AttributeType& operator[](const AttributeNameHash _attributeName) const throw(E<Exception::ObjectNotFound>);
+        bool is(const AttributeName _attributeName) const throw();
+        void unset(const AttributeName _attributeName) throw(E<Exception::ObjectNotFound>);
+        AttributeType& operator[](const AttributeName _attributeName) throw();
+        const AttributeType& operator[](const AttributeName _attributeName) const throw(E<Exception::ObjectNotFound>);
+
+        void erase(AttributeHash _groupName) throw();
 
     private:
         std::list<Object*> chain;
