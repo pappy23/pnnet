@@ -3,14 +3,22 @@
 #define OBOJECT_H
 
 #include "Includes.h"
+#include "Attributes.h"
 
 namespace pann
 {
+    class AttributesManager;
+
     class Object
     {
     public:
         Object();
         virtual ~Object();
+
+        /* Attributes */
+    private:
+        friend class AttributesManager;
+        Attributes attr;
 
         /* Serialization */
     private:

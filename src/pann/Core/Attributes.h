@@ -4,7 +4,6 @@
 #include "Includes.h"
 #include "Exception.h"
 #include "Type.h"
-#include "Object.h"
 
 namespace pann
 {
@@ -15,7 +14,7 @@ namespace pann
 
     AttributeNameHash hash(const char* _name) throw();
 
-    class Attributes : public Object
+    class Attributes
     {
     protected:
         std::map<AttributeNameHash, AttributeType>* attributes;
@@ -51,8 +50,7 @@ namespace pann
         template<class Archive>
             void serialize(Archive & ar, const unsigned int version)
             {
-                ar & BOOST_SERIALIZATION_BASE_OBJECT_NVP(Object)
-                   & BOOST_SERIALIZATION_NVP(attributes);
+                ar & BOOST_SERIALIZATION_NVP(attributes);
             };
     };
 
