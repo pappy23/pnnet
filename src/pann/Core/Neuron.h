@@ -23,8 +23,6 @@ namespace pann
         //TODO: make links private to prevent user from modifying connections
         std::list<Link> links; //!< List of Link, both directions
         Weight* bias;
-        Attributes oglHint;
-        Attributes learningHint;
     
         /* Public interface */
     public:
@@ -52,9 +50,7 @@ namespace pann
                  & BOOST_SERIALIZATION_NVP(activationFunction)
                  & BOOST_SERIALIZATION_NVP(activationValue)
                  & BOOST_SERIALIZATION_NVP(links)
-                 & BOOST_SERIALIZATION_NVP(bias)
-                 & BOOST_SERIALIZATION_NVP(oglHint)
-                 & BOOST_SERIALIZATION_NVP(learningHint);
+                 & BOOST_SERIALIZATION_NVP(bias);
             };
     };
 

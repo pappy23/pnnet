@@ -65,10 +65,6 @@ namespace pann
          */
         const NetCache& getCache() const throw();
 
-        /* Public members */
-    public:
-        Attributes learningHint;
-
         /* Private members */
     private:
         unsigned lastNeuronId; //var to add new neurons
@@ -104,8 +100,7 @@ namespace pann
                 ar & BOOST_SERIALIZATION_BASE_OBJECT_NVP(Object)
                  & BOOST_SERIALIZATION_NVP(lastNeuronId)
                  & BOOST_SERIALIZATION_NVP(inputNeurons)
-                 & BOOST_SERIALIZATION_NVP(cache)
-                 & BOOST_SERIALIZATION_NVP(learningHint);
+                 & BOOST_SERIALIZATION_NVP(cache);
             };
     };
 

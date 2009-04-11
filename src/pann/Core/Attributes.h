@@ -7,17 +7,33 @@
 
 namespace pann
 {
-    //TODO test performance and memory usage when using string or size_t as attribute key
-    typedef std::string AttributeNameHash;
-    //typedef std::size_t AttributeNameHash;
-    typedef Float AttributeType;
+    //typedef std::string AttributeHash;
+    typedef std::size_t AttributeHash;
 
-    AttributeNameHash hash(const char* _name) throw();
+    AttributeHash hash(const char* _name) throw();
+
+    typedef struct {
+        AttributeHash name;
+        AttributeHash group;
+        //AttributeFlags flags; //scope, inheritance, other properties
+
+        /* Serialization */
+        template<class Archive>
+            void serialize(Archive & ar, const unsigned int version)
+            {
+                 ar & BOOST_SERIALIZATION_NVP(name)
+                    & BOOST_SERIALIZATION_NVP(group);
+            };
+    } AttributeName;
+
+    bool operator<(const AttributeName& _lhs, const AttributeName& _rhs);
+
+    typedef Float AttributeType;
 
     class Attributes
     {
     protected:
-        std::map<AttributeNameHash, AttributeType>* attributes;
+        std::map<AttributeName, AttributeType>* attributes;
 
     public:
         Attributes() throw();
@@ -25,24 +41,27 @@ namespace pann
 
         //! Does attribute exist?
         //! @param _attributeName - checking attribute name
-        bool is(const AttributeNameHash _attributeName) const throw();
+        bool is(const AttributeName _attributeName) const throw();
 
         //! Delete attribute
         //! @param _attributeName - deleting attribute name
-        void unset(const AttributeNameHash _attributeName) throw(E<Exception::ObjectNotFound>);
+        void unset(const AttributeName _attributeName) throw(E<Exception::ObjectNotFound>);
 
         //! Get reference to attribute. Create it if nonexistent
         //! @param _attributeName - getting attribute name
         //! @return - reference to attribute
-        AttributeType& operator[](const AttributeNameHash _attributeName) throw();
+        AttributeType& operator[](const AttributeName _attributeName) throw();
 
         /**
          * Get attribute. Nonintrusive version of operator[]
          */
-        const AttributeType& operator[](const AttributeNameHash _attributeName) const throw(E<Exception::ObjectNotFound>);
+        const AttributeType& operator[](const AttributeName _attributeName) const throw(E<Exception::ObjectNotFound>);
 
         //! Delete all attributes
         void erase() throw();
+
+        //! Delete only attributes from specific group
+        void erase(AttributeHash _groupName) throw();
 
         /* Serialization */
     private:

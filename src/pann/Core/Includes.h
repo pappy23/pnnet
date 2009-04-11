@@ -35,8 +35,12 @@
 #include <boost/random.hpp>
 #include <boost/function.hpp>
 #include <boost/lexical_cast.hpp>
-#include <boost/archive/xml_oarchive.hpp>
-#include <boost/archive/xml_iarchive.hpp>
+//#include <boost/archive/xml_oarchive.hpp>
+//#include <boost/archive/xml_iarchive.hpp>
+//#include <boost/archive/text_oarchive.hpp>
+//#include <boost/archive/text_iarchive.hpp>
+#include <boost/archive/binary_oarchive.hpp>
+#include <boost/archive/binary_iarchive.hpp>
 #include <boost/serialization/nvp.hpp>
 #include <boost/serialization/serialization.hpp>
 #include <boost/serialization/base_object.hpp> 
@@ -48,6 +52,6 @@
 #include <boost/serialization/vector.hpp>
 #include <boost/gil/gil_all.hpp>
 #include <boost/gil/extension/io/jpeg_io.hpp>
-#include <boost/gil/extension/numeric/sampler.hpp>
-#include <boost/gil/extension/numeric/resample.hpp>
+//#include <boost/gil/extension/numeric/sampler.hpp>
+//#include <boost/gil/extension/numeric/resample.hpp>
 

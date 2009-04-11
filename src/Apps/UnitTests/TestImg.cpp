@@ -80,8 +80,9 @@ int main(int argc, char* argv[])
     vector<Float> train_error_info; //MSE
 
     Lms::init(*net);
-    net->learningHint[LmsAttributes::learningRate] = 0.01;
-    net->learningHint[LmsAttributes::learningMomentum] = 0.1;
+    AttributesManager net_hint(net);
+    net_hint[LmsAttributes::learningRate] = 0.01;
+    net_hint[LmsAttributes::learningMomentum] = 0.1;
     Util::randomizeWeightsGauss(*net, -0.1, 0.1);
     
     const unsigned epochs = 100;
