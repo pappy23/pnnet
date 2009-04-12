@@ -29,7 +29,7 @@ namespace pann
     void
     LmsFeedforwardRunner::run(Neuron& _neuron, const Net& _net) throw()
     {
-        if(_neuron.is(LMS))
+        if(!_neuron.is(LMS))
         {
             _neuron.erase(AlgorithmSpecificLearningParameters);
             _neuron[LMS] = 1.0;
@@ -53,7 +53,7 @@ namespace pann
                 receptiveField += link.getTo()[Neuron::activationValue] * link.getWeight()[Weight::value];
         }
 
-        _neuron[activationValue] = _neuron.getActivationFunction().f(receptiveField);
+        _neuron[Neuron::activationValue] = _neuron.getActivationFunction().f(receptiveField);
         _neuron[lastReceptiveField] = receptiveField;
     } //run
 
@@ -95,7 +95,7 @@ namespace pann
 
         BOOST_FOREACH( Link& link, _neuron.links )
             if(link.getDirection() == Link::out)
-                _neuron[localGradient] += link.getTo()[localGradient] * link.getWeight[value];
+                _neuron[localGradient] += link.getTo()[localGradient] * link.getWeight()[Weight::value];
         //Now neuron_hint[localGradient] contains error (known error for outer layer and weighted sum of
         //local gradients of all upstream neurons for other layers)
 

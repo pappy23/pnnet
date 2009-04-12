@@ -14,7 +14,7 @@ Float func(Float _x)
     return _x * _x;
 }
 
-const unsigned epochs = 10;
+const unsigned epochs = 1000;
 
 int main()
 {
