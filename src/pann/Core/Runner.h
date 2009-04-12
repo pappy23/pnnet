@@ -19,43 +19,9 @@ namespace pann
     class Runner //singleton
     {
     public:
-        static Runner* Instance();
-        virtual void run(Neuron*, const Net*) = 0;
+        static Runner& Instance();
+        virtual void run(Neuron&, const Net&) = 0;
         virtual RunDirection getDirection() = 0;
-    };
-
-    class NullRunner : public Runner
-    {
-    private:
-        static Runner* self;
-
-    private:
-        NullRunner();
-
-    public:
-        ~NullRunner();
-
-    public:
-        static Runner* Instance();
-        virtual void run(Neuron* _neuron, const Net* _net);
-        virtual RunDirection getDirection();
-    };
-
-    class NullBackpropagationRunner : public Runner
-    {
-    private:
-        static Runner* self;
-
-    private:
-        NullBackpropagationRunner();
-
-    public:
-        ~NullBackpropagationRunner();
-
-    public:
-        static Runner* Instance();
-        virtual void run(Neuron* _neuron, const Net* _net);
-        virtual RunDirection getDirection();
     };
 
     class FeedforwardPropagationRunner : public Runner
@@ -70,8 +36,8 @@ namespace pann
         ~FeedforwardPropagationRunner();
 
     public:
-        static Runner* Instance();
-        virtual void run(Neuron* _neuron, const Net* _net);
+        static Runner& Instance();
+        virtual void run(Neuron& _neuron, const Net& _net);
         virtual RunDirection getDirection();
     };
 

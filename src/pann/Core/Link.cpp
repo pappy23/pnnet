@@ -16,16 +16,16 @@ namespace pann
     {
     } //~Link
 
-    Neuron*
+    Neuron&
     Link::getTo() throw()
     {
-        return to;
+        return *to;
     } //getTo
 
-    const Neuron*
+    const Neuron&
     Link::getTo() const throw()
     {
-        return to;
+        return *to;
     } //getTo
 
     Link::Direction

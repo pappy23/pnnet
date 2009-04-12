@@ -51,7 +51,7 @@ namespace pann
             inputNeurons.erase(iter);
     } //delNeuron
 
-    Weight*
+    Weight&
     Net::addConnection(Neuron* _from, Neuron* _to, Weight* _weight) throw()
     {
         cache.touch();
@@ -64,7 +64,7 @@ namespace pann
 
         _weight->usageCount += 2;
 
-        return _weight;
+        return *_weight;
     } //addConnection
 
     void
@@ -112,7 +112,7 @@ namespace pann
 
         unsigned i = 0;
         BOOST_FOREACH( Neuron* n, inputNeurons)
-            n->activationValue = _input[i++];
+           (*n)[activationValue] = _input[i++];
     } //setInput
 
     void
@@ -125,11 +125,11 @@ namespace pann
         _output.resize(output_size);
 
         for(unsigned i = 0; i < output_size; ++i)
-            _output[i] = cache.layers.back()[i]->activationValue;
+            _output[i] = (*cache.layers.back()[i])[activationValue];
     } //getOutput
 
     void
-    Net::run(Runner* _runner, unsigned _threads) throw()
+    Net::run(Runner& _runner, unsigned _threads) throw()
     {
         if( !cache.isOk() )
             regenerateCache();
@@ -142,7 +142,7 @@ namespace pann
 
         //We must give parameters by pointer, because boost will copy all arguments to thread
         for(unsigned thread = 0; thread < _threads; ++thread)
-            threadPool.add_thread( new boost::thread(Net::threadBase, _runner, this, thread, _threads, &barrier) );
+            threadPool.add_thread( new boost::thread(Net::threadBase, &_runner, this, thread, _threads, &barrier) );
         
         //wait for threads to finish
         threadPool.join_all();
@@ -277,21 +277,21 @@ namespace pann
                                                       boost::barrier* _barrier)
     {
         RunDirection dir = _runner->getDirection();
-        const NetCache* _cache = &(_net->getCache());
+        const NetCache& _cache = _net->getCache();
 
         unsigned layer;
-        (dir == ForwardRun) ?  (layer = 0) : (layer = _cache->layers.size() - 1);
+        (dir == ForwardRun) ?  (layer = 0) : (layer = _cache.layers.size() - 1);
 
         do {
             //Process current layer
-            for(unsigned i = _cur_thread; i < _cache->layers[layer].size(); i += _threads)
-                _runner->run( _cache->layers[layer][i], _net ); //We pass Net* to runner, because 
+            for(unsigned i = _cur_thread; i < _cache.layers[layer].size(); i += _threads)
+                _runner->run( *_cache.layers[layer][i], *_net ); //We pass Net* to runner, because 
                                                                 //learning algorithms require 
                                                                 //read-only access to Net attributes
 
             //Wait for other threads
             _barrier->wait();
-        } while( (dir == ForwardRun && ++layer < _cache->layers.size()) || (dir == BackwardRun && layer-- > 0) );
+        } while( (dir == ForwardRun && ++layer < _cache.layers.size()) || (dir == BackwardRun && layer-- > 0) );
         /*
          * A little comment.
          * Cache structure:
