@@ -15,6 +15,10 @@ namespace pann
             current = va_arg(vl, Object*);
         } while(current != 0);
 
+        va_end(vl);
+
+        std::cout<<chain.size()<<std::endl;
+
     } //AttributesManager
 
     AttributesManager::~AttributesManager() throw()

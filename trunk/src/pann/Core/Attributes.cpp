@@ -14,7 +14,8 @@ namespace pann
 
     bool operator<(const AttributeName& _lhs, const AttributeName& _rhs)
     {
-        return (_lhs.name + _lhs.group < _rhs.name + _rhs.group);
+        //return (_lhs.name + _lhs.group < _rhs.name + _rhs.group);
+        return _lhs.name < _rhs.name;
     };
         
     Attributes::Attributes() throw()
