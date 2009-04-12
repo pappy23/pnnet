@@ -7,7 +7,7 @@
 
 namespace pann
 {
-    //typedef std::string AttributeHash;
+    //typedef const char* AttributeHash;
     typedef std::size_t AttributeHash;
 
     AttributeHash hash(const char* _name) throw();
