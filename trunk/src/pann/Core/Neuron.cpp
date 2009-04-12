@@ -6,13 +6,15 @@ using namespace std;
 
 namespace pann
 {
+    const AttributeName Neuron::activationValue = hash("Neuron::activationValue", "Native");
+
     Neuron::Neuron(ActivationFunction::Base* _activationFunction) throw()
     {
         activationFunction = _activationFunction;
         bias = 0;
         
         if(activationFunction)
-            activationValue = _activationFunction->f(0);
+            (*this)[activationValue] = _activationFunction->f(0);
     } //Neuron
 
     Neuron::~Neuron() throw()
@@ -32,7 +34,7 @@ namespace pann
         list<Link>::iterator iter = links.begin();
         for(; iter != links.end(); ++iter)                                           
         {                                                                            
-            if(iter->getTo() == _to && iter->getDirection() == _direction)                     
+            if(&iter->getTo() == _to && iter->getDirection() == _direction)                     
             {                                                                        
                 if(result != links.end()) //Multiple parallel links exist          
                     throw E<Exception::MultipleOccurance>()<<"findLink(): detected parallel links\n";

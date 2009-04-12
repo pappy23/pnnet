@@ -7,19 +7,21 @@
 #include "Object.h"
 #include "ActivationFunction.h"
 #include "Link.h"
-#include "Attributes.h"
 
 namespace pann
 {
     class Neuron : public Object
     {
+        /* Attributes */
+    public:
+        static const AttributeName activationValue;
+
         /* Private attributes */
     private:
         ActivationFunction::Base* activationFunction;
 
         /* Public attributes */
     public:
-        Float activationValue;
         //TODO: make links private to prevent user from modifying connections
         std::list<Link> links; //!< List of Link, both directions
         Weight* bias;

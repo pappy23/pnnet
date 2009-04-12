@@ -36,8 +36,8 @@ namespace pann
         Link(Neuron* _to, const Direction _direction, Weight* _weight, unsigned const _latency = 1) throw();
         virtual ~Link() throw();
 
-        Neuron* getTo() throw();  
-        const Neuron*  getTo() const throw();
+        Neuron& getTo() throw();  
+        const Neuron&  getTo() const throw();
 
         Direction getDirection() const throw();
         unsigned getLatency() const throw();

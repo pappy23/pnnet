@@ -73,13 +73,13 @@ namespace pann
                 {
                     //Tune bias values
                     if(cache.layers[layer][n]->bias)
-                        cache.layers[layer][n]->bias->value = rand(_min, _max);
+                        (*cache.layers[layer][n]->bias)[Weight::value] = rand(_min, _max);
 
                     //Link weights
                     std::list<Link>::const_iterator l_iter = cache.layers[layer][n]->links.begin();
                     for(; l_iter != cache.layers[layer][n]->links.end(); ++l_iter)
                         if(l_iter->getDirection() == Link::in && l_iter->weight)
-                            const_cast<Link&>(*l_iter).weight->value = rand(_min, _max);
+                            (*const_cast<Link&>(*l_iter).weight)[Weight::value] = rand(_min, _max);
                 }
         } //randomizeWeightsGauss
 
@@ -95,13 +95,13 @@ namespace pann
 
                     //Tune bias values
                     if(cache.layers[layer][n]->bias)
-                        cache.layers[layer][n]->bias->value = rand(_min, _max) / C;
+                        (*cache.layers[layer][n]->bias)[Weight::value] = rand(_min, _max) / C;
 
                     //Link weights
                     std::list<Link>::const_iterator l_iter = cache.layers[layer][n]->links.begin();
                     for(; l_iter != cache.layers[layer][n]->links.end(); ++l_iter)
                         if(l_iter->getDirection() == Link::in && l_iter->weight)
-                            const_cast<Link&>(*l_iter).weight->value = rand(_min, _max) / C;
+                            (*const_cast<Link&>(*l_iter).weight)[Weight::value] = rand(_min, _max) / C;
                 }
         } //randomizeWeightsAccordingToInputsCount
 

@@ -9,7 +9,6 @@
 #include "Includes.h"
 #include "Type.h"
 #include "Object.h"
-#include "Attributes.h"
 
 namespace pann
 {
@@ -24,11 +23,14 @@ namespace pann
         Weight(Float _value = 1) throw();
         virtual ~Weight() throw();
 
+        /* Attributes */
+    public:
+        static const AttributeName value; ///< weight itself
+
         /* Public members */
     public:
         boost::mutex mutex;
-        Float value; ///< weight itself
-        //TODO: make it private. User is dummy
+        //TODO: make it private. User is idiot
         unsigned usageCount; ///< Used by weight update algorithms for shared weights
 
         /* Serialization */
