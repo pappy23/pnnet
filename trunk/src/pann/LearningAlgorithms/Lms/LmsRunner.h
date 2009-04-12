@@ -25,8 +25,8 @@ namespace pann
         ~LmsFeedforwardRunner() throw();
 
     public:
-        static Runner* Instance() throw();
-        virtual void run(Neuron* _neuron, const Net* _net) throw();
+        static Runner& Instance() throw();
+        virtual void run(Neuron& _neuron, const Net& _net) throw();
         virtual RunDirection getDirection() throw();
     };
 
@@ -42,8 +42,8 @@ namespace pann
         ~LmsBackpropagationRunner() throw();
 
     public:
-        static Runner* Instance() throw();
-        virtual void run(Neuron* _neuron, const Net* _net) throw(E<Exception::NotReady>);
+        static Runner& Instance() throw();
+        virtual void run(Neuron& _neuron, const Net& _net) throw(E<Exception::NotReady>);
         virtual RunDirection getDirection() throw();
     };
 }; //pann

@@ -16,7 +16,7 @@ int main()
     layers.push_back(1000); 
     layers.push_back(1000); 
     layers.push_back(1); 
-    Net* net = NetworkModel::MultilayerPerceptron(layers, ActivationFunction::TanH::Instance());
+    Net& net = NetworkModel::MultilayerPerceptron(layers, ActivationFunction::TanH::Instance());
 
     //Learning
     TrainData td;
@@ -24,12 +24,11 @@ int main()
     tp.input[0] = 1; tp.desired_output[0] = 1;
     td.data.push_back(tp);
 
-    Lms::init(*net);
-    AttributesManager net_hint(net);
-    net_hint[LmsAttributes::learningRate] = 0.2;
-    net_hint[LmsAttributes::learningMomentum] = 0.5;
-    Util::randomizeWeightsGauss(*net, -0.3, 0.3);
-    Lms::train(*net, td); //dry run to create all learning structures
+    Lms::init(net);
+    net[LmsAttributes::learningRate] = 0.2;
+    net[LmsAttributes::learningMomentum] = 0.5;
+    Util::randomizeWeightsGauss(net, -0.3, 0.3);
+    Lms::train(net, td); //dry run to create all learning structures
     
     for(unsigned i = 1; i < 9; ++i)
     {
@@ -37,7 +36,7 @@ int main()
         struct timeval start, stop;
         gettimeofday(&start, 0);
 
-        //Lms::train(*net, td, i);
+        Lms::train(net, td, i);
         
         gettimeofday(&stop, 0);
         cout<<"TimeDiff: "<<(stop.tv_sec-start.tv_sec)<<"sec "<<(stop.tv_usec-start.tv_usec)<<"usec\n\n";

@@ -6,8 +6,8 @@
 #define STORAGE_H
 
 #include "Includes.h"
-#include "Net.h"
 #include "Exception.h"
+#include "Net.h"
 
 namespace pann
 {

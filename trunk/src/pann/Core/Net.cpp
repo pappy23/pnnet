@@ -33,7 +33,7 @@ namespace pann
         {
             //We will delete link, so we can't use link_iter to get access to Link object
             //Copy Link attributes to local variables
-            Neuron* to = link_iter->getTo();
+            Neuron* to = &link_iter->getTo();
             Link::Direction dir = link_iter->getDirection();
             
             //Go to next Link (see for loop - it is without ++ statement)
@@ -51,7 +51,7 @@ namespace pann
             inputNeurons.erase(iter);
     } //delNeuron
 
-    Weight&
+    Weight*
     Net::addConnection(Neuron* _from, Neuron* _to, Weight* _weight) throw()
     {
         cache.touch();
@@ -64,7 +64,7 @@ namespace pann
 
         _weight->usageCount += 2;
 
-        return *_weight;
+        return _weight;
     } //addConnection
 
     void
@@ -85,10 +85,10 @@ namespace pann
         list<Link>::iterator to_link = _to->findLink(_from, Link::in);
 
         //weight1 (see picture) must be common for both Link objects
-        if(from_link->weight != to_link->weight)
+        if(&from_link->getWeight() != &to_link->getWeight())
             throw E<Exception::Unbelievable>()<<"Net::delConnection(): symmetric links don't share weight\n";
 
-        Weight* w = from_link->weight;
+        Weight* w = &from_link->getWeight();
 
         //Actually delete Link objects from Neuron_to and Neuron_from
         _from->links.erase(from_link);
@@ -112,7 +112,7 @@ namespace pann
 
         unsigned i = 0;
         BOOST_FOREACH( Neuron* n, inputNeurons)
-           (*n)[activationValue] = _input[i++];
+           (*n)[Neuron::activationValue] = _input[i++];
     } //setInput
 
     void
@@ -125,7 +125,7 @@ namespace pann
         _output.resize(output_size);
 
         for(unsigned i = 0; i < output_size; ++i)
-            _output[i] = (*cache.layers.back()[i])[activationValue];
+            _output[i] = (*cache.layers.back()[i])[Neuron::activationValue];
     } //getOutput
 
     void
@@ -248,13 +248,13 @@ namespace pann
                      */
 
                     //Assume that when cache becomes coherent, all neuron[hops] vars become zero
-                    if(hops[link.getTo()] == 0)
-                        hops[link.getTo()] = hops[currentNeuron] + link.getLatency();
+                    if(hops[&link.getTo()] == 0)
+                        hops[&link.getTo()] = hops[currentNeuron] + link.getLatency();
 
-                    if(hops[link.getTo()] == hops[currentNeuron] + 1)
-                        rawFront.push_back(link.getTo()); 
+                    if(hops[&link.getTo()] == hops[currentNeuron] + 1)
+                        rawFront.push_back(&link.getTo()); 
 
-                    if(hops[link.getTo()] == hops[currentNeuron] && link.getTo() != currentNeuron)
+                    if(hops[&link.getTo()] == hops[currentNeuron] && &link.getTo() != currentNeuron)
                         throw E<Exception::Unbelievable>()<<"Net::run(): cur_neuron.hops == to.hops. "
                                                             "There is no support for such topologies yet\n";
                 } //BOOST_FOREACH( Link )

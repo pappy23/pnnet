@@ -4,7 +4,7 @@
 
 namespace pann
 {
-    const AttributeName Weight::value = hash("Weight::value", "Native");
+    const AttributeName Weight::value = hash("Weight::value", NativeParameters);
 
     Weight::Weight(Float _value) throw()
     {

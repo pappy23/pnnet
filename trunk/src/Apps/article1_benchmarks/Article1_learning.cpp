@@ -7,7 +7,7 @@ using namespace std;
 using namespace pann;
 using namespace boost;
 
-void test(Net* net, Float start, Float stop, Float step);
+void test(Net& net, Float start, Float stop, Float step);
 
 Float func(Float _x)
 {
@@ -23,23 +23,22 @@ int main()
     layers.push_back(9); //hidden - tanh
     layers.push_back(4); //hidden - tanh
     layers.push_back(1); //output - linear
-    Net* net = NetworkModel::MultilayerPerceptron(layers, ActivationFunction::TanH::Instance());
+    Net& net = NetworkModel::MultilayerPerceptron(layers, ActivationFunction::TanH::Instance());
 
     //Learning
     const unsigned epochs = 500;
     TrainData& td = *(DataGenerator::generateFromFunction(-3.0, +3.0, 20, func));
 
-    Lms::init(*net);
-    AttributesManager net_hint(net);
-    net_hint[LmsAttributes::learningRate] = 0.1;
-    net_hint[LmsAttributes::learningMomentum] = 0.5;
-    Util::randomizeWeightsGauss(*net, -0.3, 0.3);
+    Lms::init(net);
+    net[LmsAttributes::learningRate] = 0.1;
+    net[LmsAttributes::learningMomentum] = 0.5;
+    Util::randomizeWeightsGauss(net, -0.3, 0.3);
     
     vector<Float> train_error_info; //MSE
     for(unsigned i = 1; i < epochs; ++i)
     {
         td.shuffle();
-        Lms::train(*net, td);
+        Lms::train(net, td);
         
         train_error_info.push_back(td.getMse());
     }
@@ -47,7 +46,7 @@ int main()
     test(net, -4.0, +4.0, +0.01);
 
     //Save trained net
-    Storage::save(*net, "test_lms.xml");
+    Storage::save(net, "test_lms.xml");
 
     //Plotting error graph
     try {
@@ -65,7 +64,7 @@ int main()
     return 0;
 }
 
-void test(Net* net, Float start, Float stop, Float step)
+void test(Net& net, Float start, Float stop, Float step)
 {
     //Test
     vector<Float> input, output, desired_output, error;
@@ -77,9 +76,9 @@ void test(Net* net, Float start, Float stop, Float step)
         tmp.input[0] = x;
         tmp.desired_output[0] = func(x);
 
-        net->setInput(tmp.input);
-        net->run(FeedforwardPropagationRunner::Instance());
-        net->getOutput(tmp.error); //actual output
+        net.setInput(tmp.input);
+        net.run(FeedforwardPropagationRunner::Instance());
+        net.getOutput(tmp.error); //actual output
 
         input.push_back(x);
         desired_output.push_back(func(x));

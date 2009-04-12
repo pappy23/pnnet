@@ -6,6 +6,7 @@
 
 using namespace std;
 using namespace pann;
+using namespace pann::OpenGlAttributes;
 
 GLWidget::GLWidget(Net* _net, QLabel* _label, QWidget *parent)
     : QGLWidget(parent), p_net(_net), info_label(_label)
@@ -33,37 +34,36 @@ void GLWidget::calcCoords()
         unsigned layer_size = cache.layers[layer].size();
         for(unsigned i = 0; i < layer_size; ++i)
         {
-            const Neuron* neuron = cache.layers[layer][i];
+            const Neuron& neuron = *cache.layers[layer][i];
             unsigned planeRows = sqrt(layer_size);
             unsigned planeCols = layer_size / planeRows;
 
-            const AttributesManager oglHint(const_cast<Neuron*>(neuron));
             Coords c;
 
-            if(oglHint.is(OpenGlHint::coord_x))
-                c.x = oglHint[OpenGlHint::coord_x];
+            if(neuron.is(coord_x))
+                c.x = neuron[coord_x];
             else
                 c.x = (GLdouble) ( (GLdouble)layer - total_layers/2.0 + 1.0) * 100;
 
-            if(oglHint.is(OpenGlHint::coord_y))
-                c.y = oglHint[OpenGlHint::coord_y];
+            if(neuron.is(coord_y))
+                c.y = neuron[coord_y];
             else
                 c.y = (GLdouble) ( (GLdouble)(i / planeCols) - planeRows/2.0 + 1.0 ) * 40.0;
             
-            if(oglHint.is(OpenGlHint::coord_z))
-                c.z = oglHint[OpenGlHint::coord_z];
+            if(neuron.is(coord_z))
+                c.z = neuron[coord_z];
             else
                 c.z = (GLdouble) ( (GLdouble)(i % planeCols) - planeCols/2.0 + 1.0 ) * 40.0;
 
             c.color = QColor(255, 0, 0);
-            if(oglHint.is(OpenGlHint::color_r))
-                c.color.setRed(oglHint[OpenGlHint::color_r]);
-            if(oglHint.is(OpenGlHint::color_g))
-                c.color.setGreen(oglHint[OpenGlHint::color_g]);
-            if(oglHint.is(OpenGlHint::color_b))
-                c.color.setBlue(oglHint[OpenGlHint::color_b]);
+            if(neuron.is(color_r))
+                c.color.setRed(neuron[color_r]);
+            if(neuron.is(color_g))
+                c.color.setGreen(neuron[color_g]);
+            if(neuron.is(color_b))
+                c.color.setBlue(neuron[color_b]);
 
-            coords[neuron] = c;
+            coords[&neuron] = c;
         }
     }
 }
@@ -108,7 +108,7 @@ void GLWidget::drawNetModel()
                 if(linkRate > 1 && (rand() % linkRate != 0))
                     continue;
 
-                Coords from_coords = coords[link_iter->getTo()];
+                Coords from_coords = coords[&link_iter->getTo()];
 
                 glBegin(GL_LINES);
                 glVertex3d(from_coords.x, from_coords.y, from_coords.z);

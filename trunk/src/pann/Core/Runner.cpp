@@ -29,20 +29,20 @@ namespace pann
     void
     FeedforwardPropagationRunner::run(Neuron& _neuron, const Net& _net)
     {
-        if(!_neuron.getActivationFunction())
+        if(!_neuron.hasActivationFunction())
             return;
 
         Float receptiveField = 0;
-        if(_neuron.bias)
-            receptiveField += (*_neuron.bias)[Weight::value];
+        if(_neuron.hasBias())
+            receptiveField += _neuron.getBias()[Weight::value];
 
         BOOST_FOREACH( Link& link, _neuron.links )
         {
             if(link.getDirection() == Link::in)
-                receptiveField += link.getTo()[Neuron::activationValue] * (*link.weight)[Weight::value];
+                receptiveField += link.getTo()[Neuron::activationValue] * link.getWeight()[Weight::value];
         }
 
-        _neuron[Neuron::activationValue] = _neuron.getActivationFunction()->f(receptiveField);
+        _neuron[Neuron::activationValue] = _neuron.getActivationFunction().f(receptiveField);
     } //run
 
     RunDirection

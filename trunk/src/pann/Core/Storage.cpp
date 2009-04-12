@@ -18,12 +18,11 @@ namespace pann
 
             cout<<"Saving net to "<<_filename<<"..."<<endl;
             binary_oarchive oa(ofs);
-            //try {
+            try {
                 oa << BOOST_SERIALIZATION_NVP(_obj);
-          //  } catch(boost::archive::archive_exception& e) {
-            //} catch(...) {
-             //   throw E<Exception::FilesystemError>()<<"Storage::save(): failed to save net. Boost exception thrown.\n";
-            //}
+            } catch(boost::archive::archive_exception& e) {
+                throw E<Exception::FilesystemError>()<<"Storage::save(): failed to save net. Boost exception thrown.\n";
+            }
 
             ofs.close();
         } //save
@@ -36,12 +35,11 @@ namespace pann
             
             cout<<"Loading net from "<<_filename<<"..."<<endl;
             binary_iarchive ia(ifs);
-            //try {
+            try {
                 ia >> BOOST_SERIALIZATION_NVP(_obj);
-          //  } catch(boost::archive::archive_exception& e) {
-            //} catch(...) {
-            //    throw E<Exception::FilesystemError>()<<"Storage::load(): failed to load net. Boost exception thrown.\n";
-            //}
+            } catch(boost::archive::archive_exception& e) {
+                throw E<Exception::FilesystemError>()<<"Storage::load(): failed to load net. Boost exception thrown.\n";
+            }
 
             ifs.close();
         } //load

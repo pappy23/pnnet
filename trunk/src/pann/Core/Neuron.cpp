@@ -6,12 +6,12 @@ using namespace std;
 
 namespace pann
 {
-    const AttributeName Neuron::activationValue = hash("Neuron::activationValue", "Native");
+    const AttributeName Neuron::activationValue = hash("Neuron::activationValue", NativeParameters);
 
-    Neuron::Neuron(ActivationFunction::Base* _activationFunction) throw()
+    Neuron::Neuron(ActivationFunction::Base* _activationFunction, Weight* _bias) throw()
     {
         activationFunction = _activationFunction;
-        bias = 0;
+        bias = _bias;
         
         if(activationFunction)
             (*this)[activationValue] = _activationFunction->f(0);
@@ -21,11 +21,50 @@ namespace pann
     {
     } //~Neuron
 
-    const ActivationFunction::Base*
-    Neuron::getActivationFunction() const throw()
+    bool
+    Neuron::hasActivationFunction() const throw()
     {
-        return activationFunction;
+        if(!activationFunction)
+            return false;
+
+        return true;
+    } //hasActivationFunction
+
+    const ActivationFunction::Base&
+    Neuron::getActivationFunction() const throw(E<Exception::ObjectNotFound>)
+    {
+        if(!activationFunction)
+            throw E<Exception::ObjectNotFound>()<<"Neuron::getActivationFunction(): No activation function!\n";
+
+        return *activationFunction;
     } //getOwnerThread
+
+    bool
+    Neuron::hasBias() const throw()
+    {
+        if(bias)
+            return true;
+
+        return false;
+    } //hasBias
+
+    Weight&
+    Neuron::getBias() throw(E<Exception::ObjectNotFound>)
+    {
+        if(!bias)
+            throw E<Exception::ObjectNotFound>()<<"Link::getBias(): No bias\n";
+
+        return *bias;
+    } //getBias
+
+    const Weight&
+    Neuron::getBias() const throw(E<Exception::ObjectNotFound>)
+    {
+        if(!bias)
+            throw E<Exception::ObjectNotFound>()<<"Link::getBias(): No bias\n";
+
+        return *bias;
+    } //getBias
 
     list<Link>::iterator
     Neuron::findLink(Neuron* _to, Link::Direction _direction) throw(E<Exception::MultipleOccurance>, E<Exception::ObjectNotFound>)

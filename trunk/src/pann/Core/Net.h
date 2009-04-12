@@ -36,7 +36,7 @@ namespace pann
          * Manage connections between neurons
          * TODO: add connections with different latencies (shortcut links)
          */
-        Weight& addConnection(Neuron* _from, Neuron* _to, Weight* _weight = 0) throw();
+        Weight* addConnection(Neuron* _from, Neuron* _to, Weight* _weight) throw();
         void delConnection(Neuron* _from, Neuron* _to) throw(E<Exception::Unbelievable>);
 
         /**
@@ -56,7 +56,7 @@ namespace pann
          * Note: layers are computed automaticaly and stored in cache
          * See regenerateCache() implementation for more details
          */
-        void run(Runner* _runner, unsigned _threads = 0) throw();
+        void run(Runner& _runner, unsigned _threads = 0) throw();
 
         /**
          * Public interface to private attributes
