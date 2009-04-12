@@ -4,31 +4,10 @@
 #include "Includes.h"
 #include "Exception.h"
 #include "Type.h"
+#include "Attribute.h"
 
 namespace pann
 {
-    typedef std::size_t HashType;
-
-    typedef struct {
-
-        HashType name;
-        HashType group;
-
-        /* Serialization */
-        template<class Archive>
-            void serialize(Archive & ar, const unsigned int version)
-            {
-                 ar & BOOST_SERIALIZATION_NVP(name)
-                    & BOOST_SERIALIZATION_NVP(group);
-            };
-    } AttributeName;
-
-    typedef Float AttributeType;
-
-    HashType hash(const char* _name) throw();
-    AttributeName hash(const char* _name, const char* _group) throw();
-    bool operator<(const AttributeName& _lhs, const AttributeName& _rhs) throw();
-
     class Object
     {
     public:

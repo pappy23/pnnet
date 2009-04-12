@@ -11,7 +11,7 @@ namespace pann
         /*
          * TODO: write documentation
          */
-        Net* MultilayerPerceptron(std::vector<unsigned> layers, ActivationFunction::Base* af);
+        Net& MultilayerPerceptron(std::vector<unsigned> layers, ActivationFunction::Base* af);
     };
 
 }; //pann

@@ -6,14 +6,12 @@
 #define PANN_H
 
 #include "Core/ActivationFunction.h"
-#include "Core/Attributes.h"
-#include "Core/AttributesManager.h"
+#include "Core/Attribute.h"
 #include "Core/Exception.h"
 #include "Core/Includes.h"
 #include "Core/LearningAlgorithm.h"
 #include "Core/Moo.h"
 #include "Core/Net.h"
-#include "Core/OpenGlAttributes.h"
 #include "Core/Storage.h"
 #include "Core/Type.h"
 #include "Core/Util.h"

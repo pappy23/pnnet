@@ -8,12 +8,13 @@ namespace pann
 {
     namespace NetworkModel
     {
-        Net* MultilayerPerceptron(vector<unsigned> _layers, ActivationFunction::Base* _af)
+        Net&
+        MultilayerPerceptron(vector<unsigned> _layers, ActivationFunction::Base* _af)
         {
             Net* net = new Net();
      
             if(_layers.size() == 0)
-                return net;
+                return *net;
 
             vector< vector<Neuron*> > mlp(_layers.size());
 
@@ -26,7 +27,7 @@ namespace pann
             }
 
             if(_layers.size() < 2)
-                return net;
+                return *net;
 
             //Layers
             //TODO: OpenGlHint
@@ -40,11 +41,7 @@ namespace pann
                     else
                         af = _af;
 
-                    Neuron* n = new Neuron(af);
-                    mlp[l].push_back(n);
-
-                    //Add bias
-                    n->bias = new Weight(1);
+                    mlp[l].push_back(new Neuron(af, new Weight(1))); //Neuron with bias
                 }
        
             //Connections
@@ -52,9 +49,9 @@ namespace pann
                 for(unsigned j = 0; j < mlp[i].size(); j++) //prev layer
                     for(unsigned k = 0; k < mlp[i+1].size(); k++) //next layer
                         //Connection from current layer (i) to next (i+1)
-                        net->addConnection(mlp[i][j], mlp[i+1][k]);
+                        net->addConnection(mlp[i][j], mlp[i+1][k], new Weight(1));
             
-            return net;
+            return *net;
         };
     };
 

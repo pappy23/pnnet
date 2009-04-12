@@ -19,19 +19,24 @@ namespace pann
         /* Private attributes */
     private:
         ActivationFunction::Base* activationFunction;
+        Weight* bias;
 
         /* Public attributes */
     public:
         //TODO: make links private to prevent user from modifying connections
         std::list<Link> links; //!< List of Link, both directions
-        Weight* bias;
     
         /* Public interface */
     public:
-        Neuron(ActivationFunction::Base*) throw();
+        Neuron(ActivationFunction::Base*, Weight* _bias = 0) throw();
         virtual ~Neuron() throw();
 
-        const ActivationFunction::Base* getActivationFunction() const throw();
+        bool hasActivationFunction() const throw();
+        const ActivationFunction::Base& getActivationFunction() const throw(E<Exception::ObjectNotFound>);
+
+        bool hasBias() const throw();
+        Weight& getBias() throw(E<Exception::ObjectNotFound>);
+        const Weight& getBias() const throw(E<Exception::ObjectNotFound>);
 
         /**
          * Helper. Finds and returns Link* for Neuron _to
@@ -50,7 +55,6 @@ namespace pann
 
                 ar & BOOST_SERIALIZATION_BASE_OBJECT_NVP(Object)
                  & BOOST_SERIALIZATION_NVP(activationFunction)
-                 & BOOST_SERIALIZATION_NVP(activationValue)
                  & BOOST_SERIALIZATION_NVP(links)
                  & BOOST_SERIALIZATION_NVP(bias);
             };

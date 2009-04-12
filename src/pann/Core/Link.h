@@ -24,20 +24,20 @@ namespace pann
         /* Private members */
     private:
         Neuron* to;
+        Weight* weight; //!< Pointer to Weight object (might be shared between different links)
         Direction direction;
         unsigned latency;
-
-        /* Public members */
-    public:
-        Weight* weight; //!< Pointer to Weight object (might be shared between different links)
 
         /* Public interface */
     public:
         Link(Neuron* _to, const Direction _direction, Weight* _weight, unsigned const _latency = 1) throw();
         virtual ~Link() throw();
 
-        Neuron& getTo() throw();  
-        const Neuron&  getTo() const throw();
+        Neuron& getTo() throw(E<Exception::ObjectNotFound>);  
+        const Neuron&  getTo() const throw(E<Exception::ObjectNotFound>);
+
+        Weight& getWeight() throw(E<Exception::ObjectNotFound>);
+        const Weight& getWeight() const throw(E<Exception::ObjectNotFound>);
 
         Direction getDirection() const throw();
         unsigned getLatency() const throw();

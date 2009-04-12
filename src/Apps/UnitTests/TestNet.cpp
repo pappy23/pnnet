@@ -12,7 +12,7 @@ using namespace boost;
 int main()
 {
     const unsigned runs_count = 3;
-    const unsigned layers_count = 10;
+    const unsigned layers_count = 2;
 
     TrainPattern tp(1, 1);
     tp.input[0] = -100;
@@ -21,10 +21,10 @@ int main()
         vector<unsigned> layers;
         layers.push_back(1);
         for(unsigned i = 0; i < layers_count; ++i)
-            layers.push_back(100);
+            layers.push_back(10);
         layers.push_back(1);
 
-        Net* net = NetworkModel::MultilayerPerceptron(layers, ActivationFunction::TanH::Instance());
+        Net& net = NetworkModel::MultilayerPerceptron(layers, ActivationFunction::TanH::Instance());
 
         cout<<"MLP ready\n";
 
@@ -37,19 +37,19 @@ int main()
                 cout.flush();
                 {
                     progress_timer t;
-                    net->setInput(tp.input);
-                    net->run(FeedforwardPropagationRunner::Instance());
+                    net.setInput(tp.input);
+                    net.run(FeedforwardPropagationRunner::Instance());
                 }
             }
             cout<<"Total: ";
         }
         //Output
         valarray<Float> output;
-        net->getOutput(output);
+        net.getOutput(output);
         cout<<"Test output: "<<setprecision(5)<<fixed<<output[0]<<endl;
     
         //Serialization test
-        Storage::save(*net, "test_net.xml");
+        Storage::save(net, "test_net.xml");
 
         //Memory consumption test
         cout<<"It's time to do memory test\n";

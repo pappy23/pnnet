@@ -74,15 +74,14 @@ int main(int argc, char* argv[])
     layers.push_back(16);  //hidden - tanh
     layers.push_back(9);   //hidden - tanh
     layers.push_back(3);   //output - linear
-    Net* net = NetworkModel::MultilayerPerceptron(layers, ActivationFunction::TanH::Instance());
+    Net& net = NetworkModel::MultilayerPerceptron(layers, ActivationFunction::TanH::Instance());
 
     //Learning
     vector<Float> train_error_info; //MSE
 
-    Lms::init(*net);
-    AttributesManager net_hint(net);
-    net_hint[LmsAttributes::learningRate] = 0.01;
-    net_hint[LmsAttributes::learningMomentum] = 0.1;
+    Lms::init(net);
+    net[LmsAttributes::learningRate] = 0.01;
+    net[LmsAttributes::learningMomentum] = 0.1;
     Util::randomizeWeightsGauss(*net, -0.1, 0.1);
     
     const unsigned epochs = 100;
@@ -91,7 +90,7 @@ int main(int argc, char* argv[])
     {
         ++progress;
         td.shuffle();
-        Lms::train(*net, td);
+        Lms::train(net, td);
         train_error_info.push_back(td.getMse());
     }
 

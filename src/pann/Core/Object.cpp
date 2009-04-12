@@ -4,26 +4,6 @@
 
 namespace pann
 {             
-    HashType
-    hash(const char* _name) throw()
-    {
-        static boost::hash<std::string> hasher;
-        return hasher(_name);
-    } //hash
-
-    AttributeName
-    hash(const char* _name, const char* _group) throw()
-    {
-        AttributeName result = { hash(_name), hash(_group) };
-
-        return result;
-    } //hash
-
-    bool operator<(const AttributeName& _lhs, const AttributeName& _rhs) throw()
-    {
-        return (_lhs.name + _lhs.group < _rhs.name + _rhs.group);
-    } //operator<
-        
     Object::Object() throw()
     {                              
         attributes = 0;
