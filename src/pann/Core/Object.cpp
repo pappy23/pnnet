@@ -60,12 +60,16 @@ namespace pann
     void
     Object::erase() throw()
     {
-        delete attributes;
+        if(attributes)
+            delete attributes;
     } //erase
 
     void
     Object::erase(HashType _groupName) throw()
     {
+        if(!attributes)
+            return;
+
         std::map<AttributeName, AttributeType>::iterator iter = attributes->begin();
         for(; iter != attributes->end(); ++iter)
             if(iter->first.group == _groupName)

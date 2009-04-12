@@ -82,7 +82,7 @@ int main(int argc, char* argv[])
     Lms::init(net);
     net[LmsAttributes::learningRate] = 0.01;
     net[LmsAttributes::learningMomentum] = 0.1;
-    Util::randomizeWeightsGauss(*net, -0.1, 0.1);
+    Util::randomizeWeightsGauss(net, -0.1, 0.1);
     
     const unsigned epochs = 100;
     progress_display progress(epochs);
