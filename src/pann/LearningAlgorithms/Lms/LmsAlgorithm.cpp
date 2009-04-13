@@ -33,7 +33,7 @@ namespace pann
         BOOST_FOREACH(TrainPattern& tp, _trainData.data)
         {
             _net.setInput(tp.input);
-            _net.run(LmsFeedforwardRunner::Instance());
+            _net.run(FeedforwardPropagationRunner::Instance());
             _net.getOutput(tp.error);
             tp.error = tp.desired_output - tp.error;
             

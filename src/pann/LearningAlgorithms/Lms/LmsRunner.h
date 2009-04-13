@@ -13,23 +13,6 @@
 
 namespace pann
 {
-    class LmsFeedforwardRunner : public Runner
-    {
-    private:
-        static Runner* self;
-
-    private:
-        LmsFeedforwardRunner() throw();
-
-    public:
-        ~LmsFeedforwardRunner() throw();
-
-    public:
-        static Runner& Instance() throw();
-        virtual void run(Neuron& _neuron, const Net& _net) throw();
-        virtual RunDirection getDirection() throw();
-    };
-
     class LmsBackpropagationRunner : public Runner
     {
     private:
