@@ -51,7 +51,7 @@ int main()
         cout<<"Test output: "<<setprecision(5)<<fixed<<output[0]<<endl;
     
         //Serialization test
-        Storage::save(net, "test_net.xml");
+        Storage::save<Storage::xml_out>(net, "test_net.xml");
 
         //Memory consumption test
         cout<<"It's time to do memory test\n";
@@ -60,7 +60,7 @@ int main()
 
     Net net2;
     cout<<"New net...OK\n";
-    Storage::load(net2, "test_net.xml");
+    Storage::load<Storage::xml_in>(net2, "test_net.xml");
     cout<<"Loading done\n";
 
     //Test run()

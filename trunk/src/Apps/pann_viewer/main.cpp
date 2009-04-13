@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
     Net *net = new Net;
 
     try {
-        Storage::load(*net, argv[1]);
+        Storage::autoload(*net, argv[1]);
     } catch(E<Exception::FilesystemError>& e) {
         QMessageBox::information(0, argv[0], e.what());
         return -1;
