@@ -24,6 +24,7 @@
 #include "TrainData/TrainDataGenerator.h"
 
 #include "NetworkModels/MultilayerPerceptron.h"
+#include "NetworkModels/ConvolutionalNetwork.h"
 
 #include "LearningAlgorithms/Lms.h"
 

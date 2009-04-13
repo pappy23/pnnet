@@ -23,7 +23,7 @@ int main()
         vector<unsigned> layers;
         layers.push_back(1);
         for(unsigned i = 0; i < layers_count; ++i)
-            layers.push_back(10);
+            layers.push_back(9);
         layers.push_back(1);
 
         Net& net = NetworkModel::MultilayerPerceptron(layers, ActivationFunction::TanH::Instance());
