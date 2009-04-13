@@ -6,13 +6,14 @@
 #ifndef LINK_H
 #define LINK_H
 
-#include "Includes.h"
+#include "Includes/BoostSerialization.h"
+
 #include "Object.h"
-#include "Weight.h"
 
 namespace pann
 {
     class Neuron;
+    class Weight;
 
     //! Link between two neurons
     class Link : public Object

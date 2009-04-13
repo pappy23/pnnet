@@ -1,12 +1,14 @@
 #ifndef TRAINDATA_H
 #define TRAINDATA_H
 
-#include "Core/Includes.h"
+#include <vector>
+
 #include "Core/Type.h"
-#include "TrainPattern.h"
 
 namespace pann
 {
+    class TrainPattern;
+
     class TrainData
     {
         /* Public interface */

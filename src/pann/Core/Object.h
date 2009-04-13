@@ -1,9 +1,10 @@
 #ifndef OBJECT_H
 #define OBJECT_H
 
-#include "Includes.h"
+#include <map>
+
+#include "Includes/BoostSerialization.h"
 #include "Exception.h"
-#include "Type.h"
 #include "Attribute.h"
 
 namespace pann

@@ -2,6 +2,10 @@
 
 #include "MultilayerPerceptron.h"
 
+#include "Core/Net.h"
+#include "Core/Neuron.h"
+#include "Core/Weight.h"
+
 using namespace std;
 
 namespace pann

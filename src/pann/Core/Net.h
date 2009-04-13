@@ -3,16 +3,27 @@
 #ifndef NET_H
 #define NET_H
 
-#include "Includes.h"
+#include <valarray>
+#include <vector>
+#include <list>
+
+#include <boost/thread.hpp>
+#include <boost/thread/barrier.hpp>
+
+#include "Includes/BoostSerialization.h"
+
 #include "Object.h"
-#include "Neuron.h"
+#include "Exception.h"
 #include "NetCache.h"
-#include "Runner.h"
 
 //TODO: documentation is not up to date
 
 namespace pann
 {
+    class Neuron;
+    class Weight;
+    class Runner;
+
     class Net : public Object
     {
         /* Public interface */

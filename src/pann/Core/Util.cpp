@@ -1,6 +1,14 @@
 //Util.cpp
 
+#include <boost/random.hpp>
+
 #include "Util.h"
+
+#include "Net.h"
+#include "NetCache.h"
+#include "Neuron.h"
+#include "Link.h"
+#include "Weight.h"
 
 using namespace std;
 

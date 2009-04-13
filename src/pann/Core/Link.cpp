@@ -2,6 +2,9 @@
 
 #include "Link.h"
 
+#include "Weight.h"
+#include "Neuron.h"
+
 namespace pann
 {
     Link::Link(Neuron* _to, const Link::Direction _direction, Weight* _w, unsigned const _latency) throw()

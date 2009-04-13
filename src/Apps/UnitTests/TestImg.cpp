@@ -1,5 +1,9 @@
 #include <iostream>
 
+#include <boost/gil/gil_all.hpp>
+#include <boost/gil/extension/io/jpeg_io.hpp>
+#include <boost/progress.hpp>
+
 #include "pann.h"
 #include "gnuplot_i.hpp"
 

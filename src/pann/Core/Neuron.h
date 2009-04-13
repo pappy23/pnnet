@@ -3,13 +3,20 @@
 #ifndef NEURON_H
 #define NEURON_H
 
-#include "Includes.h"
+#include <list>
+
+#include "Includes/BoostSerialization.h"
+
 #include "Object.h"
+#include "Exception.h"
 #include "ActivationFunction.h"
 #include "Link.h"
 
 namespace pann
 {
+    class Weight;
+    class Link;
+
     class Neuron : public Object
     {
         /* Attributes */
@@ -38,6 +45,7 @@ namespace pann
         bool hasBias() const throw();
         Weight& getBias() throw(E<Exception::ObjectNotFound>);
         const Weight& getBias() const throw(E<Exception::ObjectNotFound>);
+        virtual void fire();
 
         /**
          * Helper. Finds and returns Link* for Neuron _to

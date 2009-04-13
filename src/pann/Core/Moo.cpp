@@ -1,8 +1,8 @@
 //Moo.cpp
 
-#include "Moo.h"
+#include <iostream>
 
-using std::cout;
+#include "Moo.h"
 
 namespace pann
 {             

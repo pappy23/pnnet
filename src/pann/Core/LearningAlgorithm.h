@@ -6,12 +6,11 @@
 #ifndef LEARNINGALGORITHM_H
 #define LEARNINGALGORITHM_H
 
-#include "Includes.h"
-#include "TrainData/TrainData.h"
-#include "Net.h"
-
 namespace pann
 {
+    class Net;
+    class TrainData;
+
     class LearningAlgorithm
     {
     public:

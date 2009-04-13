@@ -3,7 +3,13 @@
  * Initialization of ActivationFunction::Base static members
  */
 
+#include <boost/foreach.hpp>
+
 #include "ActivationFunction.h"
+
+#include "Neuron.h"
+#include "Link.h"
+#include "Weight.h"
 
 BOOST_CLASS_EXPORT(pann::ActivationFunction::Linear);
 BOOST_CLASS_EXPORT(pann::ActivationFunction::Threshold);
@@ -66,7 +72,7 @@ namespace pann
                 if(link.getDirection() == Link::in)
                     _n[Neuron::receptiveField] += link.getTo()[Neuron::activationValue] * link.getWeight()[Weight::value];
 
-            _n[Neuron::activationValue] = _neuron.getActivationFunction().f(_n[Neuron::receptiveField]);
+            _n[Neuron::activationValue] = _n.getActivationFunction().f(_n[Neuron::receptiveField]);
         } //fire
 
         Base* Threshold::self = 0;
@@ -115,7 +121,7 @@ namespace pann
                 if(link.getDirection() == Link::in)
                     _n[Neuron::receptiveField] += link.getTo()[Neuron::activationValue] * link.getWeight()[Weight::value];
 
-            _n[Neuron::activationValue] = _neuron.getActivationFunction().f(_n[Neuron::receptiveField]);
+            _n[Neuron::activationValue] = _n.getActivationFunction().f(_n[Neuron::receptiveField]);
         } //fire
 
         Base* TanH::self = 0;
@@ -164,7 +170,7 @@ namespace pann
                 if(link.getDirection() == Link::in)
                     _n[Neuron::receptiveField] += link.getTo()[Neuron::activationValue] * link.getWeight()[Weight::value];
 
-            _n[Neuron::activationValue] = _neuron.getActivationFunction().f(_n[Neuron::receptiveField]);
+            _n[Neuron::activationValue] = _n.getActivationFunction().f(_n[Neuron::receptiveField]);
         } //fire
 
     }; //ActivationFunction

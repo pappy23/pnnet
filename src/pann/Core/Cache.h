@@ -6,8 +6,7 @@
 #ifndef CACHE_H
 #define CACHE_H
 
-#include "Includes.h"
-#include "Object.h"
+#include "Includes/BoostSerialization.h"
 
 namespace pann
 {

@@ -1,6 +1,17 @@
 //Storage.cpp
 
+#include <iostream>
+#include <sstream>
+#include <fstream>
+
+#include "Includes/BoostSerialization.h"
+
 #include "Storage.h"
+
+#include "Net.h"
+#include "Neuron.h"
+#include "Link.h"
+#include "Weight.h"
 
 using namespace std;
 using namespace boost::archive;

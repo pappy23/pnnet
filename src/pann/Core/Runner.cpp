@@ -5,6 +5,9 @@
 
 #include "Runner.h"
 
+#include "Net.h"
+#include "Neuron.h"
+
 namespace pann
 {
     Runner* FeedforwardPropagationRunner::self = 0;

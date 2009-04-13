@@ -2,13 +2,15 @@
 #ifndef TRAINDATAGENERATOR_H
 #define TRAINDATAGENERATOR_H
 
-#include "Core/Includes.h"
+#include <boost/function.hpp>
+#include <string>
+
 #include "Core/Type.h"
-#include "Core/Util.h"
-#include "TrainData.h"
 
 namespace pann
 {
+    class TrainData;
+
     namespace DataGenerator
     {
         TrainData* generateFromFunction(Float _min, Float _max, unsigned _count, boost::function<Float (Float _x)> _f);

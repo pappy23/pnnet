@@ -1,12 +1,14 @@
 #ifndef UTIL_H
 #define UTIL_H
 
-#include "Includes.h"
+#include <valarray>
+
 #include "Type.h"
-#include "Net.h"
 
 namespace pann
 {
+    class Net;
+
     namespace Util
     {
         std::valarray<Float> squash_copy(const std::valarray<Float> & _v, Float _min, Float _max) throw();

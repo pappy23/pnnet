@@ -34,7 +34,6 @@ namespace pann
             throw E<Exception::ObjectNotFound>()<<"Attributes::unset(): attribute "<<_attributeName.name<<" not found\n";  
     } //unset                                  
 
-    
     AttributeType&
     Object::operator[](const AttributeName _attributeName) throw()
     {
