@@ -7,12 +7,15 @@ using namespace std;
 namespace pann
 {
     const AttributeName Neuron::activationValue = hash("Neuron::activationValue", NativeParameters);
+    const AttributeName Neuron::receptiveField = hash("Neuron::receptiveField", NativeParameters);
 
     Neuron::Neuron(ActivationFunction::Base* _activationFunction, Weight* _bias) throw()
     {
         activationFunction = _activationFunction;
         bias = _bias;
         
+        (*this)[receptiveField] = 0;
+
         if(activationFunction)
             (*this)[activationValue] = _activationFunction->f(0);
     } //Neuron

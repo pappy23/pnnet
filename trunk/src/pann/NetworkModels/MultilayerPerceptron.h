@@ -1,6 +1,7 @@
 //MultilayerPerceptron.cpp
 
 #include "Core/Includes.h"
+#include "Core/Neuron.h"
 #include "Core/ActivationFunction.h"
 #include "Core/Net.h"
 

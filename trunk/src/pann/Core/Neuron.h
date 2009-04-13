@@ -15,6 +15,7 @@ namespace pann
         /* Attributes */
     public:
         static const AttributeName activationValue;
+        static const AttributeName receptiveField;
 
         /* Private attributes */
     private:

@@ -9,11 +9,16 @@
 #include "Includes.h"
 #include "Type.h"
 #include "Exception.h"
+#include "Neuron.h"
 
 namespace pann
 {
     namespace ActivationFunction
     {
+        class Neuron;
+        class Link;
+        class Weight;
+
         void boost_export() throw();
 
         /**
@@ -30,6 +35,8 @@ namespace pann
 
             virtual Float f(Float) const throw() = 0;
             virtual Float derivative_dy(Float) const throw() = 0;
+
+            virtual void fire(Neuron&) = 0;
 
         /* Serialization */
         private:
@@ -56,6 +63,7 @@ namespace pann
             static Base* Instance() throw();
             virtual Float f(Float _x) const throw();
             virtual Float derivative_dy(Float) const throw();
+            virtual void fire(Neuron&);
 
             /* Serialization */
         private:
@@ -89,6 +97,7 @@ namespace pann
             static Base* Instance() throw();
             virtual Float f(Float _x) const throw();
             virtual Float derivative_dy(Float) const throw();
+            virtual void fire(Neuron&);
 
             /* Serialization */
         private:
@@ -125,6 +134,7 @@ namespace pann
             static Base* Instance() throw();
             virtual Float f(Float _x) const throw();
             virtual Float derivative_dy(Float) const throw();
+            virtual void fire(Neuron&);
  
             /* Serialization */
         private:

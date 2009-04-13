@@ -6,63 +6,6 @@ using namespace pann::LmsAttributes;
 
 namespace pann
 {
-    Runner* LmsFeedforwardRunner::self = 0;
-    Runner* LmsBackpropagationRunner::self = 0;
-
-    LmsFeedforwardRunner::LmsFeedforwardRunner() throw()
-    {
-    } //LmsFeedforwardRunner
-
-    LmsFeedforwardRunner::~LmsFeedforwardRunner() throw()
-    {
-    } //~LmsFeedforwardRunner
-
-    Runner&
-    LmsFeedforwardRunner::Instance() throw()
-    {
-        if(!self)
-            self = new LmsFeedforwardRunner();
-
-        return *self;
-    } //Instance
-
-    void
-    LmsFeedforwardRunner::run(Neuron& _neuron, const Net& _net) throw()
-    {
-        if(!_neuron.is(LMS))
-        {
-            _neuron.erase(AlgorithmSpecificLearningParameters);
-            _neuron[LMS] = 1.0;
-        }
-
-        //Usually we don't need to do anything with input neurons, but lastReceptiveField
-        //is required by LMS even for them
-        if(!_neuron.hasActivationFunction())
-        {
-            _neuron[lastReceptiveField] = _neuron[Neuron::activationValue];
-            return;
-        }
-
-        Float receptiveField = 0;
-        if(_neuron.hasBias())
-            receptiveField += _neuron.getBias()[Weight::value];
-
-        BOOST_FOREACH( Link& link, _neuron.links )
-        {
-            if(link.getDirection() == Link::in)
-                receptiveField += link.getTo()[Neuron::activationValue] * link.getWeight()[Weight::value];
-        }
-
-        _neuron[Neuron::activationValue] = _neuron.getActivationFunction().f(receptiveField);
-        _neuron[lastReceptiveField] = receptiveField;
-    } //run
-
-    RunDirection
-    LmsFeedforwardRunner::getDirection() throw()
-    {
-        return ForwardRun;
-    } //getDirection
-
     LmsBackpropagationRunner::LmsBackpropagationRunner() throw()
     {
     } //LmsBackpropagationRunner
@@ -84,7 +27,10 @@ namespace pann
     LmsBackpropagationRunner::run(Neuron& _neuron, const Net& _net) throw(E<Exception::NotReady>)
     {
         if(!_neuron.is(LMS))
-            throw E<Exception::NotReady>()<<"LmsBackpropagationRunner::run(): Feedforward run wasn't made\n";
+        {
+            _neuron.erase(AlgorithmSpecificLearningParameters);
+            _neuron[LMS] = 1.0;
+        }
 
         //local_gradient = desired_output - actual_output = error - for output neuron
         //local_gradient = weighted sum of upstream neurons local_gradients

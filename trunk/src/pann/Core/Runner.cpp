@@ -32,17 +32,7 @@ namespace pann
         if(!_neuron.hasActivationFunction())
             return;
 
-        Float receptiveField = 0;
-        if(_neuron.hasBias())
-            receptiveField += _neuron.getBias()[Weight::value];
-
-        BOOST_FOREACH( Link& link, _neuron.links )
-        {
-            if(link.getDirection() == Link::in)
-                receptiveField += link.getTo()[Neuron::activationValue] * link.getWeight()[Weight::value];
-        }
-
-        _neuron[Neuron::activationValue] = _neuron.getActivationFunction().f(receptiveField);
+        _neuron.fire();
     } //run
 
     RunDirection
