@@ -46,7 +46,7 @@ int main()
     test(net, -4.0, +4.0, +0.01);
 
     //Save trained net
-    Storage::save(net, "test_lms.xml");
+    Storage::save<Storage::xml_out>(net, "test_lms.xml");
 
     //Plotting error graph
     try {
