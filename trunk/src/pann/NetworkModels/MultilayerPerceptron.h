@@ -1,12 +1,13 @@
 //MultilayerPerceptron.cpp
 
-#include "Core/Includes.h"
-#include "Core/Neuron.h"
+#include <vector>
+
 #include "Core/ActivationFunction.h"
-#include "Core/Net.h"
 
 namespace pann
 {
+    class Net;
+
     namespace NetworkModel
     {
         /*

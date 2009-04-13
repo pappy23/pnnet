@@ -6,19 +6,16 @@
 #ifndef ACTIVATIONFUNCTION_H
 #define ACTIVATIONFUNCTION_H
 
-#include "Includes.h"
+#include "Includes/BoostSerialization.h"
+
 #include "Type.h"
-#include "Exception.h"
-#include "Neuron.h"
 
 namespace pann
 {
+    class Neuron;
+
     namespace ActivationFunction
     {
-        class Neuron;
-        class Link;
-        class Weight;
-
         void boost_export() throw();
 
         /**

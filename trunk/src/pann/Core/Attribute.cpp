@@ -1,5 +1,7 @@
 //Attribute.cpp
 
+#include <boost/functional/hash.hpp>
+
 #include "Attribute.h"
 
 namespace pann

@@ -2,6 +2,8 @@
 
 #include "TrainData.h"
 
+#include "TrainPattern.h"
+
 using namespace std;
 
 namespace pann

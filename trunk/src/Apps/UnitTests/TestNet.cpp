@@ -3,6 +3,8 @@
 #include <iostream>
 #include <iomanip>
 
+#include <boost/progress.hpp>
+
 #include "pann.h"
 
 using namespace std;

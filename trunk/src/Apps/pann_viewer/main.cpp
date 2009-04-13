@@ -10,13 +10,17 @@ using namespace pann;
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
-    QMessageBox err_msg;
 
     if(argc != 2)
     {
         //TODO replace pann_viewer with argv[0]
-        err_msg.setText("Usage: pann_viewer <filename>");
-        err_msg.exec();
+        QMessageBox::information(0, argv[0], "Usage: pann_viewer <filename>");
+        return -1;
+    }
+
+    if(!QGLFormat::hasOpenGL())
+    {
+        QMessageBox::information(0, argv[0], "System does not support OpenGL");
         return -1;
     }
 
@@ -25,8 +29,7 @@ int main(int argc, char *argv[])
     try {
         Storage::load(*net, argv[1]);
     } catch(E<Exception::FilesystemError>& e) {
-        err_msg.setText(e.what());
-        err_msg.exec();
+        QMessageBox::information(0, argv[0], e.what());
         return -1;
     }
 

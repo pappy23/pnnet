@@ -2,14 +2,13 @@
 #ifndef LMSALGORITHM_H
 #define LMSALGORITHM_H
 
-#include "Core/Includes.h"
-#include "Core/Util.h"
-#include "Core/Net.h"
 #include "Core/LearningAlgorithm.h"
-#include "LmsRunner.h"
 
 namespace pann
 {
+    class Net;
+    class TrainData;
+
     class Lms : public LearningAlgorithm
     {
         /* Public interface */

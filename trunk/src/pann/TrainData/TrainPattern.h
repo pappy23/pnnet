@@ -1,7 +1,8 @@
 #ifndef TRAINPATTERN_H
 #define TRAINPATTERN_H
 
-#include "Core/Includes.h"
+#include <valarray>
+
 #include "Core/Exception.h"
 #include "Core/Type.h"
 

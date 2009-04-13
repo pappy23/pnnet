@@ -1,6 +1,16 @@
 //TrainDataGenerator.cpp
 
+#include <boost/gil/gil_all.hpp>
+#include <boost/gil/extension/io/jpeg_io.hpp>
+//#include <boost/gil/extension/numeric/sampler.hpp>
+//#include <boost/gil/extension/numeric/resample.hpp>
+
+#include "Core/Util.h"
+
 #include "TrainDataGenerator.h"
+
+#include "TrainData.h"
+#include "TrainPattern.h"
 
 using namespace std;
 using namespace boost;

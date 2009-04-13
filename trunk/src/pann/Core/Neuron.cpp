@@ -2,6 +2,8 @@
 
 #include "Neuron.h"
 
+#include "Weight.h"
+
 using namespace std;
 
 namespace pann
@@ -14,10 +16,10 @@ namespace pann
         activationFunction = _activationFunction;
         bias = _bias;
         
-        (*this)[receptiveField] = 0;
-
         if(activationFunction)
-            (*this)[activationValue] = _activationFunction->f(0);
+            fire();
+        else
+            (*this)[receptiveField] = 0;
     } //Neuron
 
     Neuron::~Neuron() throw()
@@ -68,6 +70,12 @@ namespace pann
 
         return *bias;
     } //getBias
+
+    void
+    Neuron::fire()
+    {
+        activationFunction->fire(*this);
+    } //fire
 
     list<Link>::iterator
     Neuron::findLink(Neuron* _to, Link::Direction _direction) throw(E<Exception::MultipleOccurance>, E<Exception::ObjectNotFound>)

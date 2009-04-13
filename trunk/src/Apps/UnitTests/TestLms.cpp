@@ -1,5 +1,7 @@
 #include <iostream>
 
+#include <boost/progress.hpp>
+
 #include "pann.h"
 #include "gnuplot_i.hpp"
 

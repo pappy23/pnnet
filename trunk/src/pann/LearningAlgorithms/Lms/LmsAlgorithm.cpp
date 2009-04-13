@@ -1,6 +1,19 @@
 //LmsAlgorithm.cpp
 
+#include <vector>
+
+#include <boost/foreach.hpp>
+
 #include "LmsAlgorithm.h"
+#include "LmsAttributes.h"
+#include "LmsRunner.h"
+
+#include "Core/Net.h"
+#include "Core/Neuron.h"
+#include "Core/Link.h"
+#include "Core/Runner.h"
+#include "TrainData/TrainPattern.h"
+#include "TrainData/TrainData.h"
 
 using namespace std;
 using namespace pann::LmsAttributes;

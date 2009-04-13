@@ -1,7 +1,8 @@
 #ifndef ATTRIBUTE_H
 #define ATTRIBUTE_H
 
-#include "Includes.h"
+#include "Includes/BoostSerialization.h"
+
 #include "Type.h"
 
 namespace pann

@@ -1,11 +1,21 @@
 //LmsRunner.cpp
 
+#include <boost/foreach.hpp>
+
 #include "LmsRunner.h"
+#include "LmsAttributes.h"
+
+#include "Core/Net.h"
+#include "Core/Neuron.h"
+#include "Core/Link.h"
+#include "Core/Weight.h"
 
 using namespace pann::LmsAttributes;
 
 namespace pann
 {
+    Runner* LmsBackpropagationRunner::self = 0;
+
     LmsBackpropagationRunner::LmsBackpropagationRunner() throw()
     {
     } //LmsBackpropagationRunner

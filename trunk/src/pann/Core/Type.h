@@ -6,8 +6,6 @@
 #ifndef TYPE_H
 #define TYPE_H
 
-#include "Includes.h"
-
 namespace pann
 {
     typedef double Float;

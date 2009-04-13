@@ -2,11 +2,8 @@
 #ifndef LMSRUNNER_H
 #define LMSRUNNER_H
 
-#include "Core/Includes.h"
+#include "Core/Exception.h"
 #include "Core/Runner.h"
-#include "Core/Neuron.h"
-#include "Core/Net.h"
-#include "LmsAttributes.h"
 
 //TODO Document all algorithms! Don't forget to mention, that algorithms may be not correct,
 //TODO especially for not obvious topologies. For ex. no tests with recurrent networks were made

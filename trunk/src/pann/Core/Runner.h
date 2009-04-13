@@ -6,13 +6,12 @@
 #ifndef RUNNER_H
 #define RUNNER_H
 
-#include "Includes.h"
 #include "Type.h"
-#include "Neuron.h"
 
 namespace pann
 {
     class Net;
+    class Neuron;
 
     enum RunDirection { ForwardRun, BackwardRun };
 

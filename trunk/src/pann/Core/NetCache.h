@@ -2,12 +2,14 @@
 #ifndef NETCACHE_H
 #define NETCACHE_H
 
-#include "Includes.h"
+#include "Includes/BoostSerialization.h"
+
 #include "Cache.h"
-#include "Neuron.h"
 
 namespace pann
 {
+    class Neuron;
+
     class NetCache : public Cache
     {
         /* Public types */
