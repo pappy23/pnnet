@@ -64,6 +64,10 @@ namespace pann
         //grad = error * df(activationValue)/dy (see Simon Haykin, 2nd edition, p235)
         
         //Update weights
+        //Simulated annealing, rate = basic_rate / ( 1 + epoch / time_seek_constant)
+        //When epoch -> inf, rate -> basic_rate / epoch
+        Float lr = _net[learningRate] / (1 + (_net[epoch] / _net[annealingTSC]));
+        
         //Comment: Na --w--> Nb
         //w is updated while processing Na
         BOOST_FOREACH( Link& link, _neuron.links )
@@ -83,7 +87,7 @@ namespace pann
                 //See Haykin, p241
                 //Ni -> Nj
                 //dWj(n) = a*(Wj(n-1)) + learning_rate * local_gradient_j * Yi
-                Float dw = _net[learningRate] * link.getTo()[localGradient] * _neuron[Neuron::activationValue];
+                Float dw = lr * link.getTo()[localGradient] * _neuron[Neuron::activationValue];
                 
                 if(w.usageCount == 2)
                 {
@@ -108,7 +112,7 @@ namespace pann
             }
 
             Float dw = _net[learningMomentum] * w[lastDeltaW]
-                + _net[learningRate] * _neuron[localGradient];
+                + lr * _neuron[localGradient];
 
             w[lastDeltaW] = dw;
 

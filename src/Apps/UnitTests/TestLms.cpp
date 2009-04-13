@@ -40,8 +40,8 @@ int main()
     TrainData& td = *(DataGenerator::generateFromFunction(-1.0, +1.0, 10, func));
 
     Lms::init(net);
-    net[LmsAttributes::learningRate] = 0.2;
-    net[LmsAttributes::learningMomentum] = 0.5;
+    net[LmsAttributes::learningRate] = 0.5;
+    net[LmsAttributes::annealingTSC] = 3000;
     Util::randomizeWeightsGauss(net, -0.3, 0.3);
     Lms::train(net, td); //dry run to create all learning structures
     
