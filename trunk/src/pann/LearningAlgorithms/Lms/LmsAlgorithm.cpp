@@ -29,9 +29,12 @@ namespace pann
             _net[LMS] = 1.0;
         }
 
+        //Simulated annealing
         //Set algorithm defaults. User can override them after init()
-        _net[learningRate] = 0.3;
+        _net[epoch] = 1;
         _net[learningMomentum] = 0.5;
+        _net[learningRate] = 0.3;
+        _net[annealingTSC] = 10;
     } //init
 
     void
@@ -55,6 +58,7 @@ namespace pann
                 (*output_neurons[i])[error] = tp.error[i];
 
             _net.run(LmsBackpropagationRunner::Instance());
+            _net[epoch]++;
         }
     } //train
 

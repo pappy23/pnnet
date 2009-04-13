@@ -11,6 +11,8 @@ namespace pann
         const AttributeName LMS = hash("LmsAttributes::LMS", AlgorithmSpecificLearningParameters);
         const AttributeName learningRate = hash("LearningAlgorithm::learningRate", AlgorithmSpecificLearningParameters);
         const AttributeName learningMomentum = hash("LmsAttributes::learningMomentum", AlgorithmSpecificLearningParameters);
+        const AttributeName epoch = hash("LmsAttributes::epoch", AlgorithmSpecificLearningParameters);
+        const AttributeName annealingTSC = hash("LmsAttributes::annealingTSC", AlgorithmSpecificLearningParameters);
 
         //Neuron
         const AttributeName error = hash("LmsAttributes::error", AlgorithmSpecificLearningParameters);
