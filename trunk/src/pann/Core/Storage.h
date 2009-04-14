@@ -31,7 +31,7 @@ namespace pann
         typedef boost::archive::text_iarchive   txt_in;
 
         template<class SerializatorType>
-        void save(Net& _obj, std::string _filename) throw(E<Exception::FilesystemError>)
+        void save(Net& _obj, std::string _filename)
         {
             ofstream ofs(_filename.c_str());
             if(ofs.fail())
@@ -43,13 +43,15 @@ namespace pann
                 oa << BOOST_SERIALIZATION_NVP(_obj);
             } catch(boost::archive::archive_exception& e) {
                 throw E<Exception::FilesystemError>()<<"Storage::save(): failed to save net. Boost exception thrown.\n";
+            } catch(...) {
+                throw E<Exception::FilesystemError>()<<"Storage::save(): unknown exception\n";
             }
 
             ofs.close();
         }; //save
 
         template<class SerializatorType>
-        void load(Net& _obj, std::string _filename) throw(E<Exception::FilesystemError>)
+        void load(Net& _obj, std::string _filename)
         {
             ifstream ifs(_filename.c_str());
             if(ifs.fail())
@@ -61,13 +63,15 @@ namespace pann
                 ia >> BOOST_SERIALIZATION_NVP(_obj);
             } catch(boost::archive::archive_exception& e) {
                 throw E<Exception::FilesystemError>()<<"Storage::load(): failed to load net. Boost exception thrown.\n";
+            } catch(...) {
+                throw E<Exception::FilesystemError>()<<"Storage::load(): unknown exception\n";
             }
 
             ifs.close();
         }; //load
 
         //Load net and automatically detect format
-        void autoload(Net& _obj, std::string _filename) throw(E<Exception::FilesystemError>);
+        void autoload(Net& _obj, std::string _filename);
     }; //Storage
 
 }; //pann

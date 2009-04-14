@@ -12,6 +12,8 @@ using namespace std;
 
 namespace pann
 {
+    const AttributeName Net::workThreads = hash("Net::workThreads", NativeParameters);
+
     Net::Net() throw()
     {
         lastNeuronId = 0;

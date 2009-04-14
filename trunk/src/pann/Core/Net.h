@@ -26,6 +26,9 @@ namespace pann
 
     class Net : public Object
     {
+        /* Attributes */
+    public:
+        static const AttributeName workThreads;
         /* Public interface */
     public:
         /**
