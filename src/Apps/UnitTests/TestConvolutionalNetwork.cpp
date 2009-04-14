@@ -13,7 +13,7 @@ int main()
 {
     Net& net = NetworkModel::ConvolutionalNetworkDraft();
 
-    Storage::save<Storage::xml_out>(net, "test_net.xml");
+    Storage::save<Storage::bin_out>(net, "test_conv.bin");
 
     return 0;
 }

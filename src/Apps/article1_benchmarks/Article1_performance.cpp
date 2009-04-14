@@ -36,7 +36,8 @@ int main()
         struct timeval start, stop;
         gettimeofday(&start, 0);
 
-        //Lms::train(net, td, i);
+        net[Net::workThreads] = i;
+        Lms::train(net, td);
         
         gettimeofday(&stop, 0);
         cout<<"TimeDiff: "<<(stop.tv_sec-start.tv_sec)<<"sec "<<(stop.tv_usec-start.tv_usec)<<"usec\n\n";
