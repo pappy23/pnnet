@@ -50,7 +50,7 @@ namespace pann
          * Manage connections between neurons
          * TODO: add connections with different latencies (shortcut links)
          */
-        Weight* addConnection(Neuron* _from, Neuron* _to, Weight* _weight) throw();
+        Weight* addConnection(Neuron* _from, Neuron* _to, Weight* _weight = 0) throw();
         void delConnection(Neuron* _from, Neuron* _to) throw(E<Exception::Unbelievable>);
 
         /**
