@@ -6,6 +6,7 @@
 #include "Core/Neuron.h"
 #include "Core/Weight.h"
 
+using std::vector;
 using namespace pann::OpenGlAttributes;
 
 namespace pann
@@ -29,7 +30,7 @@ namespace pann
                 input_layer.push_back(vector<Neuron*>(input_w));
                 for(unsigned j = 0; j < input_w; ++j) //column
                 {
-                    Neuron&* n = *(new Neuron(0));
+                    Neuron& n = *(new Neuron(0));
                     input_layer[i][j] = &n;
                     net.addInputNeuron(&n);
 
