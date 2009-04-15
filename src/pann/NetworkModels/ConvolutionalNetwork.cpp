@@ -24,7 +24,7 @@ namespace pann
             const unsigned input_h = 33;
 
             //Input layer 33x33
-            plane input_layer(input_h);
+            plane input_layer;
             for(unsigned i = 0; i < input_h; ++i) //row
             {
                 input_layer.push_back(vector<Neuron*>(input_w));
@@ -44,9 +44,6 @@ namespace pann
                 }
             }
 
-            std::cout<<"marker\n";
-            std::cout.flush();
-
             const unsigned fm_count = 6;
             //N feature maps
             vector<plane> fm(fm_count);
@@ -56,7 +53,7 @@ namespace pann
                 const unsigned window_h = 5;
 
                 //window size = 5x5, overlap = 3
-                vector<vector<Weight*> > shared_w(window_h);
+                vector<vector<Weight*> > shared_w;
                 for(unsigned i = 0; i < window_h; i++)
                 {
                     shared_w.push_back(vector<Weight*>(window_w));
@@ -64,18 +61,19 @@ namespace pann
                         shared_w[i][j] = new Weight(1);
                 }
 
-                const unsigned fm_size_w = 28;
-                const unsigned fm_size_h = 28;
+                const unsigned fm_size_w = 10;
+                const unsigned fm_size_h = 10;
 
                 //Feature map
                 for(unsigned i = 0; i < fm_size_h; ++i)
                 {
-                    fm[map_no].push_back(vector<Neuron*>(fm_size_h));
+                    fm[map_no].push_back(vector<Neuron*>(fm_size_w));
                     for(unsigned j = 0; j < fm_size_w; ++j)
                     {
                         const unsigned overlap = 2;
                         Neuron* n = new Neuron(ActivationFunction::TanH::Instance());
                         fm[map_no][i][j] = n;
+
                         for(unsigned l = 0; l < window_h; l++)
                             for(unsigned m = 0; m < window_w; m++)
                                 net.addConnection(input_layer[i*overlap+l][j*overlap+m], n, shared_w[l][m]);
