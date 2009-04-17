@@ -61,8 +61,8 @@ namespace pann
                         shared_w[i][j] = new Weight(1);
                 }
 
-                const unsigned fm_size_w = 10;
-                const unsigned fm_size_h = 10;
+                const unsigned fm_size_w = 14;
+                const unsigned fm_size_h = 14;
 
                 //Feature map
                 for(unsigned i = 0; i < fm_size_h; ++i)
@@ -76,14 +76,14 @@ namespace pann
 
                         for(unsigned l = 0; l < window_h; l++)
                             for(unsigned m = 0; m < window_w; m++)
-                                net.addConnection(input_layer[i*overlap+l][j*overlap+m], n, shared_w[l][m]);
+                                net.addConnection(input_layer[i*overlap+l][j*overlap+m], n, new Weight(1));//shared_w[l][m]);
 
                         //OpenGL
                         (*n)[color_r] = 255;
                         (*n)[color_g] = 0;
                         (*n)[color_b] = 0;
-                        (*n)[coord_x] = ( (1.0 - 5.0) / 2.0 + 1.0 ) * 100;
-                        (*n)[coord_y] = ( Float(i) - Float(fm_size_h) / 2.0 + 1.0 ) * 40.0 + (map_no - 6) * 100;
+                        (*n)[coord_x] = ( -4.0 / 2.0 + 1.0 ) * 100;
+                        (*n)[coord_y] = ( Float(i) - Float(fm_size_h) / 2.0 + 1.0 ) * 40.0;
                         (*n)[coord_z] = ( Float(j) - Float(fm_size_w) / 2.0 + 1.0 ) * 40.0;
                     }
 
