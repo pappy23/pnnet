@@ -16,14 +16,26 @@ namespace pann
         Net&
         ConvolutionalNetworkDraft()
         {
+            const unsigned total_layers = 5; //for OpenGL z-coordinate
+            const unsigned input_w = 33;
+            const unsigned input_h = 33;
+            const unsigned fm_count = 6; //Feature maps in first convolution layer
+            const unsigned fm_size_w = 11; //14
+            const unsigned fm_size_h = 11;
+            const unsigned window_w = 5;
+            const unsigned window_h = 5;
+            const unsigned overlap = 2; //window_h - overlap area
+
+            //OpenGL
+            const Float distance_between_layers = 1000.0;
+            const Float distance_between_neurons = 40.0;
+            const Float distance_between_fms = 500.0;
+
             Net& net = *(new Net());
 
             typedef vector< vector<Neuron*> > plane;
 
-            const unsigned input_w = 33;
-            const unsigned input_h = 33;
-
-            //Input layer 33x33
+            //Input layer 4x4
             plane input_layer;
             for(unsigned i = 0; i < input_h; ++i) //row
             {
@@ -38,21 +50,17 @@ namespace pann
                     n[color_r] = 0;
                     n[color_g] = 0;
                     n[color_b] = 255;
-                    n[coord_x] = ( -5.0 / 2.0 + 1.0 ) * 100;
-                    n[coord_y] = ( Float(i) - Float(input_h) / 2.0 + 1.0 ) * 40.0;
-                    n[coord_z] = ( Float(j) - Float(input_w) / 2.0 + 1.0 ) * 40.0;
+                    n[coord_x] = ( (1.0 - total_layers) / 2.0 + 1.0 ) * distance_between_layers;
+                    n[coord_y] = ( Float(i) - Float(input_h) / 2.0 + 1.0 ) * distance_between_neurons;
+                    n[coord_z] = ( Float(j) - Float(input_w) / 2.0 + 1.0 ) * distance_between_neurons;
                 }
             }
 
-            const unsigned fm_count = 6;
             //N feature maps
             vector<plane> fm(fm_count);
             for(unsigned map_no = 0; map_no < fm_count; map_no++)
             {
-                const unsigned window_w = 5;
-                const unsigned window_h = 5;
-
-                //window size = 5x5, overlap = 3
+                //Creating shared weights
                 vector<vector<Weight*> > shared_w;
                 for(unsigned i = 0; i < window_h; i++)
                 {
@@ -61,30 +69,27 @@ namespace pann
                         shared_w[i][j] = new Weight(1);
                 }
 
-                const unsigned fm_size_w = 14;
-                const unsigned fm_size_h = 14;
-
                 //Feature map
                 for(unsigned i = 0; i < fm_size_h; ++i)
                 {
                     fm[map_no].push_back(vector<Neuron*>(fm_size_w));
                     for(unsigned j = 0; j < fm_size_w; ++j)
                     {
-                        const unsigned overlap = 2;
                         Neuron* n = new Neuron(ActivationFunction::TanH::Instance());
                         fm[map_no][i][j] = n;
 
                         for(unsigned l = 0; l < window_h; l++)
                             for(unsigned m = 0; m < window_w; m++)
-                                net.addConnection(input_layer[i*overlap+l][j*overlap+m], n, new Weight(1));//shared_w[l][m]);
+                                net.addConnection(input_layer[i*overlap+l][j*overlap+m], n, shared_w[l][m]);
 
                         //OpenGL
                         (*n)[color_r] = 255;
                         (*n)[color_g] = 0;
                         (*n)[color_b] = 0;
-                        (*n)[coord_x] = ( -4.0 / 2.0 + 1.0 ) * 100;
-                        (*n)[coord_y] = ( Float(i) - Float(fm_size_h) / 2.0 + 1.0 ) * 40.0;
-                        (*n)[coord_z] = ( Float(j) - Float(fm_size_w) / 2.0 + 1.0 ) * 40.0;
+                        (*n)[coord_x] = ( (2.0 - total_layers) / 2.0 + 1.0 ) * distance_between_layers;
+                        (*n)[coord_y] = ( Float(i) - Float(fm_size_h) / 2.0 + 1.0 ) * distance_between_neurons;
+                        (*n)[coord_z] = ( Float(j) - Float(fm_size_w) / 2.0 + 1.0 ) * distance_between_neurons
+                            + ( Float(map_no) - Float(fm_count) / 2.0 + 0.5) * distance_between_fms;
                     }
 
                 }
@@ -92,7 +97,7 @@ namespace pann
             
             return net;
         };
-    };
+    }; //NetworkModel
 
 }; //pann
 
