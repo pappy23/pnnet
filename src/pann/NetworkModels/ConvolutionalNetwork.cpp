@@ -20,8 +20,8 @@ namespace pann
             const unsigned input_w = 33;
             const unsigned input_h = 33;
             const unsigned fm_count = 6; //Feature maps in first convolution layer
-            const unsigned fm_size_w = 11; //14
-            const unsigned fm_size_h = 11;
+            const unsigned fm_size_w = 15; //14
+            const unsigned fm_size_h = 15;
             const unsigned window_w = 5;
             const unsigned window_h = 5;
             const unsigned overlap = 2; //window_h - overlap area
@@ -29,7 +29,7 @@ namespace pann
             //OpenGL
             const Float distance_between_layers = 1000.0;
             const Float distance_between_neurons = 40.0;
-            const Float distance_between_fms = 500.0;
+            const Float distance_between_fms = 900.0;
 
             Net& net = *(new Net());
 
