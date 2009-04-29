@@ -17,13 +17,13 @@ namespace pann
         ConvolutionalNetworkDraft()
         {
             const unsigned total_layers = 5; //for OpenGL z-coordinate
-            const unsigned input_w = 33;
-            const unsigned input_h = 33;
+            const unsigned input_w = 9;//33;
+            const unsigned input_h = 9;//33;
             const unsigned fm_count = 6; //Feature maps in first convolution layer
-            const unsigned fm_size_w = 15; //14
-            const unsigned fm_size_h = 15;
-            const unsigned window_w = 5;
-            const unsigned window_h = 5;
+            const unsigned fm_size_w = 4;//15; //14
+            const unsigned fm_size_h = 4;//15;
+            const unsigned window_w = 3;//5;
+            const unsigned window_h = 3;//5;
             const unsigned overlap = 2; //window_h - overlap area
 
             //OpenGL
@@ -57,7 +57,17 @@ namespace pann
             }
 
             //N feature maps
-            vector<plane> fm(fm_count);
+            vector<plane> fm(fm_count); //convolution feature maps
+            vector<plane> ss(fm_count); //subsampling planes
+
+            /*
+             * SS layer
+             *
+             * x1,x2,x3,x4 - inputs
+             * y = f((x1+x2+x3+x4)/4 * W + bias)
+             * f(x) = tanh(x)
+             *
+             */
             for(unsigned map_no = 0; map_no < fm_count; map_no++)
             {
                 //Creating shared weights
