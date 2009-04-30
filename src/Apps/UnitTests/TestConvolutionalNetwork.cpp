@@ -12,6 +12,7 @@ using namespace boost;
 int main()
 {
     Net& net = NetworkModel::ConvolutionalNetworkDraft();
+    net.run(FeedforwardPropagationRunner::Instance());
 
     //Constructing perceptron
     /*
