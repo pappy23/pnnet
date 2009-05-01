@@ -212,7 +212,7 @@ void GLWidget::setZRotation(int angle)
 
 void GLWidget::setScale(float _scale)
 {
-    if(_scale != scale && _scale > 0.1 && _scale < 10.0)
+    if(_scale != scale && _scale > 0.01 && _scale < 10.0)
     {
         scale = _scale;
         updateGL();
@@ -253,10 +253,11 @@ void GLWidget::initializeGL()
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
     glHint(GL_LINE_SMOOTH_HINT,GL_NICEST);
-    glLineWidth(1.5);
+    glLineWidth(0.5);
     glPointSize(1.0);
 
     //Light
+    /*
     glEnable(GL_LIGHTING);
     glEnable(GL_COLOR_MATERIAL);
     glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE);
@@ -275,7 +276,7 @@ void GLWidget::initializeGL()
     float specReflection[] = { 0.5f, 0.5f, 0.5f, 1.0f };
     glMaterialfv(GL_FRONT, GL_SPECULAR, specReflection);
     glMateriali(GL_FRONT, GL_SHININESS, 50);
-
+*/
 /*
     GLfloat material_specular[] = {1.0f, 1.0f, 1.0f, 1.0f};
     GLfloat material_emission[] = {1.0f, 1.0f, 1.0f, 1.0f};
@@ -337,7 +338,7 @@ void GLWidget::mouseMoveEvent(QMouseEvent *event)
 void GLWidget::keyPressEvent(QKeyEvent* e)
 {
     const int rotationDelta = 30.0;
-    const float scaleDelta = 0.05;
+    const float scaleDelta = 0.005;
     const float translateDelta = 10;
     
     switch(e->key())
@@ -384,6 +385,6 @@ void GLWidget::keyPressEvent(QKeyEvent* e)
 void GLWidget::wheelEvent(QWheelEvent* event)
 {
 //    setTranslation(xTrans - x() + width() / 2.0, yTrans + y() - height() / 2.0, zTrans);
-    setScale(scale + event->delta() / 200.0);
+    setScale(scale + event->delta() / 2000.0);
 }
 

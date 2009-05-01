@@ -150,7 +150,10 @@ namespace pann
 
         //We must give parameters by pointer, because boost will copy all arguments to thread
         for(unsigned thread = 0; thread < _threads; ++thread)
+        {
+            std::cout<<"Starting thread "<<thread<<endl;
             threadPool.add_thread( new boost::thread(Net::threadBase, &_runner, this, thread, _threads, &barrier) );
+        }
         
         //wait for threads to finish
         threadPool.join_all();
@@ -284,6 +287,8 @@ namespace pann
                                                       unsigned _threads,
                                                       boost::barrier* _barrier)
     {
+        std::cout<<"Thread "<<_cur_thread<<" is alive"<<std::endl;
+
         RunDirection dir = _runner->getDirection();
         const NetCache& _cache = _net->getCache();
 
