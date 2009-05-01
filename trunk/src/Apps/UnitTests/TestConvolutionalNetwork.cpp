@@ -12,7 +12,10 @@ using namespace boost;
 int main()
 {
     Net& net = NetworkModel::ConvolutionalNetworkDraft();
+    cout<<"Network created"<<endl;
+
     net.run(FeedforwardPropagationRunner::Instance());
+    cout<<"Test run OK"<<endl;
 
     //Constructing perceptron
     /*
@@ -26,6 +29,7 @@ int main()
     */
 
     Storage::save<Storage::txt_out>(net, "test_conv.bin");
+    cout<<"Saved"<<endl;
 
     return 0;
 }

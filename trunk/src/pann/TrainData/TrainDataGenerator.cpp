@@ -70,6 +70,23 @@ namespace pann
             return result;
         } //jpeg2valarray
 
+        valarray<Float>
+        ppm2valarray(string _filename, unsigned _width, unsigned _height)
+        {
+            //TODO use boost::iostreams, particulary shell_comments_filter
+            valarray<Float> result;
+
+            return result;
+        } //ppm2valarray
+
+        valarray<Float>
+        pgm2valarray(string _filename, unsigned _width, unsigned _height)
+        {
+            valarray<Float> result;
+
+            return result;
+        } //pgm2valarray
+
     }; //DataGenerator
 }; //pann
 
