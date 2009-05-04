@@ -101,6 +101,8 @@ namespace pann
                 }
             }
 
+            Weight* shared_bias = 0;
+
             //C1, S1
             vector<Plane> c1(c1_fm_count); //convolution feature maps
             vector<Plane> s1(c1_fm_count); //subsampling planes
@@ -108,6 +110,7 @@ namespace pann
             for(unsigned map_no = 0; map_no < c1_fm_count; ++map_no)
             {
                 //Creating shared weights
+                shared_bias = new Weight(1);
                 vector<vector<Weight*> > shared_w;
                 for(unsigned i = 0; i < c1_window_h; i++)
                 {
@@ -115,7 +118,6 @@ namespace pann
                     for(unsigned j = 0; j < c1_window_w; j++)
                         shared_w[i][j] = new Weight(1);
                 }
-                //TODO shared bias for each feature map
 
                 //Feature map
                 for(unsigned i = 0; i < c1_fm_size_h; ++i)
@@ -123,7 +125,7 @@ namespace pann
                     c1[map_no].push_back(Row(c1_fm_size_w));
                     for(unsigned j = 0; j < c1_fm_size_w; ++j)
                     {
-                        Neuron* n = new Neuron(ActivationFunction::TanH::Instance());
+                        Neuron* n = new Neuron(ActivationFunction::TanH::Instance(), shared_bias);
                         c1[map_no][i][j] = n;
 
                         for(unsigned l = 0; l < c1_window_h; l++)
@@ -151,12 +153,13 @@ namespace pann
                  * f(x) = tanh(x)
                  *
                  */
+                shared_bias = new Weight(1);
                 for(unsigned i = 0; i < (c1_fm_size_h / s1_range); ++i)
                 {
                     s1[map_no].push_back(Row( c1_fm_size_w / s1_range ));
                     for(unsigned j = 0; j < (c1_fm_size_w / s1_range); ++j)
                     {
-                        Neuron *n = new Neuron(ActivationFunction::TanH::Instance());
+                        Neuron *n = new Neuron(ActivationFunction::TanH::Instance(), shared_bias);
                         s1[map_no][i][j] = n;
 
                         Weight *w = new Weight(1);
@@ -185,6 +188,7 @@ namespace pann
             {
                 //Creating shared weights
                 vector<vector<Weight*> > shared_w;
+                shared_bias = new Weight(1);
                 for(unsigned i = 0; i < c2_window_h; i++)
                 {
                     shared_w.push_back(vector<Weight*>(c2_window_w));
@@ -199,7 +203,7 @@ namespace pann
                     c2[map_no].push_back(Row(c2_fm_size_w));
                     for(unsigned j = 0; j < c2_fm_size_w; ++j)
                     {
-                        Neuron* n = new Neuron(ActivationFunction::TanH::Instance());
+                        Neuron* n = new Neuron(ActivationFunction::TanH::Instance(), shared_bias);
                         c2[map_no][i][j] = n;
 
                         for(unsigned l = 0; l < c2_window_h; ++l)
@@ -221,14 +225,15 @@ namespace pann
                 }
 
                 //Full mesh layer
-                f1[map_no] = new Neuron(ActivationFunction::TanH::Instance());
+                f1[map_no] = new Neuron(ActivationFunction::TanH::Instance(), new Weight(1));
                 //Subsampling plane
+                shared_bias = new Weight(1);
                 for(unsigned i = 0; i < (c2_fm_size_h / s2_range); ++i)
                 {
                     s2[map_no].push_back(Row( c2_fm_size_w / s2_range ));
                     for(unsigned j = 0; j < (c2_fm_size_w / s2_range); ++j)
                     {
-                        Neuron *n = new Neuron(ActivationFunction::TanH::Instance());
+                        Neuron *n = new Neuron(ActivationFunction::TanH::Instance(), shared_bias);
                         s2[map_no][i][j] = n;
 
                         net.addConnection(n, f1[map_no], new Weight(1));
@@ -254,7 +259,7 @@ namespace pann
             Row output_layer(output_neurons);
             for(unsigned i = 0; i < output_neurons; ++i)
             {
-                output_layer[i] = new Neuron(ActivationFunction::TanH::Instance());
+                output_layer[i] = new Neuron(ActivationFunction::TanH::Instance(), new Weight(1));
                 Neuron &n = *output_layer[i];
 
                 //OpenGL

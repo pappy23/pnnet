@@ -23,6 +23,11 @@ namespace pann
         std::valarray<Float> jpeg_rgb2valarray(std::string _filename, unsigned _width = 0, unsigned _height = 0);
 
         /**
+         * Same as above, but for grayscale images
+         */
+        std::valarray<Float> jpeg_gray2valarray(std::string _filename, unsigned _width = 0, unsigned _height = 0);
+
+        /**
          * Read PPM file and put it to valarray
          */
         std::valarray<Float> ppm2valarray(std::string _filename, unsigned _width = 0, unsigned _height = 0);
