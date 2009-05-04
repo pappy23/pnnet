@@ -1,5 +1,7 @@
 //TrainDataGenerator.cpp
 
+#include <fstream>
+
 #include <boost/gil/gil_all.hpp>
 #include <boost/gil/extension/io/jpeg_io.hpp>
 //#include <boost/gil/extension/numeric/sampler.hpp>
@@ -71,10 +73,43 @@ namespace pann
         } //jpeg2valarray
 
         valarray<Float>
+        jpeg_gray2valarray(string _filename, unsigned _width, unsigned _height)
+        {
+            gray8_image_t img;
+            jpeg_read_image(_filename, img);
+
+            if(_width == 0 and _height == 0)
+            {
+                _width = view(img).width();
+                _height = view(img).height();
+            }
+
+            valarray<Float> result(_width * _height);
+            
+            //TODO: fix resampling
+            //Scale the image to (_width)x(_height) pixels using bilinear resampling
+            //rgb8_image_t scaled_img(_width, _height);
+            //resize_view(const_view(img), view(scaled_img), bilinear_sampler());
+            //rgb8_view_t v = view(scaled_img);
+            gray8_view_t v = view(img);
+
+            unsigned i = 0;
+            gray8_view_t::iterator iter = v.begin();
+            for(; iter != v.end() and i < _width * _height; ++iter)
+                result[i++] = at_c<0>(*iter);
+
+            return result;
+        } //jpeg2valarray
+
+        valarray<Float>
         ppm2valarray(string _filename, unsigned _width, unsigned _height)
         {
             //TODO use boost::iostreams, particulary shell_comments_filter
             valarray<Float> result;
+
+            std::cout<<"PPM test\n";
+            std::ifstream file(_filename.c_str(), ios_base::in | ios_base::binary);
+
 
             return result;
         } //ppm2valarray

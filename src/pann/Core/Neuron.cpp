@@ -10,6 +10,7 @@ namespace pann
 {
     const AttributeName Neuron::activationValue = hash("Neuron::activationValue", NativeParameters);
     const AttributeName Neuron::receptiveField = hash("Neuron::receptiveField", NativeParameters);
+    const AttributeName Neuron::id = hash("Neuron::id", NativeParameters);
 
     Neuron::Neuron(ActivationFunction::Base* _activationFunction, Weight* _bias) throw()
     {
@@ -19,7 +20,7 @@ namespace pann
         if(activationFunction)
             fire();
         else
-            (*this)[receptiveField] = 0;
+            (*this)[receptiveField] = (*this)[activationValue] = 0;
     } //Neuron
 
     Neuron::~Neuron() throw()
