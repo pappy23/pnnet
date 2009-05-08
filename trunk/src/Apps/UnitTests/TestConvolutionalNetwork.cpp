@@ -6,6 +6,8 @@
 #include "pann.h"
 #include "gnuplot_i.hpp"
 
+//convert -size 100x100 xc: +noise Random tmp1.pgm
+
 using namespace std;
 using namespace pann;
 using namespace boost;
@@ -73,9 +75,8 @@ int main(int argc, char* argv[])
     //
     Net& net = NetworkModel::ConvolutionalNetworkDraft();
     Lms::init(net);
-    net[LmsAttributes::learningRate] = 0.01;
-    net[LmsAttributes::learningMomentum] = 0.1;
-    Util::randomizeWeightsGauss(net, -0.1, 0.1);
+    net[LmsAttributes::learningRate] = 0.3;
+    Util::randomizeWeightsGauss(net, -0.2, 0.2);
     //
     // Test run
     //
@@ -85,19 +86,25 @@ int main(int argc, char* argv[])
     // Training
     //
     vector<Float> train_error_info; //MSE
-    const unsigned epochs = 100;
-    progress_display progress(epochs);
+    const unsigned epochs = 1;
+    //progress_display progress(epochs);
     for(unsigned i = 1; i < epochs; ++i)
     {
-        ++progress;
+        //++progress;
         td.shuffle();
         Lms::train(net, td);
         train_error_info.push_back(td.getMse());
+
+        cout<<i<<" "<<train_error_info.back()<<endl;
     }
+
+    //Saving Net
+    Storage::save<Storage::bin_out>(net, "test_conv.bin");
 
     //
     //Plotting error graph
     //
+    /*
     try {
         Gnuplot gp_err("lines");
         gp_err.set_title("Error by epoch");
@@ -109,7 +116,7 @@ int main(int argc, char* argv[])
     } catch(GnuplotException e) {
         cout << e.what() << endl;
     }
-    
+    */
 
     return 0;
 }
