@@ -92,7 +92,7 @@ int main(int argc, char* argv[])
     // Training
     //
     vector<Float> train_error_info; //MSE
-    const unsigned epochs = 300;
+    const unsigned epochs = 1000;
     const unsigned stat = 10;
     //progress_display progress(epochs);
     for(unsigned i = 1; i < epochs; ++i)
