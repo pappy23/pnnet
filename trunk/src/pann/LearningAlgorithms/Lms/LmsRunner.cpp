@@ -74,7 +74,6 @@ namespace pann
         {
             if(link.getDirection() == Link::out)
             {
-                //TODO: shared weights
                 Weight& w = link.getWeight();
                 boost::mutex::scoped_lock lock(w.mutex);
 
