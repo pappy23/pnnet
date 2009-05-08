@@ -23,7 +23,7 @@ int main(int argc, char* argv[])
         return -1;
     }
 
-    TrainData td;
+    TrainData train_data;
 
     //
     // Reading data
@@ -60,7 +60,7 @@ int main(int argc, char* argv[])
                 tp.desired_output[0] = -1.5;
                 tp.desired_output[1] = 1.5;
             }
-            td.data.push_back(tp);
+            train_data.data.push_back(tp);
 
         } catch(...) {
             //cout<<"Failed to read "<<fname<<endl;
@@ -70,6 +70,11 @@ int main(int argc, char* argv[])
     ifs.close();
     cout<<"Face / Not face / Total: "<<face_images<<" / "<<notface_images<<" / "<<total_images<<endl;
 
+    train_data.shuffle();
+    TrainData test_data = DataGenerator::divide(train_data, 20);
+    cout<<"Train data size: "<<train_data.data.size()
+        <<"\nTest data size: "<<test_data.data.size()<<endl;
+
     //
     // Creating and initializing convolutional network
     //
@@ -77,6 +82,7 @@ int main(int argc, char* argv[])
     Lms::init(net);
     net[LmsAttributes::learningRate] = 0.3;
     Util::randomizeWeightsGauss(net, -0.2, 0.2);
+
     //
     // Test run
     //
@@ -86,20 +92,26 @@ int main(int argc, char* argv[])
     // Training
     //
     vector<Float> train_error_info; //MSE
-    const unsigned epochs = 1;
+    const unsigned epochs = 300;
+    const unsigned stat = 10;
     //progress_display progress(epochs);
     for(unsigned i = 1; i < epochs; ++i)
     {
         //++progress;
-        td.shuffle();
-        Lms::train(net, td);
-        train_error_info.push_back(td.getMse());
+        train_data.shuffle();
+        Lms::train(net, train_data);
+        train_error_info.push_back(train_data.getMse());
 
-        cout<<i<<" "<<train_error_info.back()<<endl;
+        cout<<"Train: "<<i<<" "<<train_error_info.back()<<endl;
+
+        if(epochs % stat == 0)
+        {
+            //Saving Net
+            Storage::save<Storage::bin_out>(net, lexical_cast<string>(i) + "_test_conv.bin");
+
+            cout<<"Test: "<<Util::test(net, test_data)<<endl;
+        }
     }
-
-    //Saving Net
-    Storage::save<Storage::bin_out>(net, "test_conv.bin");
 
     //
     //Plotting error graph

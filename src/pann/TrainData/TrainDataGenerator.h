@@ -11,8 +11,22 @@ namespace pann
 {
     class TrainData;
 
+    namespace Util
+    {
+        /**
+         * Run network with _td and return mean squared error
+         */
+        Float test(Net& _net, TrainData& _td);
+
+    }; //Util
+
     namespace DataGenerator
     {
+        /**
+         * Cut _percentage of TrainPatterns from _td.data and spawn new TrainData from them
+         */
+        TrainData divide(TrainData& _td, unsigned _percentage);
+
         TrainData* generateFromFunction(Float _min, Float _max, unsigned _count, boost::function<Float (Float _x)> _f);
 
         /**

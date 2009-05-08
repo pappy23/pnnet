@@ -2,12 +2,15 @@
 
 #include <fstream>
 
+#include <boost/foreach.hpp>
 #include <boost/gil/gil_all.hpp>
 #include <boost/gil/extension/io/jpeg_io.hpp>
 //#include <boost/gil/extension/numeric/sampler.hpp>
 //#include <boost/gil/extension/numeric/resample.hpp>
 
 #include "Core/Util.h"
+#include "Core/Net.h"
+#include "Core/Runner.h"
 
 #include "TrainDataGenerator.h"
 
@@ -20,8 +23,39 @@ using namespace boost::gil;
 
 namespace pann
 {
+    namespace Util
+    {
+        Float
+        test(Net& _net, TrainData& _td)
+        {
+            BOOST_FOREACH(TrainPattern& tp, _td.data)
+            {
+                _net.setInput(tp.input);
+                _net.run(FeedforwardPropagationRunner::Instance());
+                _net.getOutput(tp.error); //actual output
+                tp.error = tp.desired_output - tp.error; 
+            }
+
+            return _td.getMse();
+        } //test
+
+    }; //Util
+
     namespace DataGenerator
     {
+        TrainData
+        divide(TrainData& _td, unsigned _percentage)
+        {
+            TrainData new_td;
+            for(unsigned i = 0; i < (Float(_td.data.size()) / 100.0) * _percentage; ++i)
+            {
+                new_td.data.push_back(_td.data.back());
+                _td.data.pop_back();
+            }
+
+            return new_td;
+        } //divide
+
         TrainData*
         generateFromFunction(Float _min, Float _max, unsigned _count, boost::function<Float (Float _x)> _f)
         {
