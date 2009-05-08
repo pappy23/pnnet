@@ -96,7 +96,7 @@ namespace pann
                     w[lastDeltaW] = dw;
                 }
 
-                w[Weight::value] += dw * 2.0 / (Float)w.usageCount;
+                w[Weight::value] += dw * 2.0 / Float(w.usageCount);
             }
         }
 
@@ -104,6 +104,7 @@ namespace pann
         if(_neuron.hasBias())
         {
             Weight& w = _neuron.getBias();
+            boost::mutex::scoped_lock lock(w.mutex);
 
             if(!w.is(LMS))
             {
@@ -111,12 +112,16 @@ namespace pann
                 w[LMS] = 1.0;
             }
 
-            Float dw = _net[learningMomentum] * w[lastDeltaW]
-                + lr * _neuron[localGradient];
+            Float dw = lr * _neuron[localGradient];
 
-            w[lastDeltaW] = dw;
+            if(w.usageCount == 1)
+            {
+                //Currently there is no way to make lastDeltaW thread safe
+                dw += _net[learningMomentum] * w[lastDeltaW];
+                w[lastDeltaW] = dw;
+            }
 
-            w[Weight::value] += dw;
+            w[Weight::value] += dw / Float(w.usageCount);
         }
     } //run
 

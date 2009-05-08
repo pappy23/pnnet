@@ -29,6 +29,7 @@ namespace pann
          * See S. Haykin, p252
          */
         void randomizeWeightsAccordingToInputsCount(Net& _net, Float _min = -2.4, Float _max = +2.4) throw();
+
     }; //Util
 }; //pann
 

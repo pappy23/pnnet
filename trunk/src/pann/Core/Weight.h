@@ -23,7 +23,7 @@ namespace pann
     {
         /* Public interface */
     public:
-        Weight(Float _value = 1) throw();
+        Weight(Float _value = 1, unsigned _usageCount = 1) throw();
         virtual ~Weight() throw();
 
         /* Attributes */
