@@ -81,7 +81,9 @@ int main(int argc, char* argv[])
     Net& net = NetworkModel::ConvolutionalNetworkDraft();
     Lms::init(net);
     net[LmsAttributes::learningRate] = 0.3;
+    net[LmsAttributes::annealingTSC] = 100;
     Util::randomizeWeightsGauss(net, -0.2, 0.2);
+    //Util::randomizeWeightsAccordingToInputsCount(net);
 
     //
     // Test run
@@ -93,7 +95,7 @@ int main(int argc, char* argv[])
     //
     vector<Float> train_error_info; //MSE
     const unsigned epochs = 1000;
-    const unsigned stat = 10;
+    const unsigned stat = 100;
     //progress_display progress(epochs);
     for(unsigned i = 1; i < epochs; ++i)
     {
@@ -104,7 +106,7 @@ int main(int argc, char* argv[])
 
         cout<<"Train: "<<i<<" "<<train_error_info.back()<<endl;
 
-        if(epochs % stat == 0)
+        if(i % stat == 0)
         {
             //Saving Net
             Storage::save<Storage::bin_out>(net, lexical_cast<string>(i) + "_test_conv.bin");
