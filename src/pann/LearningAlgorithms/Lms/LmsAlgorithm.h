@@ -2,7 +2,7 @@
 #ifndef LMSALGORITHM_H
 #define LMSALGORITHM_H
 
-#include "Core/LearningAlgorithm.h"
+#include "LearningAlgorithms/LearningAlgorithm.h"
 
 namespace pann
 {

@@ -80,7 +80,6 @@ namespace pann
 
         /* Private members */
     private:
-        unsigned lastNeuronId; //var to add new neurons
         std::list<Neuron*> inputNeurons;
         NetCache mutable cache;
 
