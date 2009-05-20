@@ -10,6 +10,8 @@ namespace pann
 {
     typedef double Float;
     //const Float inf = std::numeric_limits<Float>::infinity();
+
+    typedef std::size_t HashType;
 }; //pann
 
 #endif //TYPE_H

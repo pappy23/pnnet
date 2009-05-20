@@ -3,7 +3,9 @@
 #define TRAINDATAGENERATOR_H
 
 #include <boost/function.hpp>
+
 #include <string>
+#include <valarray>
 
 #include "Core/Type.h"
 
@@ -17,6 +19,9 @@ namespace pann
          * Run network with _td and return mean squared error
          */
         Float test(Net& _net, TrainData& _td);
+
+        std::valarray<Float> squash_copy(const std::valarray<Float> & _v, Float _min, Float _max) throw();
+        void squash(std::valarray<Float> & _v, Float _min, Float _max) throw();
 
     }; //Util
 
