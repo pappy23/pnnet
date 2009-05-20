@@ -9,20 +9,21 @@
  * Includes all core components sufficient to
  * build and run network
  */
-#include "ActivationFunction.h"
-#include "Attribute.h"
-#include "Cache.h"
-#include "Exception.h"
-#include "Link.h"
-#include "Moo.h"
-#include "NetCache.h"
-#include "Net.h"
-#include "Neuron.h"
-#include "Object.h"
-#include "Runner.h"
-#include "Storage.h"
-#include "Type.h"
-#include "Weight.h"
+#include "Core/ActivationFunction.h"
+#include "Core/Attribute.h"
+#include "Core/Cache.h"
+#include "Core/Exception.h"
+#include "Core/Link.h"
+#include "Core/Moo.h"
+#include "Core/NetCache.h"
+#include "Core/Net.h"
+#include "Core/Neuron.h"
+#include "Core/Object.h"
+#include "Core/Random.h"
+#include "Core/Runner.h"
+#include "Core/Storage.h"
+#include "Core/Type.h"
+#include "Core/Weight.h"
 
 /**
  * Dealing with IO, data division and format
@@ -40,6 +41,7 @@
 /**
  * General and specific learning algorithms
  */
+#include "LearningAlgorithms/Util.h"
 #include "LearningAlgorithms/Lms.h"
 
 #endif

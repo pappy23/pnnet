@@ -16,7 +16,6 @@ namespace pann
 
     Net::Net() throw()
     {
-        lastNeuronId = 0;
     } //Net
 
     Net::~Net() throw()

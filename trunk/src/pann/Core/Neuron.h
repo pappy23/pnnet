@@ -23,7 +23,7 @@ namespace pann
     public:
         static const AttributeName activationValue;
         static const AttributeName receptiveField;
-        static const AttributeName id;
+        //static const AttributeName id;
 
         /* Private attributes */
     private:

@@ -8,8 +8,8 @@
 //#include <boost/gil/extension/numeric/sampler.hpp>
 //#include <boost/gil/extension/numeric/resample.hpp>
 
-#include "Core/Util.h"
 #include "Core/Net.h"
+#include "Core/Random.h"
 #include "Core/Runner.h"
 
 #include "TrainDataGenerator.h"
@@ -101,7 +101,7 @@ namespace pann
             for(unsigned i = 0; i < _count; ++i)
             {
                 TrainPattern tp(1, 1);
-                tp.input[0] = Util::rand(_min, _max);
+                tp.input[0] = rand(_min, _max);
                 tp.desired_output[0] = _f(tp.input[0]);
                 td->data.push_back(tp);
             }
