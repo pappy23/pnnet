@@ -5,27 +5,41 @@
 #ifndef PANN_H
 #define PANN_H
 
-#include "Core/ActivationFunction.h"
-#include "Core/Attribute.h"
-#include "Core/Exception.h"
-#include "Core/Link.h"
-#include "Core/Moo.h"
-#include "Core/Net.h"
-#include "Core/Neuron.h"
-#include "Core/NetCache.h"
-#include "Core/Runner.h"
-#include "Core/Storage.h"
-#include "Core/Type.h"
-#include "Core/Util.h"
-#include "Core/Weight.h"
+/**
+ * Includes all core components sufficient to
+ * build and run network
+ */
+#include "ActivationFunction.h"
+#include "Attribute.h"
+#include "Cache.h"
+#include "Exception.h"
+#include "Link.h"
+#include "Moo.h"
+#include "NetCache.h"
+#include "Net.h"
+#include "Neuron.h"
+#include "Object.h"
+#include "Runner.h"
+#include "Storage.h"
+#include "Type.h"
+#include "Weight.h"
 
+/**
+ * Dealing with IO, data division and format
+ */
 #include "TrainData/TrainPattern.h"
 #include "TrainData/TrainData.h"
 #include "TrainData/TrainDataGenerator.h"
 
+/**
+ * Various network models generators
+ */
 #include "NetworkModels/MultilayerPerceptron.h"
 #include "NetworkModels/ConvolutionalNetwork.h"
 
+/**
+ * General and specific learning algorithms
+ */
 #include "LearningAlgorithms/Lms.h"
 
 #endif

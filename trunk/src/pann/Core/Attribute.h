@@ -1,3 +1,20 @@
+/**
+ * @file
+ * This file defines some attribute related staff and 
+ * declares common attributes groups and names
+ * 
+ * README:
+ * Every class derived from Object (see Object.h)
+ * has ability to use attributes (only Float type at the moment)
+ * Object contains map<AttributeName, AttributeType>
+ * AttributeName consists from name and group_name
+ * It allows erasing of entire group at once, for ex. LearningParameters
+ *
+ * TODO:
+ * Replace AttributeType == Float with boost::tuple ?
+ * Get rid of custom Attributes and use boost::property_map instead ?
+ */
+
 #ifndef ATTRIBUTE_H
 #define ATTRIBUTE_H
 
@@ -7,8 +24,6 @@
 
 namespace pann
 {
-    typedef std::size_t HashType;
-
     class AttributeName
     {
     public:
