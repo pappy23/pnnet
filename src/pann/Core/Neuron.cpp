@@ -1,8 +1,8 @@
 //Neuron.cpp
 
-#include "Neuron.h"
-
 #include "Weight.h"
+
+#include "Neuron.h"
 
 using namespace std;
 

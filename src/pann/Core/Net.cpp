@@ -1,12 +1,10 @@
 //Net.cpp
 
-#include <boost/foreach.hpp>
-
-#include "Net.h"
-
 #include "Runner.h"
 #include "Neuron.h"
 #include "Weight.h"
+
+#include "Net.h"
 
 using namespace std;
 

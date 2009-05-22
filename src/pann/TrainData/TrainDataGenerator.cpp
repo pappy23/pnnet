@@ -193,6 +193,54 @@ namespace pann
             return result;
         } //pgm2valarray
 
+        TrainData*
+        generateFromImageList(std::string _filename)
+        {
+            TrainData* train_data = new TrainData();
+
+            //
+            // Reading data
+            //
+            ifstream ifs(_filename.c_str());
+            unsigned total_classes;
+            ifs >> total_classes;
+            map<unsigned, unsigned> classes;
+
+            while(!ifs.eof())
+            {
+                string fname;
+                int class_no;
+                ifs >> fname >> class_no;
+
+                try {
+                    classes[class_no]++;
+
+                    TrainPattern tp(35*35, total_classes);
+                    
+                    tp.input = Util::squash_copy(
+                            jpeg_gray2valarray(fname.c_str(), 35, 35),
+                            -2.5,
+                            +2.5
+                        );
+                    
+                    for(unsigned i = 0; i < total_classes; ++i)
+                        tp.desired_output[i] = -1.5;
+                    tp.desired_output[class_no] = 1.5;
+
+                    train_data->data.push_back(tp);
+
+                } catch(...) {
+                    //cout<<"Failed to read "<<fname<<endl;
+                }
+            }
+
+            ifs.close();
+            for(unsigned i = 0; i < total_classes; ++i)
+                cout<<"Class "<<i<<": "<<classes[i]<<"\n";
+
+            return train_data;
+        } //generateFromImageList
+
     }; //DataGenerator
 }; //pann
 

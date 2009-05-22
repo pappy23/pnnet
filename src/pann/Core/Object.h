@@ -1,9 +1,9 @@
 #ifndef OBJECT_H
 #define OBJECT_H
 
-#include <map>
-
+#include "Includes/Std.h"
 #include "Includes/BoostSerialization.h"
+
 #include "Exception.h"
 #include "Attribute.h"
 
