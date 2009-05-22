@@ -6,6 +6,10 @@
 #include "pann.h"
 
 using namespace pann;
+using namespace pann::Storage;
+
+//Load net and automatically detect format
+void autoload(Net& _obj, std::string _filename);
 
 int main(int argc, char *argv[])
 {
@@ -27,7 +31,7 @@ int main(int argc, char *argv[])
     Net *net = new Net;
 
     try {
-        Storage::autoload(*net, argv[1]);
+        autoload(*net, argv[1]);
     } catch(E<Exception::FilesystemError>& e) {
         QMessageBox::information(0, argv[0], e.what());
         return -1;
@@ -39,3 +43,28 @@ int main(int argc, char *argv[])
     return app.exec();
 }
 
+void autoload(Net& _obj, std::string _filename)
+{
+    try {
+        std::cout<<"Trying XML...\n";
+        load<xml_in>(_obj, _filename);
+        return;
+    } catch(...) {
+    }
+
+    try {
+        std::cout<<"Trying TXT...\n";
+        load<txt_in>(_obj, _filename);
+        return;
+    } catch(...) {
+    }
+
+    try {
+        std::cout<<"Trying BIN...\n";
+        load<bin_in>(_obj, _filename);
+        return;
+    } catch(...) {
+    }
+
+    throw E<Exception::FilesystemError>()<<"autoload(): Can't load "<<_filename<<"\n";
+} //autoload

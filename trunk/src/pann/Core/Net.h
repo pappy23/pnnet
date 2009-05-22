@@ -3,13 +3,8 @@
 #ifndef NET_H
 #define NET_H
 
-#include <valarray>
-#include <vector>
-#include <list>
-
-#include <boost/thread.hpp>
-#include <boost/thread/barrier.hpp>
-
+#include "Includes/Std.h"
+#include "Includes/BoostCommon.h"
 #include "Includes/BoostSerialization.h"
 
 #include "Object.h"
@@ -110,7 +105,6 @@ namespace pann
             void serialize(Archive & ar, const unsigned int version)
             {
                 ar & BOOST_SERIALIZATION_BASE_OBJECT_NVP(Object)
-                 & BOOST_SERIALIZATION_NVP(lastNeuronId)
                  & BOOST_SERIALIZATION_NVP(inputNeurons)
                  & BOOST_SERIALIZATION_NVP(cache);
             };

@@ -56,6 +56,16 @@ namespace pann
          */
         std::valarray<Float> pgm2valarray(std::string _filename, unsigned _width = 0, unsigned _height = 0);
 
+        /**
+         * Read file _filename and construct TrainData from it
+         * File format:
+         * <total_classes>
+         * </full/path/to/jpeg/image> <class>
+         * Example:
+         * /home/booble/faces/1.jpg 1
+         */
+        TrainData* generateFromImageList(std::string _filename);
+
     }; //DataGenerator
 }; //pann
 

@@ -6,9 +6,7 @@
 #ifndef EXCEPTION_H
 #define EXCEPTION_H
 
-#include <exception>
-#include <iostream>
-#include <sstream>
+#include "Includes/Std.h"
 
 namespace pann
 {

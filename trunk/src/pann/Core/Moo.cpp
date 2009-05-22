@@ -1,6 +1,6 @@
 //Moo.cpp
 
-#include <iostream>
+#include "Includes/Std.h"
 
 #include "Moo.h"
 

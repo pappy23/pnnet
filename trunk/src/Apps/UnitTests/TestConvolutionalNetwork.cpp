@@ -23,52 +23,7 @@ int main(int argc, char* argv[])
         return -1;
     }
 
-    TrainData train_data;
-
-    //
-    // Reading data
-    //
-    ifstream ifs(argv[1]);
-    unsigned total_images = 0,
-             face_images = 0,
-             notface_images = 0;
-    while(!ifs.eof())
-    {
-        string fname;
-        int is_face;
-        ifs >> fname >> is_face;
-
-        try {
-            //cout<<"Reading "<<fname<<endl;
-            total_images++;
-
-            TrainPattern tp(35*35, 2);
-            
-            tp.input = Util::squash_copy(
-                    DataGenerator::jpeg_gray2valarray(fname.c_str(), 35, 35),
-                    -2.5,
-                    +2.5
-                );
-            
-            if(is_face == 1)
-            {
-                face_images++;
-                tp.desired_output[0] = 1.5;
-                tp.desired_output[1] = -1.5;
-            } else {
-                notface_images++;
-                tp.desired_output[0] = -1.5;
-                tp.desired_output[1] = 1.5;
-            }
-            train_data.data.push_back(tp);
-
-        } catch(...) {
-            //cout<<"Failed to read "<<fname<<endl;
-        }
-    }
-
-    ifs.close();
-    cout<<"Face / Not face / Total: "<<face_images<<" / "<<notface_images<<" / "<<total_images<<endl;
+    TrainData& train_data = (*DataGenerator::generateFromImageList(argv[1]));
 
     train_data.shuffle();
     TrainData test_data = DataGenerator::divide(train_data, 20);

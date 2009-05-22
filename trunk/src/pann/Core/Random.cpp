@@ -1,8 +1,8 @@
 //Random.cpp
 
-#include "Random.h"
+#include "Includes/BoostCommon.h"
 
-#include <boost/random.hpp>
+#include "Random.h"
 
 namespace pann
 {

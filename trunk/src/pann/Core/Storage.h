@@ -5,10 +5,7 @@
 #ifndef STORAGE_H
 #define STORAGE_H
 
-#include <iostream>
-#include <sstream>
-#include <fstream>
-
+#include "Includes/Std.h"
 #include "Includes/BoostSerialization.h"
 
 #include "Exception.h"
@@ -69,11 +66,7 @@ namespace pann
 
             ifs.close();
         }; //load
-
-        //Load net and automatically detect format
-        void autoload(Net& _obj, std::string _filename);
     }; //Storage
-
 }; //pann
 
 #endif //STORAGE_H

@@ -1,6 +1,6 @@
 //Attribute.cpp
 
-#include <boost/functional/hash.hpp>
+#include "Includes/BoostCommon.h"
 
 #include "Attribute.h"
 

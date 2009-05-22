@@ -3,10 +3,10 @@
  * Generic runner realization
  */
 
-#include "Runner.h"
-
 #include "Net.h"
 #include "Neuron.h"
+
+#include "Runner.h"
 
 namespace pann
 {

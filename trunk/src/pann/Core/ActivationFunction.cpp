@@ -3,13 +3,13 @@
  * Initialization of ActivationFunction::Base static members
  */
 
-#include <boost/foreach.hpp>
-
-#include "ActivationFunction.h"
+#include "Includes/BoostCommon.h"
 
 #include "Neuron.h"
 #include "Link.h"
 #include "Weight.h"
+
+#include "ActivationFunction.h"
 
 BOOST_CLASS_EXPORT(pann::ActivationFunction::Linear);
 BOOST_CLASS_EXPORT(pann::ActivationFunction::Threshold);
