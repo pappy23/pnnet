@@ -4,58 +4,64 @@
 #define NEURON_H
 
 #include "Includes/Std.h"
+#include "Includes/BoostCommon.h"
 #include "Includes/BoostSerialization.h"
 
 #include "Object.h"
 #include "Exception.h"
 #include "ActivationFunction.h"
+#include "Weight.h"
 #include "Link.h"
+
+using boost::shared_ptr;
 
 namespace pann
 {
     class Weight;
     class Link;
 
+    /**
+     * If Neuron is input neuron - construct it with Linear activation function
+     * and call setInput
+     * Call fire() to produce activationValue
+     * It will automatically 'suck up' activation values from downstream neurons
+     */
     class Neuron : public Object
     {
-        /* Attributes */
     public:
-        static const AttributeName activationValue;
-        static const AttributeName receptiveField;
-        //static const AttributeName id;
+        Neuron(ActivationFunction::Base*, boost::shared_ptr<Weight> _bias = boost::shared_ptr<Weight>((Weight*)0));
+        virtual ~Neuron();
 
-        /* Private attributes */
-    private:
-        ActivationFunction::Base* activationFunction;
-        Weight* bias;
+        Float getReceptiveField() const;
+        Float getActivationValue() const;
+        void setInput(Float _value);
 
-        /* Public attributes */
-    public:
-        //TODO: make links private to prevent user from modifying connections
-        std::list<Link> links; //!< List of Link, both directions
-    
-        /* Public interface */
-    public:
-        Neuron(ActivationFunction::Base*, Weight* _bias = 0) throw();
-        virtual ~Neuron() throw();
+        const ActivationFunction::Base& getActivationFunction() const;
 
-        bool hasActivationFunction() const throw();
-        const ActivationFunction::Base& getActivationFunction() const throw(E<Exception::ObjectNotFound>);
+        void addInConnection(shared_ptr<Neuron> _to, shared_ptr<Weight> _weight);
+        void addOutConnection(shared_ptr<Neuron> _to, shared_ptr<Weight> _weight);
+        void delConnection(shared_ptr<Neuron> _to);
 
-        bool hasBias() const throw();
-        Weight& getBias() throw(E<Exception::ObjectNotFound>);
-        const Weight& getBias() const throw(E<Exception::ObjectNotFound>);
+        const std::list<Link>& getInConnections() const;
+        const std::list<Link>& getOutConnections() const;
+
+        bool hasBias() const;
+        Weight& getBias();
+        const Weight& getBias() const;
+
         virtual void fire();
 
-        /**
-         * Helper. Finds and returns Link* for Neuron _to
-         */
-        std::list<Link>::iterator findLink(Neuron* _to, Link::Direction _direction) 
-            throw(E<Exception::MultipleOccurance>, E<Exception::ObjectNotFound>);
+    private:
+        Float receptiveField;
+        Float activationValue;
+        ActivationFunction::Base* activationFunction;
+        std::list<Link> links_out;
+        std::list<Link> links_in;
+        boost::shared_ptr<Weight> bias;
 
         /* Serialization */
     private:
-        Neuron() throw() {};
+        Neuron() { };
         friend class boost::serialization::access;
         template<class Archive>
             void serialize(Archive & ar, const unsigned int version)
@@ -63,8 +69,11 @@ namespace pann
                 ActivationFunction::boost_export();
 
                 ar & BOOST_SERIALIZATION_BASE_OBJECT_NVP(Object)
+                 & BOOST_SERIALIZATION_NVP(receptiveField)
+                 & BOOST_SERIALIZATION_NVP(activationValue)
                  & BOOST_SERIALIZATION_NVP(activationFunction)
-                 & BOOST_SERIALIZATION_NVP(links)
+                 & BOOST_SERIALIZATION_NVP(links_out)
+                 & BOOST_SERIALIZATION_NVP(links_in)
                  & BOOST_SERIALIZATION_NVP(bias);
             };
     };

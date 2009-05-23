@@ -11,7 +11,7 @@
 #include "Exception.h"
 #include "NetCache.h"
 
-//TODO: documentation is not up to date
+using boost::shared_ptr;
 
 namespace pann
 {
@@ -21,10 +21,6 @@ namespace pann
 
     class Net : public Object
     {
-        /* Attributes */
-    public:
-        static const AttributeName workThreads;
-        /* Public interface */
     public:
         /**
          * Default constructor. 
@@ -32,32 +28,36 @@ namespace pann
          * hardware specific number (depends on available processors)
          * Although creates bias neuron
          */
-        Net() throw();
-        virtual ~Net() throw();
+        Net();
+        virtual ~Net();
 
         /**
          * Manipulate neurons in network
          */
-        void addInputNeuron(Neuron*) throw();
-        void removeNeuron(Neuron* _neuron) throw();
+        void addInputNeuron(shared_ptr<Neuron>);
+        //TODO: Fix neuron deletion process
+        void removeNeuron(shared_ptr<Neuron>);
 
         /**
          * Manage connections between neurons
          * TODO: add connections with different latencies (shortcut links)
          */
-        Weight* addConnection(Neuron* _from, Neuron* _to, Weight* _weight = 0) throw();
-        void delConnection(Neuron* _from, Neuron* _to) throw(E<Exception::Unbelievable>);
+        shared_ptr<Weight> addConnection(
+                shared_ptr<Neuron> _from, 
+                shared_ptr<Neuron> _to, 
+                shared_ptr<Weight> _weight = shared_ptr<Weight>((Weight*)0));
+        void delConnection(shared_ptr<Neuron> _from, shared_ptr<Neuron> _to);
 
         /**
          * Add values to input neurons receptive fields
          */
-        void setInput(const std::valarray<Float>& _input) throw(E<Exception::SizeMismatch>);
+        void setInput(const std::valarray<Float>& _input);
 
         /**
          * Assign neurons outputs to specified by @param _output valarray
          * (it is slower then above version, but more useful)
          */
-        void getOutput(std::valarray<Float>& _output) const throw();
+        void getOutput(std::valarray<Float>& _output) const;
 
         /**
          * Apply @param _runner Runner to each neuron,
@@ -65,31 +65,39 @@ namespace pann
          * Note: layers are computed automaticaly and stored in cache
          * See regenerateCache() implementation for more details
          */
-        void run(Runner& _runner, unsigned _threads = 0) throw();
+        void run(Runner& _runner);
 
         /**
          * Public interface to private attributes
          * (they are used while training or painting net in pann_viewer)
          */
-        const NetCache& getCache() const throw();
+        const NetCache& getCache() const;
+
+        /**
+         * Manipulate count of work threads
+         */
+        unsigned getWorkThreadsCount() const;
+        void setWorkThreadsCount(unsigned _count);
 
         /* Private members */
     private:
-        std::list<Neuron*> inputNeurons;
+        std::list<shared_ptr<Neuron> > inputNeurons;
         NetCache mutable cache;
+        unsigned workThreads;
 
         /* Private methods */
     private:
         /**
          * Helper used by regenerateCache()
          */
-        void formatFront(std::vector<Neuron*>& _raw) const throw();
+        void formatFront(std::vector<shared_ptr<Neuron> >& _raw) const;
 
         /**
          * This function updates cache
          * Be extremely careful!
          */
-        void regenerateCache() const throw(E<Exception::Unbelievable>);
+        //TODO: Support Hopfield network, automatic shortcut detection
+        void regenerateCache() const;
 
         /**
          * This function is executed by work thread, instantiated from run()
@@ -106,7 +114,8 @@ namespace pann
             {
                 ar & BOOST_SERIALIZATION_BASE_OBJECT_NVP(Object)
                  & BOOST_SERIALIZATION_NVP(inputNeurons)
-                 & BOOST_SERIALIZATION_NVP(cache);
+                 & BOOST_SERIALIZATION_NVP(cache)
+                 & BOOST_SERIALIZATION_NVP(workThreads);
             };
     };
 

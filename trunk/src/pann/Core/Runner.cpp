@@ -32,9 +32,6 @@ namespace pann
     void
     FeedforwardPropagationRunner::run(Neuron& _neuron, const Net& _net)
     {
-        if(!_neuron.hasActivationFunction())
-            return;
-
         _neuron.fire();
     } //run
 

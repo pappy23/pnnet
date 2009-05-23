@@ -12,35 +12,47 @@ namespace pann
     class Object
     {
     public:
-        Object() throw();
-        virtual ~Object() throw();
+        Object();
+        virtual ~Object();
 
-        //! Does attribute exist?
-        //! @param _attributeName - checking attribute name
-        bool is(const AttributeName _attributeName) const throw();
+        /**
+         * Does attribute exist?
+         * @param _attributeName - checking attribute name
+         */
+        bool is(const AttributeName _attributeName) const;
 
-        //! Delete attribute
-        //! @param _attributeName - deleting attribute name
-        void unset(const AttributeName _attributeName) throw(E<Exception::ObjectNotFound>);
+        /**
+         * Delete attribute
+         * @param _attributeName - deleting attribute name
+         */
+        void unset(const AttributeName _attributeName);
 
-        //! Get reference to attribute. Create it if nonexistent
-        //! @param _attributeName - getting attribute name
-        //! @return - reference to attribute
-        AttributeType& operator[](const AttributeName _attributeName) throw();
+        /**
+         * Get reference to attribute. Create it if nonexistent
+         * @param _attributeName - getting attribute name
+         * @return - reference to attribute
+         */
+        AttributeType& at(const AttributeName _attributeName);
+        AttributeType& operator[](const AttributeName _attributeName);
 
         /**
          * Get attribute. Nonintrusive version of operator[]
          */
-        const AttributeType& operator[](const AttributeName _attributeName) const throw(E<Exception::ObjectNotFound>);
+        const AttributeType& at(const AttributeName _attributeName) const;
+        const AttributeType& operator[](const AttributeName _attributeName) const;
 
-        //! Delete all attributes
-        void erase() throw();
+        /**
+         * Delete all attributes
+         */
+        void erase();
 
-        //! Delete only attributes from specific group
-        void erase(HashType _groupName) throw();
+        /**
+         * Delete only attributes from specific group
+         */
+        void erase(HashType _groupName);
 
     private:
-        std::map<AttributeName, AttributeType>* attributes;
+        std::map<AttributeName, AttributeType> attributes;
 
         /* Serialization */
     private:

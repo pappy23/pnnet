@@ -7,21 +7,21 @@
 #include "Net.h"
 
 using namespace std;
+using boost::shared_ptr;
 
 namespace pann
 {
-    const AttributeName Net::workThreads = hash("Net::workThreads", NativeParameters);
-
-    Net::Net() throw()
+    Net::Net()
     {
+        setWorkThreadsCount(0);
     } //Net
 
-    Net::~Net() throw()
+    Net::~Net()
     {
     } //~Net
 
     void 
-    Net::addInputNeuron(Neuron* _neuron) throw()
+    Net::addInputNeuron(shared_ptr<Neuron> _neuron)
     {
         cache.touch();
 
@@ -29,11 +29,13 @@ namespace pann
     } //addInputNeuron
 
     void
-    Net::removeNeuron(Neuron* _neuron) throw()
+    Net::removeNeuron(shared_ptr<Neuron> _neuron)
     {
         cache.touch();
 
         //Delete all connections to/from current neuron
+        //TODO:FIXME
+        /*
         for(list<Link>::iterator link_iter = _neuron->links.begin(); link_iter != _neuron->links.end(); )
         {
             //We will delete link, so we can't use link_iter to get access to Link object
@@ -49,31 +51,29 @@ namespace pann
             else
                 delConnection(_neuron, to);
         }
-
+        */
         //Remove neuron from registers
-        list<Neuron*>::iterator iter = find(inputNeurons.begin(), inputNeurons.end(), _neuron);
+        list<shared_ptr<Neuron> >::iterator iter = find(inputNeurons.begin(), inputNeurons.end(), _neuron);
         if(iter != inputNeurons.end())
             inputNeurons.erase(iter);
     } //delNeuron
 
-    Weight*
-    Net::addConnection(Neuron* _from, Neuron* _to, Weight* _weight) throw()
+    shared_ptr<Weight>
+    Net::addConnection(shared_ptr<Neuron> _from, shared_ptr<Neuron> _to, shared_ptr<Weight> _weight)
     {
         cache.touch();
 
         if(!_weight)
-            _weight = new Weight();
+            _weight.reset(new Weight());
 
-        _from->links.push_back( Link(_to, Link::out, _weight) );
-        _to->links.push_back( Link(_from, Link::in, _weight) );
-
-        _weight->usageCount += 2;
+        _from->addOutConnection(_to, _weight);
+        _to->addInConnection(_from, _weight);
 
         return _weight;
     } //addConnection
 
     void
-    Net::delConnection(Neuron* _from, Neuron* _to) throw(E<Exception::Unbelievable>)
+    Net::delConnection(shared_ptr<Neuron> _from, shared_ptr<Neuron> _to)
     {
         cache.touch();
 
@@ -85,27 +85,12 @@ namespace pann
          *    dir=>out                  dir=>in
          */
 
-        //Find correspondent Links in neurons
-        list<Link>::iterator from_link = _from->findLink(_to, Link::out);
-        list<Link>::iterator to_link = _to->findLink(_from, Link::in);
-
-        //weight1 (see picture) must be common for both Link objects
-        if(&from_link->getWeight() != &to_link->getWeight())
-            throw E<Exception::Unbelievable>()<<"Net::delConnection(): symmetric links don't share weight\n";
-
-        Weight* w = &from_link->getWeight();
-
-        //Actually delete Link objects from Neuron_to and Neuron_from
-        _from->links.erase(from_link);
-        _to->links.erase(to_link);
-
-        //Delete weight object if it no more used
-        if( (w->usageCount -= 2) == 0)
-            delete w;
+        _from->delConnection(_to);
+        _to->delConnection(_from);
     } //delConnection
 
     void
-    Net::setInput(const valarray<Float>& _input) throw(E<Exception::SizeMismatch>)
+    Net::setInput(const valarray<Float>& _input)
     {
         if(_input.size() < inputNeurons.size())
             throw E<Exception::SizeMismatch>()<<"setInput(): Supplied input size is smaller "
@@ -115,13 +100,15 @@ namespace pann
             E<Exception::Warning>()<<"setInput(): Input size is bigger then input neurons count. "
                                                "Check getInputMap() output\n";
 
+        typedef shared_ptr<Neuron> NP;
+
         unsigned i = 0;
-        BOOST_FOREACH( Neuron* n, inputNeurons)
-           (*n)[Neuron::activationValue] = _input[i++];
+        BOOST_FOREACH( NP n, inputNeurons)
+           n->setInput(_input[i++]);
     } //setInput
 
     void
-    Net::getOutput(valarray<Float>& _output) const throw()
+    Net::getOutput(valarray<Float>& _output) const
     {
         if(!cache.isOk())
             regenerateCache();
@@ -130,31 +117,28 @@ namespace pann
         _output.resize(output_size);
 
         for(unsigned i = 0; i < output_size; ++i)
-            _output[i] = (*cache.layers.back()[i])[Neuron::activationValue];
+            _output[i] = cache.layers.back()[i]->getActivationValue();
     } //getOutput
 
     void
-    Net::run(Runner& _runner, unsigned _threads) throw()
+    Net::run(Runner& _runner)
     {
         if( !cache.isOk() )
             regenerateCache();
 
-        if(_threads <= 0)
-            _threads = boost::thread::hardware_concurrency();
-
         boost::thread_group threadPool;
-        boost::barrier barrier(_threads);
+        boost::barrier barrier(workThreads);
 
         //We must give parameters by pointer, because boost will copy all arguments to thread
-        for(unsigned thread = 0; thread < _threads; ++thread)
-            threadPool.add_thread( new boost::thread(Net::threadBase, &_runner, this, thread, _threads, &barrier) );
+        for(unsigned thread = 0; thread < workThreads; ++thread)
+            threadPool.add_thread( new boost::thread(Net::threadBase, &_runner, this, thread, workThreads, &barrier) );
         
         //wait for threads to finish
         threadPool.join_all();
     } //run
 
     const NetCache& 
-    Net::getCache() const throw()
+    Net::getCache() const
     {
         if(!cache.isOk())
             regenerateCache();
@@ -162,11 +146,26 @@ namespace pann
         return cache;
     } //getCache
 
+    unsigned 
+    Net::getWorkThreadsCount() const
+    {
+        return workThreads;
+    } //getWorkThreadsCount
+
+    void Net::setWorkThreadsCount(unsigned _count)
+    {
+        if(_count <= 0)
+            workThreads = boost::thread::hardware_concurrency();
+        else
+            workThreads = _count;
+
+    } //setWorkThreadsCount
+
     void
-    Net::formatFront(vector<Neuron*>& _raw) const throw()
+    Net::formatFront(vector<shared_ptr<Neuron> >& _raw) const
     {
         sort(_raw.begin(), _raw.end());
-        vector<Neuron*>::iterator it = unique(_raw.begin(), _raw.end());
+        vector<shared_ptr<Neuron> >::iterator it = unique(_raw.begin(), _raw.end());
         _raw.resize( it - _raw.begin() );
 
         if(_raw.size() > 0)
@@ -174,12 +173,14 @@ namespace pann
     } //formatFront
 
     void
-    Net::regenerateCache() const throw(E<Exception::Unbelievable>)
+    Net::regenerateCache() const
     {
         cache.flush(); 
 
+        typedef shared_ptr<Neuron> NP;
+
         //Here we will place neuron's IDs that will become front, with duplicates
-        vector<Neuron*> rawFront;
+        vector<NP> rawFront;
 
         /*
          * Function operates with "hops" attribute of every Neuron
@@ -188,10 +189,10 @@ namespace pann
          * we shold write own comparison class for hops<>. I placed it to Utils.h
          */
         //map<Neuron*, unsigned, NeuronIterCompare> hops;
-        map<Neuron*, unsigned> hops;
+        map<NP, unsigned> hops;
         
         //Put inputNeurons to front
-        BOOST_FOREACH( Neuron* n, inputNeurons )
+        BOOST_FOREACH( NP n, inputNeurons )
         {
             rawFront.push_back(n);
             hops[n] = 1;
@@ -223,17 +224,13 @@ namespace pann
             for(unsigned i = 0; i < nCount; ++i)
             {
                 //pop_front emulation
-                Neuron* currentNeuron = rawFront[0];
+                NP currentNeuron = rawFront[0];
                 rawFront.erase( rawFront.begin() );
 
                 //ok, we've got cur_neuron. We will iterate through his Out links
                 //and push_back their opposite sides to rawFront
-                BOOST_FOREACH( Link& link, currentNeuron->links )
+                BOOST_FOREACH( const Link& link, currentNeuron->getOutConnections() )
                 {
-                    //Only feedforward links
-                    if(link.getDirection() == Link::in)
-                        continue;
-
                     /*
                      * Short comment. Consider following topology (hops are in brackets):
                      *   +(0)    <-- output          +(0)             +(3)    <-- front(3)
@@ -253,13 +250,13 @@ namespace pann
                      */
 
                     //Assume that when cache becomes coherent, all neuron[hops] vars become zero
-                    if(hops[&link.getTo()] == 0)
-                        hops[&link.getTo()] = hops[currentNeuron] + link.getLatency();
+                    if(hops[link.getTo()] == 0)
+                        hops[link.getTo()] = hops[currentNeuron] + link.getLatency();
 
-                    if(hops[&link.getTo()] == hops[currentNeuron] + 1)
-                        rawFront.push_back(&link.getTo()); 
+                    if(hops[link.getTo()] == hops[currentNeuron] + 1)
+                        rawFront.push_back(link.getTo()); 
 
-                    if(hops[&link.getTo()] == hops[currentNeuron] && &link.getTo() != currentNeuron)
+                    if(hops[link.getTo()] == hops[currentNeuron] && link.getTo() != currentNeuron)
                         throw E<Exception::Unbelievable>()<<"Net::run(): cur_neuron.hops == to.hops. "
                                                             "There is no support for such topologies yet\n";
                 } //BOOST_FOREACH( Link )

@@ -6,7 +6,7 @@
 
 namespace pann
 {             
-    void moo() throw()
+    void moo()
     {
         static int pic = 2;
 

@@ -1,67 +1,82 @@
 //Link.cpp
 
-#include "Link.h"
-
 #include "Weight.h"
 #include "Neuron.h"
 
+#include "Link.h"
+
+using namespace boost;
+
 namespace pann
 {
-    Link::Link(Neuron* _to, const Link::Direction _direction, Weight* _w, unsigned const _latency) throw()
+    Link::Link(shared_ptr<Neuron> _to, shared_ptr<Weight> _w, unsigned const _latency) 
+        : to(_to), weight(_w), latency(_latency)
     {
-        to = _to;
-        direction = _direction;
-        weight = _w;
-        latency = _latency;
+        weight->incUsageCount();
     } //Link
 
-    Link::~Link() throw()
+    Link::Link(const Link& _rhs)
+        : to(_rhs.to), weight(_rhs.weight), latency(_rhs.latency)
     {
+        weight->incUsageCount();
+    } //Link
+
+    Link::~Link()
+    {
+        weight->decUsageCount();
     } //~Link
 
-    Neuron&
-    Link::getTo() throw(E<Exception::ObjectNotFound>)
+/*
+    Link&
+    Link::operator=(Link const & _rhs)
+    {
+        to = _rhs.to;
+        weight = _rhs.weight;
+        latency = _rhs.latency;
+        std::cout<<"=";
+
+        return *this;
+    } //operator=
+*/
+
+    shared_ptr<Neuron>
+    Link::getTo()
     {
         if(!to)
             throw E<Exception::ObjectNotFound>()<<"Link::getTo(): Not connected\n";
 
-        return *to;
+        return to;
     } //getTo
 
-    const Neuron&
-    Link::getTo() const throw(E<Exception::ObjectNotFound>)
+    const shared_ptr<Neuron>
+    Link::getTo() const
     {
         if(!to)
             throw E<Exception::ObjectNotFound>()<<"Link::getTo(): Not connected\n";
 
-        return *to;
+        return to;
     } //getTo
 
-    Weight&
-    Link::getWeight() throw(E<Exception::ObjectNotFound>)
+    shared_ptr<Weight>
+    Link::getWeight()
     {
         if(!weight)
             throw E<Exception::ObjectNotFound>()<<"Link::getTo(): No weight\n";
 
-        return *weight;
+        return weight;
     } //getWeight
 
-    const Weight&
-    Link::getWeight() const throw(E<Exception::ObjectNotFound>)
+    const shared_ptr<Weight>
+    Link::getWeight() const
     {
         if(!weight)
             throw E<Exception::ObjectNotFound>()<<"Link::getTo(): No weight\n";
 
-        return *weight;
+        return weight;
     } //getWeight
 
-    Link::Direction
-    Link::getDirection() const throw()
-    {
-        return direction;
-    } //getDirection
     unsigned 
-    Link::getLatency() const throw()
+    Link::getLatency() const
     {
         return latency;
     } //getLatency

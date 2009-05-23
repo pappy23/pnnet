@@ -1,7 +1,7 @@
 //MultilayerPerceptron.cpp
 
-#include <vector>
-
+#include "Core/Includes/Std.h"
+#include "Core/Includes/BoostCommon.h"
 #include "Core/ActivationFunction.h"
 
 namespace pann

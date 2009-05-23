@@ -41,15 +41,14 @@ namespace pann
             };
     };
     
-    bool operator<(const AttributeName& _lhs, const AttributeName& _rhs) throw();
+    bool operator<(const AttributeName& _lhs, const AttributeName& _rhs);
 
     typedef Float AttributeType;
 
-    HashType hash(const char* _name) throw();
-    AttributeName hash(const char* _name, HashType _group) throw();
+    HashType hash(const char* _name);
+    AttributeName hash(const char* _name, HashType _group);
 
     //Registered group names
-    const HashType NativeParameters = hash("NativeParameters");
     const HashType OpenGlParameters = hash("OpenGlParameters");
     const HashType AlgorithmSpecificLearningParameters = hash("AlgorithmSpecificLearningParameters");
 

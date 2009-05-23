@@ -2,6 +2,7 @@
 #ifndef NETCACHE_H
 #define NETCACHE_H
 
+#include "Includes/BoostCommon.h"
 #include "Includes/BoostSerialization.h"
 
 #include "Cache.h"
@@ -14,15 +15,16 @@ namespace pann
     {
         /* Public types */
     public:
-        typedef std::vector<Neuron*> FrontType;
+        typedef std::vector<boost::shared_ptr<Neuron> > FrontType;
 
         /* Public members */
     public:
+        //TODO: Should we hide internal details from user?
         std::vector<FrontType> layers;
 
         /* Public interface */
     public:
-        virtual void flush() throw();
+        virtual void flush();
 
         /* Serialization */
     private:

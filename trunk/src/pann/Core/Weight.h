@@ -16,24 +16,42 @@ namespace pann
 {
     /**
      * Weight object, used in pann::Link. Weight might be shared among different Links.
-     * Link contain boost::shared_ptr<Weight> for this object
+     * Link contains boost::shared_ptr<Weight> for this object
      */
     class Weight : public Object
     {
-        /* Public interface */
     public:
-        Weight(Float _value = 1, unsigned _usageCount = 1) throw();
-        virtual ~Weight() throw();
+        Weight(Float _value = 1);
+        virtual ~Weight();
 
-        /* Attributes */
-    public:
-        static const AttributeName value; ///< weight itself
+        Float getValue() const;
+        void setValue(Float _value);
 
-        /* Public members */
-    public:
-        boost::mutex mutex;
-        //TODO: make it private. User is idiot
+        /**
+         * Add _delta / ( usageCount / 2 ) to value
+         */
+        Float addValue(Float _delta);
+
+        /**
+         * Every time Link object with current Weight is created,
+         * it increments usageCount counter
+         * It is used later in learning algorithms for shared weights
+         */
+        unsigned getUsageCount() const;
+        unsigned incUsageCount();
+        unsigned decUsageCount();
+
+        /**
+         * Restrict Weight modifications by concurrent threads
+         * boost::mutex is used
+         * Use case: boost::mutex::scoped_lock lock( w.getMutex() )
+         */
+        boost::mutex& getMutex();
+
+    private:
+        Float value;
         unsigned usageCount; ///< Used by weight update algorithms for shared weights
+        boost::mutex mutex;
 
         /* Serialization */
     private:
@@ -42,6 +60,7 @@ namespace pann
             void serialize(Archive & ar, const unsigned int version)
         {
             ar & BOOST_SERIALIZATION_BASE_OBJECT_NVP(Object)
+               & BOOST_SERIALIZATION_NVP(value)
                & BOOST_SERIALIZATION_NVP(usageCount);
         };
     };

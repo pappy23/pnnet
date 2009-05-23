@@ -1,43 +1,51 @@
 //Neuron.cpp
 
-#include "Weight.h"
-
 #include "Neuron.h"
 
 using namespace std;
+using namespace boost;
 
 namespace pann
 {
-    const AttributeName Neuron::activationValue = hash("Neuron::activationValue", NativeParameters);
-    const AttributeName Neuron::receptiveField = hash("Neuron::receptiveField", NativeParameters);
-    //const AttributeName Neuron::id = hash("Neuron::id", NativeParameters);
-
-    Neuron::Neuron(ActivationFunction::Base* _activationFunction, Weight* _bias) throw()
+    Neuron::Neuron(ActivationFunction::Base* _activationFunction, shared_ptr<Weight> _bias)
+        : activationFunction(_activationFunction), bias(_bias)
     {
-        activationFunction = _activationFunction;
-        bias = _bias;
-        
         if(activationFunction)
             fire();
         else
-            (*this)[receptiveField] = (*this)[activationValue] = 0;
+            receptiveField = activationValue = 0;
+
+        if(bias)
+        {
+            bias->incUsageCount();
+            bias->incUsageCount();
+        }
     } //Neuron
 
-    Neuron::~Neuron() throw()
+    Neuron::~Neuron()
     {
     } //~Neuron
 
-    bool
-    Neuron::hasActivationFunction() const throw()
+    Float
+    Neuron::getReceptiveField() const
     {
-        if(!activationFunction)
-            return false;
+        return receptiveField;
+    } //getReceptiveField
 
-        return true;
-    } //hasActivationFunction
+    Float
+    Neuron::getActivationValue() const
+    {
+        return activationValue;
+    } //getActivationValue
+
+    void
+    Neuron::setInput(Float _value)
+    {
+        receptiveField = _value;
+    } //setInput
 
     const ActivationFunction::Base&
-    Neuron::getActivationFunction() const throw(E<Exception::ObjectNotFound>)
+    Neuron::getActivationFunction() const
     {
         if(!activationFunction)
             throw E<Exception::ObjectNotFound>()<<"Neuron::getActivationFunction(): No activation function!\n";
@@ -45,8 +53,43 @@ namespace pann
         return *activationFunction;
     } //getOwnerThread
 
+    void
+    Neuron::addInConnection(shared_ptr<Neuron> _to, shared_ptr<Weight> _weight)
+    {
+        delConnection(_to);
+        links_in.push_back( Link(_to, _weight) );
+    } //addInConnection
+    
+    void
+    Neuron::addOutConnection(shared_ptr<Neuron> _to, shared_ptr<Weight> _weight)
+    { 
+        delConnection(_to);
+        links_out.push_back( Link(_to, _weight) );
+    } //addOutConnection
+    
+    void
+    Neuron::delConnection(shared_ptr<Neuron> _to)
+    {
+        //TODO
+//        links_in.remove_if(boost::lambda::bind(&is_equal(), _to ->* get, _2)(bind()));
+//        links_in.remove_if(bind(is_equal, _to ->* &shared_ptr<Neuron>::get)(& _1 ->* &Link::getTo));
+        //links_out.remove_if(bind(is_equal(), &(X ->* &Link::getTo), _to.get()));
+    } //delConnection
+
+    const std::list<Link>&
+    Neuron::getInConnections() const
+    {
+        return links_in;
+    } //getInConnections
+
+    const std::list<Link>&
+    Neuron::getOutConnections() const
+    {
+        return links_out;
+    } //getOutConnections
+
     bool
-    Neuron::hasBias() const throw()
+    Neuron::hasBias() const
     {
         if(bias)
             return true;
@@ -55,7 +98,7 @@ namespace pann
     } //hasBias
 
     Weight&
-    Neuron::getBias() throw(E<Exception::ObjectNotFound>)
+    Neuron::getBias()
     {
         if(!bias)
             throw E<Exception::ObjectNotFound>()<<"Link::getBias(): No bias\n";
@@ -64,7 +107,7 @@ namespace pann
     } //getBias
 
     const Weight&
-    Neuron::getBias() const throw(E<Exception::ObjectNotFound>)
+    Neuron::getBias() const
     {
         if(!bias)
             throw E<Exception::ObjectNotFound>()<<"Link::getBias(): No bias\n";
@@ -75,29 +118,14 @@ namespace pann
     void
     Neuron::fire()
     {
-        activationFunction->fire(*this);
+        if(bias)
+            receptiveField += bias->getValue();
+
+        BOOST_FOREACH( Link& link, links_in )
+            receptiveField += link.getTo()->getActivationValue() * link.getWeight()->getValue();
+
+        activationValue = activationFunction->f(receptiveField);
+        receptiveField = 0;
     } //fire
-
-    list<Link>::iterator
-    Neuron::findLink(Neuron* _to, Link::Direction _direction) throw(E<Exception::MultipleOccurance>, E<Exception::ObjectNotFound>)
-    {                                                                                
-        list<Link>::iterator result = links.end();
-        list<Link>::iterator iter = links.begin();
-        for(; iter != links.end(); ++iter)                                           
-        {                                                                            
-            if(&iter->getTo() == _to && iter->getDirection() == _direction)                     
-            {                                                                        
-                if(result != links.end()) //Multiple parallel links exist          
-                    throw E<Exception::MultipleOccurance>()<<"findLink(): detected parallel links\n";
-                else                                                                              
-                    result = iter;                                                                
-            }                                                                                     
-        }                                                                                         
-
-        if(result == links.end())
-            throw E<Exception::ObjectNotFound>()<<"findLink(): can't find required link\n";
-
-        return result;
-    } //findLink
 
 }; //pann

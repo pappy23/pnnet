@@ -16,7 +16,7 @@ namespace pann
 
     namespace ActivationFunction
     {
-        void boost_export() throw();
+        void boost_export();
 
         /**
          * All activation functions inherit ActivationFunction::Base
@@ -28,12 +28,10 @@ namespace pann
         public:
             //Returns reference to ActivationFunction object. It is always the same
             //Only one object of class Base exist at a time
-            static Base* Instance() throw();
+            static Base* Instance();
 
-            virtual Float f(Float) const throw() = 0;
-            virtual Float derivative_dy(Float) const throw() = 0;
-
-            virtual void fire(Neuron&) = 0;
+            virtual Float f(Float) const = 0;
+            virtual Float derivative_dy(Float) const = 0;
 
         /* Serialization */
         private:
@@ -51,16 +49,15 @@ namespace pann
             static Base* self;
 
 		private:
-			Linear() throw();
+			Linear();
 
         public:
-			~Linear() throw();
+			~Linear();
 
         public:
-            static Base* Instance() throw();
-            virtual Float f(Float _x) const throw();
-            virtual Float derivative_dy(Float) const throw();
-            virtual void fire(Neuron&);
+            static Base* Instance();
+            virtual Float f(Float _x) const;
+            virtual Float derivative_dy(Float) const;
 
             /* Serialization */
         private:
@@ -85,16 +82,15 @@ namespace pann
             static Base* self;
 
 		private:
-			Threshold() throw();
+			Threshold();
 
         public:
-			~Threshold() throw();
+			~Threshold();
 
         public:
-            static Base* Instance() throw();
-            virtual Float f(Float _x) const throw();
-            virtual Float derivative_dy(Float) const throw();
-            virtual void fire(Neuron&);
+            static Base* Instance();
+            virtual Float f(Float _x) const;
+            virtual Float derivative_dy(Float) const;
 
             /* Serialization */
         private:
@@ -122,16 +118,15 @@ namespace pann
             static const Float b;
 
 		private:
-			TanH() throw();
+			TanH();
 
         public:
-			~TanH() throw();
+			~TanH();
 
         public:
-            static Base* Instance() throw();
-            virtual Float f(Float _x) const throw();
-            virtual Float derivative_dy(Float) const throw();
-            virtual void fire(Neuron&);
+            static Base* Instance();
+            virtual Float f(Float _x) const;
+            virtual Float derivative_dy(Float) const;
  
             /* Serialization */
         private:
