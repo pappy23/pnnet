@@ -12,7 +12,6 @@
  *
  * TODO:
  * Replace AttributeType == Float with boost::tuple ?
- * Get rid of custom Attributes and use boost::property_map instead ?
  */
 
 #ifndef ATTRIBUTE_H
