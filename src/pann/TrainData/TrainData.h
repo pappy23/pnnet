@@ -13,11 +13,11 @@ namespace pann
     {
         /* Public interface */
     public:
-        TrainData() throw();
-        virtual ~TrainData() throw();
+        TrainData();
+        virtual ~TrainData();
 
         Float getMse() const;
-        void shuffle() throw();
+        void shuffle();
 
         /* Public members */
     public:

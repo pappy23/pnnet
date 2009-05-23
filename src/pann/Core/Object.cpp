@@ -25,7 +25,7 @@ namespace pann
     Object::unset(const AttributeName _attributeName)
     {                                          
         if(!attributes.erase(_attributeName))
-            throw E<Exception::ObjectNotFound>()<<"Attributes::unset(): attribute "<<_attributeName.name<<" not found\n";  
+            throw NotFound()<<"Attributes::unset(): attribute "<<_attributeName.name<<" not found\n";  
     } //unset                                  
 
     AttributeType&
@@ -45,7 +45,7 @@ namespace pann
     {
         std::map<AttributeName, AttributeType>::const_iterator iter = attributes.find(_attributeName);
         if(iter == attributes.end())
-            throw E<Exception::ObjectNotFound>()<<"Attributes::get(): attribute "<<_attributeName.name<<" not found\n";  
+            throw NotFound()<<"Attributes::get(): attribute "<<_attributeName.name<<" not found\n";  
         
         return iter->second;
     } //at

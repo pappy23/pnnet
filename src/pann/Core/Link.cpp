@@ -43,7 +43,7 @@ namespace pann
     Link::getTo()
     {
         if(!to)
-            throw E<Exception::ObjectNotFound>()<<"Link::getTo(): Not connected\n";
+            throw NotFound()<<"Link::getTo(): Not connected\n";
 
         return to;
     } //getTo
@@ -52,7 +52,7 @@ namespace pann
     Link::getTo() const
     {
         if(!to)
-            throw E<Exception::ObjectNotFound>()<<"Link::getTo(): Not connected\n";
+            throw NotFound()<<"Link::getTo(): Not connected\n";
 
         return to;
     } //getTo
@@ -61,7 +61,7 @@ namespace pann
     Link::getWeight()
     {
         if(!weight)
-            throw E<Exception::ObjectNotFound>()<<"Link::getTo(): No weight\n";
+            throw NotFound()<<"Link::getTo(): No weight\n";
 
         return weight;
     } //getWeight
@@ -70,7 +70,7 @@ namespace pann
     Link::getWeight() const
     {
         if(!weight)
-            throw E<Exception::ObjectNotFound>()<<"Link::getTo(): No weight\n";
+            throw NotFound()<<"Link::getTo(): No weight\n";
 
         return weight;
     } //getWeight

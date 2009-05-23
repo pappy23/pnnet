@@ -92,12 +92,12 @@ namespace pann
     Net::setInput(const valarray<Float>& _input)
     {
         if(_input.size() < inputNeurons.size())
-            throw E<Exception::SizeMismatch>()<<"setInput(): Supplied input size is smaller "
-                                                          "then number of input neurons\n";
+            throw SizeMismatch()<<"setInput(): Supplied input size is smaller "
+                                     "then number of input neurons\n";
 
         if(_input.size() > inputNeurons.size())
-            E<Exception::Warning>()<<"setInput(): Input size is bigger then input neurons count. "
-                                               "Check getInputMap() output\n";
+            Warning()<<"setInput(): Input size is bigger then input neurons count. "
+                             "Check getInputMap() output\n";
 
         typedef shared_ptr<Neuron> NP;
 
@@ -256,8 +256,8 @@ namespace pann
                         rawFront.push_back(link.getTo()); 
 
                     if(hops[link.getTo()] == hops[currentNeuron] && link.getTo() != currentNeuron)
-                        throw E<Exception::Unbelievable>()<<"Net::run(): cur_neuron.hops == to.hops. "
-                                                            "There is no support for such topologies yet\n";
+                        throw Exception()<<"Net::run(): cur_neuron.hops == to.hops. "
+                                        "There is no support for such topologies yet\n";
                 } //BOOST_FOREACH( Link )
 
             } //rawFront iteration ( Neuron )
