@@ -33,28 +33,14 @@ namespace pann
         cache.touch();
 
         //Delete all connections to/from current neuron
-        //TODO:FIXME
-        /*
-        for(list<Link>::iterator link_iter = _neuron->links.begin(); link_iter != _neuron->links.end(); )
-        {
-            //We will delete link, so we can't use link_iter to get access to Link object
-            //Copy Link attributes to local variables
-            Neuron* to = &link_iter->getTo();
-            Link::Direction dir = link_iter->getDirection();
-            
-            //Go to next Link (see for loop - it is without ++ statement)
-            link_iter++;
+        BOOST_FOREACH(const Link& link, _neuron->getInConnections())
+            link.getTo()->delConnection(_neuron);
 
-            if(dir == Link::in)
-                delConnection(to, _neuron);
-            else
-                delConnection(_neuron, to);
-        }
-        */
+        BOOST_FOREACH(const Link& link, _neuron->getOutConnections())
+            link.getTo()->delConnection(_neuron);
+
         //Remove neuron from registers
-        list<shared_ptr<Neuron> >::iterator iter = find(inputNeurons.begin(), inputNeurons.end(), _neuron);
-        if(iter != inputNeurons.end())
-            inputNeurons.erase(iter);
+        inputNeurons.remove(_neuron);
     } //delNeuron
 
     shared_ptr<Weight>

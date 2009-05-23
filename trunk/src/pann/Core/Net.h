@@ -36,7 +36,6 @@ namespace pann
          * Manipulate neurons in network
          */
         void addInputNeuron(shared_ptr<Neuron>);
-        //TODO: Fix neuron deletion process
         void removeNeuron(shared_ptr<Neuron>);
 
         /**

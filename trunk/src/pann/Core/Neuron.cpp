@@ -70,10 +70,17 @@ namespace pann
     void
     Neuron::delConnection(shared_ptr<Neuron> _to)
     {
-        //TODO
-//        links_in.remove_if(boost::lambda::bind(&is_equal(), _to ->* get, _2)(bind()));
-//        links_in.remove_if(bind(is_equal, _to ->* &shared_ptr<Neuron>::get)(& _1 ->* &Link::getTo));
-        //links_out.remove_if(bind(is_equal(), &(X ->* &Link::getTo), _to.get()));
+        //TODO: Fix this shit
+        struct comparator
+        {
+            static bool comp(shared_ptr<Neuron> _to, const Link& _l)
+            {
+                return _l.getTo() == _to;
+            }
+        };
+
+        links_in.remove_if(bind(comparator::comp, _to, _1));
+        links_out.remove_if(bind(comparator::comp, _to, _1));
     } //delConnection
 
     const std::list<Link>&
