@@ -10,6 +10,7 @@
 #include "Object.h"
 #include "Exception.h"
 #include "NetCache.h"
+#include "Weight.h"
 
 using boost::shared_ptr;
 
