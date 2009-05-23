@@ -48,7 +48,7 @@ namespace pann
     Neuron::getActivationFunction() const
     {
         if(!activationFunction)
-            throw E<Exception::ObjectNotFound>()<<"Neuron::getActivationFunction(): No activation function!\n";
+            throw NotFound()<<"Neuron::getActivationFunction(): No activation function!\n";
 
         return *activationFunction;
     } //getOwnerThread
@@ -101,7 +101,7 @@ namespace pann
     Neuron::getBias()
     {
         if(!bias)
-            throw E<Exception::ObjectNotFound>()<<"Link::getBias(): No bias\n";
+            throw NotFound()<<"Link::getBias(): No bias\n";
 
         return bias;
     } //getBias
@@ -110,7 +110,7 @@ namespace pann
     Neuron::getBias() const
     {
         if(!bias)
-            throw E<Exception::ObjectNotFound>()<<"Link::getBias(): No bias\n";
+            throw NotFound()<<"Link::getBias(): No bias\n";
 
         return bias;
     } //getBias

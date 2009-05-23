@@ -11,125 +11,59 @@
 namespace pann
 {
     /**
-     * Use case: throw E<Exception::CoolException>()<<"This is exception; i = "<<5<<std::endl;
-     * Don't forget to declare your CoolException, derived from Exception::Base
+     * Basic class for all exceptions
+     * Use case: throw(Exception()<<"Hello"<<','<<" world!"<<5<<'\n')
+     *      catch(Exception& e)
+     * Don't forget to declare your CoolException, derived from Exception
      */
-    namespace Exception
-    {
-        //! Not critical. Simply instantiate
-        class Warning {};
-
-        //! Reference to unexistent object was requested
-        class ObjectNotFound {}; 
-        
-        //! Trying to add already existent element
-        class ElementExists {}; 
-
-        //! Multiple elements exist, but onlyone allowed; ex: parallel links between neurons are not allowed
-        class MultipleOccurance {}; 
-
-        //! Count of elements mismatch
-        class SizeMismatch {}; 
-
-        //! Argument out of range
-        class RangeMismatch {}; 
-
-        //! Requested not computed value
-        class NotReady {}; 
-
-        //! Exceptionfor raising on filesystem failures (missing file etc.) 
-        class FilesystemError {}; 
-
-        //! It's imposible in our universe!
-        class Unbelievable {}; 
-
-
-	
-	class Exp : public std::exception
-	{
-	private:
-	
-		std::string msg;
-	public :
-		Exp() {msg="";};
-	
-		Exp( const Exp &rhs )
-		{
-			msg = rhs.msg;
-		}
-	
-		virtual ~Exp() throw(){};
-	
-		virtual const char * what() const throw()
-		{
-			return msg.c_str();
-		}
-	
-	
-		template<typename T>
-		Exp& operator<<( const T& t )
-		{
-			std::stringstream ss;
-			ss <<t;
-			msg +=ss.str();
-			return *this;
-		}
-	
-	};
-
-    }; //Exception
-
-    template<class C>
-    class E : public std::exception
+    class Exception : public std::exception
     {
     public:
-        E() throw();
-        E(const E& _rvalue) throw();
-        virtual ~E() throw();
+        Exception() {};
 
-        virtual const char* what() const throw();
+        Exception(const Exception& _rhs )
+        {
+            msg = _rhs.msg;
+        }
 
-        template<class T>
-            E& operator<<(const T& _value) throw();
+        virtual ~Exception() throw() {};
 
-    protected:
-        std::ostringstream textStream;
-    };
+        virtual const char * what() const throw()
+        {
+            return msg.c_str();
+        }
 
-    template<class C>
-    E<C>::E() throw()
-    {
-    } //E
+        template<typename T>
+        Exception& operator<<(const T& arg )
+        {
+            std::stringstream ss;
+            ss << arg;
+            msg += ss.str();
 
-    template<class C>
-    E<C>::E(const E<C>& _rvalue) throw()
-    {
-        textStream << _rvalue.textStream.str();
-    } //E
+            return *this;
+        }
 
-    template<class C>
-    E<C>::~E() throw()
-    {
-    } //~E
+    private:
+        std::string msg;
+    }; //Exception
 
-    template<class C>
-    const char*
-    E<C>::what() const throw()
-    {
-        return textStream.str().c_str();
-    } //what
+    /// Nothing critical
+    class Warning : public Exception {};
 
-    template<class C>
-        template<class T>
-    E<C>&
-    E<C>::operator<<(const T& _value) throw()
-    {
-        textStream << _value;
-        std::cerr << _value;
+    /// Reference to unexistent object was requested
+    class NotFound : public Exception {}; 
+    
+    /// Count of elements mismatch
+    class SizeMismatch : public Exception {}; 
 
-        return *this;
-    } //operator<<
+    /// Exceptionfor raising on filesystem failures (missing file etc.) 
+    class IoError : public Exception {}; 
+
+    /// It's imposible in our universe!
+    // USE base class - Exception instead 
+    //class Unbelievable : public Exception {}; 
 
 }; //pann
 
 #endif
+

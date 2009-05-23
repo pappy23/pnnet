@@ -32,16 +32,16 @@ namespace pann
         {
             ofstream ofs(_filename.c_str());
             if(ofs.fail())
-                throw E<Exception::FilesystemError>()<<"Storage::save(): failed to open file "<<_filename<<" for writing\n"; 
+                throw IoError()<<"Storage::save(): failed to open file "<<_filename<<" for writing\n"; 
 
             cout<<"Saving net to "<<_filename<<"..."<<endl;
             SerializatorType oa(ofs);
             try {
                 oa << BOOST_SERIALIZATION_NVP(_obj);
             } catch(boost::archive::archive_exception& e) {
-                throw E<Exception::FilesystemError>()<<"Storage::save(): failed to save net. Boost exception thrown.\n";
+                throw IoError()<<"Storage::save(): failed to save net. Boost exception thrown.\n";
             } catch(...) {
-                throw E<Exception::FilesystemError>()<<"Storage::save(): unknown exception\n";
+                throw IoError()<<"Storage::save(): unknown exception\n";
             }
 
             ofs.close();
@@ -52,16 +52,16 @@ namespace pann
         {
             ifstream ifs(_filename.c_str());
             if(ifs.fail())
-                throw E<Exception::FilesystemError>()<<"Storage::load(): failed to open file "<<_filename<<" for reading\n"; 
+                throw IoError()<<"Storage::load(): failed to open file "<<_filename<<" for reading\n"; 
             
             cout<<"Loading net from "<<_filename<<"..."<<endl;
             SerializatorType ia(ifs);
             try {
                 ia >> BOOST_SERIALIZATION_NVP(_obj);
             } catch(boost::archive::archive_exception& e) {
-                throw E<Exception::FilesystemError>()<<"Storage::load(): failed to load net. Boost exception thrown.\n";
+                throw IoError()<<"Storage::load(): failed to load net. Boost exception thrown.\n";
             } catch(...) {
-                throw E<Exception::FilesystemError>()<<"Storage::load(): unknown exception\n";
+                throw IoError()<<"Storage::load(): unknown exception\n";
             }
 
             ifs.close();

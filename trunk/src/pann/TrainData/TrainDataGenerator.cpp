@@ -40,7 +40,7 @@ namespace pann
         } //test
 
         valarray<Float>
-        squash_copy(const valarray<Float> & _v, Float _min, Float _max) throw()
+        squash_copy(const valarray<Float> & _v, Float _min, Float _max)
         {
             valarray<Float> result = _v;
             squash(result, _min, _max);
@@ -49,7 +49,7 @@ namespace pann
         } //squash_copy
 
         void
-        squash(valarray<Float> & _v, Float _min, Float _max) throw()
+        squash(valarray<Float> & _v, Float _min, Float _max)
         {
             if(_min > _max)
                 swap(_min, _max);

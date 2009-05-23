@@ -49,7 +49,7 @@ namespace pann
     Weight::decUsageCount()
     {
         if(usageCount == 0);
-            //TODO throw E<>;
+            throw Exception()<<"Weight::decUsageCount(): negative usage count\n";
 
         return --usageCount;
     } //decUsageCount

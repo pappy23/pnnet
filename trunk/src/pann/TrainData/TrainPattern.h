@@ -12,10 +12,10 @@ namespace pann
     {
         /* Public interface */
     public:
-        TrainPattern(unsigned input_size, unsigned output_size) throw();
-        virtual ~TrainPattern() throw();
+        TrainPattern(unsigned input_size, unsigned output_size);
+        virtual ~TrainPattern();
 
-        Float getMse() const throw(E<Exception::SizeMismatch>);
+        Float getMse() const;
 
         /* Public members */
     public:
@@ -25,7 +25,7 @@ namespace pann
 
         /* Private methods */
     private:
-        void resize(unsigned input_size, unsigned output_size) throw();
+        void resize(unsigned input_size, unsigned output_size);
     };
 }; //pann
 
