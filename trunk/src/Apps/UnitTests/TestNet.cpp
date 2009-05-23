@@ -14,7 +14,7 @@ using namespace boost;
 int main()
 {
     const unsigned runs_count = 3;
-    const unsigned layers_count = 2;
+    const unsigned layers_count = 0;
 
     TrainPattern tp(1, 1);
     tp.input[0] = -100;
@@ -29,6 +29,7 @@ int main()
         Net& net = NetworkModel::MultilayerPerceptron(layers, ActivationFunction::TanH::Instance());
 
         cout<<"MLP ready\n";
+        Storage::save<Storage::xml_out>(net, "test_net.xml");
 
         //Test run()
         {
