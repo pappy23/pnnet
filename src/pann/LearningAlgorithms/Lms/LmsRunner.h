@@ -16,15 +16,15 @@ namespace pann
         static Runner* self;
 
     private:
-        LmsBackpropagationRunner() throw();
+        LmsBackpropagationRunner();
 
     public:
-        ~LmsBackpropagationRunner() throw();
+        ~LmsBackpropagationRunner();
 
     public:
-        static Runner& Instance() throw();
-        virtual void run(Neuron& _neuron, const Net& _net) throw(E<Exception::NotReady>);
-        virtual RunDirection getDirection() throw();
+        static Runner& Instance();
+        virtual void run(Neuron& _neuron, const Net& _net);
+        virtual RunDirection getDirection();
     };
 }; //pann
 

@@ -16,16 +16,16 @@ namespace pann
 {
     Runner* LmsBackpropagationRunner::self = 0;
 
-    LmsBackpropagationRunner::LmsBackpropagationRunner() throw()
+    LmsBackpropagationRunner::LmsBackpropagationRunner()
     {
     } //LmsBackpropagationRunner
 
-    LmsBackpropagationRunner::~LmsBackpropagationRunner() throw()
+    LmsBackpropagationRunner::~LmsBackpropagationRunner()
     {
     } //~LmsBackpropagationRunner
     
     Runner&
-    LmsBackpropagationRunner::Instance() throw()
+    LmsBackpropagationRunner::Instance()
     {
         if(!self)
             self = new LmsBackpropagationRunner();
@@ -34,7 +34,7 @@ namespace pann
     } //Instance
 
     void
-    LmsBackpropagationRunner::run(Neuron& _neuron, const Net& _net) throw(E<Exception::NotReady>)
+    LmsBackpropagationRunner::run(Neuron& _neuron, const Net& _net)
     {
         if(!_neuron.is(LMS))
         {
@@ -125,7 +125,7 @@ namespace pann
     } //run
 
     RunDirection
-    LmsBackpropagationRunner::getDirection() throw()
+    LmsBackpropagationRunner::getDirection()
     {
         return BackwardRun;
     } //getDirection

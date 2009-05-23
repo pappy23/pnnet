@@ -25,7 +25,7 @@ namespace pann
             //Input neurons
             for(unsigned i = 0; i < _layers[0]; ++i)
             {
-                shared_ptr<Neuron> n(new Neuron(0));
+                shared_ptr<Neuron> n(new Neuron(ActivationFunction::Linear::Instance()));
                 mlp[0].push_back(n);
                 net->addInputNeuron(n);
             }
