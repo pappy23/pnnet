@@ -1,13 +1,3 @@
-/**
- * @file
- * Initialization of ActivationFunction::Base static members
- */
-
-#include "Includes/BoostCommon.h"
-
-#include "Neuron.h"
-#include "Link.h"
-#include "Weight.h"
 
 #include "ActivationFunction.h"
 
@@ -20,7 +10,7 @@ namespace pann
     namespace ActivationFunction
     {
         void
-        boost_export() throw()
+        boost_export()
         {
             //Current registration is very dirty, may be one time i'll fix it :)
             Linear::Instance();
@@ -28,19 +18,20 @@ namespace pann
             TanH::Instance();
         } //boost_export
 
+
         Base* Linear::self = 0;
 
-        Linear::Linear() throw()
+        Linear::Linear()
         {
         } //Linear
 
-        Linear::~Linear() throw()
+        Linear::~Linear()
         {
             self = 0;
         } //~Linear
 
         Base*
-        Linear::Instance() throw()
+        Linear::Instance()
         {
             if(!self)
                 self = new Linear();
@@ -49,45 +40,31 @@ namespace pann
         } //Instance
 
         Float
-        Linear::f(Float _x) const throw()
+        Linear::f(Float _x) const
         {
             return _x;
         } //f
 
         Float
-        Linear::derivative_dy(Float) const throw()
+        Linear::derivative_dy(Float) const
         {
             return 1;
         } //derivative_dy
 
-        void
-        Linear::fire(Neuron& _n)
-        {
-            _n[Neuron::receptiveField] = 0;
-
-            if(_n.hasBias())
-                _n[Neuron::receptiveField] += _n.getBias()[Weight::value];
-
-            BOOST_FOREACH( Link& link, _n.links )
-                if(link.getDirection() == Link::in)
-                    _n[Neuron::receptiveField] += link.getTo()[Neuron::activationValue] * link.getWeight()[Weight::value];
-
-            _n[Neuron::activationValue] = _n.getActivationFunction().f(_n[Neuron::receptiveField]);
-        } //fire
 
         Base* Threshold::self = 0;
 
-        Threshold::Threshold() throw()
+        Threshold::Threshold()
         {
         } //Threshold
 
-        Threshold::~Threshold() throw()
+        Threshold::~Threshold()
         {
             self = 0;
         } //~Threshold
 
         Base*
-        Threshold::Instance() throw()
+        Threshold::Instance()
         {
             if(!self)
                 self = new Threshold();
@@ -96,7 +73,7 @@ namespace pann
         } //Instance
 
         Float
-        Threshold::f(Float _x) const throw()
+        Threshold::f(Float _x) const
         {
             if(_x < 0)
                 return 0;
@@ -104,41 +81,30 @@ namespace pann
         } //f
 
         Float
-        Threshold::derivative_dy(Float) const throw()
+        Threshold::derivative_dy(Float _x) const
         {
+            if(_x == 0)
+                return inf;
+
             return 0;
         } //derivative_dy
 
-        void
-        Threshold::fire(Neuron& _n)
-        {
-            _n[Neuron::receptiveField] = 0;
-
-            if(_n.hasBias())
-                _n[Neuron::receptiveField] += _n.getBias()[Weight::value];
-
-            BOOST_FOREACH( Link& link, _n.links )
-                if(link.getDirection() == Link::in)
-                    _n[Neuron::receptiveField] += link.getTo()[Neuron::activationValue] * link.getWeight()[Weight::value];
-
-            _n[Neuron::activationValue] = _n.getActivationFunction().f(_n[Neuron::receptiveField]);
-        } //fire
 
         Base* TanH::self = 0;
         const Float TanH::a = 1.7159;
         const Float TanH::b = 0.6667;
 
-        TanH::TanH() throw()
+        TanH::TanH()
         {
         } //TanH
 
-        TanH::~TanH() throw()
+        TanH::~TanH()
         {
             self = 0;
         } //~TanH
 
         Base*
-        TanH::Instance() throw()
+        TanH::Instance()
         {
             if(!self)
                 self = new TanH();
@@ -147,31 +113,16 @@ namespace pann
         } //Instance
 
         Float
-        TanH::f(Float _x) const throw()
+        TanH::f(Float _x) const
         {
             return a * std::tanh( b * _x );
         } //f
 
         Float
-        TanH::derivative_dy(Float _y) const throw()
+        TanH::derivative_dy(Float _y) const
         {
             return b/a * (a - _y) * (a + _y);
         } //derivative_dy
-
-        void
-        TanH::fire(Neuron& _n)
-        {
-            _n[Neuron::receptiveField] = 0;
-
-            if(_n.hasBias())
-                _n[Neuron::receptiveField] += _n.getBias()[Weight::value];
-
-            BOOST_FOREACH( Link& link, _n.links )
-                if(link.getDirection() == Link::in)
-                    _n[Neuron::receptiveField] += link.getTo()[Neuron::activationValue] * link.getWeight()[Weight::value];
-
-            _n[Neuron::activationValue] = _n.getActivationFunction().f(_n[Neuron::receptiveField]);
-        } //fire
 
     }; //ActivationFunction
 }; //pann

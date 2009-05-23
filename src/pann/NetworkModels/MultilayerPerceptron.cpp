@@ -1,10 +1,10 @@
 //MultilayerPerceptron.cpp
 
-#include "MultilayerPerceptron.h"
-
 #include "Core/Net.h"
 #include "Core/Neuron.h"
 #include "Core/Weight.h"
+
+#include "MultilayerPerceptron.h"
 
 using namespace std;
 
@@ -20,12 +20,12 @@ namespace pann
             if(_layers.size() == 0)
                 return *net;
 
-            vector< vector<Neuron*> > mlp(_layers.size());
+            vector< vector<shared_ptr<Neuron> > > mlp(_layers.size());
 
             //Input neurons
             for(unsigned i = 0; i < _layers[0]; ++i)
             {
-                Neuron* n = new Neuron(0);
+                shared_ptr<Neuron> n(new Neuron(0));
                 mlp[0].push_back(n);
                 net->addInputNeuron(n);
             }
@@ -45,7 +45,12 @@ namespace pann
                     else
                         af = _af;
 
-                    mlp[l].push_back(new Neuron(af, new Weight(1))); //Neuron with bias
+                    mlp[l].push_back(
+                            shared_ptr<Neuron>(new Neuron(
+                                    af, 
+                                    shared_ptr<Weight>(new Weight(1))
+                            ))
+                    ); //Neuron with bias
                 }
        
             //Connections
@@ -53,7 +58,7 @@ namespace pann
                 for(unsigned j = 0; j < mlp[i].size(); j++) //prev layer
                     for(unsigned k = 0; k < mlp[i+1].size(); k++) //next layer
                         //Connection from current layer (i) to next (i+1)
-                        net->addConnection(mlp[i][j], mlp[i+1][k], new Weight(1));
+                        net->addConnection(mlp[i][j], mlp[i+1][k], shared_ptr<Weight>(new Weight(1)));
             
             return *net;
         };

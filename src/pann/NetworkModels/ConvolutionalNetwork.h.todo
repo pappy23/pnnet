@@ -1,7 +1,6 @@
 //ConvolutionalNetwork.h
 
-#include <vector>
-
+#include "Core/Includes/Std.h"
 #include "Core/ActivationFunction.h"
 
 namespace pann

@@ -5,8 +5,8 @@
 namespace pann
 {
     Cache::Cache()
+        : coherent(false)
     {
-        coherent = false;
     } //Cache
 
     Cache::~Cache()

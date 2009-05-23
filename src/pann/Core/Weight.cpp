@@ -4,17 +4,61 @@
 
 namespace pann
 {
-    const AttributeName Weight::value = hash("Weight::value", NativeParameters);
-
-    Weight::Weight(Float _value, unsigned _usageCount) throw()
+    Weight::Weight(Float _value)
+        : value(_value), usageCount(0)
     {
-        (*this)[value] = _value;
-        usageCount = _usageCount;
     } //Weight
 
-    Weight::~Weight() throw()
+    Weight::~Weight()
     {
     } //~Weight
+
+    Float
+    Weight::getValue() const
+    {
+        return value;
+    } //getValue
+
+    void
+    Weight::setValue(Float _value)
+    {
+        value = _value;
+    } //setValue
+
+    Float
+    Weight::addValue(Float _delta)
+    {
+        value += _delta * 2.0 / Float(usageCount);
+
+        return value;
+    } //addValue
+
+    unsigned
+    Weight::getUsageCount() const
+    {
+        return usageCount;
+    } //getUsageCount
+    
+    unsigned
+    Weight::incUsageCount()
+    {
+        return ++usageCount;
+    } //incUsageCount
+
+    unsigned
+    Weight::decUsageCount()
+    {
+        if(usageCount == 0);
+            //TODO throw E<>;
+
+        return --usageCount;
+    } //decUsageCount
+
+    boost::mutex&
+    Weight::getMutex()
+    {
+        return this->mutex;
+    } //getMutex
 
 }; //pann
 

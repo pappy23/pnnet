@@ -3,7 +3,7 @@
 
 namespace pann
 {
-    void moo() throw();
+    void moo();
 }; //pann
 
 #endif

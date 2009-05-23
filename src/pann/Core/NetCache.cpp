@@ -5,7 +5,7 @@
 namespace pann
 {
     void
-    NetCache::flush() throw()
+    NetCache::flush()
     {
         layers.clear();
         touch();

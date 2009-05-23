@@ -1,48 +1,47 @@
 /**
- * @file
  * Link object
  */
 
 #ifndef LINK_H
 #define LINK_H
 
+#include "Includes/BoostCommon.h"
 #include "Includes/BoostSerialization.h"
 
 #include "Object.h"
+
+using boost::shared_ptr;
 
 namespace pann
 {
     class Neuron;
     class Weight;
 
-    //! Link between two neurons
+    /**
+     * Link between two neurons
+     */
     class Link : public Object
     {
-        /* Public types */
     public:
-        enum Direction { in, out };
+        Link(shared_ptr<Neuron> _to, shared_ptr<Weight> _weight, unsigned const _latency = 1);
+        Link(const Link& _rhs);
+        virtual ~Link();
+        //TODO const Link& _rhs and Link const & _rhs - feel the difference
+        //Link& operator=(Link const & _rhs);
 
-        /* Private members */
+        shared_ptr<Neuron> getTo();
+        const shared_ptr<Neuron> getTo() const;
+
+        shared_ptr<Weight> getWeight();
+        const shared_ptr<Weight> getWeight() const;
+
+        unsigned getLatency() const;
+    
     private:
-        Neuron* to;
-        Weight* weight; //!< Pointer to Weight object (might be shared between different links)
-        Direction direction;
+        shared_ptr<Neuron> to;
+        shared_ptr<Weight> weight; /// Pointer to Weight object (might be shared between different links)
         unsigned latency;
 
-        /* Public interface */
-    public:
-        Link(Neuron* _to, const Direction _direction, Weight* _weight, unsigned const _latency = 1) throw();
-        virtual ~Link() throw();
-
-        Neuron& getTo() throw(E<Exception::ObjectNotFound>);  
-        const Neuron&  getTo() const throw(E<Exception::ObjectNotFound>);
-
-        Weight& getWeight() throw(E<Exception::ObjectNotFound>);
-        const Weight& getWeight() const throw(E<Exception::ObjectNotFound>);
-
-        Direction getDirection() const throw();
-        unsigned getLatency() const throw();
-    
         /* Serialization */
     private:
         Link() { }; //default constructor for serialization
@@ -54,7 +53,6 @@ namespace pann
             {
                 ar & BOOST_SERIALIZATION_BASE_OBJECT_NVP(Object)
                  & BOOST_SERIALIZATION_NVP(to)
-                 & BOOST_SERIALIZATION_NVP(direction)
                  & BOOST_SERIALIZATION_NVP(latency)
                  & BOOST_SERIALIZATION_NVP(weight);
             };
