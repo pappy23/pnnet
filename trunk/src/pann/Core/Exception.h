@@ -43,6 +43,40 @@ namespace pann
         //! It's imposible in our universe!
         class Unbelievable {}; 
 
+
+	
+	class Exp : public std::exception
+	{
+	private:
+	
+		std::string msg;
+	public :
+		Exp() {msg="";};
+	
+		Exp( const Exp &rhs )
+		{
+			msg = rhs.msg;
+		}
+	
+		virtual ~Exp() throw(){};
+	
+		virtual const char * what() const throw()
+		{
+			return msg.c_str();
+		}
+	
+	
+		template<typename T>
+		Exp& operator<<( const T& t )
+		{
+			std::stringstream ss;
+			ss <<t;
+			msg +=ss.str();
+			return *this;
+		}
+	
+	};
+
     }; //Exception
 
     template<class C>
