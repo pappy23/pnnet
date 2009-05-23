@@ -97,22 +97,22 @@ namespace pann
         return false;
     } //hasBias
 
-    Weight&
+    shared_ptr<Weight>
     Neuron::getBias()
     {
         if(!bias)
             throw E<Exception::ObjectNotFound>()<<"Link::getBias(): No bias\n";
 
-        return *bias;
+        return bias;
     } //getBias
 
-    const Weight&
+    const shared_ptr<Weight>
     Neuron::getBias() const
     {
         if(!bias)
             throw E<Exception::ObjectNotFound>()<<"Link::getBias(): No bias\n";
 
-        return *bias;
+        return bias;
     } //getBias
 
     void

@@ -46,8 +46,8 @@ namespace pann
         const std::list<Link>& getOutConnections() const;
 
         bool hasBias() const;
-        Weight& getBias();
-        const Weight& getBias() const;
+        shared_ptr<Weight> getBias();
+        const shared_ptr<Weight> getBias() const;
 
         virtual void fire();
 

@@ -2,7 +2,6 @@
 
 #include "Runner.h"
 #include "Neuron.h"
-#include "Weight.h"
 
 #include "Net.h"
 
