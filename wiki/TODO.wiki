@@ -1,49 +1,49 @@
-* check neuron/link deletions. Possible memory leaks with shared weights
+  * check neuron/link deletions. Possible memory leaks with shared weights
 Solution: don't delete neurons :)
 
-* fix segfaults on concurrent thread executing. Possible reason -
+  * fix segfaults on concurrent thread executing. Possible reason -
 concurrent read-only access to Net attributes
 Solution: needs fixing. We can copy const pointer to Net attributes to each thread
 local storage or replace operator[] call with map::at()
 fixed
 
-* segfaults when creating big valarray. It means that we can't use
+  * segfaults when creating big valarray. It means that we can't use
 valarrays :( They are all possibly broken(must be very small)
 Solution: don't use big valarrays
 fixed. Problem wasn't at valarray
 
-* write algorithm to scale/crop images
+  * write algorithm to scale/crop images
 Solution: do it with imagemagick
 
-* write algorithm to get some part of image(with different
+  * write algorithm to get some part of image(with different
 rotations/transformations) and process it independently. This is needed for
 searching face with sliding window approach when we look for rotated face.
 Solution: do it with imagemagick
 
-* write PPM/PGM/PBM, BMP, PNG, TIFF parser. Rewrite JPEG reader.
+  * write PPM/PGM/PBM, BMP, PNG, TIFF parser. Rewrite JPEG reader.
 Solution: do it with imagemagick
 write own reader for PPM/PGM/PBM format(may be with gzipped/bzipped versions) to
 omit dependency from libJPEG
 
-* fix save/load procedure. It is recursive and uses a lot of stack memory
+  * fix save/load procedure. It is recursive and uses a lot of stack memory
 Solution: increase stack size with sudo ulimit -s
 
-*introduce new type Image and a set of algorithms to manipulate Image. Although we
+  * introduce new type Image and a set of algorithms to manipulate Image. Although we
 will need Image<->valarray<->TrainPattern conversion
 only Image type dealing with PPM/PGM reader. Nothing more. Let Imagemagick to do
 tricks :)
 
-* fix learning algorithm. It should take into count that bias weights might be
+  * fix learning algorithm. It should take into count that bias weights might be
 shared across neurons
 done
 
-* new multithreading/MPI concept: new feedforard runner, thread localstorage
+  * new multithreading/MPI concept: new feedforard runner, thread localstorage
 dismissed
 
-*Global Core code review. Fix memory leaks, fix encapsulation and information
+  * Global Core code review. Fix memory leaks, fix encapsulation and information
 hiding, use smart pointers, fix serialization, speed/lock improvements and so on.
 
-* 23.05.2009 meeting questions:
+  * 23.05.2009 meeting questions:
 -cross platform code: pros and cons
 -refactoring(smart pointers, encapsulation, where shall we place NetworkModel code?,
 include model)
@@ -56,7 +56,7 @@ limitations(recursive links, latancy), attributes(what should be an attribute an
 what shouldn't), again, encapsulation and information hiding)
 
 
-*Great meeting finished. Conclusions:
+  * Great meeting finished. Conclusions:
 # replace shared list<Link> with two distinct list<Link>-s and remove "direction"
 from Link
 # use callback while adding Weight
@@ -70,13 +70,13 @@ Weight* Weight::get()
 
 }}}
 
-# no factories
-# add new Neuron types (Standart, RBF and so on). Neuron "sucks" data and passes it
+  # no factories
+  # add new Neuron types (Standart, RBF and so on). Neuron "sucks" data and passes it
 to ActivationFunction (Float)
-# SE(ss()<<test<<5<<...) - Exception - brand new idea
-# читать CTest для юнит-тестирования
-# oprofile, valgrind - отловить тормоза и пр.
-# get rid of NativeAttributes
-# Для Сереги - помечать непонятные места как FIXME
-# Doxygen
-# Описание в отдельном доке(статьи)
+  # SE(ss()<<test<<5<<...) - Exception - brand new idea
+  # читать CTest для юнит-тестирования
+  # oprofile, valgrind - отловить тормоза и пр.
+  # get rid of NativeAttributes
+  # Для Сереги - помечать непонятные места как FIXME
+  # Doxygen
+  # Описание в отдельном доке(статьи)
