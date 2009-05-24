@@ -42,10 +42,11 @@ namespace pann
         /**
          * Manage connections between neurons
          * TODO: add connections with different latencies (shortcut links)
+         * TODO: do we really need this? We can connect two neurons without Net intervention
          */
         shared_ptr<Weight> addConnection(
                 shared_ptr<Neuron> _from, 
-                shared_ptr<Neuron> _to, 
+                shared_ptr<Neuron> _to,
                 shared_ptr<Weight> _weight = shared_ptr<Weight>((Weight*)0));
         void delConnection(shared_ptr<Neuron> _from, shared_ptr<Neuron> _to);
 

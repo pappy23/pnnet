@@ -34,13 +34,15 @@ namespace pann
 
         //Delete all connections to/from current neuron
         BOOST_FOREACH(const Link& link, _neuron->getInConnections())
-            link.getTo()->delConnection(_neuron);
+            link.getTo()->delOutConnection(_neuron);
 
         BOOST_FOREACH(const Link& link, _neuron->getOutConnections())
-            link.getTo()->delConnection(_neuron);
+            link.getTo()->delInConnection(_neuron);
 
         //Remove neuron from registers
         inputNeurons.remove(_neuron);
+
+        Debug()<<_neuron.use_count()<<'\n';
     } //delNeuron
 
     shared_ptr<Weight>
@@ -70,8 +72,8 @@ namespace pann
          *    dir=>out                  dir=>in
          */
 
-        _from->delConnection(_to);
-        _to->delConnection(_from);
+        _from->delOutConnection(_to);
+        _to->delInConnection(_from);
     } //delConnection
 
     void

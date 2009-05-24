@@ -4,6 +4,7 @@
 #include <iostream>
 #include <sstream>
 #include <fstream>
+#include <iomanip>
 
 #include <map>
 #include <list>
@@ -12,6 +13,7 @@
 #include <string>
 
 #include <algorithm>
+#include <functional>
 #include <iterator>
 
 #include <limits>

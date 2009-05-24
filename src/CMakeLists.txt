@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 2.6)
 project (PANN)
 
 if(CMAKE_COMPILER_IS_GNUCXX)
-	add_definitions(-Wall -ansi)
+	add_definitions(-Wall -ansi -g)
 #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -ansi")
 endif(CMAKE_COMPILER_IS_GNUCXX)
 
@@ -23,7 +23,7 @@ elseif(UNIX)
 endif(WIN32)
 
 set(Boost_USE_STATIC_LIBS ON)
-find_package(Boost REQUIRED COMPONENTS thread serialization date_time mpi)
+find_package(Boost REQUIRED COMPONENTS thread serialization date_time) #mpi
 
 if(Boost_FOUND)
     include_directories(${Boost_INCLUDE_DIR})

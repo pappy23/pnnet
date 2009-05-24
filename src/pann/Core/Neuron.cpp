@@ -56,22 +56,19 @@ namespace pann
     void
     Neuron::addInConnection(shared_ptr<Neuron> _to, shared_ptr<Weight> _weight)
     {
-        //TODO: slow performance. Don't use delConnection each time
-        //delConnection(_to);
         links_in.push_back( Link(_to, _weight) );
     } //addInConnection
     
     void
     Neuron::addOutConnection(shared_ptr<Neuron> _to, shared_ptr<Weight> _weight)
     { 
-        //delConnection(_to);
         links_out.push_back( Link(_to, _weight) );
     } //addOutConnection
     
     void
-    Neuron::delConnection(shared_ptr<Neuron> _to)
+    Neuron::delInConnection(shared_ptr<Neuron> _to)
     {
-        //TODO: Fix this shit
+        //TODO: Fix this shit. Or not?
         struct comparator
         {
             static bool comp(shared_ptr<Neuron> _to, const Link& _l)
@@ -81,8 +78,22 @@ namespace pann
         };
 
         links_in.remove_if(bind(comparator::comp, _to, _1));
+    } //delInConnection
+
+    void
+    Neuron::delOutConnection(shared_ptr<Neuron> _to)
+    {
+        //TODO: Fix this shit. Or not?
+        struct comparator
+        {
+            static bool comp(shared_ptr<Neuron> _to, const Link& _l)
+            {
+                return _l.getTo() == _to;
+            }
+        };
+
         links_out.remove_if(bind(comparator::comp, _to, _1));
-    } //delConnection
+    } //delOutConnection
 
     const std::list<Link>&
     Neuron::getInConnections() const

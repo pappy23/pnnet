@@ -1,10 +1,10 @@
 
-if(MPI_FOUND)
+if(Boost_mpi_FOUND)
     add_executable(TestBoostMPI TestBoostMPI.cpp)
     target_link_libraries(TestBoostMPI ${Boost_LIBRARIES})
-else(MPI_FOUND)
+else(Boost_mpi_FOUND)
     message(STATUS "Not building TestBoostMPI")
-endif(MPI_FOUND)
+endif(Boost_mpi_FOUND)
 
 add_executable(TestIntSize TestIntSize.cpp)
 
