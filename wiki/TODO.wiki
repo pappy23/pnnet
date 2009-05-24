@@ -1,4 +1,3 @@
-
 * check neuron/link deletions. Possible memory leaks with shared weights
 Solution: don't delete neurons :)
 
@@ -62,11 +61,13 @@ what shouldn't), again, encapsulation and information hiding)
 from Link
 # use callback while adding Weight
 {{{
+
 Weight* Weight::get()
 {
  usageCount++;
  return this;
-}
+};
+
 }}}
 
 # no factories
