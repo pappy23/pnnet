@@ -39,13 +39,13 @@ namespace pann
                     net->addInputNeuron(n);
             }
         }
-   
+
         //Connections
         for(unsigned i = 0; i < mlp.size() - 1; i++) //layers
             for(unsigned j = 0; j < mlp[i].size(); j++) //prev layer
                 for(unsigned k = 0; k < mlp[i+1].size(); k++) //next layer
                     //Connection from current layer (i) to next (i+1)
-                    net->addConnection(mlp[i][j], mlp[i+1][k], shared_ptr<Weight>(new Weight(1)));
+                    net->addConnection(mlp[i][j], mlp[i+1][k]);
         
         return *net;
     };

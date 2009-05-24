@@ -56,14 +56,15 @@ namespace pann
     void
     Neuron::addInConnection(shared_ptr<Neuron> _to, shared_ptr<Weight> _weight)
     {
-        delConnection(_to);
+        //TODO: slow performance. Don't use delConnection each time
+        //delConnection(_to);
         links_in.push_back( Link(_to, _weight) );
     } //addInConnection
     
     void
     Neuron::addOutConnection(shared_ptr<Neuron> _to, shared_ptr<Weight> _weight)
     { 
-        delConnection(_to);
+        //delConnection(_to);
         links_out.push_back( Link(_to, _weight) );
     } //addOutConnection
     

@@ -10,13 +10,13 @@ using namespace boost;
 int main()
 {
     //Constructing perceptron
-    vector<unsigned> layers;
-    layers.push_back(1); 
-    layers.push_back(1000); 
-    layers.push_back(1000); 
-    layers.push_back(1000); 
-    layers.push_back(1); 
-    Net& net = NetworkModel::MultilayerPerceptron(layers, ActivationFunction::TanH::Instance());
+    vector<tuple<unsigned, ActivationFunction::Base*> > layers;
+    layers.push_back(make_tuple(1, ActivationFunction::Linear::Instance()));  //input  - no act. fcn
+    layers.push_back(make_tuple(1000, ActivationFunction::TanH::Instance())); //hidden - tanh
+    layers.push_back(make_tuple(1000, ActivationFunction::TanH::Instance())); //hidden - tanh
+    layers.push_back(make_tuple(1000, ActivationFunction::TanH::Instance())); //hidden - tanh
+    layers.push_back(make_tuple(1, ActivationFunction::Linear::Instance()));  //output - linear
+    Net& net = MultilayerPerceptron(layers); 
 
     //Learning
     TrainData td;
@@ -27,7 +27,10 @@ int main()
     Lms::init(net);
     net[LmsAttributes::learningRate] = 0.2;
     net[LmsAttributes::learningMomentum] = 0.5;
-    Util::randomizeWeightsGauss(net, -0.3, 0.3);
+    net[RandomizeWeightsAttributes::min] = -0.3;
+    net[RandomizeWeightsAttributes::max] = +0.3;
+    //net.run(RandomizeWeightsGaussRunner::Instance());
+    net.run(RandomizeWeightsAccordingToInputsCountRunner::Instance());
     Lms::train(net, td); //dry run to create all learning structures
     
     for(unsigned i = 1; i < 9; ++i)
@@ -36,7 +39,7 @@ int main()
         struct timeval start, stop;
         gettimeofday(&start, 0);
 
-        net[Net::workThreads] = i;
+        net.setWorkThreadsCount(i);
         Lms::train(net, td);
         
         gettimeofday(&stop, 0);
