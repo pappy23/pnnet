@@ -36,6 +36,7 @@ namespace pann
          * Manipulate neurons in network
          */
         void addInputNeuron(shared_ptr<Neuron>);
+        //TODO Fix removal of neurons and connection. We may get memory leaks and/or stuck with hanging topology part
         void removeNeuron(shared_ptr<Neuron>);
 
         /**

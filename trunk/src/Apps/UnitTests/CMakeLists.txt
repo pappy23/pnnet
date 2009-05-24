@@ -6,8 +6,6 @@ else(MPI_FOUND)
     message(STATUS "Not building TestBoostMPI")
 endif(MPI_FOUND)
 
-add_executable(TestOMP TestOMP.cpp)
-
 add_executable(TestIntSize TestIntSize.cpp)
 
 add_executable(TestNet TestNet.cpp)

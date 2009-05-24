@@ -13,7 +13,7 @@ void test(Net& net, Float start, Float stop, Float step);
 
 Float func(Float _x)
 {
-    return _x * _x;
+    return sin(_x); // * _x;
 }
 
 const unsigned epochs = 1000;
@@ -22,13 +22,13 @@ int main()
 {
 //*
     //Constructing perceptron
-    vector<unsigned> layers;
-    layers.push_back(1); //input  - no act. fcn
-    layers.push_back(16); //hidden - tanh
-    layers.push_back(9); //hidden - tanh
-    layers.push_back(4); //output - linear
-    layers.push_back(1); //output - linear
-    Net& net = NetworkModel::MultilayerPerceptron(layers, ActivationFunction::TanH::Instance());
+    vector<tuple<unsigned, ActivationFunction::Base*> > layers;
+    layers.push_back(make_tuple(1, ActivationFunction::Linear::Instance())); //input  - no act. fcn
+    layers.push_back(make_tuple(16,ActivationFunction::TanH::Instance())  ); //hidden - tanh
+    layers.push_back(make_tuple(9, ActivationFunction::TanH::Instance())  ); //hidden - tanh
+    layers.push_back(make_tuple(4, ActivationFunction::TanH::Instance())  ); //output - linear
+    layers.push_back(make_tuple(1, ActivationFunction::Linear::Instance())); //output - linear
+    Net& net = MultilayerPerceptron(layers);
 
     //Data
     //boost::function<Float (Float)> f = (_1 += 10); //boost::lambda::bind( (Float (*)(Float))sin, _1 );
@@ -37,12 +37,15 @@ int main()
     //Learning
     vector<Float> train_error_info; //MSE
 
-    TrainData& td = *(DataGenerator::generateFromFunction(-1.0, +1.0, 10, func));
+    TrainData& td = *(DataGenerator::generateFromFunction(-3.0, +3.0, 10, func));
 
     Lms::init(net);
-    net[LmsAttributes::learningRate] = 0.5;
+    net[LmsAttributes::learningRate] = 0.2;
     net[LmsAttributes::annealingTSC] = 3000;
-    Util::randomizeWeightsGauss(net, -0.3, 0.3);
+    net[RandomizeWeightsAttributes::min] = -0.6;
+    net[RandomizeWeightsAttributes::max] = +0.6;
+    //net.run(RandomizeWeightsGaussRunner::Instance());
+    net.run(RandomizeWeightsAccordingToInputsCountRunner::Instance());
     Lms::train(net, td); //dry run to create all learning structures
     
     boost::progress_display progress(epochs);

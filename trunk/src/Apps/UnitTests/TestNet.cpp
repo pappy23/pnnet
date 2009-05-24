@@ -9,6 +9,7 @@
 
 using namespace std;
 using namespace pann;
+using namespace pann::ActivationFunction;
 using namespace boost;
 
 int main()
@@ -20,13 +21,13 @@ int main()
     tp.input[0] = -100;
 
     {
-        vector<unsigned> layers;
-        layers.push_back(1);
+        vector<tuple<unsigned, Base*> > layers;
+        layers.push_back(make_tuple(1, Linear::Instance()));
         for(unsigned i = 0; i < layers_count; ++i)
-            layers.push_back(9);
-        layers.push_back(1);
+            layers.push_back(make_tuple(9, TanH::Instance()));
+        layers.push_back(make_tuple(1, Linear::Instance()));
 
-        Net& net = NetworkModel::MultilayerPerceptron(layers, ActivationFunction::TanH::Instance());
+        Net& net = MultilayerPerceptron(layers);
 
         cout<<"MLP ready\n";
         Storage::save<Storage::xml_out>(net, "test_net.xml");

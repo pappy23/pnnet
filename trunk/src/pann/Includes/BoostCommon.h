@@ -11,4 +11,5 @@
 #include <boost/random.hpp>
 #include <boost/function.hpp>
 #include <boost/lexical_cast.hpp>
+#include <boost/tuple/tuple.hpp>
 

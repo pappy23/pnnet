@@ -72,13 +72,13 @@ int main(int argc, char* argv[])
     */
 
     //Constructing perceptron
-    vector<unsigned> layers;
-    layers.push_back(300); //input  - no act. fcn
-    layers.push_back(25);  //hidden - tanh
-    layers.push_back(16);  //hidden - tanh
-    layers.push_back(9);   //hidden - tanh
-    layers.push_back(3);   //output - linear
-    Net& net = NetworkModel::MultilayerPerceptron(layers, ActivationFunction::TanH::Instance());
+    vector<tuple<unsigned, ActivationFunction::Base*> > layers;
+    layers.push_back(make_tuple(300,ActivationFunction::Linear::Instance())); //input  - no act. fcn
+    layers.push_back(make_tuple(25, ActivationFunction::TanH::Instance()));   //hidden - tanh
+    layers.push_back(make_tuple(16, ActivationFunction::TanH::Instance()));   //hidden - tanh
+    layers.push_back(make_tuple(9,  ActivationFunction::TanH::Instance()));   //hidden - tanh
+    layers.push_back(make_tuple(3,  ActivationFunction::Linear::Instance())); //output - linear
+    Net& net = MultilayerPerceptron(layers);
 
     //Learning
     vector<Float> train_error_info; //MSE
@@ -86,7 +86,9 @@ int main(int argc, char* argv[])
     Lms::init(net);
     net[LmsAttributes::learningRate] = 0.01;
     net[LmsAttributes::learningMomentum] = 0.1;
-    Util::randomizeWeightsGauss(net, -0.1, 0.1);
+    net[RandomizeWeightsAttributes::min] = -0.1;
+    net[RandomizeWeightsAttributes::max] = +0.1;
+    net.run(RandomizeWeightsGaussRunner::Instance());
     
     const unsigned epochs = 100;
     progress_display progress(epochs);
