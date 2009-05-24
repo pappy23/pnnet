@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
 
     try {
         autoload(*net, argv[1]);
-    } catch(E<Exception::FilesystemError>& e) {
+    } catch(IoError& e) {
         QMessageBox::information(0, argv[0], e.what());
         return -1;
     }
@@ -66,5 +66,5 @@ void autoload(Net& _obj, std::string _filename)
     } catch(...) {
     }
 
-    throw E<Exception::FilesystemError>()<<"autoload(): Can't load "<<_filename<<"\n";
+    throw IoError()<<"autoload(): Can't load "<<_filename<<"\n";
 } //autoload

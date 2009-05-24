@@ -42,15 +42,6 @@ private:
     pann::Net* p_net;
     QLabel* info_label;
 
-    struct Coords
-    {
-        GLdouble x, y, z;
-        QColor color;
-    };
-    
-    //Neuron decorator, stores it's 3D coordinates
-    std::map<const pann::Neuron*, Coords> coords;
-
     void calcCoords();
 
     void setInfoNeuron(unsigned); //fill info label with Neuron info

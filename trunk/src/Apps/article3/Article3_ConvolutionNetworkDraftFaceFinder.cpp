@@ -25,6 +25,7 @@ int main(int argc, char* argv[])
         return -1;
     }
 
+    cout<<"Reading data\n";
     TrainData& train_data = (*DataGenerator::generateFromImageList(argv[1]));
 
     train_data.shuffle();
@@ -36,17 +37,21 @@ int main(int argc, char* argv[])
     // Creating and initializing convolutional network
     //
     Net& net = ConvolutionalNetworkDraft();
+    cout<<"Net ready\n";
     Lms::init(net);
+    cout<<"Init ok\n";
     net[LmsAttributes::learningRate] = 0.3;
     net[LmsAttributes::annealingTSC] = 100;
     net[RandomizeWeightsAttributes::min] = -0.2;
     net[RandomizeWeightsAttributes::max] = +0.2;
     net.run(RandomizeWeightsGaussRunner::Instance());
+    cout<<"Weights randomized\n";
 
     //
     // Test run
     //
     net.run(FeedforwardPropagationRunner::Instance());
+    cout<<"Test run - OK\n";
 
     //
     // Training
