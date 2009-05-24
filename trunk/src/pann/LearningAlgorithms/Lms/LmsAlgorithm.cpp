@@ -15,6 +15,7 @@
 #include "TrainData/TrainData.h"
 
 using namespace std;
+using namespace boost;
 using namespace pann::LmsAttributes;
 
 namespace pann

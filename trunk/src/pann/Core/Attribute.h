@@ -9,9 +9,6 @@
  * Object contains map<AttributeName, AttributeType>
  * AttributeName consists from name and group_name
  * It allows erasing of entire group at once, for ex. LearningParameters
- *
- * TODO:
- * Replace AttributeType == Float with boost::tuple ?
  */
 
 #ifndef ATTRIBUTE_H

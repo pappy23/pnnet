@@ -40,7 +40,8 @@ namespace pann
 
         void addInConnection(shared_ptr<Neuron> _to, shared_ptr<Weight> _weight);
         void addOutConnection(shared_ptr<Neuron> _to, shared_ptr<Weight> _weight);
-        void delConnection(shared_ptr<Neuron> _to);
+        void delInConnection(shared_ptr<Neuron> _to);
+        void delOutConnection(shared_ptr<Neuron> _to);
 
         const std::list<Link>& getInConnections() const;
         const std::list<Link>& getOutConnections() const;

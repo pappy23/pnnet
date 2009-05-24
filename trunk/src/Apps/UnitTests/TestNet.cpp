@@ -14,6 +14,31 @@ using namespace boost;
 
 int main()
 {
+    Net tnet;
+    // N1 ---> N2 ---> N3
+    {
+        shared_ptr<Neuron> n1(new Neuron(ActivationFunction::Linear::Instance()));
+        shared_ptr<Neuron> n2(new Neuron(ActivationFunction::Linear::Instance()));
+        shared_ptr<Neuron> n3(new Neuron(ActivationFunction::Linear::Instance()));
+        tnet.addInputNeuron(n1);
+        tnet.addConnection(n1, n2);
+        tnet.addConnection(n2, n3);
+        cout<<"Constructed Net"<<endl;
+    }
+    cout<<"Layers: "<<tnet.getCache().layers.size()<<endl;
+
+    // N1 -X-> N2 -X-> N3
+    tnet.removeNeuron(tnet.getCache().layers[0][0]);
+    //tnet.delConnection(tnet.getCache().layers[1][0], tnet.getCache().layers[2][0]);
+    cout<<"Neuron deleted"<<endl;
+    //But NetCache still stores ptr to it. Let's regenerate it manually
+    tnet.getCache();
+    cout<<"Cache regenerated"<<endl;
+
+    // N1 -X-> ?  -X-> N3
+    cout<<"That's all, folks!"<<endl;
+/*
+
     const unsigned runs_count = 3;
     const unsigned layers_count = 0;
 
@@ -75,7 +100,7 @@ int main()
         net2.getOutput(output);
         cout<<"Test output: "<<setprecision(5)<<fixed<<output[0]<<endl;
     }
-
+*/
     return 0;
 }
 
