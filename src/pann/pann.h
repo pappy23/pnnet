@@ -9,7 +9,7 @@
  * Includes all core components sufficient to
  * build and run network
  */
-//#include "Core/ActivationFunction.h"
+#include "Core/ActivationFunction.h"
 #include "Core/Attribute.h"
 #include "Core/Cache.h"
 #include "Core/Exception.h"
@@ -36,13 +36,12 @@
  * Various network models generators
  */
 #include "NetworkModels/MultilayerPerceptron.h"
-//#include "NetworkModels/ConvolutionalNetwork.h"
 
 /**
  * General and specific learning algorithms
  */
 #include "LearningAlgorithms/Util/RandomizeWeights.h"
-//#include "LearningAlgorithms/Lms.h"
+#include "LearningAlgorithms/Lms.h"
 
 #endif
 

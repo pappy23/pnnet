@@ -1,7 +1,7 @@
 //LmsAlgorithm.cpp
 
-#include "Core/Includes/Std.h"
-#include "Core/Includes/BoostCommon.h"
+#include "Includes/Std.h"
+#include "Includes/BoostCommon.h"
 
 #include "LmsAlgorithm.h"
 #include "LmsAttributes.h"
