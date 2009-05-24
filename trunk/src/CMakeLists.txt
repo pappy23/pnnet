@@ -39,13 +39,13 @@ endif(UNIX)
 
 #########################################################################
 
-#FIND_PACKAGE (MPI)
-#IF(MPI_FOUND)
-#        INCLUDE_DIRECTORIES ( ${MPI_INCLUDE_PATH} )
-#    MESSAGE (STATUS "Found MPI: ${MPI_INCLUDE_PATH}")
-#ELSE(MPI_FOUND)
-#    MESSAGE(FATAL_ERROR "Could not find MPI!")
-#ENDIF(MPI_FOUND)
+find_package(MPI)
+if(MPI_FOUND)
+    include_directories(${MPI_INCLUDE_PATH})
+    message(STATUS "Found MPI: ${MPI_INCLUDE_PATH}")
+else(MPI_FOUND)
+    message(STATUS "Could not find MPI")
+endif(MPI_FOUND)
 
 #########################################################################
 

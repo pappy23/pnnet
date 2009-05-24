@@ -1,8 +1,7 @@
 //LmsAlgorithm.cpp
 
-#include <vector>
-
-#include <boost/foreach.hpp>
+#include "Core/Includes/Std.h"
+#include "Core/Includes/BoostCommon.h"
 
 #include "LmsAlgorithm.h"
 #include "LmsAttributes.h"
@@ -44,20 +43,20 @@ namespace pann
             //throw E<Exception::ObjectNotFound>()<<"LMS::train(): Net was not initialized for LMS training\n";
             init(_net);
 
-        const vector<Neuron*>& output_neurons = _net.getCache().layers.back();
+        const vector<shared_ptr<Neuron> >& output_neurons = _net.getCache().layers.back();
 
         BOOST_FOREACH(TrainPattern& tp, _trainData.data)
         {
             _net.setInput(tp.input);
-            _net.run(FeedforwardPropagationRunner::Instance(), _net[Net::workThreads]);
+            _net.run(FeedforwardPropagationRunner::Instance());
             _net.getOutput(tp.error);
             tp.error = tp.desired_output - tp.error;
             
             //Put error information to output neurons
             for(unsigned i = 0; i < output_neurons.size(); ++i)
-                (*output_neurons[i])[error] = tp.error[i];
+                output_neurons[i]->at(error) = tp.error[i];
 
-            _net.run(LmsBackpropagationRunner::Instance(), _net[Net::workThreads]);
+            _net.run(LmsBackpropagationRunner::Instance());
             _net[epoch]++;
         }
     } //train

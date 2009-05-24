@@ -34,13 +34,19 @@ namespace pann
         }
 
         template<typename T>
-        Exception& operator<<(const T& arg )
+        Exception& operator<<(const T& _arg)
         {
             std::stringstream ss;
-            ss << arg;
-            msg += ss.str();
+            ss << _arg;
+            accumulate(ss.str());
 
             return *this;
+        }
+
+    protected:
+        virtual void accumulate(const std::string& _arg)
+        {
+            msg += _arg;
         }
 
     private:
@@ -48,7 +54,27 @@ namespace pann
     }; //Exception
 
     /// Nothing critical
-    class Warning : public Exception {};
+    class Warning : public Exception
+    {
+    protected:
+        virtual void accumulate(const std::string& _arg)
+        {
+            std::cerr<<_arg;
+        }
+    }; //Warning
+
+    /// Information for user
+    class Info : public Exception
+    {
+    protected:
+        virtual void accumulate(const std::string& _arg)
+        {
+            std::cout<<_arg;
+        }
+    }; //Info
+
+    /// Debug
+    class Debug : public Info {};
 
     /// Reference to unexistent object was requested
     class NotFound : public Exception {}; 
