@@ -1,45 +1,50 @@
-1) check neuron/link deletions. Possible memory leaks with shared weights
-2) fix segfaults on concurrent thread executing. Possible reason -
+
+* check neuron/link deletions. Possible memory leaks with shared weights
+Solution: don't delete neurons :)
+
+* fix segfaults on concurrent thread executing. Possible reason -
 concurrent read-only access to Net attributes
-3) segfaults when creating big valarray. It means that we can't use
+Solution: needs fixing. We can copy const pointer to Net attributes to each thread
+local storage or replace operator[] call with map::at()
+fixed
+
+* segfaults when creating big valarray. It means that we can't use
 valarrays :( They are all possibly broken(must be very small)
-4) write algorithm to scale/crop images
-5) write algorithm to get some part of image(with different
+Solution: don't use big valarrays
+fixed. Problem wasn't at valarray
+
+* write algorithm to scale/crop images
+Solution: do it with imagemagick
+
+* write algorithm to get some part of image(with different
 rotations/transformations) and process it independently. This is needed for
 searching face with sliding window approach when we look for rotated face.
-6) write PPM/PGM/PBM, BMP, PNG, TIFF parser. Rewrite JPEG reader.
-7) fix save/load procedure. It is recursive and uses a lot of stack memory
+Solution: do it with imagemagick
 
-Solutions:
-1) don't delete neurons :)
-2) needs fixing. We can copy const pointer to Net attributes to each thread
-local storage or replace operator[] call with map::at()
-3) don't use big valarrays
-4,5,6) do it with imagemagick
-7) increase stack size with sudo ulimit -s
-
-2) fixed
-3) fixed. Problem wasn't at valarray
-
-update:
-6) write own reader for PPM/PGM/PBM format(may be with gzipped/bzipped versions) to
+* write PPM/PGM/PBM, BMP, PNG, TIFF parser. Rewrite JPEG reader.
+Solution: do it with imagemagick
+write own reader for PPM/PGM/PBM format(may be with gzipped/bzipped versions) to
 omit dependency from libJPEG
-8) introduce new type Image and a set of algorithms to manipulate Image. Although we
+
+* fix save/load procedure. It is recursive and uses a lot of stack memory
+Solution: increase stack size with sudo ulimit -s
+
+*introduce new type Image and a set of algorithms to manipulate Image. Although we
 will need Image<->valarray<->TrainPattern conversion
-
-9) fix learning algorithm. It should take into count that bias weights might be
-shared across neurons
-10) new multithreading/MPI concept: new feedforard runner, thread localstorage
-
-9) done
-10) dismissed
-
-8) only Image tyoe dealing with PPM/PGM reader. Nothing more. Let Imagemagick to do
+only Image type dealing with PPM/PGM reader. Nothing more. Let Imagemagick to do
 tricks :)
-11)Global Core code review. Fix memory leaks, fix encapsulation and information
+
+* fix learning algorithm. It should take into count that bias weights might be
+shared across neurons
+done
+
+* new multithreading/MPI concept: new feedforard runner, thread localstorage
+dismissed
+
+*Global Core code review. Fix memory leaks, fix encapsulation and information
 hiding, use smart pointers, fix serialization, speed/lock improvements and so on.
 
-12) 23.05.2009 meeting questions:
+* 23.05.2009 meeting questions:
 -cross platform code: pros and cons
 -refactoring(smart pointers, encapsulation, where shall we place NetworkModel code?,
 include model)
@@ -52,23 +57,25 @@ limitations(recursive links, latancy), attributes(what should be an attribute an
 what shouldn't), again, encapsulation and information hiding)
 
 
-Great meeting finished. Conclusions:
-1) replace shared list<Link> with two distinct list<Link>-s and remove "direction"
+*Great meeting finished. Conclusions:
+# replace shared list<Link> with two distinct list<Link>-s and remove "direction"
 from Link
-2) use callback while adding Weight
+# use callback while adding Weight
+{{{
 Weight* Weight::get()
 {
  usageCount++;
  return this;
 }
+}}}
 
-3) no factories
-4) add new Neuron types (Standart, RBF and so on). Neuron "sucks" data and passes it
+# no factories
+# add new Neuron types (Standart, RBF and so on). Neuron "sucks" data and passes it
 to ActivationFunction (Float)
-5) SE(ss()<<test<<5<<...) - Exception - brand new idea
-6) читать CTest для юнит-тестирования
-7) oprofile, valgrind - отловить тормоза и пр.
-8) get rid of NativeAttributes
-9) Для Сереги - помечать непонятные места как FIXME
-10) Doxygen
-11) Описание в отдельном доке(статьи)
+# SE(ss()<<test<<5<<...) - Exception - brand new idea
+# читать CTest для юнит-тестирования
+# oprofile, valgrind - отловить тормоза и пр.
+# get rid of NativeAttributes
+# Для Сереги - помечать непонятные места как FIXME
+# Doxygen
+# Описание в отдельном доке(статьи)
