@@ -23,7 +23,7 @@ elseif(UNIX)
 endif(WIN32)
 
 set(Boost_USE_STATIC_LIBS ON)
-find_package(Boost REQUIRED COMPONENTS thread serialization date_time)
+find_package(Boost REQUIRED COMPONENTS thread serialization date_time mpi)
 
 if(Boost_FOUND)
     include_directories(${Boost_INCLUDE_DIR})
