@@ -1,87 +1,12 @@
-  * check neuron/link deletions. Possible memory leaks with shared weights
-Solution: don't delete neurons :)
-Placed TODO to source code
-
-  * ~~fix segfaults on concurrent thread executing. Possible reason -
-concurrent read-only access to Net attributes
-Solution: needs fixing. We can copy const pointer to Net attributes to each thread
-local storage or replace operator[] call with map::at()~~
-fixed
-
-  * ~~segfaults when creating big valarray. It means that we can't use
-valarrays :( They are all possibly broken(must be very small)
-Solution: don't use big valarrays~~
-fixed. Problem wasn't at valarray
-
-  * write algorithm to scale/crop images
-Solution: do it with imagemagick
-
-  * write algorithm to get some part of image(with different
-rotations/transformations) and process it independently. This is needed for
-searching face with sliding window approach when we look for rotated face.
-Solution: do it with imagemagick
-
-  * write PPM/PGM/PBM, BMP, PNG, TIFF parser. Rewrite JPEG reader.
-Solution: do it with imagemagick
-write own reader for PPM/PGM/PBM format(may be with gzipped/bzipped versions) to
-omit dependency from libJPEG
-
-  * fix save/load procedure. It is recursive and uses a lot of stack memory
-Solution: increase stack size with sudo ulimit -s
-
-  * ~~introduce new type Image and a set of algorithms to manipulate Image. Although we
-will need Image<->valarray<->TrainPattern conversion
-only Image type dealing with PPM/PGM reader. Nothing more. Let Imagemagick to do
-tricks :)~~
-Никаких своих алгоритмов. Просто написать свой парсер PPM/PGM/PBM. Все.
-
-  * ~~fix learning algorithm. It should take into count that bias weights might be
-shared across neurons~~
-done. Но надо проверить
-
-  * ~~new multithreading/MPI concept: new feedforard runner, thread localstorage~~
-dismissed
-
-  * ~~Global Core code review. Fix memory leaks, fix encapsulation and information
-hiding, use smart pointers, fix serialization, speed/lock improvements and so on.~~
-Частично сделано
-
-  * 23.05.2009 meeting questions:
--cross platform code: pros and cons - решено
--refactoring(smart pointers, encapsulation, where shall we place NetworkModel code?,
-include model) - решено
--new task - convolutional network recognizer - решено
--documentation, api stabilization - решено
--IO: PPM/PGM reader, TrainData serialization - решено
--difficulties(link duplication, shared weights(non automatic increment based on usage
-count), locks, huge memory leaks, neuron construction(manual/factory), wave algorithm
-limitations(recursive links, latancy), attributes(what should be an attribute and
-what shouldn't), again, encapsulation and information hiding) - частично решено
-
-
-  * Great meeting finished. Conclusions:
-  # ~~replace shared list<Link> with two distinct list<Link>-s and remove "direction"
-from Link~~
-Готово.
-  # use callback while adding Weight
-{{{
-
-Weight* Weight::get()
-{
- usageCount++;
- return this;
-};
-
-}}}
-Сделал по-другому.
-
-  # ~~no factories~~ - ОК
-  # ~~add new Neuron types (Standart, RBF and so on). Neuron "sucks" data and passes it
-to ActivationFunction (Float)~~ - Готово
-  # ~~SE(ss()<<test<<5<<...) - Exception - brand new idea~~ - Готово
-  # читать CTest для юнит-тестирования
-  # oprofile, valgrind - отловить тормоза и пр.
-  # ~~get rid of NativeAttributes~~ - Готово
-  # Для Сереги - помечать непонятные места как FIXME - Принято к сведенью
-  # Doxygen
-  # Описание в отдельном доке(статьи)
+== Че надо делать в первую очередь? ==
+  * После рефакторинга ядра нужно проверить все. Написать Unit-тесты и пр. Все ли деструкторы вызываются, нет ли завысших нейронов/линков, нет ли неоднозначностей с рекуррентными топологиями?
+  * Написать парсер PPM/PGM/PBM, убрать зависимости от boost::gil/libjpeg
+  * Починить сериализацию так, что бы она не хавала столько стека. Пока что решение - юзать ulimit -s
+  * Проверить качество алгоритма обучения, его соответствие теории, особенно с общими линками
+  * Всякая всячина, помеченная в коде как TODO, FIXME
+  * Проблемы с addConnection/delConnection. См. TODO коде
+  * Ограничения волнового алгоритма. См. каменты в коде
+  * читать CTest для юнит-тестирования
+  * oprofile, valgrind - отловить тормоза и пр.
+  * Doxygen
+  * Описание в отдельном доке(статьи)
