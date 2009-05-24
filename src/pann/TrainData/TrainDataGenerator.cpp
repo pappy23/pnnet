@@ -230,7 +230,7 @@ namespace pann
                     train_data->data.push_back(tp);
 
                 } catch(...) {
-                    //cout<<"Failed to read "<<fname<<endl;
+                    cout<<"Failed to read "<<fname<<endl;
                 }
             }
 
