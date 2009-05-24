@@ -34,36 +34,25 @@ void GLWidget::calcCoords()
         unsigned layer_size = cache.layers[layer].size();
         for(unsigned i = 0; i < layer_size; ++i)
         {
-            const Neuron& neuron = *cache.layers[layer][i];
+            const shared_ptr<Neuron> neuron = cache.layers[layer][i];
             unsigned planeRows = sqrt(layer_size);
             unsigned planeCols = layer_size / planeRows;
 
-            Coords c;
+            if(!neuron->is(coord_x))
+                neuron->at(coord_x) = (GLdouble) ( (GLdouble)layer - total_layers/2.0 + 1.0) * 100;
 
-            if(neuron.is(coord_x))
-                c.x = neuron[coord_x];
-            else
-                c.x = (GLdouble) ( (GLdouble)layer - total_layers/2.0 + 1.0) * 100;
-
-            if(neuron.is(coord_y))
-                c.y = neuron[coord_y];
-            else
-                c.y = (GLdouble) ( (GLdouble)(i / planeCols) - planeRows/2.0 + 1.0 ) * 40.0;
+            if(!neuron->is(coord_y))
+                neuron->at(coord_y) = (GLdouble) ( (GLdouble)(i / planeCols) - planeRows/2.0 + 1.0 ) * 40.0;
             
-            if(neuron.is(coord_z))
-                c.z = neuron[coord_z];
-            else
-                c.z = (GLdouble) ( (GLdouble)(i % planeCols) - planeCols/2.0 + 1.0 ) * 40.0;
+            if(!neuron->is(coord_z))
+                neuron->at(coord_z) = (GLdouble) ( (GLdouble)(i % planeCols) - planeCols/2.0 + 1.0 ) * 40.0;
 
-            c.color = QColor(255, 0, 0);
-            if(neuron.is(color_r))
-                c.color.setRed(neuron[color_r]);
-            if(neuron.is(color_g))
-                c.color.setGreen(neuron[color_g]);
-            if(neuron.is(color_b))
-                c.color.setBlue(neuron[color_b]);
-
-            coords[&neuron] = c;
+            if(!neuron->is(color_r))
+                neuron->at(color_r) = 255.0;
+            if(!neuron->is(color_g))
+                neuron->at(color_g) = 0.0;
+            if(!neuron->is(color_b))
+                neuron->at(color_b) = 0.0;
         }
     }
 }
@@ -80,41 +69,36 @@ void GLWidget::drawNetModel()
     glNewList(1,GL_COMPILE);
     
     //For every neuron draw Link::in connections
-    map<const Neuron*, Coords>::const_iterator iter = coords.begin();
-    for(; iter != coords.end(); ++iter)
+    BOOST_FOREACH(const NetCache::FrontType& front, p_net->getCache().layers )
     {
-        Coords to_coords = iter->second;
-
-        //Draw neuron
-        glPushMatrix();
-        qglColor(to_coords.color);
-        glTranslated(to_coords.x, to_coords.y, to_coords.z);
-        gluSphere(q, neuronRadius, 12, 12); 
-        glPopMatrix();
-        net_info.neurons++;
-
-        if(drawLinks)
+        typedef shared_ptr<Neuron> NP;
+        BOOST_FOREACH(const NP neuron, front )
         {
-            //Draw it's Link::in connections
-            qglColor(QColor(0, 255, 0));
-            list<Link>::const_iterator link_iter = iter->first->links.begin();
-            for(; link_iter != iter->first->links.end(); ++link_iter)
+            //Draw neuron
+            glPushMatrix();
+            qglColor(QColor(neuron->at(color_r), neuron->at(color_g), neuron->at(color_b)));
+            glTranslated(neuron->at(coord_x), neuron->at(coord_y), neuron->at(coord_z));
+            gluSphere(q, neuronRadius, 12, 12); 
+            glPopMatrix();
+            net_info.neurons++;
+
+            if(drawLinks)
             {
-                if(link_iter->getDirection() == Link::out)
-                    continue;
+                //Draw it's Link::in connections
+                qglColor(QColor(0, 255, 0));
+                BOOST_FOREACH(const Link& link, neuron->getInConnections() )
+                {
+                    net_info.links++;
 
-                net_info.links++;
+                    if(linkRate > 1 && (rand() % linkRate != 0))
+                        continue;
 
-                if(linkRate > 1 && (rand() % linkRate != 0))
-                    continue;
-
-                Coords from_coords = coords[&link_iter->getTo()];
-
-                glBegin(GL_LINES);
-                glVertex3d(from_coords.x, from_coords.y, from_coords.z);
-                glVertex3d(to_coords.x, to_coords.y, to_coords.z);
-                glEnd();
-            }
+                    glBegin(GL_LINES);
+                    glVertex3d(link.getTo()->at(coord_x), link.getTo()->at(coord_y), link.getTo()->at(coord_z));
+                    glVertex3d(neuron->at(coord_x), neuron->at(coord_y), neuron->at(coord_z));
+                    glEnd();
+                }
+            } //drawLinks
         }
     }
 

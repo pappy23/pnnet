@@ -17,6 +17,3 @@ target_link_libraries(TestLms pann gnuplot-cpp)
 add_executable(TestImg TestImg.cpp)
 target_link_libraries(TestImg pann gnuplot-cpp)
 
-add_executable(TestConvolutionalNetwork TestConvolutionalNetwork.cpp)
-target_link_libraries(TestConvolutionalNetwork pann gnuplot-cpp)
-
