@@ -26,8 +26,6 @@ namespace pann
         Link(shared_ptr<Neuron> _to, shared_ptr<Weight> _weight, unsigned const _latency = 1);
         Link(const Link& _rhs);
         virtual ~Link();
-        //TODO const Link& _rhs and Link const & _rhs - feel the difference
-        //Link& operator=(Link const & _rhs);
 
         shared_ptr<Neuron> getTo();
         const shared_ptr<Neuron> getTo() const;
@@ -37,6 +35,9 @@ namespace pann
 
         unsigned getLatency() const;
     
+    private:
+        Link& operator=(const Link& _rhs);
+
     private:
         shared_ptr<Neuron> to;
         shared_ptr<Weight> weight; /// Pointer to Weight object (might be shared between different links)

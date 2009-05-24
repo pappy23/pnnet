@@ -26,18 +26,17 @@ namespace pann
         weight->decUsageCount();
     } //~Link
 
-/*
     Link&
-    Link::operator=(Link const & _rhs)
+    Link::operator=(const Link& _rhs)
     {
+        /*
+        Info()<<"Link::operator=()\n";
         to = _rhs.to;
         weight = _rhs.weight;
         latency = _rhs.latency;
-        std::cout<<"=";
-
+        */
         return *this;
     } //operator=
-*/
 
     shared_ptr<Neuron>
     Link::getTo()
