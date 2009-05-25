@@ -7,7 +7,7 @@ using namespace boost;
 
 namespace pann
 {
-    Neuron::Neuron(ActivationFunction::Base* _activationFunction, shared_ptr<Weight> _bias)
+    Neuron::Neuron(ActivationFunction::Base* _activationFunction, WeightPtr _bias)
         : activationFunction(_activationFunction), bias(_bias)
     {
         if(activationFunction)
@@ -54,24 +54,24 @@ namespace pann
     } //getOwnerThread
 
     void
-    Neuron::addInConnection(shared_ptr<Neuron> _to, shared_ptr<Weight> _weight)
+    Neuron::addInConnection(NeuronPtr _to, WeightPtr _weight)
     {
         links_in.push_back( Link(_to, _weight) );
     } //addInConnection
     
     void
-    Neuron::addOutConnection(shared_ptr<Neuron> _to, shared_ptr<Weight> _weight)
+    Neuron::addOutConnection(NeuronPtr _to, WeightPtr _weight)
     { 
         links_out.push_back( Link(_to, _weight) );
     } //addOutConnection
     
     void
-    Neuron::delInConnection(shared_ptr<Neuron> _to)
+    Neuron::delInConnection(NeuronPtr _to)
     {
         //TODO: Fix this shit. Or not?
         struct comparator
         {
-            static bool comp(shared_ptr<Neuron> _to, const Link& _l)
+            static bool comp(NeuronPtr _to, const Link& _l)
             {
                 return _l.getTo() == _to;
             }
@@ -81,12 +81,12 @@ namespace pann
     } //delInConnection
 
     void
-    Neuron::delOutConnection(shared_ptr<Neuron> _to)
+    Neuron::delOutConnection(NeuronPtr _to)
     {
         //TODO: Fix this shit. Or not?
         struct comparator
         {
-            static bool comp(shared_ptr<Neuron> _to, const Link& _l)
+            static bool comp(NeuronPtr _to, const Link& _l)
             {
                 return _l.getTo() == _to;
             }
@@ -116,7 +116,7 @@ namespace pann
         return false;
     } //hasBias
 
-    shared_ptr<Weight>
+    WeightPtr
     Neuron::getBias()
     {
         if(!bias)
@@ -125,7 +125,7 @@ namespace pann
         return bias;
     } //getBias
 
-    const shared_ptr<Weight>
+    const WeightPtr
     Neuron::getBias() const
     {
         if(!bias)

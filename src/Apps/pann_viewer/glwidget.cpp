@@ -34,7 +34,7 @@ void GLWidget::calcCoords()
         unsigned layer_size = cache.layers[layer].size();
         for(unsigned i = 0; i < layer_size; ++i)
         {
-            const shared_ptr<Neuron> neuron = cache.layers[layer][i];
+            const NeuronPtr neuron = cache.layers[layer][i];
             unsigned planeRows = sqrt(layer_size);
             unsigned planeCols = layer_size / planeRows;
 
@@ -71,8 +71,7 @@ void GLWidget::drawNetModel()
     //For every neuron draw Link::in connections
     BOOST_FOREACH(const NetCache::FrontType& front, p_net->getCache().layers )
     {
-        typedef shared_ptr<Neuron> NP;
-        BOOST_FOREACH(const NP neuron, front )
+        BOOST_FOREACH(const NeuronPtr neuron, front )
         {
             //Draw neuron
             glPushMatrix();

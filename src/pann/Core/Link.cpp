@@ -9,7 +9,7 @@ using namespace boost;
 
 namespace pann
 {
-    Link::Link(shared_ptr<Neuron> _to, shared_ptr<Weight> _w, unsigned const _latency) 
+    Link::Link(NeuronPtr _to, WeightPtr _w, unsigned const _latency) 
         : to(_to), weight(_w), latency(_latency)
     {
         weight->incUsageCount();
@@ -38,7 +38,7 @@ namespace pann
         return *this;
     } //operator=
 
-    shared_ptr<Neuron>
+    NeuronPtr
     Link::getTo()
     {
         if(!to)
@@ -47,7 +47,7 @@ namespace pann
         return to;
     } //getTo
 
-    const shared_ptr<Neuron>
+    const NeuronPtr
     Link::getTo() const
     {
         if(!to)
@@ -56,7 +56,7 @@ namespace pann
         return to;
     } //getTo
 
-    shared_ptr<Weight>
+    WeightPtr
     Link::getWeight()
     {
         if(!weight)
@@ -65,7 +65,7 @@ namespace pann
         return weight;
     } //getWeight
 
-    const shared_ptr<Weight>
+    const WeightPtr
     Link::getWeight() const
     {
         if(!weight)
