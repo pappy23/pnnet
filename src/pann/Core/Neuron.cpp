@@ -83,7 +83,6 @@ namespace pann
     void
     Neuron::delOutConnection(NeuronPtr _to)
     {
-        //TODO: Fix this shit. Or not?
         struct comparator
         {
             static bool comp(NeuronPtr _to, const Link& _l)
@@ -140,7 +139,7 @@ namespace pann
         if(bias)
             receptiveField += bias->getValue();
 
-        BOOST_FOREACH( Link& link, links_in )
+        BOOST_FOREACH( const Link& link, links_in )
             receptiveField += link.getTo()->getActivationValue() * link.getWeight()->getValue();
 
         activationValue = activationFunction->f(receptiveField);

@@ -21,6 +21,10 @@ namespace pann
         /* Public members */
     public:
         //TODO: Should we hide internal details from user?
+        //Solutions:
+        //1)Write restricted interface to layers
+        //2)Derive NetCache from Cache AND vector<FrontType>
+        //3)write const vector<const FrontType> NetCache::layers()
         std::vector<FrontType> layers;
 
         /* Public interface */

@@ -96,14 +96,12 @@ namespace pann
          * This function updates cache
          * Be extremely careful!
          */
-        //TODO: Support Hopfield network, automatic shortcut detection
         void regenerateCache() const;
 
         /**
          * This function is executed by work thread, instantiated from run()
          */
         static void threadBase(Runner* _runner, const Net* _net, unsigned _cur_thread,
-                                                                 unsigned _threads,
                                                                  boost::barrier* _barrier);
 
         /* Serialization */
