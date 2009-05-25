@@ -8,7 +8,6 @@
 
 using std::vector;
 using boost::tuple;
-using boost::shared_ptr;
 
 namespace pann
 {
@@ -20,7 +19,7 @@ namespace pann
         if(_layers.size() == 0)
             return *net;
 
-        vector< vector<shared_ptr<Neuron> > > mlp(_layers.size());
+        vector<vector<NeuronPtr> > mlp(_layers.size());
 
         //Layers
         //TODO: OpenGlHint
@@ -32,11 +31,16 @@ namespace pann
 
             for(unsigned i = 0; i < _layers[l].get<0>(); ++i)
             {
-                //Neuron with bias
-                shared_ptr<Neuron> n(new Neuron(af, shared_ptr<Weight>(new Weight(1)))); 
-                mlp[l].push_back(n);
+                NeuronPtr n;
                 if(l == 0)
+                {
+                    n.reset(new Neuron(af));
                     net->addInputNeuron(n);
+                } else {
+                    n.reset(new Neuron(af, WeightPtr(new Weight(1)))); 
+                }
+                
+                mlp[l].push_back(n);
             }
         }
 
