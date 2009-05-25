@@ -12,8 +12,6 @@
 #include "NetCache.h"
 #include "Weight.h"
 
-using boost::shared_ptr;
-
 namespace pann
 {
     class Neuron;
@@ -35,20 +33,20 @@ namespace pann
         /**
          * Manipulate neurons in network
          */
-        void addInputNeuron(shared_ptr<Neuron>);
+        void addInputNeuron(NeuronPtr);
         //TODO Fix removal of neurons and connection. We may get memory leaks and/or stuck with hanging topology part
-        void removeNeuron(shared_ptr<Neuron>);
+        void removeNeuron(NeuronPtr);
 
         /**
          * Manage connections between neurons
          * TODO: add connections with different latencies (shortcut links)
          * TODO: do we really need this? We can connect two neurons without Net intervention
          */
-        shared_ptr<Weight> addConnection(
-                shared_ptr<Neuron> _from, 
-                shared_ptr<Neuron> _to,
-                shared_ptr<Weight> _weight = shared_ptr<Weight>((Weight*)0));
-        void delConnection(shared_ptr<Neuron> _from, shared_ptr<Neuron> _to);
+        WeightPtr addConnection(
+                NeuronPtr _from, 
+                NeuronPtr _to,
+                WeightPtr _weight = WeightPtr((Weight*)0));
+        void delConnection(NeuronPtr _from, NeuronPtr _to);
 
         /**
          * Add values to input neurons receptive fields
@@ -83,7 +81,7 @@ namespace pann
 
         /* Private members */
     private:
-        std::list<shared_ptr<Neuron> > inputNeurons;
+        std::list<NeuronPtr> inputNeurons;
         NetCache mutable cache;
         unsigned workThreads;
 
@@ -92,7 +90,7 @@ namespace pann
         /**
          * Helper used by regenerateCache()
          */
-        void formatFront(std::vector<shared_ptr<Neuron> >& _raw) const;
+        void formatFront(std::vector<NeuronPtr>& _raw) const;
 
         /**
          * This function updates cache

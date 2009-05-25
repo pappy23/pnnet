@@ -5,6 +5,7 @@
 #include "Includes/BoostCommon.h"
 #include "Includes/BoostSerialization.h"
 
+#include "Type.h"
 #include "Cache.h"
 
 namespace pann
@@ -15,7 +16,7 @@ namespace pann
     {
         /* Public types */
     public:
-        typedef std::vector<boost::shared_ptr<Neuron> > FrontType;
+        typedef std::vector<NeuronPtr> FrontType;
 
         /* Public members */
     public:

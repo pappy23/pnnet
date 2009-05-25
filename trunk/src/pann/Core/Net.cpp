@@ -6,7 +6,6 @@
 #include "Net.h"
 
 using namespace std;
-using boost::shared_ptr;
 
 namespace pann
 {
@@ -20,7 +19,7 @@ namespace pann
     } //~Net
 
     void 
-    Net::addInputNeuron(shared_ptr<Neuron> _neuron)
+    Net::addInputNeuron(NeuronPtr _neuron)
     {
         cache.touch();
 
@@ -28,7 +27,7 @@ namespace pann
     } //addInputNeuron
 
     void
-    Net::removeNeuron(shared_ptr<Neuron> _neuron)
+    Net::removeNeuron(NeuronPtr _neuron)
     {
         cache.touch();
 
@@ -45,8 +44,8 @@ namespace pann
         Debug()<<_neuron.use_count()<<'\n';
     } //delNeuron
 
-    shared_ptr<Weight>
-    Net::addConnection(shared_ptr<Neuron> _from, shared_ptr<Neuron> _to, shared_ptr<Weight> _weight)
+    WeightPtr
+    Net::addConnection(NeuronPtr _from, NeuronPtr _to, WeightPtr _weight)
     {
         cache.touch();
 
@@ -60,7 +59,7 @@ namespace pann
     } //addConnection
 
     void
-    Net::delConnection(shared_ptr<Neuron> _from, shared_ptr<Neuron> _to)
+    Net::delConnection(NeuronPtr _from, NeuronPtr _to)
     {
         cache.touch();
 
@@ -87,10 +86,8 @@ namespace pann
             Warning()<<"setInput(): Input size is bigger then input neurons count. "
                              "Check getInputMap() output\n";
 
-        typedef shared_ptr<Neuron> NP;
-
         unsigned i = 0;
-        BOOST_FOREACH( NP n, inputNeurons)
+        BOOST_FOREACH( NeuronPtr n, inputNeurons)
            n->setInput(_input[i++]);
     } //setInput
 
@@ -149,10 +146,10 @@ namespace pann
     } //setWorkThreadsCount
 
     void
-    Net::formatFront(vector<shared_ptr<Neuron> >& _raw) const
+    Net::formatFront(vector<NeuronPtr>& _raw) const
     {
         sort(_raw.begin(), _raw.end());
-        vector<shared_ptr<Neuron> >::iterator it = unique(_raw.begin(), _raw.end());
+        vector<NeuronPtr>::iterator it = unique(_raw.begin(), _raw.end());
         _raw.resize( it - _raw.begin() );
 
         if(_raw.size() > 0)
@@ -164,10 +161,8 @@ namespace pann
     {
         cache.flush(); 
 
-        typedef shared_ptr<Neuron> NP;
-
         //Here we will place neuron's IDs that will become front, with duplicates
-        vector<NP> rawFront;
+        vector<NeuronPtr> rawFront;
 
         /*
          * Function operates with "hops" attribute of every Neuron
@@ -176,10 +171,10 @@ namespace pann
          * we shold write own comparison class for hops<>. I placed it to Utils.h
          */
         //map<Neuron*, unsigned, NeuronIterCompare> hops;
-        map<NP, unsigned> hops;
+        map<NeuronPtr, unsigned> hops;
         
         //Put inputNeurons to front
-        BOOST_FOREACH( NP n, inputNeurons )
+        BOOST_FOREACH( NeuronPtr n, inputNeurons )
         {
             rawFront.push_back(n);
             hops[n] = 1;
@@ -211,7 +206,7 @@ namespace pann
             for(unsigned i = 0; i < nCount; ++i)
             {
                 //pop_front emulation
-                NP currentNeuron = rawFront[0];
+                NeuronPtr currentNeuron = rawFront[0];
                 rawFront.erase( rawFront.begin() );
 
                 //ok, we've got cur_neuron. We will iterate through his Out links

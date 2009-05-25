@@ -13,8 +13,6 @@
 #include "Weight.h"
 #include "Link.h"
 
-using boost::shared_ptr;
-
 namespace pann
 {
     class Weight;
@@ -29,7 +27,7 @@ namespace pann
     class Neuron : public Object
     {
     public:
-        Neuron(ActivationFunction::Base*, boost::shared_ptr<Weight> _bias = boost::shared_ptr<Weight>((Weight*)0));
+        Neuron(ActivationFunction::Base*, WeightPtr _bias = WeightPtr((Weight*)0));
         virtual ~Neuron();
 
         Float getReceptiveField() const;
@@ -38,17 +36,17 @@ namespace pann
 
         const ActivationFunction::Base& getActivationFunction() const;
 
-        void addInConnection(shared_ptr<Neuron> _to, shared_ptr<Weight> _weight);
-        void addOutConnection(shared_ptr<Neuron> _to, shared_ptr<Weight> _weight);
-        void delInConnection(shared_ptr<Neuron> _to);
-        void delOutConnection(shared_ptr<Neuron> _to);
+        void addInConnection(NeuronPtr _to, WeightPtr _weight);
+        void addOutConnection(NeuronPtr _to, WeightPtr _weight);
+        void delInConnection(NeuronPtr _to);
+        void delOutConnection(NeuronPtr _to);
 
         const std::list<Link>& getInConnections() const;
         const std::list<Link>& getOutConnections() const;
 
         bool hasBias() const;
-        shared_ptr<Weight> getBias();
-        const shared_ptr<Weight> getBias() const;
+        WeightPtr getBias();
+        const WeightPtr getBias() const;
 
         virtual void fire();
 
@@ -58,7 +56,7 @@ namespace pann
         ActivationFunction::Base* activationFunction;
         std::list<Link> links_out;
         std::list<Link> links_in;
-        boost::shared_ptr<Weight> bias;
+        WeightPtr bias;
 
         /* Serialization */
     private:

@@ -16,7 +16,7 @@ namespace pann
 {
     /**
      * Weight object, used in pann::Link. Weight might be shared among different Links.
-     * Link contains boost::shared_ptr<Weight> for this object
+     * Link contains WeightPtr for this object
      */
     class Weight : public Object
     {
