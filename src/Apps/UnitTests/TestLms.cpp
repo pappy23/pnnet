@@ -57,13 +57,12 @@ int main()
         train_error_info.push_back(td.getMse());
     }
 
-//    test(net, -2.0, +2.0, +0.01);
+    test(net, -2.0, +2.0, +0.01);
 
     //Save trained net
-    //Storage::save<Storage::xml_out>(net, "test_lms.xml");
+    Storage::save<Storage::xml_out>(net, "test_lms.xml");
 
     //Plotting error graph
-    /*
     try {
         Gnuplot gp_err("lines");
         gp_err.set_title("Error by epoch");
@@ -75,7 +74,7 @@ int main()
     } catch(GnuplotException e) {
         cout << e.what() << endl;
     }
-    */
+    
     return 0;
 }
 

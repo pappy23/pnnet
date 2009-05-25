@@ -171,7 +171,7 @@ namespace pann
          * Function operates with "hops" attribute of every Neuron
          * to build adequate cache.
          */
-        map<const NeuronPtr, unsigned> hops;
+        map<NeuronPtr, unsigned> hops;
         
         //Put inputNeurons to front
         BOOST_FOREACH( const NeuronPtr& n, inputNeurons )
@@ -194,7 +194,7 @@ namespace pann
             for(unsigned i = 0; i < nCount; ++i)
             {
                 //pop_front emulation
-                NeuronPtr& currentNeuron = rawFront[0];
+                NeuronPtr currentNeuron = rawFront[0];
                 rawFront.erase( rawFront.begin() );
 
                 //ok, we've got cur_neuron. We will iterate through his Out links
@@ -232,7 +232,7 @@ namespace pann
 
             //new rawFront formed
             formatFront(rawFront);
-            Debug()<<"1\n"; 
+
         } while( rawFront.size() > 0 );
 
         //We rebuilded cache
