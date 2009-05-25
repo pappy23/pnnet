@@ -19,9 +19,9 @@ int main()
         Net tnet;
         // N1 ---> N2 ---> N3
         {
-            shared_ptr<Neuron> n1(new Neuron(ActivationFunction::Linear::Instance()));
-            shared_ptr<Neuron> n2(new Neuron(ActivationFunction::Linear::Instance()));
-            shared_ptr<Neuron> n3(new Neuron(ActivationFunction::Linear::Instance()));
+            NeuronPtr n1(new Neuron(ActivationFunction::Linear::Instance()));
+            NeuronPtr n2(new Neuron(ActivationFunction::Linear::Instance()));
+            NeuronPtr n3(new Neuron(ActivationFunction::Linear::Instance()));
             tnet.addInputNeuron(n1);
             tnet.addConnection(n1, n2);
             tnet.addConnection(n2, n3);
@@ -46,11 +46,11 @@ int main()
         Net tnet;
         //Hopfield model
         //ACHTUNG!! Chinese code follows :)
-        shared_ptr<Neuron> ni(new Neuron(ActivationFunction::Linear::Instance()));
-        shared_ptr<Neuron> n1(new Neuron(ActivationFunction::Linear::Instance()));
-        shared_ptr<Neuron> n2(new Neuron(ActivationFunction::Linear::Instance()));
-        shared_ptr<Neuron> n3(new Neuron(ActivationFunction::Linear::Instance()));
-        shared_ptr<Neuron> no(new Neuron(ActivationFunction::Linear::Instance()));
+        NeuronPtr ni(new Neuron(ActivationFunction::Linear::Instance()));
+        NeuronPtr n1(new Neuron(ActivationFunction::Linear::Instance()));
+        NeuronPtr n2(new Neuron(ActivationFunction::Linear::Instance()));
+        NeuronPtr n3(new Neuron(ActivationFunction::Linear::Instance()));
+        NeuronPtr no(new Neuron(ActivationFunction::Linear::Instance()));
 
         tnet.addInputNeuron(ni);
         tnet.addConnection(ni, n1);

@@ -1,3 +1,9 @@
+/**
+ * boost::serialization archive types, features and traits
+ */
+
+#ifndef BOOSTSERIALIZATION_H
+#define BOOSTSERIALIZATION_H
 
 //Archive types
 #include <boost/archive/xml_oarchive.hpp>
@@ -20,4 +26,6 @@
 #include <boost/serialization/list.hpp>
 #include <boost/serialization/vector.hpp>
 #include <boost/serialization/shared_ptr.hpp>
+
+#endif
 

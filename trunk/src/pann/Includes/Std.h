@@ -1,3 +1,9 @@
+/**
+ * STL includes
+ */
+
+#ifndef STD_H
+#define STD_H
 
 #include <exception>
 
@@ -20,4 +26,6 @@
 
 #include <cmath>
 #include <cstdlib>
+
+#endif
 

@@ -1,4 +1,12 @@
+/**
+ * Includes from Boost library
+ * For serialization stuff see @file BoostSerialization.h
+ */
 
+#ifndef BOOSTCOMMON_H
+#define BOOSTCOMMON_H
+
+//Core dependencies
 #include <boost/foreach.hpp>
 #include <boost/thread.hpp>
 #include <boost/thread/barrier.hpp>
@@ -13,7 +21,10 @@
 #include <boost/lexical_cast.hpp>
 #include <boost/tuple/tuple.hpp>
 
+//Misc.
 //#include <boost/lambda/lambda.hpp>
 //#include <boost/lambda/bind.hpp>
 //#include <boost/any.hpp>
+
+#endif
 
