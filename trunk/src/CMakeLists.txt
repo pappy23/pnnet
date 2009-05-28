@@ -3,7 +3,8 @@ cmake_minimum_required(VERSION 2.6)
 project (PANN)
 
 if(CMAKE_COMPILER_IS_GNUCXX)
-	add_definitions(-Wall -ansi -g -fprofile-arcs -ftest-coverage)
+	add_definitions(-Wall -ansi -g)
+#-fprofile-arcs -ftest-coverage
 #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -ansi")
 endif(CMAKE_COMPILER_IS_GNUCXX)
 
