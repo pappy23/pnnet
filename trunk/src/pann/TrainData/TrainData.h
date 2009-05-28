@@ -1,8 +1,7 @@
 #ifndef TRAINDATA_H
 #define TRAINDATA_H
 
-#include <vector>
-
+#include "Includes/Std.h"
 #include "Core/Type.h"
 
 namespace pann
