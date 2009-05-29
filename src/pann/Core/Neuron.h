@@ -62,8 +62,11 @@ namespace pann
     private:
         Neuron() { };
         friend class boost::serialization::access;
-        //TODO Dirty hack for separate connections serialization from Net
+
+        //template<class Archive>
+        //friend void Net::serialize(Archive & ar, const unsigned int version);
         friend class Net;
+
         template<class Archive>
             void serialize(Archive & ar, const unsigned int version)
             {
