@@ -1,0 +1,45 @@
+10:45 booble@medusa ~/pann/trunk/bin $ ./TestLms
+
+1 threads
+TimeDiff: 89sec 830274usec
+
+2 threads
+TimeDiff: 68sec -803236usec
+
+3 threads
+TimeDiff: 55sec 705771usec
+
+4 threads
+TimeDiff: 51sec -684843usec
+
+5 threads
+TimeDiff: 46sec 694246usec
+
+6 threads
+TimeDiff: 46sec -208231usec
+
+7 threads
+TimeDiff: 48sec -618548usec
+
+8 threads
+TimeDiff: 49sec 276621usec
+
+
+15:24 booble@big ~/pann/trunk/bin $ ./TestLms
+1 threads
+TimeDiff: 68sec 580646usec
+2 threads
+TimeDiff: 41sec -141268usec
+3 threads
+TimeDiff: 37sec -566709usec
+4 threads
+TimeDiff: 33sec 758933usec
+5 threads
+TimeDiff: 35sec 186631usec
+6 threads
+TimeDiff: 36sec -852610usec
+7 threads
+TimeDiff: 34sec 224877usec
+8 threads
+TimeDiff: 34sec 391345usec
+
