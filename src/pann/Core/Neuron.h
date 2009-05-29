@@ -61,6 +61,7 @@ namespace pann
         /* Serialization */
     private:
         Neuron() { };
+        friend class Net;
         friend class boost::serialization::access;
         template<class Archive>
             void serialize(Archive & ar, const unsigned int version)
@@ -71,8 +72,9 @@ namespace pann
                  & BOOST_SERIALIZATION_NVP(receptiveField)
                  & BOOST_SERIALIZATION_NVP(activationValue)
                  & BOOST_SERIALIZATION_NVP(activationFunction)
-                 & BOOST_SERIALIZATION_NVP(links_out)
-                 & BOOST_SERIALIZATION_NVP(links_in)
+                 //Let Net do serialization
+                 //& BOOST_SERIALIZATION_NVP(links_out)
+                 //& BOOST_SERIALIZATION_NVP(links_in)
                  & BOOST_SERIALIZATION_NVP(bias);
             };
     };

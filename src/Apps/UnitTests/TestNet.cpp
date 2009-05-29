@@ -80,10 +80,10 @@ int main()
     {
         cout<<"TESTING MULTILAYER PERCEPTRON CREATION AND LEARNING\n";
         const unsigned runs_count = 3;
-        const unsigned layers_count = 0;
+        const unsigned layers_count = 1;
 
         TrainPattern tp(1, 1);
-        tp.input[0] = -100;
+        tp.input[0] = -10;
 
         {
             vector<tuple<unsigned, Base*> > layers;
@@ -95,7 +95,6 @@ int main()
             Net& net = MultilayerPerceptron(layers);
 
             cout<<"MLP ready\n";
-            Storage::save<Storage::xml_out>(net, "test_net.xml");
 
             //Test run()
             {
