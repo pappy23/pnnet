@@ -37,6 +37,7 @@ int main(int argc, char* argv[])
     // Creating and initializing convolutional network
     //
     Net& net = ConvolutionalNetworkDraft();
+    Storage::save<Storage::bin_out>(net, "init_test_conv.bin");
     cout<<"Net ready\n";
     Lms::init(net);
     cout<<"Init ok\n";
