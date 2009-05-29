@@ -10,11 +10,13 @@
 #include "Object.h"
 #include "Exception.h"
 #include "NetCache.h"
+#include "Neuron.h"
+#include "Link.h"
 #include "Weight.h"
 
 namespace pann
 {
-    class Neuron;
+//    class Neuron;
     class Weight;
     class Runner;
 
@@ -34,7 +36,7 @@ namespace pann
          * Manipulate neurons in network
          */
         void addInputNeuron(NeuronPtr);
-        //TODO Fix removal of neurons and connection. We may get memory leaks and/or stuck with hanging topology part
+        //TODO Fix removal of neurons and connections. We may get memory leaks and/or stuck with hanging topology part
         void removeNeuron(NeuronPtr);
 
         /**
@@ -110,10 +112,24 @@ namespace pann
         template<class Archive>
             void serialize(Archive & ar, const unsigned int version)
             {
+                using namespace boost::serialization;
+
+                //It's for manual serialization of Neuron connections
+                if(typename Archive::is_saving() && !cache.isOk())
+                    regenerateCache();
+
                 ar & BOOST_SERIALIZATION_BASE_OBJECT_NVP(Object)
-                 & BOOST_SERIALIZATION_NVP(inputNeurons)
                  & BOOST_SERIALIZATION_NVP(cache)
+                 & BOOST_SERIALIZATION_NVP(inputNeurons)
                  & BOOST_SERIALIZATION_NVP(workThreads);
+
+                //Serialize Neuron connections
+                for(unsigned i = 0; i < cache.layers.size(); ++i)
+                    for(unsigned j = 0; j < cache.layers[i].size(); ++j)
+                    {
+                        ar & make_nvp("links_out", cache.layers[i][j]->links_out);
+                        ar & make_nvp("links_in", cache.layers[i][j]->links_in);
+                    }
             };
     };
 
