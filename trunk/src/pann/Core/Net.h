@@ -127,6 +127,7 @@ namespace pann
                 for(unsigned i = 0; i < cache.layers.size(); ++i)
                     for(unsigned j = 0; j < cache.layers[i].size(); ++j)
                     {
+                        //TODO May be we should serialize to i_j_links_out ?
                         ar & make_nvp("links_out", cache.layers[i][j]->links_out);
                         ar & make_nvp("links_in", cache.layers[i][j]->links_in);
                     }
