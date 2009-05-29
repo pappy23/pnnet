@@ -18,7 +18,7 @@ namespace pann
     {
     } //~Net
 
-    void 
+    void
     Net::addInputNeuron(NeuronPtr _neuron)
     {
         cache.touch();
@@ -116,12 +116,12 @@ namespace pann
         //We must give parameters by pointer, because boost will copy all arguments to thread
         for(unsigned thread = 0; thread < workThreads; ++thread)
             threadPool.add_thread( new boost::thread(Net::threadBase, &_runner, this, thread, &barrier) );
-        
+
         //wait for threads to finish
         threadPool.join_all();
     } //run
 
-    const NetCache& 
+    const NetCache&
     Net::getCache() const
     {
         if(!cache.isOk())
