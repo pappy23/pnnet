@@ -20,15 +20,14 @@ namespace pann
  * Use case: ADD_PTR_TYPEDEF(Neuron)
  */
 #define ADD_PTR_TYPEDEF(C) \
+    class C; \
     typedef boost::shared_ptr<C> C##Ptr; \
     typedef boost::shared_ptr<const C> C##ConstPtr;
 
 
-    class Neuron;
     ADD_PTR_TYPEDEF(Neuron);
-
-    class Weight;
     ADD_PTR_TYPEDEF(Weight);
+    ADD_PTR_TYPEDEF(Net);
 }; //pann
 
 #endif //TYPE_H

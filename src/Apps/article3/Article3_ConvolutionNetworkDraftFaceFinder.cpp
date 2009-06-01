@@ -11,6 +11,95 @@
 using namespace std;
 using namespace pann;
 using namespace boost;
+using namespace boost::assign;
+
+
+NetPtr
+ConvolutionalNetwork(vector<unsigned> _planes,
+        unsigned _window_width  = 5,
+        unsigned _window_height = 5,
+        unsigned _window_horiz_overlap = 3,
+        unsigned _window_vert_overlap  = 3)
+{
+    //TODO: OpenGL, shared weights
+    typedef vector<NeuronPtr> Row;
+    typedef vector<Row> Plane;
+    typedef vector<Plane> Layer;
+
+    //Check input data
+    if(_planes.empty())
+        throw Exception()<<"Planes count not specified\n";
+
+    if(
+        _window_height <= _window_vert_overlap
+        or
+        _window_width <= _window_horiz_overlap
+    )
+        throw Exception()<<"Overlap value is not correct\n";
+
+    /*
+     * Each _plane[] contains infirmation about planes number in corresponding
+     * level. Level consists of two layers: convolutional and subsampling
+     * Plus one input and one output layer
+     */
+    const unsigned total_layers = 1 + _planes.size() * 2 + 1;
+    unsigned current_layer = total_layers - 1;
+    vector<Layer> model(total_layers);
+
+    //Create output neurons
+    //In output layer each plane consists from exactly one neuron
+    for(unsigned i = 0; i < _planes.back(); ++i)
+    {
+        NeuronPtr neuron(new Neuron(ActivationFunction::TanH::Instance())); //FIXME
+        Row row(1, neuron);
+        Plane plane(1, row);
+        model[current_layer].push_back(plane);
+    }
+    _planes.pop_back();
+    current_layer--;
+
+    //TODO: generate connection matrixes for all layer couples
+    //full mesh for last and first layer and random connections for internal layers
+
+    //Create convolutional-subsampling layers
+    while(!_planes.empty())
+    {
+        for(unsigned i = 0; i < _planes.back(); ++i)
+        {
+            const unsigned next_layer_plane_width  = model[current_layer + 1][0][0].size;
+            const unsigned next_layer_plane_height = model[current_layer + 1][0].size();
+            const unsigned current_layer_conv_plane_width =
+                next_layer_plane_width * (_window_width - _window_horiz_overlap_) +
+                    _window_horiz_overlap;
+            const unsigned current_layer_conv_plane_height =
+                next_layer_plane_height * (_window_height - _window_vert_overlap_) +
+                    _window_vert_overlap;
+            const unsigned current_layer_ss_plane_width = current_layer_conv_plane_width / 2; //FIXME: oddity check
+            const unsigned current_layer_ss_plane_height = current_layer_conv_plane_height / 2;
+
+            //Convolutional
+            Plane conv_plane();
+            Plane ss_plane();
+        }
+        _planes.pop_back();
+    }
+
+
+    //Create last, input, layer
+
+
+    //Debug
+    for(unsigned i = 0; i < model.size(); ++i)
+    {
+        Debug()<<"Planes: "<<model[i].size()<<": ";
+        for(unsigned j = 0; j < model[i].size(); ++j)
+            Debug()<<model[i][j].size()<<"x"<<model[i][j][0].size()<<" ";
+        Debug()<<"\n";
+    }
+
+    NetPtr net(new Net());
+    return net;
+}
 
 Net& ConvolutionalNetworkDraft();
 
@@ -19,6 +108,13 @@ Net& ConvolutionalNetworkDraft();
  */
 int main(int argc, char* argv[])
 {
+    vector<unsigned> planes;
+    planes += 3,5;
+    NetPtr net = ConvolutionalNetwork(planes);
+
+    Storage::save<Storage::bin_out>(*net, "test_conv.bin");
+
+/*
     if(argc != 2)
     {
         cout<<"Usage: "<<argv[0]<<" <file_list>\n";
@@ -78,7 +174,7 @@ int main(int argc, char* argv[])
             cout<<"Test: "<<Util::test(net, test_data)<<endl;
         }
     }
-
+*/
     //
     //Plotting error graph
     //
@@ -383,3 +479,4 @@ ConvolutionalNetworkDraft()
 
     return net;
 };
+
