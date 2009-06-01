@@ -15,11 +15,13 @@
 #include <boost/shared_ptr.hpp>
 
 //No need in Core
-#include <boost/progress.hpp> 
 #include <boost/random.hpp> 
+#include <boost/tuple/tuple.hpp>
 #include <boost/function.hpp>
 #include <boost/lexical_cast.hpp>
-#include <boost/tuple/tuple.hpp>
+
+//Only external Apps
+#include <boost/progress.hpp> 
 #include <boost/assign/std.hpp>
 
 //Misc.
