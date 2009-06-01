@@ -20,6 +20,7 @@
 #include <boost/function.hpp>
 #include <boost/lexical_cast.hpp>
 #include <boost/tuple/tuple.hpp>
+#include <boost/assign/std.hpp>
 
 //Misc.
 //#include <boost/lambda/lambda.hpp>
