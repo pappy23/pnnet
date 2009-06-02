@@ -148,9 +148,9 @@ int main()
         cout<<"TESTING CONVOLUTIONAL NETWORK CONSTRUCTION\n";
 
         vector<unsigned> planes;
-        planes += 3,5;
+        planes += 2,2,2,2;
 
-        Model model = ConvolutionalNetworkModel(planes);
+        Model model = ConvolutionalNetworkModel(planes, 0.8, 4, 4, 2, 2);
 
         //Debug
         for(unsigned i = 0; i < model.size(); ++i)
