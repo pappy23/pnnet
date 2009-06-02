@@ -89,7 +89,7 @@ void GLWidget::drawNetModel()
                 {
                     net_info.links++;
 
-                    if(linkRate > 1 && (rand() % linkRate != 0))
+                    if(linkRate > 1 && (std::rand() % linkRate != 0))
                         continue;
 
                     glBegin(GL_LINES);

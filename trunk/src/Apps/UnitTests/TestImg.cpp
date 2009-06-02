@@ -78,7 +78,8 @@ int main(int argc, char* argv[])
     layers.push_back(make_tuple(16, ActivationFunction::TanH::Instance()));   //hidden - tanh
     layers.push_back(make_tuple(9,  ActivationFunction::TanH::Instance()));   //hidden - tanh
     layers.push_back(make_tuple(3,  ActivationFunction::Linear::Instance())); //output - linear
-    Net& net = MultilayerPerceptron(layers);
+    NetPtr net_ptr = MultilayerPerceptron(layers);
+    Net& net = *net_ptr;
 
     //Learning
     vector<Float> train_error_info; //MSE
@@ -89,7 +90,7 @@ int main(int argc, char* argv[])
     net[RandomizeWeightsAttributes::min] = -0.1;
     net[RandomizeWeightsAttributes::max] = +0.1;
     net.run(RandomizeWeightsGaussRunner::Instance());
-    
+
     const unsigned epochs = 100;
     progress_display progress(epochs);
     for(unsigned i = 1; i < epochs; ++i)

@@ -36,6 +36,7 @@
  * Various network models generators
  */
 #include "NetworkModels/MultilayerPerceptron.h"
+#include "NetworkModels/ConvolutionalNetwork.h"
 
 /**
  * General and specific learning algorithms
