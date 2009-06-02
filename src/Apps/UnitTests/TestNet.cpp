@@ -8,9 +8,11 @@
 #include "pann.h"
 
 using namespace std;
+using namespace boost;
+using namespace boost::assign;
 using namespace pann;
 using namespace pann::ActivationFunction;
-using namespace boost;
+using namespace pann::ConvolutionalNetworkTypes;
 
 int main()
 {
@@ -92,7 +94,8 @@ int main()
                 layers.push_back(make_tuple(9, TanH::Instance()));
             layers.push_back(make_tuple(1, Linear::Instance()));
 
-            Net& net = MultilayerPerceptron(layers);
+            NetPtr net_ptr = MultilayerPerceptron(layers);
+            Net& net = *net_ptr;
 
             cout<<"MLP ready\n";
 
@@ -115,7 +118,7 @@ int main()
             valarray<Float> output;
             net.getOutput(output);
             cout<<"Test output: "<<setprecision(5)<<fixed<<output[0]<<endl;
-        
+
             //Serialization test
             Storage::save<Storage::xml_out>(net, "test_net.xml");
 
@@ -140,7 +143,28 @@ int main()
             cout<<"Test output: "<<setprecision(5)<<fixed<<output[0]<<endl;
         }
     }
-//*/
+
+    {
+        cout<<"TESTING CONVOLUTIONAL NETWORK CONSTRUCTION\n";
+
+        vector<unsigned> planes;
+        planes += 3,5;
+
+        Model model = ConvolutionalNetworkModel(planes);
+
+        //Debug
+        for(unsigned i = 0; i < model.size(); ++i)
+        {
+            Debug()<<"Planes: "<<model[i].size()<<": ";
+            for(unsigned j = 0; j < model[i].size(); ++j)
+                Debug()<<model[i][j].size()<<"x"<<model[i][j][0].size()<<" ";
+            Debug()<<"\n";
+        }
+
+        NetPtr net = ConvolutionalNetwork(planes);
+        Storage::save<Storage::bin_out>(*net, "test_conv.bin");
+    }
+
     return 0;
 }
 

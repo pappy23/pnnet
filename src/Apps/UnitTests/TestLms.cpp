@@ -28,7 +28,8 @@ int main()
     layers.push_back(make_tuple(9, ActivationFunction::TanH::Instance())  ); //hidden - tanh
     layers.push_back(make_tuple(4, ActivationFunction::TanH::Instance())  ); //output - linear
     layers.push_back(make_tuple(1, ActivationFunction::Linear::Instance())); //output - linear
-    Net& net = MultilayerPerceptron(layers);
+    NetPtr net_ptr = MultilayerPerceptron(layers);
+    Net& net = *net_ptr;
 
     //Data
     //boost::function<Float (Float)> f = (_1 += 10); //boost::lambda::bind( (Float (*)(Float))sin, _1 );

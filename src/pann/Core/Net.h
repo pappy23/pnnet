@@ -24,8 +24,8 @@ namespace pann
     {
     public:
         /**
-         * Default constructor. 
-         * Creates empty net and sets threadCount to 
+         * Default constructor
+         * Creates empty net and sets threadCount to
          * hardware specific number (depends on available processors)
          * Although creates bias neuron
          */
@@ -36,16 +36,18 @@ namespace pann
          * Manipulate neurons in network
          */
         void addInputNeuron(NeuronPtr);
-        //TODO Fix removal of neurons and connections. We may get memory leaks and/or stuck with hanging topology part
+        //TODO Fix removal of neurons and connections.
+        //We may get memory leaks and/or stuck with hanging topology part
         void removeNeuron(NeuronPtr);
 
         /**
          * Manage connections between neurons
          * TODO: add connections with different latencies (shortcut links)
-         * TODO: do we really need this? We can connect two neurons without Net intervention
+         * TODO: do we really need this? We can connect two neurons without
+         * TODO: Net intervention
          */
         WeightPtr addConnection(
-                NeuronPtr _from, 
+                NeuronPtr _from,
                 NeuronPtr _to,
                 WeightPtr _weight = WeightPtr((Weight*)0));
         void delConnection(NeuronPtr _from, NeuronPtr _to);

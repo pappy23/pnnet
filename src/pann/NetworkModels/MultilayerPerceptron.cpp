@@ -11,13 +11,13 @@ using boost::tuple;
 
 namespace pann
 {
-    Net&
+    NetPtr
     MultilayerPerceptron(vector<tuple<unsigned, ActivationFunction::Base*> > _layers)
     {
-        Net* net = new Net();
- 
+        NetPtr net(new Net());
+
         if(_layers.size() == 0)
-            return *net;
+            return net;
 
         vector<vector<NeuronPtr> > mlp(_layers.size());
 
@@ -37,9 +37,9 @@ namespace pann
                     n.reset(new Neuron(af));
                     net->addInputNeuron(n);
                 } else {
-                    n.reset(new Neuron(af, WeightPtr(new Weight(1)))); 
+                    n.reset(new Neuron(af, WeightPtr(new Weight(1))));
                 }
-                
+
                 mlp[l].push_back(n);
             }
         }
@@ -50,8 +50,8 @@ namespace pann
                 for(unsigned k = 0; k < mlp[i+1].size(); k++) //next layer
                     //Connection from current layer (i) to next (i+1)
                     net->addConnection(mlp[i][j], mlp[i+1][k]);
-        
-        return *net;
+
+        return net;
     };
 
 }; //pann
