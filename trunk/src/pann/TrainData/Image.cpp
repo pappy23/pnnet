@@ -18,7 +18,16 @@ namespace pann
 
         for(unsigned i = 0; i < _width * _height; ++i)
             for(unsigned layer = 0; layer < layers_count; ++layer)
-                m_bmap[layer][i] = _data[i * layers_count + layer];
+            {
+                Float pixel = _data[i * layers_count + layer];
+                if(pixel < 0.0 || pixel > 255.0)
+                {
+                    m_bmap.clear();
+                    throw SizeMismatch()<<"_data[] out of range [0; 255]\n";
+                }
+
+                m_bmap[layer][i] = (unsigned char) pixel;
+            }
     } //Image
 
     Image::~Image()
