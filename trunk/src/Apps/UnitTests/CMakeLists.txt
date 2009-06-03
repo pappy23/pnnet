@@ -3,7 +3,7 @@ if(Boost_mpi_FOUND)
     add_executable(TestBoostMPI TestBoostMPI.cpp)
     target_link_libraries(TestBoostMPI ${Boost_LIBRARIES})
 else(Boost_mpi_FOUND)
-    message(STATUS "Not building TestBoostMPI")
+    message(STATUS "Boost MPI not found. Not building TestBoostMPI")
 endif(Boost_mpi_FOUND)
 
 add_executable(TestIntSize TestIntSize.cpp)

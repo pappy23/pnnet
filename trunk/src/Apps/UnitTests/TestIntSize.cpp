@@ -59,7 +59,9 @@ LONG_MIN << " max: "
 << LONG_MAX << '\n';
 cout << "Unsigned long min: 0 max: "
 << ULONG_MAX << endl;
-
+#ifdef DEBUG
+cout<<"kuku\n";
+#endif
 return 0;
 }
 
