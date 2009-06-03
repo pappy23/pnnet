@@ -11,7 +11,7 @@ set(CMAKE_VERBOSE_MAKEFILE OFF)
 ############################################################################
 # OPTIONS
 
-option(BUILD_TEST "Build or not rarely needed Unit-tests and other staff" OFF)
+option(BUILD_TESTS "Build or not rarely needed Unit-tests and other staff" OFF)
 
 if(NOT ${BUILD_TEST})
     message(STATUS "NOT building optional tests. You may redefine this behavour via BUILD_TESTS variable")
@@ -30,6 +30,12 @@ endif(MSVC)
 if("${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
     add_definitions(-DDEBUG)
 endif()
+
+if(UNIX)
+    add_definitions(-DUNIX)
+elseif(WIN32)
+    add_definitions(-DWIN32)
+endif(UNIX)
 
 #set(EXECUTABLE_OUTPUT_PATH "${CMAKE_BINARY_DIR}/../bin" CACHE INTERNAL "")
 #set(LIBRARY_OUTPUT_PATH "${CMAKE_BINARY_DIR}/../bin" CACHE INTERNAL "")

@@ -9,6 +9,9 @@ using namespace boost;
 
 int main()
 {
+#ifdef UNIX
+    cout<<"kuku\n";
+#endif
     //Constructing perceptron
     vector<tuple<unsigned, ActivationFunction::Base*> > layers;
     layers.push_back(make_tuple(1, ActivationFunction::Linear::Instance()));  //input  - no act. fcn
