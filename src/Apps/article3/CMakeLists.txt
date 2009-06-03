@@ -1,10 +1,12 @@
 
+#TODO convert to PGM/PPM
 #add_executable(Article3_ConvolutionNetworkDraftFaceFinder Article3_ConvolutionNetworkDraftFaceFinder.cpp)
 #target_link_libraries(Article3_ConvolutionNetworkDraftFaceFinder pann)
 
-add_executable(RememberFaces RememberFaces.cpp)
-target_link_libraries(RememberFaces pann)
+#TODO they are empty
+#add_executable(RememberFaces RememberFaces.cpp)
+#target_link_libraries(RememberFaces pann)
 
-add_executable(ClassifyFace ClassifyFace.cpp)
-target_link_libraries(ClassifyFace pann)
+#add_executable(ClassifyFace ClassifyFace.cpp)
+#target_link_libraries(ClassifyFace pann)
 
