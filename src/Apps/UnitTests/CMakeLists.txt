@@ -17,3 +17,6 @@ target_link_libraries(TestLms pann gnuplot-cpp)
 add_executable(TestImg TestImg.cpp)
 target_link_libraries(TestImg pann gnuplot-cpp)
 
+add_executable(TestImageIO TestImageIO.cpp)
+target_link_libraries(TestImageIO pann)
+

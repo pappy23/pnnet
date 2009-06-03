@@ -31,6 +31,8 @@
 #include "TrainData/TrainPattern.h"
 #include "TrainData/TrainData.h"
 #include "TrainData/TrainDataGenerator.h"
+#include "TrainData/Image.h"
+#include "TrainData/ImageIo.h"
 
 /**
  * Various network models generators
