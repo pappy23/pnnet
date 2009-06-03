@@ -75,9 +75,6 @@ find_package(Boost 1.35 REQUIRED COMPONENTS ${BOOST_MODULES})
 if(UNIX)
     set(Boost_LIBRARIES ${Boost_LIBRARIES} pthread)
 endif(UNIX)
-if(WIN32)
-	include_directories(${Boost_INCLUDE_DIRS})
-endif(WIN32)
 
 set(QT_USE_QTOPENGL 1)
 find_package(Qt4)
@@ -86,6 +83,6 @@ find_package(Qt4)
 ############################################################################
 # pann
 
-include_directories(pann gnuplot-cpp)
+include_directories(pann gnuplot-cpp ${Boost_INCLUDE_DIRS})
 subdirs(Apps gnuplot-cpp pann)
 
