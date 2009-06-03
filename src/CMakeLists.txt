@@ -50,12 +50,12 @@ endif(MPI_FOUND)
 
 #########################################################################
 
-find_package(JPEG REQUIRED)
+#find_package(JPEG REQUIRED)
 
 #########################################################################
 
 if(WIN32)
-	set(QT_QMAKE_EXECUTABLE	"C:/Qt/4.4.2/qt/bin/qmake.exe")
+	#set(QT_QMAKE_EXECUTABLE	"C:/Qt/4.4.2/qt/bin/qmake.exe")
 endif(WIN32)
 
 set(QT_USE_QTOPENGL 1)
