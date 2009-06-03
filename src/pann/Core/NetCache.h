@@ -14,12 +14,9 @@ namespace pann
 
     class NetCache : public Cache
     {
-        /* Public types */
     public:
         typedef std::vector<NeuronPtr> FrontType;
 
-        /* Public members */
-    public:
         //TODO: Should we hide internal details from user?
         //Solutions:
         //1)Write restricted interface to layers
@@ -27,9 +24,11 @@ namespace pann
         //3)write const vector<const FrontType> NetCache::layers()
         std::vector<FrontType> layers;
 
-        /* Public interface */
-    public:
-        virtual void flush();
+        virtual void flush()
+        {
+            layers.clear();
+            touch();
+        };
 
         /* Serialization */
     private:
@@ -39,7 +38,7 @@ namespace pann
             {
                 ar & BOOST_SERIALIZATION_BASE_OBJECT_NVP(Cache)
                    & BOOST_SERIALIZATION_NVP(layers);
-            };             
+            };
     };
 }; //pann
 

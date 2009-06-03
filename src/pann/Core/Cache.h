@@ -16,17 +16,15 @@ namespace pann
      */
     class Cache
     {
-        /* Public interface */
     public:
-        Cache();
-        virtual ~Cache();
+        Cache() : coherent(false) {};
+        virtual ~Cache() {};
 
         virtual void flush() = 0;
-        void touch();
-        void fixed();
-        bool isOk() const;
+        void touch() { coherent = false; };
+        void fixed() { coherent = true;  };
+        bool isOk() const { return coherent; };
 
-        /* Protected attributes */
     protected:
         bool coherent;
 
@@ -37,7 +35,7 @@ namespace pann
             void serialize(Archive & ar, const unsigned int version)
             {
                 ar & BOOST_SERIALIZATION_NVP(coherent);
-            };             
+            };
     };
 
 }; //pann

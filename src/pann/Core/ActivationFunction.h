@@ -26,8 +26,9 @@ namespace pann
         class Base //Singleton
         {
         public:
-            //Returns reference to ActivationFunction object. It is always the same
-            //Only one object of class Base exist at a time
+            /*
+             * @return reference to ActivationFunction object. It is always same
+             */
             static Base* Instance();
 
             virtual Float f(Float) const = 0;
@@ -127,7 +128,7 @@ namespace pann
             static Base* Instance();
             virtual Float f(Float _x) const;
             virtual Float derivative_dy(Float) const;
- 
+
             /* Serialization */
         private:
             friend class boost::serialization::access;
@@ -140,7 +141,7 @@ namespace pann
                 };
         };
 
-    }; //ActivationFunctions
+    }; //ActivationFunction
 
 }; //pann
 #endif //ACTIVATIONFUNCTION_H

@@ -12,9 +12,6 @@
 
 namespace pann
 {
-    class Neuron;
-    class Weight;
-
     /**
      * Link between two neurons
      */
@@ -32,8 +29,11 @@ namespace pann
         const WeightPtr getWeight() const;
 
         unsigned getLatency() const;
-    
+
     private:
+        /**
+         * Link is not assign-copyable
+         */
         Link& operator=(const Link& _rhs);
 
     private:
@@ -43,9 +43,13 @@ namespace pann
 
         /* Serialization */
     private:
-        Link() { }; //default constructor for serialization
-        //Of course we can use save_construct_data/load_construct_data, but 
-        //default constructor is much simpler
+        /**
+         * Default constructor for serialization
+         * Of course we can use save_construct_data/load_construct_data, but
+         * default constructor is much simpler
+         */
+        Link() { };
+
         friend class boost::serialization::access;
         template<class Archive>
             void serialize(Archive & ar, const unsigned int version)
