@@ -77,17 +77,17 @@ namespace pann
     class Debug : public Info {};
 
     /// Reference to unexistent object was requested
-    class NotFound : public Exception {}; 
-    
-    /// Count of elements mismatch
-    class SizeMismatch : public Exception {}; 
+    class NotFound : public Exception {};
 
-    /// Exceptionfor raising on filesystem failures (missing file etc.) 
-    class IoError : public Exception {}; 
+    /// Count of elements mismatch
+    class SizeMismatch : public Exception {};
+
+    /// Exceptionfor raising on filesystem failures (missing file etc.)
+    class IoError : public Exception {};
 
     /// It's imposible in our universe!
-    // USE base class - Exception instead 
-    //class Unbelievable : public Exception {}; 
+    // USE base class - Exception instead
+    //class Unbelievable : public Exception {};
 
 }; //pann
 

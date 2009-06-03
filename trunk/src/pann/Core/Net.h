@@ -37,7 +37,7 @@ namespace pann
          */
         void addInputNeuron(NeuronPtr);
         //TODO Fix removal of neurons and connections.
-        //We may get memory leaks and/or stuck with hanging topology part
+        //We can stuck with hanging part of topology
         void removeNeuron(NeuronPtr);
 
         /**
@@ -83,14 +83,11 @@ namespace pann
         unsigned getWorkThreadsCount() const;
         void setWorkThreadsCount(unsigned _count);
 
-        /* Private members */
     private:
         std::list<NeuronPtr> inputNeurons;
         NetCache mutable cache;
         unsigned workThreads;
 
-        /* Private methods */
-    private:
         /**
          * Helper used by regenerateCache()
          */
@@ -104,10 +101,13 @@ namespace pann
 
         /**
          * This function is executed by work thread, instantiated from run()
+         * @param _runner Runner to apply
+         * @param _net Net context, used for access to global net attributes
+         * @param _cur_thread Current work thread number
+         * @param _barrier See implementation
          */
         static void threadBase(Runner* _runner, const Net* _net, unsigned _cur_thread,
                                                                  boost::barrier* _barrier);
-
         /* Serialization */
     private:
         friend class boost::serialization::access;

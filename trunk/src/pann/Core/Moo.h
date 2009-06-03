@@ -3,7 +3,11 @@
 
 namespace pann
 {
+    /**
+     * A little Easter egg =)
+     */
     void moo();
+
 }; //pann
 
 #endif

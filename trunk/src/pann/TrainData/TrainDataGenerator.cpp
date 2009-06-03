@@ -3,10 +3,10 @@
 #include <fstream>
 
 #include <boost/foreach.hpp>
-#include <boost/gil/gil_all.hpp>
-#include <boost/gil/extension/io/jpeg_io.hpp>
-//#include <boost/gil/extension/numeric/sampler.hpp>
-//#include <boost/gil/extension/numeric/resample.hpp>
+//#include <boost/gil/gil_all.hpp>
+//#include <boost/gil/extension/io/jpeg_io.hpp>
+////#include <boost/gil/extension/numeric/sampler.hpp>
+////#include <boost/gil/extension/numeric/resample.hpp>
 
 #include "Core/Net.h"
 #include "Core/Random.h"
@@ -19,7 +19,7 @@
 
 using namespace std;
 using namespace boost;
-using namespace boost::gil;
+//using namespace boost::gil;
 
 namespace pann
 {
@@ -109,6 +109,7 @@ namespace pann
             return td;
         } //generateFromFunction
 
+    /*
         valarray<Float>
         jpeg_rgb2valarray(string _filename, unsigned _width, unsigned _height)
         {
@@ -216,13 +217,13 @@ namespace pann
                     classes[class_no]++;
 
                     TrainPattern tp(35*35, total_classes);
-                    
+
                     tp.input = Util::squash_copy(
                             jpeg_gray2valarray(fname.c_str(), 35, 35),
                             -2.5,
                             +2.5
                         );
-                    
+
                     for(unsigned i = 0; i < total_classes; ++i)
                         tp.desired_output[i] = -1.5;
                     tp.desired_output[class_no] = 1.5;
@@ -240,7 +241,7 @@ namespace pann
 
             return train_data;
         } //generateFromImageList
-
+*/
     }; //DataGenerator
 }; //pann
 

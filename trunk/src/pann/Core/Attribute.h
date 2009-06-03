@@ -36,7 +36,7 @@ namespace pann
                     & BOOST_SERIALIZATION_NVP(group);
             };
     };
-    
+
     bool operator<(const AttributeName& _lhs, const AttributeName& _rhs);
 
     typedef Float AttributeType;

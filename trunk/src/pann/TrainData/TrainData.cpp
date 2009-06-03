@@ -7,7 +7,7 @@
 using namespace std;
 
 namespace pann
-{             
+{
     TrainData::TrainData()
     {
     } //TrainData
