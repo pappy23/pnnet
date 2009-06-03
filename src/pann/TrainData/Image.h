@@ -57,7 +57,7 @@ namespace pann
     private:
         unsigned m_width;
         unsigned m_height;
-        vector<vector<Float> > m_bmap;
+        vector<vector<unsigned char> > m_bmap;
     };
 
 }; //pann

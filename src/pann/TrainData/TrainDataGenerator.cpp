@@ -40,38 +40,45 @@ namespace pann
         } //test
 
         valarray<Float>
-        squash_copy(const valarray<Float> & _v, Float _min, Float _max)
+        squash_copy(const valarray<Float>& _v, Float _src_min, Float _src_max,
+                                                Float _dst_min, Float _dst_max)
         {
             valarray<Float> result = _v;
-            squash(result, _min, _max);
+            squash(result, _src_min, _src_max, _dst_min, _dst_max);
 
-            return _v;
+            return result;
         } //squash_copy
 
         void
-        squash(valarray<Float> & _v, Float _min, Float _max)
+        squash(valarray<Float>& _v, Float _src_min, Float _src_max,
+                                    Float _dst_min, Float _dst_max)
         {
-            if(_min > _max)
-                swap(_min, _max);
+            if(_src_min > _src_max)
+                swap(_src_min, _src_max);
 
-            Float min = _v.min();
-            Float max = _v.max();
+            if(_dst_min > _dst_max)
+                swap(_dst_min, _dst_max);
 
-            if(max == min) //very strange
+            if(_src_min > _v.min() || _src_max < _v.max())
+                throw Exception()<<"Source range mismatch\n";
+
+            //This check eliminates division by zero in some
+            //strange conditions
+            if(_dst_max == _dst_min)
             {
-                _v = (Float) (_max + _min) / 2;
+                _v = (Float) (_src_max + _src_min) / 2;
                 return;
             }
 
             /*
              * To squah range [min; max] to new range [_min; _max] we use this formula:
              *
-             * N = ( ( _max - _min ) / ( max - min ) ) * N +
+             * N = ( ( _src_max - _src_min ) / ( _dst_max - _dst_min ) ) * N +
              *      
-             *      + ( _max - ( ( _max - _min ) / ( max - min ) ) * max )
+             * + ( _src_max - ( ( _src_max - _src_min ) / ( _dst_max - _dst_min ) ) * _dst_max )
              */
-            Float a = ( _max - _min ) / ( max - min );
-            Float b = _max - a * max;
+            Float a = ( _src_max - _src_min ) / ( _dst_max - _dst_min );
+            Float b = _src_max - a * _dst_max;
             _v = a * _v + b;
         } //squash
 

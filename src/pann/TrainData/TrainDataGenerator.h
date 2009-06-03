@@ -20,8 +20,12 @@ namespace pann
          */
         Float test(Net& _net, TrainData& _td);
 
-        std::valarray<Float> squash_copy(const std::valarray<Float> & _v, Float _min, Float _max);
-        void squash(std::valarray<Float> & _v, Float _min, Float _max);
+        std::valarray<Float> squash_copy(const std::valarray<Float>& _v,
+                                            Float _src_min, Float _src_max,
+                                            Float _dst_min, Float _dst_max);
+
+        void squash(std::valarray<Float>& _v, Float _src_min, Float _src_max,
+                                              Float _dst_min, Float _dst_max);
 
     }; //Util
 
