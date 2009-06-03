@@ -38,14 +38,17 @@ int main()
     for(unsigned i = 1; i < 9; ++i)
     {
         cout<<i<<" threads\n";
+#ifdef UNIX
         struct timeval start, stop;
         gettimeofday(&start, 0);
+#endif
 
         net.setWorkThreadsCount(i);
         Lms::train(net, td);
-        
+#ifdef UNIX
         gettimeofday(&stop, 0);
         cout<<"TimeDiff: "<<(stop.tv_sec-start.tv_sec)<<"sec "<<(stop.tv_usec-start.tv_usec)<<"usec\n\n";
+#endif
     }
 
     return 0;

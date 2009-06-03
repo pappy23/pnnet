@@ -82,7 +82,7 @@ namespace pann
             throw Exception()<<"Planes count not specified\n";
 
         if(_window_height <= _window_vert_overlap
-            or _window_width <= _window_horiz_overlap)
+            || _window_width <= _window_horiz_overlap)
                 throw Exception()<<"Overlap value is not correct\n";
 
         const unsigned ss_range = 2;
