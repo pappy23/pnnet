@@ -83,7 +83,7 @@ namespace pann
         divide(TrainData& _td, unsigned _percentage)
         {
             TrainData new_td;
-            unsigned count = _td.data.size() * _percentage / 100.0;
+            unsigned count = unsigned(_td.data.size() * _percentage / 100.0);
             for(unsigned i = 0; i < count; i++)
             {
                 new_td.data.push_back(_td.data.back());

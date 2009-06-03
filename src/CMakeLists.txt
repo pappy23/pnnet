@@ -37,17 +37,18 @@ endif()
 ############################################################################
 # UGLY HACKS
 
-#if(WIN32)
-#	set(BOOST_INCLUDEDIR "C:/Program Files/boost/boost_1_38")
-#	set(BOOST_ROOT "C:/Program Files/boost/boost_1_38") 
+if(WIN32)
+	set(Boost_DEBUG TRUE)
+	set(BOOST_ROOT "C:/Program Files/boost/boost_1_38") 
+	#set(BOOST_INCLUDEDIR "C:/Program Files/boost/boost_1_38")
 #elseif(UNIX)
 #    set(BOOST_INCLUDEDIR /usr/local/include/boost-1_38)
 #    #set(BOOST_LIBRARYDIR /usr/local/lib)
-#endif(WIN32)
-#
-#if(WIN32)
-#	#set(QT_QMAKE_EXECUTABLE	"C:/Qt/4.4.2/qt/bin/qmake.exe")
-#endif(WIN32)
+endif(WIN32)
+
+if(WIN32)
+	set(QT_QMAKE_EXECUTABLE	"C:/Qt/4.4.2/qt/bin/qmake.exe")
+endif(WIN32)
 
 ############################################################################
 # DEPENDENCIES
@@ -68,6 +69,9 @@ find_package(Boost 1.35 REQUIRED COMPONENTS ${BOOST_MODULES})
 if(UNIX)
     set(Boost_LIBRARIES ${Boost_LIBRARIES} pthread)
 endif(UNIX)
+if(WIN32)
+	include_directories(${Boost_INCLUDE_DIRS})
+endif(WIN32)
 
 set(QT_USE_QTOPENGL 1)
 find_package(Qt4)
