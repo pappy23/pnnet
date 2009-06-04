@@ -5,6 +5,7 @@
 #include "Includes/BoostCommon.h" 
 
 #include "Image.h"
+#include "Squash.h"
 
 namespace pann
 {

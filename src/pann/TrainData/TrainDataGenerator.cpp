@@ -39,49 +39,6 @@ namespace pann
             return _td.getMse();
         } //test
 
-        valarray<Float>
-        squash_copy(const valarray<Float>& _v, Float _src_min, Float _src_max,
-                                                Float _dst_min, Float _dst_max)
-        {
-            valarray<Float> result = _v;
-            squash(result, _src_min, _src_max, _dst_min, _dst_max);
-
-            return result;
-        } //squash_copy
-
-        void
-        squash(valarray<Float>& _v, Float _src_min, Float _src_max,
-                                    Float _dst_min, Float _dst_max)
-        {
-            if(_src_min > _src_max)
-                swap(_src_min, _src_max);
-
-            if(_dst_min > _dst_max)
-                swap(_dst_min, _dst_max);
-
-            if(_src_min > _v.min() || _src_max < _v.max())
-                throw Exception()<<"Source range mismatch\n";
-
-            //This check eliminates division by zero in some
-            //strange conditions
-            if(_dst_max == _dst_min)
-            {
-                _v = (Float) (_src_max + _src_min) / 2;
-                return;
-            }
-
-            /*
-             * To squah range [min; max] to new range [_min; _max] we use this formula:
-             *
-             * N = ( ( _src_max - _src_min ) / ( _dst_max - _dst_min ) ) * N +
-             *      
-             * + ( _src_max - ( ( _src_max - _src_min ) / ( _dst_max - _dst_min ) ) * _dst_max )
-             */
-            Float a = ( _src_max - _src_min ) / ( _dst_max - _dst_min );
-            Float b = _src_max - a * _dst_max;
-            _v = a * _v + b;
-        } //squash
-
     }; //Util
 
     namespace DataGenerator

@@ -75,19 +75,30 @@ namespace pann
             throw IoError()<<"Bad lexical cast\n";
         }
 
-        if ("P6" == params[0])
-            depth *= 3;
+        unsigned layers;
 
-        valarray<Float> va(w * h * depth);
+        if("P5" == params[0]) {
+            layers = 1;
+        } else if("P6" == params[0]) {
+            layers = 3;
+        } else {
+            throw IoError()<<"Format not supported\n";
+        }
+
+        valarray<unsigned char> va(w * h * layers);
 
         char c;
         in.get(c);
         for (unsigned i = 0; i < w * h; ++i)
-            for (unsigned j = 0; j < depth; ++j)
+        {
+            for (unsigned j = 0; j < layers; ++j)
             {
                 c = in.get();
-                va[i * depth + j] = c;
+                va[i * layers + j] = c;
             }
+        }
+
+        squash(va, 0, depth, 0, 255);
 
         in.close();
 

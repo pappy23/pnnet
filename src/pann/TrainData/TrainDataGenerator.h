@@ -8,6 +8,7 @@
 #include <valarray>
 
 #include "Core/Type.h"
+#include "Squash.h"
 
 namespace pann
 {
@@ -19,13 +20,6 @@ namespace pann
          * Run network with _td and return mean squared error
          */
         Float test(Net& _net, TrainData& _td);
-
-        std::valarray<Float> squash_copy(const std::valarray<Float>& _v,
-                                            Float _src_min, Float _src_max,
-                                            Float _dst_min, Float _dst_max);
-
-        void squash(std::valarray<Float>& _v, Float _src_min, Float _src_max,
-                                              Float _dst_min, Float _dst_max);
 
     }; //Util
 
