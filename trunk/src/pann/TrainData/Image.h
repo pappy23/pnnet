@@ -38,6 +38,7 @@ namespace pann
          * _data:
          * [R1C1L1, R1C1L2, R1C1L3, R1C2L1, R1C2L2, ..., R2C2L2, R2C2L3]
          */
+        Image(const unsigned _width, const unsigned _height, const valarray<unsigned char>& _data);
         Image(const unsigned _width, const unsigned _height, const valarray<Float>& _data);
         ~Image();
 
@@ -55,6 +56,8 @@ namespace pann
         valarray<Float> getCompositeValarray() const;
 
     private:
+        void createImageFromCharValarray(const valarray<unsigned char>& _data);
+
         unsigned m_width;
         unsigned m_height;
         vector<vector<unsigned char> > m_bmap;
