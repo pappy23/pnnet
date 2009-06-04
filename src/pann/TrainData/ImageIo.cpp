@@ -43,6 +43,20 @@ namespace pann
         return Image();
     } //readFile
 
+    void
+    ImageIo::writeImage(const Image& _img, const string& _filename, FileType _type)
+    {
+        switch(_type)
+        {
+        case PGM:
+            writeP5(_img, _filename);
+            break;
+        case PPM:
+        default:
+            throw IoError()<<"Writing in this format is unsupported\n";
+        }
+    } //writeImage
+
     Image
     ImageIo::readP5P6(const std::string& _filename)
     {
@@ -104,5 +118,11 @@ namespace pann
 
         return Image(w, h, va);
     } //readP5P6
+
+    void
+    ImageIo::writeP5(const Image& _img, const string& _filename)
+    {
+        throw Exception()<<"Fig vam!\n";
+    } //writeP6
 
 }; //pann
