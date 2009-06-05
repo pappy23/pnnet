@@ -8,7 +8,10 @@ using namespace pann;
 int main(int argc, char **argv)
 {
     vector<Float> vec;
-    vec += 255,255,255,0,0,0,0,0,0,255,255,255;
+    vec +=  10, 10, 10,
+		   0  ,  0,  0,
+		   0  ,  0,  0,
+		    13, 13, 13;
     valarray<Float> varr(vec.size());
 
     cout<<"Original valarray\n";
@@ -49,6 +52,9 @@ int main(int argc, char **argv)
             cout<<res2[i]<<' ';
         cout<<endl;
     }
+
+
+	ImageIo::writeImage(bmp1,"1.pgm",ImageIo::PGM);
 
     return 0;
 }
