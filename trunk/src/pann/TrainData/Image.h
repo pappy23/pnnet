@@ -55,6 +55,9 @@ namespace pann
          */
         valarray<Float> getCompositeValarray() const;
 
+	unsigned getWidth() const {return m_width;};
+	unsigned getHeight() const {return m_height;};
+
     private:
         void createImageFromCharValarray(const valarray<unsigned char>& _data);
 
