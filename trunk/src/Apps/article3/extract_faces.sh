@@ -15,9 +15,9 @@
 
 FACE_W=92
 FACE_H=92
-PIC_W=140
-PIC_H=140
-BORDER=10
+PIC_W=95
+PIC_H=95
+BORDER=0
 
 echo "Extracting faces from original orl_faces"
 mkdir -p orl_extracted
@@ -65,10 +65,20 @@ echo "Introducing noise"
 cd combined
 for i in `\ls -1 *pgm`; do
     convert $i -normalize +noise Impulse ${i}_impulse1.pgm
-    convert ${i}_impulse1.pgm +noise Impulse ${i}_impulse2.pgm
+    #convert ${i}_impulse1.pgm +noise Impulse ${i}_impulse2.pgm
     mv $i ${i}_original.pgm
 done
 rename 's/\.pgm_/_/' *
 rename 's/\.pgm_/_/' *
+
+echo "Generating orl_list"
+\ls -1v *pgm | awk '{ \
+printf "%s ", $0; \
+gsub(/^s/, "", $0); \
+gsub(/\.pgm$/, "", $0); \
+gsub(/original/, "0", $0); \
+gsub(/impulse1/, "1", $0); \
+split($0, a, "_"); \
+printf "%s %s %s %s\n", a[1],a[2],a[3],a[4]}' > ../orl_list
 cd ..
 
