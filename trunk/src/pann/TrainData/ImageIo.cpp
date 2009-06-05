@@ -40,7 +40,7 @@ namespace pann
         }
 
         //Never reaches this point
-        return Image();
+        return *((Image*)(0));
     } //readFile
 
     void
