@@ -28,7 +28,7 @@ elseif(CMAKE_COMPILER_IS_GNUCXX)
 endif(MSVC)
 
 if("${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
-    add_definitions(-DDEBUG)
+    add_definitions(-g -DDEBUG)
 endif()
 
 if(UNIX)
