@@ -84,7 +84,7 @@ namespace pann
         try {
             w = lexical_cast<unsigned>(params[1].c_str());
             h = lexical_cast<unsigned>(params[2].c_str());
-            depth = unsigned(lexical_cast<Float>(params[3].c_str()) / 255.0);
+            depth = unsigned(lexical_cast<Float>(params[3].c_str()));
         } catch(bad_lexical_cast&) {
             throw IoError()<<"Bad lexical cast\n";
         }
@@ -98,6 +98,9 @@ namespace pann
         } else {
             throw IoError()<<"Format not supported\n";
         }
+
+        if(depth > 255)
+            throw IoError()<<"Depth not supported\n";
 
         valarray<unsigned char> va(w * h * layers);
 
