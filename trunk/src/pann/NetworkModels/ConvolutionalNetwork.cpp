@@ -149,6 +149,7 @@ namespace pann
                 Plane conv_plane;
                 shared_bias.reset(new Weight(1));
                 if(!is_input_layer)
+                {
                     for(unsigned i = 0; i < current_layer_conv_plane_height; ++i)
                     {
                         conv_plane.push_back(Row());
@@ -158,6 +159,7 @@ namespace pann
                             conv_plane[i].push_back(neuron);
                         }
                     }
+                }
 
                 //Subsampling
                 /*
@@ -188,13 +190,19 @@ namespace pann
                         //TODO SS neuron or between all SS neurons in same plane?
                         WeightPtr shared_weight(new Weight(1));
                         if(!is_input_layer)
+                        {
                             for(unsigned l = 0; l < ss_range; ++l)
+                            {
                                 for(unsigned m = 0; m < ss_range; ++m)
+                                {
                                     net.addConnection(conv_plane \
                                             [i * ss_range + l] \
                                             [j * ss_range + m],
                                             neuron,
                                             shared_weight);
+                                }
+                            }
+                        }
                     }
                 }
 
@@ -208,8 +216,12 @@ namespace pann
                         )
                 );
                 for(unsigned i = 0; i < _window_height; i++)
+                {
                     for(unsigned j = 0; j < _window_width; j++)
+                    {
                         shared_conv_weights[i][j].reset(new Weight(1));
+                    }
+                }
 
                 //Phase 2: Build connection matrix for current plane
                 /*
@@ -245,16 +257,28 @@ namespace pann
                 //Phase 3: Actual connections
                 //i iterates over next layer planes
                 for(unsigned i = 0; i < model[current_layer + 2].size(); ++i)
+                {
                     if(conn_matrix[i])
+                    {
                         for(unsigned j = 0; j < next_layer_plane_height; ++j)
+                        {
                             for(unsigned k = 0; k < next_layer_plane_width; ++k)
+                            {
                                 for(unsigned l = 0; l < _window_height; ++l)
+                                {
                                     for(unsigned m = 0; m < _window_width; ++m)
+                                    {
                                         net.addConnection(ss_plane \
-                                [j * (_window_height - _window_vert_overlap) + l] \
-                                [k * (_window_width - _window_horiz_overlap) + m], 
-                                model[current_layer + 2][i][j][k],
-                                shared_conv_weights[l][m]);
+                                        [j * (_window_height - _window_vert_overlap) + l] \
+                                        [k * (_window_width - _window_horiz_overlap) + m], 
+                                        model[current_layer + 2][i][j][k],
+                                        shared_conv_weights[l][m]);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
 
                 //Adding created CONV and SS planes to model
                 model[current_layer + 1].push_back(ss_plane);
@@ -266,8 +290,11 @@ namespace pann
 
         //OpenGL
         for(unsigned layer = 0; layer < model.size(); ++layer)
+        {
             for(unsigned plane = 0; plane < model[layer].size(); ++plane)
+            {
                 for(unsigned i = 0; i < model[layer][plane].size(); ++i)
+                {
                     for(unsigned j = 0; j < model[layer][plane][i].size(); ++j)
                     {
                         Neuron& n = *model[layer][plane][i][j];
@@ -293,6 +320,9 @@ namespace pann
                                 Float(model[layer].size()) / 2.0 + 0.5
                                 ) * distance_between_fms;
                     }
+                }
+            }
+        }
 
         return model;
     } //ConvolutionalNetworkModel

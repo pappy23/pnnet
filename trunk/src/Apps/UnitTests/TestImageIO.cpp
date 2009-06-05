@@ -40,6 +40,7 @@ int main(int argc, char **argv)
     {
         Image bmp = ImageIo::readImage(argv[1]);
 
+        /*
         valarray<Float> res = bmp.getAverageValarray();
         cout<<"BIG average valarray\n";
         for(unsigned i = 0; i < res.size(); ++i)
@@ -51,6 +52,8 @@ int main(int argc, char **argv)
         for(unsigned i = 0; i < res2.size(); ++i)
             cout<<res2[i]<<' ';
         cout<<endl;
+        */
+        ImageIo::writeImage(bmp, "copy.pgm", ImageIo::PGM);
     }
 
 

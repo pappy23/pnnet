@@ -125,20 +125,16 @@ namespace pann
     void
     ImageIo::writeP5(const Image& _img, const string& _filename)
     {
-		ofstream out(_filename.c_str(), ios::out|ios::binary);
-		
-		out << "P5\n"<<_img.getWidth()<<' '<<_img.getHeight()<<"\n255\n";
-		valarray<Float> var(_img.getWidth()*_img.getHeight());
-		var = _img.getAverageValarray();
+        ofstream out(_filename.c_str(), ios::out|ios::binary);
 
-		unsigned i=0;
-		for (i = 0; i< _img.getWidth()*_img.getHeight(); ++i)
-		{
-			out.put(static_cast<unsigned> (var[i]));
-		}
-		
-        //throw Exception()<<"Fig vam!\n";
-		out.close();
+        out << "P5\n" << _img.getWidth() << ' ' << _img.getHeight() << "\n255\n";
+
+        valarray<Float> var(_img.getAverageValarray());
+
+        for(unsigned i = 0; i < var.size(); ++i)
+            out.put(static_cast<unsigned>(var[i]));
+
+        out.close();
     } //writeP6
 
 }; //pann
