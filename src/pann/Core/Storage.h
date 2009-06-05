@@ -38,7 +38,7 @@ namespace pann
             SerializatorType oa(ofs);
             try {
                 oa << BOOST_SERIALIZATION_NVP(_obj);
-            } catch(boost::archive::archive_exception& e) {
+            } catch(boost::archive::archive_exception&) {
                 throw IoError()<<"Storage::save(): failed to save net. Boost exception thrown.\n";
             } catch(...) {
                 throw IoError()<<"Storage::save(): unknown exception\n";
@@ -58,7 +58,7 @@ namespace pann
             SerializatorType ia(ifs);
             try {
                 ia >> BOOST_SERIALIZATION_NVP(_obj);
-            } catch(boost::archive::archive_exception& e) {
+            } catch(boost::archive::archive_exception&) {
                 throw IoError()<<"Storage::load(): failed to load net. Boost exception thrown.\n";
             } catch(...) {
                 throw IoError()<<"Storage::load(): unknown exception\n";
