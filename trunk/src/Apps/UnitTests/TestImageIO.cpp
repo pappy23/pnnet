@@ -59,6 +59,24 @@ int main(int argc, char **argv)
 
 	ImageIo::writeImage(bmp1,"1.pgm",ImageIo::PGM);
 
+
+
+    //Squash test
+    cout<<"Squash test\nOriginal valarray: ";
+    valarray<unsigned char> v(10);
+    for(unsigned char i = 0; i < 10; ++i)
+        v[i] = i;
+
+    for(unsigned i = 0; i < 10; ++i)
+        cout<<(unsigned int)v[i]<<" ";
+    cout<<endl;
+
+    squash(v, 0, 10, 10, 255);
+    cout<<"[0; 10] -> [10; 255]\n";
+    for(unsigned i = 0; i < 10; ++i)
+        cout<<(unsigned int)v[i]<<" ";
+    cout<<endl;
+
     return 0;
 }
 

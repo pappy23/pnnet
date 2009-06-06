@@ -34,14 +34,14 @@ namespace pann
         }
 
         /*
-         * To squah range [min; max] to new range [_min; _max] we use this formula:
+         * To squah range [src_min; src_max] to new range [dst_min; dst_max] we use this formula:
          *
-         * N = ( ( _src_max - _src_min ) / ( _dst_max - _dst_min ) ) * N +
-         *      
-         * + ( _src_max - ( ( _src_max - _src_min ) / ( _dst_max - _dst_min ) ) * _dst_max )
+         * N = ( ( dst_max - dst_min ) / ( src_max - src_min ) ) * N +
+         *
+         * + ( dst_max - ( ( dst_max - dst_min ) / ( src_max - src_min ) ) * src_max )
          */
-        T a = ( src_max - src_min ) / ( dst_max - dst_min );
-        T b = src_max - a * dst_max;
+        T a = ( dst_max - dst_min ) / ( src_max - src_min );
+        T b = dst_max - a * src_max;
         _v = a * _v + b;
     } //squash
 
