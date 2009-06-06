@@ -162,7 +162,7 @@ int main()
         }
 
         NetPtr net = ConvolutionalNetwork(planes);
-        Storage::save<Storage::bin_out>(*net, "test_conv.bin");
+        Storage::save<Storage::txt_out>(*net, "test_conv.net");
     }
 
     return 0;
