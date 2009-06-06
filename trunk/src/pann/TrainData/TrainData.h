@@ -4,6 +4,9 @@
 #include "Includes/Std.h"
 #include "Core/Type.h"
 
+
+//TODO Total rewrite of TrainData, TrainPattern and TrainDataGenerator
+
 namespace pann
 {
     class TrainPattern;
