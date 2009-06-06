@@ -211,7 +211,7 @@ void experiment1()
     pnet->at(RandomizeWeightsAttributes::max) = +0.6;
     //net.run(RandomizeWeightsGaussRunner::Instance());
     pnet->run(RandomizeWeightsAccordingToInputsCountRunner::Instance());
-    pnet->setWorkThreadsCount(1);
+    pnet->setWorkThreadsCount(4);
 
     //Debug
     //const NetCache& cache = pnet->getCache();
