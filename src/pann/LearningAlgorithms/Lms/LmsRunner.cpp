@@ -23,7 +23,7 @@ namespace pann
     LmsBackpropagationRunner::~LmsBackpropagationRunner()
     {
     } //~LmsBackpropagationRunner
-    
+
     Runner&
     LmsBackpropagationRunner::Instance()
     {

@@ -191,7 +191,7 @@ void experiment1()
         squash(tp.desired_output, 0.0, 255.0, -1.8, +1.8);
         tdata.data.push_back(tp);
     }
-//TODO: squash нихуя не работает. Нужны сурьезные тесты именно squash!!!
+
     //Test run
     cout<<"Test run\n";
     pnet->setInput(tdata.data[0].input);
@@ -199,12 +199,57 @@ void experiment1()
     valarray<Float> test_output(95*95);
     pnet->getOutput(test_output);
     squash(test_output, -1.8, +1.8, 0.0, 255.0);
-//    for(unsigned i = 0; i < test_output.size(); ++i)
-//        cout<<test_output[i]<<endl;
     Image test_run_out(95, 95, test_output);
     ImageIo::writeImage(test_run_out, "TestRunOut.pgm", ImageIo::PGM);
     cout<<"Wrote test run output image to TestRunOut.pgm\n";
-}
+
+    //Trainig net
+    Lms::init(*pnet);
+    pnet->at(LmsAttributes::learningRate) = 0.2;
+    pnet->at(LmsAttributes::annealingTSC) = 3000;
+    pnet->at(RandomizeWeightsAttributes::min) = -0.6;
+    pnet->at(RandomizeWeightsAttributes::max) = +0.6;
+    //net.run(RandomizeWeightsGaussRunner::Instance());
+    pnet->run(RandomizeWeightsAccordingToInputsCountRunner::Instance());
+    pnet->setWorkThreadsCount(1);
+
+    //Debug
+    //const NetCache& cache = pnet->getCache();
+    //for(unsigned i = 0; i < cache.layers.size(); ++i)
+    //{
+    //    cout<<cache.layers[i].size()<<endl;
+    //}
+
+    unsigned const epochs = 1000;
+    cout<<"Training for "<<epochs<<" epochs\n";
+    for(unsigned i = 1; i < epochs; ++i)
+    {
+        tdata.shuffle();
+        Lms::train(*pnet, tdata);
+        cout<<i<<"\t"<<tdata.getMse()<<"\n";
+    }
+
+    Storage::save<Storage::txt_out>(*pnet, "MirrorConvNet_Exp1.net");
+} //experiment1
+
+/*
+boost::mutex m;
+
+void f()
+{
+    boost::mutex::scoped_lock lock(m);
+    cout<<"hello\n";
+    for(;;);
+};
+
+void mutex_test()
+{
+    boost::thread_group threadPool;
+    for(unsigned i =0; i < 8; ++i)
+        threadPool.add_thread( new boost::thread(f) );
+    threadPool.join_all();
+};
+*/
 
 int main(int argc, char* argv[])
 {

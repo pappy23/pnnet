@@ -75,7 +75,7 @@ int main()
     } catch(GnuplotException e) {
         cout << e.what() << endl;
     }
-    
+
     return 0;
 }
 
