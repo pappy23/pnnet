@@ -146,14 +146,17 @@ namespace pann
     } //setWorkThreadsCount
 
     void
-    Net::formatFront(vector<NeuronPtr>& _raw) const
+    Net::formatFront(list<NeuronPtr>& _raw) const
     {
-        sort(_raw.begin(), _raw.end());
-        vector<NeuronPtr>::iterator it = unique(_raw.begin(), _raw.end());
-        _raw.resize( it - _raw.begin() );
+        _raw.sort();
+        _raw.unique();
 
         if(_raw.size() > 0)
-            cache.layers.push_back(_raw);
+        {
+            cache.layers.push_back(vector<NeuronPtr>());
+            for(list<NeuronPtr>::iterator it = _raw.begin(); it != _raw.end(); ++it)
+                cache.layers.back().push_back(*it);
+        }
     } //formatFront
 
     void
@@ -162,17 +165,17 @@ namespace pann
         //TODO: if user set's latency > 1 for regular links - shit may happen
         //TODO: Latency - is very dangerous tool. It's not difficult to understand, 
         //TODO: why this feature is still not implemented in Neuron/Net interface :)
-        cache.flush(); 
+        cache.flush();
 
         //Here we will place neuron's IDs that will become front, with duplicates
-        vector<NeuronPtr> rawFront;
+        list<NeuronPtr> rawFront;
 
         /*
          * Function operates with "hops" attribute of every Neuron
          * to build adequate cache.
          */
         map<NeuronPtr, unsigned> hops;
-        
+
         //Put inputNeurons to front
         BOOST_FOREACH( const NeuronPtr& n, inputNeurons )
         {
@@ -180,7 +183,7 @@ namespace pann
             hops[n] = 1;
         }
         formatFront(rawFront);
-        
+
         /*
          * Cache looks like this:
          * At this point cache.layers[0] is the only record and it contains input neurons
@@ -194,8 +197,8 @@ namespace pann
             for(unsigned i = 0; i < nCount; ++i)
             {
                 //pop_front emulation
-                NeuronPtr currentNeuron = rawFront[0];
-                rawFront.erase( rawFront.begin() );
+                NeuronPtr currentNeuron = rawFront.front();
+                rawFront.pop_front();
 
                 //ok, we've got cur_neuron. We will iterate through his Out links
                 //and push_back their opposite sides to rawFront

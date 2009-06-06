@@ -91,7 +91,7 @@ namespace pann
         /**
          * Helper used by regenerateCache()
          */
-        void formatFront(std::vector<NeuronPtr>& _raw) const;
+        void formatFront(std::list<NeuronPtr>& _raw) const;
 
         /**
          * This function updates cache
