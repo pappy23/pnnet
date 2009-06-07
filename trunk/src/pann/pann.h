@@ -10,7 +10,7 @@
  * build and run network
  */
 #include "Core/ActivationFunction.h"
-#include "Core/Attribute.h"
+#include "Core/Attributes.h"
 #include "Core/Cache.h"
 #include "Core/Exception.h"
 #include "Core/Link.h"
