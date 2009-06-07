@@ -10,7 +10,7 @@
 using namespace std;
 using namespace boost;
 using namespace pann::ConvolutionalNetworkTypes;
-using namespace pann::OpenGlAttributes;
+using namespace pann::AttributesGroup;
 
 namespace pann
 {
@@ -297,21 +297,23 @@ namespace pann
                 {
                     for(unsigned j = 0; j < model[layer][plane][i].size(); ++j)
                     {
-                        Neuron& n = *model[layer][plane][i][j];
+                        OpenGlAttributesPtr ogl = model[layer][plane][i][j]->at<OpenGlAttributes>(OpenGl);
+                        if(!ogl)
+                            ogl.reset(new OpenGlAttributes);
 
                         //TODO Change colors for diferent types of neurons
-                        n[color_r] = 255;
-                        n[color_g] = 0;
-                        n[color_b] = 0;
-                        n[coord_x] = (
+                        ogl->r() = 255;
+                        ogl->g() = 0;
+                        ogl->b() = 0;
+                        ogl->x() = (
                                 Float(layer) -
                                 total_layers / 2.0 + 1.0
                                 ) * distance_between_layers;
-                        n[coord_y] = (
+                        ogl->y() = (
                                 Float(i) -
                                 Float(model[layer][plane].size()) / 2.0 + 1.0
                                 ) * distance_between_neurons;
-                        n[coord_z] = (
+                        ogl->z() = (
                                 Float(j) -
                                 Float(model[layer][plane][0].size()) / 2.0 + 1.0
                                 ) * distance_between_neurons

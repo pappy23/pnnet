@@ -5,54 +5,38 @@
 #include "Includes/BoostSerialization.h"
 
 #include "Exception.h"
-#include "Attribute.h"
+#include "Attributes.h"
+
+//TODO present attrbutes group realisation
+//TODO is somewhat drafty
 
 namespace pann
 {
     class Object
     {
     public:
-        Object();
-        virtual ~Object();
+        Object() : attributes(10, AttributesPtr((Attributes*)0)) { };
+        virtual ~Object() { };
 
         /**
-         * Does attribute exist?
-         * @param _attributeName - checking attribute name
+         * Get reference to attributes group. Create it if needed
+         * @param _groupName - group name
+         * @return - reference to attributes group
          */
-        bool is(const AttributeName _attributeName) const;
+        template<class T>
+        boost::shared_ptr<T> at(const HashType _groupName) const
+        {
+            return boost::static_pointer_cast<T, Attributes>(attributes[_groupName]);
+        };
 
-        /**
-         * Delete attribute
-         * @param _attributeName - deleting attribute name
-         */
-        void unset(const AttributeName _attributeName);
-
-        /**
-         * Get reference to attribute. Create it if nonexistent
-         * @param _attributeName - getting attribute name
-         * @return - reference to attribute
-         */
-        AttributeType& at(const AttributeName _attributeName);
-        AttributeType& operator[](const AttributeName _attributeName);
-
-        /**
-         * Get attribute. Nonintrusive version of operator[]
-         */
-        const AttributeType& at(const AttributeName _attributeName) const;
-        const AttributeType& operator[](const AttributeName _attributeName) const;
-
-        /**
-         * Delete all attributes
-         */
-        void erase();
-
-        /**
-         * Delete only attributes from specific group
-         */
-        void erase(HashType _groupName);
+        template<class T>
+        boost::shared_ptr<T> operator[](const HashType _groupName) const
+        {
+            return at<T>(_groupName);
+        };
 
     private:
-        std::map<AttributeName, AttributeType> attributes;
+        std::vector<AttributesPtr> attributes;
 
         /* Serialization */
     private:

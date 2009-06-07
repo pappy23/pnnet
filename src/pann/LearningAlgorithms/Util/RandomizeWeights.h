@@ -3,24 +3,48 @@
 
 #include "Core/Type.h"
 #include "Core/Runner.h"
-
-/*
-#include "Core/Net.h"
-#include "Core/NetCache.h"
-#include "Core/Neuron.h"
-#include "Core/Link.h"
-#include "Core/Random.h"
-#include "Core/Weight.h"
-*/
+#include "Core/Attributes.h"
 
 namespace pann
 {
-    namespace RandomizeWeightsAttributes
+    namespace AttributesGroup
     {
-        //Net
-        const AttributeName min = hash("RandomizeWeightsAttributes::min", AlgorithmSpecificLearningParameters);
-        const AttributeName max = hash("RandomizeWeightsAttributes::max", AlgorithmSpecificLearningParameters);
-    }; //Attributes
+        const HashType WeightsRandomization = hash("RandomizeWeightsAttributes");
+    }; //AttributesGroup
+
+    ADD_PTR_TYPEDEF(WeightsRandomizationAttributes);
+
+    class WeightsRandomizationAttributes : public Attributes
+    {
+    public:
+        WeightsRandomizationAttributes() { };
+        virtual ~WeightsRandomizationAttributes() { };
+
+        virtual HashType getName() { return AttributesGroup::WeightsRandomization; };
+
+        Float& min() { return m_min; };
+        Float& max() { return m_max; };
+        const Float& min() const { return m_min; };
+        const Float& max() const { return m_max; };
+
+    private:
+        Float m_min;
+        Float m_max;
+
+    private:
+        friend class boost::serialization::access;
+        template<class Archive>
+            void serialize(Archive & ar, const unsigned int version)
+            {
+                 boost::serialization::void_cast_register<WeightsRandomizationAttributes, Attributes>(
+                    static_cast<WeightsRandomizationAttributes*>(NULL),
+                    static_cast<Attributes*>(NULL));
+
+                ar & BOOST_SERIALIZATION_BASE_OBJECT_NVP(Attributes)
+                   & BOOST_SERIALIZATION_NVP(m_min)
+                   & BOOST_SERIALIZATION_NVP(m_max);
+            };
+    }; //WeightsRandomizationAttributes
 
     /**
      * Assign initial weights from interval [_min; _max]
@@ -33,8 +57,8 @@ namespace pann
 
     private:
         RandomizeWeightsGaussRunner() {};
-        
-    public:    
+
+    public:
         ~RandomizeWeightsGaussRunner() {};
 
     public:
@@ -47,7 +71,7 @@ namespace pann
         }
 
         virtual void run(Neuron& _neuron, const Net& _net);
-        
+
         virtual RunDirection getDirection()
         {
             return ForwardRun;
@@ -68,8 +92,8 @@ namespace pann
 
     private:
         RandomizeWeightsAccordingToInputsCountRunner() {};
-        
-    public:    
+
+    public:
         ~RandomizeWeightsAccordingToInputsCountRunner() {};
 
     public:
@@ -82,7 +106,7 @@ namespace pann
         }
 
         virtual void run(Neuron& _neuron, const Net& _net);
-        
+
         virtual RunDirection getDirection()
         {
             return ForwardRun;
