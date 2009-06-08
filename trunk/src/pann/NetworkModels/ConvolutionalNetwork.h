@@ -3,6 +3,7 @@
 
 #include "Includes/Std.h"
 #include "Includes/BoostCommon.h"
+
 #include "Core/ActivationFunction.h"
 
 using std::vector;
@@ -44,10 +45,10 @@ namespace pann
         unsigned _window_height = 5,
         unsigned _window_horiz_overlap = 3,
         unsigned _window_vert_overlap  = 3,
-        ActivationFunction::Base* _input_af = ActivationFunction::TanH::Instance(),
-        ActivationFunction::Base* _conv_af  = ActivationFunction::TanH::Instance(),
-        ActivationFunction::Base* _ss_af    = ActivationFunction::TanH::Instance(),
-        ActivationFunction::Base* _output_af= ActivationFunction::Linear::Instance()
+        ActivationFunctionPtr _input_af = TanH::Instance(),
+        ActivationFunctionPtr _conv_af  = TanH::Instance(),
+        ActivationFunctionPtr _ss_af    = TanH::Instance(),
+        ActivationFunctionPtr _output_af= Linear::Instance()
         );
 
     /**
@@ -63,10 +64,10 @@ namespace pann
         unsigned _window_height = 5,
         unsigned _window_horiz_overlap = 3,
         unsigned _window_vert_overlap  = 3,
-        ActivationFunction::Base* _input_af = ActivationFunction::TanH::Instance(),
-        ActivationFunction::Base* _conv_af  = ActivationFunction::TanH::Instance(),
-        ActivationFunction::Base* _ss_af    = ActivationFunction::TanH::Instance(),
-        ActivationFunction::Base* _output_af= ActivationFunction::Linear::Instance()
+        ActivationFunctionPtr _input_af = TanH::Instance(),
+        ActivationFunctionPtr _conv_af  = TanH::Instance(),
+        ActivationFunctionPtr _ss_af    = TanH::Instance(),
+        ActivationFunctionPtr _output_af= Linear::Instance()
         );
 
 }; //pann

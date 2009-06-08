@@ -1,5 +1,5 @@
 //RandomizeWeights.cpp
-
+/*
 #include "Core/Random.h"
 #include "RandomizeWeights.h"
 
@@ -7,8 +7,6 @@ using namespace pann::RandomizeWeightsAttributes;
 
 namespace pann
 {
-    Runner* RandomizeWeightsGaussRunner::self = 0;
-
     void
     RandomizeWeightsGaussRunner::run(Neuron& _neuron, const Net& _net)
     {
@@ -26,12 +24,12 @@ namespace pann
     void
     RandomizeWeightsAccordingToInputsCountRunner::run(Neuron& _neuron, const Net& _net)
     {
-        /*
-        if(!_net.is(RandomizeWeightsAttributes::min))
-            _net[RandomizeWeightsAttributes::min] = -2.4;
-        if(!_net.is(RandomizeWeightsAttributes::max))
-            _net[RandomizeWeightsAttributes::max] = +2.4;
-        */
+        //
+        //if(!_net.is(RandomizeWeightsAttributes::min))
+        //    _net[RandomizeWeightsAttributes::min] = -2.4;
+        //if(!_net.is(RandomizeWeightsAttributes::max))
+        //    _net[RandomizeWeightsAttributes::max] = +2.4;
+        //
 
         Float C = sqrt(Float(_neuron.getInConnections().size()));
         if(C == 0)
@@ -47,4 +45,4 @@ namespace pann
     } //run
 
 }; //pann
-
+*/

@@ -2,6 +2,7 @@
 
 #include "Core/Net.h"
 #include "Core/Neuron.h"
+#include "Core/NeuronFactory.h"
 #include "Core/Weight.h"
 #include "Core/Random.h"
 
@@ -20,10 +21,10 @@ namespace pann
         unsigned _window_height,
         unsigned _window_horiz_overlap,
         unsigned _window_vert_overlap,
-        ActivationFunction::Base* _input_af,
-        ActivationFunction::Base* _conv_af,
-        ActivationFunction::Base* _ss_af,
-        ActivationFunction::Base* _output_af
+        ActivationFunctionPtr _input_af,
+        ActivationFunctionPtr _conv_af,
+        ActivationFunctionPtr _ss_af,
+        ActivationFunctionPtr _output_af
         )
     {
         Model model = ConvolutionalNetworkModel(
@@ -55,10 +56,10 @@ namespace pann
         unsigned _window_height,
         unsigned _window_horiz_overlap,
         unsigned _window_vert_overlap,
-        ActivationFunction::Base* _input_af,
-        ActivationFunction::Base* _conv_af,
-        ActivationFunction::Base* _ss_af,
-        ActivationFunction::Base* _output_af
+        ActivationFunctionPtr _input_af,
+        ActivationFunctionPtr _conv_af,
+        ActivationFunctionPtr _ss_af,
+        ActivationFunctionPtr _output_af
         )
     {
         /*
@@ -109,7 +110,7 @@ namespace pann
         //In output layer each plane consists from exactly one neuron
         for(unsigned i = 0; i < _layers.back(); ++i)
         {
-            NeuronPtr neuron(new PyramidalNeuron(_output_af));
+            NeuronPtr neuron(NeuronFactory::PyramidalNeuron(_output_af));
             model[current_layer].push_back(Plane(1, Row(1, neuron)));
         }
 
@@ -154,7 +155,7 @@ namespace pann
                         conv_plane.push_back(Row());
                         for(unsigned j = 0; j < current_layer_conv_plane_width; ++j)
                         {
-                            NeuronPtr neuron(new PyramidalNeuron(_conv_af, shared_bias));
+                            NeuronPtr neuron(NeuronFactory::PyramidalNeuron(_conv_af, shared_bias));
                             conv_plane[i].push_back(neuron);
                         }
                     }
@@ -177,9 +178,9 @@ namespace pann
                     {
                         NeuronPtr neuron;
                         if(is_input_layer)
-                            neuron.reset(new PyramidalNeuron(_input_af));
+                            neuron = NeuronFactory::PyramidalNeuron(_input_af);
                         else
-                            neuron.reset(new PyramidalNeuron(_ss_af, shared_bias));
+                            neuron = NeuronFactory::PyramidalNeuron(_ss_af, shared_bias);
 
                         ss_plane[i].push_back(neuron);
 

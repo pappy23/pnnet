@@ -10,149 +10,144 @@
 
 #include "Type.h"
 
+using boost::shared_ptr;
+
 namespace pann
 {
     class Neuron;
 
-    namespace ActivationFunction
+    /**
+     * All activation functions inherit ActivationFunction::ActivationFunction
+     * and implement Instance() method
+     */
+    class ActivationFunction
     {
-        /**
-         * All activation functions inherit ActivationFunction::Base
-         * and implement Instance() method
-         */
-        class Base
+    public:
+        virtual Float f(Float) const = 0;
+        virtual Float derivative_dy(Float) const = 0;
+    };
+
+    /**
+     * Linear function
+     * y = x
+     * dy/dx = 0
+     */
+    class Linear : public ActivationFunction
+    {
+        //Singleton
+        Linear() {};
+
+    public:
+        static ActivationFunctionPtr Instance()
         {
-        public:
-            virtual Float f(Float) const = 0;
-            virtual Float derivative_dy(Float) const = 0;
-        };
+            static Linear self;
+            return ActivationFunctionPtr(&self);
+        }
 
-        /**
-         * Linear function
-         * y = x
-         * dy/dx = 0
-         */
-        class Linear : public Base
+        virtual Float f(Float _x) const
         {
-            //Singleton
-			Linear() {};
-			virtual ~Linear() {};
+            return _x;
+        }
 
-        public:
-            static Base* Instance()
-            {
-                static Base* self = new Linear();
-                return self;
-            }
-
-            virtual Float f(Float _x) const
-            {
-                return _x;
-            }
-
-            virtual Float derivative_dy(Float) const
-            {
-                return 1;
-            }
-
-        private:
-            friend class boost::serialization::access;
-            template<class Archive>
-                void serialize(Archive & ar, const unsigned int version)
-                {
-                     boost::serialization::void_cast_register<Linear, Base>(
-                        static_cast<Linear*>(NULL),
-                        static_cast<Base*>(NULL));
-                };
-        };
-
-        /**
-         * MacCalloc-Pitz threshold function
-         * y = 0, x <0
-         * y = 1, x>=0
-         */
-        class Threshold : public Base
+        virtual Float derivative_dy(Float) const
         {
-            //Singleton
-			Threshold() {};
-			virtual ~Threshold() {};
+            return 1;
+        }
 
-        public:
-            static Base* Instance()
+    private:
+        friend class boost::serialization::access;
+        template<class Archive>
+            void serialize(Archive & ar, const unsigned int version)
             {
-                static Base* self = new Threshold();
-                return self;
-            }
+                 boost::serialization::void_cast_register<Linear, ActivationFunction>(
+                    static_cast<Linear*>(NULL),
+                    static_cast<ActivationFunction*>(NULL));
+            };
+    };
 
-            virtual Float f(Float _x) const
-            {
-                if(_x < 0)
-                    return 0;
-                return 1;
-            }
+    /**
+     * MacCalloc-Pitz threshold function
+     * y = 0, x <0
+     * y = 1, x>=0
+     */
+    class Threshold : public ActivationFunction
+    {
+        //Singleton
+        Threshold() {};
 
-            virtual Float derivative_dy(Float _y) const
-            {
-                if(_y == 0)
-                    return inf;
+    public:
+        static ActivationFunctionPtr Instance()
+        {
+            static Threshold self;
+            return ActivationFunctionPtr(&self);
+        }
 
+        virtual Float f(Float _x) const
+        {
+            if(_x < 0)
                 return 0;
-            }
+            return 1;
+        }
 
-        private:
-            friend class boost::serialization::access;
-            template<class Archive>
-                void serialize(Archive & ar, const unsigned int version)
-                {
-                     boost::serialization::void_cast_register<Threshold, Base>(
-                        static_cast<Threshold*>(NULL),
-                        static_cast<Base*>(NULL));
-                };
-        };
-
-        /**
-         * Hyperbolic tangent function
-         * y = a*tanh(b*x)
-         */
-        class TanH : public Base
+        virtual Float derivative_dy(Float _y) const
         {
-            //Singleton
-			TanH() : a( 1.7179 ), b( 2.0 / 3.0 ) {};
-			virtual ~TanH() {};
+            if(_y == 0)
+                return inf;
 
-        private:
-            const Float a;
-            const Float b;
+            return 0;
+        }
 
-        public:
-            static Base* Instance()
+    private:
+        friend class boost::serialization::access;
+        template<class Archive>
+            void serialize(Archive & ar, const unsigned int version)
             {
-                static Base* self = new TanH();
-                return self;
-            }
+                 boost::serialization::void_cast_register<Threshold, ActivationFunction>(
+                    static_cast<Threshold*>(NULL),
+                    static_cast<ActivationFunction*>(NULL));
+            };
+    };
 
-            virtual Float f(Float _x) const
+    /**
+     * Hyperbolic tangent function
+     * y = a*tanh(b*x)
+     */
+    class TanH : public ActivationFunction
+    {
+        //Singleton
+        TanH() : a( 1.7179 ), b( 2.0 / 3.0 ) {};
+
+    public:
+        static ActivationFunctionPtr Instance()
+        {
+            static TanH self;
+            return ActivationFunctionPtr(&self);
+        }
+
+        virtual Float f(Float _x) const
+        {
+            return a * std::tanh( b * _x );
+        }
+
+        virtual Float derivative_dy(Float _y) const
+        {
+            return b/a * (a - _y) * (a + _y);
+        }
+
+    private:
+        const Float a;
+        const Float b;
+
+    private:
+        friend class boost::serialization::access;
+        template<class Archive>
+            void serialize(Archive & ar, const unsigned int version)
             {
-                return a * std::tanh( b * _x );
-            }
-
-            virtual Float derivative_dy(Float _y) const
-            {
-                return b/a * (a - _y) * (a + _y);
-            }
-
-        private:
-            friend class boost::serialization::access;
-            template<class Archive>
-                void serialize(Archive & ar, const unsigned int version)
-                {
-                     boost::serialization::void_cast_register<TanH, Base>(
-                        static_cast<TanH*>(NULL),
-                        static_cast<Base*>(NULL));
-                };
-        };
-
-    }; //ActivationFunction
+                 boost::serialization::void_cast_register<TanH, ActivationFunction>(
+                    static_cast<TanH*>(NULL),
+                    static_cast<ActivationFunction*>(NULL));
+            };
+    };
 
 }; //pann
 #endif //ACTIVATIONFUNCTION_H

@@ -13,6 +13,7 @@
 #include "Neuron.h"
 #include "Link.h"
 #include "Weight.h"
+#include "Strategy.h"
 
 namespace pann
 {
@@ -69,7 +70,7 @@ namespace pann
          * Note: layers are computed automaticaly and stored in cache
          * See regenerateCache() implementation for more details
          */
-        void run(Runner& _runner);
+        void run(RunnerPtr _runner);
 
         /**
          * Public interface to private attributes
@@ -106,8 +107,7 @@ namespace pann
          * @param _cur_thread Current work thread number
          * @param _barrier See implementation
          */
-        static void threadBase(Runner* _runner, const Net* _net, unsigned _cur_thread,
-                                                                 boost::barrier* _barrier);
+        static void threadBase(RunnerPtr _runner, Net* _net, unsigned _cur_thread, boost::barrier* _barrier);
         /* Serialization */
     private:
         friend class boost::serialization::access;

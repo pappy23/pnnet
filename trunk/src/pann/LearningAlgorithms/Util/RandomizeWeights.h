@@ -3,6 +3,7 @@
 
 #include "Core/Type.h"
 #include "Core/Runner.h"
+#include "Core/Attributes.h"
 
 /*
 #include "Core/Net.h"
@@ -15,12 +16,39 @@
 
 namespace pann
 {
-    namespace RandomizeWeightsAttributes
+    /**
+     * Attributes used in neurons to draw network model
+     * in pann_viewer
+     */
+    class WeightRandomizationAttributes : public Attributes
     {
-        //Net
-        const AttributeName min = hash("RandomizeWeightsAttributes::min", AlgorithmSpecificLearningParameters);
-        const AttributeName max = hash("RandomizeWeightsAttributes::max", AlgorithmSpecificLearningParameters);
-    }; //Attributes
+    public:
+        WeightRandomizationAttributes()
+            : min(0), max(0)
+        {
+            groupName = hash("WeightRandomizationAttributes");
+        };
+
+        virtual ~WeightRandomizationAttributes() {};
+
+        Float min;
+        Float max;
+
+    private:
+        friend class boost::serialization::access;
+        template<class Archive>
+            void serialize(Archive & ar, const unsigned int version)
+            {
+                boost::serialization::void_cast_register<RandomizeWeightsAttributes, Attributes>(
+                    static_cast<Attributes*>(NULL),
+                    static_cast<RandomizeWeightsAttributes*>(NULL));
+
+                ar & BOOST_SERIALIZATION_NVP(min)
+                & BOOST_SERIALIZATION_NVP(max);
+            };
+
+    }; //RandomizeWeightsAttributes
+    ADD_PTR_TYPEDEF(RandomizeWeightsAttributes);
 
     /**
      * Assign initial weights from interval [_min; _max]
@@ -28,26 +56,33 @@ namespace pann
      */
     class RandomizeWeightsGaussRunner : public Runner
     {
-    private:
-        static Runner* self;
-
-    private:
         RandomizeWeightsGaussRunner() {};
-        
-    public:    
-        ~RandomizeWeightsGaussRunner() {};
 
     public:
-        static Runner& Instance()
+        static RunnerPtr Instance()
         {
-            if(!self)
-                self = new RandomizeWeightsGaussRunner();
-
-            return *self;
+            static RandomizeWeightsGaussRunner self;
+            return RunnerPtr(&self);
         }
 
-        virtual void run(Neuron& _neuron, const Net& _net);
-        
+        virtual void run(NeuronPtr _neuron, NetPtr _net)
+        {
+            WeightRandomizationAttributes& attrs = _net.get<WeightRandomizationAttributes>();
+            if(attrs.min == 0 && attrs.max == 0)
+            {
+                attrs.min = -0.3;
+                attrs.max = +0.3;
+            }
+
+            //Tune bias values
+            if(_neuron.getBias())
+                _neuron.getBias()->setValue(rand(attrs.min, attrs.max));
+
+            //Link weights
+            BOOST_FOREACH(const Link& link, _neuron.getInConnections())
+                link.getWeight()->setValue(rand(attrs.min, attrs.max));
+        };
+
         virtual RunDirection getDirection()
         {
             return ForwardRun;

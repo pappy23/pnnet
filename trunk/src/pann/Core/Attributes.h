@@ -51,15 +51,7 @@ namespace pann
     protected:
         static HashType groupName;
 
-    private:
-        friend class boost::serialization::access;
-        template<class Archive>
-            void serialize(Archive & ar, const unsigned int version)
-            {
-            };
-
     }; //Attributes
-    ADD_PTR_TYPEDEF(Attributes);
 
     /**
      * Attributes used in neurons to draw network model
@@ -84,6 +76,11 @@ namespace pann
         template<class Archive>
             void serialize(Archive & ar, const unsigned int version)
             {
+                //WTF?
+                //boost::serialization::void_cast_register<OpenGlAttributes, Attributes>(
+                //    static_cast<Attributes*>(NULL),
+                //    static_cast<OpenGlAttributes*>(NULL));
+
                 ar & BOOST_SERIALIZATION_NVP(x)
                 & BOOST_SERIALIZATION_NVP(y)
                 & BOOST_SERIALIZATION_NVP(z)
@@ -91,8 +88,8 @@ namespace pann
                 & BOOST_SERIALIZATION_NVP(g)
                 & BOOST_SERIALIZATION_NVP(b);
             };
+
     }; //OpenGlAttributes
-    ADD_PTR_TYPEDEF(OpenGlAttributes);
 
 }; //pann
 
