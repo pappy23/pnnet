@@ -10,6 +10,8 @@
 #include "Net.h"
 #include "Neuron.h"
 
+using boost::shared_ptr;
+
 namespace pann
 {
     class Net;
@@ -23,7 +25,7 @@ namespace pann
     class Runner
     {
     public:
-        virtual void run(Neuron&, const Net&) = 0;
+        virtual void run(NeuronPtr, NetPtr) = 0;
         virtual RunDirection getDirection() = 0;
     };
 
@@ -34,18 +36,17 @@ namespace pann
     {
         //Singleton
         FeedforwardPropagationRunner() {};
-        ~FeedforwardPropagationRunner() {};
 
     public:
-        static Runner& Instance()
+        static RunnerPtr Instance()
         {
             static FeedforwardPropagationRunner self;
-            return self;
+            return RunnerPtr(&self);
         }
 
-        virtual void run(Neuron& _neuron, const Net& _net)
+        virtual void run(NeuronPtr _neuron, NetPtr _net)
         {
-            _neuron.fire();
+            //TODO
         }
 
         virtual RunDirection getDirection()
@@ -53,30 +54,6 @@ namespace pann
             return ForwardRun;
         }
     }; //FeedforwardPropagationRunner
-
-    class BackPropagationRunner : public Runner
-    {
-        //Singleton
-        BackPropagationRunner() {};
-        ~BackPropagationRunner() {};
-
-    public:
-        static Runner& Instance()
-        {
-            static BackPropagationRunner self;
-            return self;
-        }
-
-        virtual void run(Neuron& _neuron, const Net& _net)
-        {
-            _neuron.learn();
-        }
-
-        virtual RunDirection getDirection()
-        {
-            return BackwardRun;
-        }
-    }; //BackPropagationRunner
 
 }; //pann
 

@@ -1,7 +1,7 @@
 //MultilayerPerceptron.cpp
 
 #include "Core/Net.h"
-#include "Core/Neuron.h"
+#include "Core/NeuronFactory.h"
 #include "Core/Weight.h"
 
 #include "MultilayerPerceptron.h"
@@ -12,7 +12,7 @@ using boost::tuple;
 namespace pann
 {
     NetPtr
-    MultilayerPerceptron(vector<tuple<unsigned, ActivationFunction::Base*> > _layers)
+    MultilayerPerceptron(vector<tuple<unsigned, ActivationFunctionPtr> > _layers)
     {
         NetPtr net(new Net());
 
@@ -25,19 +25,19 @@ namespace pann
         //TODO: OpenGlHint
         for(unsigned l = 0; l < _layers.size(); ++l)
         {
-            ActivationFunction::Base* af = _layers[l].get<1>();
+            ActivationFunctionPtr af = _layers[l].get<1>();
             if(!af)
-                af = ActivationFunction::TanH::Instance();
+                af = TanH::Instance();
 
             for(unsigned i = 0; i < _layers[l].get<0>(); ++i)
             {
                 NeuronPtr n;
                 if(l == 0)
                 {
-                    n.reset(new PyramidalNeuron(af));
+                    n = NeuronFactory::PyramidalNeuron(af);
                     net->addInputNeuron(n);
                 } else {
-                    n.reset(new PyramidalNeuron(af, WeightPtr(new Weight(1))));
+                    n = NeuronFactory::PyramidalNeuron(af, WeightPtr(new Weight(1)));
                 }
 
                 mlp[l].push_back(n);

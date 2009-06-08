@@ -15,7 +15,7 @@ namespace pann
      * layer and what activation function use in neurons
      * If activation function isn't set, TanH will be used
      */
-    NetPtr MultilayerPerceptron(std::vector<boost::tuple<unsigned, ActivationFunction::Base*> > _layers);
+    NetPtr MultilayerPerceptron(std::vector<boost::tuple<unsigned, ActivationFunctionPtr> > _layers);
 
 }; //pann
 

@@ -18,6 +18,7 @@
 #include "Core/NetCache.h"
 #include "Core/Net.h"
 #include "Core/Neuron.h"
+#include "Core/NeuronFactory.h"
 #include "Core/Object.h"
 #include "Core/Random.h"
 #include "Core/Runner.h"

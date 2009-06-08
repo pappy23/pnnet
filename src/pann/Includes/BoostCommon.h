@@ -28,6 +28,7 @@
 //#include <boost/lambda/lambda.hpp>
 //#include <boost/lambda/bind.hpp>
 //#include <boost/any.hpp>
+//#include <boost/enable_shared_from_this.hpp>
 
 #endif
 

@@ -5,22 +5,8 @@
 using namespace std;
 using namespace boost;
 
-BOOST_CLASS_EXPORT(pann::PyramidalNeuron);
-
 namespace pann
 {
-    void
-    Neuron::setInput(Float _value)
-    {
-        receptiveField = _value;
-    } //setInput
-
-    Float
-    Neuron::getOutput() const
-    {
-        return activationValue;
-    } //getOutput
-
     void
     Neuron::addInConnection(NeuronPtr _to, WeightPtr _weight)
     {
@@ -61,7 +47,7 @@ namespace pann
 
         links_out.remove_if(bind(comparator::comp, _to, _1));
     } //delOutConnection
-
+/*
     void
     PyramidalNeuron::fire()
     {
@@ -82,5 +68,5 @@ namespace pann
     PyramidalNeuron::learn()
     {
     } //learn
-
+*/
 }; //pann
