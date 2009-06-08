@@ -43,8 +43,6 @@ namespace pann
         /**
          * Manage connections between neurons
          * TODO: add connections with different latencies (shortcut links)
-         * TODO: do we really need this? We can connect two neurons without
-         * TODO: Net intervention
          */
         WeightPtr addConnection(
                 NeuronPtr _from,

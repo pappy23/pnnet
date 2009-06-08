@@ -29,6 +29,8 @@ namespace pann
         virtual RunDirection getDirection() = 0;
     };
 
+    //TODO Backpropagation runner
+
     /**
      * Sample runner for Feedforfard propagation through network
      */
