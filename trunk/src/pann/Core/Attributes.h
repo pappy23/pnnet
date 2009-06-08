@@ -25,7 +25,7 @@ namespace pann
      * @param _name Readable name of attributes group
      * @return Unique integer hash value
      */
-    HashType
+    inline HashType
     hash(const char* _name)
     {
         static boost::hash<std::string> hasher;
@@ -38,19 +38,17 @@ namespace pann
     class Attributes
     {
     public:
-        virtual ~Attributes();
-
-        static const HashType getHash() { return groupName; };
+        virtual ~Attributes() {};
 
     protected:
-        Attributes()
-        {
-            groupName = hash("Derived class missed groupName initialization");
-        };
+        Attributes() {};
 
-    protected:
-        static HashType groupName;
-
+    private:
+        friend class boost::serialization::access;
+        template<class Archive>
+            void serialize(Archive & ar, const unsigned int version)
+            {
+            };
     }; //Attributes
 
     /**
@@ -60,14 +58,16 @@ namespace pann
     class OpenGlAttributes : public Attributes
     {
     public:
-        OpenGlAttributes()
-            : r(0), g(0), b(0), x(0), y(0), z(0)
-        {
-            groupName = hash("OpenGlAttributes");
-        };
-
+        OpenGlAttributes() : r(0), g(0), b(0), x(0), y(0), z(0) {};
         virtual ~OpenGlAttributes() {};
 
+        static const HashType getHash()
+        {
+            static HashType groupName = hash("OpenGlAttributes");
+            return groupName;
+        };
+
+    public:
         unsigned char r, g, b; //Color
         signed int x, y, z; //Coordinates
 

@@ -23,14 +23,16 @@ namespace pann
     class WeightRandomizationAttributes : public Attributes
     {
     public:
-        WeightRandomizationAttributes()
-            : min(0), max(0)
-        {
-            groupName = hash("WeightRandomizationAttributes");
-        };
-
+        WeightRandomizationAttributes() : min(0), max(0) {};
         virtual ~WeightRandomizationAttributes() {};
 
+        static const HashType getHash()
+        {
+            static HashType groupName = hash("WeightRandomizationAttributes");
+            return groupName;
+        };
+
+    public:
         Float min;
         Float max;
 

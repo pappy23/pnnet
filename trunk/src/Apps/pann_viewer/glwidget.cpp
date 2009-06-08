@@ -37,25 +37,23 @@ void GLWidget::calcCoords()
             unsigned planeRows = sqrt(layer_size);
             unsigned planeCols = layer_size / planeRows;
 
-            OpenGlAttributesPtr& ogl = neuron->ogl;
-            if(!ogl)
-                ogl.reset(new OpenGlAttributes);
+            OpenGlAttributes& ogl = neuron->get<OpenGlAttributes>();
 
-            if(!ogl->x)
-                ogl->x = (GLdouble) ( (GLdouble)layer - total_layers/2.0 + 1.0) * 100;
+            if(!ogl.x)
+                ogl.x = (GLdouble) ( (GLdouble)layer - total_layers/2.0 + 1.0) * 100;
 
-            if(!ogl->y)
-                ogl->y = (GLdouble) ( (GLdouble)(i / planeCols) - planeRows/2.0 + 1.0 ) * 40.0;
+            if(!ogl.y)
+                ogl.y = (GLdouble) ( (GLdouble)(i / planeCols) - planeRows/2.0 + 1.0 ) * 40.0;
 
-            if(!ogl->z)
-                ogl->z = (GLdouble) ( (GLdouble)(i % planeCols) - planeCols/2.0 + 1.0 ) * 40.0;
+            if(!ogl.z)
+                ogl.z = (GLdouble) ( (GLdouble)(i % planeCols) - planeCols/2.0 + 1.0 ) * 40.0;
 
-            if(!ogl->r)
-                ogl->r = 255.0;
-            if(!ogl->g)
-                ogl->g = 0.0;
-            if(!ogl->b)
-                ogl->b = 0.0;
+            if(!ogl.r)
+                ogl.r = 255.0;
+            if(!ogl.g)
+                ogl.g = 0.0;
+            if(!ogl.b)
+                ogl.b = 0.0;
         }
     }
 }
@@ -77,9 +75,10 @@ void GLWidget::drawNetModel()
         BOOST_FOREACH( const NeuronPtr neuron, front )
         {
             //Draw neuron
+            OpenGlAttributes& ogl = neuron->get<OpenGlAttributes>();
             glPushMatrix();
-            qglColor(QColor(neuron->ogl->r, neuron->ogl->g, neuron->ogl->b));
-            glTranslated(neuron->ogl->x, neuron->ogl->y, neuron->ogl->z);
+            qglColor(QColor(ogl.r, ogl.g, ogl.b));
+            glTranslated(ogl.x, ogl.y, ogl.z);
             gluSphere(q, neuronRadius, 12, 12);
             glPopMatrix();
             net_info.neurons++;
@@ -96,8 +95,9 @@ void GLWidget::drawNetModel()
                         continue;
 
                     glBegin(GL_LINES);
-                    glVertex3d(link.getTo()->ogl->x, link.getTo()->ogl->y, link.getTo()->ogl->z);
-                    glVertex3d(neuron->ogl->x, neuron->ogl->y, neuron->ogl->z);
+                    OpenGlAttributes& ogl_to = link.getTo()->get<OpenGlAttributes>();
+                    glVertex3d(ogl_to.x, ogl_to.y, ogl_to.z);
+                    glVertex3d(ogl.x, ogl.y, ogl.z);
                     glEnd();
                 }
             } //drawLinks
