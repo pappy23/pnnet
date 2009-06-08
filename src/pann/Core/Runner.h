@@ -20,10 +20,9 @@ namespace pann
     /**
      * Runner interface
      */
-    class Runner //singleton
+    class Runner
     {
     public:
-        static Runner& Instance();
         virtual void run(Neuron&, const Net&) = 0;
         virtual RunDirection getDirection() = 0;
     };
@@ -33,22 +32,15 @@ namespace pann
      */
     class FeedforwardPropagationRunner : public Runner
     {
-    private:
-        static Runner* self;
-
-    private:
+        //Singleton
         FeedforwardPropagationRunner() {};
-
-    public:
         ~FeedforwardPropagationRunner() {};
 
     public:
         static Runner& Instance()
         {
-            if(!self)
-                self = new FeedforwardPropagationRunner();
-
-            return *self;
+            static FeedforwardPropagationRunner self;
+            return self;
         }
 
         virtual void run(Neuron& _neuron, const Net& _net)
@@ -64,22 +56,15 @@ namespace pann
 
     class BackPropagationRunner : public Runner
     {
-    private:
-        static Runner* self;
-
-    private:
+        //Singleton
         BackPropagationRunner() {};
-
-    public:
         ~BackPropagationRunner() {};
 
     public:
         static Runner& Instance()
         {
-            if(!self)
-                self = new BackPropagationRunner();
-
-            return *self;
+            static BackPropagationRunner self;
+            return self;
         }
 
         virtual void run(Neuron& _neuron, const Net& _net)

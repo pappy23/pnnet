@@ -20,31 +20,6 @@ namespace pann
     class Weight;
     class Link;
 
-    class OpenGlAttributes
-    {
-    public:
-        OpenGlAttributes() : x(0), y(0), z(0), r(0), g(0), b(0) {};
-        virtual ~OpenGlAttributes() {};
-
-        signed int x, y, z;
-        unsigned char r, g, b;
-
-    private:
-        friend class boost::serialization::access;
-        template<class Archive>
-            void serialize(Archive & ar, const unsigned int version)
-            {
-                ar & BOOST_SERIALIZATION_NVP(x)
-                & BOOST_SERIALIZATION_NVP(y)
-                & BOOST_SERIALIZATION_NVP(z)
-                & BOOST_SERIALIZATION_NVP(r)
-                & BOOST_SERIALIZATION_NVP(g)
-                & BOOST_SERIALIZATION_NVP(b);
-            };
-    }; //OpenGlAttributes
-
-    ADD_PTR_TYPEDEF(OpenGlAttributes)
-
     class Neuron : public Object
     {
     public:
@@ -66,9 +41,6 @@ namespace pann
         void addOutConnection(NeuronPtr _to, WeightPtr _weight);
         void delInConnection(NeuronPtr _to);
         void delOutConnection(NeuronPtr _to);
-
-    public:
-        OpenGlAttributesPtr ogl;
 
     protected:
         Float receptiveField;
@@ -92,8 +64,7 @@ namespace pann
                  //@see Net::serialize()
                  //& BOOST_SERIALIZATION_NVP(links_out)
                  //& BOOST_SERIALIZATION_NVP(links_in)
-                 & BOOST_SERIALIZATION_NVP(bias)
-                 & BOOST_SERIALIZATION_NVP(ogl);
+                 & BOOST_SERIALIZATION_NVP(bias);
             };
     }; //Neuron
 
@@ -124,12 +95,8 @@ namespace pann
         template<class Archive>
             void serialize(Archive & ar, const unsigned int version)
             {
-                boost::serialization::void_cast_register<PyramidalNeuron, Neuron>(
-                    static_cast<PyramidalNeuron*>(NULL),
-                    static_cast<Neuron*>(NULL));
-
-                if(typename Archive::is_loading())
-                    ActivationFunction::boost_export();
+//                if(typename Archive::is_loading())
+//                    ActivationFunction::boost_export();
 
                 ar & BOOST_SERIALIZATION_BASE_OBJECT_NVP(Neuron)
                  & BOOST_SERIALIZATION_NVP(activationFunction);

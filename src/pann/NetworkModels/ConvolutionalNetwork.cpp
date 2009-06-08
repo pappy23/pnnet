@@ -296,23 +296,21 @@ namespace pann
                 {
                     for(unsigned j = 0; j < model[layer][plane][i].size(); ++j)
                     {
-                        OpenGlAttributesPtr& ogl = model[layer][plane][i][j]->ogl;
-                        if(!ogl)
-                            ogl.reset(new OpenGlAttributes);
+                        OpenGlAttributes& ogl = model[layer][plane][i][j]->get<OpenGlAttributes>();
 
                         //TODO Change colors for diferent types of neurons
-                        ogl->r = 255;
-                        ogl->g = 0;
-                        ogl->b = 0;
-                        ogl->x = (
+                        ogl.r = 255;
+                        ogl.g = 0;
+                        ogl.b = 0;
+                        ogl.x = (
                                 Float(layer) -
                                 total_layers / 2.0 + 1.0
                                 ) * distance_between_layers;
-                        ogl->y = (
+                        ogl.y = (
                                 Float(i) -
                                 Float(model[layer][plane].size()) / 2.0 + 1.0
                                 ) * distance_between_neurons;
-                        ogl->z = (
+                        ogl.z = (
                                 Float(j) -
                                 Float(model[layer][plane][0].size()) / 2.0 + 1.0
                                 ) * distance_between_neurons
