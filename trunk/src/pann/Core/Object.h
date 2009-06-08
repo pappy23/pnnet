@@ -5,7 +5,11 @@
 #include "Includes/BoostSerialization.h"
 
 #include "Exception.h"
-#include "Attribute.h"
+#include "Attributes.h"
+
+using std::map;
+using boost::shared_ptr;
+using boost::dynamic_pointer_cast;
 
 namespace pann
 {
@@ -15,54 +19,58 @@ namespace pann
         Object() {};
         virtual ~Object() {};
 
-        /**
-         * Does attribute exist?
-         * @param _attributeName - checking attribute name
-         */
-//        bool is(const AttributeName _attributeName) const;
+        AttributesPtr& getPtr(HashType _group)
+        {
+            return attributes[_group];
+        };
 
-        /**
-         * Delete attribute
-         * @param _attributeName - deleting attribute name
-         */
-//        void unset(const AttributeName _attributeName);
+        const AttributesPtr& getPtr(HashType _group) const
+        {
+            return attributes[_group];
+        };
 
-        /**
-         * Get reference to attribute. Create it if nonexistent
-         * @param _attributeName - getting attribute name
-         * @return - reference to attribute
-         */
-//        AttributeType& at(const AttributeName _attributeName);
-//        AttributeType& operator[](const AttributeName _attributeName);
+        template<class T>
+            T& get()
+            {
+                AttributesPtr& raw_ptr = attributes[T::getHash()];
+                shared_ptr<T> casted_ptr = dynamic_pointer_cast<T, Attributes>(raw_ptr);
+                //Optimization is possible
 
-        /**
-         * Get attribute. Nonintrusive version of operator[]
-         */
-//        const AttributeType& at(const AttributeName _attributeName) const;
-//        const AttributeType& operator[](const AttributeName _attributeName) const;
+                if(!casted_ptr)
+                {
+                    T* ptr = new T();
+                    raw_ptr.reset(ptr);
+                    return *ptr;
+                } else {
+                    return *casted_ptr;
+                }
+            };
 
-        /**
-         * Delete all attributes
-         */
-//        void erase();
+        template<class T>
+            const T& get() const
+            {
+                AttributesPtr& raw_ptr = attributes[T::getHash()];
+                shared_ptr<T> casted_ptr = dynamic_pointer_cast<T, Attributes>(raw_ptr);
 
-        /**
-         * Delete only attributes from specific group
-         */
-//        void erase(HashType _groupName);
+                if(!casted_ptr)
+                {
+                    throw Exception()<<"Attributes access exception\n";
+                } else {
+                    return *casted_ptr;
+                }
+            };
 
     private:
-//        std::map<AttributeName, AttributeType> attributes;
+        map<HashType, AttributesPtr> mutable attributes;
 
-        /* Serialization */
     private:
         friend class boost::serialization::access;
         template<class Archive>
             void serialize(Archive & ar, const unsigned int version)
             {
-//                ar & BOOST_SERIALIZATION_NVP(attributes);
+                ar & BOOST_SERIALIZATION_NVP(attributes);
             };
-    };
+    }; //Object
 
 }; //pann
 

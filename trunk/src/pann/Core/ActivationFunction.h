@@ -16,27 +16,15 @@ namespace pann
 
     namespace ActivationFunction
     {
-        void boost_export();
-
         /**
          * All activation functions inherit ActivationFunction::Base
          * and implement Instance() method
-         * Base is a singleton pattern
          */
-        class Base //Singleton
+        class Base
         {
         public:
-            /*
-             * @return reference to ActivationFunction object. It is always same
-             */
-            static Base* Instance();
-
             virtual Float f(Float) const = 0;
             virtual Float derivative_dy(Float) const = 0;
-
-        /* Serialization */
-        private:
-            friend class boost::serialization::access;
         };
 
         /**
@@ -46,21 +34,27 @@ namespace pann
          */
         class Linear : public Base
         {
-        private:
-            static Base* self;
-
-		private:
-			Linear();
+            //Singleton
+			Linear() {};
+			virtual ~Linear() {};
 
         public:
-			~Linear();
+            static Base* Instance()
+            {
+                static Base* self = new Linear();
+                return self;
+            }
 
-        public:
-            static Base* Instance();
-            virtual Float f(Float _x) const;
-            virtual Float derivative_dy(Float) const;
+            virtual Float f(Float _x) const
+            {
+                return _x;
+            }
 
-            /* Serialization */
+            virtual Float derivative_dy(Float) const
+            {
+                return 1;
+            }
+
         private:
             friend class boost::serialization::access;
             template<class Archive>
@@ -79,21 +73,32 @@ namespace pann
          */
         class Threshold : public Base
         {
-        private:
-            static Base* self;
-
-		private:
-			Threshold();
+            //Singleton
+			Threshold() {};
+			virtual ~Threshold() {};
 
         public:
-			~Threshold();
+            static Base* Instance()
+            {
+                static Base* self = new Threshold();
+                return self;
+            }
 
-        public:
-            static Base* Instance();
-            virtual Float f(Float _x) const;
-            virtual Float derivative_dy(Float) const;
+            virtual Float f(Float _x) const
+            {
+                if(_x < 0)
+                    return 0;
+                return 1;
+            }
 
-            /* Serialization */
+            virtual Float derivative_dy(Float _y) const
+            {
+                if(_y == 0)
+                    return inf;
+
+                return 0;
+            }
+
         private:
             friend class boost::serialization::access;
             template<class Archive>
@@ -111,25 +116,31 @@ namespace pann
          */
         class TanH : public Base
         {
+            //Singleton
+			TanH() : a( 1.7179 ), b( 2.0 / 3.0 ) {};
+			virtual ~TanH() {};
+
         private:
-            static Base* self;
+            const Float a;
+            const Float b;
 
         public:
-            static const Float a;
-            static const Float b;
+            static Base* Instance()
+            {
+                static Base* self = new TanH();
+                return self;
+            }
 
-		private:
-			TanH();
+            virtual Float f(Float _x) const
+            {
+                return a * std::tanh( b * _x );
+            }
 
-        public:
-			~TanH();
+            virtual Float derivative_dy(Float _y) const
+            {
+                return b/a * (a - _y) * (a + _y);
+            }
 
-        public:
-            static Base* Instance();
-            virtual Float f(Float _x) const;
-            virtual Float derivative_dy(Float) const;
-
-            /* Serialization */
         private:
             friend class boost::serialization::access;
             template<class Archive>
