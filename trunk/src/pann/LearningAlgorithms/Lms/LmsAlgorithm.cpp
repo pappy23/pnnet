@@ -19,6 +19,8 @@ using namespace boost;
 
 namespace pann
 {
+    //TODO: Use standart Backpropagation runner from Core
+
     void
     Lms::train(Net& _net, TrainData& _trainData)
     {

@@ -41,6 +41,7 @@ namespace pann
         static ActivationFunctionPtr Instance()
         {
             static Linear self;
+            //TODO use shared_from_this!!!
             return ActivationFunctionPtr(&self);
         }
 
