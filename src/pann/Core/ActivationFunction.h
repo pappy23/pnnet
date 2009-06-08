@@ -14,8 +14,6 @@ using boost::shared_ptr;
 
 namespace pann
 {
-    class Neuron;
-
     /**
      * All activation functions inherit ActivationFunction::ActivationFunction
      * and implement Instance() method
@@ -40,9 +38,8 @@ namespace pann
     public:
         static ActivationFunctionPtr Instance()
         {
-            static Linear self;
-            //TODO use shared_from_this!!!
-            return ActivationFunctionPtr(&self);
+            static ActivationFunctionPtr self(new Linear());
+            return self;
         }
 
         virtual Float f(Float _x) const
@@ -79,8 +76,8 @@ namespace pann
     public:
         static ActivationFunctionPtr Instance()
         {
-            static Threshold self;
-            return ActivationFunctionPtr(&self);
+            static ActivationFunctionPtr self(new Threshold());
+            return self;
         }
 
         virtual Float f(Float _x) const
@@ -121,8 +118,8 @@ namespace pann
     public:
         static ActivationFunctionPtr Instance()
         {
-            static TanH self;
-            return ActivationFunctionPtr(&self);
+            static ActivationFunctionPtr self(new TanH());
+            return self;
         }
 
         virtual Float f(Float _x) const

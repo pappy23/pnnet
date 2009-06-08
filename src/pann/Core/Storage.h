@@ -36,13 +36,13 @@ namespace pann
 
             cout<<"Saving net to "<<_filename<<"..."<<endl;
             SerializatorType oa(ofs);
-            try {
+            //try {
                 oa << BOOST_SERIALIZATION_NVP(_obj);
-            } catch(boost::archive::archive_exception& e) {
-                throw IoError()<<"Storage::save(): failed to save net. Boost exception thrown. What: "<<e.what()<<"\n";
-            } catch(...) {
-                throw IoError()<<"Storage::save(): unknown exception\n";
-            }
+            //} catch(boost::archive::archive_exception& e) {
+            //    throw IoError()<<"Storage::save(): failed to save net. Boost exception thrown. What: "<<e.what()<<"\n";
+            //} catch(...) {
+            //    throw IoError()<<"Storage::save(): unknown exception\n";
+            //}
 
             ofs.close();
         }; //save

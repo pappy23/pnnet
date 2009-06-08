@@ -115,7 +115,7 @@ namespace pann
 
         //We must give parameters by pointer, because boost will copy all arguments to thread
         for(unsigned thread = 0; thread < workThreads; ++thread)
-            threadPool.add_thread( new boost::thread(Net::threadBase, _runner, this, thread, &barrier) );
+            threadPool.add_thread( new boost::thread(Net::threadBase, _runner, shared_from_this(), thread, &barrier) );
 
         //wait for threads to finish
         threadPool.join_all();
@@ -244,7 +244,7 @@ namespace pann
     } //regenerateCache
 
     void
-    Net::threadBase(RunnerPtr _runner, Net* _net, unsigned _cur_thread, boost::barrier* _barrier)
+    Net::threadBase(RunnerPtr _runner, NetPtr _net, unsigned _cur_thread, boost::barrier* _barrier)
     {
         RunDirection dir = _runner->getDirection();
         const NetCache& _cache = _net->getCache();
@@ -257,7 +257,7 @@ namespace pann
         do {
             //Process current layer
             for(unsigned i = _cur_thread; i < _cache.layers[layer].size(); i += threads)
-                _runner->run( _cache.layers[layer][i], NetPtr(_net) ); //We pass Net* to runner, because
+                _runner->run( _cache.layers[layer][i], _net ); //We pass Net* to runner, because
                                                                 //learning algorithms require
                                                                 //read-only access to Net attributes
 

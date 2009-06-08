@@ -13,6 +13,7 @@
 #include <boost/functional/hash.hpp>
 #include <boost/bind.hpp>
 #include <boost/shared_ptr.hpp>
+#include <boost/enable_shared_from_this.hpp>
 
 //No need in Core
 #include <boost/random.hpp> 
@@ -28,7 +29,6 @@
 //#include <boost/lambda/lambda.hpp>
 //#include <boost/lambda/bind.hpp>
 //#include <boost/any.hpp>
-//#include <boost/enable_shared_from_this.hpp>
 
 #endif
 

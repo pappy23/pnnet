@@ -42,8 +42,8 @@ namespace pann
     public:
         static RunnerPtr Instance()
         {
-            static FeedforwardPropagationRunner self;
-            return RunnerPtr(&self);
+            static RunnerPtr self(new FeedforwardPropagationRunner());
+            return self;
         }
 
         virtual void run(NeuronPtr _neuron, NetPtr _net)
