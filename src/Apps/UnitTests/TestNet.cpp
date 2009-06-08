@@ -1,17 +1,11 @@
 //TestNet.cpp
 
-#include <iostream>
-#include <iomanip>
-
-#include <boost/progress.hpp>
-
 #include "pann.h"
 
 using namespace std;
 using namespace boost;
 using namespace boost::assign;
 using namespace pann;
-using namespace pann::ActivationFunction;
 using namespace pann::ConvolutionalNetworkTypes;
 
 int main()
@@ -21,9 +15,9 @@ int main()
         Net tnet;
         // N1 ---> N2 ---> N3
         {
-            NeuronPtr n1(new PyramidalNeuron(ActivationFunction::Linear::Instance()));
-            NeuronPtr n2(new PyramidalNeuron(ActivationFunction::Linear::Instance()));
-            NeuronPtr n3(new PyramidalNeuron(ActivationFunction::Linear::Instance()));
+            NeuronPtr n1(NeuronFactory::PyramidalNeuron(Linear::Instance()));
+            NeuronPtr n2(NeuronFactory::PyramidalNeuron(Linear::Instance()));
+            NeuronPtr n3(NeuronFactory::PyramidalNeuron(Linear::Instance()));
             tnet.addInputNeuron(n1);
             tnet.addConnection(n1, n2);
             tnet.addConnection(n2, n3);
@@ -48,11 +42,11 @@ int main()
         Net tnet;
         //Hopfield model
         //ACHTUNG!! Chinese code follows :)
-        NeuronPtr ni(new PyramidalNeuron(ActivationFunction::Linear::Instance()));
-        NeuronPtr n1(new PyramidalNeuron(ActivationFunction::Linear::Instance()));
-        NeuronPtr n2(new PyramidalNeuron(ActivationFunction::Linear::Instance()));
-        NeuronPtr n3(new PyramidalNeuron(ActivationFunction::Linear::Instance()));
-        NeuronPtr no(new PyramidalNeuron(ActivationFunction::Linear::Instance()));
+        NeuronPtr ni(NeuronFactory::PyramidalNeuron(Linear::Instance()));
+        NeuronPtr n1(NeuronFactory::PyramidalNeuron(Linear::Instance()));
+        NeuronPtr n2(NeuronFactory::PyramidalNeuron(Linear::Instance()));
+        NeuronPtr n3(NeuronFactory::PyramidalNeuron(Linear::Instance()));
+        NeuronPtr no(NeuronFactory::PyramidalNeuron(Linear::Instance()));
 
         tnet.addInputNeuron(ni);
         tnet.addConnection(ni, n1);
@@ -88,7 +82,7 @@ int main()
         tp.input[0] = -10;
 
         {
-            vector<tuple<unsigned, Base*> > layers;
+            vector<tuple<unsigned, ActivationFunctionPtr> > layers;
             layers.push_back(make_tuple(1, Linear::Instance()));
             for(unsigned i = 0; i < layers_count; ++i)
                 layers.push_back(make_tuple(9, TanH::Instance()));

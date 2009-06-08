@@ -8,14 +8,16 @@ namespace pann
     class LmsNetAttributes : public Attributes
     {
     public:
-        LmsNetAttributes()
-            : learningRate(0.3), learningMomentum(0.5), epoch(1), annealingTSC(10)
-        {
-            groupName = hash("LmsNetAttributes");
-        };
-
+        LmsNetAttributes() : learningRate(0.3), learningMomentum(0.5), epoch(1), annealingTSC(10) {};
         virtual ~LmsNetAttributes() {};
 
+        static const HashType getHash()
+        {
+            static HashType groupName = hash("LmsNetAttributes");
+            return groupName;
+        };
+
+    public:
         Float learningRate;
         Float learningMomentum;
         Float epoch;
@@ -42,14 +44,16 @@ namespace pann
     class LmsNeuronAttributes : public Attributes
     {
     public:
-        LmsNeuronAttributes()
-            : localGradient(0), error(0)
-        {
-            groupName = hash("LmsNeuronAttributes");
-        };
-
+        LmsNeuronAttributes() : localGradient(0), error(0) {};
         virtual ~LmsNeuronAttributes() {};
 
+        static const HashType getHash()
+        {
+            static HashType groupName = hash("LmsNetAttributes");
+            return groupName;
+        };
+
+    public:
         Float localGradient;
         Float error;
         LmsNetAttributesPtr parent;
@@ -72,14 +76,16 @@ namespace pann
     class LmsLinkAttributes : public Attributes
     {
     public:
-        LmsLinkAttributes()
-            : lastDeltaW(0)
-        {
-            groupName = hash("LmsLinkAttributes");
-        };
-
+        LmsLinkAttributes() : lastDeltaW(0) {};
         virtual ~LmsLinkAttributes() {};
 
+        static const HashType getHash()
+        {
+            static HashType groupName = hash("LmsNetAttributes");
+            return groupName;
+        };
+
+    public:
         Float lastDeltaW;
 
     private:

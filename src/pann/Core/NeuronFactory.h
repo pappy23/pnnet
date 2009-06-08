@@ -7,6 +7,7 @@
 
 namespace pann
 {
+    //TODO Template methods
     class NeuronFactory
     {
         NeuronFactory();
