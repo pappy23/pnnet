@@ -16,35 +16,13 @@
 
 using namespace std;
 using namespace boost;
-using namespace pann::LmsAttributes;
 
 namespace pann
 {
     void
-    Lms::init(Net& _net)
-    {
-        if(!_net.is(LMS))
-        {
-            _net.erase(AlgorithmSpecificLearningParameters);
-            _net[LMS] = 1.0;
-        }
-
-        //Simulated annealing
-        //Set algorithm defaults. User can override them after init()
-        _net[epoch] = 1;
-        _net[learningMomentum] = 0.5;
-        _net[learningRate] = 0.3;
-        _net[annealingTSC] = 10;
-    } //init
-
-    void
     Lms::train(Net& _net, TrainData& _trainData)
     {
-        if(!_net.is(LMS))
-            //throw E<Exception::ObjectNotFound>()<<"LMS::train(): Net was not initialized for LMS training\n";
-            init(_net);
-
-        const vector<shared_ptr<Neuron> >& output_neurons = _net.getCache().layers.back();
+        const vector<NeuronPtr>& output_neurons = _net.getCache().layers.back();
 
         BOOST_FOREACH(TrainPattern& tp, _trainData.data)
         {
@@ -55,10 +33,10 @@ namespace pann
             
             //Put error information to output neurons
             for(unsigned i = 0; i < output_neurons.size(); ++i)
-                output_neurons[i]->at(error) = tp.error[i];
+                output_neurons[i]->get<LmsNeuronAttributes>().error = tp.error[i];
 
             _net.run(LmsBackpropagationRunner::Instance());
-            _net[epoch]++;
+            _net.get<LmsNetAttributes>().epoch++;
         }
     } //train
 

@@ -53,6 +53,16 @@ namespace pann
         {
             return ForwardRun;
         }
+
+    private:
+        friend class boost::serialization::access;
+        template<class Archive>
+            void serialize(Archive & ar, const unsigned int version)
+            {
+                 boost::serialization::void_cast_register<FeedforwardPropagationRunner, Runner>(
+                    static_cast<FeedforwardPropagationRunner*>(NULL),
+                    static_cast<Runner*>(NULL));
+            };
     }; //FeedforwardPropagationRunner
 
 }; //pann

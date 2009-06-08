@@ -3,6 +3,7 @@
 #define NEURONFACTORY_H
 
 #include "Neuron.h"
+#include "Runner.h"
 
 namespace pann
 {
@@ -14,15 +15,15 @@ namespace pann
         static NeuronPtr PyramidalNeuron(
                 ActivationFunctionPtr _af = ActivationFunctionPtr((ActivationFunction*)(0)),
                 WeightPtr _bias = WeightPtr((Weight*)(0)),
-                StrategyPtr _fireStrategy = StrategyPtr((Strategy*)(0)),
-                StrategyPtr _learnStrategy = StrategyPtr((Strategy*)(0))
+                RunnerPtr _fireRunner = RunnerPtr((Runner*)(0)),
+                RunnerPtr _learnRunner = RunnerPtr((Runner*)(0))
             )
         {
             NeuronPtr n(new Neuron());
             n->activationFunction = _af;
             n->bias = _bias;
-            n->fireStrategy = _fireStrategy;
-            n->learnStrategy = _learnStrategy;
+            n->fireRunner = _fireRunner;
+            n->learnRunner = _learnRunner;
 
             return n;
         };

@@ -25,16 +25,19 @@ namespace pann
         virtual ~Neuron() {};
 
         //TODO
-        const list<Link>& getInConnections() const { return links_in; };
-        const list<Link>& getOutConnections() const { return links_out; };
+        list<Link>& getInConnections() { return links_in; };
+        list<Link>& getOutConnections() { return links_out; };
 
         //TODO
         void setInput(Float _value) { receptiveField = _value; };
-        Float getOutput() const {return activationValue; };
+        Float getOutput() const { return activationValue; };
+        const WeightPtr& getBias() { return bias; };
+        const ActivationFunctionPtr& getActivationFunction() { return activationFunction; };
 
         const WeightPtr& getBias() const { return bias; };
-        const StrategyPtr& getFireStrategy() const { return fireStrategy; };
-        const StrategyPtr& getLearnStrategy() const { return learnStrategy; };
+        const RunnerPtr& getFireRunner() const { return fireRunner; };
+        const RunnerPtr& getLearnRunner() const { return learnRunner; };
+        //TODO setRunner(), check fro direction
 
     private:
         void addInConnection(NeuronPtr _to, WeightPtr _weight);
@@ -52,8 +55,8 @@ namespace pann
     private:
         WeightPtr bias;
         ActivationFunctionPtr activationFunction;
-        StrategyPtr fireStrategy;
-        StrategyPtr learnStrategy;
+        RunnerPtr fireRunner;
+        RunnerPtr learnRunner;
 
     private:
         //template<class Archive>
@@ -73,14 +76,14 @@ namespace pann
                  & BOOST_SERIALIZATION_NVP(activationValue)
                  & BOOST_SERIALIZATION_NVP(bias)
                  & BOOST_SERIALIZATION_NVP(activationFunction)
-                 & BOOST_SERIALIZATION_NVP(fireStrategy)
-                 & BOOST_SERIALIZATION_NVP(learnStrategy);
+                 & BOOST_SERIALIZATION_NVP(fireRunner)
+                 & BOOST_SERIALIZATION_NVP(learnRunner);
             };
     }; //Neuron
 
     //TODO template Neuron
     /*
-    template<class FireStrategy, class LearnStrategy, class ActivationFunction>
+    template<class FireRunner, class LearnRunner, class ActivationFunction>
         class Neuron : public Neuron
     {
     };
