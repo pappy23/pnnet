@@ -17,8 +17,8 @@ namespace pann
     public:
         static RunnerPtr Instance()
         {
-            static LmsBackpropagationRunner self;
-            return RunnerPtr(&self);
+            static RunnerPtr self(new LmsBackpropagationRunner());
+            return self;
         }
         
         virtual void run(NeuronPtr _neuron, NetPtr _net);

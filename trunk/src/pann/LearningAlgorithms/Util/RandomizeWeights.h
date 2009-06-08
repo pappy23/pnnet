@@ -62,8 +62,8 @@ namespace pann
     public:
         static RunnerPtr Instance()
         {
-            static RandomizeWeightsGaussRunner self;
-            return RunnerPtr(&self);
+            static RunnerPtr self(new RandomizeWeightsGaussRunner());
+            return self;
         }
 
         virtual void run(NeuronPtr _neuron, NetPtr _net);
@@ -98,8 +98,8 @@ namespace pann
     public:
         static RunnerPtr Instance()
         {
-            static RandomizeWeightsAccordingToInputsCountRunner self;
-            return RunnerPtr(&self);
+            static RunnerPtr self(new RandomizeWeightsAccordingToInputsCountRunner());
+            return self;
         }
 
         virtual void run(NeuronPtr _neuron, NetPtr _net);
