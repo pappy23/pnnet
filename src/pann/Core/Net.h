@@ -13,7 +13,6 @@
 #include "Neuron.h"
 #include "Link.h"
 #include "Weight.h"
-#include "Strategy.h"
 
 namespace pann
 {

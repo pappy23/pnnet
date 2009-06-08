@@ -10,6 +10,6 @@ if(BUILD_TESTS)
     add_subdirectory(UnitTests)
 endif(BUILD_TESTS)
 
-#add_subdirectory(article1)
-#add_subdirectory(article3)
+add_subdirectory(article1)
+add_subdirectory(article3)
 

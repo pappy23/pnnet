@@ -39,16 +39,15 @@ namespace pann
         template<class Archive>
             void serialize(Archive & ar, const unsigned int version)
             {
-                boost::serialization::void_cast_register<RandomizeWeightsAttributes, Attributes>(
-                    static_cast<Attributes*>(NULL),
-                    static_cast<RandomizeWeightsAttributes*>(NULL));
+                boost::serialization::void_cast_register<WeightRandomizationAttributes, Attributes>(
+                    static_cast<WeightRandomizationAttributes*>(NULL),
+                    static_cast<Attributes*>(NULL));
 
                 ar & BOOST_SERIALIZATION_NVP(min)
                 & BOOST_SERIALIZATION_NVP(max);
             };
 
     }; //RandomizeWeightsAttributes
-    ADD_PTR_TYPEDEF(RandomizeWeightsAttributes);
 
     /**
      * Assign initial weights from interval [_min; _max]
@@ -65,28 +64,22 @@ namespace pann
             return RunnerPtr(&self);
         }
 
-        virtual void run(NeuronPtr _neuron, NetPtr _net)
-        {
-            WeightRandomizationAttributes& attrs = _net.get<WeightRandomizationAttributes>();
-            if(attrs.min == 0 && attrs.max == 0)
-            {
-                attrs.min = -0.3;
-                attrs.max = +0.3;
-            }
-
-            //Tune bias values
-            if(_neuron.getBias())
-                _neuron.getBias()->setValue(rand(attrs.min, attrs.max));
-
-            //Link weights
-            BOOST_FOREACH(const Link& link, _neuron.getInConnections())
-                link.getWeight()->setValue(rand(attrs.min, attrs.max));
-        };
+        virtual void run(NeuronPtr _neuron, NetPtr _net);
 
         virtual RunDirection getDirection()
         {
             return ForwardRun;
         }
+
+    private:
+        friend class boost::serialization::access;
+        template<class Archive>
+            void serialize(Archive & ar, const unsigned int version)
+            {
+                 boost::serialization::void_cast_register<RandomizeWeightsGaussRunner, Runner>(
+                    static_cast<RandomizeWeightsGaussRunner*>(NULL),
+                    static_cast<Runner*>(NULL));
+            };
     };
 
     /**
@@ -98,30 +91,31 @@ namespace pann
      */
     class RandomizeWeightsAccordingToInputsCountRunner : public Runner
     {
-    private:
-        static Runner* self;
-
-    private:
         RandomizeWeightsAccordingToInputsCountRunner() {};
-        
-    public:    
-        ~RandomizeWeightsAccordingToInputsCountRunner() {};
 
     public:
-        static Runner& Instance()
+        static RunnerPtr Instance()
         {
-            if(!self)
-                self = new RandomizeWeightsAccordingToInputsCountRunner();
-
-            return *self;
+            static RandomizeWeightsAccordingToInputsCountRunner self;
+            return RunnerPtr(&self);
         }
 
-        virtual void run(Neuron& _neuron, const Net& _net);
+        virtual void run(NeuronPtr _neuron, NetPtr _net);
         
         virtual RunDirection getDirection()
         {
             return ForwardRun;
         }
+
+    private:
+        friend class boost::serialization::access;
+        template<class Archive>
+            void serialize(Archive & ar, const unsigned int version)
+            {
+                 boost::serialization::void_cast_register<RandomizeWeightsAccordingToInputsCountRunner, Runner>(
+                    static_cast<RandomizeWeightsAccordingToInputsCountRunner*>(NULL),
+                    static_cast<Runner*>(NULL));
+            };
     };
 
 }; //pann

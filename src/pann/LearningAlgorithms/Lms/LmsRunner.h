@@ -12,19 +12,31 @@ namespace pann
 {
     class LmsBackpropagationRunner : public Runner
     {
-    private:
-        static Runner* self;
-
-    private:
         LmsBackpropagationRunner();
 
     public:
-        ~LmsBackpropagationRunner();
+        static RunnerPtr Instance()
+        {
+            static LmsBackpropagationRunner self;
+            return RunnerPtr(&self);
+        }
+        
+        virtual void run(NeuronPtr _neuron, NetPtr _net);
 
-    public:
-        static Runner& Instance();
-        virtual void run(Neuron& _neuron, const Net& _net);
-        virtual RunDirection getDirection();
+        virtual RunDirection getDirection()
+        {
+            return BackwardRun;
+        }
+ 
+    private:
+        friend class boost::serialization::access;
+        template<class Archive>
+            void serialize(Archive & ar, const unsigned int version)
+            {
+                 boost::serialization::void_cast_register<LmsBackpropagationRunner, Runner>(
+                    static_cast<LmsBackpropagationRunner*>(NULL),
+                    static_cast<Runner*>(NULL));
+            };
     };
 }; //pann
 

@@ -14,13 +14,6 @@ namespace pann
         /* Public interface */
     public:
         /**
-         * Adds LearningHint to network object,
-         * sets different parametrs, such as learning rate,
-         * momentum etc.
-         */
-        static void init(Net& _net);
-
-        /**
          * Does one forward propagation and backpropagation,
          * while changing weights.
          * If _trainData.data.size() == 1, then does iterative learning,

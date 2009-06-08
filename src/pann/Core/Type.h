@@ -25,7 +25,6 @@ namespace pann
     typedef boost::shared_ptr<const C> C##ConstPtr;
 
 
-    ADD_PTR_TYPEDEF(Strategy);
     ADD_PTR_TYPEDEF(Runner);
     ADD_PTR_TYPEDEF(ActivationFunction);
     ADD_PTR_TYPEDEF(Neuron);
