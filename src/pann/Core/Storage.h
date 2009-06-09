@@ -28,7 +28,7 @@ namespace pann
         typedef boost::archive::text_iarchive   txt_in;
 
         template<class SerializatorType>
-        void save(Net& _obj, std::string _filename)
+        void save(NetPtr _obj, std::string _filename)
         {
             ofstream ofs(_filename.c_str());
             if(ofs.fail())
@@ -48,7 +48,7 @@ namespace pann
         }; //save
 
         template<class SerializatorType>
-        void load(Net& _obj, std::string _filename)
+        void load(NetPtr _obj, std::string _filename)
         {
             ifstream ifs(_filename.c_str());
             if(ifs.fail())

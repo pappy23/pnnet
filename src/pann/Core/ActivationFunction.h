@@ -23,6 +23,13 @@ namespace pann
     public:
         virtual Float f(Float) const = 0;
         virtual Float derivative_dy(Float) const = 0;
+
+//    private:
+//        friend class boost::serialization::access;
+//        template<class Archive>
+//            void serialize(Archive & ar, const unsigned int version)
+//            {
+//            };
     };
 
     /**
@@ -57,6 +64,10 @@ namespace pann
         template<class Archive>
             void serialize(Archive & ar, const unsigned int version)
             {
+//                boost::serialization::base_object<ActivationFunction>(*this);
+
+//BOOST_CLASS_EXPORT(pann::Linear);
+
                  boost::serialization::void_cast_register<Linear, ActivationFunction>(
                     static_cast<Linear*>(NULL),
                     static_cast<ActivationFunction*>(NULL));
@@ -148,5 +159,6 @@ namespace pann
     };
 
 }; //pann
+
 #endif //ACTIVATIONFUNCTION_H
 

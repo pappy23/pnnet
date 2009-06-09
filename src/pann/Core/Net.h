@@ -20,7 +20,7 @@ namespace pann
     class Weight;
     class Runner;
 
-    class Net : public Object, public boost::enable_shared_from_this<Net>
+    class Net : public Object //, public boost::enable_shared_from_this<Net>
     {
     public:
         /**
@@ -104,7 +104,7 @@ namespace pann
          * @param _cur_thread Current work thread number
          * @param _barrier See implementation
          */
-        static void threadBase(RunnerPtr _runner, NetPtr _net, unsigned _cur_thread, boost::barrier* _barrier);
+        static void threadBase(RunnerPtr _runner, Net* _net, unsigned _cur_thread, boost::barrier* _barrier);
         /* Serialization */
     private:
         friend class boost::serialization::access;

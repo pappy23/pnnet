@@ -4,6 +4,7 @@
 
 #include "Neuron.h"
 #include "Runner.h"
+#include "ActivationFunction.h"
 
 namespace pann
 {
@@ -14,9 +15,9 @@ namespace pann
 
     public:
         static NeuronPtr PyramidalNeuron(
-                ActivationFunctionPtr _af = ActivationFunctionPtr((ActivationFunction*)(0)),
+                ActivationFunctionPtr _af = TanH::Instance(),
                 WeightPtr _bias = WeightPtr((Weight*)(0)),
-                RunnerPtr _fireRunner = RunnerPtr((Runner*)(0)),
+                RunnerPtr _fireRunner = PyramidalNeuronFeedforwardRunner::Instance(),
                 RunnerPtr _learnRunner = RunnerPtr((Runner*)(0))
             )
         {

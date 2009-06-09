@@ -20,14 +20,14 @@ namespace pann
             static RunnerPtr self(new LmsBackpropagationRunner());
             return self;
         }
-        
-        virtual void run(NeuronPtr _neuron, NetPtr _net);
+
+        virtual void run(NeuronPtr _neuron, Net* _net);
 
         virtual RunDirection getDirection()
         {
             return BackwardRun;
         }
- 
+
     private:
         friend class boost::serialization::access;
         template<class Archive>

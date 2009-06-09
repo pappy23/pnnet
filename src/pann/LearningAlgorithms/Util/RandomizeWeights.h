@@ -66,7 +66,7 @@ namespace pann
             return self;
         }
 
-        virtual void run(NeuronPtr _neuron, NetPtr _net);
+        virtual void run(NeuronPtr _neuron, Net* _net);
 
         virtual RunDirection getDirection()
         {
@@ -102,8 +102,8 @@ namespace pann
             return self;
         }
 
-        virtual void run(NeuronPtr _neuron, NetPtr _net);
-        
+        virtual void run(NeuronPtr _neuron, Net* _net);
+
         virtual RunDirection getDirection()
         {
             return ForwardRun;

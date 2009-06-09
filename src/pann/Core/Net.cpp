@@ -97,11 +97,12 @@ namespace pann
         if(!cache.isOk())
             regenerateCache();
 
-        unsigned output_size = cache.layers.back().size();
-        _output.resize(output_size);
+        vector<NeuronPtr>& last_layer = *(cache.layers.end() - 2);
+        unsigned output_size = last_layer.size();
 
+        _output.resize(output_size);
         for(unsigned i = 0; i < output_size; ++i)
-            _output[i] = cache.layers.back()[i]->getOutput();
+            _output[i] = last_layer[i]->getOutput();
     } //getOutput
 
     void
@@ -115,7 +116,7 @@ namespace pann
 
         //We must give parameters by pointer, because boost will copy all arguments to thread
         for(unsigned thread = 0; thread < workThreads; ++thread)
-            threadPool.add_thread( new boost::thread(Net::threadBase, _runner, shared_from_this(), thread, &barrier) );
+            threadPool.add_thread( new boost::thread(Net::threadBase, _runner, this, thread, &barrier) );
 
         //wait for threads to finish
         threadPool.join_all();
@@ -148,12 +149,13 @@ namespace pann
     void
     Net::formatFront(list<NeuronPtr>& _raw) const
     {
-        _raw.sort();
-        _raw.unique();
+        cache.layers.push_back(vector<NeuronPtr>());
 
         if(_raw.size() > 0)
         {
-            cache.layers.push_back(vector<NeuronPtr>());
+            _raw.sort();
+            _raw.unique();
+
             for(list<NeuronPtr>::iterator it = _raw.begin(); it != _raw.end(); ++it)
                 cache.layers.back().push_back(*it);
         }
@@ -244,7 +246,7 @@ namespace pann
     } //regenerateCache
 
     void
-    Net::threadBase(RunnerPtr _runner, NetPtr _net, unsigned _cur_thread, boost::barrier* _barrier)
+    Net::threadBase(RunnerPtr _runner, Net* _net, unsigned _cur_thread, boost::barrier* _barrier)
     {
         RunDirection dir = _runner->getDirection();
         const NetCache& _cache = _net->getCache();
