@@ -79,8 +79,7 @@ namespace pann
                 boost::serialization::void_cast_register<OpenGlAttributes, Attributes>(
                     static_cast<OpenGlAttributes*>(NULL),
                     static_cast<Attributes*>(NULL));
-
-                ar & BOOST_SERIALIZATION_NVP(x)
+				ar & BOOST_SERIALIZATION_NVP(x)
                 & BOOST_SERIALIZATION_NVP(y)
                 & BOOST_SERIALIZATION_NVP(z)
                 & BOOST_SERIALIZATION_NVP(r)

@@ -14,6 +14,7 @@ namespace pann
         Linear::Instance();
         Threshold::Instance();
         TanH::Instance();
+		return true; //TODO: check this, add only for building
     } //register_activation_functions
 
     const bool activation_functions_registration_result = register_activation_functions();
