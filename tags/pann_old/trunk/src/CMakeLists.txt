@@ -52,9 +52,9 @@ if(WIN32)
 #    #set(BOOST_LIBRARYDIR /usr/local/lib)
 endif(WIN32)
 
-if(WIN32)
-	set(QT_QMAKE_EXECUTABLE	"C:/Qt/4.4.3/qmake/qmake.exe")
-endif(WIN32)
+#if(WIN32)
+#	set(QT_QMAKE_EXECUTABLE	"C:/Qt/4.4.3/qmake/qmake.exe")
+#endif(WIN32)
 
 ############################################################################
 # DEPENDENCIES
@@ -77,7 +77,7 @@ if(UNIX)
 endif(UNIX)
 
 set(QT_USE_QTOPENGL 1)
-#find_package(Qt4)
+find_package(Qt4)
 #find_package(JPEG REQUIRED)
 
 ############################################################################

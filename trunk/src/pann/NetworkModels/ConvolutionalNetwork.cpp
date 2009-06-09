@@ -303,22 +303,22 @@ namespace pann
                         ogl.r = 255;
                         ogl.g = 0;
                         ogl.b = 0;
-                        ogl.x = (
+                        ogl.x = static_cast<int>((
                                 Float(layer) -
                                 total_layers / 2.0 + 1.0
-                                ) * distance_between_layers;
-                        ogl.y = (
+                                ) * distance_between_layers);
+                        ogl.y = static_cast<int>((
                                 Float(i) -
                                 Float(model[layer][plane].size()) / 2.0 + 1.0
-                                ) * distance_between_neurons;
-                        ogl.z = (
+                                ) * distance_between_neurons);
+                        ogl.z = static_cast<int>((
                                 Float(j) -
                                 Float(model[layer][plane][0].size()) / 2.0 + 1.0
                                 ) * distance_between_neurons
                             + (
                                 Float(plane) -
                                 Float(model[layer].size()) / 2.0 + 0.5
-                                ) * distance_between_fms;
+                                ) * distance_between_fms);
                     }
                 }
             }

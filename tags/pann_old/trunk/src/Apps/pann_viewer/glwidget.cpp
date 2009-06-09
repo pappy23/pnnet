@@ -35,7 +35,7 @@ void GLWidget::calcCoords()
         for(unsigned i = 0; i < layer_size; ++i)
         {
             const NeuronPtr neuron = cache.layers[layer][i];
-            unsigned planeRows = sqrt(layer_size);
+            unsigned planeRows = sqrt(static_cast<double>(layer_size));
             unsigned planeCols = layer_size / planeRows;
 
             if(!neuron->is(coord_x))
