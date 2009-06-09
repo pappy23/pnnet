@@ -9,7 +9,7 @@ using namespace pann;
 using namespace pann::Storage;
 
 //Load net and automatically detect format
-void autoload(Net& _obj, std::string _filename);
+void autoload(NetPtr _obj, std::string _filename);
 
 int main(int argc, char *argv[])
 {
@@ -28,22 +28,22 @@ int main(int argc, char *argv[])
         return -1;
     }
 
-    Net *net = new Net;
+    NetPtr net(new Net);
 
     try {
-        autoload(*net, argv[1]);
+        autoload(net, argv[1]);
     } catch(IoError& e) {
         QMessageBox::information(0, argv[0], e.what());
         return -1;
     }
 
-    Window window(net);
+    Window window(net.get());
     window.show();
 
     return app.exec();
 }
 
-void autoload(Net& _obj, std::string _filename)
+void autoload(NetPtr _obj, std::string _filename)
 {
     try {
         std::cout<<"Trying XML...\n";
