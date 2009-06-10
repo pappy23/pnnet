@@ -158,7 +158,20 @@ namespace pann
             };
     };
 
+    int f()
+    {
+        Linear::Instance();
+        Threshold::Instance();
+        TanH::Instance();
+
+        return 0;
+    } //f
+
 }; //pann
+
+BOOST_CLASS_EXPORT(pann::Linear);
+BOOST_CLASS_EXPORT(pann::Threshold);
+BOOST_CLASS_EXPORT(pann::TanH);
 
 #endif //ACTIVATIONFUNCTION_H
 
