@@ -13,14 +13,13 @@ int main()
     cout<<"kuku\n";
 #endif
     //Constructing perceptron
-    vector<tuple<unsigned, ActivationFunction::Base*> > layers;
-    layers.push_back(make_tuple(1, ActivationFunction::Linear::Instance()));  //input  - no act. fcn
-    layers.push_back(make_tuple(1000, ActivationFunction::TanH::Instance())); //hidden - tanh
-    layers.push_back(make_tuple(1000, ActivationFunction::TanH::Instance())); //hidden - tanh
-    layers.push_back(make_tuple(1000, ActivationFunction::TanH::Instance())); //hidden - tanh
-    layers.push_back(make_tuple(1, ActivationFunction::Linear::Instance()));  //output - linear
-    NetPtr net_ptr = MultilayerPerceptron(layers);
-    Net& net = *net_ptr;
+    vector<tuple<unsigned, ActivationFunctionPtr> > layers;
+    layers.push_back(make_tuple(1, Linear::Instance()));  //input  - no act. fcn
+    layers.push_back(make_tuple(1000, TanH::Instance())); //hidden - tanh
+    layers.push_back(make_tuple(1000, TanH::Instance())); //hidden - tanh
+    layers.push_back(make_tuple(1000, TanH::Instance())); //hidden - tanh
+    layers.push_back(make_tuple(1, Linear::Instance()));  //output - linear
+    NetPtr net = MultilayerPerceptron(layers);
 
 
     //Learning
@@ -29,15 +28,14 @@ int main()
     tp.input[0] = 1; tp.desired_output[0] = 1;
     td.data.push_back(tp);
 
-    Lms::init(net);
-    net[LmsAttributes::learningRate] = 0.2;
-    net[LmsAttributes::learningMomentum] = 0.5;
-    net[RandomizeWeightsAttributes::min] = -0.3;
-    net[RandomizeWeightsAttributes::max] = +0.3;
-    //net.run(RandomizeWeightsGaussRunner::Instance());
-    net.run(RandomizeWeightsAccordingToInputsCountRunner::Instance());
+    net->get<LmsNetAttributes>().learningRate = 0.2;
+    net->get<LmsNetAttributes>().learningMomentum = 0.5;
+    net->get<WeightRandomizationAttributes>().min = -0.3;
+    net->get<WeightRandomizationAttributes>().max = +0.3;
+    //net->run(RandomizeWeightsGaussRunner::Instance());
+    net->run(RandomizeWeightsAccordingToInputsCountRunner::Instance());
     Lms::train(net, td); //dry run to create all learning structures
-    
+
     for(unsigned i = 1; i < 9; ++i)
     {
         cout<<i<<" threads\n";
@@ -46,7 +44,7 @@ int main()
         gettimeofday(&start, 0);
 #endif
 
-        net.setWorkThreadsCount(i);
+        net->setWorkThreadsCount(i);
         Lms::train(net, td);
 #ifdef UNIX
         gettimeofday(&stop, 0);

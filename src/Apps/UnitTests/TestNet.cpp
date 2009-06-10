@@ -98,6 +98,28 @@ int main()
             cout<<"MLP ready\n";
             */
 
+            /*
+            //Show all weights
+            {
+                const NetCache& cache = net->getCache();
+                for(unsigned layer = 0; layer < cache.layers.size(); ++layer)
+                {
+                    for(unsigned i = 0; i < cache.layers[layer].size(); ++i)
+                    {
+                        cout<<"N"<<i<<": ";
+                        WeightPtr w = cache.layers[layer][i]->getBias();
+                        if(w)
+                            cout<<w->getValue()<<"b ";
+                        list<Link> & links_in = cache.layers[layer][i]->getInConnections();
+                        for(list<Link>::iterator it = links_in.begin(); it != links_in.end(); ++it)
+                            cout<<it->getWeight()->getValue()<<" ";
+                        cout<<"\t";
+                    }
+                    cout<<endl;
+                }
+            }
+            */
+
             //Test run()
             {
                 progress_timer t;
