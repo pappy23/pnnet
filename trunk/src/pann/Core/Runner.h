@@ -124,7 +124,6 @@ namespace pann
             if(r && r->getDirection() == ForwardRun)
             {
                 r->run(_neuron, _net);
-                Debug()<<_neuron->getOutput()<<"\n";
             } else {
                 throw Exception()<<"Wrong runner\n";
             }
@@ -175,7 +174,7 @@ namespace pann
 
         virtual RunDirection getDirection() const
         {
-            return ForwardRun;
+            return BackwardRun;
         }
 
     private:

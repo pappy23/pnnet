@@ -26,6 +26,13 @@ namespace pann
             n->fireRunner = _fireRunner;
             n->learnRunner = _learnRunner;
 
+            //TODO Fix me
+            if(_bias)
+            {
+                _bias->incUsageCount();
+                _bias->incUsageCount();
+            }
+
             return n;
         };
 

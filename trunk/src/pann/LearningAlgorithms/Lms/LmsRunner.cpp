@@ -35,17 +35,17 @@ namespace pann
         //local gradients of all upstream neurons for other layers)
 
         //Save actual local gradient value
-        //Note: we assume that input neuron(it's activation function = Linear) 
+        //Note: we assume that input neuron(it's activation function = Linear)
         //has activation function y = x, so dy/dx = 1
         neuron_attrs.localGradient *= _neuron->getActivationFunction()->derivative_dy(_neuron->getOutput());
         //grad = error * df(receptiveField)/dx, but df/dx usually less preferable then df/dy,
         //grad = error * df(activationValue)/dy (see Simon Haykin, 2nd edition, p235)
-        
+
         //Update weights
         //Simulated annealing, rate = basic_rate / ( 1 + epoch / time_seek_constant)
         //When epoch -> inf, rate -> basic_rate / epoch
         Float lr = net_attrs.learningRate / (1 + (net_attrs.epoch / net_attrs.annealingTSC));
-        
+
         //Comment: Na --w--> Nb
         //w is updated while processing Na
         BOOST_FOREACH( Link& link, _neuron->getOutConnections() )
@@ -56,7 +56,7 @@ namespace pann
             //Ni -> Nj
             //dWj(n) = a*(Wj(n-1)) + learning_rate * local_gradient_j * Yi
             Float dw = lr * link.getTo()->get<LmsNeuronAttributes>().localGradient * _neuron->getOutput();
-            
+
             //Momentum
             LmsLinkAttributes& link_attrs = link.get<LmsLinkAttributes>();
             dw += net_attrs.learningMomentum * link_attrs.lastDeltaW;
@@ -68,10 +68,9 @@ namespace pann
         }
 
         //Update bias weight
-        if(_neuron->getBias())
+        WeightPtr bias = _neuron->getBias();
+        if(bias)
         {
-            WeightPtr w = _neuron->getBias();
-
             Float dw = lr * neuron_attrs.localGradient;
 
             //Momentum
@@ -80,8 +79,8 @@ namespace pann
             //currently doesn't hold attributes at all
 
             //Apply dw
-            boost::mutex::scoped_lock lock(w->getMutex());
-            w->addValue(dw);
+            boost::mutex::scoped_lock lock(bias->getMutex());
+            bias->addValue(dw);
         }
     } //run
 

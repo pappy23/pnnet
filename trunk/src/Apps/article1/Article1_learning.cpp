@@ -7,7 +7,7 @@ using namespace std;
 using namespace pann;
 using namespace boost;
 
-void test(Net& net, Float start, Float stop, Float step);
+void test(NetPtr net, Float start, Float stop, Float step);
 
 Float func(Float _x)
 {
@@ -18,32 +18,30 @@ int main()
 {
 //*
     //Constructing perceptron
-    vector<tuple<unsigned, ActivationFunction::Base*> > layers;
-    layers.push_back(make_tuple(1, ActivationFunction::Linear::Instance())); //input  - no act. fcn
-    layers.push_back(make_tuple(9, ActivationFunction::TanH::Instance())  ); //hidden - tanh
-    layers.push_back(make_tuple(4, ActivationFunction::TanH::Instance())  ); //output - linear
-    layers.push_back(make_tuple(1, ActivationFunction::Linear::Instance())); //output - linear
-    NetPtr net_ptr = MultilayerPerceptron(layers);
-    Net& net = *net_ptr;
+    vector<tuple<unsigned, ActivationFunctionPtr> > layers;
+    layers.push_back(make_tuple(1, Linear::Instance())); //input  - no act. fcn
+    layers.push_back(make_tuple(9, TanH::Instance())  ); //hidden - tanh
+    layers.push_back(make_tuple(4, TanH::Instance())  ); //output - linear
+    layers.push_back(make_tuple(1, Linear::Instance())); //output - linear
+    NetPtr net = MultilayerPerceptron(layers);
 
     //Learning
     const unsigned epochs = 500;
     TrainData& td = *(DataGenerator::generateFromFunction(-3.0, +3.0, 20, func));
 
-    Lms::init(net);
-    net[LmsAttributes::learningRate] = 0.1;
-    net[LmsAttributes::learningMomentum] = 0.5;
-    net[RandomizeWeightsAttributes::min] = -0.6;
-    net[RandomizeWeightsAttributes::max] = +0.6;
+    net->get<LmsNetAttributes>().learningRate = 0.1;
+    net->get<LmsNetAttributes>().learningMomentum = 0.5;
+    net->get<WeightRandomizationAttributes>().min = -0.6;
+    net->get<WeightRandomizationAttributes>().max = +0.6;
     //net.run(RandomizeWeightsGaussRunner::Instance());
-    net.run(RandomizeWeightsAccordingToInputsCountRunner::Instance());
-    
+    net->run(RandomizeWeightsAccordingToInputsCountRunner::Instance());
+
     vector<Float> train_error_info; //MSE
     for(unsigned i = 1; i < epochs; ++i)
     {
         td.shuffle();
         Lms::train(net, td);
-        
+
         train_error_info.push_back(td.getMse());
     }
 
@@ -68,7 +66,7 @@ int main()
     return 0;
 }
 
-void test(Net& net, Float start, Float stop, Float step)
+void test(NetPtr net, Float start, Float stop, Float step)
 {
     //Test
     vector<Float> input, output, desired_output, error;
@@ -80,9 +78,9 @@ void test(Net& net, Float start, Float stop, Float step)
         tmp.input[0] = x;
         tmp.desired_output[0] = func(x);
 
-        net.setInput(tmp.input);
-        net.run(FeedforwardPropagationRunner::Instance());
-        net.getOutput(tmp.error); //actual output
+        net->setInput(tmp.input);
+        net->run(FeedforwardPropagationRunner::Instance());
+        net->getOutput(tmp.error); //actual output
 
         input.push_back(x);
         desired_output.push_back(func(x));
