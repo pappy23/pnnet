@@ -122,5 +122,8 @@ namespace pann
 
 }; //pann
 
+REGISTER_RUNNER(RandomizeWeightsGaussRunner);
+REGISTER_RUNNER(RandomizeWeightsAccordingToInputsCountRunner);
+
 #endif
 

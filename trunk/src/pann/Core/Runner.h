@@ -237,4 +237,13 @@ namespace pann
 
 }; //pann
 
+#define REGISTER_RUNNER(C) \
+    REGISTER_SINGLETON(C, Runner);
+
+REGISTER_RUNNER(NullFeedforwardRunner);
+REGISTER_RUNNER(NullBackpropagationRunner);
+REGISTER_RUNNER(FeedforwardPropagationRunner);
+REGISTER_RUNNER(BackpropagationRunner);
+REGISTER_RUNNER(PyramidalNeuronFeedforwardRunner);
+
 #endif //RUNNER_H

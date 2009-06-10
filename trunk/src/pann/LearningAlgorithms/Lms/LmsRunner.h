@@ -40,5 +40,7 @@ namespace pann
     };
 }; //pann
 
+REGISTER_RUNNER(LmsBackpropagationRunner);
+
 #endif
 
