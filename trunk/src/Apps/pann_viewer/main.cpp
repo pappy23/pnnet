@@ -37,6 +37,11 @@ int main(int argc, char *argv[])
         return -1;
     }
 
+            const NetCache& cache = net->getCache();
+
+            for(unsigned i = 0; i < cache.layers.size(); ++i)
+                cout<<cache.layers[i].size()<<endl;
+
     Window window(net.get());
     window.show();
 
