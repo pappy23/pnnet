@@ -6,7 +6,7 @@
 namespace pann
 {
     void
-    RandomizeWeightsGaussRunner::run(NeuronPtr _neuron, Net* _net)
+    RandomizeWeightsGaussRunner::run(NeuronPtr _neuron, Net* _net) const
     {
         WeightRandomizationAttributes& attrs = _net->get<WeightRandomizationAttributes>();
         if(attrs.min == 0 && attrs.max == 0)
@@ -25,7 +25,7 @@ namespace pann
     } //run
 
     void
-    RandomizeWeightsAccordingToInputsCountRunner::run(NeuronPtr _neuron, Net* _net)
+    RandomizeWeightsAccordingToInputsCountRunner::run(NeuronPtr _neuron, Net* _net) const
     {
         WeightRandomizationAttributes& attrs = _net->get<WeightRandomizationAttributes>();
         if(attrs.min == 0 && attrs.max == 0)

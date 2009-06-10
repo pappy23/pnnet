@@ -6,15 +6,16 @@
 #ifndef LEARNINGALGORITHM_H
 #define LEARNINGALGORITHM_H
 
+#include "Core/Type.h"
+
 namespace pann
 {
-    class Net;
     class TrainData;
 
     class LearningAlgorithm
     {
     public:
-        static void train(Net& _net, TrainData& _trainData);
+        static void train(NetPtr _net, TrainData& _trainData);
     };
 
 }; //pann

@@ -68,7 +68,6 @@ int main()
         tnet->addConnection(no, ni); //from output to input recursion
 
         const NetCache& cache = tnet->getCache();
-
         for(unsigned i = 0; i < cache.layers.size(); ++i)
             cout<<cache.layers[i].size()<<endl;
     }
@@ -89,12 +88,15 @@ int main()
             layers.push_back(make_tuple(1, Linear::Instance()));
 
             NetPtr net_ptr = MultilayerPerceptron(layers);
+            /*
+            net_ptr->run(RandomizeWeightsGaussRunner::Instance());
 
             const NetCache& cache = net_ptr->getCache();
 
             for(unsigned i = 0; i < cache.layers.size(); ++i)
                 cout<<cache.layers[i].size()<<endl;
-                cout<<"MLP ready\n";
+            cout<<"MLP ready\n";
+            */
 
             //Test run()
             {

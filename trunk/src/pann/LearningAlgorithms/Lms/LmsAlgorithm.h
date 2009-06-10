@@ -6,7 +6,6 @@
 
 namespace pann
 {
-    class Net;
     class TrainData;
 
     class Lms : public LearningAlgorithm
@@ -20,7 +19,7 @@ namespace pann
          * else - batch learning.
          * All data is used for training and no testing performed
          */
-        static void train(Net& _net, TrainData& _trainData);
+        static void train(NetPtr _net, TrainData& _trainData);
     };
 }; //pann
 

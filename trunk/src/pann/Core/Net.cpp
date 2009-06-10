@@ -263,7 +263,6 @@ namespace pann
                                                                 //learning algorithms require
                                                                 //read-only access to Net attributes
 
-            std::cout<<_cur_thread<<std::endl;
             //Wait for other threads
             _barrier->wait();
         } while( (dir == ForwardRun && ++layer < _cache.layers.size()) || (dir == BackwardRun && layer-- > 0) );

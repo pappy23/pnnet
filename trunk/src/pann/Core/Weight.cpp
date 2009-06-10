@@ -38,7 +38,7 @@ namespace pann
     {
         return usageCount;
     } //getUsageCount
-    
+
     unsigned
     Weight::incUsageCount()
     {
