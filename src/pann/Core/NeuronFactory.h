@@ -8,17 +8,16 @@
 
 namespace pann
 {
-    //TODO Template methods
     class NeuronFactory
     {
         NeuronFactory();
 
     public:
-        static NeuronPtr PyramidalNeuron(
-                ActivationFunctionPtr _af = TanH::Instance(),
-                WeightPtr _bias = WeightPtr((Weight*)(0)),
-                RunnerPtr _fireRunner = PyramidalNeuronFeedforwardRunner::Instance(),
-                RunnerPtr _learnRunner = RunnerPtr((Runner*)(0))
+        static NeuronPtr CustomNeuron(
+                ActivationFunctionPtr _af,
+                WeightPtr _bias,
+                RunnerPtr _fireRunner,
+                RunnerPtr _learnRunner
             )
         {
             NeuronPtr n(new Neuron());
@@ -28,6 +27,31 @@ namespace pann
             n->learnRunner = _learnRunner;
 
             return n;
+        };
+
+        template<class ActivationFunctionType, class LearningRunnerType>
+            static NeuronPtr PyramidalNeuron(WeightPtr _bias = WeightPtr((Weight*)0))
+            {
+                return CustomNeuron(
+                        ActivationFunctionType::Instance(),
+                        _bias,
+                        PyramidalNeuronFeedforwardRunner::Instance(),
+                        LearningRunnerType::Instance()
+                        );
+            };
+
+        static NeuronPtr PyramidalNeuron(
+                ActivationFunctionPtr _af = TanH::Instance(),
+                WeightPtr _bias = WeightPtr((Weight*)0),
+                RunnerPtr _learnRunner = NullBackpropagationRunner::Instance()
+                )
+        {
+            return CustomNeuron(
+                    _af,
+                    _bias,
+                    PyramidalNeuronFeedforwardRunner::Instance(),
+                    _learnRunner
+                    );
         };
 
     }; //NeuronFactory

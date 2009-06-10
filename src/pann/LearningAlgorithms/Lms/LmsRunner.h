@@ -12,7 +12,7 @@ namespace pann
 {
     class LmsBackpropagationRunner : public Runner
     {
-        LmsBackpropagationRunner();
+        LmsBackpropagationRunner() {};
 
     public:
         static RunnerPtr Instance()
@@ -21,9 +21,9 @@ namespace pann
             return self;
         }
 
-        virtual void run(NeuronPtr _neuron, Net* _net);
+        virtual void run(NeuronPtr _neuron, Net* _net) const;
 
-        virtual RunDirection getDirection()
+        virtual RunDirection getDirection() const
         {
             return BackwardRun;
         }

@@ -66,9 +66,9 @@ namespace pann
             return self;
         }
 
-        virtual void run(NeuronPtr _neuron, Net* _net);
+        virtual void run(NeuronPtr _neuron, Net* _net) const;
 
-        virtual RunDirection getDirection()
+        virtual RunDirection getDirection() const
         {
             return ForwardRun;
         }
@@ -102,9 +102,9 @@ namespace pann
             return self;
         }
 
-        virtual void run(NeuronPtr _neuron, Net* _net);
+        virtual void run(NeuronPtr _neuron, Net* _net) const;
 
-        virtual RunDirection getDirection()
+        virtual RunDirection getDirection() const
         {
             return ForwardRun;
         }

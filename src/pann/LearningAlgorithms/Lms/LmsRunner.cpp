@@ -14,7 +14,7 @@
 namespace pann
 {
     void
-    LmsBackpropagationRunner::run(NeuronPtr _neuron, Net* _net)
+    LmsBackpropagationRunner::run(NeuronPtr _neuron, Net* _net) const
     {
         LmsNeuronAttributes& neuron_attrs = _neuron->get<LmsNeuronAttributes>();
         if(!neuron_attrs.parent)

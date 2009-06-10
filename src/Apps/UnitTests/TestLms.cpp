@@ -6,30 +6,29 @@
 #include "gnuplot_i.hpp"
 
 using namespace std;
-using namespace pann;
 using namespace boost;
+using namespace pann;
 
-void test(Net& net, Float start, Float stop, Float step);
+void test(NetPtr net, Float start, Float stop, Float step);
 
 Float func(Float _x)
 {
     return sin(_x); // * _x;
 }
 
-const unsigned epochs = 10;
+const unsigned epochs = 1;
 
 int main()
 {
 //*
     //Constructing perceptron
-    vector<tuple<unsigned, ActivationFunction::Base*> > layers;
-    layers.push_back(make_tuple(1, ActivationFunction::Linear::Instance())); //input  - no act. fcn
-    layers.push_back(make_tuple(16,ActivationFunction::TanH::Instance())  ); //hidden - tanh
-    layers.push_back(make_tuple(9, ActivationFunction::TanH::Instance())  ); //hidden - tanh
-    layers.push_back(make_tuple(4, ActivationFunction::TanH::Instance())  ); //output - linear
-    layers.push_back(make_tuple(1, ActivationFunction::Linear::Instance())); //output - linear
-    NetPtr net_ptr = MultilayerPerceptron(layers);
-    Net& net = *net_ptr;
+    vector<tuple<unsigned, ActivationFunctionPtr> > layers;
+    layers.push_back(make_tuple(1, Linear::Instance())); //input  - no act. fcn
+//    layers.push_back(make_tuple(16,TanH::Instance())  ); //hidden - tanh
+//    layers.push_back(make_tuple(9, TanH::Instance())  ); //hidden - tanh
+//    layers.push_back(make_tuple(4, TanH::Instance())  ); //output - linear
+    layers.push_back(make_tuple(1, Linear::Instance())); //output - linear
+    NetPtr net = MultilayerPerceptron(layers);
 
     //Data
     //boost::function<Float (Float)> f = (_1 += 10); //boost::lambda::bind( (Float (*)(Float))sin, _1 );
@@ -40,15 +39,18 @@ int main()
 
     TrainData& td = *(DataGenerator::generateFromFunction(-3.0, +3.0, 10, func));
 
-    Lms::init(net);
-    net[LmsAttributes::learningRate] = 0.2;
-    net[LmsAttributes::annealingTSC] = 3000;
-    net[RandomizeWeightsAttributes::min] = -0.6;
-    net[RandomizeWeightsAttributes::max] = +0.6;
+    net->get<LmsNetAttributes>().learningRate = 0.2;
+    net->get<LmsNetAttributes>().annealingTSC = 3000;
+    net->get<WeightRandomizationAttributes>().min = -0.6;
+    net->get<WeightRandomizationAttributes>().max = +0.6;
     //net.run(RandomizeWeightsGaussRunner::Instance());
-    net.run(RandomizeWeightsAccordingToInputsCountRunner::Instance());
+    net->run(RandomizeWeightsAccordingToInputsCountRunner::Instance());
     Lms::train(net, td); //dry run to create all learning structures
-    
+
+    const NetCache& cache = net->getCache();
+    for(unsigned i = 0; i < cache.layers.size(); ++i)
+        cout<<cache.layers[i].size()<<endl;
+
     boost::progress_display progress(epochs);
     for(unsigned i = 1; i < epochs; ++i)
     {
@@ -61,7 +63,7 @@ int main()
     test(net, -2.0, +2.0, +0.01);
 
     //Save trained net
-    Storage::save<Storage::xml_out>(net, "test_lms.xml");
+    //Storage::save<Storage::xml_out>(net, "test_lms.xml");
 
     //Plotting error graph
     try {
@@ -79,7 +81,7 @@ int main()
     return 0;
 }
 
-void test(Net& net, Float start, Float stop, Float step)
+void test(NetPtr net, Float start, Float stop, Float step)
 {
     //Test
     vector<Float> input, output, desired_output, error;
@@ -91,9 +93,9 @@ void test(Net& net, Float start, Float stop, Float step)
         tmp.input[0] = x;
         tmp.desired_output[0] = func(x);
 
-        net.setInput(tmp.input);
-        net.run(FeedforwardPropagationRunner::Instance());
-        net.getOutput(tmp.error); //actual output
+        net->setInput(tmp.input);
+        net->run(FeedforwardPropagationRunner::Instance());
+        net->getOutput(tmp.error); //actual output
 
         input.push_back(x);
         desired_output.push_back(func(x));

@@ -44,8 +44,8 @@
 /**
  * General and specific learning algorithms
  */
-//#include "LearningAlgorithms/Util/RandomizeWeights.h"
-//#include "LearningAlgorithms/Lms.h"
+#include "LearningAlgorithms/Util/RandomizeWeights.h"
+#include "LearningAlgorithms/Lms.h"
 
 #endif
 

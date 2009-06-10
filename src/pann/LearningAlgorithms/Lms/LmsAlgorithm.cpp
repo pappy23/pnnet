@@ -22,23 +22,23 @@ namespace pann
     //TODO: Use standart Backpropagation runner from Core
 
     void
-    Lms::train(Net& _net, TrainData& _trainData)
+    Lms::train(NetPtr _net, TrainData& _trainData)
     {
-        const vector<NeuronPtr>& output_neurons = _net.getCache().layers.back();
+        const vector<NeuronPtr>& output_neurons = *(_net->getCache().layers.end() - 2);
 
         BOOST_FOREACH(TrainPattern& tp, _trainData.data)
         {
-            _net.setInput(tp.input);
-            _net.run(FeedforwardPropagationRunner::Instance());
-            _net.getOutput(tp.error);
+            _net->setInput(tp.input);
+            _net->run(FeedforwardPropagationRunner::Instance());
+            _net->getOutput(tp.error);
             tp.error = tp.desired_output - tp.error;
-            
+
             //Put error information to output neurons
             for(unsigned i = 0; i < output_neurons.size(); ++i)
                 output_neurons[i]->get<LmsNeuronAttributes>().error = tp.error[i];
 
-            _net.run(LmsBackpropagationRunner::Instance());
-            _net.get<LmsNetAttributes>().epoch++;
+            _net->run(LmsBackpropagationRunner::Instance());
+            _net->get<LmsNetAttributes>().epoch++;
         }
     } //train
 

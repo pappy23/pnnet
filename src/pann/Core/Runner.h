@@ -26,44 +26,31 @@ namespace pann
     class Runner
     {
     public:
-        virtual void run(NeuronPtr, Net*) = 0;
-        virtual RunDirection getDirection() = 0;
+        virtual void run(NeuronPtr, Net*) const = 0;
+        virtual RunDirection getDirection() const = 0;
     };
 
-    //TODO Backpropagation runner
-
     /**
-     * Runner for pyramidal neurons feedforward propagation
+     * Runner that does nothing
      */
-    class PyramidalNeuronFeedforwardRunner : public Runner
+    class NullFeedforwardRunner : public Runner
     {
         //Singleton
-        PyramidalNeuronFeedforwardRunner() {};
+        NullFeedforwardRunner() {};
 
     public:
         static RunnerPtr Instance()
         {
-            static RunnerPtr self(new PyramidalNeuronFeedforwardRunner());
+            static RunnerPtr self(new NullFeedforwardRunner());
             return self;
         }
 
-        virtual void run(NeuronPtr _neuron, Net* _net)
+        virtual void run(NeuronPtr _neuron, Net* _net) const
         {
-            if(_neuron->getActivationFunction())
-            {
-                if(_neuron->getBias())
-                    _neuron->receptiveField += _neuron->getBias()->getValue();
-
-                BOOST_FOREACH( const Link& link, _neuron->getInConnections() )
-                    _neuron->receptiveField += link.getTo()->getOutput() * link.getWeight()->getValue();
-
-                _neuron->activationValue = _neuron->getActivationFunction()->f(_neuron->receptiveField);
-            }
-
-            _neuron->receptiveField = 0;
+            //Nothing
         }
 
-        virtual RunDirection getDirection()
+        virtual RunDirection getDirection() const
         {
             return ForwardRun;
         }
@@ -73,11 +60,47 @@ namespace pann
         template<class Archive>
             void serialize(Archive & ar, const unsigned int version)
             {
-                 boost::serialization::void_cast_register<PyramidalNeuronFeedforwardRunner, Runner>(
-                    static_cast<PyramidalNeuronFeedforwardRunner*>(NULL),
+                 boost::serialization::void_cast_register<NullFeedforwardRunner, Runner>(
+                    static_cast<NullFeedforwardRunner*>(NULL),
                     static_cast<Runner*>(NULL));
             };
-    }; //FeedforwardPropagationRunner
+    }; //NullFeedforwardRunner
+
+    /**
+     * Runner that does nothing
+     */
+    class NullBackpropagationRunner : public Runner
+    {
+        //Singleton
+        NullBackpropagationRunner() {};
+
+    public:
+        static RunnerPtr Instance()
+        {
+            static RunnerPtr self(new NullBackpropagationRunner());
+            return self;
+        }
+
+        virtual void run(NeuronPtr _neuron, Net* _net) const
+        {
+            //Nothing
+        }
+
+        virtual RunDirection getDirection() const
+        {
+            return BackwardRun;
+        }
+
+    private:
+        friend class boost::serialization::access;
+        template<class Archive>
+            void serialize(Archive & ar, const unsigned int version)
+            {
+                 boost::serialization::void_cast_register<NullBackpropagationRunner, Runner>(
+                    static_cast<NullBackpropagationRunner*>(NULL),
+                    static_cast<Runner*>(NULL));
+            };
+    }; //NullBackpropagationRunner
 
     /**
      * Sample runner for Feedforfard propagation through network
@@ -94,13 +117,20 @@ namespace pann
             return self;
         }
 
-        virtual void run(NeuronPtr _neuron, Net* _net)
+        virtual void run(NeuronPtr _neuron, Net* _net) const
         {
-            if(_neuron->getFireRunner())
-                _neuron->getFireRunner()->run(_neuron, _net);
+            const RunnerPtr& r = _neuron->getFireRunner();
+
+            if(r && r->getDirection() == ForwardRun)
+            {
+                r->run(_neuron, _net);
+                Debug()<<_neuron->getOutput()<<"\n";
+            } else {
+                throw Exception()<<"Wrong runner\n";
+            }
         }
 
-        virtual RunDirection getDirection()
+        virtual RunDirection getDirection() const
         {
             return ForwardRun;
         }
@@ -115,6 +145,96 @@ namespace pann
                     static_cast<Runner*>(NULL));
             };
     }; //FeedforwardPropagationRunner
+
+    /**
+     * Sample runner for Backpropagation through network
+     */
+    class BackpropagationRunner : public Runner
+    {
+        //Singleton
+        BackpropagationRunner() {};
+
+    public:
+        static RunnerPtr Instance()
+        {
+            static RunnerPtr self(new BackpropagationRunner());
+            return self;
+        }
+
+        virtual void run(NeuronPtr _neuron, Net* _net) const
+        {
+            const RunnerPtr& r = _neuron->getFireRunner();
+
+            if(r && r->getDirection() == BackwardRun)
+            {
+                r->run(_neuron, _net);
+            } else {
+                throw Exception()<<"Wrong runner\n";
+            }
+        }
+
+        virtual RunDirection getDirection() const
+        {
+            return ForwardRun;
+        }
+
+    private:
+        friend class boost::serialization::access;
+        template<class Archive>
+            void serialize(Archive & ar, const unsigned int version)
+            {
+                 boost::serialization::void_cast_register<BackpropagationRunner, Runner>(
+                    static_cast<BackpropagationRunner*>(NULL),
+                    static_cast<Runner*>(NULL));
+            };
+    }; //BackpropagationRunner
+
+    /**
+     * Runner for pyramidal neurons feedforward propagation
+     */
+    class PyramidalNeuronFeedforwardRunner : public Runner
+    {
+        //Singleton
+        PyramidalNeuronFeedforwardRunner() {};
+
+    public:
+        static RunnerPtr Instance()
+        {
+            static RunnerPtr self(new PyramidalNeuronFeedforwardRunner());
+            return self;
+        }
+
+        virtual void run(NeuronPtr _neuron, Net* _net) const
+        {
+            if(_neuron->getActivationFunction())
+            {
+                if(_neuron->getBias())
+                    _neuron->receptiveField += _neuron->getBias()->getValue();
+
+                BOOST_FOREACH( const Link& link, _neuron->getInConnections() )
+                    _neuron->receptiveField += link.getTo()->getOutput() * link.getWeight()->getValue();
+
+                _neuron->activationValue = _neuron->getActivationFunction()->f(_neuron->receptiveField);
+            }
+
+            _neuron->receptiveField = 0;
+        }
+
+        virtual RunDirection getDirection() const
+        {
+            return ForwardRun;
+        }
+
+    private:
+        friend class boost::serialization::access;
+        template<class Archive>
+            void serialize(Archive & ar, const unsigned int version)
+            {
+                 boost::serialization::void_cast_register<PyramidalNeuronFeedforwardRunner, Runner>(
+                    static_cast<PyramidalNeuronFeedforwardRunner*>(NULL),
+                    static_cast<Runner*>(NULL));
+            };
+    }; //PyramidalNeuronFeedforwardRunner
 
 }; //pann
 
