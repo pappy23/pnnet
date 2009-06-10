@@ -48,6 +48,7 @@ namespace pann
         template<class Archive>
             void serialize(Archive & ar, const unsigned int version)
             {
+                //empty
             };
     }; //Attributes
 
@@ -91,5 +92,11 @@ namespace pann
     }; //OpenGlAttributes
 
 }; //pann
+
+#define REGISTER_ATTRIBUTES(C) \
+    BOOST_CLASS_EXPORT(pann::C) \
+    const pann::AttributesPtr C##Register(new pann::C());
+
+REGISTER_ATTRIBUTES(OpenGlAttributes);
 
 #endif

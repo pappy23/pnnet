@@ -104,5 +104,9 @@ namespace pann
 
 }; //pann
 
+REGISTER_ATTRIBUTES(LmsNetAttributes);
+REGISTER_ATTRIBUTES(LmsNeuronAttributes);
+REGISTER_ATTRIBUTES(LmsLinkAttributes);
+
 #endif
 
