@@ -56,13 +56,13 @@ namespace pann
 
             cout<<"Loading net from "<<_filename<<"..."<<endl;
             SerializatorType ia(ifs);
-            try {
+            //try {
                 ia >> BOOST_SERIALIZATION_NVP(_obj);
-            } catch(boost::archive::archive_exception& e) {
-                throw IoError()<<"Storage::load(): failed to load net. Boost exception thrown. What: "<<e.what()<<"\n";
-            } catch(...) {
-                throw IoError()<<"Storage::load(): unknown exception\n";
-            }
+            //} catch(boost::archive::archive_exception& e) {
+            //    throw IoError()<<"Storage::load(): failed to load net. Boost exception thrown. What: "<<e.what()<<"\n";
+            //} catch(...) {
+            //    throw IoError()<<"Storage::load(): unknown exception\n";
+            //}
 
             ifs.close();
         }; //load

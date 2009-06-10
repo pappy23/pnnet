@@ -9,6 +9,7 @@
 
 #include "Object.h"
 #include "Link.h"
+#include "ActivationFunction.h"
 
 using std::list;
 
@@ -68,6 +69,8 @@ namespace pann
         template<class Archive>
             void serialize(Archive & ar, const unsigned int version)
             {
+                //f();
+
                 ar & BOOST_SERIALIZATION_BASE_OBJECT_NVP(Object)
                  //@see Net::serialize()
                  //& BOOST_SERIALIZATION_NVP(links_out)
@@ -75,9 +78,9 @@ namespace pann
                  & BOOST_SERIALIZATION_NVP(receptiveField)
                  & BOOST_SERIALIZATION_NVP(activationValue)
                  & BOOST_SERIALIZATION_NVP(bias)
-                 & BOOST_SERIALIZATION_NVP(activationFunction)
-                 & BOOST_SERIALIZATION_NVP(fireRunner)
-                 & BOOST_SERIALIZATION_NVP(learnRunner);
+                 & BOOST_SERIALIZATION_NVP(activationFunction);
+                 //& BOOST_SERIALIZATION_NVP(fireRunner)
+                 //& BOOST_SERIALIZATION_NVP(learnRunner);
             };
     }; //Neuron
 

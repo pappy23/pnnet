@@ -141,7 +141,7 @@ int main()
             cout<<"Test output: "<<setprecision(5)<<fixed<<output[0]<<endl;
 
             //Serialization test
-            //Storage::save<Storage::xml_out>(net, "test_net.xml");
+            Storage::save<Storage::xml_out>(net_ptr, "test_net.xml");
 
             //Memory consumption test
             cout<<"It's time to do memory test\n";
@@ -150,7 +150,7 @@ int main()
 
         NetPtr net2(new Net());
         cout<<"New net...OK\n";
-        //Storage::load<Storage::xml_in>(net2, "test_net.xml");
+        Storage::load<Storage::xml_in>(net2, "test_net.xml");
         cout<<"Loading done\n";
 
         //Test run()
@@ -183,7 +183,7 @@ int main()
         }
 
         NetPtr net = ConvolutionalNetwork(planes);
-        //Storage::save<Storage::txt_out>(*net, "test_conv.net");
+        Storage::save<Storage::txt_out>(net, "test_conv.net");
     }
 
     return 0;
