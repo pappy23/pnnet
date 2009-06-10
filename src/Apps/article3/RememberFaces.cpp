@@ -78,7 +78,7 @@ MirrorConvolutionalNetwork(vector<unsigned> _layers,
                     list<Link>& in_conn = const_cast<list<Link>& >(n->getInConnections()); 
                     list<Link>& out_conn = const_cast<list<Link>& >(n->getOutConnections()); 
                     swap(in_conn, out_conn);
-                    n->get<OpenGlAttributes>().x = (last_layer + 2) * 1000.0 - n->get<OpenGlAttributes>().x;
+                    n->get<OpenGlAttributes>().x = (signed int)((last_layer + 2) * 1000.0 - n->get<OpenGlAttributes>().x);
                 }
             }
         }
