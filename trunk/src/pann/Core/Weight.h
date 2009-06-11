@@ -6,7 +6,8 @@
 #ifndef WEIGHT_H
 #define WEIGHT_H
 
-#include "Includes/BoostCommon.h"
+#include <boost/thread/mutex.hpp>
+
 #include "Includes/BoostSerialization.h"
 
 #include "Type.h"
