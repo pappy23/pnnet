@@ -6,7 +6,7 @@
 #ifndef ACTIVATIONFUNCTION_H
 #define ACTIVATIONFUNCTION_H
 
-#include "Includes/BoostSerialization.h"
+//#include "Includes/BoostSerialization.h"
 
 #include "Type.h"
 
@@ -163,9 +163,11 @@ namespace pann
 #define REGISTER_ACTIVATION_FUNCTION(C) \
     REGISTER_SINGLETON(C, ActivationFunction);
 
-REGISTER_ACTIVATION_FUNCTION(Linear);
-REGISTER_ACTIVATION_FUNCTION(Threshold);
-REGISTER_ACTIVATION_FUNCTION(TanH);
+//REGISTER_ACTIVATION_FUNCTION(Linear);
+//REGISTER_ACTIVATION_FUNCTION(Threshold);
+//REGISTER_ACTIVATION_FUNCTION(TanH);
+
+extern const pann::ActivationFunctionPtr LinearRegister;
 
 #endif //ACTIVATIONFUNCTION_H
 
