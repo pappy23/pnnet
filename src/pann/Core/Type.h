@@ -16,6 +16,18 @@ namespace pann
 
     typedef std::size_t HashType;
 
+    /**
+     * Hasher
+     * @param _name Readable name of attributes group
+     * @return Unique integer hash value
+     */
+    inline HashType
+    hash(const char* _name)
+    {
+        static boost::hash<std::string> hasher;
+        return hasher(_name);
+    }; //hash
+
 /**
  * Use case: ADD_PTR_TYPEDEF(Neuron)
  */
@@ -30,10 +42,6 @@ namespace pann
     ADD_PTR_TYPEDEF(Weight);
     ADD_PTR_TYPEDEF(Net);
     ADD_PTR_TYPEDEF(Attributes);
-
-#define REGISTER_SINGLETON(C, T) \
-    BOOST_CLASS_EXPORT(pann::C) \
-    const pann::T##Ptr C##Register = pann::C::Instance();
 
 }; //pann
 

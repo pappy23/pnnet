@@ -70,6 +70,32 @@ int main()
         const NetCache& cache = tnet->getCache();
         for(unsigned i = 0; i < cache.layers.size(); ++i)
             cout<<cache.layers[i].size()<<endl;
+
+        Storage::save<Storage::xml_out>(tnet, "test_ser_net.xml");
+        Storage::save<Storage::txt_out>(tnet, "test_ser_net.txt");
+        Storage::save<Storage::bin_out>(tnet, "test_ser_net.bin");
+
+        NetPtr xml;
+        NetPtr txt;
+        NetPtr bin;
+        Storage::load<Storage::xml_in>(xml, "test_ser_net.xml");
+        Storage::load<Storage::txt_in>(xml, "test_ser_net.txt");
+        Storage::load<Storage::bin_in>(xml, "test_ser_net.bin");
+        {
+        const NetCache& cache = xml->getCache();
+        for(unsigned i = 0; i < cache.layers.size(); ++i)
+            cout<<cache.layers[i].size()<<endl;
+        }
+        {
+        //const NetCache& cache = txt->getCache();
+        //for(unsigned i = 0; i < cache.layers.size(); ++i)
+        //    cout<<cache.layers[i].size()<<endl;
+        }
+        {
+        const NetCache& cache = bin->getCache();
+        for(unsigned i = 0; i < cache.layers.size(); ++i)
+            cout<<cache.layers[i].size()<<endl;
+        }
     }
 
     {

@@ -31,6 +31,9 @@ namespace pann
         template<class SerializatorType>
         void save(NetPtr _obj, std::string _filename)
         {
+            if(!_obj)
+                throw Exception()<<"Storage::save(): Nothing to save!\n";
+
             ofstream ofs(_filename.c_str());
             if(ofs.fail())
                 throw IoError()<<"Storage::save(): failed to open file "<<_filename<<" for writing\n"; 
@@ -49,8 +52,11 @@ namespace pann
         }; //save
 
         template<class SerializatorType>
-        void load(NetPtr _obj, std::string _filename)
+        void load(NetPtr& _obj, std::string _filename)
         {
+            if(!_obj)
+                _obj.reset(new Net());
+
             ifstream ifs(_filename.c_str());
             if(ifs.fail())
                 throw IoError()<<"Storage::load(): failed to open file "<<_filename<<" for reading\n"; 
