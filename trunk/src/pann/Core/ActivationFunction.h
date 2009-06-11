@@ -9,6 +9,7 @@
 #include "Includes/BoostSerialization.h"
 
 #include "Type.h"
+#include "Singleton.h"
 
 using boost::shared_ptr;
 
@@ -18,18 +19,11 @@ namespace pann
      * All activation functions inherit ActivationFunction::ActivationFunction
      * and implement Instance() method
      */
-    class ActivationFunction
+    class ActivationFunction : public Singleton
     {
     public:
         virtual Float f(Float) const = 0;
         virtual Float derivative_dy(Float) const = 0;
-
-//    private:
-//        friend class boost::serialization::access;
-//        template<class Archive>
-//            void serialize(Archive & ar, const unsigned int version)
-//            {
-//            };
     };
 
     /**
@@ -39,15 +33,7 @@ namespace pann
      */
     class Linear : public ActivationFunction
     {
-        //Singleton
-        Linear() {};
-
-    public:
-        static ActivationFunctionPtr Instance()
-        {
-            static ActivationFunctionPtr self(new Linear());
-            return self;
-        }
+        SINGLETON_SKELETON(Linear, ActivationFunction);
 
         virtual Float f(Float _x) const
         {
@@ -58,20 +44,6 @@ namespace pann
         {
             return 1;
         }
-
-    private:
-        friend class boost::serialization::access;
-        template<class Archive>
-            void serialize(Archive & ar, const unsigned int version)
-            {
-//                boost::serialization::base_object<ActivationFunction>(*this);
-
-//BOOST_CLASS_EXPORT(pann::Linear);
-
-                 boost::serialization::void_cast_register<Linear, ActivationFunction>(
-                    static_cast<Linear*>(NULL),
-                    static_cast<ActivationFunction*>(NULL));
-            };
     };
 
     /**
@@ -81,15 +53,7 @@ namespace pann
      */
     class Threshold : public ActivationFunction
     {
-        //Singleton
-        Threshold() {};
-
-    public:
-        static ActivationFunctionPtr Instance()
-        {
-            static ActivationFunctionPtr self(new Threshold());
-            return self;
-        }
+        SINGLETON_SKELETON(Threshold, ActivationFunction);
 
         virtual Float f(Float _x) const
         {
@@ -105,16 +69,6 @@ namespace pann
 
             return 0;
         }
-
-    private:
-        friend class boost::serialization::access;
-        template<class Archive>
-            void serialize(Archive & ar, const unsigned int version)
-            {
-                 boost::serialization::void_cast_register<Threshold, ActivationFunction>(
-                    static_cast<Threshold*>(NULL),
-                    static_cast<ActivationFunction*>(NULL));
-            };
     };
 
     /**
@@ -123,15 +77,8 @@ namespace pann
      */
     class TanH : public ActivationFunction
     {
-        //Singleton
         TanH() : a( 1.7179 ), b( 2.0 / 3.0 ) {};
-
-    public:
-        static ActivationFunctionPtr Instance()
-        {
-            static ActivationFunctionPtr self(new TanH());
-            return self;
-        }
+        SINGLETON_SKELETON_WITHOUT_CONSTRUCTOR(TanH, ActivationFunction);
 
         virtual Float f(Float _x) const
         {
@@ -146,16 +93,6 @@ namespace pann
     private:
         const Float a;
         const Float b;
-
-    private:
-        friend class boost::serialization::access;
-        template<class Archive>
-            void serialize(Archive & ar, const unsigned int version)
-            {
-                 boost::serialization::void_cast_register<TanH, ActivationFunction>(
-                    static_cast<TanH*>(NULL),
-                    static_cast<ActivationFunction*>(NULL));
-            };
     };
 
 }; //pann

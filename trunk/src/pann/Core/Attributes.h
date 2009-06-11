@@ -16,22 +16,8 @@
 
 #include "Type.h"
 
-using boost::hash;
-
 namespace pann
 {
-    /**
-     * Hasher
-     * @param _name Readable name of attributes group
-     * @return Unique integer hash value
-     */
-    inline HashType
-    hash(const char* _name)
-    {
-        static boost::hash<std::string> hasher;
-        return hasher(_name);
-    }; //hash
-
     /**
      * Base class without instances
      */
