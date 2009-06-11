@@ -5,14 +5,15 @@
 #ifndef STORAGE_H
 #define STORAGE_H
 
-#include "Includes/Std.h"
+//#include "Includes/Std.h"
+#include <fstream>
 #include "Includes/BoostSerialization.h"
 
-#include "Exception.h"
-#include "Net.h"
-#include "Neuron.h"
-#include "Link.h"
-#include "Weight.h"
+//#include "Exception.h"
+//#include "Net.h"
+//#include "Neuron.h"
+//#include "Link.h"
+//#include "Weight.h"
 
 using namespace std;
 

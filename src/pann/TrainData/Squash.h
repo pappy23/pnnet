@@ -1,7 +1,8 @@
 #ifndef SQUASH_H
 #define SQUASH_H
 
-#include "Includes/Std.h"
+
+#include <valarray>
 
 using namespace std;
 
