@@ -267,7 +267,7 @@ void experiment2()
     pnet->run(RandomizeWeightsAccordingToInputsCountRunner::Instance());
     pnet->setWorkThreadsCount(10);
 
-    unsigned const epochs = 1000;
+    unsigned const epochs = 10;
     cout<<"Training for "<<epochs<<" epochs\n";
     for(unsigned i = 1; i < epochs; ++i)
     {
