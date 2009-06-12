@@ -7,6 +7,7 @@
 
 namespace pann
 {
+    /*
     class Singleton
     {
     public:
@@ -22,26 +23,10 @@ namespace pann
             return (Singleton*)(0);
         };
     }; //SingltonRegister
-
-    template<class S>
-    class SingltonRegister
-    {
-        SingletonPtr getSingleton()
-        {
-            return (Singleton*)(0);
-        };
-    }; //SingltonRegister
-
+*/
 }; //pann
 
-//#define REGISTER_SINGLETON(C, T) \
-    BOOST_CLASS_EXPORT(pann::C) \
-    const pann::T##Ptr C##Register = pann::C::Instance();
-
-#define REGISTER_SINGLETON(C, T) \
-    BOOST_CLASS_EXPORT(pann::C) \
-    const pann::T##Ptr C##Register = pann::C::Instance();
-
+//May be replaced with templates<>
 #define SINGLETON_SKELETON_WITHOUT_CONSTRUCTOR(CLASS, BASE) \
     friend class boost::serialization::access; \
     template<class Archive> \
@@ -56,13 +41,31 @@ namespace pann
         { \
             static BASE##Ptr self(new CLASS()); \
             return self; \
-        }; \
-        \
-        virtual HashType getHash() { return hash(#CLASS); };
+        };
 
 #define SINGLETON_SKELETON(CLASS, BASE) \
     CLASS() {}; \
     SINGLETON_SKELETON_WITHOUT_CONSTRUCTOR(CLASS, BASE);
+
+//Register singleton in .h file and don't use .cpp
+#define REGISTER_SINGLETON(C, T) \
+    BOOST_CLASS_EXPORT(pann::C) \
+    const pann::T##Ptr C##Register = pann::C::Instance();
+
+//Split registration
+#define REGISTER_SINGLETON_H(C) \
+    int register_singleton_##C(); \
+    const int register_singleton_##C##_result = register_singleton_##C();
+
+#define REGISTER_SINGLETON_CPP(C) \
+    BOOST_CLASS_EXPORT(pann::C) \
+    namespace pann { \
+    int register_singleton_##C() \
+    { \
+        C::Instance(); \
+        return 0; \
+    }; \
+    };
 
 #endif
 

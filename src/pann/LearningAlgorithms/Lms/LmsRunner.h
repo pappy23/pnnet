@@ -12,14 +12,7 @@ namespace pann
 {
     class LmsBackpropagationRunner : public Runner
     {
-        LmsBackpropagationRunner() {};
-
-    public:
-        static RunnerPtr Instance()
-        {
-            static RunnerPtr self(new LmsBackpropagationRunner());
-            return self;
-        }
+        SINGLETON_SKELETON(LmsBackpropagationRunner, Runner);
 
         virtual void run(NeuronPtr _neuron, Net* _net) const;
 
@@ -27,20 +20,9 @@ namespace pann
         {
             return BackwardRun;
         }
-
-    private:
-        friend class boost::serialization::access;
-        template<class Archive>
-            void serialize(Archive & ar, const unsigned int version)
-            {
-                 boost::serialization::void_cast_register<LmsBackpropagationRunner, Runner>(
-                    static_cast<LmsBackpropagationRunner*>(NULL),
-                    static_cast<Runner*>(NULL));
-            };
     };
+    REGISTER_SINGLETON_H(LmsBackpropagationRunner);
 }; //pann
-
-REGISTER_RUNNER(LmsBackpropagationRunner);
 
 #endif
 

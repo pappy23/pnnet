@@ -19,7 +19,7 @@ namespace pann
      * All activation functions inherit ActivationFunction::ActivationFunction
      * and implement Instance() method
      */
-    class ActivationFunction : public Singleton
+    class ActivationFunction
     {
     public:
         virtual Float f(Float) const = 0;
@@ -45,6 +45,7 @@ namespace pann
             return 1;
         }
     };
+    REGISTER_SINGLETON_H(Linear);
 
     /**
      * MacCalloc-Pitz threshold function
@@ -70,6 +71,7 @@ namespace pann
             return 0;
         }
     };
+    REGISTER_SINGLETON_H(Threshold);
 
     /**
      * Hyperbolic tangent function
@@ -94,15 +96,9 @@ namespace pann
         const Float a;
         const Float b;
     };
+    REGISTER_SINGLETON_H(TanH);
 
 }; //pann
-
-#define REGISTER_ACTIVATION_FUNCTION(C) \
-    REGISTER_SINGLETON(C, ActivationFunction);
-
-REGISTER_ACTIVATION_FUNCTION(Linear);
-REGISTER_ACTIVATION_FUNCTION(Threshold);
-REGISTER_ACTIVATION_FUNCTION(TanH);
 
 #endif //ACTIVATIONFUNCTION_H
 

@@ -35,15 +35,7 @@ namespace pann
      */
     class NullFeedforwardRunner : public Runner
     {
-        //Singleton
-        NullFeedforwardRunner() {};
-
-    public:
-        static RunnerPtr Instance()
-        {
-            static RunnerPtr self(new NullFeedforwardRunner());
-            return self;
-        }
+        SINGLETON_SKELETON(NullFeedforwardRunner, Runner);
 
         virtual void run(NeuronPtr _neuron, Net* _net) const
         {
@@ -54,32 +46,15 @@ namespace pann
         {
             return ForwardRun;
         }
-
-    private:
-        friend class boost::serialization::access;
-        template<class Archive>
-            void serialize(Archive & ar, const unsigned int version)
-            {
-                 boost::serialization::void_cast_register<NullFeedforwardRunner, Runner>(
-                    static_cast<NullFeedforwardRunner*>(NULL),
-                    static_cast<Runner*>(NULL));
-            };
     }; //NullFeedforwardRunner
+    REGISTER_SINGLETON_H(NullFeedforwardRunner);
 
     /**
      * Runner that does nothing
      */
     class NullBackpropagationRunner : public Runner
     {
-        //Singleton
-        NullBackpropagationRunner() {};
-
-    public:
-        static RunnerPtr Instance()
-        {
-            static RunnerPtr self(new NullBackpropagationRunner());
-            return self;
-        }
+        SINGLETON_SKELETON(NullBackpropagationRunner, Runner);
 
         virtual void run(NeuronPtr _neuron, Net* _net) const
         {
@@ -90,32 +65,15 @@ namespace pann
         {
             return BackwardRun;
         }
-
-    private:
-        friend class boost::serialization::access;
-        template<class Archive>
-            void serialize(Archive & ar, const unsigned int version)
-            {
-                 boost::serialization::void_cast_register<NullBackpropagationRunner, Runner>(
-                    static_cast<NullBackpropagationRunner*>(NULL),
-                    static_cast<Runner*>(NULL));
-            };
     }; //NullBackpropagationRunner
+    REGISTER_SINGLETON_H(NullBackpropagationRunner);
 
     /**
      * Sample runner for Feedforfard propagation through network
      */
     class FeedforwardPropagationRunner : public Runner
     {
-        //Singleton
-        FeedforwardPropagationRunner() {};
-
-    public:
-        static RunnerPtr Instance()
-        {
-            static RunnerPtr self(new FeedforwardPropagationRunner());
-            return self;
-        }
+        SINGLETON_SKELETON(FeedforwardPropagationRunner, Runner);
 
         virtual void run(NeuronPtr _neuron, Net* _net) const
         {
@@ -133,32 +91,15 @@ namespace pann
         {
             return ForwardRun;
         }
-
-    private:
-        friend class boost::serialization::access;
-        template<class Archive>
-            void serialize(Archive & ar, const unsigned int version)
-            {
-                 boost::serialization::void_cast_register<FeedforwardPropagationRunner, Runner>(
-                    static_cast<FeedforwardPropagationRunner*>(NULL),
-                    static_cast<Runner*>(NULL));
-            };
     }; //FeedforwardPropagationRunner
+    REGISTER_SINGLETON_H(FeedforwardPropagationRunner);
 
     /**
      * Sample runner for Backpropagation through network
      */
     class BackpropagationRunner : public Runner
     {
-        //Singleton
-        BackpropagationRunner() {};
-
-    public:
-        static RunnerPtr Instance()
-        {
-            static RunnerPtr self(new BackpropagationRunner());
-            return self;
-        }
+        SINGLETON_SKELETON(BackpropagationRunner, Runner);
 
         virtual void run(NeuronPtr _neuron, Net* _net) const
         {
@@ -176,32 +117,15 @@ namespace pann
         {
             return BackwardRun;
         }
-
-    private:
-        friend class boost::serialization::access;
-        template<class Archive>
-            void serialize(Archive & ar, const unsigned int version)
-            {
-                 boost::serialization::void_cast_register<BackpropagationRunner, Runner>(
-                    static_cast<BackpropagationRunner*>(NULL),
-                    static_cast<Runner*>(NULL));
-            };
     }; //BackpropagationRunner
+    REGISTER_SINGLETON_H(BackpropagationRunner);
 
     /**
      * Runner for pyramidal neurons feedforward propagation
      */
     class PyramidalNeuronFeedforwardRunner : public Runner
     {
-        //Singleton
-        PyramidalNeuronFeedforwardRunner() {};
-
-    public:
-        static RunnerPtr Instance()
-        {
-            static RunnerPtr self(new PyramidalNeuronFeedforwardRunner());
-            return self;
-        }
+        SINGLETON_SKELETON(PyramidalNeuronFeedforwardRunner, Runner);
 
         virtual void run(NeuronPtr _neuron, Net* _net) const
         {
@@ -223,27 +147,9 @@ namespace pann
         {
             return ForwardRun;
         }
-
-    private:
-        friend class boost::serialization::access;
-        template<class Archive>
-            void serialize(Archive & ar, const unsigned int version)
-            {
-                 boost::serialization::void_cast_register<PyramidalNeuronFeedforwardRunner, Runner>(
-                    static_cast<PyramidalNeuronFeedforwardRunner*>(NULL),
-                    static_cast<Runner*>(NULL));
-            };
     }; //PyramidalNeuronFeedforwardRunner
+    REGISTER_SINGLETON_H(PyramidalNeuronFeedforwardRunner);
 
 }; //pann
-
-#define REGISTER_RUNNER(C) \
-    REGISTER_SINGLETON(C, Runner);
-
-REGISTER_RUNNER(NullFeedforwardRunner);
-REGISTER_RUNNER(NullBackpropagationRunner);
-REGISTER_RUNNER(FeedforwardPropagationRunner);
-REGISTER_RUNNER(BackpropagationRunner);
-REGISTER_RUNNER(PyramidalNeuronFeedforwardRunner);
 
 #endif //RUNNER_H

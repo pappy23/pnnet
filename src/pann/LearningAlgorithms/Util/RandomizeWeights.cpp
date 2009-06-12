@@ -3,6 +3,9 @@
 #include "Core/Random.h"
 #include "RandomizeWeights.h"
 
+REGISTER_SINGLETON_CPP(RandomizeWeightsGaussRunner);
+REGISTER_SINGLETON_CPP(RandomizeWeightsAccordingToInputsCountRunner);
+
 namespace pann
 {
     void
