@@ -228,8 +228,56 @@ void experiment1()
         cout<<i<<"\t"<<tdata.getMse()<<"\n";
     }
 
-    //Storage::save<Storage::txt_out>(*pnet, "MirrorConvNet_Exp1.net");
+    Storage::save<Storage::txt_out>(pnet, "MirrorConvNet_Exp1.net");
 } //experiment1
+
+/*
+ * Строим сверточную сеть которая запоминает одного человека
+ * И только его
+ */
+void experiment2()
+{
+    vector<unsigned> planes;
+    planes += 20,50,2;
+    NetPtr pnet = ConvolutionalNetwork(planes, 0.8);
+
+    //Formatting TrainData from raw_data
+    TrainData tdata;
+    for(unsigned i = 0; i < orl.size(); ++i)
+    {
+        TrainPattern tp(95*95, 2);
+        tp.input = orl[i].img->getAverageValarray();
+        squash(tp.input, 0.0, 255.0, -1.8, +1.8);
+        if(1 == orl[i].man)
+        {
+            tp.desired_output[0] = 1.8;
+            tp.desired_output[1] = -1.8;
+        } else {
+            tp.desired_output[0] = -1.8;
+            tp.desired_output[1] = 1.8;
+        }
+        tdata.data.push_back(tp);
+    }
+
+    //Trainig net
+    pnet->get<LmsNetAttributes>().learningRate = 0.4;
+    pnet->get<LmsNetAttributes>().annealingTSC = 3000;
+    pnet->get<WeightRandomizationAttributes>().min = -0.6;
+    pnet->get<WeightRandomizationAttributes>().max = +0.6;
+    pnet->run(RandomizeWeightsAccordingToInputsCountRunner::Instance());
+    pnet->setWorkThreadsCount(10);
+
+    unsigned const epochs = 1000;
+    cout<<"Training for "<<epochs<<" epochs\n";
+    for(unsigned i = 1; i < epochs; ++i)
+    {
+        tdata.shuffle();
+        Lms::train(pnet, tdata);
+        cout<<i<<"\t"<<tdata.getMse()<<"\n";
+    }
+
+    Storage::save<Storage::txt_out>(pnet, "Exp2.net");
+} //experiment2
 
 int main(int argc, char* argv[])
 {
@@ -242,7 +290,7 @@ int main(int argc, char* argv[])
     //Processing images
     readImages(argv[1], orl);
 
-    experiment1();
+    experiment2();
 
     //Debug
     /*
