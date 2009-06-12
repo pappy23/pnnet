@@ -16,7 +16,6 @@
 
 namespace pann
 {
-//    class Neuron;
     class Weight;
     class Runner;
 

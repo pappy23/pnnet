@@ -11,6 +11,8 @@
 #include "Core/Weight.h"
 #include "Core/ActivationFunction.h"
 
+REGISTER_SINGLETON_CPP(LmsBackpropagationRunner);
+
 namespace pann
 {
     void

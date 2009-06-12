@@ -9,7 +9,7 @@ using namespace pann;
 using namespace pann::Storage;
 
 //Load net and automatically detect format
-void autoload(NetPtr _obj, std::string _filename);
+void autoload(NetPtr& _obj, std::string _filename);
 
 int main(int argc, char *argv[])
 {
@@ -37,10 +37,10 @@ int main(int argc, char *argv[])
         return -1;
     }
 
-            const NetCache& cache = net->getCache();
-
-            for(unsigned i = 0; i < cache.layers.size(); ++i)
-                cout<<cache.layers[i].size()<<endl;
+    //Debug
+    const NetCache& cache = net->getCache();
+    for(unsigned i = 0; i < cache.layers.size(); ++i)
+        cout<<cache.layers[i].size()<<endl;
 
     Window window(net.get());
     window.show();
@@ -48,7 +48,7 @@ int main(int argc, char *argv[])
     return app.exec();
 }
 
-void autoload(NetPtr _obj, std::string _filename)
+void autoload(NetPtr& _obj, std::string _filename)
 {
     try {
         std::cout<<"Trying XML...\n";

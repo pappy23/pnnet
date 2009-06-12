@@ -57,14 +57,7 @@ namespace pann
      */
     class RandomizeWeightsGaussRunner : public Runner
     {
-        RandomizeWeightsGaussRunner() {};
-
-    public:
-        static RunnerPtr Instance()
-        {
-            static RunnerPtr self(new RandomizeWeightsGaussRunner());
-            return self;
-        }
+        SINGLETON_SKELETON(RandomizeWeightsGaussRunner, Runner);
 
         virtual void run(NeuronPtr _neuron, Net* _net) const;
 
@@ -72,17 +65,8 @@ namespace pann
         {
             return ForwardRun;
         }
-
-    private:
-        friend class boost::serialization::access;
-        template<class Archive>
-            void serialize(Archive & ar, const unsigned int version)
-            {
-                 boost::serialization::void_cast_register<RandomizeWeightsGaussRunner, Runner>(
-                    static_cast<RandomizeWeightsGaussRunner*>(NULL),
-                    static_cast<Runner*>(NULL));
-            };
     };
+    REGISTER_SINGLETON_H(RandomizeWeightsGaussRunner);
 
     /**
      * Weight is random number from [_min/sqrt(C); _max/sqrt(C)]
@@ -93,14 +77,7 @@ namespace pann
      */
     class RandomizeWeightsAccordingToInputsCountRunner : public Runner
     {
-        RandomizeWeightsAccordingToInputsCountRunner() {};
-
-    public:
-        static RunnerPtr Instance()
-        {
-            static RunnerPtr self(new RandomizeWeightsAccordingToInputsCountRunner());
-            return self;
-        }
+        SINGLETON_SKELETON(RandomizeWeightsAccordingToInputsCountRunner, Runner);
 
         virtual void run(NeuronPtr _neuron, Net* _net) const;
 
@@ -108,22 +85,10 @@ namespace pann
         {
             return ForwardRun;
         }
-
-    private:
-        friend class boost::serialization::access;
-        template<class Archive>
-            void serialize(Archive & ar, const unsigned int version)
-            {
-                 boost::serialization::void_cast_register<RandomizeWeightsAccordingToInputsCountRunner, Runner>(
-                    static_cast<RandomizeWeightsAccordingToInputsCountRunner*>(NULL),
-                    static_cast<Runner*>(NULL));
-            };
     };
+    REGISTER_SINGLETON_H(RandomizeWeightsAccordingToInputsCountRunner);
 
 }; //pann
-
-REGISTER_RUNNER(RandomizeWeightsGaussRunner);
-REGISTER_RUNNER(RandomizeWeightsAccordingToInputsCountRunner);
 
 #endif
 
