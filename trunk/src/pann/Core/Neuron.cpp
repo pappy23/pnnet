@@ -2,9 +2,7 @@
 
 #include "Neuron.h"
 #include "Runner.h"
-
-using namespace std;
-using namespace boost;
+#include "Weight.h"
 
 namespace pann
 {
@@ -106,7 +104,17 @@ namespace pann
     void
     Neuron::setBias(WeightPtr _bias)
     {
+        if(bias)
+        {
+            bias->decUsageCount();
+            bias->decUsageCount();
+        }
         bias = _bias;
+        if(bias)
+        {
+            bias->incUsageCount();
+            bias->incUsageCount();
+        }
     } //setBias
 
     void
