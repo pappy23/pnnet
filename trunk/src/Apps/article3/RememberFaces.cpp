@@ -245,6 +245,10 @@ void experiment2()
     TrainData tdata;
     for(unsigned i = 0; i < orl.size(); ++i)
     {
+        //Only 3 men at this time
+        if(orl[i].man > 3 || orl[i].pose != 1 || orl[i].shift != 1)
+            continue;
+
         TrainPattern tp(95*95, 2);
         tp.input = orl[i].img->getAverageValarray();
         squash(tp.input, 0.0, 255.0, -1.8, +1.8);
@@ -260,12 +264,12 @@ void experiment2()
     }
 
     //Trainig net
-    pnet->get<LmsNetAttributes>().learningRate = 0.4;
-    pnet->get<LmsNetAttributes>().annealingTSC = 3000;
-    pnet->get<WeightRandomizationAttributes>().min = -0.6;
-    pnet->get<WeightRandomizationAttributes>().max = +0.6;
-    pnet->run(RandomizeWeightsAccordingToInputsCountRunner::Instance());
-    pnet->setWorkThreadsCount(10);
+    pnet->get<LmsNetAttributes>().learningRate = 0.1;
+    pnet->get<LmsNetAttributes>().annealingTSC = 10;
+    pnet->get<WeightRandomizationAttributes>().min = -0.2;
+    pnet->get<WeightRandomizationAttributes>().max = +0.2;
+    pnet->run(RandomizeWeightsGaussRunner::Instance());
+    pnet->setWorkThreadsCount(1);
 
     unsigned const epochs = 10;
     cout<<"Training for "<<epochs<<" epochs\n";

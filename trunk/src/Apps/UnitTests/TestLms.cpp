@@ -26,7 +26,6 @@ int main()
     layers.push_back(make_tuple(1, Linear::Instance())); //input  - no act. fcn
     layers.push_back(make_tuple(16,TanH::Instance())  ); //hidden - tanh
     layers.push_back(make_tuple(9, TanH::Instance())  ); //hidden - tanh
-    layers.push_back(make_tuple(1, TanH::Instance())  ); //output - linear
     layers.push_back(make_tuple(1, Linear::Instance())); //output - linear
     NetPtr net = MultilayerPerceptron(layers);
 
@@ -41,10 +40,10 @@ int main()
 
     net->get<LmsNetAttributes>().learningRate = 0.2;
     net->get<LmsNetAttributes>().annealingTSC = 3000;
-    net->get<WeightRandomizationAttributes>().min = -0.6;
-    net->get<WeightRandomizationAttributes>().max = +0.6;
-    //net->run(RandomizeWeightsGaussRunner::Instance());
-    net->run(RandomizeWeightsAccordingToInputsCountRunner::Instance());
+    net->get<WeightRandomizationAttributes>().min = -0.3;
+    net->get<WeightRandomizationAttributes>().max = +0.3;
+    net->run(RandomizeWeightsGaussRunner::Instance());
+    //net->run(RandomizeWeightsAccordingToInputsCountRunner::Instance());
     Lms::train(net, td); //dry run to create all learning structures
 
     boost::progress_display progress(epochs);
@@ -56,13 +55,12 @@ int main()
         train_error_info.push_back(td.getMse());
     }
 
-    //test(net, -2.0, +2.0, +0.01);
+    test(net, -4.0, +4.0, +0.01);
 
     //Save trained net
-    //Storage::save<Storage::xml_out>(net, "test_lms.xml");
+    Storage::save<Storage::xml_out>(net, "test_lms.xml");
 
     //Plotting error graph
-    /*
     try {
         Gnuplot gp_err("lines");
         gp_err.set_title("Error by epoch");
@@ -74,7 +72,7 @@ int main()
     } catch(GnuplotException e) {
         cout << e.what() << endl;
     }
-    */
+
     return 0;
 }
 

@@ -48,7 +48,7 @@ namespace pann
         ActivationFunctionPtr _input_af = TanH::Instance(),
         ActivationFunctionPtr _conv_af  = TanH::Instance(),
         ActivationFunctionPtr _ss_af    = TanH::Instance(),
-        ActivationFunctionPtr _output_af= Linear::Instance()
+        ActivationFunctionPtr _output_af= TanH::Instance()
         );
 
     /**

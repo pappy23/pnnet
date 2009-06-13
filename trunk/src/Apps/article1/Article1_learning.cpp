@@ -26,10 +26,10 @@ int main()
     NetPtr net = MultilayerPerceptron(layers);
 
     //Learning
-    const unsigned epochs = 500;
+    const unsigned epochs = 1000;
     TrainData& td = *(DataGenerator::generateFromFunction(-3.0, +3.0, 20, func));
 
-    net->get<LmsNetAttributes>().learningRate = 0.1;
+    net->get<LmsNetAttributes>().learningRate = 0.3;
     net->get<LmsNetAttributes>().learningMomentum = 0.5;
     net->get<WeightRandomizationAttributes>().min = -0.6;
     net->get<WeightRandomizationAttributes>().max = +0.6;
