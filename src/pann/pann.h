@@ -38,13 +38,18 @@
 /**
  * Various network models generators
  */
+#include "Neurons/PyramidalNeuronFactory.h"
+
+/**
+ * Various network models generators
+ */
 #include "NetworkModels/MultilayerPerceptron.h"
 #include "NetworkModels/ConvolutionalNetwork.h"
 
 /**
  * General and specific learning algorithms
  */
-#include "LearningAlgorithms/Util/RandomizeWeights.h"
+#include "LearningAlgorithms/RandomizeWeights.h"
 #include "LearningAlgorithms/Lms.h"
 
 #endif

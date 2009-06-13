@@ -9,9 +9,6 @@
 #include "Includes/BoostSerialization.h"
 
 #include "Type.h"
-#include "Singleton.h"
-
-using boost::shared_ptr;
 
 namespace pann
 {

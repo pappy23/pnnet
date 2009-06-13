@@ -11,13 +11,19 @@
 #ifndef ATTRIBUTES_H
 #define ATTRIBUTES_H
 
-#include "Includes/BoostCommon.h"
 #include "Includes/BoostSerialization.h"
 
 #include "Type.h"
 
 namespace pann
 {
+    /**
+     * Hasher
+     * @param _name Readable name of attributes group
+     * @return Unique integer hash value
+     */
+    HashType hash(const char* _name);
+
     /**
      * Base class without instances
      */
@@ -76,13 +82,8 @@ namespace pann
             };
 
     }; //OpenGlAttributes
+    REGISTER_ATTRIBUTES_H(OpenGlAttributes);
 
 }; //pann
-
-#define REGISTER_ATTRIBUTES(C) \
-    BOOST_CLASS_EXPORT(pann::C) \
-    const pann::AttributesPtr C##Register(new pann::C());
-
-REGISTER_ATTRIBUTES(OpenGlAttributes);
 
 #endif

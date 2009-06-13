@@ -2,9 +2,9 @@
 
 #include "Core/Net.h"
 #include "Core/Neuron.h"
-#include "Core/NeuronFactory.h"
 #include "Core/Weight.h"
 #include "Core/Random.h"
+#include "Neurons/PyramidalNeuronFactory.h"
 
 #include "ConvolutionalNetwork.h"
 

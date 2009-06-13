@@ -1,8 +1,8 @@
 //MultilayerPerceptron.cpp
 
 #include "Core/Net.h"
-#include "Core/NeuronFactory.h"
 #include "Core/Weight.h"
+#include "Neurons/PyramidalNeuronFactory.h"
 
 #include "MultilayerPerceptron.h"
 

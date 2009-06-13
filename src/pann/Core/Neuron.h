@@ -10,11 +10,14 @@
 #include "Object.h"
 #include "Link.h"
 #include "ActivationFunction.h"
+#include "NeuronFactory.h"
 
 using std::list;
 
 namespace pann
 {
+    //TODO TODO TODO CONST PTRS!!! In Neuron, Net and Link methods
+
     class Weight;
     class Link;
 
@@ -25,35 +28,41 @@ namespace pann
     public:
         virtual ~Neuron() {};
 
-        //TODO
-        list<Link>& getInConnections() { return links_in; };
-        list<Link>& getOutConnections() { return links_out; };
+        void setInput(Float _value);
+        Float getReceptiveField() const;
+        Float getOutput() const;
 
-        //TODO
-        void setInput(Float _value) { receptiveField = _value; };
-        Float getOutput() const { return activationValue; };
-        const WeightPtr& getBias() { return bias; };
-        const ActivationFunctionPtr& getActivationFunction() { return activationFunction; };
+        //TODO Hide this
+        list<Link>& getInConnections();
+        list<Link>& getOutConnections();
 
-        const WeightPtr& getBias() const { return bias; };
-        const RunnerPtr& getFireRunner() const { return fireRunner; };
-        const RunnerPtr& getLearnRunner() const { return learnRunner; };
-        //TODO setRunner(), check fro direction
+        //TODO ConstPtr
+        const WeightPtr& getBias() const;
+        const ActivationFunctionPtr& getActivationFunction();
+        const RunnerPtr& getFireRunner() const;
+        const RunnerPtr& getLearnRunner() const;
+
 
     private:
+        //For pann::Net
         void addInConnection(NeuronPtr _to, WeightPtr _weight);
         void addOutConnection(NeuronPtr _to, WeightPtr _weight);
         void delInConnection(NeuronPtr _to);
         void delOutConnection(NeuronPtr _to);
 
-        list<Link> links_out;
-        list<Link> links_in;
+        //For pann::NeuronFactory
+        void setBias(WeightPtr _bias);
+        void setActivationFunction(ActivationFunctionPtr _af);
+        void setFireRunner(RunnerPtr _runner);
+        void setLearnRunner(RunnerPtr _runner);
 
-    public: //TODO
+    public:
         Float receptiveField;
         Float activationValue;
 
     private:
+        list<Link> links_out;
+        list<Link> links_in;
         WeightPtr bias;
         ActivationFunctionPtr activationFunction;
         RunnerPtr fireRunner;
@@ -63,7 +72,7 @@ namespace pann
         //template<class Archive>
         //friend void Net::serialize(Archive & ar, const unsigned int version);
         friend class Net;
-        friend class NeuronFactory;
+        friend NeuronPtr NeuronFactory::CustomNeuron(ActivationFunctionPtr, WeightPtr, RunnerPtr, RunnerPtr);
 
         friend class boost::serialization::access;
         template<class Archive>
