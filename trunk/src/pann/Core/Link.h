@@ -22,8 +22,8 @@ namespace pann
         Link(const Link& _rhs);
         virtual ~Link();
 
-        NeuronPtr getTo();
-        const NeuronPtr getTo() const;
+        const NeuronPtr& getTo();
+        const NeuronPtr& getTo() const;
 
         WeightPtr getWeight();
         const WeightPtr getWeight() const;

@@ -5,15 +5,6 @@
 #include "Core/Runner.h"
 #include "Core/Attributes.h"
 
-/*
-#include "Core/Net.h"
-#include "Core/NetCache.h"
-#include "Core/Neuron.h"
-#include "Core/Link.h"
-#include "Core/Random.h"
-#include "Core/Weight.h"
-*/
-
 namespace pann
 {
     /**
@@ -50,6 +41,7 @@ namespace pann
             };
 
     }; //RandomizeWeightsAttributes
+    REGISTER_ATTRIBUTES_H(WeightRandomizationAttributes);
 
     /**
      * Assign initial weights from interval [_min; _max]

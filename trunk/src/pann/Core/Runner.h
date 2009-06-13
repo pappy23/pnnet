@@ -6,12 +6,9 @@
 #ifndef RUNNER_H
 #define RUNNER_H
 
-#include "Type.h"
-#include "Net.h"
-#include "Neuron.h"
-#include "ActivationFunction.h"
+#include "Includes/BoostSerialization.h"
 
-using boost::shared_ptr;
+#include "Type.h"
 
 namespace pann
 {
@@ -75,17 +72,7 @@ namespace pann
     {
         SINGLETON_SKELETON(FeedforwardPropagationRunner, Runner);
 
-        virtual void run(NeuronPtr _neuron, Net* _net) const
-        {
-            const RunnerPtr& r = _neuron->getFireRunner();
-
-            if(r && r->getDirection() == ForwardRun)
-            {
-                r->run(_neuron, _net);
-            } else {
-                throw Exception()<<"Wrong runner\n";
-            }
-        }
+        virtual void run(NeuronPtr _neuron, Net* _net) const;
 
         virtual RunDirection getDirection() const
         {
@@ -101,17 +88,7 @@ namespace pann
     {
         SINGLETON_SKELETON(BackpropagationRunner, Runner);
 
-        virtual void run(NeuronPtr _neuron, Net* _net) const
-        {
-            const RunnerPtr& r = _neuron->getFireRunner();
-
-            if(r && r->getDirection() == BackwardRun)
-            {
-                r->run(_neuron, _net);
-            } else {
-                throw Exception()<<"Wrong runner\n";
-            }
-        }
+        virtual void run(NeuronPtr _neuron, Net* _net) const;
 
         virtual RunDirection getDirection() const
         {
@@ -119,36 +96,6 @@ namespace pann
         }
     }; //BackpropagationRunner
     REGISTER_SINGLETON_H(BackpropagationRunner);
-
-    /**
-     * Runner for pyramidal neurons feedforward propagation
-     */
-    class PyramidalNeuronFeedforwardRunner : public Runner
-    {
-        SINGLETON_SKELETON(PyramidalNeuronFeedforwardRunner, Runner);
-
-        virtual void run(NeuronPtr _neuron, Net* _net) const
-        {
-            if(_neuron->getActivationFunction())
-            {
-                if(_neuron->getBias())
-                    _neuron->receptiveField += _neuron->getBias()->getValue();
-
-                BOOST_FOREACH( const Link& link, _neuron->getInConnections() )
-                    _neuron->receptiveField += link.getTo()->getOutput() * link.getWeight()->getValue();
-
-                _neuron->activationValue = _neuron->getActivationFunction()->f(_neuron->receptiveField);
-            }
-
-            _neuron->receptiveField = 0;
-        }
-
-        virtual RunDirection getDirection() const
-        {
-            return ForwardRun;
-        }
-    }; //PyramidalNeuronFeedforwardRunner
-    REGISTER_SINGLETON_H(PyramidalNeuronFeedforwardRunner);
 
 }; //pann
 

@@ -12,7 +12,7 @@ namespace pann
 {
     /**
      * Basic class for all exceptions
-     * Use case: throw(Exception()<<"Hello"<<','<<" world!"<<5<<'\n')
+     * Use case: throw Exception()<<"Hello"<<','<<" world!"<<5<<'\n')
      *      catch(Exception& e)
      * Don't forget to declare your CoolException, derived from Exception
      */

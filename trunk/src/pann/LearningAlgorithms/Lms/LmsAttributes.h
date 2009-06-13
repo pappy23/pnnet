@@ -40,6 +40,7 @@ namespace pann
 
     }; //LmsNetAttributes
     ADD_PTR_TYPEDEF(LmsNetAttributes);
+    REGISTER_ATTRIBUTES_H(LmsNetAttributes);
 
     class LmsNeuronAttributes : public Attributes
     {
@@ -72,6 +73,7 @@ namespace pann
             };
 
     }; //LmsNeuronAttributes
+    REGISTER_ATTRIBUTES_H(LmsNeuronAttributes);
 
     class LmsLinkAttributes : public Attributes
     {
@@ -101,12 +103,9 @@ namespace pann
             };
 
     }; //LmsLinkAttributes
+    REGISTER_ATTRIBUTES_H(LmsLinkAttributes);
 
 }; //pann
-
-REGISTER_ATTRIBUTES(LmsNetAttributes);
-REGISTER_ATTRIBUTES(LmsNeuronAttributes);
-REGISTER_ATTRIBUTES(LmsLinkAttributes);
 
 #endif
 

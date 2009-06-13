@@ -1,10 +1,15 @@
 //RandomizeWeights.cpp
 
-#include "Core/Random.h"
+#include "Includes/BoostSerialization.h"
 #include "RandomizeWeights.h"
 
 REGISTER_SINGLETON_CPP(RandomizeWeightsGaussRunner);
 REGISTER_SINGLETON_CPP(RandomizeWeightsAccordingToInputsCountRunner);
+REGISTER_ATTRIBUTES_CPP(WeightRandomizationAttributes);
+
+#include "Core/Random.h"
+#include "Core/Neuron.h"
+#include "Core/Net.h"
 
 namespace pann
 {

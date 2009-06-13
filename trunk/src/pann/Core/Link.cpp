@@ -38,7 +38,7 @@ namespace pann
         return *this;
     } //operator=
 
-    NeuronPtr
+    const NeuronPtr&
     Link::getTo()
     {
         if(!to)
@@ -47,7 +47,7 @@ namespace pann
         return to;
     } //getTo
 
-    const NeuronPtr
+    const NeuronPtr&
     Link::getTo() const
     {
         if(!to)

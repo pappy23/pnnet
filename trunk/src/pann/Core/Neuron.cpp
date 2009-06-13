@@ -1,12 +1,67 @@
 //Neuron.cpp
 
 #include "Neuron.h"
+#include "Runner.h"
 
 using namespace std;
 using namespace boost;
 
 namespace pann
 {
+    void
+    Neuron::setInput(Float _value)
+    {
+        receptiveField = _value;
+    } //setInput
+
+    Float
+    Neuron::getReceptiveField() const
+    {
+        return receptiveField;
+    } //getReceptiveField
+
+    Float
+    Neuron::getOutput() const
+    {
+        return activationValue;
+    } //getOutput
+
+    list<Link>&
+    Neuron::getInConnections()
+    {
+        return links_in;
+    } //getInConnections
+
+    list<Link>&
+    Neuron::getOutConnections()
+    {
+        return links_out;
+    } //getOutConnections
+
+    const WeightPtr&
+    Neuron::getBias() const
+    {
+        return bias;
+    } //getBias
+
+    const ActivationFunctionPtr&
+    Neuron::getActivationFunction()
+    {
+        return activationFunction;
+    } //getActivationFunction
+
+    const RunnerPtr&
+    Neuron::getFireRunner() const
+    {
+        return fireRunner;
+    } //getFireRunner
+
+    const RunnerPtr&
+    Neuron::getLearnRunner() const
+    {
+        return learnRunner;
+    } //getLearnRunner
+
     void
     Neuron::addInConnection(NeuronPtr _to, WeightPtr _weight)
     {
@@ -47,26 +102,33 @@ namespace pann
 
         links_out.remove_if(bind(comparator::comp, _to, _1));
     } //delOutConnection
-/*
-    void
-    PyramidalNeuron::fire()
-    {
-        if(bias)
-            receptiveField += bias->getValue();
-
-        BOOST_FOREACH( const Link& link, links_in )
-            receptiveField += link.getTo()->getOutput() * link.getWeight()->getValue();
-
-        activationValue = 0;
-        if(activationFunction)
-            activationValue += activationFunction->f(receptiveField);
-
-        receptiveField = 0;
-    } //fire
 
     void
-    PyramidalNeuron::learn()
+    Neuron::setBias(WeightPtr _bias)
     {
-    } //learn
-*/
+        bias = _bias;
+    } //setBias
+
+    void
+    Neuron::setActivationFunction(ActivationFunctionPtr _af)
+    {
+        activationFunction = _af;
+    } //setActivationFunction
+
+    void
+    Neuron::setFireRunner(RunnerPtr _runner)
+    {
+        if(ForwardRun != _runner->getDirection())
+            throw Exception()<<"Neuron::setFireRunner(): Wrong direction\n";
+
+        fireRunner = _runner;
+    } //setFireRunner
+
+    void
+    Neuron::setLearnRunner(RunnerPtr _runner)
+    {
+        //Learning may be in forward direction too, so we don't check _runner direction
+        learnRunner = _runner;
+    } //setLearnRunner
+
 }; //pann

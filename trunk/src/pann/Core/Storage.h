@@ -40,6 +40,7 @@ namespace pann
 
             cout<<"Saving net to "<<_filename<<"..."<<endl;
             SerializatorType oa(ofs);
+//TODO For testing purposes i turned try/catch mechanism off
 //            try {
               oa << BOOST_SERIALIZATION_NVP(_obj);
 //            } catch(boost::archive::archive_exception& e) {
