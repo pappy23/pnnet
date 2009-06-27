@@ -40,5 +40,7 @@ namespace pann
         }
     } //train
 
+    void test(NetPtr _net, TrainData& _td);
+
 }; //pann
 

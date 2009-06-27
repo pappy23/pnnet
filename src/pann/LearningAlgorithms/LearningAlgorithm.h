@@ -18,6 +18,8 @@ namespace pann
         static void train(NetPtr _net, TrainData& _trainData);
     };
 
+    void test(NetPtr _net, TrainData& _td);
+
 }; //pann
 
 #endif
