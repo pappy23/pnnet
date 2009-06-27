@@ -44,7 +44,7 @@ namespace pann
     namespace DataGenerator
     {
         TrainData
-        divide(TrainData& _td, unsigned _percentage)
+        divide2(TrainData& _td, unsigned _percentage)
         {
             TrainData new_td;
             unsigned count = unsigned(_td.data.size() * _percentage / 100.0);

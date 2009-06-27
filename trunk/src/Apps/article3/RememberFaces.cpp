@@ -283,6 +283,89 @@ void experiment2()
     Storage::save<Storage::txt_out>(pnet, "Exp2.net");
 } //experiment2
 
+/*
+ * Большая сверточная сеть, по 1 выходному нейрону на человека
+ * Отделяем тестовое множество и учим сеть
+ */
+void experiment3()
+{
+    vector<unsigned> planes;
+    planes += 20,50,40;
+    NetPtr pnet = ConvolutionalNetwork(planes, 0.8);
+
+    pnet->get<LmsNetAttributes>().learningRate = 0.1;
+    pnet->get<LmsNetAttributes>().annealingTSC = 10;
+    pnet->get<WeightRandomizationAttributes>().min = -0.2;
+    pnet->get<WeightRandomizationAttributes>().max = +0.2;
+    pnet->run(RandomizeWeightsGaussRunner::Instance());
+    pnet->setWorkThreadsCount(0); //unleash the power of double quad core Xeon (c)
+    unsigned const epochs = 10;
+
+    //Formatting TrainData from raw_data
+    TrainData all_data;
+    for(unsigned i = 0; i < orl.size(); ++i)
+    {
+        TrainPattern tp(95*95, 40);
+        tp.input = orl[i].img->getAverageValarray();
+        squash(tp.input, 0.0, 255.0, -1.8, +1.8);
+        for(unsigned j = 0; j < 40; ++j)
+            tp.desired_output[j] = -1.8;
+        tp.desired_output[orl[i].man - 1] = +1.8;
+        all_data.data.push_back(tp);
+    }
+    pair<vector<TrainPattern>, vector<TrainPattern> > bunch = DataGenerator::divide(all_data.data, 20);
+    TrainData train_data, test_data;
+    train_data.data = bunch.first; //80%
+    test_data.data = bunch.second; //20%
+
+    //Trainig net
+    cout<<"Training for "<<epochs<<" epochs\n";
+    for(unsigned i = 1; i <= epochs; ++i)
+    {
+        train_data.shuffle();
+        Lms::train(pnet, train_data);
+        test(pnet, test_data);
+        cout<<i<<"\t"<<train_data.getMse()<<"\t"<<test_data.getMse()<<"\n";
+    }
+
+    //Print detailed test results
+    cout<<"Detailed test results\n";
+    for(unsigned i = 0; i < 20; ++i)
+    {
+        //Select 20 images from ORL faces
+        unsigned id = std::rand() % orl.size();
+
+        //Convert image to TrainPattern
+        TrainPattern tp(95*95, 40);
+        tp.input = orl[id].img->getAverageValarray();
+        squash(tp.input, 0.0, 255.0, -1.8, +1.8);
+        for(unsigned j = 0; j < 40; ++j)
+            tp.desired_output[j] = -1.8;
+        tp.desired_output[orl[id].man - 1] = +1.8;
+
+        //Process it
+        pnet->setInput(tp.input);
+        pnet->run(FeedforwardPropagationRunner::Instance());
+        valarray<Float> output;
+        pnet->getOutput(output);
+        tp.error = tp.desired_output - output;
+
+        //Print detailed info about image and MSE
+        cout<<"\nMan:\t"<<orl[id].man \
+            <<"\nPose:\t"<<orl[id].pose \
+            <<"\nShift:\t"<<orl[id].shift \
+            <<"\nNoise:\t"<<orl[id].noise \
+            <<"\nError:\t"<<tp.getMse();
+
+        //Print actual network output
+        for(unsigned j = 0; j < 40; ++j)
+            cout<<j<<":\t"<<output[j]<<"\n";
+        cout<<"\n";
+    }
+
+    Storage::save<Storage::txt_out>(pnet, "Exp3.net");
+} //experiment3
+
 int main(int argc, char* argv[])
 {
     if(argc != 2)
@@ -294,7 +377,7 @@ int main(int argc, char* argv[])
     //Processing images
     readImages(argv[1], orl);
 
-    experiment2();
+    experiment3();
 
     //Debug
     /*
