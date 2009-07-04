@@ -24,7 +24,7 @@ namespace pann
     /**
      * Drop coin with specified probability
      */
-    bool rand(Float _probability = 0.5);
+    bool rand_coin(Float _probability = 0.5);
 
 }; //pann
 
