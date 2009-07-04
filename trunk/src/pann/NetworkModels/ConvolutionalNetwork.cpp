@@ -166,11 +166,14 @@ namespace pann
                  * SS layer
                  *
                  * x1,x2,x3,x4 - inputs
-                 * y = f((x1+x2+x3+x4)/4 * W + bias)
+                 * y = f((x1+x2+x3+x4) * W + bias)
                  * f(x) = tanh(x)
                  */
                 Plane ss_plane;
+                //According to LeCunn each plane in SS layer holds only 2
+                //trainable parameters - shared weight and shared bias
                 shared_bias.reset(new Weight(1));
+                WeightPtr shared_ss_weight(new Weight(1));
                 for(unsigned i = 0; i < current_layer_ss_plane_height; ++i)
                 {
                     ss_plane.push_back(Row());
@@ -186,9 +189,6 @@ namespace pann
 
                         //Connecting SS-neuron to corresponding convolutional
                         //neurons
-                        //TODO shared_weight is shared over connections to same
-                        //TODO SS neuron or between all SS neurons in same plane?
-                        WeightPtr shared_weight(new Weight(1));
                         if(!is_input_layer)
                         {
                             for(unsigned l = 0; l < ss_range; ++l)
@@ -199,7 +199,7 @@ namespace pann
                                             [i * ss_range + l] \
                                             [j * ss_range + m],
                                             neuron,
-                                            shared_weight);
+                                            shared_ss_weight);
                                 }
                             }
                         }
@@ -243,7 +243,7 @@ namespace pann
                     bool all_false = true;
                     for(unsigned i = 0; i < conn_matrix.size(); ++i)
                     {
-                        conn_matrix[i] = rand(_connection_density);
+                        conn_matrix[i] = rand_coin(_connection_density);
                         if(conn_matrix[i])
                             all_false = false;
                     }
@@ -257,28 +257,16 @@ namespace pann
                 //Phase 3: Actual connections
                 //i iterates over next layer planes
                 for(unsigned i = 0; i < model[current_layer + 2].size(); ++i)
-                {
                     if(conn_matrix[i])
-                    {
                         for(unsigned j = 0; j < next_layer_plane_height; ++j)
-                        {
                             for(unsigned k = 0; k < next_layer_plane_width; ++k)
-                            {
                                 for(unsigned l = 0; l < _window_height; ++l)
-                                {
                                     for(unsigned m = 0; m < _window_width; ++m)
-                                    {
                                         net.addConnection(ss_plane \
                                         [j * (_window_height - _window_vert_overlap) + l] \
-                                        [k * (_window_width - _window_horiz_overlap) + m], 
+                                        [k * (_window_width - _window_horiz_overlap) + m],
                                         model[current_layer + 2][i][j][k],
                                         shared_conv_weights[l][m]);
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
 
                 //Adding created CONV and SS planes to model
                 model[current_layer + 1].push_back(ss_plane);

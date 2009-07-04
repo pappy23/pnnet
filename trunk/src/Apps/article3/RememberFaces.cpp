@@ -21,6 +21,23 @@ struct ImageWithMetadata
 vector<ImageWithMetadata> orl;
 
 /**
+ * Converts orl image to TrainPattern
+ * @param _men - number of outputs
+ */
+TrainPattern imgm2tp(const ImageWithMetadata& _data, unsigned _men)
+{
+    //Convert image to TrainPattern
+    TrainPattern tp(95*95, _men);
+    tp.input = _data.img->getAverageValarray();
+    squash(tp.input, 0.0, 255.0, -0.5, +1.8);
+    for(unsigned j = 0; j < _men; ++j)
+        tp.desired_output[j] = -1.8;
+    tp.desired_output[_data.man - 1] = +1.8;
+
+    return tp;
+} //imgm2tp
+
+/**
  * Build Mirror Convolutional Network topology
  * @see ConvolutionalNetwork()
  */
@@ -238,16 +255,16 @@ void experiment1()
 void experiment2()
 {
     vector<unsigned> planes;
-    planes += 20,50,2;
-    NetPtr pnet = ConvolutionalNetwork(planes, 0.8);
+    planes += 8,20,2;
+    NetPtr pnet = ConvolutionalNetwork(planes, 0.6);
 
     //Formatting TrainData from raw_data
     TrainData tdata;
     for(unsigned i = 0; i < orl.size(); ++i)
     {
         //Only 3 men at this time
-        if(orl[i].man > 3 || orl[i].pose != 1 || orl[i].shift != 1)
-            continue;
+        //if(orl[i].man > 3 || orl[i].pose != 1)
+        //    continue;
 
         TrainPattern tp(95*95, 2);
         tp.input = orl[i].img->getAverageValarray();
@@ -264,14 +281,14 @@ void experiment2()
     }
 
     //Trainig net
-    pnet->get<LmsNetAttributes>().learningRate = 0.1;
-    pnet->get<LmsNetAttributes>().annealingTSC = 10;
-    pnet->get<WeightRandomizationAttributes>().min = -0.2;
-    pnet->get<WeightRandomizationAttributes>().max = +0.2;
+    pnet->get<LmsNetAttributes>().learningRate = 0.3;
+    pnet->get<LmsNetAttributes>().annealingTSC = 10000;
+    pnet->get<WeightRandomizationAttributes>().min = -0.1;
+    pnet->get<WeightRandomizationAttributes>().max = +0.1;
     pnet->run(RandomizeWeightsGaussRunner::Instance());
-    pnet->setWorkThreadsCount(1);
+    pnet->setWorkThreadsCount(0);
 
-    unsigned const epochs = 10;
+    unsigned const epochs = 100;
     cout<<"Training for "<<epochs<<" epochs\n";
     for(unsigned i = 1; i < epochs; ++i)
     {
@@ -289,34 +306,55 @@ void experiment2()
  */
 void experiment3()
 {
+    unsigned const men = 10;
+    unsigned const epochs = 100;
     vector<unsigned> planes;
-    planes += 20,50,40;
-    NetPtr pnet = ConvolutionalNetwork(planes, 0.8);
+    planes += 10,50,men;
+    NetPtr pnet = ConvolutionalNetwork(planes, 0.6);
 
     pnet->get<LmsNetAttributes>().learningRate = 0.1;
-    pnet->get<LmsNetAttributes>().annealingTSC = 10;
-    pnet->get<WeightRandomizationAttributes>().min = -0.2;
-    pnet->get<WeightRandomizationAttributes>().max = +0.2;
+    pnet->get<LmsNetAttributes>().annealingTSC = 20;
+    pnet->get<WeightRandomizationAttributes>().min = -0.1;
+    pnet->get<WeightRandomizationAttributes>().max = +0.1;
     pnet->run(RandomizeWeightsGaussRunner::Instance());
     pnet->setWorkThreadsCount(0); //unleash the power of double quad core Xeon (c)
-    unsigned const epochs = 10;
 
     //Formatting TrainData from raw_data
     TrainData all_data;
+    unsigned total_img = 0;
     for(unsigned i = 0; i < orl.size(); ++i)
     {
-        TrainPattern tp(95*95, 40);
+        if(orl[i].man > men)
+            continue;
+
+        total_img++;
+
+        all_data.data.push_back(imgm2tp(orl[i], men));
+        /*
+        TrainPattern tp(95*95, men);
         tp.input = orl[i].img->getAverageValarray();
         squash(tp.input, 0.0, 255.0, -1.8, +1.8);
-        for(unsigned j = 0; j < 40; ++j)
+        for(unsigned j = 0; j < men; ++j)
             tp.desired_output[j] = -1.8;
         tp.desired_output[orl[i].man - 1] = +1.8;
         all_data.data.push_back(tp);
+        */
     }
-    pair<vector<TrainPattern>, vector<TrainPattern> > bunch = DataGenerator::divide(all_data.data, 20);
+    cout<<"Prepared "<<total_img<<" images\n";
+    pair<vector<TrainPattern>, vector<TrainPattern> > bunch = DataGenerator::divide(all_data.data, 50);
     TrainData train_data, test_data;
     train_data.data = bunch.first; //80%
     test_data.data = bunch.second; //20%
+
+    /*
+    for(int p = 1; p < 20; p++)
+    {
+    pnet->setWorkThreadsCount(p); //unleash the power of double quad core Xeon (c)
+#ifdef UNIX
+        struct timeval start, stop;
+        gettimeofday(&start, 0);
+#endif
+    */
 
     //Trainig net
     cout<<"Training for "<<epochs<<" epochs\n";
@@ -327,21 +365,35 @@ void experiment3()
         test(pnet, test_data);
         cout<<i<<"\t"<<train_data.getMse()<<"\t"<<test_data.getMse()<<"\n";
     }
+    /*
+#ifdef UNIX
+        gettimeofday(&stop, 0);
+        cout<<"Processes: "<<p<<"\tTimeDiff: "<<(stop.tv_sec-start.tv_sec)<<"sec "<<(stop.tv_usec-start.tv_usec)<<"usec\n\n";
+#endif
+    }
+    */
 
     //Print detailed test results
     cout<<"Detailed test results\n";
-    for(unsigned i = 0; i < 20; ++i)
-    {
+    unsigned count = 0;
+    do {
         //Select 20 images from ORL faces
         unsigned id = std::rand() % orl.size();
+        if(orl[id].man > men)
+            continue;
+
+        count++;
 
         //Convert image to TrainPattern
-        TrainPattern tp(95*95, 40);
+        TrainPattern tp = imgm2tp(orl[id], men);
+        /*
+        TrainPattern tp(95*95, men);
         tp.input = orl[id].img->getAverageValarray();
         squash(tp.input, 0.0, 255.0, -1.8, +1.8);
-        for(unsigned j = 0; j < 40; ++j)
+        for(unsigned j = 0; j < men; ++j)
             tp.desired_output[j] = -1.8;
         tp.desired_output[orl[id].man - 1] = +1.8;
+        */
 
         //Process it
         pnet->setInput(tp.input);
@@ -355,13 +407,13 @@ void experiment3()
             <<"\nPose:\t"<<orl[id].pose \
             <<"\nShift:\t"<<orl[id].shift \
             <<"\nNoise:\t"<<orl[id].noise \
-            <<"\nError:\t"<<tp.getMse();
+            <<"\nError:\t"<<tp.getMse()<<"\n";
 
         //Print actual network output
-        for(unsigned j = 0; j < 40; ++j)
-            cout<<j<<":\t"<<output[j]<<"\n";
+        for(unsigned j = 0; j < men; ++j)
+            cout<<j+1<<":\t"<<output[j]<<"\n";
         cout<<"\n";
-    }
+    } while(count < 20);
 
     Storage::save<Storage::txt_out>(pnet, "Exp3.net");
 } //experiment3

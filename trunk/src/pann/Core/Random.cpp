@@ -32,7 +32,7 @@ namespace pann
     } //rand
 
     bool
-    rand(Float _probability)
+    rand_coin(Float _probability)
     {
         return rand01() < _probability;
     } //rand
