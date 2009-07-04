@@ -1,7 +1,6 @@
 #ifndef SQUASH_H
 #define SQUASH_H
 
-
 #include <valarray>
 
 using namespace std;
@@ -56,6 +55,42 @@ namespace pann
 
         return result;
     } //squash_copy
+
+    template<class T>
+    void shuffle(T _data)
+    {
+        random_shuffle(_data.begin(), _data.end());
+    } //shuffle
+
+    template<class T>
+    Float average(T _data)
+    {
+        Float res = 0;
+
+        if(!_data.size())
+            return 0;
+
+        typename T::iterator iter = _data.begin();
+        for(; iter != _data.end(); ++iter)
+            res += *iter;
+
+        return res / Float(_data.size());
+    } //average
+
+    template<class T>
+    std::pair<T, T>
+    divide(T& _td, unsigned _percentage)
+    {
+        std::pair<T, T> result = make_pair(_td, T());
+        unsigned count = unsigned(_td.size() * _percentage / 100.0);
+        for(unsigned i = 0; i < count; i++)
+        {
+            result.second.push_back(result.first.back());
+            result.first.pop_back();
+        }
+
+        return result;
+    } //divide
 
 }; //pann
 

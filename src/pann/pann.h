@@ -29,7 +29,6 @@
 /**
  * Dealing with IO, data division and format
  */
-#include "TrainData/TrainPattern.h"
 #include "TrainData/TrainData.h"
 #include "TrainData/TrainDataGenerator.h"
 #include "TrainData/Image.h"
@@ -49,8 +48,10 @@
 /**
  * General and specific learning algorithms
  */
-#include "LearningAlgorithms/RandomizeWeights.h"
+#include "LearningAlgorithms/ErrorFunction.h"
+#include "LearningAlgorithms/LearningAlgorithm.h"
 #include "LearningAlgorithms/Lms.h"
+#include "LearningAlgorithms/RandomizeWeights.h"
 
 #endif
 

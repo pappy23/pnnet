@@ -13,6 +13,7 @@ struct ImageWithMetadata
     unsigned pose; // 1 - 10
     unsigned shift; // 1 - 4
     unsigned noise; //0 - no noise, 1 -  small noise
+    //FIXME Use share_ptr
     Image *img; //Pointer, becase Image lacks default constructor
 };
 
@@ -28,11 +29,11 @@ TrainPattern imgm2tp(const ImageWithMetadata& _data, unsigned _men)
 {
     //Convert image to TrainPattern
     TrainPattern tp(95*95, _men);
-    tp.input = _data.img->getAverageValarray();
-    squash(tp.input, 0.0, 255.0, -0.5, +1.8);
+    tp.input() = _data.img->getAverageValarray();
+    squash(tp.input(), 0.0, 255.0, -0.5, +1.8);
     for(unsigned j = 0; j < _men; ++j)
-        tp.desired_output[j] = -1.8;
-    tp.desired_output[_data.man - 1] = +1.8;
+        tp.desired_output()[j] = -1.8;
+    tp.desired_output()[_data.man - 1] = +1.8;
 
     return tp;
 } //imgm2tp
@@ -202,16 +203,16 @@ void experiment1()
     for(unsigned i = 0; i < raw_data.size(); ++i)
     {
         TrainPattern tp(95*95, 95*95);
-        tp.input = raw_data[i].img->getAverageValarray();
-        squash(tp.input, 0.0, 255.0, -1.8, +1.8);
-        tp.desired_output = template_img.img->getAverageValarray();
-        squash(tp.desired_output, 0.0, 255.0, -1.8, +1.8);
-        tdata.data.push_back(tp);
+        tp.input() = raw_data[i].img->getAverageValarray();
+        squash(tp.input(), 0.0, 255.0, -1.8, +1.8);
+        tp.desired_output() = template_img.img->getAverageValarray();
+        squash(tp.desired_output(), 0.0, 255.0, -1.8, +1.8);
+        tdata.push_back(tp);
     }
 
     //Test run
     cout<<"Test run\n";
-    pnet->setInput(tdata.data[0].input);
+    pnet->setInput(tdata[0].input());
     pnet->run(FeedforwardPropagationRunner::Instance());
     valarray<Float> test_output(95*95);
     pnet->getOutput(test_output);
@@ -240,9 +241,9 @@ void experiment1()
     cout<<"Training for "<<epochs<<" epochs\n";
     for(unsigned i = 1; i < epochs; ++i)
     {
-        tdata.shuffle();
+        shuffle(tdata);
         Lms::train(pnet, tdata);
-        cout<<i<<"\t"<<tdata.getMse()<<"\n";
+        cout<<i<<"\t"<<ErrorFunction::mse(tdata)<<"\n";
     }
 
     Storage::save<Storage::txt_out>(pnet, "MirrorConvNet_Exp1.net");
@@ -267,17 +268,17 @@ void experiment2()
         //    continue;
 
         TrainPattern tp(95*95, 2);
-        tp.input = orl[i].img->getAverageValarray();
-        squash(tp.input, 0.0, 255.0, -1.8, +1.8);
+        tp.input() = orl[i].img->getAverageValarray();
+        squash(tp.input(), 0.0, 255.0, -1.8, +1.8);
         if(1 == orl[i].man)
         {
-            tp.desired_output[0] = 1.8;
-            tp.desired_output[1] = -1.8;
+            tp.desired_output()[0] = 1.8;
+            tp.desired_output()[1] = -1.8;
         } else {
-            tp.desired_output[0] = -1.8;
-            tp.desired_output[1] = 1.8;
+            tp.desired_output()[0] = -1.8;
+            tp.desired_output()[1] = 1.8;
         }
-        tdata.data.push_back(tp);
+        tdata.push_back(tp);
     }
 
     //Trainig net
@@ -292,9 +293,9 @@ void experiment2()
     cout<<"Training for "<<epochs<<" epochs\n";
     for(unsigned i = 1; i < epochs; ++i)
     {
-        tdata.shuffle();
+        shuffle(tdata);
         Lms::train(pnet, tdata);
-        cout<<i<<"\t"<<tdata.getMse()<<"\n";
+        cout<<i<<"\t"<<ErrorFunction::mse(tdata)<<"\n";
     }
 
     Storage::save<Storage::txt_out>(pnet, "Exp2.net");
@@ -306,14 +307,14 @@ void experiment2()
  */
 void experiment3()
 {
-    unsigned const men = 10;
+    unsigned const men = 3;
     unsigned const epochs = 100;
     vector<unsigned> planes;
     planes += 10,50,men;
-    NetPtr pnet = ConvolutionalNetwork(planes, 0.6);
+    NetPtr pnet = ConvolutionalNetwork(planes, 0.4);
 
     pnet->get<LmsNetAttributes>().learningRate = 0.1;
-    pnet->get<LmsNetAttributes>().annealingTSC = 20;
+    pnet->get<LmsNetAttributes>().annealingTSC = 10;
     pnet->get<WeightRandomizationAttributes>().min = -0.1;
     pnet->get<WeightRandomizationAttributes>().max = +0.1;
     pnet->run(RandomizeWeightsGaussRunner::Instance());
@@ -329,22 +330,13 @@ void experiment3()
 
         total_img++;
 
-        all_data.data.push_back(imgm2tp(orl[i], men));
-        /*
-        TrainPattern tp(95*95, men);
-        tp.input = orl[i].img->getAverageValarray();
-        squash(tp.input, 0.0, 255.0, -1.8, +1.8);
-        for(unsigned j = 0; j < men; ++j)
-            tp.desired_output[j] = -1.8;
-        tp.desired_output[orl[i].man - 1] = +1.8;
-        all_data.data.push_back(tp);
-        */
+        all_data.push_back(imgm2tp(orl[i], men));
     }
     cout<<"Prepared "<<total_img<<" images\n";
-    pair<vector<TrainPattern>, vector<TrainPattern> > bunch = DataGenerator::divide(all_data.data, 50);
+    pair<vector<TrainPattern>, vector<TrainPattern> > bunch = divide(all_data, 50);
     TrainData train_data, test_data;
-    train_data.data = bunch.first; //80%
-    test_data.data = bunch.second; //20%
+    train_data = bunch.first; //80%
+    test_data = bunch.second; //20%
 
     /*
     for(int p = 1; p < 20; p++)
@@ -360,10 +352,10 @@ void experiment3()
     cout<<"Training for "<<epochs<<" epochs\n";
     for(unsigned i = 1; i <= epochs; ++i)
     {
-        train_data.shuffle();
+        shuffle(train_data);
         Lms::train(pnet, train_data);
         test(pnet, test_data);
-        cout<<i<<"\t"<<train_data.getMse()<<"\t"<<test_data.getMse()<<"\n";
+        cout<<i<<"\t"<<ErrorFunction::mse(train_data)<<"\t"<<ErrorFunction::mse(test_data)<<"\n";
     }
     /*
 #ifdef UNIX
@@ -386,32 +378,22 @@ void experiment3()
 
         //Convert image to TrainPattern
         TrainPattern tp = imgm2tp(orl[id], men);
-        /*
-        TrainPattern tp(95*95, men);
-        tp.input = orl[id].img->getAverageValarray();
-        squash(tp.input, 0.0, 255.0, -1.8, +1.8);
-        for(unsigned j = 0; j < men; ++j)
-            tp.desired_output[j] = -1.8;
-        tp.desired_output[orl[id].man - 1] = +1.8;
-        */
 
         //Process it
-        pnet->setInput(tp.input);
+        pnet->setInput(tp.input());
         pnet->run(FeedforwardPropagationRunner::Instance());
-        valarray<Float> output;
-        pnet->getOutput(output);
-        tp.error = tp.desired_output - output;
+        pnet->getOutput(tp.actual_output());
 
         //Print detailed info about image and MSE
         cout<<"\nMan:\t"<<orl[id].man \
             <<"\nPose:\t"<<orl[id].pose \
             <<"\nShift:\t"<<orl[id].shift \
             <<"\nNoise:\t"<<orl[id].noise \
-            <<"\nError:\t"<<tp.getMse()<<"\n";
+            <<"\nError:\t"<<ErrorFunction::mse(tp)<<"\n";
 
         //Print actual network output
         for(unsigned j = 0; j < men; ++j)
-            cout<<j+1<<":\t"<<output[j]<<"\n";
+            cout<<j+1<<":\t"<<tp.actual_output()[j]<<"\n";
         cout<<"\n";
     } while(count < 20);
 

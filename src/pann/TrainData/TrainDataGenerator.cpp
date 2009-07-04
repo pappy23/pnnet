@@ -14,49 +14,17 @@
 
 #include "TrainDataGenerator.h"
 
-#include "TrainData.h"
-#include "TrainPattern.h"
-
 using namespace std;
 using namespace boost;
 //using namespace boost::gil;
 
+//TODO remove this file
+
 namespace pann
 {
-    namespace Util
-    {
-        Float
-        test(Net& _net, TrainData& _td)
-        {
-            BOOST_FOREACH(TrainPattern& tp, _td.data)
-            {
-                _net.setInput(tp.input);
-                _net.run(FeedforwardPropagationRunner::Instance());
-                _net.getOutput(tp.error); //actual output
-                tp.error = tp.desired_output - tp.error; 
-            }
-
-            return _td.getMse();
-        } //test
-
-    }; //Util
-
     namespace DataGenerator
     {
-        TrainData
-        divide2(TrainData& _td, unsigned _percentage)
-        {
-            TrainData new_td;
-            unsigned count = unsigned(_td.data.size() * _percentage / 100.0);
-            for(unsigned i = 0; i < count; i++)
-            {
-                new_td.data.push_back(_td.data.back());
-                _td.data.pop_back();
-            }
-
-            return new_td;
-        } //divide
-
+        /*
         TrainData*
         generateFromFunction(Float _min, Float _max, unsigned _count, boost::function<Float (Float _x)> _f)
         {
@@ -67,12 +35,12 @@ namespace pann
                 TrainPattern tp(1, 1);
                 tp.input[0] = rand(_min, _max);
                 tp.desired_output[0] = _f(tp.input[0]);
-                td->data.push_back(tp);
+                td->push_back(tp);
             }
 
             return td;
         } //generateFromFunction
-
+*/
     /*
         valarray<Float>
         jpeg_rgb2valarray(string _filename, unsigned _width, unsigned _height)
