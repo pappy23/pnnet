@@ -9,43 +9,13 @@
 
 #include "Core/Type.h"
 #include "Squash.h"
+#include "TrainData.h"
 
 namespace pann
 {
-    class TrainData;
-
-    namespace Util
-    {
-        /**
-         * Run network with _td and return mean squared error
-         */
-        Float test(Net& _net, TrainData& _td);
-
-    }; //Util
-
     namespace DataGenerator
     {
-        /**
-         * Cut _percentage of TrainPatterns from _td.data and spawn new TrainData from them
-         */
-        TrainData divide2(TrainData& _td, unsigned _percentage);
-
-        template<class T>
-        std::pair<T, T>
-        divide(T& _td, unsigned _percentage)
-        {
-            std::pair<T, T> result = make_pair(_td, T());
-            unsigned count = unsigned(_td.size() * _percentage / 100.0);
-            for(unsigned i = 0; i < count; i++)
-            {
-                result.second.push_back(result.first.back());
-                result.first.pop_back();
-            }
-
-            return result;
-        } //divide
-
-        TrainData* generateFromFunction(Float _min, Float _max, unsigned _count, boost::function<Float (Float _x)> _f);
+    //    TrainData* generateFromFunction(Float _min, Float _max, unsigned _count, boost::function<Float (Float _x)> _f);
 
         /**
          * Read JPEG-file in RGB8 from disk and put it to valarray
