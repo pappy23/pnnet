@@ -25,8 +25,9 @@ int main()
     //Learning
     TrainData td;
     TrainPattern tp(1,1);
-    tp.input[0] = 1; tp.desired_output[0] = 1;
-    td.data.push_back(tp);
+    tp.input()[0] = 1;
+    tp.desired_output()[0] = 1;
+    td.push_back(tp);
 
     net->get<LmsNetAttributes>().learningRate = 0.2;
     net->get<LmsNetAttributes>().learningMomentum = 0.5;
