@@ -57,13 +57,13 @@ namespace pann
     } //squash_copy
 
     template<class T>
-    void shuffle(T _data)
+    void shuffle(T& _data)
     {
         random_shuffle(_data.begin(), _data.end());
     } //shuffle
 
     template<class T>
-    Float average(T _data)
+    Float average(const T& _data)
     {
         Float res = 0;
 
@@ -79,7 +79,7 @@ namespace pann
 
     template<class T>
     std::pair<T, T>
-    divide(T& _td, unsigned _percentage)
+    divide(const T& _td, unsigned _percentage)
     {
         std::pair<T, T> result = make_pair(_td, T());
         unsigned count = unsigned(_td.size() * _percentage / 100.0);
