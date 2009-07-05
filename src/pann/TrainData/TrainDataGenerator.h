@@ -15,7 +15,7 @@ namespace pann
 {
     namespace DataGenerator
     {
-    //    TrainData* generateFromFunction(Float _min, Float _max, unsigned _count, boost::function<Float (Float _x)> _f);
+        TrainData* generateFromFunction(Float _min, Float _max, unsigned _count, boost::function<Float (Float _x)> _f);
 
         /**
          * Read JPEG-file in RGB8 from disk and put it to valarray

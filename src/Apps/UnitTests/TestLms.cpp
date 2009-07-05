@@ -50,9 +50,9 @@ int main()
     for(unsigned i = 1; i < epochs; ++i)
     {
         ++progress;
-        td.shuffle();
+        shuffle(td);
         Lms::train(net, td);
-        train_error_info.push_back(td.getMse());
+        train_error_info.push_back(ErrorFunction::mse(td));
     }
 
     test(net, -4.0, +4.0, +0.01);
@@ -85,17 +85,17 @@ void test(NetPtr net, Float start, Float stop, Float step)
     for(Float x = start; x < stop; x += step, ++i)
     {
         TrainPattern tmp(1, 1);
-        tmp.input[0] = x;
-        tmp.desired_output[0] = func(x);
+        tmp.input()[0] = x;
+        tmp.desired_output()[0] = func(x);
 
-        net->setInput(tmp.input);
+        net->setInput(tmp.input());
         net->run(FeedforwardPropagationRunner::Instance());
-        net->getOutput(tmp.error); //actual output
+        net->getOutput(tmp.actual_output()); //actual output
 
         input.push_back(x);
         desired_output.push_back(func(x));
-        output.push_back(tmp.error[0]);
-        error.push_back(tmp.desired_output[0] - tmp.error[0]);
+        output.push_back(tmp.actual_output()[0]);
+        error.push_back(tmp.error()[0]);
     }
 
     try {

@@ -104,7 +104,7 @@ int main()
         const unsigned layers_count = 1;
 
         TrainPattern tp(1, 1);
-        tp.input[0] = -10;
+        tp.input()[0] = -10;
 
         {
             vector<tuple<unsigned, ActivationFunctionPtr> > layers;
@@ -155,7 +155,7 @@ int main()
                     cout.flush();
                     {
                         progress_timer t;
-                        net_ptr->setInput(tp.input);
+                        net_ptr->setInput(tp.input());
                         net_ptr->run(FeedforwardPropagationRunner::Instance());
                     }
                 }
