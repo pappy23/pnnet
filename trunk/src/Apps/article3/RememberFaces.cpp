@@ -256,8 +256,8 @@ void experiment1()
 void experiment2()
 {
     vector<unsigned> planes;
-    planes += 8,20,2;
-    NetPtr pnet = ConvolutionalNetwork(planes, 0.6);
+    planes += 20,50,2;
+    NetPtr pnet = ConvolutionalNetwork(planes, 0.8);
 
     //Formatting TrainData from raw_data
     TrainData tdata;
@@ -307,14 +307,14 @@ void experiment2()
  */
 void experiment3()
 {
-    unsigned const men = 3;
+    unsigned const men = 20;
     unsigned const epochs = 100;
     vector<unsigned> planes;
-    planes += 10,50,men;
-    NetPtr pnet = ConvolutionalNetwork(planes, 0.4);
+    planes += 20,50,men;
+    NetPtr pnet = ConvolutionalNetwork(planes, 0.5);
 
-    pnet->get<LmsNetAttributes>().learningRate = 0.1;
-    pnet->get<LmsNetAttributes>().annealingTSC = 10;
+    pnet->get<LmsNetAttributes>().learningRate = 0.3;
+    pnet->get<LmsNetAttributes>().annealingTSC = 20;
     pnet->get<WeightRandomizationAttributes>().min = -0.1;
     pnet->get<WeightRandomizationAttributes>().max = +0.1;
     pnet->run(RandomizeWeightsGaussRunner::Instance());
@@ -332,11 +332,12 @@ void experiment3()
 
         all_data.push_back(imgm2tp(orl[i], men));
     }
+    shuffle(all_data);
     cout<<"Prepared "<<total_img<<" images\n";
-    pair<vector<TrainPattern>, vector<TrainPattern> > bunch = divide(all_data, 50);
+    pair<TrainData, TrainData> bunch = divide(all_data, 60);
     TrainData train_data, test_data;
-    train_data = bunch.first; //80%
-    test_data = bunch.second; //20%
+    train_data = bunch.first; //60%
+    test_data = bunch.second; //40%
 
     /*
     for(int p = 1; p < 20; p++)
@@ -393,7 +394,7 @@ void experiment3()
 
         //Print actual network output
         for(unsigned j = 0; j < men; ++j)
-            cout<<j+1<<":\t"<<tp.actual_output()[j]<<"\n";
+            cout<<j+1<<":\t"<<tp.desired_output()[j]<<" "<<tp.actual_output()[j]<<" "<<tp.error()[j]<<"\n";
         cout<<"\n";
     } while(count < 20);
 
