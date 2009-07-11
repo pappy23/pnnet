@@ -137,10 +137,10 @@ namespace pann
                     _window_vert_overlap;
 
             const unsigned current_layer_conv_plane_width
-                = current_layer_ss_plane_width * 2;
+                = current_layer_ss_plane_width * ss_range;
 
             const unsigned current_layer_conv_plane_height
-                = current_layer_ss_plane_height * 2;
+                = current_layer_ss_plane_height * ss_range;
 
             //Constructing planes on current layer
             for(unsigned plane_no = 0; plane_no < _layers.back(); ++plane_no)
@@ -190,19 +190,13 @@ namespace pann
                         //Connecting SS-neuron to corresponding convolutional
                         //neurons
                         if(!is_input_layer)
-                        {
                             for(unsigned l = 0; l < ss_range; ++l)
-                            {
                                 for(unsigned m = 0; m < ss_range; ++m)
-                                {
                                     net.addConnection(conv_plane \
                                             [i * ss_range + l] \
                                             [j * ss_range + m],
                                             neuron,
                                             shared_ss_weight);
-                                }
-                            }
-                        }
                     }
                 }
 
@@ -216,12 +210,8 @@ namespace pann
                         )
                 );
                 for(unsigned i = 0; i < _window_height; i++)
-                {
                     for(unsigned j = 0; j < _window_width; j++)
-                    {
                         shared_conv_weights[i][j].reset(new Weight(1));
-                    }
-                }
 
                 //Phase 2: Build connection matrix for current plane
                 /*
@@ -238,7 +228,9 @@ namespace pann
                  */
                 //Assume full connectivity by default
                 vector<bool> conn_matrix(model[current_layer + 2].size(), true);
-                if(plane_no != 0) //First plane always gets full connectivity
+                //First plane always gets full connectivity
+                //Also output layer is fully connected to prev layer
+                if(plane_no != 0 /* && current_layer != (total_layers - 3)*/)  //FIXME!!
                 {
                     bool all_false = true;
                     for(unsigned i = 0; i < conn_matrix.size(); ++i)
@@ -274,7 +266,7 @@ namespace pann
                     model[current_layer].push_back(conv_plane);
 
             } //planes in current layer
-        }
+        } //while
 
         //OpenGL
         for(unsigned layer = 0; layer < model.size(); ++layer)
