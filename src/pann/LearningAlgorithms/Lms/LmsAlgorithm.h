@@ -36,8 +36,9 @@ namespace pann
                     output_neurons[i]->get<LmsNeuronAttributes>().error = error[i];
 
                 _net->run(LmsBackpropagationRunner::Instance());
-                _net->get<LmsNetAttributes>().epoch++;
             }
+
+            _net->get<LmsNetAttributes>().epoch++;
         }
     }; //Lms
 }; //pann
