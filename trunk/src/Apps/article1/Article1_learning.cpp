@@ -11,7 +11,7 @@ void test(NetPtr net, Float start, Float stop, Float step);
 
 Float func(Float _x)
 {
-    return sin(_x);
+    return _x*_x;
 }
 
 int main()
