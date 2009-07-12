@@ -229,8 +229,7 @@ namespace pann
                 //Assume full connectivity by default
                 vector<bool> conn_matrix(model[current_layer + 2].size(), true);
                 //First plane always gets full connectivity
-                //Also output layer is fully connected to prev layer
-                if(plane_no != 0 /* && current_layer != (total_layers - 3)*/)  //FIXME!!
+                if(plane_no != 0)
                 {
                     bool all_false = true;
                     for(unsigned i = 0; i < conn_matrix.size(); ++i)

@@ -343,7 +343,7 @@ void experiment3()
 
         men = params["men"];
         epochs = params["epochs"];
-        planes += params["l1"],params["l2"],men;
+        planes += params["l1"],params["l2"],params["l3"];
         pnet = ConvolutionalNetwork(planes, params["density"]);
 
         pnet->get<LmsNetAttributes>().learningRate = params["rate"];
@@ -351,7 +351,7 @@ void experiment3()
     }
     else
     {
-        planes += 10,20,men;
+        planes += 10,20,30;
         pnet = ConvolutionalNetwork(planes, 1.0);
         pnet->get<LmsNetAttributes>().learningRate = 0.2;
         pnet->get<LmsNetAttributes>().annealingTSC = 20;
@@ -361,11 +361,19 @@ void experiment3()
            <<"epochs="<<epochs<<"\n"
            <<"rate="<<pnet->get<LmsNetAttributes>().learningRate<<"\n";
 
-    pnet->get<WeightRandomizationAttributes>().min = -0.05;
-    pnet->get<WeightRandomizationAttributes>().max = +0.05;
+    //Add full connectiovity output layer
+    const vector<NeuronPtr>& output_neurons = *(pnet->getCache().layers.end() - 2);
+    for(unsigned i = 0; i < men; ++i)
+    {
+        NeuronPtr n(NeuronFactory::PyramidalNeuron(TanH::Instance()));
+        for(unsigned j = 0; j < output_neurons.size(); ++j)
+            pnet->addConnection(output_neurons[j], n);
+    }
+
+    pnet->get<WeightRandomizationAttributes>().min = -0.1;
+    pnet->get<WeightRandomizationAttributes>().max = +0.1;
     pnet->run(RandomizeWeightsGaussRunner::Instance());
     pnet->setWorkThreadsCount(0); //unleash the power of double quad core Xeon (c)
-
 
     //Formatting TrainData from raw_data
     TrainData all_data;
