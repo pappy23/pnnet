@@ -380,7 +380,7 @@ void experiment3()
     unsigned total_img = 0;
     for(unsigned i = 0; i < orl.size(); ++i)
     {
-        if(orl[i].man > men)
+        if(orl[i].man > men || orl[i].pose != 1)
             continue;
 
         total_img++;
