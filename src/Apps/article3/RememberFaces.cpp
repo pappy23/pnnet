@@ -370,8 +370,8 @@ void experiment3()
             pnet->addConnection(output_neurons[j], n);
     }
 
-    pnet->get<WeightRandomizationAttributes>().min = -0.1;
-    pnet->get<WeightRandomizationAttributes>().max = +0.1;
+    pnet->get<WeightRandomizationAttributes>().min = -0.05;
+    pnet->get<WeightRandomizationAttributes>().max = +0.05;
     pnet->run(RandomizeWeightsGaussRunner::Instance());
     pnet->setWorkThreadsCount(0); //unleash the power of double quad core Xeon (c)
 
@@ -380,7 +380,7 @@ void experiment3()
     unsigned total_img = 0;
     for(unsigned i = 0; i < orl.size(); ++i)
     {
-        if(orl[i].man > men || orl[i].pose != 1)
+        if(orl[i].man > men)
             continue;
 
         total_img++;
@@ -389,7 +389,7 @@ void experiment3()
     }
     shuffle(all_data);
     cout<<"Prepared "<<total_img<<" images\n";
-    pair<TrainData, TrainData> bunch = divide(all_data, 0);
+    pair<TrainData, TrainData> bunch = divide(all_data, 40);
     TrainData train_data, test_data;
     train_data = bunch.first; //60%
     test_data = bunch.second; //40%
@@ -411,7 +411,10 @@ void experiment3()
         shuffle(train_data);
         Lms::train(pnet, train_data);
         test(pnet, test_data);
-        cout<<i<<"\t"<<ErrorFunction::mse(train_data)<<"\t"<<ErrorFunction::mse(test_data)<<"\n";
+        Float test_err = ErrorFunction::mse(test_data);
+        cout<<i<<"\t"<<ErrorFunction::mse(train_data)<<"\t"<<test_err<<"\n";
+        if(test_err < 2.0)
+            break;
     }
     /*
 #ifdef UNIX
@@ -427,7 +430,7 @@ void experiment3()
     do {
         //Select 20 images from ORL faces
         unsigned id = std::rand() % orl.size();
-        if(orl[id].man > men)
+        if(orl[id].man > men || orl[id].pose != 1 || orl[id].shift != 1)
             continue;
 
         count++;
@@ -455,92 +458,6 @@ void experiment3()
 
     Storage::save<Storage::txt_out>(pnet, "Exp3.net");
 } //experiment3
-#endif
-
-
-/*
- * Большая сверточная сеть, по 1 выходному нейрону на человека
- * Постепенно добавляем нейроны
- */
-#if EXP==4
-void experiment4()
-{
-    unsigned const men = 5;
-    unsigned const epochs = 10;
-    vector<unsigned> planes;
-    planes += 20,50,men;
-    NetPtr pnet = ConvolutionalNetwork(planes, 0.4);
-
-    pnet->get<LmsNetAttributes>().learningRate = 0.3;
-    pnet->get<LmsNetAttributes>().annealingTSC = 20000; //inf
-    pnet->get<WeightRandomizationAttributes>().min = -0.1;
-    pnet->get<WeightRandomizationAttributes>().max = +0.1;
-    pnet->run(RandomizeWeightsGaussRunner::Instance());
-    pnet->setWorkThreadsCount(0); //unleash the power of double quad core Xeon (c)
-
-    //Formatting TrainData from raw_data
-    TrainData all_data;
-    unsigned total_img = 0;
-    for(unsigned i = 0; i < orl.size(); ++i)
-    {
-        if(orl[i].man > men)
-            continue;
-
-        total_img++;
-
-        all_data.push_back(imgm2tp(orl[i], men));
-    }
-    shuffle(all_data);
-    cout<<"Prepared "<<total_img<<" images\n";
-    pair<TrainData, TrainData> bunch = divide(all_data, 60);
-    TrainData train_data, test_data;
-    train_data = bunch.first; //60%
-    test_data = bunch.second; //40%
-
-    //Trainig net
-    cout<<"Training for "<<epochs<<" epochs\n";
-    for(unsigned i = 1; i <= epochs; ++i)
-    {
-        shuffle(train_data);
-        Lms::train(pnet, train_data);
-        test(pnet, test_data);
-        cout<<i<<"\t"<<ErrorFunction::mse(train_data)<<"\t"<<ErrorFunction::mse(test_data)<<"\n";
-    }
-
-    //Print detailed test results
-    cout<<"Detailed test results\n";
-    unsigned count = 0;
-    do {
-        //Select 20 images from ORL faces
-        unsigned id = std::rand() % orl.size();
-        if(orl[id].man > men)
-            continue;
-
-        count++;
-
-        //Convert image to TrainPattern
-        TrainPattern tp = imgm2tp(orl[id], men);
-
-        //Process it
-        pnet->setInput(tp.input());
-        pnet->run(FeedforwardPropagationRunner::Instance());
-        pnet->getOutput(tp.actual_output());
-
-        //Print detailed info about image and MSE
-        cout<<"\nMan:\t"<<orl[id].man \
-            <<"\nPose:\t"<<orl[id].pose \
-            <<"\nShift:\t"<<orl[id].shift \
-            <<"\nNoise:\t"<<orl[id].noise \
-            <<"\nError:\t"<<ErrorFunction::mse(tp)<<"\n";
-
-        //Print actual network output
-        for(unsigned j = 0; j < men; ++j)
-            cout<<j+1<<":\t"<<tp.desired_output()[j]<<" "<<tp.actual_output()[j]<<" "<<tp.error()[j]<<"\n";
-        cout<<"\n";
-    } while(count < 20);
-
-    Storage::save<Storage::txt_out>(pnet, "Exp3.net");
-} //experiment4
 #endif
 
 int main(int argc, char* argv[])
