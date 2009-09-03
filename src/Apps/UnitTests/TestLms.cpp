@@ -13,7 +13,7 @@ void test(NetPtr net, Float start, Float stop, Float step);
 
 Float func(Float _x)
 {
-    return sin(_x); // * _x;
+    return _x * _x;
 }
 
 const unsigned epochs = 1000;
@@ -36,7 +36,7 @@ int main()
     //Learning
     vector<Float> train_error_info; //MSE
 
-    TrainData& td = *(DataGenerator::generateFromFunction(-3.0, +3.0, 10, func));
+    TrainData& td = *(DataGenerator::generateFromFunction(-1.0, +1.0, 10, func));
 
     net->get<LmsNetAttributes>().learningRate = 0.2;
     net->get<LmsNetAttributes>().annealingTSC = 3000;
