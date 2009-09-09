@@ -20,6 +20,6 @@ target_link_libraries(TestLms pann gnuplot-cpp)
 add_executable(TestImageIO TestImageIO.cpp)
 target_link_libraries(TestImageIO pann)
 
-add_executable(TestBoost TestBoost.cpp)
-target_link_libraries(TestBoost ${Boost_LIBRARIES})
+add_library(TestBoost SHARED TestBoost.cpp)
+target_link_libraries(TestBoost ${Boost_LIBRARIES} ${PYTHON_LIBRARIES})
 
