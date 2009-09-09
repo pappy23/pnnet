@@ -6,7 +6,7 @@ project(pann)
 #TODO: install
 include(CPack)
 
-set(CMAKE_VERBOSE_MAKEFILE OFF)
+set(CMAKE_VERBOSE_MAKEFILE ON)
 
 ############################################################################
 # OPTIONS
@@ -32,7 +32,7 @@ if("${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
 endif()
 
 if(UNIX)
-    add_definitions(-DUNIX)
+    add_definitions(-DUNIX -fPIC)
 elseif(WIN32)
     add_definitions(-DWIN32)
 endif(UNIX)
@@ -61,7 +61,7 @@ endif(WIN32)
 
 find_package(MPI)
 
-set(BOOST_MODULES thread serialization)
+set(BOOST_MODULES thread serialization python)
 if(MPI_FOUND)
     set(BOOST_MODULES ${BOOST_MODULES} mpi)
 endif(MPI_FOUND)
@@ -78,11 +78,12 @@ endif(UNIX)
 
 set(QT_USE_QTOPENGL 1)
 find_package(Qt4)
+find_package(PythonLibs)
 #find_package(JPEG REQUIRED)
 
 ############################################################################
 # pann
 
-include_directories(pann gnuplot-cpp ${Boost_INCLUDE_DIRS})
+include_directories(pann gnuplot-cpp ${Boost_INCLUDE_DIRS} ${PYTHON_INCLUDE_PATH})
 subdirs(Apps gnuplot-cpp pann)
 
