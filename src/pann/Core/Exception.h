@@ -3,8 +3,8 @@
  * Defines and implements all exception related stuff
  */
 
-#ifndef EXCEPTION_H
-#define EXCEPTION_H
+#ifndef PANN_CORE_EXCEPTION_H_INCLUDED
+#define PANN_CORE_EXCEPTION_H_INCLUDED
 
 #include "Includes/Std.h"
 
@@ -91,5 +91,5 @@ namespace pann
 
 }; //pann
 
-#endif
+#endif //PANN_CORE_EXCEPTION_H_INCLUDED
 

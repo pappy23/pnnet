@@ -1,7 +1,7 @@
 /*
  * class for saving/restoring networks
  */
-
+//TODO: Remove file IO from Core
 #ifndef STORAGE_H
 #define STORAGE_H
 

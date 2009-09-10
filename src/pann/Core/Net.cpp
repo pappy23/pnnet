@@ -146,6 +146,7 @@ namespace pann
 
     } //setWorkThreadsCount
 
+    //TODO: Remove this function and use std::set<> in run()
     void
     Net::formatFront(list<NeuronPtr>& _raw) const
     {

@@ -11,6 +11,7 @@ set(CMAKE_VERBOSE_MAKEFILE ON)
 ############################################################################
 # OPTIONS
 
+option(ENABLE_MOO "Enables easter egg compilation" OFF)
 option(BUILD_TESTS "Build or not rarely needed Unit-tests and other staff" OFF)
 
 if(NOT ${BUILD_TEST})
@@ -69,12 +70,12 @@ if(WIN32)
     set(BOOST_MODULES ${BOOST_MODULES} date_time)
 endif(WIN32)
 
-set(Boost_USE_STATIC_LIBS ON)
+#set(Boost_USE_STATIC_LIBS OFF)
 find_package(Boost 1.35 REQUIRED COMPONENTS ${BOOST_MODULES})
 
-if(UNIX)
-    set(Boost_LIBRARIES ${Boost_LIBRARIES} pthread)
-endif(UNIX)
+#if(UNIX)
+#    set(Boost_LIBRARIES ${Boost_LIBRARIES} pthread)
+#endif(UNIX)
 
 set(QT_USE_QTOPENGL 1)
 find_package(Qt4)

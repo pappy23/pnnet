@@ -2,8 +2,8 @@
  * STL includes
  */
 
-#ifndef STD_H
-#define STD_H
+#ifndef PANN_INCLUDES_STD_H_INCLUDED
+#define PANN_INCLUDES_STD_H_INCLUDED
 
 #include <exception>
 
@@ -27,5 +27,5 @@
 #include <cmath>
 #include <cstdlib>
 
-#endif
+#endif //PANN_INCLUDES_STD_H_INCLUDED
 

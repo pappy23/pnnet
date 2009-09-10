@@ -1,6 +1,6 @@
 
-#ifndef NETCACHE_H
-#define NETCACHE_H
+#ifndef PANN_CORE_NETCACHE_H_INCLUDED
+#define PANN_CORE_NETCACHE_H_INCLUDED
 
 #include "Includes/BoostCommon.h"
 #include "Includes/BoostSerialization.h"
@@ -10,7 +10,7 @@
 
 namespace pann
 {
-    class Neuron;
+    ADD_PTR_TYPEDEF(Neuron);
 
     class NetCache : public Cache
     {
@@ -21,7 +21,7 @@ namespace pann
         //Solutions:
         //1)Write restricted interface to layers
         //2)Derive NetCache from Cache AND vector<FrontType>
-        //3)write const vector<const FrontType> NetCache::layers()
+        //3)write const vector<const FrontType> NetCache::layers() - current solution
         std::vector<FrontType> layers;
 
         virtual void flush()
@@ -39,8 +39,8 @@ namespace pann
                 ar & BOOST_SERIALIZATION_BASE_OBJECT_NVP(Cache)
                    & BOOST_SERIALIZATION_NVP(layers);
             };
-    };
+    }; //NetCache
 }; //pann
 
-#endif
+#endif //PANN_CORE_NETCACHE_H_INCLUDED
 
