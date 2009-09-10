@@ -1,7 +1,5 @@
-//Neuron.h
-
-#ifndef NEURON_H
-#define NEURON_H
+#ifndef PANN_CORE_NEURON_H_INCLUDED
+#define PANN_CORE_NEURON_H_INCLUDED
 
 #include "Includes/Std.h"
 #include "Includes/BoostCommon.h"
@@ -10,7 +8,6 @@
 #include "Object.h"
 #include "Link.h"
 #include "ActivationFunction.h"
-#include "NeuronFactory.h"
 
 using std::list;
 
