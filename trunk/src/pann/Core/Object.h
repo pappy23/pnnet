@@ -1,5 +1,5 @@
-#ifndef OBJECT_H
-#define OBJECT_H
+#ifndef PANN_CORE_OBJECT_H_INCLUDES
+#define PANN_CORE_OBJECT_H_INCLUDES
 
 #include "Includes/Std.h"
 #include "Includes/BoostSerialization.h"
@@ -18,7 +18,7 @@ namespace pann
     public:
         Object() {};
         virtual ~Object() {};
-
+/*
         AttributesPtr& getPtr(HashType _group)
         {
             return attributes[_group];
@@ -28,41 +28,42 @@ namespace pann
         {
             return attributes[_group];
         };
+*/
+        template<class T>
+        T& get()
+        {
+            AttributesPtr& raw_ptr = attributes[T::getHash()];
+            shared_ptr<T> casted_ptr = dynamic_pointer_cast<T, Attributes>(raw_ptr);
+            //Optimization is possible
+
+            if(!casted_ptr)
+            {
+                T* ptr = new T();
+                raw_ptr.reset(ptr);
+                return *ptr;
+            } else {
+                return *casted_ptr;
+            }
+        };
 
         template<class T>
-            T& get()
+        const T& get() const
+        {
+            AttributesPtr& raw_ptr = attributes[T::getHash()];
+            shared_ptr<T> casted_ptr = dynamic_pointer_cast<T, Attributes>(raw_ptr);
+
+            if(!casted_ptr)
             {
-                AttributesPtr& raw_ptr = attributes[T::getHash()];
-                shared_ptr<T> casted_ptr = dynamic_pointer_cast<T, Attributes>(raw_ptr);
-                //Optimization is possible
-
-                if(!casted_ptr)
-                {
-                    T* ptr = new T();
-                    raw_ptr.reset(ptr);
-                    return *ptr;
-                } else {
-                    return *casted_ptr;
-                }
-            };
-
-        template<class T>
-            const T& get() const
-            {
-                AttributesPtr& raw_ptr = attributes[T::getHash()];
-                shared_ptr<T> casted_ptr = dynamic_pointer_cast<T, Attributes>(raw_ptr);
-
-                if(!casted_ptr)
-                {
-                    throw Exception()<<"Attributes access exception\n";
-                } else {
-                    return *casted_ptr;
-                }
-            };
+                throw Exception()<<"Attributes access exception\n";
+            } else {
+                return *casted_ptr;
+            }
+        };
 
     private:
         map<HashType, AttributesPtr> mutable attributes;
 
+        /* Serialization */
     private:
         friend class boost::serialization::access;
         template<class Archive>
@@ -74,5 +75,5 @@ namespace pann
 
 }; //pann
 
-#endif
+#endif //PANN_CORE_OBJECT_H_INCLUDES
 
