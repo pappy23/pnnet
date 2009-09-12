@@ -2,7 +2,7 @@
 
 #include "Core/Net.h"
 #include "Core/Weight.h"
-#include "Neurons/PyramidalNeuronFactory.h"
+#include "NeuronFactories/PyramidalNeuron.h"
 
 #include "MultilayerPerceptron.h"
 
