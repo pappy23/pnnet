@@ -6,6 +6,7 @@
 #ifndef PANN_CORE_RUNNER_H_INCLUDED
 #define PANN_CORE_RUNNER_H_INCLUDED
 
+#include "Includes/BoostSerialization.h"
 #include "Type.h"
 
 namespace pann
@@ -24,6 +25,7 @@ namespace pann
         virtual void run(NeuronPtr, Net*) const = 0; //FIXME: replace Net* with shared_ptr<>
         virtual RunDirection getDirection() const = 0;
     };
+    ADD_PTR_TYPEDEF(Runner);
 }; //pann
 
 #endif //PANN_CORE_RUNNER_H_INCLUDED

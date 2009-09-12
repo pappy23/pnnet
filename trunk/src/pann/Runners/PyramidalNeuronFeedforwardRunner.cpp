@@ -8,8 +8,7 @@ REGISTER_SINGLETON_CPP(PyramidalNeuronFeedforwardRunner);
 #include "Core/Neuron.h"
 #include "Core/ActivationFunction.h"
 
-namespace pann
-{
+namespace pann {
     void
     PyramidalNeuronFeedforwardRunner::run(NeuronPtr _neuron, Net* _net) const
     {

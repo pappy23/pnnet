@@ -13,6 +13,7 @@
 #define PANN_CORE_ATTRIBUTES_H_INCLUDED
 
 #include "Includes/BoostSerialization.h"
+#include "Type.h"
 
 namespace pann
 {
@@ -36,6 +37,7 @@ namespace pann
                 //empty
             };
     }; //Attributes
+    ADD_PTR_TYPEDEF(Attributes);
 
 }; //pann
 
