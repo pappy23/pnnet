@@ -6,13 +6,13 @@ project(pann)
 #TODO: install
 include(CPack)
 
-set(CMAKE_VERBOSE_MAKEFILE ON)
+set(CMAKE_VERBOSE_MAKEFILE OFF)
 
 ############################################################################
 # OPTIONS
 
-option(ENABLE_MOO "Enables easter egg compilation" OFF)
-option(BUILD_TESTS "Build or not rarely needed Unit-tests and other staff" OFF)
+option(OPTION_ENABLE_MOO_DEFINED "Enables easter egg compilation" OFF)
+option(OPTION_BUILD_TESTS_DEFINED "Build or not rarely needed Unit-tests and other staff" OFF)
 
 if(NOT ${BUILD_TEST})
     message(STATUS "NOT building optional tests. You may redefine this behavour via BUILD_TESTS variable")
