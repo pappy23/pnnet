@@ -60,6 +60,11 @@ namespace pann
             }
         };
 
+        void clearAttributes()
+        {
+            attributes.clear();
+        };
+
     private:
         map<HashType, AttributesPtr> mutable attributes;
 

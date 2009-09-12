@@ -1,49 +1,9 @@
-/**
- * @file
- * This file defines some attribute related staff and
- * declares common attributes groups and names
- *
- * README:
- * Every class derived from Object (@see Object.h)
- * has ability to use attributes
- * Object contains map<HashType, AttributesPtr>
- */
-#ifndef ATTRIBUTES_H
-#define ATTRIBUTES_H
+#ifndef PANN_ATTRIBUTES_OPENGLATTRIBUTES_H_INCLUDED
+#define PANN_ATTRIBUTES_OPENGLATTRIBUTES_H_INCLUDED
 
-#include "Includes/BoostSerialization.h"
+#include "Core/Attributes.h"
 
-#include "Type.h"
-
-namespace pann
-{
-    /**
-     * Hasher
-     * @param _name Readable name of attributes group
-     * @return Unique integer hash value
-     */
-    HashType hash(const char* _name);
-
-    /**
-     * Base class without instances
-     */
-    class Attributes
-    {
-    public:
-        virtual ~Attributes() {};
-
-    protected:
-        Attributes() {};
-
-    private:
-        friend class boost::serialization::access;
-        template<class Archive>
-            void serialize(Archive & ar, const unsigned int version)
-            {
-                //empty
-            };
-    }; //Attributes
-
+namespace pann {
     /**
      * Attributes used in neurons to draw network model
      * in pann_viewer
@@ -86,4 +46,5 @@ namespace pann
 
 }; //pann
 
-#endif
+#endif //PANN_ATTRIBUTES_OPENGLATTRIBUTES_H_INCLUDED
+

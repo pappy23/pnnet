@@ -6,6 +6,7 @@
 #ifndef PANN_CORE_ACTIVATIONFUNCTION_H_INCLUDED
 #define PANN_CORE_ACTIVATIONFUNCTION_H_INCLUDED
 
+#include "Includes/BoostSerialization.h"
 #include "Type.h"
 
 namespace pann
@@ -19,7 +20,8 @@ namespace pann
     public:
         virtual Float f(Float) const = 0;
         virtual Float derivative_dy(Float) const = 0;
-    };
+    }; //ActivationFunction
+    ADD_PTR_TYPEDEF(ActivationFunction);
 
 }; //pann
 

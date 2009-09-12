@@ -1,7 +1,5 @@
-//Net.h
-
-#ifndef NET_H
-#define NET_H
+#ifndef PANN_CORE_NET_H
+#define PANN_CORE_NET_H
 
 #include "Includes/Std.h"
 #include "Includes/BoostCommon.h"
@@ -16,9 +14,6 @@
 
 namespace pann
 {
-    class Weight;
-    class Runner;
-
     class Net : public Object //, public boost::enable_shared_from_this<Net>
     {
     public:
@@ -26,7 +21,6 @@ namespace pann
          * Default constructor
          * Creates empty net and sets threadCount to
          * hardware specific number (depends on available processors)
-         * Although creates bias neuron
          */
         Net();
         virtual ~Net();
