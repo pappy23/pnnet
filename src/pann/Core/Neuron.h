@@ -20,10 +20,6 @@ namespace pann
         Neuron(ActivationFunctionPtr _af, WeightPtr _bias, RunnerPtr _fireRunner, RunnerPtr _learnRunner)
             : activationFunction(_af), bias(_bias), fireRunner(_fireRunner), learnRunner(_learnRunner)
         {
-            if(ForwardRun != fireRunner->getDirection())
-                throw Exception()<<"Neuron::Neuron(): Wrong direction\n";
-            //Learning may be in forward direction too, so we don't check _learnRunner direction
-
             if(bias) {
                 bias->incUsageCount();
                 bias->incUsageCount();

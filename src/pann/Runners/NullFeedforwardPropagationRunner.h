@@ -15,11 +15,6 @@ namespace pann {
         {
             //Nothing
         }
-
-        virtual RunDirection getDirection() const
-        {
-            return ForwardRun;
-        }
     }; //NullFeedforwardPropagationRunner
     REGISTER_SINGLETON_H(NullFeedforwardPropagationRunner);
 

@@ -1,5 +1,5 @@
-#ifndef LMSATTRIBUTES_H
-#define LMSATTRIBUTES_H
+#ifndef PANN_ATTRIBUTES_LMSATTRIBUTES_H_INCLUDED
+#define PANN_ATTRIBUTES_LMSATTRIBUTES_H_INCLUDED
 
 #include "Core/Attributes.h"
 
@@ -23,6 +23,7 @@ namespace pann
         Float epoch;
         Float annealingTSC;
 
+        /* Serialization */
     private:
         friend class boost::serialization::access;
         template<class Archive>
@@ -59,6 +60,7 @@ namespace pann
         Float error;
         LmsNetAttributesPtr parent;
 
+        /* Serialization */
     private:
         friend class boost::serialization::access;
         template<class Archive>
@@ -90,6 +92,7 @@ namespace pann
     public:
         Float lastDeltaW;
 
+        /* Serialization */
     private:
         friend class boost::serialization::access;
         template<class Archive>
@@ -107,5 +110,5 @@ namespace pann
 
 }; //pann
 
-#endif
+#endif //PANN_ATTRIBUTES_LMSATTRIBUTES_H_INCLUDED
 

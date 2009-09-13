@@ -9,7 +9,7 @@
 #include "Core/Type.h"
 #include "Core/Net.h"
 #include "Core/Runner.h"
-#include "TrainData/TrainData.h"
+#include "TrainData_move_to_python/TrainData.h"
 
 namespace pann
 {

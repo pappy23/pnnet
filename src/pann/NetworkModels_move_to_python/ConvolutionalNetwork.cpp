@@ -4,7 +4,8 @@
 #include "Core/Neuron.h"
 #include "Core/Weight.h"
 #include "Core/Random.h"
-#include "Neurons/PyramidalNeuronFactory.h"
+#include "NeuronFactories/PyramidalNeuron.h"
+#include "Attributes/OpenGlAttributes.h"
 
 #include "ConvolutionalNetwork.h"
 
