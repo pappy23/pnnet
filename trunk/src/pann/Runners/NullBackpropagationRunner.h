@@ -15,11 +15,6 @@ namespace pann {
         {
             //Nothing
         }
-
-        virtual RunDirection getDirection() const
-        {
-            return BackwardRun;
-        }
     }; //NullBackpropagationRunner
     REGISTER_SINGLETON_H(NullBackpropagationRunner);
 }; //pann

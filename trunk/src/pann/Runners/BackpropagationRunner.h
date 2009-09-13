@@ -12,11 +12,6 @@ namespace pann {
         SINGLETON_SKELETON(BackpropagationRunner, Runner);
 
         virtual void run(NeuronPtr _neuron, Net* _net) const;
-
-        virtual RunDirection getDirection() const
-        {
-            return BackwardRun;
-        }
     }; //BackpropagationRunner
     REGISTER_SINGLETON_H(BackpropagationRunner);
 

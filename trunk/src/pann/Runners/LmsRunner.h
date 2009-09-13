@@ -1,6 +1,6 @@
 
-#ifndef LMSRUNNER_H
-#define LMSRUNNER_H
+#ifndef PANN_RUNNERS_LMSRUNNER_H_INCLUED
+#define PANN_RUNNERS_LMSRUNNER_H_INCLUED
 
 #include "Core/Exception.h"
 #include "Core/Runner.h"
@@ -8,21 +8,15 @@
 //TODO Document all algorithms! Don't forget to mention, that algorithms may be not correct,
 //TODO especially for not obvious topologies. For ex. no tests with recurrent networks were made
 
-namespace pann
-{
+namespace pann {
     class LmsBackpropagationRunner : public Runner
     {
         SINGLETON_SKELETON(LmsBackpropagationRunner, Runner);
 
         virtual void run(NeuronPtr _neuron, Net* _net) const;
-
-        virtual RunDirection getDirection() const
-        {
-            return BackwardRun;
-        }
-    };
+    }; //LmsBackpropagationRunner
     REGISTER_SINGLETON_H(LmsBackpropagationRunner);
 }; //pann
 
-#endif
+#endif //PANN_RUNNERS_LMSRUNNER_H_INCLUED
 

@@ -18,19 +18,19 @@ namespace pann
     public:
         Object() {};
         virtual ~Object() {};
-/*
-        AttributesPtr& getPtr(HashType _group)
+
+        AttributesPtr& getPtr(HashType _group) const
         {
             return attributes[_group];
         };
-
+/*
         const AttributesPtr& getPtr(HashType _group) const
         {
             return attributes[_group];
         };
 */
         template<class T>
-        T& get()
+        T& get() const
         {
             AttributesPtr& raw_ptr = attributes[T::getHash()];
             shared_ptr<T> casted_ptr = dynamic_pointer_cast<T, Attributes>(raw_ptr);
@@ -45,7 +45,7 @@ namespace pann
                 return *casted_ptr;
             }
         };
-
+/*
         template<class T>
         const T& get() const
         {
@@ -59,7 +59,7 @@ namespace pann
                 return *casted_ptr;
             }
         };
-
+*/
         void clearAttributes()
         {
             attributes.clear();

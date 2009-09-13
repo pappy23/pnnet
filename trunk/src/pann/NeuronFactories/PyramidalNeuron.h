@@ -3,6 +3,8 @@
 
 #include "Core/Neuron.h"
 #include "Runners/PyramidalNeuronFeedforwardRunner.h"
+#include "Runners/NullBackpropagationRunner.h"
+#include "ActivationFunctions/TanH.h"
 
 namespace pann {
 namespace NeuronFactory {
@@ -23,12 +25,12 @@ namespace NeuronFactory {
             RunnerPtr _learnRunner = NullBackpropagationRunner::Instance()
             )
     {
-        return Neuron(
+        return NeuronPtr(new Neuron(
                 _af,
                 _bias,
                 PyramidalNeuronFeedforwardRunner::Instance(),
                 _learnRunner
-                );
+                ));
     };
 }; //NeuronFactory
 }; //pann

@@ -12,11 +12,6 @@ namespace pann {
         SINGLETON_SKELETON(FeedforwardPropagationRunner, Runner);
 
         virtual void run(NeuronPtr _neuron, Net* _net) const;
-
-        virtual RunDirection getDirection() const
-        {
-            return ForwardRun;
-        }
     }; //FeedforwardPropagationRunner
     REGISTER_SINGLETON_H(FeedforwardPropagationRunner);
 

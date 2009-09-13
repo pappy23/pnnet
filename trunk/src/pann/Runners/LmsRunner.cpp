@@ -3,18 +3,17 @@
 #include "Includes/BoostCommon.h"
 
 #include "LmsRunner.h"
-#include "LmsAttributes.h"
+
+REGISTER_SINGLETON_CPP(LmsBackpropagationRunner);
 
 #include "Core/Net.h"
 #include "Core/Neuron.h"
 #include "Core/Link.h"
 #include "Core/Weight.h"
 #include "Core/ActivationFunction.h"
+#include "Attributes/LmsAttributes.h"
 
-REGISTER_SINGLETON_CPP(LmsBackpropagationRunner);
-
-namespace pann
-{
+namespace pann {
     void
     LmsBackpropagationRunner::run(NeuronPtr _neuron, Net* _net) const
     {
@@ -50,7 +49,7 @@ namespace pann
 
         //Comment: Na --w--> Nb
         //w is updated while processing Na
-        BOOST_FOREACH( Link& link, _neuron->getOutConnections() )
+        BOOST_FOREACH( const Link& link, _neuron->getOutConnections() )
         {
             WeightPtr w = link.getWeight();
 
@@ -65,7 +64,7 @@ namespace pann
             link_attrs.lastDeltaW = dw;
 
             //Apply dw
-            boost::mutex::scoped_lock lock(w->getMutex());
+            //boost::mutex::scoped_lock lock(w->getMutex());
             w->addValue(dw);
         }
 
@@ -81,7 +80,7 @@ namespace pann
             //currently doesn't hold attributes at all
 
             //Apply dw
-            boost::mutex::scoped_lock lock(bias->getMutex());
+            //boost::mutex::scoped_lock lock(bias->getMutex());
             bias->addValue(dw);
         }
     } //run

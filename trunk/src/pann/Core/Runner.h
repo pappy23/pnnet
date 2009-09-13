@@ -14,8 +14,6 @@ namespace pann
     ADD_PTR_TYPEDEF(Neuron);
     ADD_PTR_TYPEDEF(Net);
 
-    enum RunDirection { ForwardRun, BackwardRun };
-
     /**
      * Runner interface
      */
@@ -23,7 +21,6 @@ namespace pann
     {
     public:
         virtual void run(NeuronPtr, Net*) const = 0; //FIXME: replace Net* with shared_ptr<>
-        virtual RunDirection getDirection() const = 0;
     };
     ADD_PTR_TYPEDEF(Runner);
 }; //pann

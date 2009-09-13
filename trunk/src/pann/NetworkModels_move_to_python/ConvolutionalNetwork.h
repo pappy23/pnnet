@@ -4,7 +4,8 @@
 #include "Includes/Std.h"
 #include "Includes/BoostCommon.h"
 
-#include "Core/ActivationFunction.h"
+#include "ActivationFunctions/TanH.h"
+#include "ActivationFunctions/Linear.h"
 
 using std::vector;
 
