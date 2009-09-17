@@ -94,5 +94,9 @@ namespace pann
 
 }; //pann
 
+#ifdef OPTION_PYTHON_SUPPORT_DEFINED
+//TODO: Python support
+#endif //OPTION_PYTHON_SUPPORT_DEFINED
+
 #endif //PANN_CORE_TYPE_H_INCLUDED
 
