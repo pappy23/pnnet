@@ -21,7 +21,7 @@ namespace pann
      * @param _name Readable name of attributes group
      * @return Unique integer hash value
      */
-    HashType hash(const char* _name)
+    inline HashType hash(const char* _name)
     {
         static boost::hash<std::string> hasher;
         return hasher(_name);
@@ -93,10 +93,6 @@ namespace pann
     };
 
 }; //pann
-
-#ifdef OPTION_PYTHON_SUPPORT_DEFINED
-//TODO: Python support
-#endif //OPTION_PYTHON_SUPPORT_DEFINED
 
 #endif //PANN_CORE_TYPE_H_INCLUDED
 

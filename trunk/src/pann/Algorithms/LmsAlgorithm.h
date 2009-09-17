@@ -2,8 +2,10 @@
 #ifndef LMSALGORITHM_H
 #define LMSALGORITHM_H
 
-#include "LmsAttributes.h"
-#include "LmsRunner.h"
+#include "Attributes/LmsAttributes.h"
+#include "Runners/LmsRunner.h"
+
+using namespace std;
 
 namespace pann
 {
@@ -27,7 +29,7 @@ namespace pann
             for(; iter != _trainData.end(); ++iter)
             {
                 _net->setInput(iter->input());
-                _net->run(FeedforwardPropagationRunner::Instance());
+                _net->run(Net::ForwardRun, FeedforwardPropagationRunner::Instance());
                 _net->getOutput(iter->actual_output());
                 valarray<Float> error = iter->error();
 
@@ -35,7 +37,7 @@ namespace pann
                 for(unsigned i = 0; i < output_neurons.size(); ++i)
                     output_neurons[i]->get<LmsNeuronAttributes>().error = error[i];
 
-                _net->run(LmsBackpropagationRunner::Instance());
+                _net->run(Net::BackwardRun, LmsBackpropagationRunner::Instance());
             }
 
             _net->get<LmsNetAttributes>().epoch++;

@@ -9,7 +9,7 @@ endif(Boost_mpi_FOUND)
 add_executable(TestIntSize TestIntSize.cpp)
 
 add_executable(TestNet TestNet.cpp)
-target_link_libraries(TestNet pann)
+target_link_libraries(TestNet pann ${Boost_LIBRARIES} ${PYTHON_LIBRARIES})
 
 #add_executable(TestLms TestLms.cpp)
 #target_link_libraries(TestLms pann gnuplot-cpp)
