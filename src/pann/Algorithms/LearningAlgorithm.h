@@ -6,9 +6,8 @@
 #ifndef TEST_H
 #define TEST_H
 
-#include "Core/Type.h"
 #include "Core/Net.h"
-#include "Core/Runner.h"
+#include "Runners/FeedforwardPropagationRunner.h"
 #include "TrainData_move_to_python/TrainData.h"
 
 namespace pann
@@ -20,7 +19,7 @@ namespace pann
         for(; iter != _td.end(); ++iter)
         {
             _net->setInput(iter->input());
-            _net->run(FeedforwardPropagationRunner::Instance());
+            _net->run(Net::ForwardRun, FeedforwardPropagationRunner::Instance());
             _net->getOutput(iter->actual_output());
         }
     }
