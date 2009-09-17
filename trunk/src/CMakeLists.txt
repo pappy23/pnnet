@@ -12,7 +12,8 @@ set(CMAKE_VERBOSE_MAKEFILE OFF)
 # OPTIONS
 
 option(OPTION_ENABLE_MOO_DEFINED "Enables easter egg compilation" OFF)
-option(OPTION_BUILD_TESTS_DEFINED "Build or not rarely needed Unit-tests and other staff" OFF)
+option(OPTION_BUILD_TESTS_DEFINED "Build or no rarely needed Unit-tests and other staff" OFF)
+option(OPTION_PYTHON_SUPPORT_DEFINED "Add python bindings" ON)
 
 if(NOT ${BUILD_TEST})
     message(STATUS "NOT building optional tests. You may redefine this behavour via BUILD_TESTS variable")
