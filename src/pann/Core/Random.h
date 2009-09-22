@@ -2,8 +2,8 @@
  * Random number generators
  */
 
-#ifndef PANN_CORE_RANDOM_H_INCLUDED
-#define PANN_CORE_RANDOM_H_INCLUDED
+#ifndef RANDOM_H
+#define RANDOM_H
 
 #include "Core/Type.h"
 
@@ -17,7 +17,7 @@ namespace pann
     Float rand01();
 
     /**
-     * Uses rand01(), but scales it to range [_min; _max]
+     * Uses rand01(), but interpolates it to range [_min; _max]
      */
     Float rand(Float _min, Float _max);
 
@@ -28,5 +28,5 @@ namespace pann
 
 }; //pann
 
-#endif //PANN_CORE_RANDOM_H_INCLUDED
+#endif //RANDOM_H
 

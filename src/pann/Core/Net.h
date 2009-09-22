@@ -1,5 +1,7 @@
-#ifndef PANN_CORE_NET_H
-#define PANN_CORE_NET_H
+//Net.h
+
+#ifndef NET_H
+#define NET_H
 
 #include "Includes/Std.h"
 #include "Includes/BoostCommon.h"
@@ -14,16 +16,17 @@
 
 namespace pann
 {
+    class Weight;
+    class Runner;
+
     class Net : public Object //, public boost::enable_shared_from_this<Net>
     {
-    public:
-        enum RunDirection { ForwardRun, BackwardRun };
-
     public:
         /**
          * Default constructor
          * Creates empty net and sets threadCount to
          * hardware specific number (depends on available processors)
+         * Although creates bias neuron
          */
         Net();
         virtual ~Net();
@@ -63,7 +66,7 @@ namespace pann
          * Note: layers are computed automaticaly and stored in cache
          * See regenerateCache() implementation for more details
          */
-        void run(RunDirection _dir, RunnerPtr _runner);
+        void run(RunnerPtr _runner);
 
         /**
          * Public interface to private attributes
@@ -100,8 +103,7 @@ namespace pann
          * @param _cur_thread Current work thread number
          * @param _barrier See implementation
          */
-        static void threadBase(RunDirection _dir, RunnerPtr _runner, Net* _net, unsigned _cur_thread, boost::barrier* _barrier);
-
+        static void threadBase(RunnerPtr _runner, Net* _net, unsigned _cur_thread, boost::barrier* _barrier);
         /* Serialization */
     private:
         friend class boost::serialization::access;

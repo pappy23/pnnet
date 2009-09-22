@@ -1,5 +1,7 @@
-#ifndef PANN_CORE_NEURON_H_INCLUDED
-#define PANN_CORE_NEURON_H_INCLUDED
+//Neuron.h
+
+#ifndef NEURON_H
+#define NEURON_H
 
 #include "Includes/Std.h"
 #include "Includes/BoostCommon.h"
@@ -8,50 +10,51 @@
 #include "Object.h"
 #include "Link.h"
 #include "ActivationFunction.h"
-#include "Runner.h"
+#include "NeuronFactory.h"
 
 using std::list;
 
 namespace pann
 {
+    //TODO TODO TODO CONST PTRS!!! In Neuron, Net and Link methods
+
+    class Weight;
+    class Link;
+
     class Neuron : public Object
     {
+        Neuron() {};
+
     public:
-        Neuron(ActivationFunctionPtr _af, WeightPtr _bias, RunnerPtr _fireRunner, RunnerPtr _learnRunner)
-            : activationFunction(_af), bias(_bias), fireRunner(_fireRunner), learnRunner(_learnRunner)
-        {
-            if(bias) {
-                bias->incUsageCount();
-                bias->incUsageCount();
-            }
-        };
         virtual ~Neuron() {};
 
-        void setInput(Float _value)     { receptiveField = _value; };
-        Float getReceptiveField() const { return receptiveField; };
-        Float getOutput() const         { return activationValue; };
+        void setInput(Float _value);
+        Float getReceptiveField() const;
+        Float getOutput() const;
 
-        const list<Link>& getInConnections()  const { return links_in; };
-        const list<Link>& getOutConnections() const { return links_out; };
+        //TODO Hide this
+        list<Link>& getInConnections();
+        list<Link>& getOutConnections();
 
-        WeightPtr getBias() const                           { return bias; };
-        ActivationFunctionPtr getActivationFunction() const { return activationFunction; };
-        RunnerPtr getFireRunner() const                     { return fireRunner; };
-        RunnerPtr getLearnRunner() const                    { return learnRunner; };
+        //TODO ConstPtr
+        const WeightPtr& getBias() const;
+        const ActivationFunctionPtr& getActivationFunction();
+        const RunnerPtr& getFireRunner() const;
+        const RunnerPtr& getLearnRunner() const;
 
 
     private:
         //For pann::Net
-        typedef struct {
-            static bool comp(NeuronPtr _to, const Link& _l) {
-                return _l.getTo() == _to;
-            }
-        } ComparatorT;
+        void addInConnection(NeuronPtr _to, WeightPtr _weight);
+        void addOutConnection(NeuronPtr _to, WeightPtr _weight);
+        void delInConnection(NeuronPtr _to);
+        void delOutConnection(NeuronPtr _to);
 
-        void addInConnection(NeuronPtr _to, WeightPtr _weight)  { links_in.push_back( Link(_to, _weight) ); };
-        void addOutConnection(NeuronPtr _to, WeightPtr _weight) { links_in.push_back( Link(_to, _weight) ); };
-        void delInConnection(NeuronPtr _to)  { links_in.remove_if(bind(ComparatorT::comp, _to, _1)); };
-        void delOutConnection(NeuronPtr _to) { links_out.remove_if(bind(ComparatorT::comp, _to, _1)); };
+        //For pann::NeuronFactory
+        void setBias(WeightPtr _bias);
+        void setActivationFunction(ActivationFunctionPtr _af);
+        void setFireRunner(RunnerPtr _runner);
+        void setLearnRunner(RunnerPtr _runner);
 
     public:
         Float receptiveField;
@@ -60,16 +63,16 @@ namespace pann
     private:
         list<Link> links_out;
         list<Link> links_in;
-        ActivationFunctionPtr activationFunction;
         WeightPtr bias;
+        ActivationFunctionPtr activationFunction;
         RunnerPtr fireRunner;
         RunnerPtr learnRunner;
 
     private:
-        //friend template<class Archive> void Net::serialize(Archive & ar, const unsigned int version);
+        //template<class Archive>
+        //friend void Net::serialize(Archive & ar, const unsigned int version);
         friend class Net;
-
-        Neuron() {};
+        friend NeuronPtr NeuronFactory::CustomNeuron(ActivationFunctionPtr, WeightPtr, RunnerPtr, RunnerPtr);
 
         friend class boost::serialization::access;
         template<class Archive>
@@ -87,9 +90,16 @@ namespace pann
                  & BOOST_SERIALIZATION_NVP(learnRunner);
             };
     }; //Neuron
-    ADD_PTR_TYPEDEF(Neuron);
+
+    //TODO template Neuron
+    /*
+    template<class FireRunner, class LearnRunner, class ActivationFunction>
+        class Neuron : public Neuron
+    {
+    };
+    */
 
 }; //pann
 
-#endif //PANN_CORE_NEURON_H_INCLUDED
+#endif //NEURON_H
 

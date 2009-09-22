@@ -3,8 +3,8 @@
  * For serialization stuff see @file BoostSerialization.h
  */
 
-#ifndef PANN_INCLUDES_BOOSTCOMMON_H_INCLUDED
-#define PANN_INCLUDES_BOOSTCOMMON_H_INCLUDED
+#ifndef BOOSTCOMMON_H
+#define BOOSTCOMMON_H
 
 //Core dependencies
 #include <boost/foreach.hpp>
@@ -30,5 +30,5 @@
 //#include <boost/lambda/bind.hpp>
 //#include <boost/any.hpp>
 
-#endif //PANN_INCLUDES_BOOSTCOMMON_H_INCLUDED
+#endif
 

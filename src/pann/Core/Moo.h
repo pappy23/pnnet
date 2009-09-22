@@ -1,12 +1,13 @@
-/**
- * A little Easter egg =)
- */
-#ifndef PANN_CORE_MOO_H_INCLUDED
-#define PANN_CORE_MOO_H_INCLUDED
+#ifndef MOO_H
+#define MOO_H
 
-namespace pann {
+namespace pann
+{
+    /**
+     * A little Easter egg =)
+     */
     void moo();
+
 }; //pann
 
-#endif //PANN_CORE_MOO_H_INCLUDED
-
+#endif

@@ -389,10 +389,10 @@ void experiment3()
     }
     shuffle(all_data);
     cout<<"Prepared "<<total_img<<" images\n";
-    pair<TrainData, TrainData> bunch = divide(all_data, 60);
+    pair<TrainData, TrainData> bunch = divide(all_data, 40);
     TrainData train_data, test_data;
-    train_data = bunch.first; //40%
-    test_data = bunch.second; //60%
+    train_data = bunch.first; //60%
+    test_data = bunch.second; //40%
 
     /*
     for(int p = 1; p < 20; p++)
@@ -413,7 +413,7 @@ void experiment3()
         test(pnet, test_data);
         Float test_err = ErrorFunction::mse(test_data);
         cout<<i<<"\t"<<ErrorFunction::mse(train_data)<<"\t"<<test_err<<"\n";
-        if(test_err < 0.3)
+        if(test_err < 2.0)
             break;
     }
     /*
@@ -430,7 +430,7 @@ void experiment3()
     do {
         //Select 20 images from ORL faces
         unsigned id = std::rand() % orl.size();
-        if(orl[id].man > men)
+        if(orl[id].man > men || orl[id].pose != 1 || orl[id].shift != 1)
             continue;
 
         count++;

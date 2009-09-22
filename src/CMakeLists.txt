@@ -11,8 +11,7 @@ set(CMAKE_VERBOSE_MAKEFILE OFF)
 ############################################################################
 # OPTIONS
 
-option(OPTION_ENABLE_MOO_DEFINED "Enables easter egg compilation" OFF)
-option(OPTION_BUILD_TESTS_DEFINED "Build or no rarely needed Unit-tests and other staff" OFF)
+option(BUILD_TESTS "Build or not rarely needed Unit-tests and other staff" OFF)
 
 if(NOT ${BUILD_TEST})
     message(STATUS "NOT building optional tests. You may redefine this behavour via BUILD_TESTS variable")
@@ -33,7 +32,7 @@ if("${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
 endif()
 
 if(UNIX)
-    add_definitions(-DUNIX -fPIC)
+    add_definitions(-DUNIX)
 elseif(WIN32)
     add_definitions(-DWIN32)
 endif(UNIX)
@@ -62,7 +61,7 @@ endif(WIN32)
 
 find_package(MPI)
 
-set(BOOST_MODULES thread serialization python)
+set(BOOST_MODULES thread serialization)
 if(MPI_FOUND)
     set(BOOST_MODULES ${BOOST_MODULES} mpi)
 endif(MPI_FOUND)
@@ -70,21 +69,20 @@ if(WIN32)
     set(BOOST_MODULES ${BOOST_MODULES} date_time)
 endif(WIN32)
 
-#set(Boost_USE_STATIC_LIBS OFF)
+set(Boost_USE_STATIC_LIBS ON)
 find_package(Boost 1.35 REQUIRED COMPONENTS ${BOOST_MODULES})
 
-#if(UNIX)
-#    set(Boost_LIBRARIES ${Boost_LIBRARIES} pthread)
-#endif(UNIX)
+if(UNIX)
+    set(Boost_LIBRARIES ${Boost_LIBRARIES} pthread)
+endif(UNIX)
 
 set(QT_USE_QTOPENGL 1)
 find_package(Qt4)
-find_package(PythonLibs REQUIRED)
 #find_package(JPEG REQUIRED)
 
 ############################################################################
 # pann
 
-include_directories(pann gnuplot-cpp ${Boost_INCLUDE_DIRS} ${PYTHON_INCLUDE_PATH})
+include_directories(pann gnuplot-cpp ${Boost_INCLUDE_DIRS})
 subdirs(Apps gnuplot-cpp pann)
 

@@ -106,7 +106,7 @@ namespace pann
     } //getOutput
 
     void
-    Net::run(RunDirection _dir, RunnerPtr _runner)
+    Net::run(RunnerPtr _runner)
     {
         if( !cache.isOk() )
             regenerateCache();
@@ -116,7 +116,7 @@ namespace pann
 
         //We must give parameters by pointer, because boost will copy all arguments to thread
         for(unsigned thread = 0; thread < workThreads; ++thread)
-            threadPool.add_thread( new boost::thread(Net::threadBase, _dir, _runner, this, thread, &barrier) );
+            threadPool.add_thread( new boost::thread(Net::threadBase, _runner, this, thread, &barrier) );
 
         //wait for threads to finish
         threadPool.join_all();
@@ -146,7 +146,6 @@ namespace pann
 
     } //setWorkThreadsCount
 
-    //TODO: Remove this function and use std::set<> in run()
     void
     Net::formatFront(list<NeuronPtr>& _raw) const
     {
@@ -247,12 +246,13 @@ namespace pann
     } //regenerateCache
 
     void
-    Net::threadBase(RunDirection _dir, RunnerPtr _runner, Net* _net, unsigned _cur_thread, boost::barrier* _barrier)
+    Net::threadBase(RunnerPtr _runner, Net* _net, unsigned _cur_thread, boost::barrier* _barrier)
     {
+        RunDirection dir = _runner->getDirection();
         const NetCache& _cache = _net->getCache();
 
         unsigned layer;
-        (_dir == ForwardRun) ?  (layer = 0) : (layer = _cache.layers.size() - 1);
+        (dir == ForwardRun) ?  (layer = 0) : (layer = _cache.layers.size() - 1);
 
         const unsigned threads = _net->getWorkThreadsCount();
 
@@ -265,7 +265,7 @@ namespace pann
 
             //Wait for other threads
             _barrier->wait();
-        } while( (_dir == ForwardRun && ++layer < _cache.layers.size()) || (_dir == BackwardRun && layer-- > 0) );
+        } while( (dir == ForwardRun && ++layer < _cache.layers.size()) || (dir == BackwardRun && layer-- > 0) );
         /*
          * A little comment.
          * Cache structure:

@@ -6,7 +6,7 @@ using namespace std;
 using namespace boost;
 using namespace boost::assign;
 using namespace pann;
-using NeuronFactory::PyramidalNeuron;
+using namespace pann::ConvolutionalNetworkTypes;
 
 int main()
 {
@@ -15,9 +15,9 @@ int main()
         NetPtr tnet(new Net());
         // N1 ---> N2 ---> N3
         {
-            NeuronPtr n1(PyramidalNeuron(Linear::Instance()));
-            NeuronPtr n2(PyramidalNeuron(Linear::Instance()));
-            NeuronPtr n3(PyramidalNeuron(Linear::Instance()));
+            NeuronPtr n1(NeuronFactory::PyramidalNeuron(Linear::Instance()));
+            NeuronPtr n2(NeuronFactory::PyramidalNeuron(Linear::Instance()));
+            NeuronPtr n3(NeuronFactory::PyramidalNeuron(Linear::Instance()));
             tnet->addInputNeuron(n1);
             tnet->addConnection(n1, n2);
             tnet->addConnection(n2, n3);
@@ -42,11 +42,11 @@ int main()
         NetPtr tnet(new Net());
         //Hopfield model
         //ACHTUNG!! Chinese code follows :)
-        NeuronPtr ni(PyramidalNeuron(Linear::Instance()));
-        NeuronPtr n1(PyramidalNeuron(Linear::Instance()));
-        NeuronPtr n2(PyramidalNeuron(Linear::Instance()));
-        NeuronPtr n3(PyramidalNeuron(Linear::Instance()));
-        NeuronPtr no(PyramidalNeuron(Linear::Instance()));
+        NeuronPtr ni(NeuronFactory::PyramidalNeuron(Linear::Instance()));
+        NeuronPtr n1(NeuronFactory::PyramidalNeuron(Linear::Instance()));
+        NeuronPtr n2(NeuronFactory::PyramidalNeuron(Linear::Instance()));
+        NeuronPtr n3(NeuronFactory::PyramidalNeuron(Linear::Instance()));
+        NeuronPtr no(NeuronFactory::PyramidalNeuron(Linear::Instance()));
 
         tnet->addInputNeuron(ni);
         tnet->addConnection(ni, n1);
@@ -70,6 +70,7 @@ int main()
         const NetCache& cache = tnet->getCache();
         for(unsigned i = 0; i < cache.layers.size(); ++i)
             cout<<cache.layers[i].size()<<endl;
+
 
         {
             Storage::save<Storage::xml_out>(tnet, "test_ser_net.xml");
@@ -96,7 +97,7 @@ int main()
                 cout<<cache.layers[i].size()<<endl;
         }
     }
-/*
+
     {
         cout<<"TESTING MULTILAYER PERCEPTRON CREATION AND LEARNING\n";
         const unsigned runs_count = 3;
@@ -113,7 +114,7 @@ int main()
             layers.push_back(make_tuple(1, Linear::Instance()));
 
             NetPtr net_ptr = MultilayerPerceptron(layers);
-            // *
+            /*
             net_ptr->run(RandomizeWeightsGaussRunner::Instance());
 
             const NetCache& cache = net_ptr->getCache();
@@ -143,7 +144,7 @@ int main()
                     cout<<endl;
                 }
             }
-            // * /
+            */
 
             //Test run()
             {
@@ -210,7 +211,7 @@ int main()
         NetPtr net = ConvolutionalNetwork(planes);
         Storage::save<Storage::txt_out>(net, "test_conv.net");
     }
-*/
+
     return 0;
 }
 

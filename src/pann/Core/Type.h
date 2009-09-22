@@ -3,8 +3,8 @@
  * Custom types declarations
  */
 
-#ifndef PANN_CORE_TYPE_H_INCLUDED
-#define PANN_CORE_TYPE_H_INCLUDED
+#ifndef TYPE_H
+#define TYPE_H
 
 #include "Includes/Std.h"
 #include "Includes/BoostCommon.h"
@@ -16,18 +16,6 @@ namespace pann
 
     typedef std::size_t HashType;
 
-    /**
-     * Hasher
-     * @param _name Readable name of attributes group
-     * @return Unique integer hash value
-     */
-    inline HashType hash(const char* _name)
-    {
-        static boost::hash<std::string> hasher;
-        return hasher(_name);
-    }; //hash
-
-
 /**
  * Use case: ADD_PTR_TYPEDEF(Neuron)
  */
@@ -36,6 +24,14 @@ namespace pann
     typedef boost::shared_ptr<C> C##Ptr; \
     typedef boost::shared_ptr<const C> C##ConstPtr;
 
+    ADD_PTR_TYPEDEF(Runner);
+    ADD_PTR_TYPEDEF(ActivationFunction);
+    ADD_PTR_TYPEDEF(Neuron);
+    ADD_PTR_TYPEDEF(Weight);
+    ADD_PTR_TYPEDEF(Net);
+    ADD_PTR_TYPEDEF(Attributes);
+
+//May be replaced with templates<>
 #define SINGLETON_SKELETON_WITHOUT_CONSTRUCTOR(CLASS, BASE) \
     friend class boost::serialization::access; \
     template<class Archive> \
@@ -94,5 +90,5 @@ namespace pann
 
 }; //pann
 
-#endif //PANN_CORE_TYPE_H_INCLUDED
+#endif //TYPE_H
 

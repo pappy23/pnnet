@@ -3,8 +3,8 @@
  * Runtime cache object
  */
 
-#ifndef PANN_CORE_CACHE_H_INCLUDED
-#define PANN_CORE_CACHE_H_INCLUDED
+#ifndef CACHE_H
+#define CACHE_H
 
 #include "Includes/BoostSerialization.h"
 
@@ -40,5 +40,5 @@ namespace pann
 
 }; //pann
 
-#endif //PANN_CORE_CACHE_H_INCLUDED
+#endif //CACHE_H
 
