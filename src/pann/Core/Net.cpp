@@ -146,7 +146,6 @@ namespace pann
 
     } //setWorkThreadsCount
 
-    //TODO: Remove this function and use std::set<> in run()
     void
     Net::formatFront(list<NeuronPtr>& _raw) const
     {
@@ -197,6 +196,7 @@ namespace pann
              * At first iteration, if you remember, vector<NeuronPtr> rawFront contains unique inputNeurons
              */
             unsigned nCount = rawFront.size();
+            Debug()<<nCount<<"\n";
             for(unsigned i = 0; i < nCount; ++i)
             {
                 //pop_front emulation

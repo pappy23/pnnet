@@ -4,7 +4,7 @@
 #include <valarray>
 
 #include "Core/Type.h"
-#include "TrainData_move_to_python/TrainData.h"
+#include "TrainData/TrainData.h"
 
 namespace pann
 {

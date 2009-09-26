@@ -13,6 +13,7 @@ set(CMAKE_VERBOSE_MAKEFILE OFF)
 
 option(OPTION_ENABLE_MOO_DEFINED "Enables easter egg compilation" OFF)
 option(OPTION_BUILD_TESTS_DEFINED "Build or no rarely needed Unit-tests and other staff" OFF)
+option(OPTION_BUILD_PYTHON_BINDINGS_DEFINED "Compile boost::python bindings" ON)
 
 if(NOT ${BUILD_TEST})
     message(STATUS "NOT building optional tests. You may redefine this behavour via BUILD_TESTS variable")
@@ -79,8 +80,11 @@ find_package(Boost 1.35 REQUIRED COMPONENTS ${BOOST_MODULES})
 
 set(QT_USE_QTOPENGL 1)
 find_package(Qt4)
-find_package(PythonLibs REQUIRED)
 #find_package(JPEG REQUIRED)
+
+if(OPTION_BUILD_PYTHON_BINDINGS_DEFINED)
+    find_package(PythonLibs REQUIRED)
+endif(OPTION_BUILD_PYTHON_BINDINGS_DEFINED)
 
 ############################################################################
 # pann
