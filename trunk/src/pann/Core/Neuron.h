@@ -49,7 +49,7 @@ namespace pann
         } ComparatorT;
 
         void addInConnection(NeuronPtr _to, WeightPtr _weight)  { links_in.push_back( Link(_to, _weight) ); };
-        void addOutConnection(NeuronPtr _to, WeightPtr _weight) { links_in.push_back( Link(_to, _weight) ); };
+        void addOutConnection(NeuronPtr _to, WeightPtr _weight) { links_out.push_back( Link(_to, _weight) ); };
         void delInConnection(NeuronPtr _to)  { links_in.remove_if(bind(ComparatorT::comp, _to, _1)); };
         void delOutConnection(NeuronPtr _to) { links_out.remove_if(bind(ComparatorT::comp, _to, _1)); };
 

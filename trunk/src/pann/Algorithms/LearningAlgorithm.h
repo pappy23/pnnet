@@ -8,7 +8,7 @@
 
 #include "Core/Net.h"
 #include "Runners/FeedforwardPropagationRunner.h"
-#include "TrainData_move_to_python/TrainData.h"
+#include "TrainData/TrainData.h"
 
 namespace pann
 {
