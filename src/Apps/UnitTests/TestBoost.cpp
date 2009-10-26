@@ -38,9 +38,9 @@
 //#include <boost/archive/polymorphic_binary_iarchive.hpp>
 
 //Common
-#include <boost/serialization/serialization.hpp>
-#include <boost/serialization/nvp.hpp>
-#include <boost/serialization/base_object.hpp>
+//#include <boost/serialization/serialization.hpp>
+//#include <boost/serialization/nvp.hpp>
+//#include <boost/serialization/base_object.hpp>
 //#include <boost/serialization/version.hpp>
 //#include <boost/serialization/tracking.hpp>
 //#include <boost/serialization/export.hpp>
@@ -53,6 +53,8 @@
 
 #include <boost/python.hpp>
 
+//#include "Core/All.h"
+
 #include <fstream>
 
 const char* test()
@@ -64,4 +66,6 @@ BOOST_PYTHON_MODULE(test)
 {
     using namespace boost::python;
     def("test", test);
+
+    //python_export_Moo();
 }
