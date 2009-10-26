@@ -456,3 +456,16 @@ namespace pann {
     } //moo
 }; //pann
 
+
+#ifdef OPTION_BUILD_PYTHON_BINDINGS_DEFINED
+
+#include "Includes/Python.h"
+
+void python_export_Moo()
+{
+    using namespace boost::python;
+    def("moo", pann::moo);
+}
+
+#endif //OPTION_BUILD_PYTHON_BINDINGS_DEFINED
+

@@ -11,9 +11,9 @@ set(CMAKE_VERBOSE_MAKEFILE OFF)
 ############################################################################
 # OPTIONS
 
-option(OPTION_ENABLE_MOO_DEFINED "Enables easter egg compilation" OFF)
-option(OPTION_BUILD_TESTS_DEFINED "Build or no rarely needed Unit-tests and other staff" OFF)
-option(OPTION_BUILD_PYTHON_BINDINGS_DEFINED "Compile boost::python bindings" ON)
+option(ENABLE_MOO "Enables easter egg compilation" OFF)
+option(BUILD_TESTS "Build or no rarely needed Unit-tests and other staff" OFF)
+option(BUILD_PYTHON_BINDINGS "Compile boost::python bindings" ON)
 
 if(NOT ${BUILD_TEST})
     message(STATUS "NOT building optional tests. You may redefine this behavour via BUILD_TESTS variable")
@@ -41,6 +41,20 @@ endif(UNIX)
 
 #set(EXECUTABLE_OUTPUT_PATH "${CMAKE_BINARY_DIR}/../bin" CACHE INTERNAL "")
 #set(LIBRARY_OUTPUT_PATH "${CMAKE_BINARY_DIR}/../bin" CACHE INTERNAL "")
+
+#Options
+if(ENABLE_MOO)
+    add_definitions(-DOPTION_ENABLE_MOO_DEFINED)
+endif()
+
+if(BUILD_TESTS)
+    add_definitions(-DOPTION_BUILD_TEST_DEFINED)
+endif()
+
+if(BUILD_PYTHON_BINDINGS)
+    add_definitions(-DOPTION_BUILD_PYTHON_BINDINGS_DEFINED)
+endif()
+
 
 ############################################################################
 # UGLY HACKS
