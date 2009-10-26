@@ -56,6 +56,7 @@ int main()
         tnet->addConnection(n2, no);
         tnet->addConnection(n3, no);
 
+        /*
         tnet->addConnection(n1, n2); //same level recursion
         tnet->addConnection(n1, n3);
         tnet->addConnection(n2, n1);
@@ -66,13 +67,17 @@ int main()
         tnet->addConnection(n3, n3); //sel-recurrent
         tnet->addConnection(no, n2); //recurrent
         tnet->addConnection(no, ni); //from output to input recursion
-
+        */
         const NetCache& cache = tnet->getCache();
         for(unsigned i = 0; i < cache.layers.size(); ++i)
             cout<<cache.layers[i].size()<<endl;
 
         {
             Storage::save<Storage::xml_out>(tnet, "test_ser_net.xml");
+            const NetCache& cache = tnet->getCache();
+            for(unsigned i = 0; i < cache.layers.size(); ++i)
+                cout<<cache.layers[i].size()<<endl;
+
             NetPtr xml;
             Storage::load<Storage::xml_in>(xml, "test_ser_net.xml");
             const NetCache& cache = xml->getCache();
