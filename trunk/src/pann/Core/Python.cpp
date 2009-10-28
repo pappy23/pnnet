@@ -8,9 +8,11 @@
 
 BOOST_PYTHON_MODULE(libpann)
 {
-    using namespace boost::python;
+    using namespace pann::python;
 
-    python_export_Moo();
+    export_Moo();
+    export_Runner();
+    export_Weight();
 }
 
 #endif //OPTION_BUILD_PYTHON_BINDINGS_DEFINED

@@ -5,9 +5,10 @@
 #include "Moo.h"
 
 namespace pann {
-    void moo()
+    void
+    moo()
     {
-#ifdef OPTION_ENABLE_MOO_DEFINED
+        #ifdef OPTION_ENABLE_MOO_DEFINED
         static int pic = 2;
 
         std::cout<<"++++++++++++++++++++++++++++++++ S M I L E :-D +++++++++++++++++++++++++++\n";
@@ -451,7 +452,7 @@ namespace pann {
         } //if
 
         pic++;
-#endif //OPTION_ENABLE_MOO_DEFINED
+        #endif //OPTION_ENABLE_MOO_DEFINED
 
     } //moo
 }; //pann
@@ -461,11 +462,16 @@ namespace pann {
 
 #include "Includes/Python.h"
 
-void python_export_Moo()
-{
-    using namespace boost::python;
-    def("moo", pann::moo);
-}
+namespace pann {
+namespace python {
+    void export_Moo()
+    {
+        using namespace boost::python;
+
+        def("moo", moo);
+    }
+}; //python
+}; //pann
 
 #endif //OPTION_BUILD_PYTHON_BINDINGS_DEFINED
 
