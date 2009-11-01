@@ -11,7 +11,7 @@
 #include "Includes/BoostSerialization.h"
 
 #include "Type.h"
-//#include "Object.h"
+#include "Object.h"
 
 namespace pann
 {
@@ -19,20 +19,25 @@ namespace pann
      * Weight object, used in pann::Link. Weight might be shared among different Links.
      * Link contains WeightPtr for this object
      */
-    class Weight //: public Object
+    class Weight : public Object
     {
     public:
-        Weight(Float _value = 1): m_value(_value), m_usageCount(0) {};
+        explicit Weight(Float value = 1): value_(value), usage_(0) {};
+        //TODO: Noncopiable
         virtual ~Weight() {};
 
-        Float getValue() const { return m_value; };
+        operator Float() const
+        {
+            return value_;
+        };
 
         /**
-         * Add _delta / ( usageCount / 2 ) to value
+         * Add delta / ( usage_ / 2 ) to value_
          */
-        Float addValue(Float _delta)
+        operator+=(Float delta)
         {
-            boost::mutex::scoped_lock lock(m_mutex);
+            boost::mutex::scoped_lock lock(mutex_);
+
             return m_value += _delta * 2.0 / Float(m_usageCount);
         }
 
@@ -41,25 +46,28 @@ namespace pann
          * it increments usageCount counter
          * It is used later in learning algorithms for shared weights
          */
-        unsigned getUsageCount() const { return m_usageCount; };
-
-        unsigned incUsageCount()
+        unsigned get_usage() const
         {
-            return ++m_usageCount;
+            return usage_;
         }
 
-        unsigned decUsageCount()
+        void inc_usage()
         {
-            if(m_usageCount == 0)
-                throw Exception()<<"Weight::decUsageCount(): negative usage count\n";
+            ++usage_;
+        }
 
-            return --m_usageCount;
+        void dec_usage()
+        {
+            if(usage_ == 0)
+                throw Exception()<<"Negative usage count\n";
+
+            --usage_;
         }
 
     private:
-        Float m_value;
-        unsigned m_usageCount; ///< Used by weight update algorithms for shared weights
-        boost::mutex m_mutex;
+        Float value_;
+        unsigned usage_; ///< Used by weight update algorithms for shared weights
+        boost::mutex mutex_;
 
         /* Serialization */
     private:
@@ -67,33 +75,14 @@ namespace pann
         template<class Archive>
             void serialize(Archive & ar, const unsigned int version)
         {
-            ar //& BOOST_SERIALIZATION_BASE_OBJECT_NVP(Object)
-               & BOOST_SERIALIZATION_NVP(m_value)
-               & BOOST_SERIALIZATION_NVP(m_usageCount);
+            ar & BOOST_SERIALIZATION_BASE_OBJECT_NVP(Object)
+               & BOOST_SERIALIZATION_NVP(value_)
+               & BOOST_SERIALIZATION_NVP(usage_);
         };
     };
     ADD_PTR_TYPEDEF(Weight);
 
 }; //pann
 
-
-#ifdef OPTION_BUILD_PYTHON_BINDINGS_DEFINED
-
-#include "Includes/Python.h"
-
-namespace pann {
-namespace python {
-    void export_Weight()
-    {
-        using namespace boost::python;
-
-        class_<Weight, boost::noncopyable>("Weight", init<Float>())
-            ;
-    }
-} //python
-} //pann
-
-#endif //OPTION_BUILD_PYTHON_BINDINGS_DEFINED
-
-#endif //PANN_CORE_WEIGHT_H_INCLUDED
+DEFINE_PYTHON_EXPORT(Weight);
 
