@@ -4,21 +4,13 @@
 #ifndef PANN_CORE_MOO_H_INCLUDED
 #define PANN_CORE_MOO_H_INCLUDED
 
+#include "Macros.h"
+
 namespace pann {
     void moo();
 }; //pann
 
+DEFINE_PYTHON_EXPORT(Moo);
+
 #endif //PANN_CORE_MOO_H_INCLUDED
-
-#ifdef OPTION_BUILD_PYTHON_BINDINGS_DEFINED
-
-#include "Includes/Python.h"
-
-namespace pann {
-namespace python {
-    void export_Moo();
-}; //python
-}; //pann
-
-#endif //OPTION_BUILD_PYTHON_BINDINGS_DEFINED
 
