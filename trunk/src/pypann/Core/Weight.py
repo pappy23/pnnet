@@ -11,16 +11,13 @@ class Weight:
         self._usage = 0
         self._lock = Lock()
 
-    def get_value(self):
+    def value(self):
         return self._value
 
-    def add_value(self, delta):
+    def __iadd__(self, rvalue):
         self._lock.acquire()
         self._value = self._value + delta * 2 / self._usage
         self._lock.release()
-
-    def __iadd__(self, rvalue):
-        self.add_value(rvalue)
         return self
 
     def inc_usage(self):
@@ -50,12 +47,12 @@ def test_Weight():
     if(w._usage != 1):
         raise TestingException()
 
-    print w.get_value()
+    print w.value()
     w.inc_usage()
     w.inc_usage()
     w.inc_usage()
     w += 5.1
-    print w.get_value()
+    print w.value()
 
 #
 # Main

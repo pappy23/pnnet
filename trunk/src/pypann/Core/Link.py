@@ -13,13 +13,13 @@ class Link:
         if isinstance(weight, Weight):
             self._weight.inc_usage()
 
-    def get_to(self):
+    def to(self):
         return self._to
 
-    def get_weight(self):
+    def weight(self):
         return self._weight
 
-    def get_latency(self):
+    def latency(self):
         return self._latency
 
 #
@@ -28,7 +28,7 @@ class Link:
 def test_Link():
     print "Testing Link..."
     l = Link(None, Weight(3.0), 1)
-    print l.get_to(), l.get_weight(), l.get_latency()
+    print l.to(), l.weight(), l.latency()
 
 #
 # Main
