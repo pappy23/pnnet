@@ -1,35 +1,38 @@
-"""
-Link
-"""
+#
+# Link
+#
 
 from Weight import Weight
 
 class Link:
-    def __init__(self, to, w, latency):
+    def __init__(self, to, weight, latency):
         self._to = to
-        self._w = w
+        self._weight = weight
         self._latency = latency
 
-        if isinstance(w, Weight):
-            w.inc_usage()
+        if isinstance(weight, Weight):
+            self._weight.inc_usage()
 
     def get_to(self):
         return self._to
 
-    def get_w(self):
-        return self._w
+    def get_weight(self):
+        return self._weight
 
     def get_latency(self):
         return self._latency
 
-"""
-Testing
-"""
+#
+# Testing
+#
 def test_Link():
     print "Testing Link..."
-    l = Link(None, Weight(), 1)
-    print l.get_to(), l.get_w(), l.get_latency()
+    l = Link(None, Weight(3.0), 1)
+    print l.get_to(), l.get_weight(), l.get_latency()
 
+#
+# Main
+#
 if __name__ == "__main__":
     test_Link()
 

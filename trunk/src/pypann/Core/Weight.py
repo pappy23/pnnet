@@ -1,6 +1,6 @@
-"""
-Weight
-"""
+#
+# Weight
+#
 
 from threading import Lock
 from Exception import *
@@ -11,7 +11,6 @@ class Weight:
         self._usage = 0
         self._lock = Lock()
 
-#TODO replace with operator overloading
     def get_value(self):
         return self._value
 
@@ -19,6 +18,10 @@ class Weight:
         self._lock.acquire()
         self._value = self._value + delta * 2 / self._usage
         self._lock.release()
+
+    def __iadd__(self, rvalue):
+        self.add_value(rvalue)
+        return self
 
     def inc_usage(self):
         self._usage += 1
@@ -28,9 +31,9 @@ class Weight:
             raise LogicException("Zero usage count")
         self._usage -= 1
 
-"""
-Testing
-"""
+#
+# Testing
+#
 def test_Weight():
     print "Testing Weight..."
 
@@ -51,9 +54,12 @@ def test_Weight():
     w.inc_usage()
     w.inc_usage()
     w.inc_usage()
-    w.add_value(5.1)
+    w += 5.1
     print w.get_value()
 
+#
+# Main
+#
 if __name__ == "__main__":
     test_Weight()
 
