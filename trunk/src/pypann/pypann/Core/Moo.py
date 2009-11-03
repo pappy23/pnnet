@@ -1,6 +1,6 @@
-"""
-Moo
-"""
+#
+# Moo
+#
 
 _moo_iter = 0
 
@@ -32,11 +32,4 @@ def moo():
         Moo 5
         """
     _moo_iter+=1
-
-def test_Moo():
-    for i in range(7):
-        moo()
-
-if __name__ == "__main__":
-    test_Moo()
 

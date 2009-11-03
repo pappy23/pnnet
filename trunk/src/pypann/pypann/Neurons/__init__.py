@@ -1,3 +1,3 @@
 
-__all__ = ["PyramidalNeuron"]
+from PyramidalNeuron import PyramidalNeuron
 

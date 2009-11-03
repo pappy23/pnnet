@@ -22,21 +22,3 @@ class Link:
     def latency(self):
         return self._latency
 
-#
-# Testing
-#
-
-import unittest
-
-class LinkTestCase(unittest.TestCase):
-    def runTest(self):
-        self.link = Link(None, Weight(3.0), 2)
-        self.assertEqual(self.link.weight()._usage, 1)
-        print self.link.to(), self.link.weight(), self.link.latency()
-
-#
-# Main
-#
-if __name__ == "__main__":
-    unittest.main()
-
