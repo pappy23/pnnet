@@ -2,22 +2,21 @@
 # Weight
 #
 
-from threading import Lock
-from Exception import *
+import threading
+import Exception
 
 class Weight:
     def __init__(self, value = 0):
         self._value = value
         self._usage = 0
-        self._lock = Lock()
+        self._lock = threading.Lock()
 
     def value(self):
         return self._value
 
     def __iadd__(self, rvalue):
-        self._lock.acquire()
-        self._value = self._value + delta * 2 / self._usage
-        self._lock.release()
+        with self._lock:
+            self._value = self._value + rvalue * 2 / self._usage
         return self
 
     def inc_usage(self):
@@ -25,38 +24,33 @@ class Weight:
 
     def dec_usage(self):
         if self._usage == 0:
-            raise LogicException("Zero usage count")
+            raise Exception.LogicException("Zero usage count")
         self._usage -= 1
 
 #
 # Testing
 #
-def test_Weight():
-    print "Testing Weight..."
 
-    w = Weight(3.1415)
+import unittest
 
-    try:
-        w.dec_usage()
-    except LogicException:
-        pass
-    else:
-        raise TestingException()
+class WeightTestCase(unittest.TestCase):
+    def setUp(self):
+        self.weight = Weight(3.1415)
 
-    w.inc_usage()
-    if(w._usage != 1):
-        raise TestingException()
+    def testUsage(self):
+        self.weight._usage = 0
+        self.assertRaises(Exception.LogicException, self.weight.dec_usage)
+        self.weight.inc_usage()
+        self.assertEqual(self.weight._usage, 1)
 
-    print w.value()
-    w.inc_usage()
-    w.inc_usage()
-    w.inc_usage()
-    w += 5.1
-    print w.value()
+    def testAdd(self):
+        self.weight._usage = 4
+        self.weight += 5.1
+        self.assertAlmostEqual(self.weight.value(), 5.69, 2)
 
 #
 # Main
 #
 if __name__ == "__main__":
-    test_Weight()
+    unittest.main()
 
