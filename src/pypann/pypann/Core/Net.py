@@ -18,7 +18,7 @@ class NetCache:
 #
 # Net
 #
-import multiprocessing
+from multiprocessing import cpu_count
 from Link import Link
 from Queue import Queue
 from threading import Thread, Lock
@@ -26,7 +26,7 @@ from threading import Thread, Lock
 class Net:
     def __init__(self):
         self.input_neurons = []
-        self.worker_threads_count = multiprocessing.cpu_count()
+        self.worker_threads_count = cpu_count()
         self._cache = NetCache()
 
     def add_input_neuron(self, n):
@@ -70,7 +70,7 @@ class Net:
             return []
 
     #dir - True - forward run, False - backward
-    def run(self, runner, dir = True):
+    def run(self, runner = lambda x: x.run(), dir = True):
         if not self._cache.is_ok():
             self._update_cache()
 
@@ -112,57 +112,4 @@ class Net:
                 layer = next_layer
 
         self._cache.fix()
-
-#
-# Testing
-#
-import unittest
-from Weight import Weight
-#from ..Neurons import * #FIXME
-from PyramidalNeuron import PyramidalNeuron
-
-class NetTestCase(unittest.TestCase):
-    class LinearTF:
-        def f(self, x):
-            return x
-
-    def compose_typical_net(self):
-        net = Net()
-        n = {}
-        for i in range(4):
-            n[i] = PyramidalNeuron(self.LinearTF())
-            n[i].tag = i
-        net.add_input_neuron(n[0])
-        net.connect(n[0], n[1], Weight(3.0))
-        net.connect(n[0], n[2], Weight(3.0))
-        net.connect(n[1], n[3], Weight(0.5))
-        net.connect(n[2], n[3], Weight(0.5))
-        return net
-
-    def print_cache(self, net):
-        print "Cache:"
-        if not net._cache.is_ok():
-            net._update_cache()
-
-        for l in net._cache.layers:
-            print [x.tag for x in l]
-
-    def testCache(self):
-        net = self.compose_typical_net()
-        self.print_cache(net)
-        net.remove_neuron(net._cache.layers[-1][0])
-        self.print_cache(net)
-
-    def testRun(self):
-        net = self.compose_typical_net()
-        net._update_cache()
-        net.set_input([5.0])
-        net.run(lambda x: x.run())
-        self.assertEqual(net.get_output(), [15.0])
-
-#
-# Main
-#
-if __name__ == "__main__":
-    unittest.main()
 

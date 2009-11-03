@@ -1,3 +1,6 @@
 
-__all__ = ["Core", "Neurons", "Runners"]
+from Core import *
+from Neurons import *
+from Runners import *
+from TF import *
 
