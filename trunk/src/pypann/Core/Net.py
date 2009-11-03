@@ -21,7 +21,7 @@ class NetCache:
 import multiprocessing
 from Link import Link
 from Queue import Queue
-from threading import Thread
+from threading import Thread, Lock
 
 class Net:
     def __init__(self):
@@ -79,20 +79,21 @@ class Net:
                 neuron = q.get()
                 runner(neuron)
                 q.task_done()
+                if not job_is_done.locked():
+                    break
 
+        job_is_done = Lock()
         q = Queue()
-        for i in range(self.worker_threads_count):
-            t = Thread(target=worker)
-            t.setDaemon(True)
-            t.start()
+        with job_is_done:
+            for i in range(self.worker_threads_count):
+                t = Thread(target=worker)
+                t.daemon = True
+                t.start()
 
-        for l in self._cache.layers:
-            for n in l:
-                q.put(n)
-            q.join()
-
-
-        pass #TODO join all
+            for layer in self._cache.layers:
+                for neuron in layer:
+                    q.put(neuron)
+                q.join()
 
     def _update_cache(self):
         self._cache.layers = []
@@ -100,7 +101,7 @@ class Net:
 
         layer = set(self.input_neurons)
         while len(layer):
-            self._cache.layers.append(layer)
+            self._cache.layers.append(list(layer))
             next_layer = set()
             for n in layer:
                 for link in n._links_out:
@@ -115,42 +116,53 @@ class Net:
 #
 # Testing
 #
+import unittest
 from Weight import Weight
-from Neuron import *
+#from ..Neurons import * #FIXME
+from PyramidalNeuron import PyramidalNeuron
 
-def test_Net():
-    print "Testing Net..."
+class NetTestCase(unittest.TestCase):
+    class LinearTF:
+        def f(self, x):
+            return x
 
-    N = Net()
-    print N.get_output()
+    def compose_typical_net(self):
+        net = Net()
+        n = {}
+        for i in range(4):
+            n[i] = PyramidalNeuron(self.LinearTF())
+            n[i].tag = i
+        net.add_input_neuron(n[0])
+        net.connect(n[0], n[1], Weight(3.0))
+        net.connect(n[0], n[2], Weight(3.0))
+        net.connect(n[1], n[3], Weight(0.5))
+        net.connect(n[2], n[3], Weight(0.5))
+        return net
 
-    n = {}
-    for i in range(4):
-        n[i] = Neuron()
-
-    def runner(N):
-        pass
-
-    def print_cache(N):
+    def print_cache(self, net):
         print "Cache:"
-        N.run(runner)
-        for l in N._cache.layers:
-            print [x for x in range(len(n)) for neu in l if n[x] == neu]
+        if not net._cache.is_ok():
+            net._update_cache()
 
-    N.add_input_neuron(n[0])
-    N.connect(n[0], n[1], Weight(3.0))
-    N.connect(n[0], n[2], Weight())
-    N.connect(n[1], n[3], Weight())
-    N.connect(n[2], n[3], Weight())
-    print_cache(N)
-    print N.get_output()
+        for l in net._cache.layers:
+            print [x.tag for x in l]
 
-    N.remove_neuron(n[3])
-    print_cache(N)
+    def testCache(self):
+        net = self.compose_typical_net()
+        self.print_cache(net)
+        net.remove_neuron(net._cache.layers[-1][0])
+        self.print_cache(net)
+
+    def testRun(self):
+        net = self.compose_typical_net()
+        net._update_cache()
+        net.set_input([5.0])
+        net.run(lambda x: x.run())
+        self.assertEqual(net.get_output(), [15.0])
 
 #
 # Main
 #
 if __name__ == "__main__":
-    test_Net()
+    unittest.main()
 

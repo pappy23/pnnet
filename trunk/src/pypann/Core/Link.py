@@ -25,14 +25,18 @@ class Link:
 #
 # Testing
 #
-def test_Link():
-    print "Testing Link..."
-    l = Link(None, Weight(3.0), 1)
-    print l.to(), l.weight(), l.latency()
+
+import unittest
+
+class LinkTestCase(unittest.TestCase):
+    def runTest(self):
+        self.link = Link(None, Weight(3.0), 2)
+        self.assertEqual(self.link.weight()._usage, 1)
+        print self.link.to(), self.link.weight(), self.link.latency()
 
 #
 # Main
 #
 if __name__ == "__main__":
-    test_Link()
+    unittest.main()
 
