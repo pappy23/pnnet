@@ -6,11 +6,11 @@ import unittest
 from pypann import *
 
 class ExceptionTestCase(unittest.TestCase):
+    def _helper(self):
+        raise LogicError("Test error occured")
+
     def runTest(self):
-        try:
-            raise LogicError("Test error occured")
-        except LogicError as e:
-            print e
+        self.assertRaises(LogicError, self._helper)
 
 class MooTestCase(unittest.TestCase):
     def runTest(self):
@@ -35,16 +35,15 @@ class WeightTestCase(unittest.TestCase):
 class LinkTestCase(unittest.TestCase):
     def runTest(self):
         self.link = Link(None, Weight(3.0), 2)
+        self.assertEqual(self.link.to(), None)
         self.assertEqual(self.link.weight()._usage, 1)
-        print self.link.to(), self.link.weight(), self.link.latency()
+        self.assertEqual(self.link.latency(), 2)
 
 class NeuronTestCase(unittest.TestCase):
-    def setUp(self):
-        self.neuron = Neuron()
-
     def runTest(self):
-        print "Input: %s" % self.neuron.input
-        print "Output: %s" % self.neuron.output
+        self.neuron = Neuron()
+        self.assertEqual(self.neuron.input, 0)
+        self.assertEqual(self.neuron.output, 0)
 
 class PyramidalNeuronTestCase(unittest.TestCase):
     def testRun(self):
@@ -85,9 +84,13 @@ class NetTestCase(unittest.TestCase):
 
     def testCache(self):
         net = self.compose_typical_net()
-        self.print_cache(net)
+        net._update_cache()
+        self.assertEqual(len(net._cache.layers), 3)
+        #self.print_cache(net)
         net.remove_neuron(net._cache.layers[-1][0])
-        self.print_cache(net)
+        net._update_cache()
+        self.assertEqual(len(net._cache.layers), 2)
+        #self.print_cache(net)
 
     def testRun(self):
         net = self.compose_typical_net()
