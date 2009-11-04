@@ -1,15 +1,15 @@
 #
-# Linear
+# Threshold
 #
 
 from ..Core.TF import TF
 
-class _Linear(TF):
+class _Threshold(TF):
     def f(self, x):
-        return x
+        pass #TODO
 
     def df(self, x):
         return 1
 
-Linear = _Linear()
+Threshold = _Threshold()
 
