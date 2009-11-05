@@ -19,9 +19,10 @@ class NetCache:
 # Net
 #
 from multiprocessing import cpu_count
-from Link import Link
 from Queue import Queue
 from threading import Thread, Lock
+from Link import Link
+from Weight import Weight
 
 class Net:
     def __init__(self):
@@ -46,7 +47,9 @@ class Net:
 
         self._cache.invalidate()
 
-    def connect(self, n_from, n_to, w, latency = 1):
+    def connect(self, n_from, n_to, w = None, latency = 1):
+        if w == None:
+            w = Weight()
         n_from._links_out.append(Link(n_to, w, latency))
         n_to._links_in.append(Link(n_from, w, latency))
         self._cache.invalidate()

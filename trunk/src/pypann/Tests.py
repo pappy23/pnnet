@@ -17,6 +17,23 @@ class MooTestCase(unittest.TestCase):
         for i in range(7):
             pass #moo()
 
+class TFTestCase(unittest.TestCase):
+    def testTanh(self):
+        self.assertAlmostEqual(TF.Tanh.f(5.0), 1.71, 2)
+        self.assertAlmostEqual(TF.Tanh.f(-5.0), -1.71, 2)
+        self.assertAlmostEqual(TF.Tanh.df(-1.0), 0.76, 2)
+
+    def testThreshold(self):
+        self.assertEqual(TF.Threshold.f(5.0), 1.0)
+        self.assertEqual(TF.Threshold.f(0.0), 1.0)
+        self.assertEqual(TF.Threshold.f(-5.0), 0)
+        self.assertEqual(TF.Threshold.df(0.0), float('inf'))
+        self.assertEqual(TF.Threshold.df(4.0), 0)
+
+    def testLinear(self):
+        self.assertEqual(TF.Linear.f(5.0), 5.0)
+        self.assertEqual(TF.Linear.df(-4.0), 1)
+
 class WeightTestCase(unittest.TestCase):
     def setUp(self):
         self.weight = Weight(3.1415)
@@ -55,6 +72,15 @@ class PyramidalNeuronTestCase(unittest.TestCase):
         n.input = 5
         n.run()
         self.assertEqual(n.output, 5.0)
+
+class BiasNeuronTestCase(unittest.TestCase):
+    def runTest(self):
+        net = Net()
+        n1 = PyramidalNeuron(TF.Tanh)
+        net.add_input_neuron(n1)
+        net.connect(BiasNeuron(), n1, Weight(1.0))
+        net.run()
+        self.assertEqual(net.get_output(), [TF.Tanh.f(1.0)])
 
 class NetTestCase(unittest.TestCase):
     class LinearTF:
@@ -109,6 +135,12 @@ class NetTestCase(unittest.TestCase):
             for j in range(len(c1[i])):
                 self.assertEqual(c1[i][j].tag, net2._cache.layers[i][j].tag)
 
+class MultilayerPerceptronTestCase(unittest.TestCase):
+    def runTest(self):
+        net = MultilayerPerceptron([1,1], [TF.Linear, TF.Linear, TF.Linear])
+        net.run()
+#FIXME
+        print net.get_output()
 
 #
 # Main
