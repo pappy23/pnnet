@@ -137,10 +137,9 @@ class NetTestCase(unittest.TestCase):
 
 class MultilayerPerceptronTestCase(unittest.TestCase):
     def runTest(self):
-        net = MultilayerPerceptron([1,1], [TF.Linear, TF.Linear, TF.Linear])
+        net = MultilayerPerceptron([3, 2, 1], [TF.Linear, TF.Linear, TF.Linear])
         net.run()
-#FIXME
-        print net.get_output()
+        self.assertEqual(net.get_output()[0], 3.0)
 
 #
 # Main
