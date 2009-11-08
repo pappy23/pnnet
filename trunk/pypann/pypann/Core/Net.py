@@ -73,14 +73,14 @@ class Net:
             return []
 
     #dir - True - forward run, False - backward
-    def run(self, runner = lambda x: x.run(), dir = True):
+    def run(self, runner = lambda x, y: x.run(), dir = True):
         if not self._cache.is_ok():
             self._update_cache()
 
         def worker():
             while True:
                 neuron = q.get()
-                runner(neuron)
+                runner(neuron, self)
                 q.task_done()
                 if not job_is_done.locked():
                     break
