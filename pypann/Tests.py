@@ -141,6 +141,40 @@ class MultilayerPerceptronTestCase(unittest.TestCase):
         net.run()
         self.assertEqual(net.get_output()[0], 3.0)
 
+class ConvolutinalNetworkTestCase(unittest.TestCase):
+    def runTest(self):
+        pass #TODO
+
+class FeedforwardPropagationRunnerTestCase(unittest.TestCase):
+    def runTest(self):
+        pass #TODO
+
+class WeightRandomizationTestCase(unittest.TestCase):
+    def setUp(self):
+        self.net = Net()
+        n1 = Neuron()
+        n2 = Neuron()
+        self.net.add_input_neuron(n1)
+        self.net.connect(n1, n2)
+        self.net.connect(BiasNeuron(), n2)
+
+    def printWeights(self):
+        self.net.run()
+        for layer in self.net._cache.layers:
+            for neuron in layer:
+                for link in neuron._links_in:
+                    print "N(", neuron, "):\t", link.weight().value()
+
+    def testRandomizeWeightsGauss(self):
+        #print "RandomizeWeightsGauss"
+        self.net.run(Runners.randomize_weights_gauss)
+        #self.printWeights()
+
+    def testRandomizeWeightsAccordintToInputsCount(self):
+        #print "RandomizeWeightsAccordintToInputsCount"
+        self.net.run(Runners.randomize_weights_according_to_inputs_count)
+        #self.printWeights()
+
 #
 # Main
 #

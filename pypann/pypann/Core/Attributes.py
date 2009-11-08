@@ -1,0 +1,7 @@
+#
+# Attributes
+#
+
+class Attributes:
+    pass
+

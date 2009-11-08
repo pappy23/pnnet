@@ -2,6 +2,6 @@
 # Null
 #
 
-def null(neuron):
+def null(neuron, net):
     neuron.run()
 

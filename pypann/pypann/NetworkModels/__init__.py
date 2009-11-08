@@ -1,3 +1,4 @@
 
 from MultilayerPerceptron import MultilayerPerceptron
+from ConvolutionalNetwork import ConvolutionalNetwork
 
