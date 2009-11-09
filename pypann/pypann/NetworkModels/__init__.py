@@ -1,4 +1,4 @@
 
-from MultilayerPerceptron import MultilayerPerceptron
-from ConvolutionalNetwork import ConvolutionalNetwork
+from MultilayerPerceptron import multilayer_perceptron
+from ConvolutionalNetwork import convolutional_network
 

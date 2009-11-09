@@ -137,12 +137,14 @@ class NetTestCase(unittest.TestCase):
 
 class MultilayerPerceptronTestCase(unittest.TestCase):
     def runTest(self):
-        net = MultilayerPerceptron([3, 2, 1], [TF.Linear, TF.Linear, TF.Linear])
+        net = multilayer_perceptron([3, 2, 1], [TF.Linear, TF.Linear, TF.Linear])
         net.run()
         self.assertEqual(net.get_output()[0], 3.0)
 
 class ConvolutinalNetworkTestCase(unittest.TestCase):
     def runTest(self):
+        net = convolutional_network([1, 2], 0.8, 5, 5, 3, 3, TF.Linear, TF.Tanh, TF.Tanh, TF.Tanh)
+        print net
         pass #TODO
 
 class FeedforwardPropagationRunnerTestCase(unittest.TestCase):

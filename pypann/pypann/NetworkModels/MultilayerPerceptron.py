@@ -8,7 +8,7 @@ from ..Neurons.PyramidalNeuron import PyramidalNeuron
 from ..Neurons.BiasNeuron import BiasNeuron
 from ..TF import Linear, Tanh
 
-def MultilayerPerceptron(layers, tfs = []):
+def multilayer_perceptron(layers, tfs = []):
     net = Net()
 
     if len(layers) == 0:
