@@ -135,22 +135,6 @@ class NetTestCase(unittest.TestCase):
             for j in range(len(c1[i])):
                 self.assertEqual(c1[i][j].tag, net2._cache.layers[i][j].tag)
 
-class MultilayerPerceptronTestCase(unittest.TestCase):
-    def runTest(self):
-        net = multilayer_perceptron([3, 2, 1], [TF.Linear, TF.Linear, TF.Linear])
-        net.run()
-        self.assertEqual(net.get_output()[0], 3.0)
-
-class ConvolutinalNetworkTestCase(unittest.TestCase):
-    def runTest(self):
-        net = convolutional_network([1, 2], 0.8, 5, 5, 3, 3, TF.Linear, TF.Tanh, TF.Tanh, TF.Tanh)
-        print net
-        pass #TODO
-
-class FeedforwardPropagationRunnerTestCase(unittest.TestCase):
-    def runTest(self):
-        pass #TODO
-
 class WeightRandomizationTestCase(unittest.TestCase):
     def setUp(self):
         self.net = Net()
@@ -176,6 +160,20 @@ class WeightRandomizationTestCase(unittest.TestCase):
         #print "RandomizeWeightsAccordintToInputsCount"
         self.net.run(Runners.randomize_weights_according_to_inputs_count)
         #self.printWeights()
+
+class MultilayerPerceptronTestCase(unittest.TestCase):
+    def runTest(self):
+        net = multilayer_perceptron([3, 2, 1], [TF.Linear, TF.Linear, TF.Linear])
+        net.run()
+        self.assertEqual(net.get_output()[0], 3.0)
+
+class ConvolutinalNetworkTestCase(unittest.TestCase):
+    def runTest(self):
+        net = convolutional_network([2, 2, 2])
+
+class FeedforwardPropagationRunnerTestCase(unittest.TestCase):
+    def runTest(self):
+        pass #TODO
 
 #
 # Main

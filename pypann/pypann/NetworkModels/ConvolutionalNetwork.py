@@ -2,9 +2,11 @@
 # ConvolutionalNetwork
 #
 
+import random
 from ..Core import *
-#TODO import TF
+from ..TF import Tanh
 from ..Neurons import PyramidalNeuron
+from ..Neurons import BiasNeuron
 
 def convolutional_network(
         layers,
@@ -13,10 +15,10 @@ def convolutional_network(
         window_width = 5,
         window_horiz_overlap = 3,
         window_vert_overlap = 3,
-        input_tf = TF.Tanh,
-        conv_tf = TF.Tanh,
-        ss_tf = TF.Tanh,
-        output_tf = TF.Tanh):
+        input_tf = Tanh,
+        conv_tf = Tanh,
+        ss_tf = Tanh,
+        output_tf = Tanh):
 
     model = convolutional_network_model(
         layers,
@@ -33,9 +35,14 @@ def convolutional_network(
 
     net = Net()
 
+    for layer in model:
+        for plane in layer:
+            print "%sx%s" % (len(plane), len(plane[0])), 
+        print
+
     #Input neurons
     for row in model[0][0]:
-        for neuron in model[0][0][i]:
+        for neuron in row:
             net.add_input_neuron(neuron)
 
     return net
@@ -117,7 +124,7 @@ def convolutional_network_model(
         current_layer_conv_plane_height = current_layer_ss_plane_height * ss_range;
 
         #Constructing planes on current layer
-        for plane_no in range(len(layers[-1])):
+        for plane_no in range(layers[-1]):
             conv_plane = []
             shared_bias = Weight(1.0)
             if not is_input_layer:
@@ -141,7 +148,7 @@ def convolutional_network_model(
             """
             ss_plane = []
             shared_bias = Weight(1.0)
-            shared_ss_weight = Weigh(1.0)
+            shared_ss_weight = Weight(1.0)
             for i in range(current_layer_ss_plane_height):
                 ss_plane.append([])
                 for j in range(current_layer_ss_plane_width):
@@ -152,60 +159,61 @@ def convolutional_network_model(
                         net.connect(BiasNeuron(), neuron, shared_bias)
                     ss_plane[i].append(neuron)
 
-                    #Connecting SS-neuron to corresponding convolutional neurons
-                    if not is_input_layer:
-                        for l in range(ss_range):
-                            for m in range(ss_range):
-                                net.connect(conv_plane[i * ss_range + l][j * ss_range + m], neuron, shared_ss_weight)
+            #Connecting SS-neuron to corresponding convolutional neurons
+            if not is_input_layer:
+                for l in range(ss_range):
+                    for m in range(ss_range):
+                        net.connect(conv_plane[i * ss_range + l][j * ss_range + m], neuron, shared_ss_weight)
 
-                    #Connect current SS-layer to next CONV-layer
-                    #Phase 1: create shared weights
-                    shared_conv_weights = [ [Weight(1.0) for j in range(window_width)] for i in range(window_height) ]
+            #Connect current SS-layer to next CONV-layer
+            #Phase 1: create shared weights
+            shared_conv_weights = [ [Weight(1.0) for j in range(window_width)] for i in range(window_height) ]
 
-                    #Phase 2: Build connection matrix for current plane
-                    """
-                    Return part of square connection matrix like that:
-                      1 2 3 4 5    <-to
-                    1 X X X X X
-                    2 X   X   X
-                    3   X   X
-                    4 X X   X X
-                    ^
-                    from
+            #Phase 2: Build connection matrix for current plane
+            """
+            Return part of square connection matrix like that:
+              1 2 3 4 5    <-to
+            1 X X X X X
+            2 X   X   X
+            3   X   X
+            4 X X   X X
+            ^
+            from
 
-                    For example above if called with plane_no = 3, return FTFTF
-                    """
-                    #Assume full connectivity by default
-                    conn_matrix = [True] * len(model[current_layer + 2])
+            For example above if called with plane_no = 3, return FTFTF
+            """
+            #Assume full connectivity by default
+            conn_matrix = [True] * len(model[current_layer + 2])
 
-                    #First plane always gets full connectivity
-                    if plane_no:
-                        all_false = True
-                        for i in range(len(conn_matrix)):
-                            conn_matrix[i] = rand_coin(connection_density) #FIXME
-                            if conn_matrix[i]:
-                                all_false = False
-                        if all_false:
-                            conn_matrix[std::rand() % conn_matrix.size()] = true; #FIXME
-                            conn_matrix[std::rand() % conn_matrix.size()] = true; #FIXME
+            #First plane always gets full connectivity
+            if plane_no:
+                all_false = True
+                for i in range(len(conn_matrix)):
+                    conn_matrix[i] = random.triangular(0.0, 1.0, connection_density)
+                    if conn_matrix[i]:
+                        all_false = False
+                if all_false:
+                    conn_matrix[round(random.uniform(0, len(conn_matrix)))] = true;
+                    conn_matrix[round(random.uniform(0, len(conn_matrix)))] = true;
 
 
-                    #Phase 3: Actual connections
-                    #i iterates over next layer planes
-                    for i in range(len(model[current_layer + 2])):
-                        if conn_matrix[i]:
-                            for j in range(next_layer_plane_height):
-                                for k in range(next_layer_plane_width):
-                                    for l in range(window_height):
-                                        for m in range(window_width):
-                                            net.connect(
-                                                    ss_plane[j * (window_height - window_vert_overlap) + l][k * (window_width - window_horiz_overlap) + m],
-                                                    model[current_layer + 2][i][j][k])
+            #Phase 3: Actual connections
+            #i iterates over next layer planes
+            for i in range(len(model[current_layer + 2])):
+                if conn_matrix[i]:
+                    for j in range(next_layer_plane_height):
+                        for k in range(next_layer_plane_width):
+                            for l in range(window_height):
+                                for m in range(window_width):
+                                    net.connect(ss_plane
+                                        [j * (window_height - window_vert_overlap) + l]
+                                        [k * (window_width - window_horiz_overlap) + m],
+                                        model[current_layer + 2][i][j][k], shared_conv_weights[l][m])
 
-                    #Adding created CONV and SS planes to model
-                    model[current_layer + 1].append(ss_plane)
-                    if not is_input_layer:
-                        model[current_layer].append(conv_plane)
+            #Adding created CONV and SS planes to model
+            model[current_layer + 1].append(ss_plane)
+            if not is_input_layer:
+                model[current_layer].append(conv_plane)
 
     #OpenGL
     for layer in model:
