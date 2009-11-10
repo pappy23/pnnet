@@ -35,11 +35,6 @@ def convolutional_network(
 
     net = Net()
 
-    for layer in model:
-        for plane in layer:
-            print "%sx%s" % (len(plane), len(plane[0])), 
-        print
-
     #Input neurons
     for row in model[0][0]:
         for neuron in row:
@@ -61,9 +56,9 @@ def convolutional_network_model(
     """
     Comment
     1) checking for ambigous overlap values and if we got empty _layers
-    2) _layers describes all convolutional planes counts
+    2) layers describes all convolutional planes counts
        Input layer is a layer with 1 plane - a sort of SS plane
-       We add it to _layers
+       We add it to layers
     3) Creating output layer - each plane with 1 neuron
     4) Main loop. Moving from output layer to input layer
     4.1) Create convolutional layer
@@ -73,11 +68,22 @@ def convolutional_network_model(
     5) writing OpenGL information
     """
 
-    if not len(layers):
-        raise LogicError("Planes count not specified")
-
-    if window_height <= window_vert_overlap or window_width <= window_horiz_overlap:
-        raise LogicError("Overlap value is not correct")
+    assert(isinstance(layers, list))
+    assert(isinstance(connection_density, float))
+    assert(isinstance(window_height, int))
+    assert(isinstance(window_width, int))
+    assert(isinstance(window_horiz_overlap, int))
+    assert(isinstance(window_vert_overlap, int))
+    assert(isinstance(input_tf,  TF.TF))
+    assert(isinstance(conv_tf,   TF.TF))
+    assert(isinstance(ss_tf,     TF.TF))
+    assert(isinstance(output_tf, TF.TF))
+    assert(window_height > window_vert_overlap)
+    assert(window_width > window_horiz_overlap)
+    assert(len(layers) > 0)
+    for planes_count in layers:
+        assert(isinstance(planes_count, int))
+        assert(planes_count > 0)
 
     ss_range = 2
 
@@ -85,9 +91,9 @@ def convolutional_network_model(
     OpenGL
     TODO: calculate opengl distances from layers count and so
     """
-    #distance_between_layers = 1000.0;
-    #distance_between_neurons = 40.0;
-    #distance_between_fms = 900.0;
+    distance_between_layers = 1000.0;
+    distance_between_neurons = 40.0;
+    distance_between_fms = 900.0;
 
     """
     Each layers[] contains information about planes count in corresponding
@@ -98,7 +104,7 @@ def convolutional_network_model(
     current_layer = total_layers - 1
     layers.insert(0, 1); #For input layer
 
-    model = [[]] * total_layers
+    model = [[] for x in range(total_layers)]
     net = Net()
 
     """
@@ -216,35 +222,22 @@ def convolutional_network_model(
                 model[current_layer].append(conv_plane)
 
     #OpenGL
-    for layer in model:
-        for plane in layer:
-            for row in plane:
-                for col in row:
-                    pass #TODO
-                    """
-                    OpenGlAttributes& ogl = model[layer][plane][i][j]->get<OpenGlAttributes>();
+    for layer_no in range(len(model)):
+        for plane_no in range(len(model[layer_no])):
+            for row_no in range(len(model[layer_no][plane_no])):
+                for col_no in range(len(model[layer_no][plane_no][row_no])):
+                    if not hasattr(model[layer_no][plane_no][row_no][col_no], "opengl_attributes"):
+                        model[layer_no][plane_no][row_no][col_no].opengl_attributes = Attributes()
+                        ogl = model[layer_no][plane_no][row_no][col_no].opengl_attributes
 
-                    //TODO Change colors for diferent types of neurons
-                    ogl.r = 255;
-                    ogl.g = 0;
-                    ogl.b = 0;
-                    ogl.x = static_cast<int>((
-                    Float(layer) -
-                    total_layers / 2.0 + 1.0
-                    ) * distance_between_layers);
-                    ogl.y = static_cast<int>((
-                    Float(i) -
-                    Float(model[layer][plane].size()) / 2.0 + 1.0
-                    ) * distance_between_neurons);
-                    ogl.z = static_cast<int>((
-                    Float(j) -
-                    Float(model[layer][plane][0].size()) / 2.0 + 1.0
-                    ) * distance_between_neurons
-                    + (
-                    Float(plane) -
-                    Float(model[layer].size()) / 2.0 + 0.5
-                    ) * distance_between_fms);
-                    """
+                        #TODO Change colors for diferent types of neurons
+                        ogl.r = 255;
+                        ogl.g = 0;
+                        ogl.b = 0;
+                        ogl.x = (layer_no - total_layers / 2.0 + 1.0) * distance_between_layers
+                        ogl.y = (row_no - len(model[layer_no][plane_no]) / 2.0 + 1.0) * distance_between_neurons
+                        ogl.z = (col_no - len(model[layer_no][plane_no][0]) / 2.0 + 1.0) * distance_between_neurons
+                        + (plane_no - len(model[layer_no]) / 2.0 + 0.5) * distance_between_fms
 
     return model
 

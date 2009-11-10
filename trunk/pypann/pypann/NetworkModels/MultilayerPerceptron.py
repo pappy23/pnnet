@@ -2,13 +2,20 @@
 # MultilayerPerceptron
 #
 
-from ..Core.Weight import Weight
-from ..Core.Net import Net
+from ..Core import *
 from ..Neurons.PyramidalNeuron import PyramidalNeuron
 from ..Neurons.BiasNeuron import BiasNeuron
 from ..TF import Linear, Tanh
 
 def multilayer_perceptron(layers, tfs = []):
+    assert(isinstance(layers, list))
+    assert(isinstance(tfs, list))
+    for i in layers:
+        assert(isinstance(i, int))
+        assert(i > 0)
+    for i in tfs:
+        assert(isinstance(i, TF.TF))
+
     net = Net()
 
     if len(layers) == 0:

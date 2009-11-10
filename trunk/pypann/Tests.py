@@ -169,11 +169,32 @@ class MultilayerPerceptronTestCase(unittest.TestCase):
 
 class ConvolutinalNetworkTestCase(unittest.TestCase):
     def runTest(self):
-        net = convolutional_network([2, 2, 2])
+        net = convolutional_network([1,1,1])
+        pass #TODO
 
 class FeedforwardPropagationRunnerTestCase(unittest.TestCase):
     def runTest(self):
-        pass #TODO
+        net = Net()
+        n1 = PyramidalNeuron(TF.Linear())
+        n2 = PyramidalNeuron(TF.Linear())
+        net.add_input_neuron(n1)
+        net.connect(n1, n2, Weight(1.0))
+        net.connect(BiasNeuron(), n2, Weight(1.0))
+        net.set_input([1.0])
+        net.run(Runners.feedforward_propagation)
+        self.assertEqual(net.get_output(), [2.0])
+
+class LmsTestCase(unittest.TestCase):
+    def runTest(self):
+        net = Net()
+        n1 = PyramidalNeuron(TF.Linear())
+        n2 = PyramidalNeuron(TF.Linear())
+        net.add_input_neuron(n1)
+        net.connect(n1, n2, Weight(1.0))
+        net.connect(BiasNeuron(), n2, Weight(1.0))
+        n2.lms_attributes = Attributes()
+        n2.lms_attributes.error = 5.0
+        net.run(Runners.lms_runner)
 
 #
 # Main
