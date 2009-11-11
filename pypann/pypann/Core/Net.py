@@ -77,6 +77,9 @@ class Net:
         if not self._cache.is_ok():
             self._update_cache()
 
+        if not dir:
+            self._cache.layers.reverse()
+
         def worker():
             while True:
                 neuron = q.get()
@@ -97,6 +100,10 @@ class Net:
                 for neuron in layer:
                     q.put(neuron)
                 q.join()
+
+        if not dir:
+            self._cache.layers.reverse()
+
 
     def _update_cache(self):
         self._cache.layers = []

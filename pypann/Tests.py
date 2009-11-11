@@ -194,7 +194,13 @@ class LmsTestCase(unittest.TestCase):
         net.connect(BiasNeuron(), n2, Weight(1.0))
         n2.lms_attributes = Attributes()
         n2.lms_attributes.error = 5.0
-        net.run(Runners.lms_runner)
+        net.lms_attributes = Attributes()
+        net.lms_attributes.learning_rate = 0.1
+        net.lms_attributes.learning_momentum = 0.5
+        net.lms_attributes.epoch = 1
+        net.lms_attributes.annealing_tsc = 10
+        net.run(Runners.lms_runner, False)
+        #TODO Train net in loop
 
 #
 # Main

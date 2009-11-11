@@ -14,9 +14,12 @@ class Weight:
     def value(self):
         return self._value
 
-    def __iadd__(self, rvalue):
+    def add_value(self, value):
         with self._lock:
-            self._value = self._value + rvalue * 2 / self._usage
+            self._value = self._value + value * 2 / self._usage
+
+    def __iadd__(self, rvalue):
+        self.add_value(rvalue)
         return self
 
     def inc_usage(self):

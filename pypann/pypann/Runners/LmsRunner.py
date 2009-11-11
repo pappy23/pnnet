@@ -5,11 +5,18 @@
 
 from ..Core import *
 
+def init_net(net):
+    net.lms_attributes.learning_rate = 0.3
+    net.lms_attributes.learning_momentum = 0.5
+    net.lms_attributes.epoch = 1
+    net.lms_attributes.annealing_tsc = 10
+
 def init_neuron(neuron):
     neuron.lms_attributes = Attributes()
 
 def init_link(link):
     link.lms_attributes = Attributes()
+    link.lms_attributes.last_delta_w = 0
 
 def lms_runner(neuron, net):
     assert(isinstance(neuron, Neuron))
@@ -60,5 +67,6 @@ def lms_runner(neuron, net):
         link.lms_attributes.last_delta_w = dw
 
         #Apply dw
-        link.weight() += dw
+        link.weight().add_value(dw)
+
 
