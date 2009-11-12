@@ -6,16 +6,22 @@
 from ..Core import *
 
 def init_net(net):
+    if not hasattr(net, "lms_attributes"):
+        net.lms_attributes = Attributes()
+        
     net.lms_attributes.learning_rate = 0.3
     net.lms_attributes.learning_momentum = 0.5
     net.lms_attributes.epoch = 1
     net.lms_attributes.annealing_tsc = 10
 
 def init_neuron(neuron):
-    neuron.lms_attributes = Attributes()
+    if not hasattr(neuron, "lms_attributes"):
+        neuron.lms_attributes = Attributes()
 
 def init_link(link):
-    link.lms_attributes = Attributes()
+    if not hasattr(link, "lms_attributes"):
+        link.lms_attributes = Attributes()
+        
     link.lms_attributes.last_delta_w = 0
 
 def lms_runner(neuron, net):
@@ -28,8 +34,8 @@ def lms_runner(neuron, net):
 
     #local_gradient = desired_output - actual_output = error - for output neuron
     #local_gradient = weighted sum of upstream neurons local_gradients
-    if hasattr(neuron.lms_attributes, "error"):
-        neuron.lms_attributes.local_gradient = neuron.lms_attributes.error #output neuron
+    if hasattr(neuron, "error"):
+        neuron.lms_attributes.local_gradient = neuron.error #output neuron
     else:
         neuron.lms_attributes.local_gradient = 0
 
@@ -54,7 +60,7 @@ def lms_runner(neuron, net):
 
     #Comment: Na --w--> Nb
     #w is updated while processing Na
-    for link in neuron._links_out:
+    for link in neuron._links_out: #FIXME Bias neuron isn't processed
         #See Haykin, p241
         #Ni -> Nj
         #dWj(n) = a*(Wj(n-1)) + learning_rate * local_gradient_j * Yi
