@@ -190,17 +190,17 @@ class LmsTestCase(unittest.TestCase):
         n1 = PyramidalNeuron(TF.Linear())
         n2 = PyramidalNeuron(TF.Linear())
         net.add_input_neuron(n1)
-        net.connect(n1, n2, Weight(1.0))
-        net.connect(BiasNeuron(), n2, Weight(1.0))
-        n2.lms_attributes = Attributes()
-        n2.lms_attributes.error = 5.0
-        net.lms_attributes = Attributes()
-        net.lms_attributes.learning_rate = 0.1
-        net.lms_attributes.learning_momentum = 0.5
-        net.lms_attributes.epoch = 1
-        net.lms_attributes.annealing_tsc = 10
-        net.run(Runners.lms_runner, False)
-        #TODO Train net in loop
+        w_12 = Weight(0.1)
+        w_b2 = Weight(-0.1)
+        net.connect(n1, n2, w_12)
+        net.connect(BiasNeuron(), n2, w_b2)
+        train_data = [([1], [0.5]), ([2], [1])]
+        
+        print "Before: w_12 =", w_12.value(), "w_b2 =", w_b2.value()
+        for i in range(20):
+            lms(net, train_data)
+        #self.assertAlmostEqual(w_12.value(), 0.5, 2)
+        print "After: w_12 =", w_12.value(), "w_b2 =", w_b2.value()
 
 #
 # Main
