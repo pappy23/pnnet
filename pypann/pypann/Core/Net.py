@@ -74,36 +74,45 @@ class Net:
 
     #dir - True - forward run, False - backward
     def run(self, runner = lambda x, y: x.run(), dir = True):
+        def worker():
+            while True:
+                runner(queue.get(), self)
+                queue.task_done()
+                #FIXME: WTF??!
+                if not job_is_done.locked():
+                    break
+
         if not self._cache.is_ok():
             self._update_cache()
 
         if not dir:
             self._cache.layers.reverse()
 
-        def worker():
-            while True:
-                neuron = q.get()
-                runner(neuron, self)
-                q.task_done()
-                if not job_is_done.locked():
-                    break
-
+        queue = Queue()
+        #=======================================================================
+        # threads = []
+        #=======================================================================
         job_is_done = Lock()
-        q = Queue()
         with job_is_done:
             for i in range(self.worker_threads_count):
                 t = Thread(target=worker)
                 t.daemon = True
                 t.start()
+                threads.append(t)
 
             for layer in self._cache.layers:
                 for neuron in layer:
-                    q.put(neuron)
-                q.join()
+                    queue.put(neuron)
+                queue.join()
+            
+            #===================================================================
+            # for t in threads:
+            #   t.join()
+            #   del t
+            #===================================================================
 
         if not dir:
             self._cache.layers.reverse()
-
 
     def _update_cache(self):
         self._cache.layers = []
