@@ -4,7 +4,7 @@
 
 import unittest
 from pypann import *
-"""
+
 class ExceptionTestCase(unittest.TestCase):
     def _helper(self):
         raise LogicError("Test error occured")
@@ -183,7 +183,7 @@ class FeedforwardPropagationRunnerTestCase(unittest.TestCase):
         net.set_input([1.0])
         net.run(Runners.feedforward_propagation)
         self.assertEqual(net.get_output(), [2.0])
-"""
+
 class LmsTestCase(unittest.TestCase):
     def runTest(self):
         net = Net()
@@ -195,12 +195,11 @@ class LmsTestCase(unittest.TestCase):
         net.connect(n1, n2, w_12)
         net.connect(BiasNeuron(), n2, w_b2)
         train_data = [([1], [0.5]), ([2], [1])]
-        
-        print "Before: w_12 =", w_12.value(), "w_b2 =", w_b2.value()
-        for i in range(5):
+
+        for i in range(50):
             lms(net, train_data)
-        #self.assertAlmostEqual(w_12.value(), 0.5, 2)
-        print "After: w_12 =", w_12.value(), "w_b2 =", w_b2.value()
+        self.assertAlmostEqual(w_12.value(), 0.49, 2)
+        self.assertAlmostEqual(w_b2.value(), 0.01, 2)
 
 #
 # Main
