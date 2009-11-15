@@ -44,7 +44,6 @@ class Net:
             pass
 
         del n
-
         self._cache.invalidate()
 
     def connect(self, n_from, n_to, w = None, latency = 1):
@@ -72,13 +71,18 @@ class Net:
         else:
             return []
 
-    #dir - True - forward run, False - backward
     def run(self, runner = lambda x, y: x.run(), dir = True):
+        """
+        Use runner on all neurons
+
+        runner := func(neuron, net)
+        dir := True | False
+        if dir == True then perform feedforward run, else - backward run
+        """
         def worker():
             while True:
                 runner(queue.get(), self)
                 queue.task_done()
-                #FIXME: WTF??!
                 if not job_is_done.locked():
                     break
 
@@ -89,9 +93,7 @@ class Net:
             self._cache.layers.reverse()
 
         queue = Queue()
-        #=======================================================================
-        # threads = []
-        #=======================================================================
+        threads = []
         job_is_done = Lock()
         with job_is_done:
             for i in range(self.worker_threads_count):
@@ -104,17 +106,18 @@ class Net:
                 for neuron in layer:
                     queue.put(neuron)
                 queue.join()
-            
-            #===================================================================
-            # for t in threads:
-            #   t.join()
-            #   del t
-            #===================================================================
 
         if not dir:
             self._cache.layers.reverse()
 
+        #for t in threads:
+        #    t.join(1)
+        #FIXME: This hangs all the time
+
     def _update_cache(self):
+        """
+        Rebuild internal cache on demand
+        """
         self._cache.layers = []
         hops = dict(map(lambda x: (x, 1), self.input_neurons))
 
