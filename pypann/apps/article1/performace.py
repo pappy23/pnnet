@@ -14,5 +14,5 @@ if __name__ == "__main__":
     for i in range(1, 9):
         print "Threads:", i
         net.worker_threads_count = i
-        print "%.2f usec" % (1000000 * t.timeit(number=100))
+        print "%.2f usec" % (1000000 * t.timeit(number=1))
 
