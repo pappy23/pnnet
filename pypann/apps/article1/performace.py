@@ -11,7 +11,7 @@ if __name__ == "__main__":
     lms(net, [([1], [1])])
 
     t = Timer("lms(net, [([1], [1])])", "from __main__ import net, lms")
-    for i in range(1, 9):
+    for i in range(1, 4):
         print "Threads:", i
         net.worker_threads_count = i
         print "%.2f usec" % (1000000 * t.timeit(number=1))

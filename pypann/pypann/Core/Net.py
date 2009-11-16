@@ -20,7 +20,7 @@ class NetCache:
 #
 from multiprocessing import cpu_count
 from Queue import Queue, Empty
-from threading import Thread, Lock
+from threading import Thread, Lock, Semaphore
 from Link import Link
 from Weight import Weight
 
@@ -79,13 +79,14 @@ class Net:
         dir := True | False
         if dir == True then perform feedforward run, else - backward run
         """
-        def worker():
-            while job_is_done.locked():
-                try:
-                    runner(queue.get(False), self)
-                    queue.task_done()
-                except Empty:
-                    pass
+        def worker(id):
+            for layer in self._cache.layers:
+                semaphore.acquire()
+                for i in range(id, len(layer), self.worker_threads_count):
+                    runner(layer[i], self)
+                semaphore.release()
+                while semaphore._Semaphore__value != self.worker_threads_count:
+                    pass #VERY DANGEROUS!!!
 
         if not self._cache.is_ok():
             self._update_cache()
@@ -93,27 +94,14 @@ class Net:
         if not dir:
             self._cache.layers.reverse()
 
-        queue = Queue()
-        threads = []
-        job_is_done = Lock()
-        with job_is_done:
-            for i in range(self.worker_threads_count):
-                t = Thread(target=worker)
-                threads.append(t)
-                t.daemon = True
-                t.start()
-
-            for layer in self._cache.layers:
-                for neuron in layer:
-                    queue.put(neuron)
-                queue.join()
+        semaphore = Semaphore(self.worker_threads_count)
+        for i in range(self.worker_threads_count):
+            t = Thread(target = worker, args = [i])
+            t.daemon = True
+            t.start()
 
         if not dir:
             self._cache.layers.reverse()
-
-        #for t in threads:
-        #    t.join(1)
-        #FIXME: This hangs all the time
 
     def _update_cache(self):
         """
