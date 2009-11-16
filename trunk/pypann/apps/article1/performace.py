@@ -4,7 +4,7 @@ from timeit import Timer
 
 if __name__ == "__main__":
     #Constructing perceptron
-    net = multilayer_perceptron([1, 1000, 1000, 1000, 1], [TF.Linear, TF.Tanh, TF.Tanh, TF.Tanh, TF.Linear])
+    net = multilayer_perceptron([1, 10, 10, 10, 1], [TF.Linear, TF.Tanh, TF.Tanh, TF.Tanh, TF.Linear])
 
     #Dry run to create all internal structures
     net.run(Runners.randomize_weights_according_to_inputs_count)
@@ -14,5 +14,5 @@ if __name__ == "__main__":
     for i in range(1, 9):
         print "Threads:", i
         net.worker_threads_count = i
-        print "%.2f usec" % (1000000 * t.timeit(number=1))
+        print "%.2f usec" % (1000000 * t.timeit(number=100))
 

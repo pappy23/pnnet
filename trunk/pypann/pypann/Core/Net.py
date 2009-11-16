@@ -81,7 +81,7 @@ class Net:
         """
         def worker():
             while True:
-                runner(queue.get(), self)
+                runner(queue.get(False), self)
                 queue.task_done()
                 if not job_is_done.locked():
                     break
