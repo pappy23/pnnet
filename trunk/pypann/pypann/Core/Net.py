@@ -19,7 +19,7 @@ class NetCache:
 # Net
 #
 from multiprocessing import cpu_count
-from Queue import Queue
+from Queue import Queue, Empty
 from threading import Thread, Lock
 from Link import Link
 from Weight import Weight
@@ -80,11 +80,12 @@ class Net:
         if dir == True then perform feedforward run, else - backward run
         """
         def worker():
-            while True:
-                runner(queue.get(False), self)
-                queue.task_done()
-                if not job_is_done.locked():
-                    break
+            while job_is_done.locked():
+                try:
+                    runner(queue.get(False), self)
+                    queue.task_done()
+                except Empty:
+                    pass
 
         if not self._cache.is_ok():
             self._update_cache()
@@ -98,9 +99,9 @@ class Net:
         with job_is_done:
             for i in range(self.worker_threads_count):
                 t = Thread(target=worker)
+                threads.append(t)
                 t.daemon = True
                 t.start()
-                threads.append(t)
 
             for layer in self._cache.layers:
                 for neuron in layer:
