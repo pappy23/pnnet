@@ -14,13 +14,30 @@ class NetCache:
 
     def fix(self):
         self._ok = True
+#
+# Barrier
+#
+from threading import Condition
+
+class Barrier:
+    def __init__(self, threads):
+        self.threads = self.remains = threads
+        self.cond = Condition()
+
+    def wait(self):
+        with self.cond:
+            self.remains -= 1
+            if self.remains:
+                self.cond.wait()
+            else:
+                self.remains = self.threads
+                self.cond.notifyAll()
 
 #
 # Net
 #
 from multiprocessing import cpu_count
-from Queue import Queue, Empty
-from threading import Thread, Lock, Semaphore
+from threading import Thread
 from Link import Link
 from Weight import Weight
 
@@ -81,12 +98,9 @@ class Net:
         """
         def worker(id):
             for layer in self._cache.layers:
-                semaphore.acquire()
                 for i in range(id, len(layer), self.worker_threads_count):
                     runner(layer[i], self)
-                semaphore.release()
-                while semaphore._Semaphore__value != self.worker_threads_count:
-                    pass #VERY DANGEROUS!!!
+                barrier.wait()
 
         if not self._cache.is_ok():
             self._update_cache()
@@ -94,11 +108,16 @@ class Net:
         if not dir:
             self._cache.layers.reverse()
 
-        semaphore = Semaphore(self.worker_threads_count)
+        thread_pool = []
+        barrier = Barrier(self.worker_threads_count)
         for i in range(self.worker_threads_count):
             t = Thread(target = worker, args = [i])
             t.daemon = True
             t.start()
+            thread_pool.append(t)
+
+        for t in thread_pool:
+            t.join()
 
         if not dir:
             self._cache.layers.reverse()
