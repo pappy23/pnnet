@@ -27,7 +27,7 @@ from Weight import Weight
 class Net:
     def __init__(self):
         self.input_neurons = []
-        self.worker_threads_count = cpu_count()
+        self.worker_threads_count = 1 #cpu_count()
         self._cache = NetCache()
 
     def add_input_neuron(self, n):
