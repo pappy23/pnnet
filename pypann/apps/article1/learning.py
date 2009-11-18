@@ -1,7 +1,6 @@
 
 import math
 import random
-import matplotlib.pyplot as plt
 from pypann import *
 
 def gen_data(min, max, count, f):
@@ -42,12 +41,6 @@ if __name__ == "__main__":
         random.shuffle(train_data)
         train_error_info.append(mse(lms(net, train_data)))
 
-    #Plot error graph
-    plt.figure(1)
-    plt.plot(range(1, epochs+1), train_error_info)
-    plt.xlabel("epoch")
-    plt.ylabel("error")
-
     #Test run
     x = []
     f_x = []
@@ -66,15 +59,26 @@ if __name__ == "__main__":
         err.append(math.sin(cur_x) - net.get_output()[0])
         cur_x += step_x
 
-    #Plot test run graph
-    plt.figure(2)
-    ax = plt.subplot(1,1,1)
-    ax.plot(x, f_x, color='g', label="f(x) = sin(x)")
-    ax.plot(x, y, color='b', label="output")
-    ax.plot(x, err, color='r', label="error")
-    ax.grid(True)
-    ax.axis([min_x, max_x, -1.5, +2])
-    handles, labels = ax.get_legend_handles_labels()
-    ax.legend(handles[::-1], labels[::-1])
-    plt.show()
+    try:
+        import matplotlib.pyplot as plt
+
+        #Plot error graph
+        plt.figure(1)
+        plt.plot(range(1, epochs+1), train_error_info)
+        plt.xlabel("epoch")
+        plt.ylabel("error")
+
+        #Plot test run graph
+        plt.figure(2)
+        ax = plt.subplot(1,1,1)
+        ax.plot(x, f_x, color='g', label="f(x) = sin(x)")
+        ax.plot(x, y, color='b', label="output")
+        ax.plot(x, err, color='r', label="error")
+        ax.grid(True)
+        ax.axis([min_x, max_x, -1.5, +2])
+        handles, labels = ax.get_legend_handles_labels()
+        ax.legend(handles[::-1], labels[::-1])
+        plt.show()
+    except ImportError:
+        print "Can't import matplotlib. Install it to get beautiful graphs"
 

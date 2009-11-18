@@ -14,18 +14,15 @@ def lms(net, data):
     if not hasattr(net, "lms_attributes"):
         init_net(net)
 
+    attrs = net.lms_attributes
+
     #=========================================================================== 
     # Simulated annealing, rate = basic_rate / ( 1 + epoch / time_seek_constant) 
     # When epoch -> inf, rate -> basic_rate / epoch 
     #===========================================================================
-    net.lms_attributes.actual_learning_rate = net.lms_attributes.learning_rate / (1 + (net.lms_attributes.epoch / net.lms_attributes.annealing_tsc));
+    attrs.actual_learning_rate = attrs.learning_rate / (1 + (attrs.epoch / attrs.annealing_tsc));
 
     error = teach(net, data, lms_runner)
-    net.lms_attributes.epoch += 1
+    attrs.epoch += 1
     return error
-
-def init(net):
-    if hasattr(net, "lms_attributes"):
-        delattr(net, "lms_attributes")
-    init_net(net)
 
