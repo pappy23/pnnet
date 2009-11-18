@@ -20,5 +20,12 @@ def lms(net, data):
     #===========================================================================
     net.lms_attributes.actual_learning_rate = net.lms_attributes.learning_rate / (1 + (net.lms_attributes.epoch / net.lms_attributes.annealing_tsc));
 
-    teach(net, data, lms_runner)
+    error = teach(net, data, lms_runner)
     net.lms_attributes.epoch += 1
+    return error
+
+def init(net):
+    if hasattr(net, "lms_attributes"):
+        delattr(net, "lms_attributes")
+    init_net(net)
+
