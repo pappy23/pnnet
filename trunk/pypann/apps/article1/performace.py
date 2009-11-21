@@ -1,5 +1,5 @@
 
-from pypann import *
+from ../../pypann import *
 from timeit import Timer
 
 if __name__ == "__main__":

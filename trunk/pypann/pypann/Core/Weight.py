@@ -23,7 +23,7 @@ class Weight:
 
     def add_value(self, value):
         """Adds supplied value to weight internal value. Thread safe."""
-        assert type(value) is float or type(value) is int
+        assert type(value) in (int, float)
 
         with self._lock:
             self._value = self._value + value * 2 / self._usage
