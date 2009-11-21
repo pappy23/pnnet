@@ -57,13 +57,12 @@ class LinkTestCase(unittest.TestCase):
         self.assertEqual(self.link.latency(), 2)
 
 class NeuronTestCase(unittest.TestCase):
-    def runTest(self):
+    def testNeuron(self):
         self.neuron = Neuron()
         self.assertEqual(self.neuron.input, 0)
         self.assertEqual(self.neuron.output, 0)
 
-class PyramidalNeuronTestCase(unittest.TestCase):
-    def testRun(self):
+    def testPyramidalNeuron(self):
         class Linear:
             def f(self, x):
                 return x
@@ -73,8 +72,7 @@ class PyramidalNeuronTestCase(unittest.TestCase):
         n.run()
         self.assertEqual(n.output, 5.0)
 
-class BiasNeuronTestCase(unittest.TestCase):
-    def runTest(self):
+    def testBiasNeuron(self):
         net = Net()
         n1 = PyramidalNeuron(TF.Tanh)
         net.add_input_neuron(n1)
@@ -83,6 +81,8 @@ class BiasNeuronTestCase(unittest.TestCase):
         self.assertEqual(net.get_output(), [TF.Tanh.f(1.0)])
 
 class NetTestCase(unittest.TestCase):
+    #TODO: Test for neuron and link deletion
+    #TODO: Test for different link latencies
     class LinearTF:
         def f(self, x):
             return x
@@ -110,24 +110,23 @@ class NetTestCase(unittest.TestCase):
 
     def testCache(self):
         net = self.compose_typical_net()
-        net._update_cache()
+        net.run()
         self.assertEqual(len(net._cache.layers), 3)
         #self.print_cache(net)
         net.remove_neuron(net._cache.layers[-1][0])
-        net._update_cache()
+        net.run()
         self.assertEqual(len(net._cache.layers), 2)
         #self.print_cache(net)
 
     def testRun(self):
         net = self.compose_typical_net()
-        net._update_cache()
         net.set_input([5.0])
         net.run()
         self.assertEqual(net.get_output(), [15.0])
 
     def testStorage(self):
         net = self.compose_typical_net()
-        net._update_cache()
+        net.run()
         c1 = net._cache.layers
         save(net, "test.net")
         net2 = load("test.net")
