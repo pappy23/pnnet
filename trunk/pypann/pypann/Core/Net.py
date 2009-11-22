@@ -31,17 +31,17 @@ class Barrier:
     Code taken form here: http://www.python.org/search/hypermail/python-1994q2/0608.html"""
 
     def __init__(self, threads):
-        self.threads = self.remains = threads
-        self.cond = Condition()
+        self.__threads = self.__remains = threads
+        self.__cond = Condition()
 
     def wait(self):
-        with self.cond:
-            self.remains -= 1
-            if self.remains:
-                self.cond.wait()
+        with self.__cond:
+            self.__remains -= 1
+            if self.__remains:
+                self.__cond.wait()
             else:
-                self.remains = self.threads
-                self.cond.notifyAll()
+                self.__remains = self.__threads
+                self.__cond.notifyAll()
 
 #
 # Net
