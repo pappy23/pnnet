@@ -1,5 +1,5 @@
 
-from Exception  import LogicError
+from Exception  import LogicError, IOError
 from Attributes import Attributes
 from Moo        import moo
 from Weight     import Weight
