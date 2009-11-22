@@ -200,6 +200,31 @@ class LmsTestCase(unittest.TestCase):
         self.assertAlmostEqual(w_12.value(), 0.49, 2)
         self.assertAlmostEqual(w_b2.value(), 0.01, 2)
 
+class PnmTestCase(unittest.TestCase):
+    def runTest(self):
+        pass #TODO: reading and writing of PBM, PGM and PPM files
+        # write_pnm(read_pnm(sys.argv[1]), "result.pgm")
+
+class SquashTest(unittest.TestCase):
+    def testDownscale(self):
+        self.assertEqual(squash([-10,+10], 10,-10, -1,+1), [-1, +1])
+
+    def testUpscale(self):
+        self.assertEqual(squash([0,1], 0,1, -10, +10), [-10, +10])
+
+    def testBorderCases(self):
+        self.assertEqual(squash([1,2,3], 0,10, -100,-100), [-100, -100, -100])
+        self.assertRaises(LogicError, squash, [1,2,3], 2,10, -100,-100)
+
+class ImageTestCase(unittest.TestCase):
+    def runTest(self):
+        img = Image(3,3, [1,1,1,2,2,2,3,3,3,4,4,4,5,5,5,6,6,6,7,7,7,8,8,8,9,9,9])
+        self.assertEqual(img.r, [1,2,3,4,5,6,7,8,9])
+        self.assertEqual(img.g, [1,2,3,4,5,6,7,8,9])
+        self.assertEqual(img.b, [1,2,3,4,5,6,7,8,9])
+        self.assertEqual(img.get_pixel(2,2), (9,9,9))
+        self.assertRaises(AssertionError, img.get_pixel, 10,10)
+
 #
 # Main
 #
