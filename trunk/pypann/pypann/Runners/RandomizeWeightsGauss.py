@@ -4,7 +4,7 @@
 
 import random
 import math
-from ..Core.Attributes import Attributes
+from ..Core import Attributes
 
 default_min = -0.3
 default_max = +0.3

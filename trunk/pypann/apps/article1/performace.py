@@ -12,8 +12,8 @@ if __name__ == "__main__":
     net.run(Runners.randomize_weights_according_to_inputs_count)
     lms(net, [([1], [1])])
 
-    #t = Timer("lms(net, [([1], [1])])", "from __main__ import net, lms")
-    t = Timer("net.run(lambda x,y: time.sleep(0.01))", "from __main__ import net, time")
+    t = Timer("lms(net, [([1], [1])])", "from __main__ import net, lms")
+    #t = Timer("net.run(lambda x,y: time.sleep(0.01))", "from __main__ import net, time")
     for i in range(1, 9):
         print "Threads:", i
         net.worker_threads_count = i
