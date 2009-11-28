@@ -231,6 +231,15 @@ class PnmTestCase(unittest.TestCase):
         pass #TODO: reading and writing of PBM, PGM and PPM files
         # write_pnm(read_pnm(sys.argv[1]), "result.pgm")
 
+class ImageTestCase(unittest.TestCase):
+    def runTest(self):
+        img = Image(3,3, [1,1,1,2,2,2,3,3,3,4,4,4,5,5,5,6,6,6,7,7,7,8,8,8,9,9,9])
+        self.assertEqual(img.r, [1,2,3,4,5,6,7,8,9])
+        self.assertEqual(img.g, [1,2,3,4,5,6,7,8,9])
+        self.assertEqual(img.b, [1,2,3,4,5,6,7,8,9])
+        self.assertEqual(img.get_pixel(2,2), (9,9,9))
+        self.assertRaises(AssertionError, img.get_pixel, 10,10)
+
 class SquashTest(unittest.TestCase):
     def testDownscale(self):
         self.assertEqual(squash([-10,+10], 10,-10, -1,+1), [-1, +1])
@@ -242,14 +251,19 @@ class SquashTest(unittest.TestCase):
         self.assertEqual(squash([1,2,3], 0,10, -100,-100), [-100, -100, -100])
         self.assertRaises(LogicError, squash, [1,2,3], 2,10, -100,-100)
 
-class ImageTestCase(unittest.TestCase):
+class GenerateTrainDataTest(unittest.TestCase):
+    pass #TODO
+
+class DivideTest(unittest.TestCase):
     def runTest(self):
-        img = Image(3,3, [1,1,1,2,2,2,3,3,3,4,4,4,5,5,5,6,6,6,7,7,7,8,8,8,9,9,9])
-        self.assertEqual(img.r, [1,2,3,4,5,6,7,8,9])
-        self.assertEqual(img.g, [1,2,3,4,5,6,7,8,9])
-        self.assertEqual(img.b, [1,2,3,4,5,6,7,8,9])
-        self.assertEqual(img.get_pixel(2,2), (9,9,9))
-        self.assertRaises(AssertionError, img.get_pixel, 10,10)
+        l = [1,2,3,4,5,6,7,8,9,0]
+        self.assertEqual(divide(l, 80), ([1,2,3,4,5,6,7,8], [9,0]))
+        self.assertEqual(divide([],10), ([], []))
+        self.assertRaises(AssertionError, divide, l, 120)
+
+class MseTest(unittest.TestCase):
+    pass #TODO
+
 
 #
 # Main

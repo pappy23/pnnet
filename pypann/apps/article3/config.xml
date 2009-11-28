@@ -1,0 +1,15 @@
+<config>
+    <net>
+        <layer>3</layer>
+        <layer>2</layer>
+        <layer>1</layer>
+    </net>
+    <lms>
+        <learning_rate>0.5</learning_rate>
+        <annealing_tsc>100</annealing_tsc>
+        <epochs>1000</epochs>
+    </lms>
+    <faces>
+        <men>2</men>
+    </faces>
+</config>

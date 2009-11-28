@@ -2,7 +2,6 @@
 # LmsRunner
 #
 
-
 from ..Core import *
 from ..Neurons import BiasNeuron
 
