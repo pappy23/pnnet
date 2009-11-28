@@ -40,6 +40,17 @@ def convolutional_network(
         for neuron in row:
             net.add_input_neuron(neuron)
 
+    #Trace
+    for layer_no in range(len(model)):
+        for plane_no in range(len(model[layer_no])):
+            for row_no in range(len(model[layer_no][plane_no])):
+                for col_no in range(len(model[layer_no][plane_no][row_no])):
+                    model[layer_no][plane_no][row_no][col_no].topology_info = Attributes()
+                    model[layer_no][plane_no][row_no][col_no].topology_info.layer = layer_no
+                    model[layer_no][plane_no][row_no][col_no].topology_info.plane = plane_no
+                    model[layer_no][plane_no][row_no][col_no].topology_info.row = row_no
+                    model[layer_no][plane_no][row_no][col_no].topology_info.col = col_no
+
     return net
 
 def convolutional_network_model(
@@ -164,12 +175,11 @@ def convolutional_network_model(
                         neuron = PyramidalNeuron(ss_tf)
                         net.connect(BiasNeuron(), neuron, shared_bias)
                     ss_plane[i].append(neuron)
-
-            #Connecting SS-neuron to corresponding convolutional neurons
-            if not is_input_layer:
-                for l in range(ss_range):
-                    for m in range(ss_range):
-                        net.connect(conv_plane[i * ss_range + l][j * ss_range + m], neuron, shared_ss_weight)
+                    #Connecting SS-neuron to corresponding convolutional neurons
+                    if not is_input_layer:
+                        for l in range(ss_range):
+                            for m in range(ss_range):
+                                net.connect(conv_plane[i * ss_range + l][j * ss_range + m], neuron, shared_ss_weight)
 
             #Connect current SS-layer to next CONV-layer
             #Phase 1: create shared weights
@@ -199,8 +209,8 @@ def convolutional_network_model(
                     if conn_matrix[i]:
                         all_false = False
                 if all_false:
-                    conn_matrix[round(random.uniform(0, len(conn_matrix)))] = true;
-                    conn_matrix[round(random.uniform(0, len(conn_matrix)))] = true;
+                    conn_matrix[round(random.uniform(0, len(conn_matrix)))] = True;
+                    conn_matrix[round(random.uniform(0, len(conn_matrix)))] = True;
 
 
             #Phase 3: Actual connections
@@ -226,18 +236,17 @@ def convolutional_network_model(
         for plane_no in range(len(model[layer_no])):
             for row_no in range(len(model[layer_no][plane_no])):
                 for col_no in range(len(model[layer_no][plane_no][row_no])):
-                    if not hasattr(model[layer_no][plane_no][row_no][col_no], "opengl_attributes"):
-                        model[layer_no][plane_no][row_no][col_no].opengl_attributes = Attributes()
-                        ogl = model[layer_no][plane_no][row_no][col_no].opengl_attributes
+                    model[layer_no][plane_no][row_no][col_no].opengl_attributes = Attributes()
+                    ogl = model[layer_no][plane_no][row_no][col_no].opengl_attributes
 
-                        #TODO Change colors for diferent types of neurons
-                        ogl.r = 255;
-                        ogl.g = 0;
-                        ogl.b = 0;
-                        ogl.x = (layer_no - total_layers / 2.0 + 1.0) * distance_between_layers
-                        ogl.y = (row_no - len(model[layer_no][plane_no]) / 2.0 + 1.0) * distance_between_neurons
-                        ogl.z = (col_no - len(model[layer_no][plane_no][0]) / 2.0 + 1.0) * distance_between_neurons
-                        + (plane_no - len(model[layer_no]) / 2.0 + 0.5) * distance_between_fms
+                    #TODO Change colors for diferent types of neurons
+                    ogl.r = 255;
+                    ogl.g = 0;
+                    ogl.b = 0;
+                    ogl.x = (layer_no - total_layers / 2.0 + 1.0) * distance_between_layers
+                    ogl.y = (row_no - len(model[layer_no][plane_no]) / 2.0 + 1.0) * distance_between_neurons
+                    ogl.z = (col_no - len(model[layer_no][plane_no][0]) / 2.0 + 1.0) * distance_between_neurons
+                    + (plane_no - len(model[layer_no]) / 2.0 + 0.5) * distance_between_fms
 
     return model
 

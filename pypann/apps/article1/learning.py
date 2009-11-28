@@ -1,37 +1,20 @@
+#!/usr/bin/env python
 
 import math
 import random
 from pypann import *
-
-def gen_data(min, max, count, f):
-    data = []
-    for i in range(count):
-        x = random.uniform(min, max)
-        data.append( ([x], [f(x)]) )
-    return data
-
-def mse(data):
-    if isinstance(data[0], float): #Train pattern
-        return reduce(lambda x, y: x + y, map(lambda x: x * x, data)) / 2.0
-    elif isinstance(data[0], list):
-        acc = 0
-        for pattern in data:
-            acc += mse(pattern)
-        return acc / len(data)
-    else:
-        raise LogicError("Wrong input type")
 
 if __name__ == "__main__":
     #Constructing perceptron
     net = multilayer_perceptron([1, 9, 4, 1], [TF.Linear, TF.Tanh, TF.Tanh, TF.Linear])
 
     #Learning
-    train_data = gen_data(-3.0, +3.0, 20, math.sin)
+    train_data = generate_train_data(math.sin, -3.0, +3.0, 20)
     net.weight_randomization_attributes = Attributes()
     net.weight_randomization_attributes.min = -0.6
     net.weight_randomization_attributes.max = +0.6
     net.run(Runners.randomize_weights_according_to_inputs_count)
-    Lms.init(net)
+    lms(net, []) #dry run
     net.lms_attributes.learning_rate = 0.3
     net.lms_attributes.learning_momentum = 0.5
 

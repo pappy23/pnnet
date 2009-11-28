@@ -3,6 +3,7 @@
 #
 
 import sys
+from ..Util import squash
 
 def read_pnm(filename):
     """Reads image from PNM file

@@ -2,6 +2,7 @@
 # Lms
 #
 
+from ..Core import Net
 from ..Runners import init_net, lms_runner
 from Teacher import teach
 
@@ -10,7 +11,13 @@ def lms(net, data):
     Least Mean Squared algorithm
 
     Implements LMS(gradient descent) algorithm
-    """
+    Returns list of errors for all epochs
+
+    Signature: f(Net, list[tuple[list[float], list[float]]]) -> list[float]"""
+
+    assert isinstance(net, Net)
+    assert isinstance(data, list)
+
     if not hasattr(net, "lms_attributes"):
         init_net(net)
 

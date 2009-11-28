@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 
 from ../../pypann import *
 from timeit import Timer

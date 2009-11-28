@@ -169,9 +169,33 @@ class MultilayerPerceptronTestCase(unittest.TestCase):
         self.assertEqual(net.get_output()[0], 3.0)
 
 class ConvolutinalNetworkTestCase(unittest.TestCase):
-    def runTest(self):
-        net = convolutional_network([1,1,1])
-        pass #TODO
+    def testNeuronsCount(self):
+        net = convolutional_network([2,2], 0.5, 2,2, 1,1)
+        net.run(Runners.null)
+        self.assertEqual(map(lambda x: len(x), net._cache.layers), [25,32,8,2])
+
+    def testTopology(self):
+        def tracer_runner(neuron, net):
+            for l in neuron._links_in:
+                l.weight().tag = net.tag
+                net.tag += 1
+
+        def printer_runner(neuron, net):
+            print neuron.topology_info.__dict__, ": "
+            for l in neuron._links_in:
+                print l.weight().tag, "->",
+                if isinstance(l.to(), BiasNeuron):
+                    print "bias"
+                else:
+                    print l.to().topology_info.__dict__
+            print
+
+        net = convolutional_network([1,1], 0.5, 2,2, 1,1)
+        net.worker_threads_count = 1
+        net.tag = 0
+        net.run(tracer_runner)
+        self.assertEqual(net.tag, 104)
+        #net.run(printer_runner)
 
 class FeedforwardPropagationRunnerTestCase(unittest.TestCase):
     def runTest(self):
