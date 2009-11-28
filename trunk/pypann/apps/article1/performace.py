@@ -13,8 +13,8 @@ if __name__ == "__main__":
     lms(net, [([1], [1])])
 
     #t = Timer("lms(net, [([1], [1])])", "from __main__ import net, lms")
-    t = Timer("net.run(lambda x,y: time.sleep(0.1))", "from __main__ import net, time")
-    for i in range(1, 5):
+    t = Timer("net.run(lambda x,y: time.sleep(0.01))", "from __main__ import net, time")
+    for i in range(1, 9):
         print "Threads:", i
         net.worker_threads_count = i
         print "%.2f usec" % (1000000 * t.timeit(number=10))
