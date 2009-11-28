@@ -1,6 +1,7 @@
 <metadata>
     <face>
         <file>test.pnm</file>
+        <man>1</man>
         <position>1</position>
         <shift>2</shift>
         <noise>1</noise>

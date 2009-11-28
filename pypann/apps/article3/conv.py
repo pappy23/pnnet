@@ -4,39 +4,47 @@
 # conv.py
 #
 
+#TODO: Documentation
+
 try:
     from lxml import etree
 except ImportError:
     import xml.etree.ElementTree as etree
 import sys
+from random import shuffle
 from optparse import OptionParser
 from pypann import *
 
-def parse_config(filename):
+def parse_config(cfile):
+    #TODO: use XML DOM
     try:
-        tree = etree.parse(filename)
+        tree = etree.parse(cfile)
     except IOError:
-        print "File {0} no found".format(filename)
+        print "File {0} not found".format(cfile)
         sys.exit(-1)
 
     try:
         cfg = Attributes()
         cfg.net = Attributes()
+        cfg.weight_randomization = Attributes()
         cfg.lms = Attributes()
         cfg.faces = Attributes()
         cfg.net.layers = []
         for l in tree.findall("net/layer"):
             cfg.net.layers.append(int(l.text))
-        cfg.net.density              = tree.findtext("net/density", 0.5)
-        cfg.net.window_height        = tree.findtext("net/window_height", 5)
-        cfg.net.window_width         = tree.findtext("net/window_width", 5)
-        cfg.net.window_vert_overlap  = tree.findtext("net/window_vert_overlap", 3)
-        cfg.net.window_horiz_overlap = tree.findtext("net/window_horiz_overlap", 3)
-        cfg.lms.learning_rate        = tree.findtext("lms/learning_rate", 0.2)
-        cfg.lms.annealing_tsc        = tree.findtext("lms/annealing_tsc", 20)
-        cfg.lms.epochs               = tree.findtext("lms/epochs", 10)
-        cfg.faces.men                = tree.findtext("faces/men", 2)
-    except AssertionError:
+        cfg.net.density              = float(tree.findtext("net/density", 0.5))
+        cfg.net.window_height        = int(tree.findtext("net/window_height", 5))
+        cfg.net.window_width         = int(tree.findtext("net/window_width", 5))
+        cfg.net.window_vert_overlap  = int(tree.findtext("net/window_vert_overlap", 3))
+        cfg.net.window_horiz_overlap = int(tree.findtext("net/window_horiz_overlap", 3))
+        cfg.weight_randomization.min = float(tree.findtext("weight_randomization/min", -0.1))
+        cfg.weight_randomization.max = float(tree.findtext("weight_randomization/max", +0.1))
+        cfg.lms.learning_rate        = float(tree.findtext("lms/learning_rate", 0.2))
+        cfg.lms.annealing_tsc        = float(tree.findtext("lms/annealing_tsc", 20))
+        cfg.lms.epochs               = int(tree.findtext("lms/epochs", 10))
+        cfg.faces.men                = int(tree.findtext("faces/men"))
+        cfg.faces.train_percent      = int(tree.findtext("faces/train_percent"))
+    except:
         print "Broken configuration"
         sys.exit(-1)
     return cfg
@@ -66,17 +74,87 @@ def build_net(cfg):
         cfg.net.window_width,
         cfg.net.window_horiz_overlap,
         cfg.net.window_vert_overlap,
-        input_tf  = Tanh,
-        conv_tf   = Tanh,
-        ss_tf     = Tanh,
-        output_tf = Tanh)
-#TODO add out layer
+        input_tf  = TF.Tanh,
+        conv_tf   = TF.Tanh,
+        ss_tf     = TF.Tanh,
+        output_tf = TF.Tanh)
+    net.run(Runners.null)
+    for i in range(cfg.faces.men):
+        n = PyramidalNeuron(TF.Linear)
+        for j in net._cache.layers[-1]:
+            net.connect(j, n, Weight(1))
+    net.weight_randomization_attributes = Attributes()
+    net.weight_randomization_attributes.min = cfg.weight_randomization.min
+    net.weight_randomization_attributes.max = cfg.weight_randomization.max
+    net.run(Runners.randomize_weights_gauss)
+    lms(net, [])
+    net.lms_attributes.learning_rate = cfg.lms.learning_rate
+    net.lms_attributes.annealing_tsc = cfg.lms.annealing_tsc
+    return net
 
 def read_images(mfile):
-    return []
+    try:
+        tree = etree.parse(mfile)
+    except IOError:
+        print "File {0} not found".format(mfile)
+        sys.exit(-1)
+
+    result = []
+    for ximg in tree.findall("face"):
+        try: #FIXME
+            img = Image(3,3, [1,1,1,2,2,2,3,3,3,4,4,4,5,5,5,6,6,6,7,7,7,8,8,8,9,9,9])#read_pnm(ximg.findtext("file")) 
+            img.man = int(ximg.findtext("man"))
+            img.position = int(ximg.findtext("position"))
+            img.shift = int(ximg.findtext("shift"))
+            img.noise = int(ximg.findtext("noise"))
+            result.append(img)
+        except IOError:
+            print "Error loading {0}".format(ximg.findtext("file"))
+        except AssertionError: #FIXME
+            print "Broken metafile"
+            sys.exit(-1)
+    return result
+
+def config_to_string(cfg):
+    s = ""
+    for r in cfg.__dict__:
+        s = s + r + "\n"
+        for a in cfg.__dict__[r].__dict__:
+            s = s + " " + a + " = " + str(cfg.__dict__[r].__dict__[a]) + "\n"
+    return s
+
+def image_to_train_pattern(img, cfg):
+    #assert img.g == [] FIXME
+    #assert img.b == []
+    input = squash(img.r, 0,255, -1.8,+1.8)
+    output = [-1.8] * cfg.faces.men
+    output[img.man] = +1.8
+    return (input, output)
 
 if __name__ == "__main__":
     (opts, args) = parse_args(sys.argv[1:])
+
     config = parse_config(opts.configfile)
+    print "Config:\n", config_to_string(config)
+    
     net = build_net(config)
+    print "Net cache:"
+    for l in net._cache.layers:
+        print len(l),
+    print
+    
+    orl = read_images(opts.metadata)
+    print "Loaded {0} images".format(len(orl))
+
+    all_data = []
+    for img in orl:
+        all_data.append(image_to_train_pattern(img, config))
+    shuffle(all_data)
+    (train_data, test_data) = divide(all_data, config.faces.train_percent)
+    print "Train/Test: {0}/{1}".format(len(train_data), len(test_data))
+
+    for i in range(config.lms.epochs):
+        shuffle(train_data)
+        lms(net, train_data)
+        #TODO: test, report_epochs as config.faces and so on
 

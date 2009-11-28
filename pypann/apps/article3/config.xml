@@ -1,15 +1,24 @@
 <config>
     <net>
-        <layer>3</layer>
-        <layer>2</layer>
         <layer>1</layer>
+        <layer>1</layer>
+        <density>0.7</density>
+        <window_height>6</window_height>
+        <window_width>6</window_width>
+        <window_vert_overlap>2</window_vert_overlap>
+        <window_horiz_overlap>2</window_horiz_overlap>
     </net>
+    <weight_randomization>
+        <min>-0.05</min>
+        <max>+0.05</max>
+    </weight_randomization>
     <lms>
         <learning_rate>0.5</learning_rate>
-        <annealing_tsc>100</annealing_tsc>
+        <annealing_tsc>108</annealing_tsc>
         <epochs>1000</epochs>
     </lms>
     <faces>
         <men>2</men>
-    </faces>
+        <train_percent>60</train_percent>
+        </faces>
 </config>
