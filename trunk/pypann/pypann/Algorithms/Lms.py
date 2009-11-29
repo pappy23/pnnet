@@ -23,9 +23,9 @@ def lms(net, data):
 
     attrs = net.lms_attributes
 
-    #=========================================================================== 
-    # Simulated annealing, rate = basic_rate / ( 1 + epoch / time_seek_constant) 
-    # When epoch -> inf, rate -> basic_rate / epoch 
+    #===========================================================================
+    # Simulated annealing, rate = basic_rate / ( 1 + epoch / time_seek_constant)
+    # When epoch -> inf, rate -> basic_rate / epoch
     #===========================================================================
     attrs.actual_learning_rate = attrs.learning_rate / (1 + (attrs.epoch / attrs.annealing_tsc));
 

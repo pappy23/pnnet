@@ -4,6 +4,7 @@
 
 import sys
 from ..Util import squash
+from Image import Image
 
 def read_pnm(filename):
     """Reads image from PNM file
@@ -46,7 +47,6 @@ def read_pnm(filename):
                 raise IOError("File is broken")
         if total_tokens == 2:
             header.append(255)
-        print "Header:", header
 
         raw_data = []
         target_size = header[0] * header[1]
@@ -75,10 +75,6 @@ def read_pnm(filename):
                     if token > header[2]: #depth
                         raise IOError("Invalid depth")
                     raw_data.append(token)
-
-        for x in raw_data:
-            if not x:
-                raise IOError("Internal error of image reader")
 
         return Image(header[0], header[1], squash(raw_data, 0, header[2], 0, 255))
 

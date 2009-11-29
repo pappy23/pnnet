@@ -42,8 +42,10 @@ def parse_config(cfile):
         cfg.lms.learning_rate        = float(tree.findtext("lms/learning_rate", 0.2))
         cfg.lms.annealing_tsc        = float(tree.findtext("lms/annealing_tsc", 20))
         cfg.lms.epochs               = int(tree.findtext("lms/epochs", 10))
-        cfg.faces.men                = int(tree.findtext("faces/men"))
-        cfg.faces.train_percent      = int(tree.findtext("faces/train_percent"))
+        cfg.faces.men                = int(tree.findtext("faces/men", 10))
+        cfg.faces.train_percent      = int(tree.findtext("faces/train_percent", 60))
+        cfg.faces.report_frequency   = int(tree.findtext("faces/report_frequency", 1))
+        cfg.faces.stop_error         = float(tree.findtext("faces/stop_error", 0.3))
     except:
         print "Broken configuration"
         sys.exit(-1)
@@ -102,7 +104,8 @@ def read_images(mfile):
     result = []
     for ximg in tree.findall("face"):
         try: #FIXME
-            img = Image(3,3, [1,1,1,2,2,2,3,3,3,4,4,4,5,5,5,6,6,6,7,7,7,8,8,8,9,9,9])#read_pnm(ximg.findtext("file")) 
+            img = read_pnm(tree.findtext("directory") + "/" + ximg.findtext("file")) 
+#Image(3,3, [1,1,1,2,2,2,3,3,3,4,4,4,5,5,5,6,6,6,7,7,7,8,8,8,9,9,9])
             img.man = int(ximg.findtext("man"))
             img.position = int(ximg.findtext("position"))
             img.shift = int(ximg.findtext("shift"))
@@ -110,7 +113,7 @@ def read_images(mfile):
             result.append(img)
         except IOError:
             print "Error loading {0}".format(ximg.findtext("file"))
-        except AssertionError: #FIXME
+        except:
             print "Broken metafile"
             sys.exit(-1)
     return result
@@ -128,33 +131,43 @@ def image_to_train_pattern(img, cfg):
     #assert img.b == []
     input = squash(img.r, 0,255, -1.8,+1.8)
     output = [-1.8] * cfg.faces.men
-    output[img.man] = +1.8
+    try:
+        output[img.man] = +1.8
+    except:
+        pass
     return (input, output)
 
 if __name__ == "__main__":
     (opts, args) = parse_args(sys.argv[1:])
 
     config = parse_config(opts.configfile)
-    print "Config:\n", config_to_string(config)
-    
+    print "Config:", config_to_string(config)
+
     net = build_net(config)
     print "Net cache:"
     for l in net._cache.layers:
         print len(l),
     print
-    
+
     orl = read_images(opts.metadata)
     print "Loaded {0} images".format(len(orl))
 
     all_data = []
     for img in orl:
-        all_data.append(image_to_train_pattern(img, config))
+        if img.man < config.faces.men:
+            all_data.append(image_to_train_pattern(img, config))
     shuffle(all_data)
     (train_data, test_data) = divide(all_data, config.faces.train_percent)
     print "Train/Test: {0}/{1}".format(len(train_data), len(test_data))
 
+    print "Training for {0} epochs... (using {1} threads)".format(config.lms.epochs, net.worker_threads_count)
     for i in range(config.lms.epochs):
         shuffle(train_data)
-        lms(net, train_data)
-        #TODO: test, report_epochs as config.faces and so on
-
+        train_error = mse(lms(net, train_data))
+        test_error = mse(test(net, test_data))
+        if not i % config.faces.report_frequency:
+            print "{0}\t{1}\t{2}".format(i, train_error, test_error)
+        if test_error < config.faces.stop_error:
+            break
+    print "Training finished"
+#TODO: detailed test

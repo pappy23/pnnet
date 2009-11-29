@@ -91,7 +91,7 @@ class Net:
 
         Signature: f(None) -> None"""
         self.input_neurons = []
-        self.worker_threads_count = 1 #cpu_count()
+        self.worker_threads_count = cpu_count()
         self._cache = NetCache()
 
     def add_input_neuron(self, n):
@@ -155,7 +155,7 @@ class Net:
 
         Signature: f(list[float]) -> None"""
         assert isinstance(values, list)
-        assert len(values) >= len(self.input_neurons)
+        assert len(values) == len(self.input_neurons)
 
         for i in range(len(self.input_neurons)):
             assert type(values[i]) in (int, float)

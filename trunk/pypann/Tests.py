@@ -226,6 +226,9 @@ class LmsTestCase(unittest.TestCase):
         self.assertAlmostEqual(w_12.value(), 0.49, 2)
         self.assertAlmostEqual(w_b2.value(), 0.01, 2)
 
+class TestTestCase(unittest.TestCase):
+    pass #TODO
+
 class PnmTestCase(unittest.TestCase):
     def runTest(self):
         pass #TODO: reading and writing of PBM, PGM and PPM files
