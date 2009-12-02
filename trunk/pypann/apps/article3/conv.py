@@ -137,6 +137,17 @@ def image_to_train_pattern(img, cfg):
         pass
     return (input, output)
 
+def filter_face(config, img):
+    return img.man < config.faces.men
+
+def test_random_face(net, data, cfg):
+    s = ""
+    img = data[random.uniform(0, len(data))]
+    s += "Man: {0}\nPosition: {1}\nShift: {2}\nNoise: {3}\n".format(img.man, img.position, img.shift, img.noise)
+    net.set_input(image_to_train_pattern(img, cfg)[0])
+    net.run()
+    s += "Output: {0}".format(net.get_output())
+
 if __name__ == "__main__":
     (opts, args) = parse_args(sys.argv[1:])
 
@@ -151,11 +162,11 @@ if __name__ == "__main__":
 
     orl = read_images(opts.metadata)
     print "Loaded {0} images".format(len(orl))
+    orl = filter(filter_faces(config, orl))
 
     all_data = []
     for img in orl:
-        if img.man < config.faces.men:
-            all_data.append(image_to_train_pattern(img, config))
+        all_data.append(image_to_train_pattern(img, config))
     shuffle(all_data)
     (train_data, test_data) = divide(all_data, config.faces.train_percent)
     print "Train/Test: {0}/{1}".format(len(train_data), len(test_data))
@@ -170,4 +181,8 @@ if __name__ == "__main__":
         if test_error < config.faces.stop_error:
             break
     print "Training finished"
-#TODO: detailed test
+
+    print "Testing:"
+    for i in range(5):
+        print test_random_face(net, orl, config)
+
