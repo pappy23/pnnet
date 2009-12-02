@@ -11,7 +11,7 @@ try:
 except ImportError:
     import xml.etree.ElementTree as etree
 import sys
-from random import shuffle
+from random import shuffle, choice
 from optparse import OptionParser
 from pypann import *
 
@@ -137,16 +137,20 @@ def image_to_train_pattern(img, cfg):
         pass
     return (input, output)
 
-def filter_face(config, img):
-    return img.man < config.faces.men
+def filter_face(img, cfg):
+    return img.man < cfg.faces.men
 
 def test_random_face(net, data, cfg):
     s = ""
-    img = data[random.uniform(0, len(data))]
+    img = choice(data)
     s += "Man: {0}\nPosition: {1}\nShift: {2}\nNoise: {3}\n".format(img.man, img.position, img.shift, img.noise)
     net.set_input(image_to_train_pattern(img, cfg)[0])
     net.run()
-    s += "Output: {0}".format(net.get_output())
+    output = net.get_output()
+    s += "Output:\n"
+    for i in range(len(output)):
+        s += "{0}: {1:.2f}\n".format(i+1, output[i])
+    return s
 
 if __name__ == "__main__":
     (opts, args) = parse_args(sys.argv[1:])
@@ -162,7 +166,11 @@ if __name__ == "__main__":
 
     orl = read_images(opts.metadata)
     print "Loaded {0} images".format(len(orl))
-    orl = filter(filter_faces(config, orl))
+    orl2 = []
+    for face in orl:
+        if filter_face(face, config):
+            orl2.append(face)
+    orl = orl2
 
     all_data = []
     for img in orl:

@@ -14,12 +14,12 @@
         <max>+0.05</max>
     </weight_randomization>
     <lms>
-        <learning_rate>0.3</learning_rate>
+        <learning_rate>0.05</learning_rate>
         <annealing_tsc>20</annealing_tsc>
         <epochs>10</epochs>
     </lms>
     <faces>
-        <men>2</men>
+        <men>3</men>
         <train_percent>60</train_percent>
         <report_frequency>1</report_frequency>
         <stop_error>0.3</stop_error>
