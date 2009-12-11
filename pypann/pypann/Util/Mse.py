@@ -12,6 +12,9 @@ def mse(data):
 
     Signature: f(list[float]) -> float
                f(list[list[float]]) -> float"""
+    assert isinstance(data, list)
+    assert len(data) > 0
+
     if isinstance(data[0], float): #Train pattern
         return reduce(lambda x, y: x + y, map(lambda x: x * x, data)) / 2.0
     elif isinstance(data[0], list):

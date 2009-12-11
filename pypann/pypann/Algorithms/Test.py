@@ -19,6 +19,6 @@ def test(net, data):
         net.run(feedforward_propagation, True)
         actual_output = net.get_output()
         e = map(lambda x, y: x - y, p[1], actual_output)
-        errors.append(mse(e))
+        errors.append(e)
     return errors
 
