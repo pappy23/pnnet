@@ -13,6 +13,7 @@ except ImportError:
 import sys
 from random import shuffle, choice
 from optparse import OptionParser
+from datetime import datetime
 from pypann import *
 
 def parse_config(cfile):
@@ -37,6 +38,7 @@ def parse_config(cfile):
         cfg.net.window_width         = int(tree.findtext("net/window_width", 5))
         cfg.net.window_vert_overlap  = int(tree.findtext("net/window_vert_overlap", 3))
         cfg.net.window_horiz_overlap = int(tree.findtext("net/window_horiz_overlap", 3))
+        cfg.net.threads              = int(tree.findtext("net/threads", 1))
         cfg.weight_randomization.min = float(tree.findtext("weight_randomization/min", -0.1))
         cfg.weight_randomization.max = float(tree.findtext("weight_randomization/max", +0.1))
         cfg.lms.learning_rate        = float(tree.findtext("lms/learning_rate", 0.2))
@@ -80,6 +82,7 @@ def build_net(cfg):
         conv_tf   = TF.Tanh,
         ss_tf     = TF.Tanh,
         output_tf = TF.Tanh)
+    net.worker_threads_count = cfg.net.threads
     net.run(Runners.null)
     for i in range(cfg.faces.men):
         n = PyramidalNeuron(TF.Linear)
@@ -132,13 +135,13 @@ def image_to_train_pattern(img, cfg):
     input = squash(img.r, 0,255, -1.8,+1.8)
     output = [-1.8] * cfg.faces.men
     try:
-        output[img.man] = +1.8
+        output[img.man - 1] = +1.8
     except:
         pass
     return (input, output)
 
 def filter_face(img, cfg):
-    return img.man < cfg.faces.men
+    return img.man <= cfg.faces.men
 
 def test_random_face(net, data, cfg):
     s = ""
@@ -153,6 +156,7 @@ def test_random_face(net, data, cfg):
     return s
 
 if __name__ == "__main__":
+    print "Starting at {0}".format(datetime.now())
     (opts, args) = parse_args(sys.argv[1:])
 
     config = parse_config(opts.configfile)
@@ -183,7 +187,7 @@ if __name__ == "__main__":
     for i in range(config.lms.epochs):
         shuffle(train_data)
         train_error = mse(lms(net, train_data))
-        test_error = mse(test(net, test_data))
+        test_error = mse(test(net, test_data)) #FIXME
         if not i % config.faces.report_frequency:
             print "{0}\t{1}\t{2}".format(i, train_error, test_error)
         if test_error < config.faces.stop_error:
@@ -193,4 +197,5 @@ if __name__ == "__main__":
     print "Testing:"
     for i in range(5):
         print test_random_face(net, orl, config)
+    print "Finished at {0}".format(datetime.now())
 

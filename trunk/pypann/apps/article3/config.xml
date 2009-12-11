@@ -3,23 +3,24 @@
         <layer>10</layer>
         <layer>15</layer>
         <layer>20</layer>
-        <density>0.5</density>
+        <density>0.8</density>
         <window_height>5</window_height>
         <window_width>5</window_width>
         <window_vert_overlap>3</window_vert_overlap>
         <window_horiz_overlap>3</window_horiz_overlap>
+        <threads>1</threads>
     </net>
     <weight_randomization>
-        <min>-0.05</min>
-        <max>+0.05</max>
+        <min>-0.1</min>
+        <max>+0.1</max>
     </weight_randomization>
     <lms>
-        <learning_rate>0.05</learning_rate>
+        <learning_rate>0.15</learning_rate>
         <annealing_tsc>20</annealing_tsc>
         <epochs>10</epochs>
     </lms>
     <faces>
-        <men>3</men>
+        <men>2</men>
         <train_percent>60</train_percent>
         <report_frequency>1</report_frequency>
         <stop_error>0.3</stop_error>
