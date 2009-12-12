@@ -2,6 +2,8 @@
 # Mse
 #
 
+from numpy import *
+
 def mse(data):
     """Calculate mean squared error for a supplied data
 
