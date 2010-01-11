@@ -10,7 +10,8 @@ default_min = -2.4
 default_max = +2.4
 
 def randomize_weights_according_to_inputs_count(neuron, net):
-    assert hasattr(net, "weight_randomization_attributes")
+    #FIXME
+    #assert hasattr(net, "weight_randomization_attributes")
 
     if not hasattr(net, "weight_randomization_attributes"): #FIXME: Not thread safe behavour!
         net.weight_randomization_attributes = Attributes()
