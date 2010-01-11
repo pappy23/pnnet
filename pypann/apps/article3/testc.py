@@ -13,34 +13,34 @@ if __name__ == "__main__":
     print "Starting at {0}".format(datetime.now())
     data = [
             ([
-                0,0,1,1,1,1,1,1,1,1,1,0,0,
-                0,0,1,1,0,0,0,0,0,1,1,0,0,
-                0,0,1,1,0,0,0,0,0,1,1,0,0,
-                0,0,1,1,0,0,0,0,0,1,1,0,0,
-                0,0,1,1,0,0,0,0,0,1,1,0,0,
-                0,0,1,1,0,0,0,0,0,1,1,0,0,
-                0,0,1,1,0,0,0,0,0,1,1,0,0,
-                0,0,1,1,0,0,0,0,0,1,0,0,0,
-                0,0,1,1,0,0,0,0,0,1,1,0,0,
-                0,0,1,1,0,0,0,0,0,1,1,0,0,
-                0,0,1,1,0,0,0,0,0,1,1,0,0,
-                0,0,1,1,1,1,1,1,1,1,1,0,0,
-                0,0,1,1,1,1,1,1,1,1,1,0,0
+                1,1,1,1,0,0,0,0,0,1,1,0,0,
+                1,1,1,1,0,0,0,0,0,1,1,1,1,
+                1,1,1,1,0,0,0,0,0,1,1,1,1,
+                1,1,1,1,0,0,0,0,0,1,1,1,1,
+                1,1,1,1,0,0,0,0,0,1,1,1,1,
+                1,1,1,1,0,0,0,0,0,1,1,1,1,
+                1,1,1,1,0,0,0,0,0,1,1,1,1,
+                1,1,1,1,0,0,0,0,0,1,1,1,1,
+                1,1,1,1,0,0,0,0,0,1,1,1,1,
+                1,1,1,1,0,0,0,0,0,1,1,1,1,
+                1,1,1,1,0,0,0,0,0,1,1,1,1,
+                1,1,1,1,0,0,0,0,0,1,1,1,1,
+                1,1,1,1,0,0,0,0,0,1,1,1,1
                 ], [1,0,0,0,0,0,0,0,0,0]),
             ([
-                0,0,0,0,0,1,1,1,0,0,0,0,0,
-                0,0,0,0,1,1,1,1,0,0,0,0,0,
-                0,0,0,0,1,1,1,1,0,0,0,0,0,
-                0,0,0,1,1,1,1,1,0,0,0,0,0,
-                0,0,0,0,0,0,1,1,0,0,0,0,0,
-                0,0,0,0,0,0,1,1,0,0,0,0,0,
-                0,0,0,0,0,0,1,1,0,0,0,0,0,
-                0,0,0,0,0,0,1,1,0,0,0,0,0,
-                0,0,0,0,0,0,1,1,0,0,0,0,0,
-                0,0,0,0,0,0,1,1,0,0,0,0,0,
-                0,0,0,0,0,0,1,1,0,0,0,0,0,
-                0,0,0,0,0,0,1,1,0,0,0,0,0,
-                0,0,0,0,0,0,1,1,0,0,0,0,0
+                0,0,0,0,1,1,1,1,1,0,0,0,0,
+                0,0,0,0,1,1,1,1,1,0,0,0,0,
+                0,0,0,0,1,1,1,1,1,0,0,0,0,
+                0,0,0,0,1,1,1,1,1,0,0,0,0,
+                0,0,0,0,1,1,1,1,1,0,0,0,0,
+                0,0,0,0,1,1,1,1,1,0,0,0,0,
+                0,0,0,0,1,1,1,1,1,0,0,0,0,
+                0,0,0,0,1,1,1,1,1,0,0,0,0,
+                0,0,0,0,1,1,1,1,1,0,0,0,0,
+                0,0,0,0,1,1,1,1,1,0,0,0,0,
+                0,0,0,0,1,1,1,1,1,0,0,0,0,
+                0,0,0,0,1,1,1,1,1,0,0,0,0,
+                0,0,0,0,1,1,1,1,1,0,0,0,0
                 ], [0,1,0,0,0,0,0,0,0,0]),
             ([
                 0,0,0,1,1,1,1,1,1,0,0,0,0,
@@ -165,19 +165,19 @@ if __name__ == "__main__":
             ]
     """Create net"""
     net = convolutional_network(
-            layers = [10,2],
+            layers = [2,3],
             connection_density = 0.8,
             window_height = 3,
             window_width = 3,
             window_vert_overlap = 1,
             window_horiz_overlap = 1
             )
-    net = multilayer_perceptron([169,10], [TF.Tanh, TF.Tanh])
+    #net = multilayer_perceptron([169,90,10], [TF.Tanh, TF.Tanh])
 
     """Randomize weights"""
     net.weight_randomization_attributes = Attributes()
-    net.weight_randomization_attributes.min = -0.01
-    net.weight_randomization_attributes.max = +0.01
+    net.weight_randomization_attributes.min = -0.1
+    net.weight_randomization_attributes.max = +0.1
     net.run(Runners.randomize_weights_gauss)
 
     """Print network structure"""
@@ -188,14 +188,20 @@ if __name__ == "__main__":
 
     """Prepare data for training"""
     train_data = []
-    for p in data:
-        train_data.append((squash(p[0], 0,1, -0.5,+1.5), squash(p[1], 0,1, -1,+2)))
+    for p in data[:2]:
+        train_data.append((squash(p[0], 0,1, -1.5,+1.5), squash(p[1], 0,1, -1.5,+1.5)))
 
     """Init training"""
     lms(net, [])
     net.lms_attributes.learning_rate = 0.1
-    net.lms_attributes.annealing_tsc = 50
+    net.lms_attributes.annealing_tsc = 500
     epochs = 50
+
+    """Testing"""
+    for p in train_data:
+        net.set_input(p[0])
+        net.run()
+        print "d = {0}\to = {1}".format(p[1], net.get_output())
 
     """Training"""
     print "Training for {0} epochs... (using {1} threads)".format(epochs, net.worker_threads_count)
