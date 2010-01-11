@@ -5,9 +5,6 @@
 #
 
 import unittest
-from numpy import *
-from scipy import *
-pkgload()
 from pypann import *
 
 class ExceptionTestCase(unittest.TestCase):
@@ -248,23 +245,23 @@ class ImageTestCase(unittest.TestCase):
 
 class SquashTest(unittest.TestCase):
     def testDownscale(self):
-        self.assertEqual(squash(array([-10,+10]), 10,-10, -1,+1), array([-1, +1]))
+        self.assertEqual(squash([-10,+10], 10,-10, -1,+1), [-1, +1])
 
     def testUpscale(self):
-        self.assertEqual(squash(array([0,1]), 0,1, -10, +10), array([-10, +10]))
+        self.assertEqual(squash([0,1], 0,1, -10, +10), [-10, +10])
 
     def testBorderCases(self):
-        self.assertEqual(squash(array([1,2,3]), 0,10, -100,-100), array([-100, -100, -100]))
-        self.assertRaises(LogicError, squash, array([1,2,3]), 2,10, -100,-100)
+        self.assertEqual(squash([1,2,3], 0,10, -100,-100), [-100, -100, -100])
+        self.assertRaises(LogicError, squash, [1,2,3], 2,10, -100,-100)
 
 class GenerateTrainDataTest(unittest.TestCase):
     pass #TODO
 
 class DivideTest(unittest.TestCase):
     def runTest(self):
-        l = array([1,2,3,4,5,6,7,8,9,0])
-        self.assertEqual(divide(l, 80), (array([1,2,3,4,5,6,7,8]), array([9,0])))
-        self.assertEqual(divide(array([]),10), (array([]), array([])))
+        l = [1,2,3,4,5,6,7,8,9,0]
+        self.assertEqual(divide(l, 80), ([1,2,3,4,5,6,7,8], [9,0]))
+        self.assertEqual(divide([],10), ([], []))
         self.assertRaises(AssertionError, divide, l, 120)
 
 class MseTest(unittest.TestCase):
