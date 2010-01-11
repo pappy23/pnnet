@@ -10,7 +10,8 @@ default_min = -0.3
 default_max = +0.3
 
 def randomize_weights_gauss(neuron, net):
-    assert hasattr(net, "weight_randomization_attributes")
+    #FIXME
+    #assert hasattr(net, "weight_randomization_attributes")
 
     if not hasattr(net, "weight_randomization_attributes"):
         net.weight_randomization_attributes = Attributes()
