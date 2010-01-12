@@ -165,7 +165,7 @@ if __name__ == "__main__":
             ]
     """Create net"""
     net = convolutional_network(
-            layers = [2,3],
+            layers = [5,10],
             connection_density = 0.8,
             window_height = 3,
             window_width = 3,
@@ -188,13 +188,13 @@ if __name__ == "__main__":
 
     """Prepare data for training"""
     train_data = []
-    for p in data[:2]:
+    for p in data:
         train_data.append((squash(p[0], 0,1, -1.5,+1.5), squash(p[1], 0,1, -1.5,+1.5)))
 
     """Init training"""
     lms(net, [])
-    net.lms_attributes.learning_rate = 0.1
-    net.lms_attributes.annealing_tsc = 500
+    net.lms_attributes.learning_rate = 0.2
+    net.lms_attributes.annealing_tsc = 50
     epochs = 50
 
     """Testing"""
