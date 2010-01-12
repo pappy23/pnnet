@@ -89,6 +89,7 @@ def convolutional_network_model(
     assert(isinstance(conv_tf,   TF.TF))
     assert(isinstance(ss_tf,     TF.TF))
     assert(isinstance(output_tf, TF.TF))
+    assert 0.0 < connection_density <= 1.0
     assert(window_height > window_vert_overlap)
     assert(window_width > window_horiz_overlap)
     assert(len(layers) > 0)
@@ -188,57 +189,26 @@ def convolutional_network_model(
 
     #For entire topology - connect CONV-SHARE pairs to each other, layer to layer
     for d in range(0, len(model) / 2 + 2, 2):
-        """
-        model[d] - prev layer (SS)
-        model[d+1] - next layer (CONV)
-        We should connect them
-        """
-##TODO!!!!
-        #Connect current SS-layer to next CONV-layer
-        #Phase 1: create shared weights
-        shared_conv_weights = [ [Weight(1.0) for j in range(window_width)] for i in range(window_height) ]
-
-        #Phase 2: Build connection matrix for current plane
-        """
-        Return part of square connection matrix like that:
-          1 2 3 4 5    <-to
-        1 X X X X X
-        2 X   X   X
-        3   X   X
-        4 X X   X X
-        ^
-        from
-
-        For example above if called with plane_no = 3, return FTFTF
-        """
-        #Assume full connectivity by default
-        conn_matrix = [True] * len(model[current_layer + 2])
-
-        #First plane always gets full connectivity
-        #FIXME
-        #if plane_no:
-        #    all_false = True
-        #    for i in range(len(conn_matrix)):
-        #        conn_matrix[i] = random.triangular(0.0, 1.0, connection_density)
-        #        if conn_matrix[i]:
-        #            all_false = False
-        #    if all_false:
-        #        conn_matrix[round(random.uniform(0, len(conn_matrix)))] = True;
-        #        conn_matrix[round(random.uniform(0, len(conn_matrix)))] = True;
-
-
-        #Phase 3: Actual connections
-        #i iterates over next layer planes
-        for i in range(len(model[current_layer + 2])):
-            if conn_matrix[i]:
-                for j in range(next_layer_plane_height):
-                    for k in range(next_layer_plane_width):
-                        for l in range(window_height):
-                            for m in range(window_width):
-                                net.connect(ss_plane
-                                    [j * (window_height - window_vert_overlap) + l]
-                                    [k * (window_width - window_horiz_overlap) + m],
-                                    model[current_layer + 2][i][j][k], shared_conv_weights[l][m])
+        next_layer = model[d+1]
+        prev_layer = model[d]
+        next_layer_plane_width  = len(next_layer[0][0])
+        next_layer_plane_height = len(next_layer[0])
+        prev_layer_plane_width  = len(prev_layer[0])
+        prev_layer_plane_height = len(prev_layer)
+        for next_layer_plane in next_layer:
+            #Phase 2: create shared weights
+            shared_conv_weights = [ [Weight(1.0) for j in range(window_width)] for i in range(window_height) ]
+            #Phase 3: Actual connections
+            for prev_layer_plane in prev_layer:
+                if random.random() < connection_density:
+                    for i in range(next_layer_plane_height):
+                        for j in range(next_layer_plane_width):
+                            for k in range(window_height):
+                                for l in range(window_width):
+                                    net.connect(prev_layer_plane
+                                        [i * (window_height - window_vert_overlap) + k]
+                                        [j * (window_width - window_horiz_overlap) + l],
+                                        next_layer_plane[i][j], shared_conv_weights[k][l])
 
     #OpenGL
     for layer_no in range(len(model)):
