@@ -11,7 +11,7 @@ try:
 except ImportError:
     import xml.etree.ElementTree as etree
 import sys
-from random import shuffle, choice
+from random import shuffle, choice, seed
 from optparse import OptionParser
 from datetime import datetime
 from pypann import *
@@ -39,6 +39,7 @@ def parse_config(cfile):
         cfg.net.window_vert_overlap  = int(tree.findtext("net/window_vert_overlap", 3))
         cfg.net.window_horiz_overlap = int(tree.findtext("net/window_horiz_overlap", 3))
         cfg.net.threads              = int(tree.findtext("net/threads", 1))
+        cfg.net.seed                 = int(tree.findtext("net/seed", 1))
         cfg.weight_randomization.min = float(tree.findtext("weight_randomization/min", -0.1))
         cfg.weight_randomization.max = float(tree.findtext("weight_randomization/max", +0.1))
         cfg.lms.learning_rate        = float(tree.findtext("lms/learning_rate", 0.2))
@@ -91,6 +92,7 @@ def build_net(cfg):
     net.weight_randomization_attributes = Attributes()
     net.weight_randomization_attributes.min = cfg.weight_randomization.min
     net.weight_randomization_attributes.max = cfg.weight_randomization.max
+    seed(cfg.net.seed)
     net.run(Runners.randomize_weights_gauss)
     lms(net, [])
     net.lms_attributes.learning_rate = cfg.lms.learning_rate
