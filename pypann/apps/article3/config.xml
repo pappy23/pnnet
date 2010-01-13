@@ -9,6 +9,7 @@
         <window_vert_overlap>3</window_vert_overlap>
         <window_horiz_overlap>3</window_horiz_overlap>
         <threads>1</threads>
+        <seed>42</seed>
     </net>
     <weight_randomization>
         <min>-0.1</min>
@@ -17,12 +18,12 @@
     <lms>
         <learning_rate>0.1</learning_rate>
         <annealing_tsc>100</annealing_tsc>
-        <epochs>50</epochs>
+        <epochs>30</epochs>
     </lms>
     <faces>
         <men>5</men>
-        <train_percent>100</train_percent>
+        <train_percent>60</train_percent>
         <report_frequency>1</report_frequency>
-        <stop_error>0.8</stop_error>
+        <stop_error>1.8</stop_error>
     </faces>
 </config>
