@@ -2,7 +2,7 @@
     <net>
         <layer>10</layer>
         <layer>15</layer>
-        <layer>20</layer>
+        <layer>10</layer>
         <density>0.8</density>
         <window_height>5</window_height>
         <window_width>5</window_width>
@@ -15,14 +15,14 @@
         <max>+0.1</max>
     </weight_randomization>
     <lms>
-        <learning_rate>0.05</learning_rate>
-        <annealing_tsc>10</annealing_tsc>
-        <epochs>20</epochs>
+        <learning_rate>0.1</learning_rate>
+        <annealing_tsc>100</annealing_tsc>
+        <epochs>50</epochs>
     </lms>
     <faces>
-        <men>4</men>
-        <train_percent>60</train_percent>
+        <men>5</men>
+        <train_percent>100</train_percent>
         <report_frequency>1</report_frequency>
-        <stop_error>0.3</stop_error>
+        <stop_error>0.8</stop_error>
     </faces>
 </config>
