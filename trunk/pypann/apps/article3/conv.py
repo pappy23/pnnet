@@ -111,8 +111,6 @@ def read_images(mfile):
 #Image(3,3, [1,1,1,2,2,2,3,3,3,4,4,4,5,5,5,6,6,6,7,7,7,8,8,8,9,9,9])
             img.man = int(ximg.findtext("man"))
             img.position = int(ximg.findtext("position"))
-            img.shift = int(ximg.findtext("shift"))
-            img.noise = int(ximg.findtext("noise"))
             result.append(img)
         except IOError:
             print "Error loading {0}".format(ximg.findtext("file"))
@@ -146,7 +144,7 @@ def filter_face(img, cfg):
 def test_random_face(net, data, cfg):
     s = ""
     img = choice(data)
-    s += "Man: {0}\nPosition: {1}\nShift: {2}\nNoise: {3}\n".format(img.man, img.position, img.shift, img.noise)
+    s += "Man: {0}\nPosition: {1}\n".format(img.man, img.position)
     net.set_input(image_to_train_pattern(img, cfg)[0])
     net.run()
     output = net.get_output()
