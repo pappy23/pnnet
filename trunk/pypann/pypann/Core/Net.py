@@ -35,6 +35,8 @@ class Barrier:
         self.__cond = Condition()
 
     def wait(self):
+        pass
+        """
         with self.__cond:
             self.__remains -= 1
             if self.__remains:
@@ -42,6 +44,7 @@ class Barrier:
             else:
                 self.__remains = self.__threads
                 self.__cond.notifyAll()
+        """
 
 #
 # Net
@@ -203,6 +206,12 @@ class Net:
         barrier = Barrier(self.worker_threads_count)
         for i in range(self.worker_threads_count):
             t = Thread(target = worker, args = [i])
+            t.daemon = True
+            t.start()
+            thread_pool.append(t)
+        #DEBUG
+        for i in range(self.worker_threads_count, 10):
+            t = Thread()
             t.daemon = True
             t.start()
             thread_pool.append(t)

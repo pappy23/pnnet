@@ -5,6 +5,7 @@
 #
 
 import unittest
+import sys
 from pypann import *
 
 class ExceptionTestCase(unittest.TestCase):
@@ -170,7 +171,7 @@ class MultilayerPerceptronTestCase(unittest.TestCase):
 
 class ConvolutinalNetworkTestCase(unittest.TestCase):
     def testNeuronsCount(self):
-        net = convolutional_network([2,2], 0.5, 2,2, 1,1)
+        net = convolutional_network([2,2], 0.8, 2,2, 1,1)
         net.run(Runners.null)
         self.assertEqual(map(lambda x: len(x), net._cache.layers), [25,32,8,2])
 

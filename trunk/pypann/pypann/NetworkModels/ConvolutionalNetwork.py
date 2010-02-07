@@ -200,7 +200,7 @@ def convolutional_network_model(
             shared_conv_weights = [ [Weight(1.0) for j in range(window_width)] for i in range(window_height) ]
             #Phase 3: Actual connections
             for prev_layer_plane in prev_layer:
-                if random.random() < connection_density:
+                if prev_layer_plane is prev_layer[0] or random.random() < connection_density: #FIXME
                     for i in range(next_layer_plane_height):
                         for j in range(next_layer_plane_width):
                             for k in range(window_height):
