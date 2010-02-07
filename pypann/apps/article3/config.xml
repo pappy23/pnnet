@@ -1,9 +1,9 @@
 <config>
     <net>
-        <layer>10</layer>
-        <layer>15</layer>
-        <layer>10</layer>
-        <density>0.8</density>
+        <layer>5</layer>
+        <layer>6</layer>
+        <layer>7</layer>
+        <density>1.0</density>
         <window_height>5</window_height>
         <window_width>5</window_width>
         <window_vert_overlap>3</window_vert_overlap>
@@ -18,12 +18,12 @@
     <lms>
         <learning_rate>0.1</learning_rate>
         <annealing_tsc>100</annealing_tsc>
-        <epochs>30</epochs>
+        <epochs>200</epochs>
     </lms>
     <faces>
         <men>5</men>
         <train_percent>60</train_percent>
         <report_frequency>1</report_frequency>
-        <stop_error>1.8</stop_error>
+        <stop_error>0.5</stop_error>
     </faces>
 </config>

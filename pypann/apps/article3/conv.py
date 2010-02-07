@@ -11,7 +11,7 @@ try:
 except ImportError:
     import xml.etree.ElementTree as etree
 import sys
-from random import shuffle, choice, seed
+from random import shuffle, choice, seed, random
 from optparse import OptionParser
 from datetime import datetime
 from pypann import *
@@ -92,7 +92,6 @@ def build_net(cfg):
     net.weight_randomization_attributes = Attributes()
     net.weight_randomization_attributes.min = cfg.weight_randomization.min
     net.weight_randomization_attributes.max = cfg.weight_randomization.max
-    seed(cfg.net.seed)
     net.run(Runners.randomize_weights_gauss)
     lms(net, [])
     net.lms_attributes.learning_rate = cfg.lms.learning_rate
@@ -161,6 +160,7 @@ if __name__ == "__main__":
 
     config = parse_config(opts.configfile)
     print "Config:", config_to_string(config)
+    seed(config.net.seed)
 
     net = build_net(config)
     print "Net cache:"
@@ -183,6 +183,11 @@ if __name__ == "__main__":
     (train_data, test_data) = divide(all_data, config.faces.train_percent)
     print "Train/Test: {0}/{1}".format(len(train_data), len(test_data))
 
+    print "Testing pseudorandom number generator"
+    for i in range(3):
+        print random()
+    print
+
     print "Training for {0} epochs... (using {1} threads)".format(config.lms.epochs, net.worker_threads_count)
     for i in range(config.lms.epochs):
         shuffle(train_data)
@@ -190,8 +195,10 @@ if __name__ == "__main__":
         test_error = mse(test(net, test_data)) #FIXME
         if not i % config.faces.report_frequency:
             print "{0}\t{1}\t{2}".format(i, train_error, test_error)
+            sys.stdout.flush()
         if test_error < config.faces.stop_error:
             break
+
     print "Training finished"
 
     print "Testing:"
