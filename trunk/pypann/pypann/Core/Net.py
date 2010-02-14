@@ -35,8 +35,6 @@ class Barrier:
         self.__cond = Condition()
 
     def wait(self):
-        pass
-        """
         with self.__cond:
             self.__remains -= 1
             if self.__remains:
@@ -44,7 +42,6 @@ class Barrier:
             else:
                 self.__remains = self.__threads
                 self.__cond.notifyAll()
-        """
 
 #
 # Net
@@ -192,7 +189,7 @@ class Net:
                 for i in range(id, len(layer), self.worker_threads_count):
                     runner(layer[i], self)
                 # Wait for all threads to finish processing current layer
-                barrier.wait()
+                """barrier.wait()"""
 
         assert callable(runner)
         assert isinstance(dir, bool)
