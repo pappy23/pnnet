@@ -189,7 +189,7 @@ class Net:
                 for i in range(id, len(layer), self.worker_threads_count):
                     runner(layer[i], self)
                 # Wait for all threads to finish processing current layer
-                """barrier.wait()"""
+                barrier.wait()
 
         assert callable(runner)
         assert isinstance(dir, bool)
