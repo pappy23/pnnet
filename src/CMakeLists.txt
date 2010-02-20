@@ -12,8 +12,8 @@ set(CMAKE_VERBOSE_MAKEFILE OFF)
 # OPTIONS
 
 option(ENABLE_MOO "Enables easter egg compilation" OFF)
-option(BUILD_TESTS "Build or no rarely needed Unit-tests and other staff" OFF)
-option(BUILD_PYTHON_BINDINGS "Compile boost::python bindings" ON)
+option(BUILD_TESTS "Build rarely needed Unit-tests and other staff" OFF)
+option(BUILD_PYTHON_BINDINGS "Compile Python bindings" ON)
 
 if(NOT ${BUILD_TEST})
     message(STATUS "NOT building optional tests. You may redefine this behavour via BUILD_TESTS variable")
@@ -75,12 +75,7 @@ endif(WIN32)
 ############################################################################
 # DEPENDENCIES
 
-find_package(MPI)
-
 set(BOOST_MODULES thread serialization python)
-if(MPI_FOUND)
-    set(BOOST_MODULES ${BOOST_MODULES} mpi)
-endif(MPI_FOUND)
 if(WIN32)
     set(BOOST_MODULES ${BOOST_MODULES} date_time)
 endif(WIN32)
@@ -94,7 +89,6 @@ find_package(Boost 1.35 REQUIRED COMPONENTS ${BOOST_MODULES})
 
 set(QT_USE_QTOPENGL 1)
 find_package(Qt4)
-#find_package(JPEG REQUIRED)
 
 if(OPTION_BUILD_PYTHON_BINDINGS_DEFINED)
     find_package(PythonLibs REQUIRED)
@@ -103,6 +97,6 @@ endif(OPTION_BUILD_PYTHON_BINDINGS_DEFINED)
 ############################################################################
 # pann
 
-include_directories(pann gnuplot-cpp ${Boost_INCLUDE_DIRS} ${PYTHON_INCLUDE_PATH})
-subdirs(Apps gnuplot-cpp pann)
+include_directories(pann ${Boost_INCLUDE_DIRS} ${PYTHON_INCLUDE_PATH})
+subdirs(Apps pann)
 
