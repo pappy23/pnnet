@@ -1,15 +1,9 @@
+
 #ifndef PANN_CORE_OBJECT_H_INCLUDES
 #define PANN_CORE_OBJECT_H_INCLUDES
 
-#include "Includes/Std.h"
 #include "Includes/BoostSerialization.h"
-
-#include "Exception.h"
-#include "Attributes.h"
-
-using std::map;
-using boost::shared_ptr;
-using boost::dynamic_pointer_cast;
+#include "Type.h"
 
 namespace pann
 {
@@ -19,54 +13,7 @@ namespace pann
         Object() {};
         virtual ~Object() {};
 
-        AttributesPtr& getPtr(HashT _group) const
-        {
-            return attributes[_group];
-        };
-/*
-        const AttributesPtr& getPtr(HashT _group) const
-        {
-            return attributes[_group];
-        };
-*/
-        template<class T>
-        T& get() const
-        {
-            AttributesPtr& raw_ptr = attributes[T::getHash()];
-            shared_ptr<T> casted_ptr = dynamic_pointer_cast<T, Attributes>(raw_ptr);
-            //Optimization is possible
-
-            if(!casted_ptr)
-            {
-                T* ptr = new T();
-                raw_ptr.reset(ptr);
-                return *ptr;
-            } else {
-                return *casted_ptr;
-            }
-        };
-/*
-        template<class T>
-        const T& get() const
-        {
-            AttributesPtr& raw_ptr = attributes[T::getHash()];
-            shared_ptr<T> casted_ptr = dynamic_pointer_cast<T, Attributes>(raw_ptr);
-
-            if(!casted_ptr)
-            {
-                throw Exception()<<"Attributes access exception\n";
-            } else {
-                return *casted_ptr;
-            }
-        };
-*/
-        void clearAttributes()
-        {
-            attributes.clear();
-        };
-
-    private:
-        map<HashT, AttributesPtr> mutable attributes;
+        std::map<Hash, Float> mutable attribute_map;
 
         /* Serialization */
     private:
@@ -74,9 +21,10 @@ namespace pann
         template<class Archive>
             void serialize(Archive & ar, const unsigned int version)
             {
-                ar & BOOST_SERIALIZATION_NVP(attributes);
+                ar & BOOST_SERIALIZATION_NVP(attribute_map);
             };
     }; //Object
+    ADD_PTR_TYPEDEF(Object);
 
 }; //pann
 

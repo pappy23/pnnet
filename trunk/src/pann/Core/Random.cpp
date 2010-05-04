@@ -20,21 +20,21 @@ namespace pann
     } //rand01
 
     Float
-    rand(Float _min, Float _max)
+    rand(Float min, Float max)
     {
-        //Generate v from (0; 1) and squash it to (_min; _max) range
+        //Generate v from (0; 1) and scale it to (_min; _max) range
         Float v = rand01();
-        Float a = ( _max - _min );
-        Float b = _max - a;
+        Float a = ( max - min );
+        Float b = max - a;
         v = a * v + b;
 
         return v;
     } //rand
 
     bool
-    rand_coin(Float _probability)
+    rand_coin(Float probability)
     {
-        return rand01() < _probability;
+        return rand01() < probability;
     } //rand
 
 }; //pann
