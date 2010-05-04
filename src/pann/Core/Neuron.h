@@ -17,27 +17,23 @@ namespace pann
     class Neuron : public Object
     {
     public:
-        Neuron(ActivationFunctionPtr _af, WeightPtr _bias, RunnerPtr _fireRunner, RunnerPtr _learnRunner)
+        Neuron(TfPtr tf, WeightPtr _bias, RunnerPtr _fireRunner, RunnerPtr _learnRunner)
             : activationFunction(_af), bias(_bias), fireRunner(_fireRunner), learnRunner(_learnRunner)
         {
-            if(bias) {
-                bias->incUsageCount();
-                bias->incUsageCount();
-            }
         };
         virtual ~Neuron() {};
 
-        void setInput(Float _value)     { receptiveField = _value; };
-        Float getReceptiveField() const { return receptiveField; };
-        Float getOutput() const         { return activationValue; };
 
-        const list<Link>& getInConnections()  const { return links_in; };
-        const list<Link>& getOutConnections() const { return links_out; };
+        Float bias;
+        Float input;
+        Float output;
 
-        WeightPtr getBias() const                           { return bias; };
-        ActivationFunctionPtr getActivationFunction() const { return activationFunction; };
-        RunnerPtr getFireRunner() const                     { return fireRunner; };
-        RunnerPtr getLearnRunner() const                    { return learnRunner; };
+        vector<Link> input_links, output_links;
+
+        RunnerPtr fire;
+        RunnerPtr learn;
+        TfPtr tf; 
+
 
 
     private:

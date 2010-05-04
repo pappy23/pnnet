@@ -10,20 +10,20 @@
 #include <boost/foreach.hpp>
 #include <boost/thread.hpp>
 #include <boost/thread/barrier.hpp>
-#include <boost/functional/hash.hpp>
+//#include <boost/functional/hash.hpp>
 #include <boost/bind.hpp>
-#include <boost/shared_ptr.hpp>
-#include <boost/enable_shared_from_this.hpp>
+//#include <boost/shared_ptr.hpp>
+//#include <boost/enable_shared_from_this.hpp>
 
 //No need in Core
-#include <boost/random.hpp> 
-#include <boost/tuple/tuple.hpp>
-#include <boost/function.hpp>
-#include <boost/lexical_cast.hpp>
+//#include <boost/random.hpp> 
+//#include <boost/tuple/tuple.hpp>
+//#include <boost/function.hpp>
+//#include <boost/lexical_cast.hpp>
 
 //Only external Apps
-#include <boost/progress.hpp> 
-#include <boost/assign/std.hpp>
+//#include <boost/progress.hpp> 
+//#include <boost/assign/std.hpp>
 
 //Misc.
 //#include <boost/lambda/lambda.hpp>

@@ -7,8 +7,8 @@
 #define PANN_CORE_TYPE_H_INCLUDED
 
 #include "Includes/Std.h"
-#include "Includes/BoostCommon.h"
-#include "Macros.h"
+#include <boost/functional/hash.hpp>
+#include <boost/shared_ptr.hpp>
 
 namespace pann
 {
@@ -29,6 +29,14 @@ namespace pann
     }; //hash
 
 }; //pann
+
+/**
+ * Use case: ADD_PTR_TYPEDEF(Neuron)
+ */
+#define ADD_PTR_TYPEDEF(C) \
+    class C; \
+    typedef boost::shared_ptr<C> C##Ptr; \
+    typedef boost::shared_ptr<const C> C##ConstPtr;
 
 #endif //PANN_CORE_TYPE_H_INCLUDED
 

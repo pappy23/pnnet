@@ -7,10 +7,6 @@
 #define PANN_CORE_WEIGHT_H_INCLUDED
 
 #include <boost/thread/mutex.hpp>
-
-#include "Includes/BoostSerialization.h"
-
-#include "Type.h"
 #include "Object.h"
 
 namespace pann
@@ -22,52 +18,18 @@ namespace pann
     class Weight : public Object
     {
     public:
-        explicit Weight(Float value = 1): value_(value), usage_(0) {};
+        explicit Weight(Float value = 1): value(value), usage_count(0) {};
         //TODO: Noncopiable
         virtual ~Weight() {};
-
-        operator Float() const
-        {
-            return value_;
-        };
-
-        /**
-         * Add delta / ( usage_ / 2 ) to value_
-         */
-        operator+=(Float delta)
-        {
-            boost::mutex::scoped_lock lock(mutex_);
-
-            return m_value += _delta * 2.0 / Float(m_usageCount);
-        }
 
         /**
          * Every time Link object with current Weight is created,
          * it increments usageCount counter
          * It is used later in learning algorithms for shared weights
          */
-        unsigned get_usage() const
-        {
-            return usage_;
-        }
-
-        void inc_usage()
-        {
-            ++usage_;
-        }
-
-        void dec_usage()
-        {
-            if(usage_ == 0)
-                throw Exception()<<"Negative usage count\n";
-
-            --usage_;
-        }
-
-    private:
-        Float value_;
-        unsigned usage_; ///< Used by weight update algorithms for shared weights
-        boost::mutex mutex_;
+        Float value;
+        unsigned usage_count; ///< Used by weight update algorithms for shared weights
+        boost::mutex mutex;
 
         /* Serialization */
     private:
@@ -76,12 +38,13 @@ namespace pann
             void serialize(Archive & ar, const unsigned int version)
         {
             ar & BOOST_SERIALIZATION_BASE_OBJECT_NVP(Object)
-               & BOOST_SERIALIZATION_NVP(value_)
-               & BOOST_SERIALIZATION_NVP(usage_);
+               & BOOST_SERIALIZATION_NVP(value)
+               & BOOST_SERIALIZATION_NVP(usage_count);
         };
-    };
+    }; //Weight
     ADD_PTR_TYPEDEF(Weight);
 
 }; //pann
 
 #endif //PANN_CORE_WEIGHT_H_INCLUDED
+

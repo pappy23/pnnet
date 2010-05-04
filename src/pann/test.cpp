@@ -76,13 +76,6 @@ namespace pann
     /// Exceptionfor raising on filesystem failures (missing file etc.)
     class IoError : public Exception {};
 
-    struct Runner
-    {
-        virtual void operator() () = 0;
-    }; //Runner
-    typedef shared_ptr<Runner> RunnerPtr;
-    typedef shared_ptr<const Runner> RunnerConstPtr;
-
     /**
      * All activation functions inherit Tf
      */
@@ -106,6 +99,8 @@ namespace pann
                 ar & BOOST_SERIALIZATION_NVP(attribute_map);
             };
     }; //Object
+    typedef shared_ptr<Object> ObjectPtr;
+    typedef shared_ptr<const Object> ObjectConstPtr;
 
     /**
      * Weight object, used in pann::Link. Weight might be shared among different Links.
@@ -186,6 +181,10 @@ namespace pann
             };
     }; //Link
 
+    struct Runner;
+    typedef shared_ptr<Runner> RunnerPtr;
+    typedef shared_ptr<const Runner> RunnerConstPtr;
+
     struct Neuron : Object
     {
         Float bias;
@@ -197,6 +196,28 @@ namespace pann
         RunnerPtr fire;
         RunnerPtr learn;
         TfPtr tf;
+
+    private:
+        //friend template<class Archive> void Net::serialize(Archive & ar, const unsigned int version);
+        //friend class Net;
+
+        Neuron() {};
+
+        friend class boost::serialization::access;
+        template<class Archive>
+            void serialize(Archive & ar, const unsigned int version)
+            {
+                ar & BOOST_SERIALIZATION_BASE_OBJECT_NVP(Object)
+                 //@see Net::serialize()
+                 //& BOOST_SERIALIZATION_NVP(links_out)
+                 //& BOOST_SERIALIZATION_NVP(links_in)
+                 & BOOST_SERIALIZATION_NVP(input)
+                 & BOOST_SERIALIZATION_NVP(output)
+                 & BOOST_SERIALIZATION_NVP(bias)
+                 & BOOST_SERIALIZATION_NVP(tf)
+                 & BOOST_SERIALIZATION_NVP(fire)
+                 & BOOST_SERIALIZATION_NVP(learn);
+            };
     }; //Neuron
     typedef shared_ptr<Neuron> NeuronPtr;
     typedef shared_ptr<const Neuron> NeuronConstPtr;
@@ -224,7 +245,7 @@ namespace pann
             coherent = true;
         };
 
-        bool isOk() const
+        bool is_ok() const
         {
             return coherent;
         };
@@ -268,9 +289,173 @@ namespace pann
             };
     }; //NetCache
 
-    struct Net
+    struct Net : Object
     {
+        enum RunDirection { ForwardRun, BackwardRun };
+
+        /**
+         * Default constructor
+         * Creates empty net and sets threadCount to
+         * hardware specific number (depends on available processors)
+         */
+        Net()
+        {
+            set_work_threads_count(0)
+        };
+
+        virtual ~Net() {};
+
+        /**
+         * Manipulate neurons in network
+         */
+        void add_input_neuron(NeuronPtr neuron)
+        {
+            cache.touch();
+
+            input_neurons.push_back(neuron);
+        };
+
+        //TODO Fix removal of neurons and connections.
+        //We can stuck with hanging part of topology
+        void remove_neuron(NeuronPtr neuron)
+        {
+            cache.touch();
+
+            //Delete all connections to/from current neuron
+            BOOST_FOREACH(const Link& link, neuron->input_links)
+                link.getTo()->delOutConnection(neuron);
+
+            BOOST_FOREACH(const Link& link, _neuron->output_links)
+                link.getTo()->delInConnection(_neuron);
+
+            //Remove neuron from registers
+            inputNeurons.remove(_neuron);
+
+            Debug()<<_neuron.use_count()<<'\n';
+        };
+
+        /**
+         * Manage connections between neurons
+         * TODO: add connections with different latencies (shortcut links)
+         */
+        WeightPtr add_connection(
+                NeuronPtr from,
+                NeuronPtr to,
+                WeightPtr weight = WeightPtr((Weight*)0))
+        {
+        };
+
+        void remove_connection(NeuronPtr from, NeuronPtr to)
+        {
+        };
+
+        /**
+         * Add values to input neurons receptive fields
+         */
+        void set_input(const valarray<Float>& input)
+        {
+        };
+
+        /**
+         * Assign neurons outputs to specified by @param _output valarray
+         * (it is slower then above version, but more useful)
+         */
+        void get_output(valarray<Float>& output) const
+        {
+        };
+
+        /**
+         * Apply @param _runner Runner to each neuron,
+         * layer by layer
+         * Note: layers are computed automaticaly and stored in cache
+         * See regenerateCache() implementation for more details
+         */
+        void run(RunDirection direction, RunnerPtr runner)
+        {
+        };
+
+        /**
+         * Public interface to private attributes
+         * (they are used while training or painting net in pann_viewer)
+         */
+        const NetCache& get_cache() const
+        {
+        };
+
+        /**
+         * Manipulate count of work threads
+         */
+        unsigned get_work_threads_count() const
+        {
+        };
+
+        void set_work_threads_count(unsigned count)
+        {
+        };
+
+    private:
+        list<NeuronPtr> input_neurons;
+        NetCache mutable cache;
+        unsigned work_threads_count;
+
+        /**
+         * Helper used by regenerateCache()
+         */
+        void format_front(list<NeuronPtr>& raw) const
+        {
+        };
+
+        /**
+         * This function updates cache
+         * Be extremely careful!
+         */
+        void regenerate_cache() const
+        {
+        };
+
+        /**
+         * This function is executed by work thread, instantiated from run()
+         * @param _runner Runner to apply
+         * @param _net Net context, used for access to global net attributes
+         * @param _cur_thread Current work thread number
+         * @param _barrier See implementation
+         */
+        static void thread_base(RunDirection direction, RunnerPtr runner, ObjectPtr net, unsigned cur_thread, boost::barrier *barrier)
+        {
+        };
+
+    private:
+        friend class boost::serialization::access;
+        template<class Archive>
+            void serialize(Archive & ar, const unsigned int version)
+            {
+                using namespace boost::serialization;
+
+                //It's for manual serialization of Neuron connections
+                if(typename Archive::is_saving() && !cache.is_ok())
+                    regenerate_cache();
+
+                ar & BOOST_SERIALIZATION_BASE_OBJECT_NVP(Object)
+                 & BOOST_SERIALIZATION_NVP(cache)
+                 & BOOST_SERIALIZATION_NVP(input_neurons)
+                 & BOOST_SERIALIZATION_NVP(work_threads_count);
+
+                //Serialize Neuron connections
+                for(unsigned i = 0; i < cache.layers.size(); ++i)
+                    for(unsigned j = 0; j < cache.layers[i].size(); ++j)
+                    {
+                        ar & make_nvp("input_links", cache.layers[i][j]->input_links);
+                        ar & make_nvp("output_links", cache.layers[i][j]->output_links);
+                    }
+            };
     }; //Net
+
+    struct Runner
+    {
+        virtual void operator() (ObjectPtr, NeuronPtr) = 0;
+    }; //Runner
+    typedef shared_ptr<Runner> RunnerPtr;
+    typedef shared_ptr<const Runner> RunnerConstPtr;
 
     //Tools
     void link_neurons(NeuronPtr n1, NeuronPtr n2, WeightPtr *weight)
