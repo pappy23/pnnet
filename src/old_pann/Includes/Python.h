@@ -1,0 +1,15 @@
+/**
+ * boost::python includes
+ */
+
+#ifndef PANN_INCLUDES_PYTHON_H_INCLUDED
+#define PANN_INCLUDES_PYTHON_H_INCLUDED
+
+#ifdef OPTION_BUILD_PYTHON_BINDINGS_DEFINED
+
+#include <boost/python.hpp>
+
+#endif //OPTION_BUILD_PYTHON_BINDINGS_DEFINED
+
+#endif //PANN_INCLUDES_PYTHON_H_INCLUDED
+

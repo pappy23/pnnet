@@ -4,20 +4,20 @@ project(pann)
 
 #http://www.cmake.org/Wiki/CMake:Component_Install_With_CPack
 #TODO: install
-include(CPack)
+#include(CPack)
 
 set(CMAKE_VERBOSE_MAKEFILE OFF)
 
 ############################################################################
 # OPTIONS
 
-option(ENABLE_MOO "Enables easter egg compilation" OFF)
-option(BUILD_TESTS "Build rarely needed Unit-tests and other staff" OFF)
-option(BUILD_PYTHON_BINDINGS "Compile Python bindings" ON)
+#option(ENABLE_MOO "Enables easter egg compilation" OFF)
+#option(BUILD_TESTS "Build rarely needed Unit-tests and other staff" OFF)
+#option(BUILD_PYTHON_BINDINGS "Compile Python bindings" ON)
 
-if(NOT ${BUILD_TEST})
-    message(STATUS "NOT building optional tests. You may redefine this behavour via BUILD_TESTS variable")
-endif()
+#if(NOT ${BUILD_TEST})
+#    message(STATUS "NOT building optional tests. You may redefine this behavour via BUILD_TESTS variable")
+#endif()
 
 ############################################################################
 # COMPILERS STAFF
@@ -43,17 +43,17 @@ endif(UNIX)
 #set(LIBRARY_OUTPUT_PATH "${CMAKE_BINARY_DIR}/../bin" CACHE INTERNAL "")
 
 #Options
-if(ENABLE_MOO)
-    add_definitions(-DOPTION_ENABLE_MOO_DEFINED)
-endif()
+#if(ENABLE_MOO)
+#    add_definitions(-DOPTION_ENABLE_MOO_DEFINED)
+#endif()
 
-if(BUILD_TESTS)
-    add_definitions(-DOPTION_BUILD_TEST_DEFINED)
-endif()
+#if(BUILD_TESTS)
+#    add_definitions(-DOPTION_BUILD_TEST_DEFINED)
+#endif()
 
-if(BUILD_PYTHON_BINDINGS)
-    add_definitions(-DOPTION_BUILD_PYTHON_BINDINGS_DEFINED)
-endif()
+#if(BUILD_PYTHON_BINDINGS)
+#    add_definitions(-DOPTION_BUILD_PYTHON_BINDINGS_DEFINED)
+#endif()
 
 
 ############################################################################
@@ -75,7 +75,8 @@ endif(WIN32)
 ############################################################################
 # DEPENDENCIES
 
-set(BOOST_MODULES thread serialization python)
+#set(BOOST_MODULES thread serialization python)
+set(BOOST_MODULES thread serialization)
 if(WIN32)
     set(BOOST_MODULES ${BOOST_MODULES} date_time)
 endif(WIN32)
@@ -87,16 +88,18 @@ find_package(Boost 1.35 REQUIRED COMPONENTS ${BOOST_MODULES})
 #    set(Boost_LIBRARIES ${Boost_LIBRARIES} pthread)
 #endif(UNIX)
 
-set(QT_USE_QTOPENGL 1)
-find_package(Qt4)
+#set(QT_USE_QTOPENGL 1)
+#find_package(Qt4)
 
-if(OPTION_BUILD_PYTHON_BINDINGS_DEFINED)
-    find_package(PythonLibs REQUIRED)
-endif(OPTION_BUILD_PYTHON_BINDINGS_DEFINED)
+#if(OPTION_BUILD_PYTHON_BINDINGS_DEFINED)
+#find_package(PythonLibs REQUIRED)
+#endif(OPTION_BUILD_PYTHON_BINDINGS_DEFINED)
 
 ############################################################################
 # pann
 
-include_directories(pann ${Boost_INCLUDE_DIRS} ${PYTHON_INCLUDE_PATH})
-subdirs(Apps pann)
+#include_directories(pann ${Boost_INCLUDE_DIRS} ${PYTHON_INCLUDE_PATH})
+include_directories(pann ${Boost_INCLUDE_DIRS})
+#FIXME: Apps
+subdirs(pann)
 
