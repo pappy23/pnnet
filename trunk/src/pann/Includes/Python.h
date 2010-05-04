@@ -7,7 +7,7 @@
 
 #ifdef OPTION_BUILD_PYTHON_BINDINGS_DEFINED
 
-#include <boost/python.hpp>
+//#include <boost/python.hpp>
 
 #endif //OPTION_BUILD_PYTHON_BINDINGS_DEFINED
 

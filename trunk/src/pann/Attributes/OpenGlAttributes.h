@@ -14,9 +14,9 @@ namespace pann {
         OpenGlAttributes() : r(0), g(0), b(0), x(0), y(0), z(0) {};
         virtual ~OpenGlAttributes() {};
 
-        static const HashType getHash()
+        static const HashT getHash()
         {
-            static HashType groupName = hash("OpenGlAttributes");
+            static HashT groupName = hash("OpenGlAttributes");
             return groupName;
         };
 

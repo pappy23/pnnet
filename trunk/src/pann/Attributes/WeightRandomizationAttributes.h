@@ -14,9 +14,9 @@ namespace pann {
         WeightRandomizationAttributes() : min(0), max(0) {};
         virtual ~WeightRandomizationAttributes() {};
 
-        static const HashType getHash()
+        static const HashT getHash()
         {
-            static HashType groupName = hash("WeightRandomizationAttributes");
+            static HashT groupName = hash("WeightRandomizationAttributes");
             return groupName;
         };
 

@@ -84,5 +84,4 @@ namespace pann
 
 }; //pann
 
-DEFINE_PYTHON_EXPORT(Weight);
-
+#endif //PANN_CORE_WEIGHT_H_INCLUDED
