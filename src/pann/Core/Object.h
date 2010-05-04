@@ -19,12 +19,12 @@ namespace pann
         Object() {};
         virtual ~Object() {};
 
-        AttributesPtr& getPtr(HashType _group) const
+        AttributesPtr& getPtr(HashT _group) const
         {
             return attributes[_group];
         };
 /*
-        const AttributesPtr& getPtr(HashType _group) const
+        const AttributesPtr& getPtr(HashT _group) const
         {
             return attributes[_group];
         };
@@ -66,7 +66,7 @@ namespace pann
         };
 
     private:
-        map<HashType, AttributesPtr> mutable attributes;
+        map<HashT, AttributesPtr> mutable attributes;
 
         /* Serialization */
     private:

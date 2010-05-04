@@ -1,4 +1,3 @@
-
 set(PANN_SOURCES ".")
 
 message(STATUS "Adding files to build library")
@@ -10,6 +9,7 @@ foreach(dir ${PANN_SOURCES})
     endforeach(filename)
 endforeach(dir)
 
-add_library(pann STATIC ${PANN_SOURCE_FILES})
+#add_library(pann STATIC ${PANN_SOURCE_FILES})
+add_library(pann STATIC "test.cpp")
 target_link_libraries(pann ${Boost_LIBRARIES})
 

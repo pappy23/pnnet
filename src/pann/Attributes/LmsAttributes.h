@@ -11,9 +11,9 @@ namespace pann
         LmsNetAttributes() : learningRate(0.3), learningMomentum(0.5), epoch(1), annealingTSC(10) {};
         virtual ~LmsNetAttributes() {};
 
-        static const HashType getHash()
+        static const HashT getHash()
         {
-            static HashType groupName = hash("LmsNetAttributes");
+            static HashT groupName = hash("LmsNetAttributes");
             return groupName;
         };
 
@@ -49,9 +49,9 @@ namespace pann
         LmsNeuronAttributes() : localGradient(0), error(0) {};
         virtual ~LmsNeuronAttributes() {};
 
-        static const HashType getHash()
+        static const HashT getHash()
         {
-            static HashType groupName = hash("LmsNetAttributes");
+            static HashT groupName = hash("LmsNetAttributes");
             return groupName;
         };
 
@@ -83,9 +83,9 @@ namespace pann
         LmsLinkAttributes() : lastDeltaW(0) {};
         virtual ~LmsLinkAttributes() {};
 
-        static const HashType getHash()
+        static const HashT getHash()
         {
-            static HashType groupName = hash("LmsNetAttributes");
+            static HashT groupName = hash("LmsNetAttributes");
             return groupName;
         };
 
