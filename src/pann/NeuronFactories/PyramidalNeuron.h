@@ -4,32 +4,32 @@
 #include "Core/Neuron.h"
 #include "Runners/PyramidalNeuronFeedforwardRunner.h"
 #include "Runners/NullBackpropagationRunner.h"
-#include "ActivationFunctions/TanH.h"
+#include "TF/TanH.h"
 
 namespace pann {
 namespace NeuronFactory {
-    template<class ActivationFunctionType, class LearningRunnerType>
-    static NeuronPtr PyramidalNeuron(WeightPtr _bias = WeightPtr((Weight*)0))
+    template<class TfType, class LearnRunnerType>
+    static NeuronPtr PyramidalNeuron(WeightPtr bias = WeightPtr((Weight*)0))
     {
         return CustomNeuron(
-                ActivationFunctionType::Instance(),
-                _bias,
+                TfType::Instance(),
+                bias,
                 PyramidalNeuronFeedforwardRunner::Instance(),
-                LearningRunnerType::Instance()
+                LearnRunnerType::Instance()
                 );
     };
 
     static NeuronPtr PyramidalNeuron(
-            ActivationFunctionPtr _af = TanH::Instance(),
-            WeightPtr _bias = WeightPtr((Weight*)0),
-            RunnerPtr _learnRunner = NullBackpropagationRunner::Instance()
+            TfPtr tf = TanH::Instance(),
+            WeightPtr bias = WeightPtr((Weight*)0),
+            RunnerPtr learn_runner = NullBackpropagationRunner::Instance()
             )
     {
         return NeuronPtr(new Neuron(
-                _af,
-                _bias,
+                tf,
+                bias,
                 PyramidalNeuronFeedforwardRunner::Instance(),
-                _learnRunner
+                learn_runner
                 ));
     };
 }; //NeuronFactory

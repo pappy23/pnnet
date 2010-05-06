@@ -5,6 +5,7 @@
 #ifndef PANN_CORE_RANDOM_H_INCLUDED
 #define PANN_CORE_RANDOM_H_INCLUDED
 
+#include <boost/random.hpp> 
 #include "Core/Type.h"
 
 namespace pann

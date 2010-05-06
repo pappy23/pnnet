@@ -9,10 +9,9 @@ REGISTER_SINGLETON_CPP(BackpropagationRunner);
 namespace pann {
 
     void
-    BackpropagationRunner::run(NeuronPtr _neuron, Net* _net) const
+    BackpropagationRunner::run(ObjectPtr net, NeuronPtr neuron) const
     {
-        const RunnerPtr& r = _neuron->getLearnRunner();
-        r->run(_neuron, _net);
+        neuron->learn(net, neuron);
     } //run
 
 }; //pann

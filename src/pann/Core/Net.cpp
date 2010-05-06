@@ -11,7 +11,7 @@ namespace pann
 {
     Net::Net()
     {
-        setWorkThreadsCount(0);
+        set_work_threads_count(0);
     } //Net
 
     Net::~Net()
@@ -19,47 +19,47 @@ namespace pann
     } //~Net
 
     void
-    Net::addInputNeuron(NeuronPtr _neuron)
+    Net::add_input_neuron(NeuronPtr neuron)
     {
         cache.touch();
 
-        inputNeurons.push_back(_neuron);
-    } //addInputNeuron
+        input_neurons.push_back(neuron);
+    } //add_input_neuron
 
     void
-    Net::removeNeuron(NeuronPtr _neuron)
+    Net::remove_neuron(NeuronPtr neuron)
     {
         cache.touch();
 
         //Delete all connections to/from current neuron
-        BOOST_FOREACH(const Link& link, _neuron->links_in)
-            link.getTo()->delOutConnection(_neuron);
+        BOOST_FOREACH(const Link& link, neuron->input_links)
+            link.get_to()->remove_out_connection(neuron);
 
-        BOOST_FOREACH(const Link& link, _neuron->links_out)
-            link.getTo()->delInConnection(_neuron);
+        BOOST_FOREACH(const Link& link, neuron->output_links)
+            link.get_to()->remove_in_connection(neuron);
 
         //Remove neuron from registers
-        inputNeurons.remove(_neuron);
+        input_neurons.remove(neuron);
 
-        Debug()<<_neuron.use_count()<<'\n';
-    } //delNeuron
+        Debug()<<neuron.use_count()<<'\n';
+    } //remove_neuron
 
     WeightPtr
-    Net::addConnection(NeuronPtr _from, NeuronPtr _to, WeightPtr _weight)
+    Net::add_connection(NeuronPtr from, NeuronPtr to, WeightPtr weight)
     {
         cache.touch();
 
-        if(!_weight)
-            _weight.reset(new Weight());
+        if(!weight)
+            weight.reset(new Weight());
 
-        _from->addOutConnection(_to, _weight);
-        _to->addInConnection(_from, _weight);
+        from->add_out_connection(to, weight);
+        to->add_in_connection(from, weight);
 
-        return _weight;
-    } //addConnection
+        return weight;
+    } //add_connection
 
     void
-    Net::delConnection(NeuronPtr _from, NeuronPtr _to)
+    Net::remove_connection(NeuronPtr from, NeuronPtr to)
     {
         cache.touch();
 
@@ -71,98 +71,98 @@ namespace pann
          *    dir=>out                  dir=>in
          */
 
-        _from->delOutConnection(_to);
-        _to->delInConnection(_from);
-    } //delConnection
+        from->remove_out_connection(to);
+        to->remove_in_connection(from);
+    } //remove_connection
 
     void
-    Net::setInput(const valarray<Float>& _input)
+    Net::set_input(const valarray<Float>& input)
     {
-        if(_input.size() < inputNeurons.size())
-            throw SizeMismatch()<<"setInput(): Supplied input size is smaller "
+        if(input.size() < input_neurons.size())
+            throw SizeMismatch()<<"set_input(): Supplied input size is smaller "
                                      "then number of input neurons\n";
 
-        if(_input.size() > inputNeurons.size())
-            Warning()<<"setInput(): Input size is bigger then input neurons count. "
+        if(input.size() > input_neurons.size())
+            Warning()<<"set_input(): Input size is bigger then input neurons count. "
                              "Check getInputMap() output\n";
 
         unsigned i = 0;
-        BOOST_FOREACH( const NeuronPtr& n, inputNeurons)
-           n->setInput(_input[i++]);
-    } //setInput
+        BOOST_FOREACH( const NeuronPtr& n, input_neurons)
+           n->input = input[i++];
+    } //set_input
 
     void
-    Net::getOutput(valarray<Float>& _output) const
+    Net::get_output(valarray<Float>& output) const
     {
-        if(!cache.isOk())
-            regenerateCache();
+        if(!cache.is_ok())
+            regenerate_cache();
 
         vector<NeuronPtr>& last_layer = *(cache.layers.end() - 2);
         unsigned output_size = last_layer.size();
 
-        _output.resize(output_size);
+        output.resize(output_size);
         for(unsigned i = 0; i < output_size; ++i)
-            _output[i] = last_layer[i]->getOutput();
-    } //getOutput
+            output[i] = last_layer[i]->output;
+    } //get_output
 
     void
-    Net::run(RunDirection _dir, RunnerPtr _runner)
+    Net::run(RunDirection direction, RunnerPtr runner)
     {
-        if( !cache.isOk() )
-            regenerateCache();
+        if( !cache.is_ok() )
+            regenerate_cache();
 
-        boost::thread_group threadPool;
-        boost::barrier barrier(workThreads);
+        boost::thread_group thread_pool;
+        boost::barrier barrier(work_threads_count);
 
         //We must give parameters by pointer, because boost will copy all arguments to thread
-        for(unsigned thread = 0; thread < workThreads; ++thread)
-            threadPool.add_thread( new boost::thread(Net::threadBase, _dir, _runner, this, thread, &barrier) );
+        for(unsigned thread = 0; thread < work_threads_count; ++thread)
+            thread_pool.add_thread( new boost::thread(Net::thread_base, direction, runner, this, thread, &barrier) );
 
         //wait for threads to finish
-        threadPool.join_all();
+        thread_pool.join_all();
     } //run
 
     const NetCache&
-    Net::getCache() const
+    Net::get_cache() const
     {
-        if(!cache.isOk())
-            regenerateCache();
+        if(!cache.is_ok())
+            regenerate_cache();
 
         return cache;
-    } //getCache
+    } //get_cache
 
     unsigned
-    Net::getWorkThreadsCount() const
+    Net::get_work_threads_count() const
     {
-        return workThreads;
-    } //getWorkThreadsCount
+        return work_threads_count;
+    } //get_work_threads_count
 
-    void Net::setWorkThreadsCount(unsigned _count)
+    void Net::set_work_threads_count(unsigned count)
     {
-        if(_count <= 0)
-            workThreads = boost::thread::hardware_concurrency();
+        if(count <= 0)
+            work_threads_count = boost::thread::hardware_concurrency();
         else
-            workThreads = _count;
+            work_threads_count = count;
 
-    } //setWorkThreadsCount
+    } //set_work_threads_count
 
     void
-    Net::formatFront(list<NeuronPtr>& _raw) const
+    Net::format_front(list<NeuronPtr>& raw) const
     {
         cache.layers.push_back(vector<NeuronPtr>());
 
-        if(_raw.size() > 0)
+        if(raw.size() > 0)
         {
-            _raw.sort();
-            _raw.unique();
+            raw.sort();
+            raw.unique();
 
-            for(list<NeuronPtr>::iterator it = _raw.begin(); it != _raw.end(); ++it)
+            for(list<NeuronPtr>::iterator it = raw.begin(); it != raw.end(); ++it)
                 cache.layers.back().push_back(*it);
         }
-    } //formatFront
+    } //format_front
 
     void
-    Net::regenerateCache() const
+    Net::regenerate_cache() const
     {
         //TODO: if user set's latency > 1 for regular links - shit may happen
         //TODO: Latency - is very dangerous tool. It's not difficult to understand, 
@@ -170,7 +170,7 @@ namespace pann
         cache.flush();
 
         //Here we will place neuron's IDs that will become front, with duplicates
-        list<NeuronPtr> rawFront;
+        list<NeuronPtr> raw_front;
 
         /*
          * Function operates with "hops" attribute of every Neuron
@@ -179,12 +179,12 @@ namespace pann
         map<NeuronPtr, unsigned> hops;
 
         //Put inputNeurons to front
-        BOOST_FOREACH( const NeuronPtr& n, inputNeurons )
+        BOOST_FOREACH( const NeuronPtr& n, input_neurons )
         {
-            rawFront.push_back(n);
+            raw_front.push_back(n);
             hops[n] = 1;
         }
-        formatFront(rawFront);
+        format_front(raw_front);
 
         /*
          * Cache looks like this:
@@ -195,19 +195,19 @@ namespace pann
              * We have to prepare next front
              * At first iteration, if you remember, vector<NeuronPtr> rawFront contains unique inputNeurons
              */
-            unsigned nCount = rawFront.size();
+            unsigned nCount = raw_front.size();
             Debug()<<nCount<<"\n";
             for(unsigned i = 0; i < nCount; ++i)
             {
                 //pop_front emulation
-                NeuronPtr currentNeuron = rawFront.front();
-                rawFront.pop_front();
+                NeuronPtr current_neuron = raw_front.front();
+                raw_front.pop_front();
 
                 //ok, we've got cur_neuron. We will iterate through his Out links
                 //and push_back their opposite sides to rawFront
-                BOOST_FOREACH( const Link& link, currentNeuron->links_out )
+                BOOST_FOREACH( const Link& link, current_neuron->output_links )
                 {
-                    const NeuronPtr& toNeuron = link.getTo(); 
+                    const NeuronPtr& to_neuron = link.get_to();
                     /*
                      * Short comment. Consider following topology (hops are in brackets):
                      *   +(0)    <-- output          +(0)             +(3)    <-- front(3)
@@ -226,20 +226,20 @@ namespace pann
                      */
 
                     //Assume that when cache becomes coherent, all neuron[hops] vars become zero
-                    if(hops[toNeuron] == 0)
-                        hops[toNeuron] = hops[currentNeuron] + link.getLatency();
+                    if(hops[to_neuron] == 0)
+                        hops[to_neuron] = hops[current_neuron] + link.get_latency();
 
-                    if(hops[toNeuron] == hops[currentNeuron] + 1)
-                        rawFront.push_back(toNeuron); 
+                    if(hops[to_neuron] == hops[current_neuron] + 1)
+                        raw_front.push_back(to_neuron);
 
                 } //BOOST_FOREACH( Link )
 
             } //rawFront iteration ( Neuron )
 
             //new rawFront formed
-            formatFront(rawFront);
+            format_front(raw_front);
 
-        } while( rawFront.size() > 0 );
+        } while( raw_front.size() > 0 );
 
         //We rebuilded cache
         cache.fixed();
@@ -247,25 +247,25 @@ namespace pann
     } //regenerateCache
 
     void
-    Net::threadBase(RunDirection _dir, RunnerPtr _runner, Net* _net, unsigned _cur_thread, boost::barrier* _barrier)
+    Net::thread_base(RunDirection direction, RunnerPtr runner, Net *net, unsigned cur_thread, boost::barrier *barrier)
     {
-        const NetCache& _cache = _net->getCache();
+        const NetCache& cache = net->get_cache();
 
         unsigned layer;
-        (_dir == ForwardRun) ?  (layer = 0) : (layer = _cache.layers.size() - 1);
+        (direction == ForwardRun) ?  (layer = 0) : (layer = cache.layers.size() - 1);
 
-        const unsigned threads = _net->getWorkThreadsCount();
+        const unsigned threads = net->get_work_threads_count();
 
         do {
             //Process current layer
-            for(unsigned i = _cur_thread; i < _cache.layers[layer].size(); i += threads)
-                _runner->run( _cache.layers[layer][i], _net ); //We pass Net* to runner, because
-                                                                //learning algorithms require
-                                                                //read-only access to Net attributes
+            for(unsigned i = cur_thread; i < cache.layers[layer].size(); i += threads)
+                (*runner)( ObjectPtr(net), cache.layers[layer][i]); //We pass Net* to runner, because
+                                                                    //learning algorithms require
+                                                                    //read-only access to Net attributes
 
             //Wait for other threads
-            _barrier->wait();
-        } while( (_dir == ForwardRun && ++layer < _cache.layers.size()) || (_dir == BackwardRun && layer-- > 0) );
+            barrier->wait();
+        } while( (direction == ForwardRun && ++layer < cache.layers.size()) || (direction == BackwardRun && layer-- > 0) );
         /*
          * A little comment.
          * Cache structure:
@@ -277,7 +277,7 @@ namespace pann
          * cache.size() == N+1;
          * thread_data is vector of Neuron*
          */
-    } //threadBase
+    } //thread_base
 
 }; //pann
 

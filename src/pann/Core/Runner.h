@@ -20,7 +20,7 @@ namespace pann
     class Runner
     {
     public:
-        virtual void operator() (ObjectPtr, NeuronPtr) const = 0;
+        virtual void operator() (ObjectConstPtr, NeuronPtr) const = 0;
     }; //Runner
     ADD_PTR_TYPEDEF(Runner);
 

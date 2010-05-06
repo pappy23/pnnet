@@ -19,20 +19,36 @@ namespace pann
     {
     public:
         Link(NeuronPtr to, WeightPtr weight, unsigned const latency = 1)
-            : to(to), weight(weight), latency(latency) {};
-        Link(const Link& _rhs)
-            : to(_rhs.to), weight(rhs.weight), latency(_rhs.latency) {};
+            : m_to(to), m_weight(weight), m_latency(latency) {};
+        Link(const Link& rhs)
+            : m_to(rhs.m_to), m_weight(rhs.m_weight), m_latency(rhs.m_latency) {};
         virtual ~Link() {};
 
-        NeuronPtr to;
-        WeightPtr weight; /// Pointer to Weight object (might be shared between different links)
-        unsigned latency;
+        NeuronPtr get_to() const
+        {
+            return m_to;
+        };
+
+        WeightPtr get_weight() const
+        {
+            return m_weight;
+        };
+
+        unsigned get_latency() const
+        {
+            return m_latency;
+        };
 
     private:
+        NeuronPtr m_to;
+        WeightPtr m_weight; /// Pointer to Weight object (might be shared between different links)
+        unsigned m_latency;
+
+    public: //private TODO
         /**
          * Link is not assign-copyable
          */
-        Link& operator=(const Link& _rhs)
+        Link& operator= (const Link& rhs)
         {
             /*
             Info()<<"Link::operator=()\n";
@@ -57,11 +73,11 @@ namespace pann
             void serialize(Archive & ar, const unsigned int version)
             {
                 ar & BOOST_SERIALIZATION_BASE_OBJECT_NVP(Object)
-                 & BOOST_SERIALIZATION_NVP(to)
-                 & BOOST_SERIALIZATION_NVP(weight)
-                 & BOOST_SERIALIZATION_NVP(latency);
+                 & BOOST_SERIALIZATION_NVP(m_to)
+                 & BOOST_SERIALIZATION_NVP(m_weight)
+                 & BOOST_SERIALIZATION_NVP(m_latency);
             };
-    };
+    }; //Link
 
 }; //pann
 

@@ -15,14 +15,14 @@ namespace pann
     class NetCache : public Cache
     {
     public:
-        typedef std::vector<NeuronPtr> FrontType;
+        typedef std::vector<NeuronPtr> Front;
 
         //TODO: Should we hide internal details from user?
         //Solutions:
         //1)Write restricted interface to layers
         //2)Derive NetCache from Cache AND vector<FrontType>
         //3)write const vector<const FrontType> NetCache::layers() - current solution
-        std::vector<FrontType> layers;
+        std::vector<Front> layers;
 
         virtual void flush()
         {
