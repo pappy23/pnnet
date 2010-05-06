@@ -21,9 +21,21 @@ namespace pann
         virtual ~Cache() {};
 
         virtual void flush() = 0;
-        void touch() { coherent = false; };
-        void fixed() { coherent = true;  };
-        bool isOk() const { return coherent; };
+
+        void touch()
+        {
+            coherent = false;
+        };
+
+        void fixed()
+        {
+            coherent = true;
+        };
+
+        bool is_ok() const
+        {
+            return coherent;
+        };
 
     protected:
         bool coherent;
@@ -36,7 +48,7 @@ namespace pann
             {
                 ar & BOOST_SERIALIZATION_NVP(coherent);
             };
-    };
+    }; //Cache
 
 }; //pann
 

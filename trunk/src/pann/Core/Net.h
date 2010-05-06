@@ -2,7 +2,6 @@
 #define PANN_CORE_NET_H
 
 #include "Includes/Std.h"
-#include "Includes/BoostCommon.h"
 #include "Includes/BoostSerialization.h"
 
 #include "Object.h"
@@ -31,31 +30,31 @@ namespace pann
         /**
          * Manipulate neurons in network
          */
-        void addInputNeuron(NeuronPtr);
+        void add_input_neuron(NeuronPtr);
         //TODO Fix removal of neurons and connections.
         //We can stuck with hanging part of topology
-        void removeNeuron(NeuronPtr);
+        void remove_neuron(NeuronPtr);
 
         /**
          * Manage connections between neurons
          * TODO: add connections with different latencies (shortcut links)
          */
-        WeightPtr addConnection(
-                NeuronPtr _from,
-                NeuronPtr _to,
-                WeightPtr _weight = WeightPtr((Weight*)0));
-        void delConnection(NeuronPtr _from, NeuronPtr _to);
+        WeightPtr add_connection(
+                NeuronPtr from,
+                NeuronPtr to,
+                WeightPtr weight = WeightPtr((Weight*)0));
+        void remove_connection(NeuronPtr from, NeuronPtr to);
 
         /**
          * Add values to input neurons receptive fields
          */
-        void setInput(const std::valarray<Float>& _input);
+        void set_input(const std::valarray<Float>& input);
 
         /**
          * Assign neurons outputs to specified by @param _output valarray
          * (it is slower then above version, but more useful)
          */
-        void getOutput(std::valarray<Float>& _output) const;
+        void get_output(std::valarray<Float>& output) const;
 
         /**
          * Apply @param _runner Runner to each neuron,
@@ -63,35 +62,35 @@ namespace pann
          * Note: layers are computed automaticaly and stored in cache
          * See regenerateCache() implementation for more details
          */
-        void run(RunDirection _dir, RunnerPtr _runner);
+        void run(RunDirection direction, RunnerPtr runner);
 
         /**
          * Public interface to private attributes
          * (they are used while training or painting net in pann_viewer)
          */
-        const NetCache& getCache() const;
+        const NetCache& get_cache() const;
 
         /**
          * Manipulate count of work threads
          */
-        unsigned getWorkThreadsCount() const;
-        void setWorkThreadsCount(unsigned _count);
+        unsigned get_work_threads_count() const;
+        void set_work_threads_count(unsigned count);
 
     private:
-        std::list<NeuronPtr> inputNeurons;
+        std::list<NeuronPtr> input_neurons;
         NetCache mutable cache;
-        unsigned workThreads;
+        unsigned work_threads_count;
 
         /**
          * Helper used by regenerateCache()
          */
-        void formatFront(std::list<NeuronPtr>& _raw) const;
+        void format_front(std::list<NeuronPtr>& raw) const;
 
         /**
          * This function updates cache
          * Be extremely careful!
          */
-        void regenerateCache() const;
+        void regenerate_cache() const;
 
         /**
          * This function is executed by work thread, instantiated from run()
@@ -100,7 +99,7 @@ namespace pann
          * @param _cur_thread Current work thread number
          * @param _barrier See implementation
          */
-        static void threadBase(RunDirection _dir, RunnerPtr _runner, Net* _net, unsigned _cur_thread, boost::barrier* _barrier);
+        static void thread_base(RunDirection dir, RunnerPtr runner, Net *net, unsigned cur_thread, boost::barrier *barrier);
 
         /* Serialization */
     private:
@@ -111,20 +110,20 @@ namespace pann
                 using namespace boost::serialization;
 
                 //It's for manual serialization of Neuron connections
-                if(typename Archive::is_saving() && !cache.isOk())
-                    regenerateCache();
+                if(typename Archive::is_saving() && !cache.is_ok())
+                    regenerate_cache();
 
                 ar & BOOST_SERIALIZATION_BASE_OBJECT_NVP(Object)
                  & BOOST_SERIALIZATION_NVP(cache)
-                 & BOOST_SERIALIZATION_NVP(inputNeurons)
-                 & BOOST_SERIALIZATION_NVP(workThreads);
+                 & BOOST_SERIALIZATION_NVP(input_neurons)
+                 & BOOST_SERIALIZATION_NVP(work_threads_count);
 
                 //Serialize Neuron connections
                 for(unsigned i = 0; i < cache.layers.size(); ++i)
                     for(unsigned j = 0; j < cache.layers[i].size(); ++j)
                     {
-                        ar & make_nvp("links_out", cache.layers[i][j]->links_out);
-                        ar & make_nvp("links_in", cache.layers[i][j]->links_in);
+                        ar & make_nvp("input_links", cache.layers[i][j]->input_links);
+                        ar & make_nvp("output_links", cache.layers[i][j]->output_links);
                     }
             };
     };

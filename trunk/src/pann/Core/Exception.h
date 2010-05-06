@@ -24,14 +24,14 @@ namespace pann
         Exception(const Exception& _rhs )
         {
             msg = _rhs.msg;
-        }
+        };
 
         virtual ~Exception() throw() {};
 
         virtual const char * what() const throw()
         {
             return msg.c_str();
-        }
+        };
 
         template<typename T>
         Exception& operator<<(const T& _arg)
@@ -41,7 +41,7 @@ namespace pann
             accumulate(ss.str());
 
             return *this;
-        }
+        };
 
     protected:
         virtual void accumulate(const std::string& _arg)
@@ -60,7 +60,7 @@ namespace pann
         virtual void accumulate(const std::string& _arg)
         {
             std::cerr<<_arg;
-        }
+        };
     }; //Warning
 
     /// Information for user
@@ -70,7 +70,7 @@ namespace pann
         virtual void accumulate(const std::string& _arg)
         {
             std::cout<<_arg;
-        }
+        };
     }; //Info
 
     /// Debug

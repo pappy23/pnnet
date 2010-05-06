@@ -29,48 +29,47 @@ namespace pann
         typedef boost::archive::text_iarchive   txt_in;
 
         template<class SerializatorType>
-        void save(NetPtr _obj, std::string _filename)
+        void save(NetPtr obj, std::string filename)
         {
-            if(!_obj)
+            if(!obj)
                 throw Exception()<<"Storage::save(): Nothing to save!\n";
 
-            ofstream ofs(_filename.c_str());
+            ofstream ofs(filename.c_str());
             if(ofs.fail())
-                throw IoError()<<"Storage::save(): failed to open file "<<_filename<<" for writing\n"; 
+                throw IoError()<<"Storage::save(): failed to open file "<<filename<<" for writing\n"; 
 
-            cout<<"Saving net to "<<_filename<<"..."<<endl;
+            cout<<"Saving net to "<<filename<<"..."<<endl;
             SerializatorType oa(ofs);
-//TODO For testing purposes i turned try/catch mechanism off
-//            try {
-              oa << BOOST_SERIALIZATION_NVP(_obj);
-//            } catch(boost::archive::archive_exception& e) {
-//                throw IoError()<<"Storage::save(): failed to save net. Boost exception thrown. What: "<<e.what()<<"\n";
-//            } catch(...) {
-//                throw IoError()<<"Storage::save(): unknown exception\n";
-//            }
+            try {
+              oa << BOOST_SERIALIZATION_NVP(obj);
+            } catch(boost::archive::archive_exception& e) {
+                throw IoError()<<"Storage::save(): failed to save net. Boost exception thrown. What: "<<e.what()<<"\n";
+            } catch(...) {
+                throw IoError()<<"Storage::save(): unknown exception\n";
+            }
 
             ofs.close();
         }; //save
 
         template<class SerializatorType>
-        void load(NetPtr& _obj, std::string _filename)
+        void load(NetPtr& obj, std::string filename)
         {
-            if(!_obj)
-                _obj.reset(new Net());
+            if(!obj)
+                obj.reset(new Net());
 
-            ifstream ifs(_filename.c_str());
+            ifstream ifs(filename.c_str());
             if(ifs.fail())
-                throw IoError()<<"Storage::load(): failed to open file "<<_filename<<" for reading\n"; 
+                throw IoError()<<"Storage::load(): failed to open file "<<filename<<" for reading\n"; 
 
-            cout<<"Loading net from "<<_filename<<"..."<<endl;
+            cout<<"Loading net from "<<filename<<"..."<<endl;
             SerializatorType ia(ifs);
-//            try {
-              ia >> BOOST_SERIALIZATION_NVP(_obj);
-//            } catch(boost::archive::archive_exception& e) {
-//                throw IoError()<<"Storage::load(): failed to load net. Boost exception thrown. What: "<<e.what()<<"\n";
-//            } catch(...) {
-//                throw IoError()<<"Storage::load(): unknown exception\n";
-//            }
+            try {
+                ia >> BOOST_SERIALIZATION_NVP(obj);
+            } catch(boost::archive::archive_exception& e) {
+                throw IoError()<<"Storage::load(): failed to load net. Boost exception thrown. What: "<<e.what()<<"\n";
+            } catch(...) {
+                throw IoError()<<"Storage::load(): unknown exception\n";
+            }
 
             ifs.close();
         }; //load

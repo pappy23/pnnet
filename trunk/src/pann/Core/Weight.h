@@ -27,9 +27,17 @@ namespace pann
          * it increments usageCount counter
          * It is used later in learning algorithms for shared weights
          */
-        Float value;
-        unsigned usage_count; ///< Used by weight update algorithms for shared weights
-        boost::mutex mutex;
+        Float get_value() const;
+        void add_value(Float delta);
+        void set_value(Float value);
+        unsigned get_usage_count() const;
+        void inc_usage_count(unsigned delta = 1);
+        void dec_usage_count(unsigned delta = 1);
+
+    private:
+        Float m_value;
+        unsigned m_usage_count; ///< Used by weight update algorithms for shared weights
+        boost::mutex m_mutex;
 
         /* Serialization */
     private:

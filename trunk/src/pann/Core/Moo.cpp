@@ -454,6 +454,6 @@ namespace pann {
         pic++;
         #endif //OPTION_ENABLE_MOO_DEFINED
 
-    } //moo
+    }; //moo
 }; //pann
 

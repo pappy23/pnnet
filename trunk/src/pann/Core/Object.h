@@ -13,7 +13,15 @@ namespace pann
         Object() {};
         virtual ~Object() {};
 
-        std::map<Hash, Float> mutable attribute_map;
+        Float operator[] (Hash key)
+        {
+            return m_attribute_map[key];
+        };
+
+        Float get_attr(Hash key) const;
+
+    protected:
+        std::map<Hash, Float> mutable m_attribute_map;
 
         /* Serialization */
     private:

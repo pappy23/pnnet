@@ -1,70 +1,68 @@
 #ifndef PANN_CORE_NEURON_H_INCLUDED
 #define PANN_CORE_NEURON_H_INCLUDED
 
+#include <boost/bind.hpp>
 #include "Includes/Std.h"
-#include "Includes/BoostCommon.h"
 #include "Includes/BoostSerialization.h"
 
 #include "Object.h"
 #include "Link.h"
-#include "ActivationFunction.h"
+#include "Tf.h"
 #include "Runner.h"
-
-using std::list;
 
 namespace pann
 {
     class Neuron : public Object
     {
     public:
-        Neuron(TfPtr tf, WeightPtr _bias, RunnerPtr _fireRunner, RunnerPtr _learnRunner)
-            : activationFunction(_af), bias(_bias), fireRunner(_fireRunner), learnRunner(_learnRunner)
+        Neuron(TfPtr tf, WeightPtr bias, RunnerPtr fire, RunnerPtr learn)
+            : tf(tf), bias(bias), fire(fire), learn(learn)
         {
         };
         virtual ~Neuron() {};
 
-
-        Float bias;
         Float input;
         Float output;
 
-        vector<Link> input_links, output_links;
+        std::vector<Link> input_links;
+        std::vector<Link> output_links;
 
+        TfPtr tf;
+        WeightPtr bias;
         RunnerPtr fire;
         RunnerPtr learn;
-        TfPtr tf; 
-
-
 
     private:
-        //For pann::Net
+        friend class Net;
+
         typedef struct {
-            static bool comp(NeuronPtr _to, const Link& _l) {
-                return _l.getTo() == _to;
+            static bool comp(NeuronPtr to, const Link& l) {
+                return l.get_to() == to;
             }
         } ComparatorT;
 
-        void addInConnection(NeuronPtr _to, WeightPtr _weight)  { links_in.push_back( Link(_to, _weight) ); };
-        void addOutConnection(NeuronPtr _to, WeightPtr _weight) { links_out.push_back( Link(_to, _weight) ); };
-        void delInConnection(NeuronPtr _to)  { links_in.remove_if(bind(ComparatorT::comp, _to, _1)); };
-        void delOutConnection(NeuronPtr _to) { links_out.remove_if(bind(ComparatorT::comp, _to, _1)); };
+        void add_in_connection(NeuronPtr to, WeightPtr weight)
+        {
+            input_links.push_back( Link(to, weight) );
+        };
 
-    public:
-        Float receptiveField;
-        Float activationValue;
+        void add_out_connection(NeuronPtr to, WeightPtr weight)
+        {
+            output_links.push_back( Link(to, weight) );
+        };
 
-    private:
-        list<Link> links_out;
-        list<Link> links_in;
-        ActivationFunctionPtr activationFunction;
-        WeightPtr bias;
-        RunnerPtr fireRunner;
-        RunnerPtr learnRunner;
+        void remove_in_connection(NeuronPtr to)
+        {
+            remove_if(input_links.begin(), input_links.end(), bind(ComparatorT::comp, to, _1));
+        };
+
+        void remove_out_connection(NeuronPtr _to)
+        {
+            remove_if(output_links.begin(), output_links.end(), bind(ComparatorT::comp, _to, _1));
+        };
 
     private:
         //friend template<class Archive> void Net::serialize(Archive & ar, const unsigned int version);
-        friend class Net;
-
         Neuron() {};
 
         friend class boost::serialization::access;
@@ -75,12 +73,12 @@ namespace pann
                  //@see Net::serialize()
                  //& BOOST_SERIALIZATION_NVP(links_out)
                  //& BOOST_SERIALIZATION_NVP(links_in)
-                 & BOOST_SERIALIZATION_NVP(receptiveField)
-                 & BOOST_SERIALIZATION_NVP(activationValue)
+                 & BOOST_SERIALIZATION_NVP(input)
+                 & BOOST_SERIALIZATION_NVP(output)
                  & BOOST_SERIALIZATION_NVP(bias)
-                 & BOOST_SERIALIZATION_NVP(activationFunction)
-                 & BOOST_SERIALIZATION_NVP(fireRunner)
-                 & BOOST_SERIALIZATION_NVP(learnRunner);
+                 & BOOST_SERIALIZATION_NVP(tf)
+                 & BOOST_SERIALIZATION_NVP(fire)
+                 & BOOST_SERIALIZATION_NVP(learn);
             };
     }; //Neuron
     ADD_PTR_TYPEDEF(Neuron);

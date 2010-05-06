@@ -6,24 +6,24 @@ REGISTER_SINGLETON_CPP(PyramidalNeuronFeedforwardRunner);
 
 #include "Core/Net.h"
 #include "Core/Neuron.h"
-#include "Core/ActivationFunction.h"
+#include "Core/Tf.h"
 
 namespace pann {
     void
-    PyramidalNeuronFeedforwardRunner::run(NeuronPtr _neuron, Net* _net) const
+    PyramidalNeuronFeedforwardRunner::run(ObjectPtr net, NeuronPtr neuron) const
     {
-        if(_neuron->getActivationFunction())
+        if(neuron->tf)
         {
-            if(_neuron->getBias())
-                _neuron->receptiveField += _neuron->getBias()->getValue();
+            if(neuron->bias)
+                neuron->input += neuron->bias->value;
 
-            BOOST_FOREACH( const Link& link, _neuron->getInConnections() )
-                _neuron->receptiveField += link.getTo()->getOutput() * link.getWeight()->getValue();
+            BOOST_FOREACH( const Link& link, neuron->input_connections )
+                neuron->input += link.get_to()->output * link.get_weight()->value;
 
-            _neuron->activationValue = _neuron->getActivationFunction()->f(_neuron->receptiveField);
+            neuron->output = neuron->tf->fx(neuron->input);
         }
 
-        _neuron->receptiveField = 0;
+        neuron->input = 0;
     } //run
 
 }; //pann

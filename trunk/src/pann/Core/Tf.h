@@ -6,6 +6,7 @@
 #ifndef PANN_CORE_TF_H_INCLUDED
 #define PANN_CORE_TF_H_INCLUDED
 
+#include "Includes/BoostSerialization.h"
 #include "Type.h"
 
 namespace pann
@@ -17,7 +18,7 @@ namespace pann
     class Tf
     {
     public:
-        virtual Float f(Float) const = 0;
+        virtual Float fx(Float) const = 0;
         virtual Float df_dy(Float) const = 0;
     }; //Tf
     ADD_PTR_TYPEDEF(Tf);

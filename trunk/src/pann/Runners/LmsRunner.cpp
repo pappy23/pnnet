@@ -15,7 +15,7 @@ REGISTER_SINGLETON_CPP(LmsBackpropagationRunner);
 
 namespace pann {
     void
-    LmsBackpropagationRunner::run(NeuronPtr _neuron, Net* _net) const
+    LmsBackpropagationRunner::run(ObjectPtr net, NeuronPtr neuron) const
     {
         LmsNeuronAttributes& neuron_attrs = _neuron->get<LmsNeuronAttributes>();
         if(!neuron_attrs.parent)
