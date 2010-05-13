@@ -1,5 +1,5 @@
-#ifndef PANN_RUNNERS_NULLFEEDFORWARDPROPAGATIONRUNNER_H_INCLUDED
-#define PANN_RUNNERS_NULLFEEDFORWARDPROPAGATIONRUNNER_H_INCLUDED
+#ifndef PANN_ALGORITHMS_NULLFEEDFORWARDPROPAGATIONRUNNER_H_INCLUDED
+#define PANN_ALGORITHMS_NULLFEEDFORWARDPROPAGATIONRUNNER_H_INCLUDED
 
 #include "Core/Runner.h"
 
@@ -11,7 +11,7 @@ namespace pann {
     {
         SINGLETON_SKELETON(NullFeedforwardPropagationRunner, Runner);
 
-        virtual void run(ObjectPtr net, NeuronPtr neuron) const
+        virtual void run(ObjectConstPtr net, NeuronPtr neuron) const
         {
             //Nothing
         }
@@ -20,5 +20,5 @@ namespace pann {
 
 }; //pann
 
-#endif //PANN_RUNNERS_NULLFEEDFORWARDPROPAGATIONRUNNER_H_INCLUDED
+#endif //PANN_ALGORITHMS_NULLFEEDFORWARDPROPAGATIONRUNNER_H_INCLUDED
 

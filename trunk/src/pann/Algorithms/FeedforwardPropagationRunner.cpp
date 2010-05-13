@@ -9,9 +9,9 @@ REGISTER_SINGLETON_CPP(FeedforwardPropagationRunner);
 namespace pann {
 
     void
-    FeedforwardPropagationRunner::run(ObjectPtr net, NeuronPtr _neuron) const
+    FeedforwardPropagationRunner::run(ObjectConstPtr net, NeuronPtr neuron) const
     {
-        neuron->fire(net, neuron);
+        neuron->fire->run(net, neuron);
     } //run
 
 }; //pann

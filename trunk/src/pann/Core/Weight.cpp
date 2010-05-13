@@ -41,13 +41,13 @@ namespace pann
         }; //get_usage_count
 
         void
-        Weight::inc_usage_count(unsigned delta = 1)
+        Weight::inc_usage_count(unsigned delta)
         {
             m_usage_count += delta;
         }; //inc_usage_count
 
         void
-        Weight::dec_usage_count(unsigned delta = 1)
+        Weight::dec_usage_count(unsigned delta)
         {
             m_usage_count -= delta;
         }; //dec_usage_count

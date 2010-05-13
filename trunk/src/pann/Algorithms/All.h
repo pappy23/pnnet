@@ -1,5 +1,5 @@
-#ifndef PANN_RUNNERS_ALL_H_INCLUDED
-#define PANN_RUNNERS_ALL_H_INCLUDED
+#ifndef PANN_ALGORITHMS_ALL_H_INCLUDED
+#define PANN_ALGORITHMS_ALL_H_INCLUDED
 
 #include "BackpropagationRunner.h"
 #include "FeedforwardPropagationRunner.h"
@@ -10,5 +10,5 @@
 #include "RandomizeWeightsAccordingToInputsCountRunner.h"
 #include "RandomizeWeightsGaussRunner.h"
 
-#endif //PANN_RUNNERS_ALL_H_INCLUDED
+#endif //PANN_ALGORITHMS_ALL_H_INCLUDED
 

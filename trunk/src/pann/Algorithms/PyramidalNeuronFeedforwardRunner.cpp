@@ -10,15 +10,15 @@ REGISTER_SINGLETON_CPP(PyramidalNeuronFeedforwardRunner);
 
 namespace pann {
     void
-    PyramidalNeuronFeedforwardRunner::run(ObjectPtr net, NeuronPtr neuron) const
+    PyramidalNeuronFeedforwardRunner::run(ObjectConstPtr net, NeuronPtr neuron) const
     {
         if(neuron->tf)
         {
             if(neuron->bias)
-                neuron->input += neuron->bias->value;
+                neuron->input += neuron->bias->get_value();
 
-            BOOST_FOREACH( const Link& link, neuron->input_connections )
-                neuron->input += link.get_to()->output * link.get_weight()->value;
+            BOOST_FOREACH( const Link& link, neuron->input_links )
+                neuron->input += link.get_to()->output * link.get_weight()->get_value();
 
             neuron->output = neuron->tf->fx(neuron->input);
         }
