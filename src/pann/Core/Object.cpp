@@ -1,5 +1,8 @@
 //Object.cpp
 
+#include "Object.h"
+#include "Exception.h"
+
 namespace pann
 {
     Float
@@ -9,6 +12,13 @@ namespace pann
         if(it == m_attribute_map.end())
             throw NotFound()<<"Attribute "<<key<<" not found\n";
 
-        return *it;
+        return it->second;
     }; //get_attr
+
+    void
+    Object::set_attr(Hash key, Float value)
+    {
+        m_attribute_map[key] = value;
+    }; //set_attr
 }; //pann
+

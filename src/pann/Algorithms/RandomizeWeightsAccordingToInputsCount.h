@@ -1,7 +1,8 @@
-#ifndef PANN_RUNNERS_RANDOMIZEWEIGHTSACCORDINGTOINPUTSCOUNTRUNNER_H_INCLUDED
-#define PANN_RUNNERS_RANDOMIZEWEIGHTSACCORDINGTOINPUTSCOUNTRUNNER_H_INCLUDED
+#ifndef PANN_ALGORITHMS_RANDOMIZEWEIGHTSACCORDINGTOINPUTSCOUNT_H_INCLUDED
+#define PANN_ALGORITHMS_RANDOMIZEWEIGHTSACCORDINGTOINPUTSCOUNT_H_INCLUDED
 
 #include "Core/Runner.h"
+#include "Core/Net.h"
 
 namespace pann {
     /**
@@ -15,11 +16,13 @@ namespace pann {
     {
         SINGLETON_SKELETON(RandomizeWeightsAccordingToInputsCountRunner, Runner);
 
-        virtual void run(NeuronPtr _neuron, Net* _net) const;
+        virtual void run(ObjectConstPtr net, NeuronPtr neuron) const;
     }; //RandomizeWeightsAccordingToInputsCountRunner
     REGISTER_SINGLETON_H(RandomizeWeightsAccordingToInputsCountRunner);
 
+    void randomize_weights_according_to_inputs_count(NetPtr net, Float min = -2.4, Float max = +2.4);
+
 }; //pann
 
-#endif //PANN_RUNNERS_RANDOMIZEWEIGHTSACCORDINGTOINPUTSCOUNTRUNNER_H_INCLUDED
+#endif //PANN_ALGORITHMS_RANDOMIZEWEIGHTSACCORDINGTOINPUTSCOUNTRUNNER_H_INCLUDED
 

@@ -126,7 +126,8 @@ namespace pann
                         ar & make_nvp("output_links", cache.layers[i][j]->output_links);
                     }
             };
-    };
+    }; //Net
+    ADD_PTR_TYPEDEF(Net);
 
 }; //pann
 #endif //NET_H

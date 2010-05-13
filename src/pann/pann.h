@@ -10,7 +10,7 @@
 #include "Attributes/All.h"
 #include "Core/All.h"
 #include "NeuronFactories/All.h"
-#include "Runners/All.h"
+#include "Algorithms/All.h"
 
 #endif //PANN_PANN_H_INCLUDED
 

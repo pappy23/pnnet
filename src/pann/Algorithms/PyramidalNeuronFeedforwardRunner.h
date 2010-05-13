@@ -1,5 +1,5 @@
-#ifndef PANN_RUNNERS_PYRAMIDALNEURONFEEDFORWARDRUNNER_H_INCLUDED
-#define PANN_RUNNERS_PYRAMIDALNEURONFEEDFORWARDRUNNER_H_INCLUDED
+#ifndef PANN_ALGORITHMS_PYRAMIDALNEURONFEEDFORWARDRUNNER_H_INCLUDED
+#define PANN_ALGORITHMS_PYRAMIDALNEURONFEEDFORWARDRUNNER_H_INCLUDED
 
 #include "Core/Runner.h"
 
@@ -12,11 +12,11 @@ namespace pann
     {
         SINGLETON_SKELETON(PyramidalNeuronFeedforwardRunner, Runner);
 
-        virtual void run(ObjectPtr net, NeuronPtr neuron) const;
+        virtual void run(ObjectConstPtr net, NeuronPtr neuron) const;
     }; //PyramidalNeuronFeedforwardRunner
     REGISTER_SINGLETON_H(PyramidalNeuronFeedforwardRunner);
 
 }; //pann
 
-#endif //PANN_RUNNERS_PYRAMIDALNEURONFEEDFORWARDRUNNER_H_INCLUDED
+#endif //PANN_ALGORITHMS_PYRAMIDALNEURONFEEDFORWARDRUNNER_H_INCLUDED
 

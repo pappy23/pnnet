@@ -18,7 +18,7 @@ namespace pann
     class Weight : public Object
     {
     public:
-        explicit Weight(Float value = 1): value(value), usage_count(0) {};
+        explicit Weight(Float value = 1): m_value(value), m_usage_count(0) {};
         //TODO: Noncopiable
         virtual ~Weight() {};
 
@@ -46,8 +46,8 @@ namespace pann
             void serialize(Archive & ar, const unsigned int version)
         {
             ar & BOOST_SERIALIZATION_BASE_OBJECT_NVP(Object)
-               & BOOST_SERIALIZATION_NVP(value)
-               & BOOST_SERIALIZATION_NVP(usage_count);
+               & BOOST_SERIALIZATION_NVP(m_value)
+               & BOOST_SERIALIZATION_NVP(m_usage_count);
         };
     }; //Weight
     ADD_PTR_TYPEDEF(Weight);

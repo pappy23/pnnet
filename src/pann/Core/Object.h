@@ -19,6 +19,7 @@ namespace pann
         };
 
         Float get_attr(Hash key) const;
+        void set_attr(Hash key, Float value);
 
     protected:
         std::map<Hash, Float> mutable m_attribute_map;
@@ -29,7 +30,7 @@ namespace pann
         template<class Archive>
             void serialize(Archive & ar, const unsigned int version)
             {
-                ar & BOOST_SERIALIZATION_NVP(attribute_map);
+                ar & BOOST_SERIALIZATION_NVP(m_attribute_map);
             };
     }; //Object
     ADD_PTR_TYPEDEF(Object);

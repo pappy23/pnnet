@@ -1,7 +1,8 @@
-#ifndef PANN_RUNNERS_RANDOMIZEWEIGHTSGAUSSRUNNER_H_INCLUDED
-#define PANN_RUNNERS_RANDOMIZEWEIGHTSGAUSSRUNNER_H_INCLUDED
+#ifndef PANN_ALGORITHMS_RANDOMIZEWEIGHTSGAUSS_H_INCLUDED
+#define PANN_ALGORITHMS_RANDOMIZEWEIGHTSGAUSS_H_INCLUDED
 
 #include "Core/Runner.h"
+#include "Core/Net.h"
 
 namespace pann {
     /**
@@ -12,10 +13,13 @@ namespace pann {
     {
         SINGLETON_SKELETON(RandomizeWeightsGaussRunner, Runner);
 
-        virtual void run(ObjectPtr net, NeuronPtr neuron) const;
+        virtual void run(ObjectConstPtr net, NeuronPtr neuron) const;
     };
     REGISTER_SINGLETON_H(RandomizeWeightsGaussRunner);
+
+    void randomize_weights_gauss(NetPtr net, Float min = -0.3, Float max = +0.3);
+
 }; //pann
 
-#endif //PANN_RUNNERS_RANDOMIZEWEIGHTSGAUSSRUNNER_H_INCLUDED
+#endif //PANN_ALGORITHMS_RANDOMIZEWEIGHTSGAUSSALGORITHM_H_INCLUDED
 
