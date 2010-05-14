@@ -2,7 +2,7 @@
 
 #include "Includes/BoostCommon.h"
 
-#include "LmsRunner.h"
+#include "Lms.h"
 
 REGISTER_SINGLETON_CPP(LmsBackpropagationRunner);
 
@@ -10,69 +10,69 @@ REGISTER_SINGLETON_CPP(LmsBackpropagationRunner);
 #include "Core/Neuron.h"
 #include "Core/Link.h"
 #include "Core/Weight.h"
-#include "Core/ActivationFunction.h"
-#include "Attributes/LmsAttributes.h"
+#include "Core/Tf.h"
 
 namespace pann {
-    void
-    LmsBackpropagationRunner::run(ObjectPtr net, NeuronPtr neuron) const
-    {
-        LmsNeuronAttributes& neuron_attrs = _neuron->get<LmsNeuronAttributes>();
-        if(!neuron_attrs.parent)
-            neuron_attrs.parent.reset((LmsNetAttributes*)(_net->getPtr(LmsNetAttributes::getHash()).get()));
 
-        LmsNetAttributes& net_attrs = *neuron_attrs.parent;
+    void
+    LmsBackpropagationRunner::run(ObjectConstPtr net, NeuronPtr neuron) const
+    {
+        //Attribute table
+        const Hash ERROR = hash("lms_error");
+        const Hash LGRAD = hash("lms_local_gradient");
+        const Hash EPOCH = hash("lms_epoch");
+        const Hash ANNTSC = hash("lms_annealing_tsc");
+        const Hash LEARNRATE = hash("lms_learning_rate");
+        const Hash LEARNMOMENTUM = hash("lms_learning_momentum");
+        const Hash LASTDW = hash("last_dw"); //Link attribute
 
         //local_gradient = desired_output - actual_output = error - for output neuron
         //local_gradient = weighted sum of upstream neurons local_gradients
-        if(neuron_attrs.error) //output neuron
-            neuron_attrs.localGradient = neuron_attrs.error;
+        Float error = neuron->get_attr(ERROR);
+        if(error) //output neuron
+            neuron->set_attr(LGRAD, error);
         else
-            neuron_attrs.localGradient = 0;
+            neuron->set_attr(hash("lms_local_gradient"), 0);
 
-        BOOST_FOREACH( const Link& link, _neuron->getOutConnections() )
-            neuron_attrs.localGradient += link.getTo()->get<LmsNeuronAttributes>().localGradient * link.getWeight()->getValue();
+        BOOST_FOREACH( const Link& link, neuron->output_links )
+            neuron->get_attr_ref(LGRAD) += link.get_to()->get_attr(LGRAD) * link.get_weight()->get_value();
         //Now neuron_hint[localGradient] contains error (known error for outer layer and weighted sum of
         //local gradients of all upstream neurons for other layers)
 
         //Save actual local gradient value
         //Note: we assume that input neuron(it's activation function = Linear)
         //has activation function y = x, so dy/dx = 1
-        neuron_attrs.localGradient *= _neuron->getActivationFunction()->derivative_dy(_neuron->getOutput());
+        neuron->get_attr_ref(LGRAD) *= neuron->tf->df_dy(neuron->output);
         //grad = error * df(receptiveField)/dx, but df/dx usually less preferable then df/dy,
         //grad = error * df(activationValue)/dy (see Simon Haykin, 2nd edition, p235)
 
         //Update weights
         //Simulated annealing, rate = basic_rate / ( 1 + epoch / time_seek_constant)
         //When epoch -> inf, rate -> basic_rate / epoch
-        Float lr = net_attrs.learningRate / (1 + (net_attrs.epoch / net_attrs.annealingTSC));
+        Float lr = net->get_attr(LEARNRATE) / (1 + (net->get_attr(EPOCH) / net->get_attr(ANNTSC)));
 
         //Comment: Na --w--> Nb
         //w is updated while processing Na
-        BOOST_FOREACH( const Link& link, _neuron->getOutConnections() )
+        BOOST_FOREACH( Link& link, neuron->output_links )
         {
-            WeightPtr w = link.getWeight();
-
             //See Haykin, p241
             //Ni -> Nj
             //dWj(n) = a*(Wj(n-1)) + learning_rate * local_gradient_j * Yi
-            Float dw = lr * link.getTo()->get<LmsNeuronAttributes>().localGradient * _neuron->getOutput();
+            Float dw = lr * link.get_to()->get_attr(LGRAD) * neuron->output;
 
             //Momentum
-            LmsLinkAttributes& link_attrs = link.get<LmsLinkAttributes>();
-            dw += net_attrs.learningMomentum * link_attrs.lastDeltaW;
-            link_attrs.lastDeltaW = dw;
+            dw += net->get_attr(LEARNMOMENTUM) * link.get_attr(LASTDW);
+            link.set_attr(LASTDW, dw);
 
             //Apply dw
             //boost::mutex::scoped_lock lock(w->getMutex());
-            w->addValue(dw);
+            link.get_weight()->add_value(dw);
         }
 
         //Update bias weight
-        WeightPtr bias = _neuron->getBias();
-        if(bias)
+        if(neuron->bias)
         {
-            Float dw = lr * neuron_attrs.localGradient;
+            Float dw = lr * neuron->get_attr(LGRAD);
 
             //Momentum
             //Currently there is no way to use simulated annealing with bias,
@@ -81,7 +81,7 @@ namespace pann {
 
             //Apply dw
             //boost::mutex::scoped_lock lock(bias->getMutex());
-            bias->addValue(dw);
+            neuron->bias->add_value(dw);
         }
     } //run
 

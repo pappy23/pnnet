@@ -1,8 +1,7 @@
 
-#ifndef PANN_RUNNERS_LMSRUNNER_H_INCLUED
-#define PANN_RUNNERS_LMSRUNNER_H_INCLUED
+#ifndef PANN_RUNNERS_LMS_H_INCLUED
+#define PANN_RUNNERS_LMS_H_INCLUED
 
-#include "Core/Exception.h"
 #include "Core/Runner.h"
 
 //TODO Document all algorithms! Don't forget to mention, that algorithms may be not correct,
@@ -13,7 +12,7 @@ namespace pann {
     {
         SINGLETON_SKELETON(LmsBackpropagationRunner, Runner);
 
-        virtual void run(ObjectPtr net, NeuronPtr neuron) const;
+        virtual void run(ObjectConstPtr net, NeuronPtr neuron) const;
     }; //LmsBackpropagationRunner
     REGISTER_SINGLETON_H(LmsBackpropagationRunner);
 }; //pann

@@ -15,6 +15,12 @@ namespace pann
         return it->second;
     }; //get_attr
 
+    Float&
+    Object::get_attr_ref(Hash key)
+    {
+        return m_attribute_map[key];
+    }; //get_attr_ref
+
     void
     Object::set_attr(Hash key, Float value)
     {
