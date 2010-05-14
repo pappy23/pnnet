@@ -2,8 +2,8 @@
 #define PANN_NEURONFACTORIES_PYRAMIDALNEURON_H_INCLUDED
 
 #include "Core/Neuron.h"
-#include "Runners/PyramidalNeuronFeedforwardRunner.h"
-#include "Runners/NullBackpropagationRunner.h"
+#include "Algorithms/PyramidalNeuronFeedforwardRunner.h"
+#include "Algorithms/NullBackpropagationRunner.h"
 #include "TF/TanH.h"
 
 namespace pann {
