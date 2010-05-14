@@ -1,5 +1,7 @@
 //RandomizeWeightsGauss.cpp
 
+#include <boost/foreach.hpp>
+
 #include "RandomizeWeightsGauss.h"
 
 REGISTER_SINGLETON_CPP(RandomizeWeightsGaussRunner);
@@ -27,7 +29,7 @@ namespace pann {
     {
         net->set_attr(hash("RW_MIN"), min);
         net->set_attr(hash("RW_MAX"), max);
-        net->run(Net::ForwardRun, RandomizeWeightsGaussRunner::Instance());
+        net->run(RandomizeWeightsGaussRunner::Instance(), Net::ForwardRun);
     }; //randomize_weights_gauss
 
 }; //pann

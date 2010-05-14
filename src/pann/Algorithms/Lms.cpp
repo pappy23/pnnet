@@ -1,6 +1,6 @@
 //LmsRunner.cpp
 
-#include "Includes/BoostCommon.h"
+#include <boost/foreach.hpp>
 
 #include "Lms.h"
 

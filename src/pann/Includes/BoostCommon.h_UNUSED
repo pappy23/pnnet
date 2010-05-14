@@ -7,11 +7,11 @@
 #define PANN_INCLUDES_BOOSTCOMMON_H_INCLUDED
 
 //Core dependencies
-#include <boost/foreach.hpp>
-#include <boost/thread.hpp>
-#include <boost/thread/barrier.hpp>
+//#include <boost/foreach.hpp>
+//#include <boost/thread.hpp>
+//#include <boost/thread/barrier.hpp>
 //#include <boost/functional/hash.hpp>
-#include <boost/bind.hpp>
+//#include <boost/bind.hpp>
 //#include <boost/shared_ptr.hpp>
 //#include <boost/enable_shared_from_this.hpp>
 

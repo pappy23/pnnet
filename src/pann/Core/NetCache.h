@@ -2,7 +2,6 @@
 #ifndef PANN_CORE_NETCACHE_H_INCLUDED
 #define PANN_CORE_NETCACHE_H_INCLUDED
 
-#include "Includes/BoostCommon.h"
 #include "Includes/BoostSerialization.h"
 
 #include "Type.h"

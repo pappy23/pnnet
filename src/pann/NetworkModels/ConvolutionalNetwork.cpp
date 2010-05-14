@@ -90,10 +90,11 @@ namespace pann
 
         //OpenGL
         //TODO: calculate opengl distances from layers count and so
+        /*
         const Float distance_between_layers = 1000.0;
         const Float distance_between_neurons = 40.0;
         const Float distance_between_fms = 900.0;
-
+        */
         /*
          * Each _layers[] contains information about planes count in corresponding
          * level. Level consists of two layers: convolutional and subsampling

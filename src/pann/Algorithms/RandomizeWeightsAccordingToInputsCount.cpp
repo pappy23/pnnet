@@ -1,5 +1,7 @@
 //RandomizeWeightsAccordingToInputsCount.cpp
 
+#include <boost/foreach.hpp>
+
 #include "RandomizeWeightsAccordingToInputsCount.h"
 
 REGISTER_SINGLETON_CPP(RandomizeWeightsAccordingToInputsCountRunner);
@@ -31,7 +33,7 @@ namespace pann {
     {
         net->set_attr(hash("RW_MIN"), min);
         net->set_attr(hash("RW_MAX"), max);
-        net->run(Net::ForwardRun, RandomizeWeightsAccordingToInputsCountRunner::Instance());
+        net->run(RandomizeWeightsAccordingToInputsCountRunner::Instance(), Net::ForwardRun);
     }; //randomize_weights_according_to_inputs_count
 
 }; //pann

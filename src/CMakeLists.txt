@@ -63,9 +63,6 @@ if(WIN32)
 	set(Boost_DEBUG TRUE)
 	set(BOOST_ROOT "C:/Program Files/boost/boost_1_38") 
 	#set(BOOST_INCLUDEDIR "C:/Program Files/boost/boost_1_38")
-#elseif(UNIX)
-#    set(BOOST_INCLUDEDIR /usr/local/include/boost-1_38)
-#    #set(BOOST_LIBRARYDIR /usr/local/lib)
 endif(WIN32)
 
 #if(WIN32)
@@ -99,6 +96,6 @@ find_package(Boost 1.35 REQUIRED COMPONENTS ${BOOST_MODULES})
 # pann
 
 #include_directories(pann ${Boost_INCLUDE_DIRS} ${PYTHON_INCLUDE_PATH})
-include_directories(pann ${Boost_INCLUDE_DIRS})
-subdirs(pann gnuplot-cpp Apps)
+include_directories(pann pann-shit gnuplot-cpp ${Boost_INCLUDE_DIRS})
+subdirs(pann pann-shit gnuplot-cpp Apps)
 

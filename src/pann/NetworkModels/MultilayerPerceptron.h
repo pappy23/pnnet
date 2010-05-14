@@ -1,9 +1,10 @@
 #ifndef MULTILAYERPERCEPTRON_H
 #define MULTILAYERPERCEPTRON_H
 
+#include <boost/tuple/tuple.hpp>
+
 #include "Includes/Std.h"
-#include "Includes/BoostCommon.h"
-#include "Core/ActivationFunction.h"
+#include "Core/Tf.h"
 
 namespace pann
 {
@@ -15,7 +16,7 @@ namespace pann
      * layer and what activation function use in neurons
      * If activation function isn't set, TanH will be used
      */
-    NetPtr MultilayerPerceptron(std::vector<boost::tuple<unsigned, ActivationFunctionPtr> > _layers);
+    NetPtr MultilayerPerceptron(std::vector<boost::tuple<unsigned, TfPtr> > layers);
 
 }; //pann
 

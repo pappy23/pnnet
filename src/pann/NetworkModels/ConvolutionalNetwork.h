@@ -2,7 +2,6 @@
 #define CONVOLUTIONALNETWORK_H
 
 #include "Includes/Std.h"
-#include "Includes/BoostCommon.h"
 
 #include "Core/Tf.h"
 #include "TF/TanH.h"
