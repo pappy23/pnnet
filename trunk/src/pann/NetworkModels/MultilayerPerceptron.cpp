@@ -12,30 +12,30 @@ using boost::tuple;
 namespace pann
 {
     NetPtr
-    MultilayerPerceptron(vector<tuple<unsigned, TfPtr> > _layers)
+    MultilayerPerceptron(vector<tuple<unsigned, TfPtr> > layers)
     {
         NetPtr net(new Net());
 
-        if(_layers.size() == 0)
+        if(layers.size() == 0)
             return net;
 
-        vector<vector<NeuronPtr> > mlp(_layers.size());
+        vector<vector<NeuronPtr> > mlp(layers.size());
 
         //Layers
         //TODO: OpenGlHint
-        for(unsigned l = 0; l < _layers.size(); ++l)
+        for(unsigned l = 0; l < layers.size(); ++l)
         {
-            TfPtr af = _layers[l].get<1>();
+            TfPtr af = layers[l].get<1>();
             if(!af)
                 af = TanH::Instance();
 
-            for(unsigned i = 0; i < _layers[l].get<0>(); ++i)
+            for(unsigned i = 0; i < layers[l].get<0>(); ++i)
             {
                 NeuronPtr n;
                 if(l == 0)
                 {
                     n = NeuronFactory::PyramidalNeuron(af);
-                    net->addInputNeuron(n);
+                    net->add_input_neuron(n);
                 } else {
                     n = NeuronFactory::PyramidalNeuron(af, WeightPtr(new Weight(1)));
                 }
@@ -49,7 +49,7 @@ namespace pann
             for(unsigned j = 0; j < mlp[i].size(); j++) //prev layer
                 for(unsigned k = 0; k < mlp[i+1].size(); k++) //next layer
                     //Connection from current layer (i) to next (i+1)
-                    net->addConnection(mlp[i][j], mlp[i+1][k]);
+                    net->add_connection(mlp[i][j], mlp[i+1][k]);
 
         return net;
     };

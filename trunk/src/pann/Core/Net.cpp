@@ -1,5 +1,7 @@
 //Net.cpp
 
+#include <boost/foreach.hpp>
+
 #include "Runner.h"
 #include "Neuron.h"
 
@@ -106,7 +108,7 @@ namespace pann
     } //get_output
 
     void
-    Net::run(RunDirection direction, RunnerPtr runner)
+    Net::run(RunnerPtr runner, RunDirection direction)
     {
         if( !cache.is_ok() )
             regenerate_cache();
@@ -259,7 +261,7 @@ namespace pann
         do {
             //Process current layer
             for(unsigned i = cur_thread; i < cache.layers[layer].size(); i += threads)
-                runner->run( ObjectPtr(net), cache.layers[layer][i]); //We pass Net* to runner, because
+                runner->run( ObjectConstPtr(net), cache.layers[layer][i]); //We pass Net* to runner, because
                                                                     //learning algorithms require
                                                                     //read-only access to Net attributes
 

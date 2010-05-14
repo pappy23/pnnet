@@ -1,11 +1,12 @@
 #include <iostream>
-
-#include "pann.h"
+#include <boost/foreach.hpp>
+#include "pann-shit.h"
 #include "gnuplot_i.hpp"
 
 using namespace std;
 using namespace pann;
-using namespace boost;
+
+using boost::tuple;
 
 void test(NetPtr net, Float start, Float stop, Float step);
 
@@ -18,7 +19,7 @@ int main()
 {
 //*
     //Constructing perceptron
-    vector<tuple<unsigned, ActivationFunctionPtr> > layers;
+    vector<tuple<unsigned, TfPtr> > layers;
     layers.push_back(make_tuple(1, Linear::Instance())); //input  - no act. fcn
     layers.push_back(make_tuple(9, TanH::Instance())  ); //hidden - tanh
     layers.push_back(make_tuple(4, TanH::Instance())  ); //output - linear
@@ -29,12 +30,13 @@ int main()
     const unsigned epochs = 1000;
     TrainData& td = *(DataGenerator::generateFromFunction(-3.0, +3.0, 20, func));
 
-    net->get<LmsNetAttributes>().learningRate = 0.3;
-    net->get<LmsNetAttributes>().learningMomentum = 0.5;
-    net->get<WeightRandomizationAttributes>().min = -0.6;
-    net->get<WeightRandomizationAttributes>().max = +0.6;
+    net->set_work_threads_count(1);
+
+    net->set_attr(hash("lms_learning_rate"), 0.3);
+    net->set_attr(hash("lms_learning_momentum"), 0.5);
     //net.run(RandomizeWeightsGaussRunner::Instance());
-    net->run(RandomizeWeightsAccordingToInputsCountRunner::Instance());
+    //net->run(RandomizeWeightsAccordingToInputsCountRunner::Instance());
+    randomize_weights_according_to_inputs_count(net, -0.6, +0.6);
 
     vector<Float> train_error_info; //MSE
     for(unsigned i = 1; i < epochs; ++i)
@@ -44,6 +46,8 @@ int main()
 
         train_error_info.push_back(ErrorFunction::mse(td));
     }
+
+    cout<<"test"<<endl;
 
     test(net, -4.0, +4.0, +0.01);
 
@@ -78,9 +82,9 @@ void test(NetPtr net, Float start, Float stop, Float step)
         tmp.input()[0] = x;
         tmp.desired_output()[0] = func(x);
 
-        net->setInput(tmp.input());
+        net->set_input(tmp.input());
         net->run(FeedforwardPropagationRunner::Instance());
-        net->getOutput(tmp.actual_output()); //actual output
+        net->get_output(tmp.actual_output()); //actual output
 
         input.push_back(x);
         desired_output.push_back(func(x));

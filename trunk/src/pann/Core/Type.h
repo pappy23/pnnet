@@ -67,10 +67,16 @@ namespace pann
     const pann::T##Ptr C##Register = pann::C::Instance();
 */
 
+#ifdef __GNUC__
+#define VARIABLE_IS_NOT_USED __attribute__ ((unused))
+#else
+#define VARIABLE_IS_NOT_USED
+#endif
+
 //Split registration
 #define REGISTER_SINGLETON_H(C) \
     int register_singleton_##C(); \
-    const int register_singleton_##C##_result = register_singleton_##C();
+    const int VARIABLE_IS_NOT_USED register_singleton_##C##_result = register_singleton_##C();
 
 #define REGISTER_SINGLETON_CPP(C) \
     BOOST_CLASS_EXPORT(pann::C) \

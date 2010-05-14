@@ -1,5 +1,7 @@
 //PyramidalNeuronFeedforwardRunner.cpp
 
+#include <boost/foreach.hpp>
+
 #include "PyramidalNeuronFeedforwardRunner.h"
 
 REGISTER_SINGLETON_CPP(PyramidalNeuronFeedforwardRunner);

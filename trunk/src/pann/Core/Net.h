@@ -1,6 +1,9 @@
 #ifndef PANN_CORE_NET_H
 #define PANN_CORE_NET_H
 
+#include <boost/thread.hpp>
+#include <boost/thread/barrier.hpp>
+
 #include "Includes/Std.h"
 #include "Includes/BoostSerialization.h"
 
@@ -62,7 +65,7 @@ namespace pann
          * Note: layers are computed automaticaly and stored in cache
          * See regenerateCache() implementation for more details
          */
-        void run(RunDirection direction, RunnerPtr runner);
+        void run(RunnerPtr runner, RunDirection direction = ForwardRun);
 
         /**
          * Public interface to private attributes

@@ -3,12 +3,12 @@
 
 #include "BackpropagationRunner.h"
 #include "FeedforwardPropagationRunner.h"
-#include "LmsRunner.h"
+#include "Lms.h"
 #include "NullBackpropagationRunner.h"
 #include "NullFeedforwardPropagationRunner.h"
 #include "PyramidalNeuronFeedforwardRunner.h"
-#include "RandomizeWeightsAccordingToInputsCountRunner.h"
-#include "RandomizeWeightsGaussRunner.h"
+#include "RandomizeWeightsAccordingToInputsCount.h"
+#include "RandomizeWeightsGauss.h"
 
 #endif //PANN_ALGORITHMS_ALL_H_INCLUDED
 

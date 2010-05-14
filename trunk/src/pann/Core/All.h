@@ -1,8 +1,7 @@
 #ifndef PANN_CORE_ALL_H_INCLUDED
 #define PANN_CORE_ALL_H_INCLUDED
 
-#include "ActivationFunction.h"
-#include "Attributes.h"
+#include "Tf.h"
 #include "Cache.h"
 #include "Exception.h"
 #include "Link.h"

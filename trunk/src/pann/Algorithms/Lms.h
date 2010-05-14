@@ -1,6 +1,6 @@
 
-#ifndef PANN_RUNNERS_LMS_H_INCLUED
-#define PANN_RUNNERS_LMS_H_INCLUED
+#ifndef PANN_ALGORITHMS_LMS_H_INCLUDED
+#define PANN_ALGORITHMS_LMS_H_INCLUDED
 
 #include "Core/Runner.h"
 
@@ -17,5 +17,5 @@ namespace pann {
     REGISTER_SINGLETON_H(LmsBackpropagationRunner);
 }; //pann
 
-#endif //PANN_RUNNERS_LMSRUNNER_H_INCLUED
+#endif //PANN_ALGORITHMS_LMSRUNNER_H_INCLUDED
 
