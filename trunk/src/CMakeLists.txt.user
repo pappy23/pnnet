@@ -1,6 +1,126 @@
 <!DOCTYPE QtCreatorProject>
 <qtcreator>
  <data>
+  <variable>RunConfiguration0-BaseEnvironmentBase</variable>
+  <value type="int">2</value>
+ </data>
+ <data>
+  <variable>RunConfiguration0-CMakeRunConfiguation.Title</variable>
+  <value type="QString">Article1_learning</value>
+ </data>
+ <data>
+  <variable>RunConfiguration0-CMakeRunConfiguration.Arguments</variable>
+  <value type="QString"></value>
+ </data>
+ <data>
+  <variable>RunConfiguration0-CMakeRunConfiguration.Target</variable>
+  <value type="QString">/home/booble/pann/trunk/build/Apps/article1/Article1_learning</value>
+ </data>
+ <data>
+  <variable>RunConfiguration0-CMakeRunConfiguration.UseTerminal</variable>
+  <value type="bool">false</value>
+ </data>
+ <data>
+  <variable>RunConfiguration0-CMakeRunConfiguration.UserEnvironmentChanges</variable>
+  <valuelist type="QVariantList"/>
+ </data>
+ <data>
+  <variable>RunConfiguration0-CMakeRunConfiguration.UserWorkingDirectory</variable>
+  <value type="QString"></value>
+ </data>
+ <data>
+  <variable>RunConfiguration0-CMakeRunConfiguration.WorkingDirectory</variable>
+  <value type="QString">/home/booble/pann/trunk/build/Apps/article1</value>
+ </data>
+ <data>
+  <variable>RunConfiguration0-RunConfiguration.name</variable>
+  <value type="QString">Article1_learning</value>
+ </data>
+ <data>
+  <variable>RunConfiguration0-type</variable>
+  <value type="QString">CMakeProjectManager.CMakeRunConfiguration</value>
+ </data>
+ <data>
+  <variable>RunConfiguration1-BaseEnvironmentBase</variable>
+  <value type="int">2</value>
+ </data>
+ <data>
+  <variable>RunConfiguration1-CMakeRunConfiguation.Title</variable>
+  <value type="QString">Article1_performance</value>
+ </data>
+ <data>
+  <variable>RunConfiguration1-CMakeRunConfiguration.Arguments</variable>
+  <value type="QString"></value>
+ </data>
+ <data>
+  <variable>RunConfiguration1-CMakeRunConfiguration.Target</variable>
+  <value type="QString">/home/booble/pann/trunk/build/Apps/article1/Article1_performance</value>
+ </data>
+ <data>
+  <variable>RunConfiguration1-CMakeRunConfiguration.UseTerminal</variable>
+  <value type="bool">false</value>
+ </data>
+ <data>
+  <variable>RunConfiguration1-CMakeRunConfiguration.UserEnvironmentChanges</variable>
+  <valuelist type="QVariantList"/>
+ </data>
+ <data>
+  <variable>RunConfiguration1-CMakeRunConfiguration.UserWorkingDirectory</variable>
+  <value type="QString"></value>
+ </data>
+ <data>
+  <variable>RunConfiguration1-CMakeRunConfiguration.WorkingDirectory</variable>
+  <value type="QString">/home/booble/pann/trunk/build/Apps/article1</value>
+ </data>
+ <data>
+  <variable>RunConfiguration1-RunConfiguration.name</variable>
+  <value type="QString">Article1_performance</value>
+ </data>
+ <data>
+  <variable>RunConfiguration1-type</variable>
+  <value type="QString">CMakeProjectManager.CMakeRunConfiguration</value>
+ </data>
+ <data>
+  <variable>RunConfiguration2-BaseEnvironmentBase</variable>
+  <value type="int">2</value>
+ </data>
+ <data>
+  <variable>RunConfiguration2-CMakeRunConfiguation.Title</variable>
+  <value type="QString">RememberFaces</value>
+ </data>
+ <data>
+  <variable>RunConfiguration2-CMakeRunConfiguration.Arguments</variable>
+  <value type="QString"></value>
+ </data>
+ <data>
+  <variable>RunConfiguration2-CMakeRunConfiguration.Target</variable>
+  <value type="QString">/home/booble/pann/trunk/build/Apps/article3/RememberFaces</value>
+ </data>
+ <data>
+  <variable>RunConfiguration2-CMakeRunConfiguration.UseTerminal</variable>
+  <value type="bool">false</value>
+ </data>
+ <data>
+  <variable>RunConfiguration2-CMakeRunConfiguration.UserEnvironmentChanges</variable>
+  <valuelist type="QVariantList"/>
+ </data>
+ <data>
+  <variable>RunConfiguration2-CMakeRunConfiguration.UserWorkingDirectory</variable>
+  <value type="QString"></value>
+ </data>
+ <data>
+  <variable>RunConfiguration2-CMakeRunConfiguration.WorkingDirectory</variable>
+  <value type="QString">/home/booble/pann/trunk/build/Apps/article3</value>
+ </data>
+ <data>
+  <variable>RunConfiguration2-RunConfiguration.name</variable>
+  <value type="QString">RememberFaces</value>
+ </data>
+ <data>
+  <variable>RunConfiguration2-type</variable>
+  <value type="QString">CMakeProjectManager.CMakeRunConfiguration</value>
+ </data>
+ <data>
   <variable>activeRunConfiguration</variable>
   <value type="int">0</value>
  </data>
@@ -21,7 +141,7 @@
   <valuemap type="QVariantMap">
    <value key="ProjectExplorer.BuildConfiguration.DisplayName" type="QString">all</value>
    <valuelist key="abstractProcess.Environment" type="QVariantList">
-    <value type="QString">DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-VdqaNXXZpI,guid=1420c8dd4877c9639897b8444be16ee7</value>
+    <value type="QString">DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-nAXTyTiViB,guid=52364acab59fa40a867e2ee14bed17b6</value>
     <value type="QString">DESKTOP_SESSION=default</value>
     <value type="QString">DISPLAY=:0</value>
     <value type="QString">DM_CONTROL=/var/run/xdmctl</value>
@@ -40,16 +160,16 @@
     <value type="QString">PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games</value>
     <value type="QString">PWD=/home/booble/Documents</value>
     <value type="QString">QT_PLUGIN_PATH=/home/booble/.kde/lib/kde4/plugins/:/usr/lib/kde4/plugins/</value>
-    <value type="QString">SESSION_MANAGER=local/dd:@/tmp/.ICE-unix/1347,unix/dd:/tmp/.ICE-unix/1347</value>
+    <value type="QString">SESSION_MANAGER=local/dd:@/tmp/.ICE-unix/27838,unix/dd:/tmp/.ICE-unix/27838</value>
     <value type="QString">SHELL=/bin/bash</value>
     <value type="QString">SHLVL=0</value>
-    <value type="QString">SSH_AGENT_PID=1221</value>
-    <value type="QString">SSH_AUTH_SOCK=/tmp/ssh-VzdPyY1177/agent.1177</value>
+    <value type="QString">SSH_AGENT_PID=27751</value>
+    <value type="QString">SSH_AUTH_SOCK=/tmp/ssh-RGpxF27707/agent.27707</value>
     <value type="QString">USER=booble</value>
-    <value type="QString">WINDOWPATH=7</value>
+    <value type="QString">WINDOWPATH=8</value>
     <value type="QString">XCURSOR_THEME=oxy-white</value>
     <value type="QString">XDG_DATA_DIRS=/usr/share:/usr/share:/usr/local/share</value>
-    <value type="QString">XDG_SESSION_COOKIE=7b87060353d84352376a9b9e4bdab39a-1273065190.746969-1957508200</value>
+    <value type="QString">XDG_SESSION_COOKIE=7b87060353d84352376a9b9e4bdab39a-1273829302.200706-1057571002</value>
     <value type="QString">XDM_MANAGED=method=classic</value>
    </valuelist>
    <value key="abstractProcess.IgnoreReturnValue" type="bool">false</value>

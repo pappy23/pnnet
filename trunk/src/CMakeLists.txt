@@ -100,6 +100,5 @@ find_package(Boost 1.35 REQUIRED COMPONENTS ${BOOST_MODULES})
 
 #include_directories(pann ${Boost_INCLUDE_DIRS} ${PYTHON_INCLUDE_PATH})
 include_directories(pann ${Boost_INCLUDE_DIRS})
-#FIXME: Apps
-subdirs(pann)
+subdirs(pann gnuplot-cpp Apps)
 
