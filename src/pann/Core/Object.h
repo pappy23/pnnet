@@ -19,6 +19,7 @@ namespace pann
         };
 
         Float get_attr(Hash key) const;
+        Float& get_attr_ref(Hash key);
         void set_attr(Hash key, Float value);
 
     protected:
