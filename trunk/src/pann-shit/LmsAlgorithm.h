@@ -20,6 +20,8 @@ namespace pann
         template<class T>
         static void train(NetPtr _net, T& _trainData)
         {
+            using namespace attr;
+
             const vector<NeuronPtr>& output_neurons = *(_net->get_cache().layers.end() - 2);
 
             typename T::iterator iter = _trainData.begin();
@@ -32,12 +34,12 @@ namespace pann
 
                 //Put error information to output neurons
                 for(unsigned i = 0; i < output_neurons.size(); ++i)
-                    output_neurons[i]->set_attr(hash("lms_error"), error[i]);
+                    output_neurons[i]->set_attr(lms::error, error[i]);
 
-                _net->run(LmsBackpropagationRunner::Instance());
+                _net->run(LmsBackpropagationRunner::Instance(), Net::BackwardRun);
             }
 
-            _net->get_attr_ref(hash("lms_epoch")) += 1;
+            _net->get_attr_ref(lms::epoch) += 1;
         }
     }; //Lms
 }; //pann

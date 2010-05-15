@@ -5,6 +5,12 @@
 
 namespace pann
 {
+    bool
+    Object::is_attr(Hash key) const
+    {
+        return (m_attribute_map.find(key) != m_attribute_map.end());
+    }; //is_attr
+
     Float
     Object::get_attr(Hash key) const
     {

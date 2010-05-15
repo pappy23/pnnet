@@ -12,7 +12,7 @@ REGISTER_SINGLETON_CPP(PyramidalNeuronFeedforwardRunner);
 
 namespace pann {
     void
-    PyramidalNeuronFeedforwardRunner::run(ObjectConstPtr net, NeuronPtr neuron) const
+    PyramidalNeuronFeedforwardRunner::run(Object const * net, NeuronPtr neuron) const
     {
         if(neuron->tf)
         {

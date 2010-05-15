@@ -1,6 +1,7 @@
 #include <QtGui>
 
 #include <cmath>
+#include <boost/foreach.hpp>
 
 #include "glwidget.h"
 
@@ -25,7 +26,7 @@ GLWidget::~GLWidget()
 
 void GLWidget::calcCoords()
 {
-    const NetCache& cache = p_net->getCache();
+    const NetCache& cache = p_net->get_cache();
 
     unsigned total_layers = cache.layers.size();
     for(unsigned layer = 0; layer < total_layers; ++layer)
@@ -37,23 +38,21 @@ void GLWidget::calcCoords()
             unsigned planeRows = sqrt(layer_size);
             unsigned planeCols = layer_size / planeRows;
 
-            OpenGlAttributes& ogl = neuron->get<OpenGlAttributes>();
+            if(!neuron->is_attr(hash("ogl_x")))
+                neuron->set_attr(hash("ogl_x"), (GLdouble) ( (GLdouble)layer - total_layers/2.0 + 1.0) * 100);
 
-            if(!ogl.x)
-                ogl.x = (GLdouble) ( (GLdouble)layer - total_layers/2.0 + 1.0) * 100;
+            if(!neuron->is_attr(hash("ogl_y")))
+                neuron->set_attr(hash("ogl_y"), (GLdouble) ( (GLdouble)(i / planeCols) - planeRows/2.0 + 1.0 ) * 40.0);
 
-            if(!ogl.y)
-                ogl.y = (GLdouble) ( (GLdouble)(i / planeCols) - planeRows/2.0 + 1.0 ) * 40.0;
+            if(!neuron->is_attr(hash("ogl_z")))
+                neuron->set_attr(hash("ogl_z"), (GLdouble) ( (GLdouble)(i % planeCols) - planeCols/2.0 + 1.0 ) * 40.0);
 
-            if(!ogl.z)
-                ogl.z = (GLdouble) ( (GLdouble)(i % planeCols) - planeCols/2.0 + 1.0 ) * 40.0;
-
-            if(!ogl.r)
-                ogl.r = 255.0;
-            if(!ogl.g)
-                ogl.g = 0.0;
-            if(!ogl.b)
-                ogl.b = 0.0;
+            if(!neuron->is_attr(hash("ogl_r")))
+                neuron->set_attr(hash("ogl_r"), 255.0);
+            if(!neuron->is_attr(hash("ogl_g")))
+                neuron->set_attr(hash("ogl_g"), 0.0);
+            if(!neuron->is_attr(hash("ogl_b")))
+                neuron->set_attr(hash("ogl_b"), 0.0);
         }
     }
 }
@@ -70,15 +69,14 @@ void GLWidget::drawNetModel()
     glNewList(1,GL_COMPILE);
 
     //For every neuron draw Link::in connections
-    BOOST_FOREACH( const NetCache::FrontType& front, p_net->getCache().layers )
+    BOOST_FOREACH( const NetCache::Front& front, p_net->get_cache().layers )
     {
         BOOST_FOREACH( const NeuronPtr neuron, front )
         {
             //Draw neuron
-            OpenGlAttributes& ogl = neuron->get<OpenGlAttributes>();
             glPushMatrix();
-            qglColor(QColor(ogl.r, ogl.g, ogl.b));
-            glTranslated(ogl.x, ogl.y, ogl.z);
+            qglColor(QColor(neuron->get_attr(hash("ogl_r")), neuron->get_attr(hash("ogl_g")), neuron->get_attr(hash("ogl_b"))));
+            glTranslated(neuron->get_attr(hash("ogl_x")), neuron->get_attr(hash("ogl_y")), neuron->get_attr(hash("ogl_z")));
             gluSphere(q, neuronRadius, 12, 12);
             glPopMatrix();
             net_info.neurons++;
@@ -87,7 +85,7 @@ void GLWidget::drawNetModel()
             {
                 //Draw it's Link::in connections
                 qglColor(QColor(0, 255, 0));
-                BOOST_FOREACH(const Link& link, neuron->getInConnections() )
+                BOOST_FOREACH(const Link& link, neuron->input_links )
                 {
                     net_info.links++;
 
@@ -95,9 +93,8 @@ void GLWidget::drawNetModel()
                         continue;
 
                     glBegin(GL_LINES);
-                    OpenGlAttributes& ogl_to = link.getTo()->get<OpenGlAttributes>();
-                    glVertex3d(ogl_to.x, ogl_to.y, ogl_to.z);
-                    glVertex3d(ogl.x, ogl.y, ogl.z);
+                    glVertex3d(link.get_to()->get_attr(hash("ogl_x")), link.get_to()->get_attr(hash("ogl_y")), link.get_to()->get_attr(hash("ogl_z")));
+                    glVertex3d(neuron->get_attr(hash("ogl_x")), neuron->get_attr(hash("ogl_y")), neuron->get_attr(hash("ogl_z")));
                     glEnd();
                 }
             } //drawLinks
@@ -140,7 +137,7 @@ void GLWidget::setInfoNet(NetInfo _net_info)
     ost<<"Net info:\n"
         <<"Neurons: "<<_net_info.neurons<<endl
         <<"Links: "<<_net_info.links<<endl
-        <<"Layers: "<<p_net->getCache().layers.size()<<endl
+        <<"Layers: "<<p_net->get_cache().layers.size()<<endl
         <<endl<<endl;
 
     if(!drawLinks)

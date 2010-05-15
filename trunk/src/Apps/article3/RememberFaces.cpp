@@ -1,5 +1,6 @@
 
-#include "pann.h"
+#include <boost/assign.hpp>
+#include "pann-shit.h"
 
 using namespace std;
 using namespace boost;
@@ -98,7 +99,7 @@ MirrorConvolutionalNetwork(vector<unsigned> _layers,
                 {
                     NeuronPtr n = netm_right[layer][plane][i][j];
                     list<Link>& in_conn = const_cast<list<Link>& >(n->getInConnections()); 
-                    list<Link>& out_conn = const_cast<list<Link>& >(n->getOutConnections()); 
+                    list<Link>& out_conn = const_cast<list<Link>& >(n->get_outConnections()); 
                     swap(in_conn, out_conn);
                     n->get<OpenGlAttributes>().x = (signed int)((last_layer + 2) * 1000.0 - n->get<OpenGlAttributes>().x);
                 }
@@ -108,7 +109,7 @@ MirrorConvolutionalNetwork(vector<unsigned> _layers,
 
     //Gluing two parts together
     for(unsigned i = 0; i < netm_left[last_layer].size(); ++i)
-        net->addConnection(netm_left[last_layer][i][0][0], netm_right[last_layer][i][0][0]);
+        net->add_connection(netm_left[last_layer][i][0][0], netm_right[last_layer][i][0][0]);
 
     //Creating Net from model
     for(unsigned i = 0; i < netm_left[0][0].size(); ++i)
@@ -218,10 +219,10 @@ void experiment1()
 
     //Test run
     cout<<"Test run\n";
-    pnet->setInput(tdata[0].input());
+    pnet->set_input(tdata[0].input());
     pnet->run(FeedforwardPropagationRunner::Instance());
     valarray<Float> test_output(95*95);
-    pnet->getOutput(test_output);
+    pnet->get_output(test_output);
     squash(test_output, -1.8, +1.8, 0.0, 255.0);
     Image test_run_out(95, 95, test_output);
     ImageIo::writeImage(test_run_out, "TestRunOut.pgm", ImageIo::PGM);
@@ -234,10 +235,10 @@ void experiment1()
     pnet->get<WeightRandomizationAttributes>().max = +0.6;
     //net->run(RandomizeWeightsGaussRunner::Instance());
     pnet->run(RandomizeWeightsAccordingToInputsCountRunner::Instance());
-    pnet->setWorkThreadsCount(4);
+    pnet->set_work_threads_count(4);
 
     //Debug
-    //const NetCache& cache = pnet->getCache();
+    //const NetCache& cache = pnet->get_cache();
     //for(unsigned i = 0; i < cache.layers.size(); ++i)
     //{
     //    cout<<cache.layers[i].size()<<endl;
@@ -295,7 +296,7 @@ void experiment2()
     pnet->get<WeightRandomizationAttributes>().min = -0.1;
     pnet->get<WeightRandomizationAttributes>().max = +0.1;
     pnet->run(RandomizeWeightsGaussRunner::Instance());
-    pnet->setWorkThreadsCount(0);
+    pnet->set_work_threads_count(0);
 
     unsigned const epochs = 100;
     cout<<"Training for "<<epochs<<" epochs\n";
@@ -345,35 +346,35 @@ void experiment3()
         epochs = params["epochs"];
         planes += params["l1"],params["l2"],params["l3"];
         pnet = ConvolutionalNetwork(planes, params["density"]);
+        lms_init(pnet);
 
-        pnet->get<LmsNetAttributes>().learningRate = params["rate"];
-        pnet->get<LmsNetAttributes>().annealingTSC = params["tsc"];
+        pnet->set_attr(attr::lms::learning_rate, params["rate"]);
+        pnet->set_attr(attr::lms::annealing_tsc, params["tsc"]);
     }
     else
     {
         planes += 10,20,30;
         pnet = ConvolutionalNetwork(planes, 1.0);
-        pnet->get<LmsNetAttributes>().learningRate = 0.2;
-        pnet->get<LmsNetAttributes>().annealingTSC = 20;
+        lms_init(pnet);
+        pnet->set_attr(attr::lms::learning_rate, 0.2);
+        pnet->set_attr(attr::lms::annealing_tsc, 20);
     }
 
     Debug()<<"men="<<men<<"\n"
            <<"epochs="<<epochs<<"\n"
-           <<"rate="<<pnet->get<LmsNetAttributes>().learningRate<<"\n";
+           <<"rate="<<pnet->get_attr(attr::lms::learning_rate)<<"\n";
 
     //Add full connectiovity output layer
-    const vector<NeuronPtr>& output_neurons = *(pnet->getCache().layers.end() - 2);
+    const vector<NeuronPtr>& output_neurons = *(pnet->get_cache().layers.end() - 2);
     for(unsigned i = 0; i < men; ++i)
     {
         NeuronPtr n(NeuronFactory::PyramidalNeuron(TanH::Instance()));
         for(unsigned j = 0; j < output_neurons.size(); ++j)
-            pnet->addConnection(output_neurons[j], n);
+            pnet->add_connection(output_neurons[j], n);
     }
 
-    pnet->get<WeightRandomizationAttributes>().min = -0.05;
-    pnet->get<WeightRandomizationAttributes>().max = +0.05;
-    pnet->run(RandomizeWeightsGaussRunner::Instance());
-    pnet->setWorkThreadsCount(0); //unleash the power of double quad core Xeon (c)
+    randomize_weights_gauss(pnet, -0.05, +0.05);
+    pnet->set_work_threads_count(0); //unleash the power of double quad core Xeon (c)
 
     //Formatting TrainData from raw_data
     TrainData all_data;
@@ -397,7 +398,7 @@ void experiment3()
     /*
     for(int p = 1; p < 20; p++)
     {
-    pnet->setWorkThreadsCount(p); //unleash the power of double quad core Xeon (c)
+    pnet->set_work_threads_count(p); //unleash the power of double quad core Xeon (c)
 #ifdef UNIX
         struct timeval start, stop;
         gettimeofday(&start, 0);
@@ -439,9 +440,9 @@ void experiment3()
         TrainPattern tp = imgm2tp(orl[id], men);
 
         //Process it
-        pnet->setInput(tp.input());
+        pnet->set_input(tp.input());
         pnet->run(FeedforwardPropagationRunner::Instance());
-        pnet->getOutput(tp.actual_output());
+        pnet->get_output(tp.actual_output());
 
         //Print detailed info about image and MSE
         cout<<"\nMan:\t"<<orl[id].man \
@@ -480,7 +481,7 @@ int main(int argc, char* argv[])
     NetPtr net = MirrorConvolutionalNetwork(planes, 1.0, 5,5, 3,3);
 
     cout<<"Net cache:\n";
-    const NetCache& cache = net->getCache();
+    const NetCache& cache = net->get_cache();
     for(unsigned i = 0; i < cache.layers.size(); ++i)
         cout<<cache.layers[i].size()<<endl;
     cout<<endl;

@@ -13,7 +13,7 @@ namespace pann {
     {
         SINGLETON_SKELETON(RandomizeWeightsGaussRunner, Runner);
 
-        virtual void run(ObjectConstPtr net, NeuronPtr neuron) const;
+        virtual void run(Object const * net, NeuronPtr neuron) const;
     };
     REGISTER_SINGLETON_H(RandomizeWeightsGaussRunner);
 

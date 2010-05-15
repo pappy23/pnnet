@@ -12,7 +12,7 @@ namespace pann
     {
         SINGLETON_SKELETON(PyramidalNeuronFeedforwardRunner, Runner);
 
-        virtual void run(ObjectConstPtr net, NeuronPtr neuron) const;
+        virtual void run(Object const * net, NeuronPtr neuron) const;
     }; //PyramidalNeuronFeedforwardRunner
     REGISTER_SINGLETON_H(PyramidalNeuronFeedforwardRunner);
 

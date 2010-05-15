@@ -1,5 +1,7 @@
 //Random.cpp
 
+#include <boost/random.hpp>
+
 #include "Random.h"
 
 namespace pann
@@ -15,7 +17,7 @@ namespace pann
         > generator(engine, distribution);
 
         return generator();
-    } //rand01
+    }; //rand01
 
     Float
     rand(Float min, Float max)
@@ -27,13 +29,22 @@ namespace pann
         v = a * v + b;
 
         return v;
-    } //rand
+    }; //rand
 
     bool
     rand_coin(Float probability)
     {
         return rand01() < probability;
-    } //rand
+    }; //rand_coin
 
+    int
+    rand_int(int a, int b)
+    {
+        static boost::mt19937 gen;
+        boost::uniform_int<> dist(a, b);
+        boost::variate_generator<boost::mt19937&, boost::uniform_int<> > die(gen, dist);
+
+        return die();
+    }; //rand_int
 }; //pann
 
