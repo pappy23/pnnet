@@ -11,7 +11,7 @@ namespace pann {
     {
         SINGLETON_SKELETON(BackpropagationRunner, Runner);
 
-        virtual void run(ObjectConstPtr net, NeuronPtr neuron) const;
+        virtual void run(Object const * net, NeuronPtr neuron) const;
     }; //BackpropagationRunner
     REGISTER_SINGLETON_H(BackpropagationRunner);
 

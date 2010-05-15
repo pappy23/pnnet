@@ -11,7 +11,7 @@ namespace pann {
     {
         SINGLETON_SKELETON(FeedforwardPropagationRunner, Runner);
 
-        virtual void run(ObjectConstPtr net, NeuronPtr neuron) const;
+        virtual void run(Object const * net, NeuronPtr neuron) const;
     }; //FeedforwardPropagationRunner
     REGISTER_SINGLETON_H(FeedforwardPropagationRunner);
 

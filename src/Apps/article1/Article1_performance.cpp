@@ -1,11 +1,10 @@
 #include <iostream>
 
-#include "pann.h"
+#include "pann-shit.h"
 #include "gnuplot_i.hpp"
 
 using namespace std;
 using namespace pann;
-using namespace boost;
 
 int main()
 {
@@ -13,7 +12,7 @@ int main()
     cout<<"kuku\n";
 #endif
     //Constructing perceptron
-    vector<tuple<unsigned, ActivationFunctionPtr> > layers;
+    vector<boost::tuple<unsigned, TfPtr> > layers;
     layers.push_back(make_tuple(1, Linear::Instance()));  //input  - no act. fcn
     layers.push_back(make_tuple(1000, TanH::Instance())); //hidden - tanh
     layers.push_back(make_tuple(1000, TanH::Instance())); //hidden - tanh
@@ -29,12 +28,9 @@ int main()
     tp.desired_output()[0] = 1;
     td.push_back(tp);
 
-    net->get<LmsNetAttributes>().learningRate = 0.2;
-    net->get<LmsNetAttributes>().learningMomentum = 0.5;
-    net->get<WeightRandomizationAttributes>().min = -0.3;
-    net->get<WeightRandomizationAttributes>().max = +0.3;
     //net->run(RandomizeWeightsGaussRunner::Instance());
-    net->run(RandomizeWeightsAccordingToInputsCountRunner::Instance());
+    randomize_weights_gauss(net, -0.3, +0.3);
+    lms_init(net);
     Lms::train(net, td); //dry run to create all learning structures
 
     for(unsigned i = 1; i < 9; ++i)
@@ -45,7 +41,7 @@ int main()
         gettimeofday(&start, 0);
 #endif
 
-        net->setWorkThreadsCount(i);
+        net->set_work_threads_count(i);
         Lms::train(net, td);
 #ifdef UNIX
         gettimeofday(&stop, 0);

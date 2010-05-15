@@ -80,9 +80,9 @@ namespace pann
         void set_work_threads_count(unsigned count);
 
     private:
-        std::list<NeuronPtr> input_neurons;
-        NetCache mutable cache;
-        unsigned work_threads_count;
+        std::list<NeuronPtr> m_input_neurons;
+        NetCache mutable m_cache;
+        unsigned m_work_threads_count;
 
         /**
          * Helper used by regenerateCache()
@@ -113,20 +113,20 @@ namespace pann
                 using namespace boost::serialization;
 
                 //It's for manual serialization of Neuron connections
-                if(typename Archive::is_saving() && !cache.is_ok())
+                if(typename Archive::is_saving() && !m_cache.is_ok())
                     regenerate_cache();
 
                 ar & BOOST_SERIALIZATION_BASE_OBJECT_NVP(Object)
-                 & BOOST_SERIALIZATION_NVP(cache)
-                 & BOOST_SERIALIZATION_NVP(input_neurons)
-                 & BOOST_SERIALIZATION_NVP(work_threads_count);
+                 & BOOST_SERIALIZATION_NVP(m_cache)
+                 & BOOST_SERIALIZATION_NVP(m_input_neurons)
+                 & BOOST_SERIALIZATION_NVP(m_work_threads_count);
 
                 //Serialize Neuron connections
-                for(unsigned i = 0; i < cache.layers.size(); ++i)
-                    for(unsigned j = 0; j < cache.layers[i].size(); ++j)
+                for(unsigned i = 0; i < m_cache.layers.size(); ++i)
+                    for(unsigned j = 0; j < m_cache.layers[i].size(); ++j)
                     {
-                        ar & make_nvp("input_links", cache.layers[i][j]->input_links);
-                        ar & make_nvp("output_links", cache.layers[i][j]->output_links);
+                        ar & make_nvp("input_links", m_cache.layers[i][j]->input_links);
+                        ar & make_nvp("output_links", m_cache.layers[i][j]->output_links);
                     }
             };
     }; //Net

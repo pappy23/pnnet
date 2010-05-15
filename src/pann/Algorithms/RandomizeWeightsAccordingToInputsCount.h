@@ -16,7 +16,7 @@ namespace pann {
     {
         SINGLETON_SKELETON(RandomizeWeightsAccordingToInputsCountRunner, Runner);
 
-        virtual void run(ObjectConstPtr net, NeuronPtr neuron) const;
+        virtual void run(Object const * net, NeuronPtr neuron) const;
     }; //RandomizeWeightsAccordingToInputsCountRunner
     REGISTER_SINGLETON_H(RandomizeWeightsAccordingToInputsCountRunner);
 

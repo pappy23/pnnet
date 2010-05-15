@@ -10,7 +10,7 @@ REGISTER_SINGLETON_CPP(RandomizeWeightsGaussRunner);
 
 namespace pann {
     void
-    RandomizeWeightsGaussRunner::run(ObjectConstPtr net, NeuronPtr neuron) const
+    RandomizeWeightsGaussRunner::run(Object const * net, NeuronPtr neuron) const
     {
         Float min = net->get_attr(hash("RW_MIN"));
         Float max = net->get_attr(hash("RW_MAX"));

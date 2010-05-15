@@ -1,15 +1,18 @@
 
-if(QT4_FOUND)
-    add_subdirectory(pann_viewer)
-else(QT4_FOUND)
-    message(STATUS "Could not find QT. Not building pann_viewer. ")
-endif(QT4_FOUND)
-
 if(BUILD_TESTS)
     add_subdirectory(gnuplot-cpp-demo)
     add_subdirectory(UnitTests)
-endif(BUILD_TESTS)
+endif()
 
-add_subdirectory(article1)
-add_subdirectory(article3)
+if(BUILD_PANN_VIEWER)
+    add_subdirectory(pann_viewer)
+endif()
+
+if(BUILD_ARTICLE1_APPS)
+    add_subdirectory(article1)
+endif()
+
+if(BUILD_ARTICLE3_APPS)
+    add_subdirectory(article3)
+endif()
 

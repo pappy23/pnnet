@@ -3,10 +3,11 @@
 
 #include "BackpropagationRunner.h"
 #include "FeedforwardPropagationRunner.h"
-#include "Lms.h"
 #include "NullBackpropagationRunner.h"
 #include "NullFeedforwardPropagationRunner.h"
 #include "PyramidalNeuronFeedforwardRunner.h"
+#include "Lms.h"
+#include "Tracer.h"
 #include "RandomizeWeightsAccordingToInputsCount.h"
 #include "RandomizeWeightsGauss.h"
 

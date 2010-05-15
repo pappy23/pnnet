@@ -12,7 +12,7 @@ void test(NetPtr net, Float start, Float stop, Float step);
 
 Float func(Float _x)
 {
-    return _x*_x;
+    return sin(_x);
 }
 
 int main()
@@ -22,7 +22,7 @@ int main()
     vector<tuple<unsigned, TfPtr> > layers;
     layers.push_back(make_tuple(1, Linear::Instance())); //input  - no act. fcn
     layers.push_back(make_tuple(9, TanH::Instance())  ); //hidden - tanh
-    layers.push_back(make_tuple(4, TanH::Instance())  ); //output - linear
+    layers.push_back(make_tuple(4, TanH::Instance())  ); //hidden - tanh
     layers.push_back(make_tuple(1, Linear::Instance())); //output - linear
     NetPtr net = MultilayerPerceptron(layers);
 
@@ -30,13 +30,10 @@ int main()
     const unsigned epochs = 1000;
     TrainData& td = *(DataGenerator::generateFromFunction(-3.0, +3.0, 20, func));
 
-    net->set_work_threads_count(1);
-
+    lms_init(net);
     net->set_attr(hash("lms_learning_rate"), 0.3);
     net->set_attr(hash("lms_learning_momentum"), 0.5);
-    //net.run(RandomizeWeightsGaussRunner::Instance());
-    //net->run(RandomizeWeightsAccordingToInputsCountRunner::Instance());
-    randomize_weights_according_to_inputs_count(net, -0.6, +0.6);
+    randomize_weights_gauss(net, -0.3, +0.3);
 
     vector<Float> train_error_info; //MSE
     for(unsigned i = 1; i < epochs; ++i)
@@ -46,8 +43,6 @@ int main()
 
         train_error_info.push_back(ErrorFunction::mse(td));
     }
-
-    cout<<"test"<<endl;
 
     test(net, -4.0, +4.0, +0.01);
 
@@ -85,6 +80,7 @@ void test(NetPtr net, Float start, Float stop, Float step)
         net->set_input(tmp.input());
         net->run(FeedforwardPropagationRunner::Instance());
         net->get_output(tmp.actual_output()); //actual output
+        cout<<tmp.input()[0]<<" "<<tmp.actual_output()[0]<<endl;
 
         input.push_back(x);
         desired_output.push_back(func(x));

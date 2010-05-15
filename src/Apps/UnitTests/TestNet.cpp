@@ -1,6 +1,9 @@
 //TestNet.cpp
 
-#include "pann.h"
+#include <boost/progress.hpp>
+#include <boost/assign/std.hpp>
+
+#include "pann-shit.h"
 
 using namespace std;
 using namespace boost;
@@ -18,19 +21,19 @@ int main()
             NeuronPtr n1(NeuronFactory::PyramidalNeuron(Linear::Instance()));
             NeuronPtr n2(NeuronFactory::PyramidalNeuron(Linear::Instance()));
             NeuronPtr n3(NeuronFactory::PyramidalNeuron(Linear::Instance()));
-            tnet->addInputNeuron(n1);
-            tnet->addConnection(n1, n2);
-            tnet->addConnection(n2, n3);
+            tnet->add_input_neuron(n1);
+            tnet->add_connection(n1, n2);
+            tnet->add_connection(n2, n3);
             cout<<"Constructed Net"<<endl;
         }
-        cout<<"Layers: "<<tnet->getCache().layers.size()<<endl;
+        cout<<"Layers: "<<tnet->get_cache().layers.size()<<endl;
 
         // N1 -X-> N2 -X-> N3
-        tnet->removeNeuron(tnet->getCache().layers[0][0]);
-        //tnet.delConnection(tnet.getCache().layers[1][0], tnet.getCache().layers[2][0]);
+        tnet->remove_neuron(tnet->get_cache().layers[0][0]);
+        //tnet.delConnection(tnet.get_cache().layers[1][0], tnet.get_cache().layers[2][0]);
         cout<<"Neuron deleted"<<endl;
         //But NetCache still stores ptr to it. Let's regenerate it manually
-        tnet->getCache();
+        tnet->get_cache();
         cout<<"Cache regenerated"<<endl;
 
         // N1 -X-> ?  -X-> N3
@@ -48,26 +51,26 @@ int main()
         NeuronPtr n3(NeuronFactory::PyramidalNeuron(Linear::Instance()));
         NeuronPtr no(NeuronFactory::PyramidalNeuron(Linear::Instance()));
 
-        tnet->addInputNeuron(ni);
-        tnet->addConnection(ni, n1);
-        tnet->addConnection(ni, n2);
-        tnet->addConnection(ni, n3);
-        tnet->addConnection(n1, no);
-        tnet->addConnection(n2, no);
-        tnet->addConnection(n3, no);
+        tnet->add_input_neuron(ni);
+        tnet->add_connection(ni, n1);
+        tnet->add_connection(ni, n2);
+        tnet->add_connection(ni, n3);
+        tnet->add_connection(n1, no);
+        tnet->add_connection(n2, no);
+        tnet->add_connection(n3, no);
 
-        tnet->addConnection(n1, n2); //same level recursion
-        tnet->addConnection(n1, n3);
-        tnet->addConnection(n2, n1);
-        tnet->addConnection(n2, n3);
-        tnet->addConnection(n3, n1);
-        tnet->addConnection(n3, n2);
+        tnet->add_connection(n1, n2); //same level recursion
+        tnet->add_connection(n1, n3);
+        tnet->add_connection(n2, n1);
+        tnet->add_connection(n2, n3);
+        tnet->add_connection(n3, n1);
+        tnet->add_connection(n3, n2);
 
-        tnet->addConnection(n3, n3); //sel-recurrent
-        tnet->addConnection(no, n2); //recurrent
-        tnet->addConnection(no, ni); //from output to input recursion
+        tnet->add_connection(n3, n3); //sel-recurrent
+        tnet->add_connection(no, n2); //recurrent
+        tnet->add_connection(no, ni); //from output to input recursion
 
-        const NetCache& cache = tnet->getCache();
+        const NetCache& cache = tnet->get_cache();
         for(unsigned i = 0; i < cache.layers.size(); ++i)
             cout<<cache.layers[i].size()<<endl;
 
@@ -76,7 +79,7 @@ int main()
             Storage::save<Storage::xml_out>(tnet, "test_ser_net.xml");
             NetPtr xml;
             Storage::load<Storage::xml_in>(xml, "test_ser_net.xml");
-            const NetCache& cache = xml->getCache();
+            const NetCache& cache = xml->get_cache();
             for(unsigned i = 0; i < cache.layers.size(); ++i)
                 cout<<cache.layers[i].size()<<endl;
         }
@@ -84,7 +87,7 @@ int main()
             Storage::save<Storage::txt_out>(tnet, "test_ser_net.txt");
             NetPtr txt;
             Storage::load<Storage::txt_in>(txt, "test_ser_net.txt");
-            const NetCache& cache = txt->getCache();
+            const NetCache& cache = txt->get_cache();
             for(unsigned i = 0; i < cache.layers.size(); ++i)
                 cout<<cache.layers[i].size()<<endl;
         }
@@ -92,7 +95,7 @@ int main()
             Storage::save<Storage::bin_out>(tnet, "test_ser_net.bin");
             NetPtr bin;
             Storage::load<Storage::bin_in>(bin, "test_ser_net.bin");
-            const NetCache& cache = bin->getCache();
+            const NetCache& cache = bin->get_cache();
             for(unsigned i = 0; i < cache.layers.size(); ++i)
                 cout<<cache.layers[i].size()<<endl;
         }
@@ -107,7 +110,7 @@ int main()
         tp.input()[0] = -10;
 
         {
-            vector<tuple<unsigned, ActivationFunctionPtr> > layers;
+            vector<tuple<unsigned, TfPtr> > layers;
             layers.push_back(make_tuple(1, Linear::Instance()));
             for(unsigned i = 0; i < layers_count; ++i)
                 layers.push_back(make_tuple(9, TanH::Instance()));
@@ -117,7 +120,7 @@ int main()
             /*
             net_ptr->run(RandomizeWeightsGaussRunner::Instance());
 
-            const NetCache& cache = net_ptr->getCache();
+            const NetCache& cache = net_ptr->get_cache();
 
             for(unsigned i = 0; i < cache.layers.size(); ++i)
                 cout<<cache.layers[i].size()<<endl;
@@ -127,7 +130,7 @@ int main()
             /*
             //Show all weights
             {
-                const NetCache& cache = net->getCache();
+                const NetCache& cache = net->get_cache();
                 for(unsigned layer = 0; layer < cache.layers.size(); ++layer)
                 {
                     for(unsigned i = 0; i < cache.layers[layer].size(); ++i)
@@ -155,7 +158,7 @@ int main()
                     cout.flush();
                     {
                         progress_timer t;
-                        net_ptr->setInput(tp.input());
+                        net_ptr->set_input(tp.input());
                         net_ptr->run(FeedforwardPropagationRunner::Instance());
                     }
                 }
@@ -163,7 +166,7 @@ int main()
             }
             //Output
             valarray<Float> output;
-            net_ptr->getOutput(output);
+            net_ptr->get_output(output);
             cout<<"Test output: "<<setprecision(5)<<fixed<<output[0]<<endl;
 
             //Serialization test
@@ -186,7 +189,7 @@ int main()
             net2->run(FeedforwardPropagationRunner::Instance());
             //Output
             valarray<Float> output;
-            net2->getOutput(output);
+            net2->get_output(output);
             //cout<<"Test output: "<<setprecision(5)<<fixed<<output[0]<<endl;
         }
     }
