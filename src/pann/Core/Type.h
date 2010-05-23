@@ -31,6 +31,13 @@ namespace pann
 }; //pann
 
 /**
+ * Deactivate assertions for release version
+ */
+#ifndef DEBUG
+#define NDEBUG
+#endif
+
+/**
  * Use case: ADD_PTR_TYPEDEF(Neuron)
  */
 #define ADD_PTR_TYPEDEF(C) \

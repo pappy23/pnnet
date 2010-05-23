@@ -102,7 +102,7 @@ namespace pann
          */
         const unsigned total_layers = _layers.size() * 2;
         unsigned current_layer = total_layers - 1;
-        _layers.insert(_layers.begin(), 1); //For input layer
+
 
         Model model(total_layers);
         WeightPtr shared_bias;
