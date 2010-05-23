@@ -26,6 +26,7 @@
 
 #include <cmath>
 #include <cstdlib>
+#include <cassert>
 
 #endif //PANN_INCLUDES_STD_H_INCLUDED
 
