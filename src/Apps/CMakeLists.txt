@@ -16,3 +16,7 @@ if(BUILD_ARTICLE3_APPS)
     add_subdirectory(article3)
 endif()
 
+if(BUILD_C3NN)
+    add_subdirectory(c3nn)
+endif()
+
