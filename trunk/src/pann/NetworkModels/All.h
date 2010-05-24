@@ -4,5 +4,6 @@
 
 #include "MultilayerPerceptron.h"
 #include "ConvolutionalNetwork.h"
+#include "GCNN.h"
 
 #endif //PANN_NETWORKMODELS_ALL_H_INCLUDED
