@@ -1,15 +1,40 @@
 <config>
     <net>
-        <layer>5</layer>
-        <layer>6</layer>
-        <layer>7</layer>
-        <density>1.0</density>
-        <window_height>5</window_height>
-        <window_width>5</window_width>
-        <window_vert_overlap>3</window_vert_overlap>
-        <window_horiz_overlap>3</window_horiz_overlap>
-        <threads>1</threads>
-        <seed>42</seed>
+        <plane>
+            <id>1</id>
+            <input>true</input>
+            <width>30</width>
+            <height>30</height>
+            <window_width>5</window_width>
+            <window_height>5</window_height>
+        </plane>
+        <plane>
+            <id>2</id>
+            <width>30</width>
+            <height>30</height>
+            <window_width>5</window_width>
+            <window_height>5</window_height>
+        </plane>
+        <plane>
+            <id>3</id>
+            <width>30</width>
+            <height>30</height>
+            <window_width>5</window_width>
+            <window_height>5</window_height>
+        </plane>
+        <connection>
+            <from>1</from>
+            <to>2</to>
+            <density>0.8</density>
+        </connection>
+        <connection>
+            <from>2</from>
+            <to>3</to>
+            <density>1.0</density>
+        </connection>
+    </net>
+    <net>
+        <!-- same shit goes here -->
     </net>
     <weight_randomization>
         <min>-0.1</min>
@@ -21,6 +46,8 @@
         <epochs>200</epochs>
     </lms>
     <faces>
+        <database>/home/booble/faces_db/list.xml</database>
+        <seed>42</seed>
         <men>5</men>
         <train_percent>60</train_percent>
         <report_frequency>1</report_frequency>
