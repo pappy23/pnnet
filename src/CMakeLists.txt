@@ -27,7 +27,7 @@ if(BUILD_PYTHON_BINDINGS)
     add_definitions(-DOPTION_BUILD_PYTHON_BINDINGS_DEFINED)
 endif()
 
-if(BUILD_PANN_VIEWER)
+if(BUILD_PANN_VIEWER OR BUILD_C3NN)
     set(QT_USE_QTOPENGL 1)
     find_package(Qt4)
 endif()
