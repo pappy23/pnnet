@@ -27,7 +27,7 @@ if(BUILD_PYTHON_BINDINGS)
     add_definitions(-DOPTION_BUILD_PYTHON_BINDINGS_DEFINED)
 endif()
 
-if(BUILD_PANN_VIEWER OR BUILD_C3NN)
+if(BUILD_PANN_VIEWER)
     set(QT_USE_QTOPENGL 1)
     find_package(Qt4)
 endif()
@@ -94,6 +94,6 @@ find_package(Boost 1.35 REQUIRED COMPONENTS ${BOOST_MODULES})
 # pann
 
 #include_directories(pann pann-shit gnuplot-cpp ${Boost_INCLUDE_DIRS} ${PYTHON_INCLUDE_PATH})
-include_directories(pann pann-shit gnuplot-cpp ${Boost_INCLUDE_DIRS})
+include_directories(pann pann-shit gnuplot-cpp rapidxml ${Boost_INCLUDE_DIRS})
 subdirs(pann pann-shit gnuplot-cpp Apps)
 

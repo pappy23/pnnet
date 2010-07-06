@@ -17,7 +17,7 @@ int main(int argc, char ** argv)
         return -1;
     }
 
-    parse_config(argv[1]);
+    configure(argv[1]);
 
     return 0;
 }; //main
