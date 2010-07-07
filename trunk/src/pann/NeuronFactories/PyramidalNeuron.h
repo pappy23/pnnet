@@ -8,6 +8,8 @@
 
 namespace pann {
 namespace NeuronFactory {
+    //Still not used
+    /*
     template<class TfType, class LearnRunnerType>
     static NeuronPtr PyramidalNeuron(WeightPtr bias = WeightPtr((Weight*)0))
     {
@@ -18,6 +20,7 @@ namespace NeuronFactory {
                 LearnRunnerType::Instance()
                 );
     };
+    */
 
     static NeuronPtr PyramidalNeuron(
             TfPtr tf = TanH::Instance(),

@@ -1,6 +1,5 @@
 //GCNN.cpp
 
-#include <boost/multi_array.hpp>
 #include <boost/foreach.hpp>
 
 #include "GCNN.h"
@@ -12,27 +11,8 @@ using namespace std;
 
 namespace pann
 {
-    typedef struct {
-        int width;
-        int height;
-        int window_width;
-        int window_height;
-        TfPtr tf;
-    } plane_data_t;
-
-    typedef struct {
-        boost::multi_array<NeuronPtr, 2> * neurons;
-        boost::multi_array<WeightPtr, 2> * weights;
-    } plane_t;
-
-    typedef struct {
-        vector<plane_t> planes;
-        boost::multi_array<bool, 2> connection_matrix; //[from][to]
-        //TODO: replace bool with Float and give it connection density meaning
-    } net_data_t;
-
     plane_t
-    make_plane(plane_data_t plane_data, bool conv_plane = false)
+    make_plane(plane_data_t plane_data, bool conv_plane)
     {
         /*
         Convolutional layer

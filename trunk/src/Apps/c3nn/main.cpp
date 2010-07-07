@@ -17,7 +17,19 @@ int main(int argc, char ** argv)
         return -1;
     }
 
-    configure(argv[1]);
+    ConfigT cfg;
+    try {
+        cfg = configure(argv[1]);
+    } catch (std::exception e) {
+        cout<<"Error while reading configuration data\n"<<e.what()<<endl;
+        return -1;
+    }
+
+    cfg.print();
+
+    vector<FaceT> orl;
+    make_faces(cfg, orl);
+    vector<NetPtr> nets = make_nets(cfg);
 
     return 0;
 }; //main

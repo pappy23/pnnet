@@ -35,8 +35,14 @@ struct LmsConfigT {
     };
 };
 
+struct FaceConfigT {
+    string path;
+    unsigned man;
+    unsigned position;
+};
+
 struct FacesConfigT {
-    string database_path;
+    vector<FaceConfigT> faces;
     unsigned random_seed;
     unsigned men;
     Float train_percent;
@@ -46,6 +52,7 @@ struct FacesConfigT {
     FacesConfigT() : random_seed(0), train_percent(60.0), report_frequency(1), stop_error(0.01) {};
     void print() const {
         cout<<"Faces:"
+            <<"\n faces count: "<<faces.size()
             <<"\n random_seed: "<<random_seed
             <<"\n train_percent: "<<train_percent
             <<"\n report_frequency: "<<report_frequency
@@ -55,21 +62,22 @@ struct FacesConfigT {
 
 struct PlaneConfigT {
     IdT id;
-    bool is_input;
     unsigned width;
     unsigned height;
     unsigned window_width;
     unsigned window_height;
+    bool is_conv;
 
-    PlaneConfigT() : is_input(false) {};
+    PlaneConfigT() : is_conv(false) {};
+
     void print() const {
         cout<<" Plane:"
             <<"\n  id: "<<id
-            <<"\n  is_input: "<<is_input
             <<"\n  width: "<<width
             <<"\n  height: "<<height
             <<"\n  window_width: "<<window_width
-            <<"\n  window_height: "<<window_height<<"\n";
+            <<"\n  window_height: "<<window_height
+            <<"\n  is_conv: "<<is_conv<<"\n";
     };
 };
 
@@ -114,6 +122,14 @@ struct ConfigT {
     };
 };
 
-void configure(const char * filename);
+struct FaceT {
+    unsigned man;
+    unsigned position;
+    Image * img;
+};
+
+ConfigT configure(const char * filename);
+void make_faces(ConfigT & cfg, vector<FaceT> & result);
+vector<NetPtr> make_nets(ConfigT & cfg);
 
 #endif // CONFIG_H
