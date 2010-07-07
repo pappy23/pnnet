@@ -1,8 +1,8 @@
 <config>
     <net>
-        <plane id="1" input="true" width="30" height="30" window_width="5" window_height="5" />
-        <plane id="2" input="true" width="30" height="30" window_width="5" window_height="5" />
-        <plane id="3" input="true" width="30" height="30" window_width="5" window_height="5" />
+        <plane id="1" width="30" height="30" window_width="5" window_height="5" conv="true"/>
+        <plane id="2" width="30" height="30" window_width="5" window_height="5" />
+        <plane id="3" width="30" height="30" window_width="5" window_height="5" />
         <connection from="1" to="2" density="0.8" />
         <connection from="2" to="3" density="1.0" />
     </net>
@@ -11,6 +11,6 @@
     </net>
     <weight_randomization min="-0.1" max="+0.1" />
     <lms learning_rate="0.1" annealing_tsc="100" epochs="200" />
-    <faces database="/home/booble/faces_db/list.xml" seed="42" men="5" train_percent="60" report_frequency="1" stop_error="0.5" />
+    <faces database="metadata.xml" seed="42" men="5" train_percent="60" report_frequency="1" stop_error="0.5" />
 </config>
 
