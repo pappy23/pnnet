@@ -165,6 +165,8 @@ vector<NetPtr> make_nets(ConfigT & cfg)
 
     for(vector<NetConfigT>::const_iterator net_iter = cfg.nets.begin(); net_iter != cfg.nets.end(); ++net_iter) {
         net_data_t net_data;
+        map<unsigned, unsigned> plane_id;
+        unsigned cur_plane_id = 0;
         for(vector<PlaneConfigT>::const_iterator plane_iter = net_iter->planes.begin(); plane_iter != net_iter->planes.end(); ++plane_iter) {
             plane_data_t plane_data;
             plane_data.width = plane_iter->width;
@@ -172,10 +174,22 @@ vector<NetPtr> make_nets(ConfigT & cfg)
             plane_data.window_width = plane_iter->window_width;
             plane_data.window_height = plane_iter->window_height;
             plane_data.tf = TanH::Instance();
-            net_data.planes.push_back(make_plane(plane_data, plane_iter->is_conv));
+            plane_t p = make_plane(plane_data, plane_iter->is_conv);
+            //net_data.planes.push_back(make_plane(plane_data, plane_iter->is_conv));
+            net_data.planes.push_back(p);
+            plane_id[plane_iter->id] = cur_plane_id++;
         }
+
+        net_data.connection_matrix.resize(boost::extents[cur_plane_id][cur_plane_id]);
+        for(unsigned i = 0; i < cur_plane_id; ++i)
+            for(unsigned j = 0; j < cur_plane_id; ++j)
+                net_data.connection_matrix[i][j] = false;
+        for(vector<ConnectionConfigT>::const_iterator conn_iter = net_iter->connections.begin(); conn_iter != net_iter->connections.end(); ++conn_iter) {
+            net_data.connection_matrix[plane_id[conn_iter->from]][plane_id[conn_iter->to]] = (0.0 < conn_iter->density); //TODO: add density support
+        }
+        cout<<"Debug: "<<net_data.planes.size()<<"\n";
         result.push_back(make_net(net_data));
-    }
+   }
 
     return result;
 }; //make_nets

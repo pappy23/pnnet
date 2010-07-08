@@ -6,11 +6,8 @@
         <connection from="1" to="2" density="0.8" />
         <connection from="2" to="3" density="1.0" />
     </net>
-    <net>
-        <!-- same shit goes here -->
-    </net>
     <weight_randomization min="-0.1" max="+0.1" />
     <lms learning_rate="0.1" annealing_tsc="100" epochs="200" />
-    <faces database="metadata.xml" seed="42" men="5" train_percent="60" report_frequency="1" stop_error="0.5" />
+    <faces database="/home/booble/pann/trunk/src/Apps/c3nn/metadata.xml" seed="42" men="5" train_percent="60" report_frequency="1" stop_error="0.5" />
 </config>
 
