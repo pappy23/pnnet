@@ -30,6 +30,7 @@ int main(int argc, char ** argv)
     vector<FaceT> orl;
     make_faces(cfg, orl);
     vector<NetPtr> nets = make_nets(cfg);
+    Storage::save<Storage::xml_out>(nets[0], "test_net.xml");
 
     return 0;
 }; //main
