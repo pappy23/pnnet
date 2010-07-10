@@ -14,10 +14,11 @@ typedef unsigned IdT;
 struct WeightRandomizationConfigT {
     Float min;
     Float max;
+    unsigned random_seed;
 
-    WeightRandomizationConfigT() : min(-0.1), max(+0.1) {};
+    WeightRandomizationConfigT() : min(-0.1), max(+0.1), random_seed(0) {};
     void print() const {
-        cout<<"WeightRandomization:\n"<<" min: "<<min<<"\n max: "<<max<<"\n";
+        cout<<"WeightRandomization:\n"<<" min: "<<min<<"\n max: "<<max<<"seed: "<<random_seed<<"\n";
     };
 };
 
@@ -98,8 +99,12 @@ struct ConnectionConfigT {
 struct NetConfigT {
     vector<PlaneConfigT> planes;
     vector<ConnectionConfigT> connections;
+    unsigned random_seed;
+
+    NetConfigT() : random_seed(0) {};
+
     void print() const {
-        cout<<"Net:\n";
+        cout<<"Net: seed:"<<random_seed<<"\n";
         for(vector<PlaneConfigT>::const_iterator it = planes.begin(); it != planes.end(); ++it)
             it->print();
         for(vector<ConnectionConfigT>::const_iterator it = connections.begin(); it != connections.end(); ++it)
@@ -129,7 +134,7 @@ struct FaceT {
 };
 
 ConfigT configure(const char * filename);
-void make_faces(ConfigT & cfg, vector<FaceT> & result);
+vector<FaceT> make_faces(ConfigT & cfg);
 vector<NetPtr> make_nets(ConfigT & cfg);
 
 #endif // CONFIG_H

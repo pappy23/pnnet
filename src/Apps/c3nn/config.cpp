@@ -9,6 +9,7 @@
 #include "rapidxml_utils.hpp"
 
 #include "config.h"
+#include "util.h"
 
 using namespace std;
 using namespace pann;
@@ -29,6 +30,11 @@ ConfigT configure(const char * filename)
     for(xml_node<> *child = root->first_node(); child; child = child->next_sibling()) {
         if(!strcmp(child->name(), "net")) {
             NetConfigT net_config;
+            for(xml_attribute<> *attr = child->first_attribute(); attr; attr = attr->next_attribute()) {
+                if(!strcmp(attr->name(), "seed")) {
+                    net_config.random_seed = lexical_cast<unsigned>(attr->value());
+                }
+            }
             for(xml_node<> *item = child->first_node(); item; item = item->next_sibling()) {
                 if(!strcmp(item->name(), "plane")) {
                     PlaneConfigT plane_config;
@@ -79,6 +85,9 @@ ConfigT configure(const char * filename)
                 }
                 if(!strcmp(attr->name(), "max")) {
                     config.weight_randomization.max = lexical_cast<Float>(attr->value());
+                }
+                if(!strcmp(attr->name(), "seed")) {
+                    config.weight_randomization.random_seed = lexical_cast<unsigned>(attr->value());
                 }
             }
         }
@@ -140,8 +149,10 @@ ConfigT configure(const char * filename)
     return config;
 }; //configure
 
-void make_faces(ConfigT & cfg, vector<FaceT> & result)
+vector<FaceT> make_faces(ConfigT & cfg)
 {
+    vector<FaceT> result;
+
     cout<<"Reading images from disk...\n";
     for(vector<FaceConfigT>::iterator it = cfg.faces.faces.begin(); it != cfg.faces.faces.end(); ++it) {
         try {
@@ -157,6 +168,7 @@ void make_faces(ConfigT & cfg, vector<FaceT> & result)
 
     cout<<"Read "<<result.size()<<" images\n";
 
+    return result;
 }; //make_faces
 
 vector<NetPtr> make_nets(ConfigT & cfg)
@@ -183,12 +195,18 @@ vector<NetPtr> make_nets(ConfigT & cfg)
         net_data.connection_matrix.resize(boost::extents[cur_plane_id][cur_plane_id]);
         for(unsigned i = 0; i < cur_plane_id; ++i)
             for(unsigned j = 0; j < cur_plane_id; ++j)
-                net_data.connection_matrix[i][j] = false;
+                net_data.connection_matrix[i][j] = 0.0;
         for(vector<ConnectionConfigT>::const_iterator conn_iter = net_iter->connections.begin(); conn_iter != net_iter->connections.end(); ++conn_iter) {
-            net_data.connection_matrix[plane_id[conn_iter->from]][plane_id[conn_iter->to]] = (0.0 < conn_iter->density); //TODO: add density support
+            net_data.connection_matrix[plane_id[conn_iter->from]][plane_id[conn_iter->to]] = conn_iter->density;
         }
-        cout<<"Debug: "<<net_data.planes.size()<<"\n";
-        result.push_back(make_net(net_data));
+
+        random_seed(net_iter->random_seed);
+        NetPtr pnet = make_net(net_data);
+
+        random_seed(cfg.weight_randomization.random_seed);
+        randomize_weights_gauss(pnet, cfg.weight_randomization.min, cfg.weight_randomization.max);
+
+        result.push_back(pnet);
    }
 
     return result;

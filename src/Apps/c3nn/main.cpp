@@ -1,9 +1,10 @@
 
-#include "pann-shit.h"
 #include <boost/assign.hpp>
 #include <boost/foreach.hpp>
 
+#include "pann-shit.h"
 #include "config.h"
+#include "util.h"
 
 using namespace std;
 using namespace boost;
@@ -27,10 +28,18 @@ int main(int argc, char ** argv)
 
     cfg.print();
 
-    vector<FaceT> orl;
-    make_faces(cfg, orl);
+    vector<FaceT> orl = make_faces(cfg);
     vector<NetPtr> nets = make_nets(cfg);
-    Storage::save<Storage::xml_out>(nets[0], "test_net.xml");
+
+    TrainPattern tmp(4, 1);
+    for(unsigned i = 0; i < 900; ++i) {
+        tmp.input()[i] = 1;
+    }
+
+    nets[0]->set_input(tmp.input());
+    nets[0]->run(FeedforwardPropagationRunner::Instance());
+    nets[0]->get_output(tmp.actual_output()); //actual output
+    cout<<tmp.input()[0]<<" "<<tmp.actual_output()[0]<<endl;
 
     return 0;
 }; //main
