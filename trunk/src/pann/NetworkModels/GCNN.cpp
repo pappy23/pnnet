@@ -48,7 +48,7 @@ namespace pann
     }; //make_plane
 
     void
-    connect_planes(plane_t& prev_plane, plane_t& next_plane)
+    connect_planes(plane_t& prev_plane, plane_t& next_plane, Float density)
     {
         /*
          * Уместить `N` отрезков длинны `a` в одном отрезке длинны `A`,
@@ -71,10 +71,11 @@ namespace pann
             for(unsigned j = 0; j < (*next_plane.neurons)[0].size(); ++j)
                 for(unsigned m = 0; m < next_plane.weights->size(); ++m)
                     for(unsigned n = 0; n < (*next_plane.weights)[0].size(); ++n)
-                        fake_net.add_connection(
-                                (*prev_plane.neurons)[i * vert_step + m][j * horiz_step + n],
-                                (*next_plane.neurons)[i][j],
-                                (*next_plane.weights)[m][n]);
+                        if(rand_coin(density))
+                            fake_net.add_connection(
+                                    (*prev_plane.neurons)[i * vert_step + m][j * horiz_step + n],
+                                    (*next_plane.neurons)[i][j],
+                                    (*next_plane.weights)[m][n]);
 
     }; //connect_planes
 
@@ -83,8 +84,8 @@ namespace pann
     {
         for(unsigned i = 0; i < net_data.connection_matrix.size(); ++i)
            for(unsigned j = 0; j < net_data.connection_matrix[0].size(); ++j)
-               if(net_data.connection_matrix[i][j])
-                   connect_planes(net_data.planes[i], net_data.planes[j]);
+               if(0.0 < net_data.connection_matrix[i][j])
+                   connect_planes(net_data.planes[i], net_data.planes[j], net_data.connection_matrix[i][j]);
 
         NetPtr net(new Net());
         for(unsigned i = 0; i < net_data.planes.at(0).neurons->size(); ++i)
@@ -207,7 +208,7 @@ namespace pann
 
                 unsigned flat_plane_no = flat_prev_layer_planes_end + plane_no;
                 if(is_conv_layer) {
-                    net_data.connection_matrix[flat_prev_layer_planes_begin + plane_no][flat_plane_no] = true;
+                    net_data.connection_matrix[flat_prev_layer_planes_begin + plane_no][flat_plane_no] = 1.0;
                 } else {
                     for(unsigned prev_layer_plane_no = flat_prev_layer_planes_begin; prev_layer_plane_no < flat_prev_layer_planes_end; ++prev_layer_plane_no)
                         net_data.connection_matrix[prev_layer_plane_no][flat_plane_no] = rand_coin(connection_density);

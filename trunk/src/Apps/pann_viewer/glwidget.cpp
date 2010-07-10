@@ -63,8 +63,8 @@ void GLWidget::drawNetModel()
     net_info.neurons = 0;
     net_info.links = 0;
 
-    GLUquadric* q = gluNewQuadric();
-    gluQuadricNormals(q, GLU_SMOOTH);
+    //GLUquadric* q = gluNewQuadric();
+    //gluQuadricNormals(q, GLU_SMOOTH);
 
     glNewList(1,GL_COMPILE);
 
@@ -77,7 +77,7 @@ void GLWidget::drawNetModel()
             glPushMatrix();
             qglColor(QColor(neuron->get_attr(hash("ogl_r")), neuron->get_attr(hash("ogl_g")), neuron->get_attr(hash("ogl_b"))));
             glTranslated(neuron->get_attr(hash("ogl_x")), neuron->get_attr(hash("ogl_y")), neuron->get_attr(hash("ogl_z")));
-            gluSphere(q, neuronRadius, 12, 12);
+            //gluSphere(q, neuronRadius, 12, 12);
             glPopMatrix();
             net_info.neurons++;
 
@@ -103,7 +103,7 @@ void GLWidget::drawNetModel()
 
     glEndList();
 
-    gluDeleteQuadric(q);
+    //gluDeleteQuadric(q);
 
     setInfoNet(net_info);
 }

@@ -25,7 +25,7 @@ namespace pann
 
     typedef struct {
         std::vector<plane_t> planes;
-        boost::multi_array<bool, 2> connection_matrix; //[from][to]
+        boost::multi_array<Float, 2> connection_matrix; //[from][to]
         //TODO: replace bool with Float and give it connection density meaning
     } net_data_t;
 
