@@ -104,6 +104,7 @@ ConfigT configure(const char * filename)
                 }
             }
         }
+        /*
         if(!strcmp(child->name(), "faces")) {
             for(xml_attribute<> *attr = child->first_attribute(); attr; attr = attr->next_attribute()) {
                 if(!strcmp(attr->name(), "database")) {
@@ -144,6 +145,7 @@ ConfigT configure(const char * filename)
                 }
             }
         }
+        */
     }
 
     return config;
