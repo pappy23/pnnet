@@ -18,7 +18,7 @@ struct WeightRandomizationConfigT {
 
     WeightRandomizationConfigT() : min(-0.1), max(+0.1), random_seed(0) {};
     void print() const {
-        cout<<"WeightRandomization:\n"<<" min: "<<min<<"\n max: "<<max<<"seed: "<<random_seed<<"\n";
+        cout<<"WeightRandomization:\n"<<" min: "<<min<<"\n max: "<<max<<"\nseed: "<<random_seed<<"\n";
     };
 };
 
@@ -104,7 +104,7 @@ struct NetConfigT {
     NetConfigT() : random_seed(0) {};
 
     void print() const {
-        cout<<"Net: seed:"<<random_seed<<"\n";
+        cout<<"Net:\n seed:"<<random_seed<<"\n";
         for(vector<PlaneConfigT>::const_iterator it = planes.begin(); it != planes.end(); ++it)
             it->print();
         for(vector<ConnectionConfigT>::const_iterator it = connections.begin(); it != connections.end(); ++it)
