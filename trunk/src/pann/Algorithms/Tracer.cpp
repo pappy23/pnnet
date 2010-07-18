@@ -23,6 +23,7 @@ namespace pann {
 
         std::cout<<'\n'<<std::endl;
         */
+        std::cout<<"t: "<<neuron->bias->get_value()<<"\n";
     }; //run
 
     void

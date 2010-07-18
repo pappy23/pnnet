@@ -1,7 +1,6 @@
 
 #include <boost/assign.hpp>
 #include <boost/foreach.hpp>
-//#include <ctime>
 
 #include "pann-shit.h"
 #include "config.h"
@@ -14,7 +13,7 @@ using namespace pann;
 
 int main(int argc, char ** argv)
 {
-//    random_seed(time(0));
+    random_seed(time(0));
 
     if(argc < 2) {
         cout<<"Usage: "<<argv[0]<<" <config-file-path>"<<endl;
@@ -32,7 +31,10 @@ int main(int argc, char ** argv)
     cfg.print();
 
 //    vector<FaceT> orl = make_faces(cfg);
+    cout<<"Random number: "<<rand()<<"\n";
     vector<NetPtr> nets = make_nets(cfg);
+    trace(nets[0]);
+    cout<<"Random number: "<<rand()<<"\n";
 
     TrainPattern tmp(4, 1);
     for(unsigned i = 0; i < 4; ++i) {
