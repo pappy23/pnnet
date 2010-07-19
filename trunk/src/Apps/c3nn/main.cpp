@@ -30,7 +30,7 @@ int main(int argc, char ** argv)
 
     cfg.print();
 
-//    vector<FaceT> orl = make_faces(cfg);
+    vector<FaceT> orl = make_faces(cfg);
     cout<<"Random number: "<<rand()<<"\n";
     vector<NetPtr> nets = make_nets(cfg);
     trace(nets[0]);

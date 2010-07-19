@@ -1,20 +1,32 @@
 //Random.cpp
 
 #include <boost/random.hpp>
+#include <ctime>
 
 #include "Random.h"
 
 namespace pann
 {
+    void
+    seed(unsigned value)
+    {
+        if(0 == value) {
+            float_random_generator.seed(time(0));
+            int_random_generator.seed(time(0));
+        } else {
+            float_random_generator.seed(value);
+            int_random_generator.seed(value);
+        }
+    }; //seed
+
     Float
     rand01()
     {
-        static boost::lagged_fibonacci44497 engine;
         static boost::uniform_real<Float> distribution(0, 1);
         static boost::variate_generator<
             boost::lagged_fibonacci44497,
             boost::uniform_real<Float>
-        > generator(engine, distribution);
+        > generator(float_random_engine, distribution);
 
         return generator();
     }; //rand01
@@ -40,9 +52,8 @@ namespace pann
     int
     rand_int(int a, int b)
     {
-        static boost::mt19937 gen;
         boost::uniform_int<> dist(a, b);
-        boost::variate_generator<boost::mt19937&, boost::uniform_int<> > die(gen, dist);
+        boost::variate_generator<boost::mt19937&, boost::uniform_int<> > die(int_random_generator, dist);
 
         return die();
     }; //rand_int
