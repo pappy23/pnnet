@@ -10,6 +10,11 @@
 namespace pann
 {
     /**
+     * Seed all boost RNGs
+     */
+    void seed(unsigned value = 0);
+
+    /**
      * Very cool pseudorandom number generator
      * Returns good random number in [0.0; 1.0] range
      * Uses boost::random
@@ -30,6 +35,9 @@ namespace pann
      * Return random integer in range [a; b]
      */
     int rand_int(int a, int b);
+
+    boost::lagged_fibonacci44497 float_random_engine;
+    boost::mt19937 int_random_generator;
 
 }; //pann
 
