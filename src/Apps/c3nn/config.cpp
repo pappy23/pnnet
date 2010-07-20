@@ -205,6 +205,7 @@ vector<NetPtr> make_nets(ConfigT & cfg)
         random_seed(net_iter->random_seed);
         NetPtr pnet = make_net(net_data);
 
+        //This doesn't work as it should
         random_seed(cfg.weight_randomization.random_seed);
         pnet->set_work_threads_count(1);
         randomize_weights_gauss(pnet, cfg.weight_randomization.min, cfg.weight_randomization.max);

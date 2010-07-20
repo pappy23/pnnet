@@ -15,7 +15,6 @@ namespace pann {
         Float min = net->get_attr(hash("RW_MIN"));
         Float max = net->get_attr(hash("RW_MAX"));
 
-        std::cout<<"DEBUG: R = "<<rand(min, max)<<"\n";
         //Tune bias values
         if(neuron->bias)
             neuron->bias->add_value(pann::rand(min, max) - neuron->bias->get_value());

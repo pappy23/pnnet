@@ -31,10 +31,8 @@ int main(int argc, char ** argv)
     cfg.print();
 
     vector<FaceT> orl = make_faces(cfg);
-    cout<<"Random number: "<<rand()<<"\n";
     vector<NetPtr> nets = make_nets(cfg);
     trace(nets[0]);
-    cout<<"Random number: "<<rand()<<"\n";
 
     TrainPattern tmp(4, 1);
     for(unsigned i = 0; i < 4; ++i) {

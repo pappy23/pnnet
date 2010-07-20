@@ -1,12 +1,14 @@
 //Random.cpp
 
-#include <boost/random.hpp>
 #include <ctime>
 
 #include "Random.h"
 
 namespace pann
 {
+    boost::lagged_fibonacci44497 float_random_generator;
+    boost::mt19937 int_random_generator;
+
     void
     seed(unsigned value)
     {
@@ -26,7 +28,7 @@ namespace pann
         static boost::variate_generator<
             boost::lagged_fibonacci44497,
             boost::uniform_real<Float>
-        > generator(float_random_engine, distribution);
+        > generator(float_random_generator, distribution);
 
         return generator();
     }; //rand01
