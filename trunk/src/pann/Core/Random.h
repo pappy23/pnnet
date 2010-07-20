@@ -5,6 +5,7 @@
 #ifndef PANN_CORE_RANDOM_H_INCLUDED
 #define PANN_CORE_RANDOM_H_INCLUDED
 
+#include <boost/random.hpp>
 #include "Core/Type.h"
 
 namespace pann
@@ -35,9 +36,6 @@ namespace pann
      * Return random integer in range [a; b]
      */
     int rand_int(int a, int b);
-
-    boost::lagged_fibonacci44497 float_random_engine;
-    boost::mt19937 int_random_generator;
 
 }; //pann
 
