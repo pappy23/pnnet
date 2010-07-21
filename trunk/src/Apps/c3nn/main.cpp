@@ -32,6 +32,8 @@ int main(int argc, char ** argv)
 
     vector<FaceT> orl = make_faces(cfg);
     vector<NetPtr> nets = make_nets(cfg);
+
+    /*
     trace(nets[0]);
 
     TrainPattern tmp(4, 1);
@@ -43,6 +45,73 @@ int main(int argc, char ** argv)
     nets[0]->run(FeedforwardPropagationRunner::Instance());
     nets[0]->get_output(tmp.actual_output()); //actual output
     cout<<tmp.input()[0]<<" "<<tmp.actual_output()[0]<<endl;
+    */
+
+    TrainData all_data;
+    unsigned total_img = 0;
+    for(unsigned i = 0; i < orl.size(); ++i)
+    {
+        if(orl[i].man > cfg.faces.men)
+            continue;
+
+        total_img++;
+
+        all_data.push_back(imgm2tp(orl[i], cfg.faces.men));
+    }
+    shuffle(all_data);
+    cout<<"Prepared "<<total_img<<" images\n";
+    pair<TrainData, TrainData> bunch = divide(all_data, 100 - cfg.faces.train_percent);
+    TrainData train_data, test_data;
+    train_data = bunch.first;
+    test_data = bunch.second;
+    cout<<"Train/test: "<<train_data.size()<<"/"<<test_data.size()<<"\n";
+
+    cout<<"Training for "<<epochs<<" epochs\n";
+    for(unsigned i = 1; i <= epochs; ++i)
+    {
+        shuffle(train_data);
+        BOOST_FOREACH(const NetPtr & pnet, nets) {
+            Lms::train(pnet, train_data);
+            test(pnet, test_data);
+            Float test_err = ErrorFunction::mse(test_data);
+            cout<<i<<"\t"<<ErrorFunction::mse(train_data)<<"\t"<<test_err<<"\n";
+            if(test_err < cfg.faces.stop_error)
+                break;
+        }
+    }
+
+    cout<<"Detailed test results\n";
+    unsigned count = 0;
+    do {
+        //Select 20 images from ORL faces
+        unsigned id = std::rand() % orl.size();
+        if(orl[id].man > men || orl[id].pose != 1 || orl[id].shift != 1)
+            continue;
+
+        count++;
+
+        //Convert image to TrainPattern
+        TrainPattern tp = imgm2tp(orl[id], men);
+
+        //Process it
+        pnet->set_input(tp.input());
+        pnet->run(FeedforwardPropagationRunner::Instance());
+        pnet->get_output(tp.actual_output());
+
+        //Print detailed info about image and MSE
+        cout<<"\nMan:\t"<<orl[id].man \
+            <<"\nPose:\t"<<orl[id].pose \
+            <<"\nShift:\t"<<orl[id].shift \
+            <<"\nNoise:\t"<<orl[id].noise \
+            <<"\nError:\t"<<ErrorFunction::mse(tp)<<"\n";
+
+        //Print actual network output
+        for(unsigned j = 0; j < men; ++j)
+            cout<<j+1<<":\t"<<tp.desired_output()[j]<<" "<<tp.actual_output()[j]<<" "<<tp.error()[j]<<"\n";
+        cout<<"\n";
+    } while(count < 20);
+
+    Storage::save<Storage::txt_out>(pnet, "Exp3.net");
 
     return 0;
 }; //main

@@ -2,7 +2,6 @@
 
 #include <cstdlib>
 #include <iostream>
-#include "pann.h"
 #include "util.h"
 
 using std::srand;
@@ -15,4 +14,21 @@ void random_seed(unsigned seed)
     pann::seed(seed);
     std::cout<<"Reset RNG to "<<seed<<"\n";
 }; //random_seed
+
+/**
+ * Converts orl image to TrainPattern
+ * @param _men - number of outputs
+ */
+TrainPattern imgm2tp(const FaceT& data, unsigned men)
+{
+    //Convert image to TrainPattern
+    TrainPattern tp(92*92, men);
+    tp.input() = data.img->getAverageValarray();
+    squash(tp.input(), 0.0, 255.0, -1.8, +1.8);
+    for(unsigned j = 0; j < men; ++j)
+        tp.desired_output()[j] = -1.8;
+    tp.desired_output()[data.man - 1] = +1.8;
+
+    return tp;
+}; //imgm2tp
 
