@@ -210,7 +210,11 @@ vector<NetPtr> make_nets(ConfigT & cfg)
         random_seed(cfg.weight_randomization.random_seed);
         pnet->set_work_threads_count(1);
         randomize_weights_gauss(pnet, cfg.weight_randomization.min, cfg.weight_randomization.max);
+
         pnet->set_work_threads_count(net_iter->threads_count);
+        lms_init(pnet);
+        pnet->set_attr(attr::lms::learning_rate, cfg.lms.learning_rate);
+        pnet->set_attr(attr::lms::annealing_tsc, cfg.lms.annealing_tsc);
 
         result.push_back(pnet);
    }
