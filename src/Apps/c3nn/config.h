@@ -100,11 +100,12 @@ struct NetConfigT {
     vector<PlaneConfigT> planes;
     vector<ConnectionConfigT> connections;
     unsigned random_seed;
+    unsigned threads_count;
 
-    NetConfigT() : random_seed(0) {};
+    NetConfigT() : random_seed(0), threads_count(0) {};
 
     void print() const {
-        cout<<"Net:\n seed:"<<random_seed<<"\n";
+        cout<<"Net:\n seed:"<<random_seed<<"\n threads: "<<threads_count<<"\n";
         for(vector<PlaneConfigT>::const_iterator it = planes.begin(); it != planes.end(); ++it)
             it->print();
         for(vector<ConnectionConfigT>::const_iterator it = connections.begin(); it != connections.end(); ++it)

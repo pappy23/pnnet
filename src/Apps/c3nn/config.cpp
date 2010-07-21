@@ -34,6 +34,9 @@ ConfigT configure(const char * filename)
                 if(!strcmp(attr->name(), "seed")) {
                     net_config.random_seed = lexical_cast<unsigned>(attr->value());
                 }
+                if(!strcmp(attr->name(), "threads")) {
+                    net_config.threads_count = lexical_cast<unsigned>(attr->value());
+                }
             }
             for(xml_node<> *item = child->first_node(); item; item = item->next_sibling()) {
                 if(!strcmp(item->name(), "plane")) {
@@ -104,7 +107,6 @@ ConfigT configure(const char * filename)
                 }
             }
         }
-        /*
         if(!strcmp(child->name(), "faces")) {
             for(xml_attribute<> *attr = child->first_attribute(); attr; attr = attr->next_attribute()) {
                 if(!strcmp(attr->name(), "database")) {
@@ -145,7 +147,6 @@ ConfigT configure(const char * filename)
                 }
             }
         }
-        */
     }
 
     return config;
@@ -205,11 +206,11 @@ vector<NetPtr> make_nets(ConfigT & cfg)
         random_seed(net_iter->random_seed);
         NetPtr pnet = make_net(net_data);
 
-        //This doesn't work as it should
+        //FIXME: This doesn't work as it should
         random_seed(cfg.weight_randomization.random_seed);
         pnet->set_work_threads_count(1);
         randomize_weights_gauss(pnet, cfg.weight_randomization.min, cfg.weight_randomization.max);
-        pnet->set_work_threads_count(0);
+        pnet->set_work_threads_count(net_iter->threads_count);
 
         result.push_back(pnet);
    }

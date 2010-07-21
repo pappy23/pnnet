@@ -1,5 +1,5 @@
 <config>
-    <net seed="0">
+    <net seed="0" threads="2">
         <plane id="1" width="2" height="2" window_width="1" window_height="1" conv="true"/>
         <plane id="2" width="1" height="1" window_width="2" window_height="2" />
         <connection from="1" to="2" density="1.0" />
