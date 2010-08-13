@@ -99,4 +99,4 @@ find_package(Boost 1.35 REQUIRED COMPONENTS ${BOOST_MODULES})
 #include_directories(pann pann-shit gnuplot-cpp ${Boost_INCLUDE_DIRS} ${PYTHON_INCLUDE_PATH})
 include_directories(pann pann-shit gnuplot-cpp rapidxml ${Boost_INCLUDE_DIRS})
 subdirs(pann pann-shit gnuplot-cpp Apps)
-
+ 
