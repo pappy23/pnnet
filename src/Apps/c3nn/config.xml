@@ -1,15 +1,146 @@
 <config>
-    <net seed="0" threads="2">
-        <plane id="1" width="2" height="2" window_width="1" window_height="1" conv="true"/>
-        <plane id="2" width="1" height="1" window_width="2" window_height="2" />
-        <connection from="1" to="2" density="1.0" />
+    <net seed="0" threads="10">
+        <!-- Input layer -->
+        <plane id="1001" width="92" height="92" window_width="5" window_height="5" conv="true"/>
+
+        <connection from="1001" to="2001" density="1.0" />
+        <connection from="1001" to="2002" density="1.0" />
+        <connection from="1001" to="2003" density="1.0" />
+        <connection from="1001" to="2004" density="1.0" />
+        <connection from="1001" to="2005" density="1.0" />
+
+        <!-- Second layer, subsampling sublayer -->
+        <plane id="2001" width="40" height="40" window_width="5" window_height="5" conv="false"/>
+        <plane id="2002" width="40" height="40" window_width="5" window_height="5" conv="false"/>
+        <plane id="2003" width="40" height="40" window_width="5" window_height="5" conv="false"/>
+        <plane id="2004" width="40" height="40" window_width="5" window_height="5" conv="false"/>
+        <plane id="2005" width="40" height="40" window_width="5" window_height="5" conv="false"/>
+
+        <connection from="2001" to="3001" density="1.0" />
+        <connection from="2002" to="3002" density="1.0" />
+        <connection from="2003" to="3003" density="1.0" />
+        <connection from="2004" to="3004" density="1.0" />
+        <connection from="2005" to="3005" density="1.0" />
+
+        <!-- Second layer, convolution sublayer -->
+        <plane id="3001" width="20" height="20" window_width="2" window_height="2" conv="true"/>
+        <plane id="3002" width="20" height="20" window_width="2" window_height="2" conv="true"/>
+        <plane id="3003" width="20" height="20" window_width="2" window_height="2" conv="true"/>
+        <plane id="3004" width="20" height="20" window_width="2" window_height="2" conv="true"/>
+        <plane id="3005" width="20" height="20" window_width="2" window_height="2" conv="true"/>
+
+        <connection from="3001" to="4001" density="1.0" />
+        <connection from="3001" to="4002" density="1.0" />
+        <connection from="3001" to="4003" density="1.0" />
+        <connection from="3001" to="4004" density="1.0" />
+        <connection from="3001" to="4005" density="1.0" />
+        <connection from="3001" to="4006" density="1.0" />
+        <connection from="3001" to="4007" density="1.0" />
+        <connection from="3002" to="4001" density="1.0" />
+        <connection from="3002" to="4002" density="1.0" />
+        <connection from="3002" to="4003" density="1.0" />
+        <connection from="3002" to="4004" density="1.0" />
+        <connection from="3002" to="4005" density="1.0" />
+        <connection from="3002" to="4006" density="1.0" />
+        <connection from="3002" to="4007" density="1.0" />
+        <connection from="3003" to="4001" density="1.0" />
+        <connection from="3003" to="4002" density="1.0" />
+        <connection from="3003" to="4003" density="1.0" />
+        <connection from="3003" to="4004" density="1.0" />
+        <connection from="3003" to="4005" density="1.0" />
+        <connection from="3003" to="4006" density="1.0" />
+        <connection from="3003" to="4007" density="1.0" />
+        <connection from="3004" to="4001" density="1.0" />
+        <connection from="3004" to="4002" density="1.0" />
+        <connection from="3004" to="4003" density="1.0" />
+        <connection from="3004" to="4004" density="1.0" />
+        <connection from="3004" to="4005" density="1.0" />
+        <connection from="3004" to="4006" density="1.0" />
+        <connection from="3004" to="4007" density="1.0" />
+        <connection from="3005" to="4001" density="1.0" />
+        <connection from="3005" to="4002" density="1.0" />
+        <connection from="3005" to="4003" density="1.0" />
+        <connection from="3005" to="4004" density="1.0" />
+        <connection from="3005" to="4005" density="1.0" />
+        <connection from="3005" to="4006" density="1.0" />
+        <connection from="3005" to="4007" density="1.0" />
+
+        <!-- Third layer, subsampling sublayer -->
+        <plane id="4001" width="10" height="10" window_width="5" window_height="5" conv="false"/>
+        <plane id="4002" width="10" height="10" window_width="5" window_height="5" conv="false"/>
+        <plane id="4003" width="10" height="10" window_width="5" window_height="5" conv="false"/>
+        <plane id="4004" width="10" height="10" window_width="5" window_height="5" conv="false"/>
+        <plane id="4005" width="10" height="10" window_width="5" window_height="5" conv="false"/>
+        <plane id="4006" width="10" height="10" window_width="5" window_height="5" conv="false"/>
+        <plane id="4007" width="10" height="10" window_width="5" window_height="5" conv="false"/>
+
+        <connection from="4001" to="5001" density="1.0" />
+        <connection from="4002" to="5002" density="1.0" />
+        <connection from="4003" to="5003" density="1.0" />
+        <connection from="4004" to="5004" density="1.0" />
+        <connection from="4005" to="5005" density="1.0" />
+        <connection from="4006" to="5006" density="1.0" />
+        <connection from="4007" to="5007" density="1.0" />
+
+        <!-- Third layer, convolution sublayer -->
+        <plane id="5001" width="5" height="5" window_width="2" window_height="2" conv="true"/>
+        <plane id="5002" width="5" height="5" window_width="2" window_height="2" conv="true"/>
+        <plane id="5003" width="5" height="5" window_width="2" window_height="2" conv="true"/>
+        <plane id="5004" width="5" height="5" window_width="2" window_height="2" conv="true"/>
+        <plane id="5005" width="5" height="5" window_width="2" window_height="2" conv="true"/>
+        <plane id="5006" width="5" height="5" window_width="2" window_height="2" conv="true"/>
+        <plane id="5007" width="5" height="5" window_width="2" window_height="2" conv="true"/>
+
+        <connection from="5001" to="6001" density="1.0" />
+        <connection from="5002" to="6001" density="1.0" />
+        <connection from="5003" to="6001" density="1.0" />
+        <connection from="5004" to="6001" density="1.0" />
+        <connection from="5005" to="6001" density="1.0" />
+        <connection from="5006" to="6001" density="1.0" />
+        <connection from="5007" to="6001" density="1.0" />
+        <connection from="5001" to="6002" density="1.0" />
+        <connection from="5002" to="6002" density="1.0" />
+        <connection from="5003" to="6002" density="1.0" />
+        <connection from="5004" to="6002" density="1.0" />
+        <connection from="5005" to="6002" density="1.0" />
+        <connection from="5006" to="6002" density="1.0" />
+        <connection from="5007" to="6002" density="1.0" />
+        <connection from="5001" to="6003" density="1.0" />
+        <connection from="5002" to="6003" density="1.0" />
+        <connection from="5003" to="6003" density="1.0" />
+        <connection from="5004" to="6003" density="1.0" />
+        <connection from="5005" to="6003" density="1.0" />
+        <connection from="5006" to="6003" density="1.0" />
+        <connection from="5007" to="6003" density="1.0" />
         <!--
-        <plane id="3" width="1" height="1" window_width="1" window_height="1" />
-        <connection from="2" to="3" density="1.0" />
+        <connection from="5001" to="6004" density="1.0" />
+        <connection from="5002" to="6004" density="1.0" />
+        <connection from="5003" to="6004" density="1.0" />
+        <connection from="5004" to="6004" density="1.0" />
+        <connection from="5005" to="6004" density="1.0" />
+        <connection from="5006" to="6004" density="1.0" />
+        <connection from="5007" to="6004" density="1.0" />
+        <connection from="5001" to="6005" density="1.0" />
+        <connection from="5002" to="6005" density="1.0" />
+        <connection from="5003" to="6005" density="1.0" />
+        <connection from="5004" to="6005" density="1.0" />
+        <connection from="5005" to="6005" density="1.0" />
+        <connection from="5006" to="6005" density="1.0" />
+        <connection from="5007" to="6005" density="1.0" />
         -->
+
+        <!-- Output layer -->
+        <plane id="6001" width="1" height="1" window_width="5" window_height="5" conv="false"/>
+        <plane id="6002" width="1" height="1" window_width="5" window_height="5" conv="false"/>
+        <plane id="6003" width="1" height="1" window_width="5" window_height="5" conv="false"/>
+        <!--
+        <plane id="6004" width="1" height="1" window_width="5" window_height="5" conv="false"/>
+        <plane id="6005" width="1" height="1" window_width="5" window_height="5" conv="false"/>
+        -->
+
     </net>
     <weight_randomization min="-0.1" max="+0.1" seed="42" />
-    <lms learning_rate="0.1" annealing_tsc="100" epochs="200" />
-    <faces database="/home/booble/faces_db/orl_92x92/metadata.xml" seed="0" men="1" train_percent="60" report_frequency="1" stop_error="0.5" />
+    <lms learning_rate="0.001" annealing_tsc="50" epochs="100" />
+    <faces database="/home/booble/faces_db/orl_92x92/metadata.xml" seed="0" men="3" train_percent="60" report_frequency="1" stop_error="2.0" />
 </config>
 

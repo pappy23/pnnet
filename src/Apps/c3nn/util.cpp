@@ -2,9 +2,10 @@
 
 #include <cstdlib>
 #include <iostream>
+#include <ctime>
 #include "util.h"
 
-using std::srand;
+using namespace std;
 
 void random_seed(unsigned seed)
 {
@@ -12,8 +13,20 @@ void random_seed(unsigned seed)
         srand(seed);
     }
     pann::seed(seed);
-    std::cout<<"Reset RNG to "<<seed<<"\n";
 }; //random_seed
+
+string cur_time()
+{
+    string result;
+    time_t rawtime;
+    struct tm * timeinfo;
+
+    time ( &rawtime );
+    timeinfo = localtime ( &rawtime );
+    result += asctime (timeinfo);
+
+    return result;
+}; //cur_time
 
 /**
  * Converts orl image to TrainPattern

@@ -1,0 +1,5277 @@
+15:59 booble@big ~/pann/trunk/src/Apps/c3nn $ ./c3nn config.xml
+Reading metadata from /home/booble/faces_db/orl_92x92/metadata.xml
+path_base: /home/booble/faces_db/orl_92x92/
+Net:
+ seed:0
+ threads: 10
+ Plane:
+  id: 1001
+  width: 92
+  height: 92
+  window_width: 5
+  window_height: 5
+  is_conv: 1
+ Plane:
+  id: 2001
+  width: 40
+  height: 40
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 2002
+  width: 40
+  height: 40
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 2003
+  width: 40
+  height: 40
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 2004
+  width: 40
+  height: 40
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 2005
+  width: 40
+  height: 40
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 3001
+  width: 20
+  height: 20
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 3002
+  width: 20
+  height: 20
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 3003
+  width: 20
+  height: 20
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 3004
+  width: 20
+  height: 20
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 3005
+  width: 20
+  height: 20
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 4001
+  width: 10
+  height: 10
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 4002
+  width: 10
+  height: 10
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 4003
+  width: 10
+  height: 10
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 4004
+  width: 10
+  height: 10
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 4005
+  width: 10
+  height: 10
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 4006
+  width: 10
+  height: 10
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 4007
+  width: 10
+  height: 10
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 5001
+  width: 5
+  height: 5
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 5002
+  width: 5
+  height: 5
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 5003
+  width: 5
+  height: 5
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 5004
+  width: 5
+  height: 5
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 5005
+  width: 5
+  height: 5
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 5006
+  width: 5
+  height: 5
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 5007
+  width: 5
+  height: 5
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 6001
+  width: 1
+  height: 1
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 6002
+  width: 1
+  height: 1
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 6003
+  width: 1
+  height: 1
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 6004
+  width: 1
+  height: 1
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 6005
+  width: 1
+  height: 1
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Connection:
+  from: 1001
+  to: 2001
+  density: 1
+ Connection:
+  from: 1001
+  to: 2002
+  density: 1
+ Connection:
+  from: 1001
+  to: 2003
+  density: 1
+ Connection:
+  from: 1001
+  to: 2004
+  density: 1
+ Connection:
+  from: 1001
+  to: 2005
+  density: 1
+ Connection:
+  from: 2001
+  to: 3001
+  density: 1
+ Connection:
+  from: 2002
+  to: 3002
+  density: 1
+ Connection:
+  from: 2003
+  to: 3003
+  density: 1
+ Connection:
+  from: 2004
+  to: 3004
+  density: 1
+ Connection:
+  from: 2005
+  to: 3005
+  density: 1
+ Connection:
+  from: 3001
+  to: 4001
+  density: 1
+ Connection:
+  from: 3001
+  to: 4002
+  density: 1
+ Connection:
+  from: 3001
+  to: 4003
+  density: 1
+ Connection:
+  from: 3001
+  to: 4004
+  density: 1
+ Connection:
+  from: 3001
+  to: 4005
+  density: 1
+ Connection:
+  from: 3001
+  to: 4006
+  density: 1
+ Connection:
+  from: 3001
+  to: 4007
+  density: 1
+ Connection:
+  from: 3002
+  to: 4001
+  density: 1
+ Connection:
+  from: 3002
+  to: 4002
+  density: 1
+ Connection:
+  from: 3002
+  to: 4003
+  density: 1
+ Connection:
+  from: 3002
+  to: 4004
+  density: 1
+ Connection:
+  from: 3002
+  to: 4005
+  density: 1
+ Connection:
+  from: 3002
+  to: 4006
+  density: 1
+ Connection:
+  from: 3002
+  to: 4007
+  density: 1
+ Connection:
+  from: 3003
+  to: 4001
+  density: 1
+ Connection:
+  from: 3003
+  to: 4002
+  density: 1
+ Connection:
+  from: 3003
+  to: 4003
+  density: 1
+ Connection:
+  from: 3003
+  to: 4004
+  density: 1
+ Connection:
+  from: 3003
+  to: 4005
+  density: 1
+ Connection:
+  from: 3003
+  to: 4006
+  density: 1
+ Connection:
+  from: 3003
+  to: 4007
+  density: 1
+ Connection:
+  from: 3004
+  to: 4001
+  density: 1
+ Connection:
+  from: 3004
+  to: 4002
+  density: 1
+ Connection:
+  from: 3004
+  to: 4003
+  density: 1
+ Connection:
+  from: 3004
+  to: 4004
+  density: 1
+ Connection:
+  from: 3004
+  to: 4005
+  density: 1
+ Connection:
+  from: 3004
+  to: 4006
+  density: 1
+ Connection:
+  from: 3004
+  to: 4007
+  density: 1
+ Connection:
+  from: 3005
+  to: 4001
+  density: 1
+ Connection:
+  from: 3005
+  to: 4002
+  density: 1
+ Connection:
+  from: 3005
+  to: 4003
+  density: 1
+ Connection:
+  from: 3005
+  to: 4004
+  density: 1
+ Connection:
+  from: 3005
+  to: 4005
+  density: 1
+ Connection:
+  from: 3005
+  to: 4006
+  density: 1
+ Connection:
+  from: 3005
+  to: 4007
+  density: 1
+ Connection:
+  from: 4001
+  to: 5001
+  density: 1
+ Connection:
+  from: 4002
+  to: 5002
+  density: 1
+ Connection:
+  from: 4003
+  to: 5003
+  density: 1
+ Connection:
+  from: 4004
+  to: 5004
+  density: 1
+ Connection:
+  from: 4005
+  to: 5005
+  density: 1
+ Connection:
+  from: 4006
+  to: 5006
+  density: 1
+ Connection:
+  from: 4007
+  to: 5007
+  density: 1
+ Connection:
+  from: 5001
+  to: 6001
+  density: 1
+ Connection:
+  from: 5002
+  to: 6001
+  density: 1
+ Connection:
+  from: 5003
+  to: 6001
+  density: 1
+ Connection:
+  from: 5004
+  to: 6001
+  density: 1
+ Connection:
+  from: 5005
+  to: 6001
+  density: 1
+ Connection:
+  from: 5006
+  to: 6001
+  density: 1
+ Connection:
+  from: 5007
+  to: 6001
+  density: 1
+ Connection:
+  from: 5001
+  to: 6002
+  density: 1
+ Connection:
+  from: 5002
+  to: 6002
+  density: 1
+ Connection:
+  from: 5003
+  to: 6002
+  density: 1
+ Connection:
+  from: 5004
+  to: 6002
+  density: 1
+ Connection:
+  from: 5005
+  to: 6002
+  density: 1
+ Connection:
+  from: 5006
+  to: 6002
+  density: 1
+ Connection:
+  from: 5007
+  to: 6002
+  density: 1
+ Connection:
+  from: 5001
+  to: 6003
+  density: 1
+ Connection:
+  from: 5002
+  to: 6003
+  density: 1
+ Connection:
+  from: 5003
+  to: 6003
+  density: 1
+ Connection:
+  from: 5004
+  to: 6003
+  density: 1
+ Connection:
+  from: 5005
+  to: 6003
+  density: 1
+ Connection:
+  from: 5006
+  to: 6003
+  density: 1
+ Connection:
+  from: 5007
+  to: 6003
+  density: 1
+ Connection:
+  from: 5001
+  to: 6004
+  density: 1
+ Connection:
+  from: 5002
+  to: 6004
+  density: 1
+ Connection:
+  from: 5003
+  to: 6004
+  density: 1
+ Connection:
+  from: 5004
+  to: 6004
+  density: 1
+ Connection:
+  from: 5005
+  to: 6004
+  density: 1
+ Connection:
+  from: 5006
+  to: 6004
+  density: 1
+ Connection:
+  from: 5007
+  to: 6004
+  density: 1
+ Connection:
+  from: 5001
+  to: 6005
+  density: 1
+ Connection:
+  from: 5002
+  to: 6005
+  density: 1
+ Connection:
+  from: 5003
+  to: 6005
+  density: 1
+ Connection:
+  from: 5004
+  to: 6005
+  density: 1
+ Connection:
+  from: 5005
+  to: 6005
+  density: 1
+ Connection:
+  from: 5006
+  to: 6005
+  density: 1
+ Connection:
+  from: 5007
+  to: 6005
+  density: 1
+WeightRandomization:
+ min: -0.1
+ max: 0.1
+seed: 42
+LMS:
+ learning_rate: 0.005
+ annealing_tsc: 50
+ epochs: 100
+Faces:
+ faces count: 400
+ random_seed: 0
+ train_percent: 60
+ report_frequency: 1
+ stop_error: 0.5
+Reading images from disk...
+Read 400 images
+Cache layers[7] : 8464 8000 2000 700 175 5 0
+Prepared 50 images
+Train/test: 30/20
+Training for 100 epochs
+epoch=1 net=0 train_err=6.13907 test_err=5.60332
+epoch=2 net=0 train_err=5.3668 test_err=5.5983
+epoch=3 net=0 train_err=4.82778 test_err=6.07334
+epoch=4 net=0 train_err=4.29421 test_err=8.50987
+epoch=5 net=0 train_err=6.29429 test_err=6.19283
+epoch=6 net=0 train_err=6.22528 test_err=6.20129
+epoch=7 net=0 train_err=6.20128 test_err=6.20129
+epoch=8 net=0 train_err=6.20128 test_err=6.20129
+epoch=9 net=0 train_err=6.20128 test_err=6.20129
+epoch=10 net=0 train_err=6.20128 test_err=6.20129
+epoch=11 net=0 train_err=6.20128 test_err=6.20129
+epoch=12 net=0 train_err=6.20128 test_err=6.20129
+epoch=13 net=0 train_err=6.20128 test_err=6.20129
+epoch=14 net=0 train_err=6.20128 test_err=6.20129
+epoch=15 net=0 train_err=6.20128 test_err=6.20129
+^C
+16:02 booble@big ~/pann/trunk/src/Apps/c3nn $ ./c3nn config.xml
+Reading metadata from /home/booble/faces_db/orl_92x92/metadata.xml
+path_base: /home/booble/faces_db/orl_92x92/
+Net:
+ seed:0
+ threads: 10
+ Plane:
+  id: 1001
+  width: 92
+  height: 92
+  window_width: 5
+  window_height: 5
+  is_conv: 1
+ Plane:
+  id: 2001
+  width: 40
+  height: 40
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 2002
+  width: 40
+  height: 40
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 2003
+  width: 40
+  height: 40
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 2004
+  width: 40
+  height: 40
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 2005
+  width: 40
+  height: 40
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 3001
+  width: 20
+  height: 20
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 3002
+  width: 20
+  height: 20
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 3003
+  width: 20
+  height: 20
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 3004
+  width: 20
+  height: 20
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 3005
+  width: 20
+  height: 20
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 4001
+  width: 10
+  height: 10
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 4002
+  width: 10
+  height: 10
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 4003
+  width: 10
+  height: 10
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 4004
+  width: 10
+  height: 10
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 4005
+  width: 10
+  height: 10
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 4006
+  width: 10
+  height: 10
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 4007
+  width: 10
+  height: 10
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 5001
+  width: 5
+  height: 5
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 5002
+  width: 5
+  height: 5
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 5003
+  width: 5
+  height: 5
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 5004
+  width: 5
+  height: 5
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 5005
+  width: 5
+  height: 5
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 5006
+  width: 5
+  height: 5
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 5007
+  width: 5
+  height: 5
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 6001
+  width: 1
+  height: 1
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 6002
+  width: 1
+  height: 1
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 6003
+  width: 1
+  height: 1
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 6004
+  width: 1
+  height: 1
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 6005
+  width: 1
+  height: 1
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Connection:
+  from: 1001
+  to: 2001
+  density: 1
+ Connection:
+  from: 1001
+  to: 2002
+  density: 1
+ Connection:
+  from: 1001
+  to: 2003
+  density: 1
+ Connection:
+  from: 1001
+  to: 2004
+  density: 1
+ Connection:
+  from: 1001
+  to: 2005
+  density: 1
+ Connection:
+  from: 2001
+  to: 3001
+  density: 1
+ Connection:
+  from: 2002
+  to: 3002
+  density: 1
+ Connection:
+  from: 2003
+  to: 3003
+  density: 1
+ Connection:
+  from: 2004
+  to: 3004
+  density: 1
+ Connection:
+  from: 2005
+  to: 3005
+  density: 1
+ Connection:
+  from: 3001
+  to: 4001
+  density: 1
+ Connection:
+  from: 3001
+  to: 4002
+  density: 1
+ Connection:
+  from: 3001
+  to: 4003
+  density: 1
+ Connection:
+  from: 3001
+  to: 4004
+  density: 1
+ Connection:
+  from: 3001
+  to: 4005
+  density: 1
+ Connection:
+  from: 3001
+  to: 4006
+  density: 1
+ Connection:
+  from: 3001
+  to: 4007
+  density: 1
+ Connection:
+  from: 3002
+  to: 4001
+  density: 1
+ Connection:
+  from: 3002
+  to: 4002
+  density: 1
+ Connection:
+  from: 3002
+  to: 4003
+  density: 1
+ Connection:
+  from: 3002
+  to: 4004
+  density: 1
+ Connection:
+  from: 3002
+  to: 4005
+  density: 1
+ Connection:
+  from: 3002
+  to: 4006
+  density: 1
+ Connection:
+  from: 3002
+  to: 4007
+  density: 1
+ Connection:
+  from: 3003
+  to: 4001
+  density: 1
+ Connection:
+  from: 3003
+  to: 4002
+  density: 1
+ Connection:
+  from: 3003
+  to: 4003
+  density: 1
+ Connection:
+  from: 3003
+  to: 4004
+  density: 1
+ Connection:
+  from: 3003
+  to: 4005
+  density: 1
+ Connection:
+  from: 3003
+  to: 4006
+  density: 1
+ Connection:
+  from: 3003
+  to: 4007
+  density: 1
+ Connection:
+  from: 3004
+  to: 4001
+  density: 1
+ Connection:
+  from: 3004
+  to: 4002
+  density: 1
+ Connection:
+  from: 3004
+  to: 4003
+  density: 1
+ Connection:
+  from: 3004
+  to: 4004
+  density: 1
+ Connection:
+  from: 3004
+  to: 4005
+  density: 1
+ Connection:
+  from: 3004
+  to: 4006
+  density: 1
+ Connection:
+  from: 3004
+  to: 4007
+  density: 1
+ Connection:
+  from: 3005
+  to: 4001
+  density: 1
+ Connection:
+  from: 3005
+  to: 4002
+  density: 1
+ Connection:
+  from: 3005
+  to: 4003
+  density: 1
+ Connection:
+  from: 3005
+  to: 4004
+  density: 1
+ Connection:
+  from: 3005
+  to: 4005
+  density: 1
+ Connection:
+  from: 3005
+  to: 4006
+  density: 1
+ Connection:
+  from: 3005
+  to: 4007
+  density: 1
+ Connection:
+  from: 4001
+  to: 5001
+  density: 1
+ Connection:
+  from: 4002
+  to: 5002
+  density: 1
+ Connection:
+  from: 4003
+  to: 5003
+  density: 1
+ Connection:
+  from: 4004
+  to: 5004
+  density: 1
+ Connection:
+  from: 4005
+  to: 5005
+  density: 1
+ Connection:
+  from: 4006
+  to: 5006
+  density: 1
+ Connection:
+  from: 4007
+  to: 5007
+  density: 1
+ Connection:
+  from: 5001
+  to: 6001
+  density: 1
+ Connection:
+  from: 5002
+  to: 6001
+  density: 1
+ Connection:
+  from: 5003
+  to: 6001
+  density: 1
+ Connection:
+  from: 5004
+  to: 6001
+  density: 1
+ Connection:
+  from: 5005
+  to: 6001
+  density: 1
+ Connection:
+  from: 5006
+  to: 6001
+  density: 1
+ Connection:
+  from: 5007
+  to: 6001
+  density: 1
+ Connection:
+  from: 5001
+  to: 6002
+  density: 1
+ Connection:
+  from: 5002
+  to: 6002
+  density: 1
+ Connection:
+  from: 5003
+  to: 6002
+  density: 1
+ Connection:
+  from: 5004
+  to: 6002
+  density: 1
+ Connection:
+  from: 5005
+  to: 6002
+  density: 1
+ Connection:
+  from: 5006
+  to: 6002
+  density: 1
+ Connection:
+  from: 5007
+  to: 6002
+  density: 1
+ Connection:
+  from: 5001
+  to: 6003
+  density: 1
+ Connection:
+  from: 5002
+  to: 6003
+  density: 1
+ Connection:
+  from: 5003
+  to: 6003
+  density: 1
+ Connection:
+  from: 5004
+  to: 6003
+  density: 1
+ Connection:
+  from: 5005
+  to: 6003
+  density: 1
+ Connection:
+  from: 5006
+  to: 6003
+  density: 1
+ Connection:
+  from: 5007
+  to: 6003
+  density: 1
+ Connection:
+  from: 5001
+  to: 6004
+  density: 1
+ Connection:
+  from: 5002
+  to: 6004
+  density: 1
+ Connection:
+  from: 5003
+  to: 6004
+  density: 1
+ Connection:
+  from: 5004
+  to: 6004
+  density: 1
+ Connection:
+  from: 5005
+  to: 6004
+  density: 1
+ Connection:
+  from: 5006
+  to: 6004
+  density: 1
+ Connection:
+  from: 5007
+  to: 6004
+  density: 1
+ Connection:
+  from: 5001
+  to: 6005
+  density: 1
+ Connection:
+  from: 5002
+  to: 6005
+  density: 1
+ Connection:
+  from: 5003
+  to: 6005
+  density: 1
+ Connection:
+  from: 5004
+  to: 6005
+  density: 1
+ Connection:
+  from: 5005
+  to: 6005
+  density: 1
+ Connection:
+  from: 5006
+  to: 6005
+  density: 1
+ Connection:
+  from: 5007
+  to: 6005
+  density: 1
+WeightRandomization:
+ min: -0.1
+ max: 0.1
+seed: 42
+LMS:
+ learning_rate: 0.001
+ annealing_tsc: 50
+ epochs: 100
+Faces:
+ faces count: 400
+ random_seed: 0
+ train_percent: 60
+ report_frequency: 1
+ stop_error: 0.5
+Reading images from disk...
+Read 400 images
+Cache layers[7] : 8464 8000 2000 700 175 5 0
+Prepared 50 images
+Train/test: 30/20
+Training for 100 epochs
+epoch=1 net=0 train_err=7.50709 test_err=6.77293
+epoch=2 net=0 train_err=5.46272 test_err=5.74774
+epoch=3 net=0 train_err=5.21653 test_err=5.94187
+epoch=4 net=0 train_err=5.17145 test_err=5.88656
+epoch=5 net=0 train_err=5.07852 test_err=6.04056
+epoch=6 net=0 train_err=4.97754 test_err=5.78382
+epoch=7 net=0 train_err=4.52922 test_err=6.09811
+epoch=8 net=0 train_err=3.67573 test_err=5.83859
+epoch=9 net=0 train_err=2.51651 test_err=6.9288
+epoch=10 net=0 train_err=2.16088 test_err=4.93761
+epoch=11 net=0 train_err=1.86291 test_err=4.93018
+epoch=12 net=0 train_err=1.76743 test_err=5.99804
+epoch=13 net=0 train_err=1.3627 test_err=6.35884
+epoch=14 net=0 train_err=1.32044 test_err=5.4935
+epoch=15 net=0 train_err=1.24194 test_err=5.14297
+epoch=16 net=0 train_err=1.1301 test_err=5.13759
+epoch=17 net=0 train_err=1.32019 test_err=5.32559
+epoch=18 net=0 train_err=0.924829 test_err=5.24685
+epoch=19 net=0 train_err=0.960514 test_err=5.06627
+epoch=20 net=0 train_err=0.888497 test_err=5.26039
+epoch=21 net=0 train_err=0.853928 test_err=5.14698
+epoch=22 net=0 train_err=0.918043 test_err=5.08208
+epoch=23 net=0 train_err=0.695194 test_err=5.26426
+epoch=24 net=0 train_err=0.724477 test_err=5.39606
+epoch=25 net=0 train_err=0.807061 test_err=5.41587
+epoch=26 net=0 train_err=0.790792 test_err=5.34994
+epoch=27 net=0 train_err=0.670209 test_err=5.27905
+epoch=28 net=0 train_err=0.661122 test_err=5.28234
+epoch=29 net=0 train_err=0.65814 test_err=5.27094
+epoch=30 net=0 train_err=0.653014 test_err=5.28152
+epoch=31 net=0 train_err=0.645851 test_err=5.25297
+epoch=32 net=0 train_err=0.637901 test_err=5.21262
+epoch=33 net=0 train_err=0.66843 test_err=5.2945
+epoch=34 net=0 train_err=0.647204 test_err=5.30312
+epoch=35 net=0 train_err=0.638273 test_err=5.24417
+epoch=36 net=0 train_err=0.665767 test_err=5.31302
+epoch=37 net=0 train_err=0.619818 test_err=5.06365
+epoch=38 net=0 train_err=0.510124 test_err=4.78077
+epoch=39 net=0 train_err=0.476423 test_err=4.96408
+epoch=40 net=0 train_err=0.613684 test_err=5.19642
+epoch=41 net=0 train_err=0.522903 test_err=4.84514
+epoch=42 net=0 train_err=0.533173 test_err=4.74548
+epoch=43 net=0 train_err=0.469945 test_err=4.80036
+epoch=44 net=0 train_err=0.454576 test_err=4.79489
+epoch=45 net=0 train_err=0.453246 test_err=4.79536
+epoch=46 net=0 train_err=0.451562 test_err=4.77806
+epoch=47 net=0 train_err=0.450106 test_err=4.85309
+epoch=48 net=0 train_err=0.449736 test_err=4.80565
+epoch=49 net=0 train_err=0.448244 test_err=4.85064
+epoch=50 net=0 train_err=0.448252 test_err=4.85482
+epoch=51 net=0 train_err=0.447912 test_err=4.83066
+epoch=52 net=0 train_err=0.446849 test_err=4.84692
+epoch=53 net=0 train_err=0.446676 test_err=4.82413
+epoch=54 net=0 train_err=0.445804 test_err=4.82424
+epoch=55 net=0 train_err=0.445568 test_err=4.81546
+epoch=56 net=0 train_err=0.445005 test_err=4.82778
+epoch=57 net=0 train_err=0.444761 test_err=4.84086
+epoch=58 net=0 train_err=0.444531 test_err=4.84148
+epoch=59 net=0 train_err=0.444125 test_err=4.82233
+epoch=60 net=0 train_err=0.443631 test_err=4.82921
+epoch=61 net=0 train_err=0.44334 test_err=4.83259
+epoch=62 net=0 train_err=0.443307 test_err=4.81517
+epoch=63 net=0 train_err=0.442979 test_err=4.80577
+epoch=64 net=0 train_err=0.442568 test_err=4.81404
+epoch=65 net=0 train_err=0.442401 test_err=4.81002
+epoch=66 net=0 train_err=0.442124 test_err=4.82039
+epoch=67 net=0 train_err=0.44207 test_err=4.81578
+epoch=68 net=0 train_err=0.44179 test_err=4.8128
+epoch=69 net=0 train_err=0.441514 test_err=4.82064
+epoch=70 net=0 train_err=0.441403 test_err=4.82464
+epoch=71 net=0 train_err=0.441202 test_err=4.81582
+epoch=72 net=0 train_err=0.441099 test_err=4.80813
+epoch=73 net=0 train_err=0.440853 test_err=4.8089
+epoch=74 net=0 train_err=0.440705 test_err=4.80864
+epoch=75 net=0 train_err=0.440592 test_err=4.80681
+epoch=76 net=0 train_err=0.440438 test_err=4.80398
+epoch=77 net=0 train_err=0.440271 test_err=4.81171
+epoch=78 net=0 train_err=0.440203 test_err=4.81123
+epoch=79 net=0 train_err=0.439997 test_err=4.81677
+epoch=80 net=0 train_err=0.439845 test_err=4.81733
+epoch=81 net=0 train_err=0.439784 test_err=4.81443
+epoch=82 net=0 train_err=0.43959 test_err=4.81652
+epoch=83 net=0 train_err=0.439502 test_err=4.81594
+epoch=84 net=0 train_err=0.439396 test_err=4.80946
+epoch=85 net=0 train_err=0.439306 test_err=4.80667
+epoch=86 net=0 train_err=0.439149 test_err=4.81342
+epoch=87 net=0 train_err=0.439087 test_err=4.81113
+epoch=88 net=0 train_err=0.43897 test_err=4.81233
+epoch=89 net=0 train_err=0.438891 test_err=4.8227
+epoch=90 net=0 train_err=0.438789 test_err=4.81166
+epoch=91 net=0 train_err=0.438698 test_err=4.80764
+epoch=92 net=0 train_err=0.438596 test_err=4.81109
+epoch=93 net=0 train_err=0.438492 test_err=4.80911
+epoch=94 net=0 train_err=0.438421 test_err=4.812
+epoch=95 net=0 train_err=0.438342 test_err=4.80814
+epoch=96 net=0 train_err=0.438264 test_err=4.80988
+epoch=97 net=0 train_err=0.438177 test_err=4.81349
+epoch=98 net=0 train_err=0.438137 test_err=4.81258
+epoch=99 net=0 train_err=0.438021 test_err=4.81461
+epoch=100 net=0 train_err=0.437986 test_err=4.81348
+Detailed test results
+
+Man:    1
+Position:       1
+Error:  11.555
+1:      1.8 -1.71776 3.51776
+2:      -1.8 -1.71777 -0.0822257
+3:      -1.8 -1.60181 -0.198193
+4:      -1.8 1.46842 -3.26842
+5:      -1.8 -1.71777 -0.0822308
+
+
+Man:    3
+Position:       1
+Error:  0.0800066
+1:      -1.8 -1.7128 -0.0871957
+2:      -1.8 -1.71539 -0.0846123
+3:      1.8 1.44821 0.351789
+4:      -1.8 -1.67854 -0.121459
+5:      -1.8 -1.71788 -0.0821171
+
+
+Man:    1
+Position:       1
+Error:  11.555
+1:      1.8 -1.71776 3.51776
+2:      -1.8 -1.71777 -0.0822257
+3:      -1.8 -1.60181 -0.198193
+4:      -1.8 1.46842 -3.26842
+5:      -1.8 -1.71777 -0.0822308
+
+
+Man:    4
+Position:       1
+Error:  0.0191387
+1:      -1.8 -1.71376 -0.0862394
+2:      -1.8 -1.71494 -0.0850619
+3:      -1.8 -1.71597 -0.0840302
+4:      1.8 1.70236 0.0976417
+5:      -1.8 -1.71628 -0.0837243
+
+
+Man:    5
+Position:       1
+Error:  0.0169958
+1:      -1.8 -1.71789 -0.0821133
+2:      -1.8 -1.71628 -0.0837221
+3:      -1.8 -1.71786 -0.0821355
+4:      -1.8 -1.7179 -0.0821001
+5:      1.8 1.71782 0.0821763
+
+
+Man:    2
+Position:       1
+Error:  0.020336
+1:      -1.8 -1.71589 -0.0841138
+2:      1.8 1.71116 0.0888362
+3:      -1.8 -1.68967 -0.110332
+4:      -1.8 -1.7179 -0.0821001
+5:      -1.8 -1.71759 -0.0824106
+
+
+Man:    3
+Position:       1
+Error:  0.0800066
+1:      -1.8 -1.7128 -0.0871957
+2:      -1.8 -1.71539 -0.0846123
+3:      1.8 1.44821 0.351789
+4:      -1.8 -1.67854 -0.121459
+5:      -1.8 -1.71788 -0.0821171
+
+
+Man:    4
+Position:       1
+Error:  0.0191387
+1:      -1.8 -1.71376 -0.0862394
+2:      -1.8 -1.71494 -0.0850619
+3:      -1.8 -1.71597 -0.0840302
+4:      1.8 1.70236 0.0976417
+5:      -1.8 -1.71628 -0.0837243
+
+
+Man:    4
+Position:       1
+Error:  0.0191387
+1:      -1.8 -1.71376 -0.0862394
+2:      -1.8 -1.71494 -0.0850619
+3:      -1.8 -1.71597 -0.0840302
+4:      1.8 1.70236 0.0976417
+5:      -1.8 -1.71628 -0.0837243
+
+
+Man:    5
+Position:       1
+Error:  0.0169958
+1:      -1.8 -1.71789 -0.0821133
+2:      -1.8 -1.71628 -0.0837221
+3:      -1.8 -1.71786 -0.0821355
+4:      -1.8 -1.7179 -0.0821001
+5:      1.8 1.71782 0.0821763
+
+
+Man:    5
+Position:       1
+Error:  0.0169958
+1:      -1.8 -1.71789 -0.0821133
+2:      -1.8 -1.71628 -0.0837221
+3:      -1.8 -1.71786 -0.0821355
+4:      -1.8 -1.7179 -0.0821001
+5:      1.8 1.71782 0.0821763
+
+
+Man:    1
+Position:       1
+Error:  11.555
+1:      1.8 -1.71776 3.51776
+2:      -1.8 -1.71777 -0.0822257
+3:      -1.8 -1.60181 -0.198193
+4:      -1.8 1.46842 -3.26842
+5:      -1.8 -1.71777 -0.0822308
+
+
+Man:    1
+Position:       1
+Error:  11.555
+1:      1.8 -1.71776 3.51776
+2:      -1.8 -1.71777 -0.0822257
+3:      -1.8 -1.60181 -0.198193
+4:      -1.8 1.46842 -3.26842
+5:      -1.8 -1.71777 -0.0822308
+
+
+Man:    4
+Position:       1
+Error:  0.0191387
+1:      -1.8 -1.71376 -0.0862394
+2:      -1.8 -1.71494 -0.0850619
+3:      -1.8 -1.71597 -0.0840302
+4:      1.8 1.70236 0.0976417
+5:      -1.8 -1.71628 -0.0837243
+
+
+Man:    3
+Position:       1
+Error:  0.0800066
+1:      -1.8 -1.7128 -0.0871957
+2:      -1.8 -1.71539 -0.0846123
+3:      1.8 1.44821 0.351789
+4:      -1.8 -1.67854 -0.121459
+5:      -1.8 -1.71788 -0.0821171
+
+
+Man:    1
+Position:       1
+Error:  11.555
+1:      1.8 -1.71776 3.51776
+2:      -1.8 -1.71777 -0.0822257
+3:      -1.8 -1.60181 -0.198193
+4:      -1.8 1.46842 -3.26842
+5:      -1.8 -1.71777 -0.0822308
+
+
+Man:    4
+Position:       1
+Error:  0.0191387
+1:      -1.8 -1.71376 -0.0862394
+2:      -1.8 -1.71494 -0.0850619
+3:      -1.8 -1.71597 -0.0840302
+4:      1.8 1.70236 0.0976417
+5:      -1.8 -1.71628 -0.0837243
+
+
+Man:    1
+Position:       1
+Error:  11.555
+1:      1.8 -1.71776 3.51776
+2:      -1.8 -1.71777 -0.0822257
+3:      -1.8 -1.60181 -0.198193
+4:      -1.8 1.46842 -3.26842
+5:      -1.8 -1.71777 -0.0822308
+
+
+Man:    5
+Position:       1
+Error:  0.0169958
+1:      -1.8 -1.71789 -0.0821133
+2:      -1.8 -1.71628 -0.0837221
+3:      -1.8 -1.71786 -0.0821355
+4:      -1.8 -1.7179 -0.0821001
+5:      1.8 1.71782 0.0821763
+
+
+Man:    4
+Position:       1
+Error:  0.0191387
+1:      -1.8 -1.71376 -0.0862394
+2:      -1.8 -1.71494 -0.0850619
+3:      -1.8 -1.71597 -0.0840302
+4:      1.8 1.70236 0.0976417
+5:      -1.8 -1.71628 -0.0837243
+
+16:12 booble@big ~/pann/trunk/src/Apps/c3nn $
+16:16 booble@big ~/pann/trunk/src/Apps/c3nn $
+16:16 booble@big ~/pann/trunk/src/Apps/c3nn $ ./c3nn config.xml
+Reading metadata from /home/booble/faces_db/orl_92x92/metadata.xml
+path_base: /home/booble/faces_db/orl_92x92/
+Net:
+ seed:0
+ threads: 10
+ Plane:
+  id: 1001
+  width: 92
+  height: 92
+  window_width: 5
+  window_height: 5
+  is_conv: 1
+ Plane:
+  id: 2001
+  width: 40
+  height: 40
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 2002
+  width: 40
+  height: 40
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 2003
+  width: 40
+  height: 40
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 2004
+  width: 40
+  height: 40
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 2005
+  width: 40
+  height: 40
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 3001
+  width: 20
+  height: 20
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 3002
+  width: 20
+  height: 20
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 3003
+  width: 20
+  height: 20
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 3004
+  width: 20
+  height: 20
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 3005
+  width: 20
+  height: 20
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 4001
+  width: 10
+  height: 10
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 4002
+  width: 10
+  height: 10
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 4003
+  width: 10
+  height: 10
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 4004
+  width: 10
+  height: 10
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 4005
+  width: 10
+  height: 10
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 4006
+  width: 10
+  height: 10
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 4007
+  width: 10
+  height: 10
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 5001
+  width: 5
+  height: 5
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 5002
+  width: 5
+  height: 5
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 5003
+  width: 5
+  height: 5
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 5004
+  width: 5
+  height: 5
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 5005
+  width: 5
+  height: 5
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 5006
+  width: 5
+  height: 5
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 5007
+  width: 5
+  height: 5
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 6001
+  width: 1
+  height: 1
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 6002
+  width: 1
+  height: 1
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 6003
+  width: 1
+  height: 1
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 6004
+  width: 1
+  height: 1
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 6005
+  width: 1
+  height: 1
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Connection:
+  from: 1001
+  to: 2001
+  density: 1
+ Connection:
+  from: 1001
+  to: 2002
+  density: 1
+ Connection:
+  from: 1001
+  to: 2003
+  density: 1
+ Connection:
+  from: 1001
+  to: 2004
+  density: 1
+ Connection:
+  from: 1001
+  to: 2005
+  density: 1
+ Connection:
+  from: 2001
+  to: 3001
+  density: 1
+ Connection:
+  from: 2002
+  to: 3002
+  density: 1
+ Connection:
+  from: 2003
+  to: 3003
+  density: 1
+ Connection:
+  from: 2004
+  to: 3004
+  density: 1
+ Connection:
+  from: 2005
+  to: 3005
+  density: 1
+ Connection:
+  from: 3001
+  to: 4001
+  density: 1
+ Connection:
+  from: 3001
+  to: 4002
+  density: 1
+ Connection:
+  from: 3001
+  to: 4003
+  density: 1
+ Connection:
+  from: 3001
+  to: 4004
+  density: 1
+ Connection:
+  from: 3001
+  to: 4005
+  density: 1
+ Connection:
+  from: 3001
+  to: 4006
+  density: 1
+ Connection:
+  from: 3001
+  to: 4007
+  density: 1
+ Connection:
+  from: 3002
+  to: 4001
+  density: 1
+ Connection:
+  from: 3002
+  to: 4002
+  density: 1
+ Connection:
+  from: 3002
+  to: 4003
+  density: 1
+ Connection:
+  from: 3002
+  to: 4004
+  density: 1
+ Connection:
+  from: 3002
+  to: 4005
+  density: 1
+ Connection:
+  from: 3002
+  to: 4006
+  density: 1
+ Connection:
+  from: 3002
+  to: 4007
+  density: 1
+ Connection:
+  from: 3003
+  to: 4001
+  density: 1
+ Connection:
+  from: 3003
+  to: 4002
+  density: 1
+ Connection:
+  from: 3003
+  to: 4003
+  density: 1
+ Connection:
+  from: 3003
+  to: 4004
+  density: 1
+ Connection:
+  from: 3003
+  to: 4005
+  density: 1
+ Connection:
+  from: 3003
+  to: 4006
+  density: 1
+ Connection:
+  from: 3003
+  to: 4007
+  density: 1
+ Connection:
+  from: 3004
+  to: 4001
+  density: 1
+ Connection:
+  from: 3004
+  to: 4002
+  density: 1
+ Connection:
+  from: 3004
+  to: 4003
+  density: 1
+ Connection:
+  from: 3004
+  to: 4004
+  density: 1
+ Connection:
+  from: 3004
+  to: 4005
+  density: 1
+ Connection:
+  from: 3004
+  to: 4006
+  density: 1
+ Connection:
+  from: 3004
+  to: 4007
+  density: 1
+ Connection:
+  from: 3005
+  to: 4001
+  density: 1
+ Connection:
+  from: 3005
+  to: 4002
+  density: 1
+ Connection:
+  from: 3005
+  to: 4003
+  density: 1
+ Connection:
+  from: 3005
+  to: 4004
+  density: 1
+ Connection:
+  from: 3005
+  to: 4005
+  density: 1
+ Connection:
+  from: 3005
+  to: 4006
+  density: 1
+ Connection:
+  from: 3005
+  to: 4007
+  density: 1
+ Connection:
+  from: 4001
+  to: 5001
+  density: 1
+ Connection:
+  from: 4002
+  to: 5002
+  density: 1
+ Connection:
+  from: 4003
+  to: 5003
+  density: 1
+ Connection:
+  from: 4004
+  to: 5004
+  density: 1
+ Connection:
+  from: 4005
+  to: 5005
+  density: 1
+ Connection:
+  from: 4006
+  to: 5006
+  density: 1
+ Connection:
+  from: 4007
+  to: 5007
+  density: 1
+ Connection:
+  from: 5001
+  to: 6001
+  density: 1
+ Connection:
+  from: 5002
+  to: 6001
+  density: 1
+ Connection:
+  from: 5003
+  to: 6001
+  density: 1
+ Connection:
+  from: 5004
+  to: 6001
+  density: 1
+ Connection:
+  from: 5005
+  to: 6001
+  density: 1
+ Connection:
+  from: 5006
+  to: 6001
+  density: 1
+ Connection:
+  from: 5007
+  to: 6001
+  density: 1
+ Connection:
+  from: 5001
+  to: 6002
+  density: 1
+ Connection:
+  from: 5002
+  to: 6002
+  density: 1
+ Connection:
+  from: 5003
+  to: 6002
+  density: 1
+ Connection:
+  from: 5004
+  to: 6002
+  density: 1
+ Connection:
+  from: 5005
+  to: 6002
+  density: 1
+ Connection:
+  from: 5006
+  to: 6002
+  density: 1
+ Connection:
+  from: 5007
+  to: 6002
+  density: 1
+ Connection:
+  from: 5001
+  to: 6003
+  density: 1
+ Connection:
+  from: 5002
+  to: 6003
+  density: 1
+ Connection:
+  from: 5003
+  to: 6003
+  density: 1
+ Connection:
+  from: 5004
+  to: 6003
+  density: 1
+ Connection:
+  from: 5005
+  to: 6003
+  density: 1
+ Connection:
+  from: 5006
+  to: 6003
+  density: 1
+ Connection:
+  from: 5007
+  to: 6003
+  density: 1
+ Connection:
+  from: 5001
+  to: 6004
+  density: 1
+ Connection:
+  from: 5002
+  to: 6004
+  density: 1
+ Connection:
+  from: 5003
+  to: 6004
+  density: 1
+ Connection:
+  from: 5004
+  to: 6004
+  density: 1
+ Connection:
+  from: 5005
+  to: 6004
+  density: 1
+ Connection:
+  from: 5006
+  to: 6004
+  density: 1
+ Connection:
+  from: 5007
+  to: 6004
+  density: 1
+ Connection:
+  from: 5001
+  to: 6005
+  density: 1
+ Connection:
+  from: 5002
+  to: 6005
+  density: 1
+ Connection:
+  from: 5003
+  to: 6005
+  density: 1
+ Connection:
+  from: 5004
+  to: 6005
+  density: 1
+ Connection:
+  from: 5005
+  to: 6005
+  density: 1
+ Connection:
+  from: 5006
+  to: 6005
+  density: 1
+ Connection:
+  from: 5007
+  to: 6005
+  density: 1
+WeightRandomization:
+ min: -0.1
+ max: 0.1
+seed: 42
+LMS:
+ learning_rate: 0.001
+ annealing_tsc: 50
+ epochs: 100
+Faces:
+ faces count: 400
+ random_seed: 0
+ train_percent: 60
+ report_frequency: 1
+ stop_error: 0.5
+Reading images from disk...
+Read 400 images
+Cache layers[7] : 8464 8000 2000 700 175 5 0
+Prepared 50 images
+Train/test: 30/20
+Training for 100 epochs
+epoch=1 net=0 train_err=8.1521 test_err=7.90734
+epoch=2 net=0 train_err=6.26097 test_err=5.54649
+epoch=3 net=0 train_err=4.94212 test_err=5.91135
+epoch=4 net=0 train_err=4.32595 test_err=5.27287
+
+
+^C
+16:18 booble@big ~/pann/trunk/src/Apps/c3nn $ ./c3nn config.xml
+Reading metadata from /home/booble/faces_db/orl_92x92/metadata.xml
+path_base: /home/booble/faces_db/orl_92x92/
+Net:
+ seed:0
+ threads: 10
+ Plane:
+  id: 1001
+  width: 92
+  height: 92
+  window_width: 5
+  window_height: 5
+  is_conv: 1
+ Plane:
+  id: 2001
+  width: 40
+  height: 40
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 2002
+  width: 40
+  height: 40
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 2003
+  width: 40
+  height: 40
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 2004
+  width: 40
+  height: 40
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 2005
+  width: 40
+  height: 40
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 3001
+  width: 20
+  height: 20
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 3002
+  width: 20
+  height: 20
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 3003
+  width: 20
+  height: 20
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 3004
+  width: 20
+  height: 20
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 3005
+  width: 20
+  height: 20
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 4001
+  width: 10
+  height: 10
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 4002
+  width: 10
+  height: 10
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 4003
+  width: 10
+  height: 10
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 4004
+  width: 10
+  height: 10
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 4005
+  width: 10
+  height: 10
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 4006
+  width: 10
+  height: 10
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 4007
+  width: 10
+  height: 10
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 5001
+  width: 5
+  height: 5
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 5002
+  width: 5
+  height: 5
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 5003
+  width: 5
+  height: 5
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 5004
+  width: 5
+  height: 5
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 5005
+  width: 5
+  height: 5
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 5006
+  width: 5
+  height: 5
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 5007
+  width: 5
+  height: 5
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 6001
+  width: 1
+  height: 1
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 6002
+  width: 1
+  height: 1
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 6003
+  width: 1
+  height: 1
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 6004
+  width: 1
+  height: 1
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 6005
+  width: 1
+  height: 1
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Connection:
+  from: 1001
+  to: 2001
+  density: 1
+ Connection:
+  from: 1001
+  to: 2002
+  density: 1
+ Connection:
+  from: 1001
+  to: 2003
+  density: 1
+ Connection:
+  from: 1001
+  to: 2004
+  density: 1
+ Connection:
+  from: 1001
+  to: 2005
+  density: 1
+ Connection:
+  from: 2001
+  to: 3001
+  density: 1
+ Connection:
+  from: 2002
+  to: 3002
+  density: 1
+ Connection:
+  from: 2003
+  to: 3003
+  density: 1
+ Connection:
+  from: 2004
+  to: 3004
+  density: 1
+ Connection:
+  from: 2005
+  to: 3005
+  density: 1
+ Connection:
+  from: 3001
+  to: 4001
+  density: 1
+ Connection:
+  from: 3001
+  to: 4002
+  density: 1
+ Connection:
+  from: 3001
+  to: 4003
+  density: 1
+ Connection:
+  from: 3001
+  to: 4004
+  density: 1
+ Connection:
+  from: 3001
+  to: 4005
+  density: 1
+ Connection:
+  from: 3001
+  to: 4006
+  density: 1
+ Connection:
+  from: 3001
+  to: 4007
+  density: 1
+ Connection:
+  from: 3002
+  to: 4001
+  density: 1
+ Connection:
+  from: 3002
+  to: 4002
+  density: 1
+ Connection:
+  from: 3002
+  to: 4003
+  density: 1
+ Connection:
+  from: 3002
+  to: 4004
+  density: 1
+ Connection:
+  from: 3002
+  to: 4005
+  density: 1
+ Connection:
+  from: 3002
+  to: 4006
+  density: 1
+ Connection:
+  from: 3002
+  to: 4007
+  density: 1
+ Connection:
+  from: 3003
+  to: 4001
+  density: 1
+ Connection:
+  from: 3003
+  to: 4002
+  density: 1
+ Connection:
+  from: 3003
+  to: 4003
+  density: 1
+ Connection:
+  from: 3003
+  to: 4004
+  density: 1
+ Connection:
+  from: 3003
+  to: 4005
+  density: 1
+ Connection:
+  from: 3003
+  to: 4006
+  density: 1
+ Connection:
+  from: 3003
+  to: 4007
+  density: 1
+ Connection:
+  from: 3004
+  to: 4001
+  density: 1
+ Connection:
+  from: 3004
+  to: 4002
+  density: 1
+ Connection:
+  from: 3004
+  to: 4003
+  density: 1
+ Connection:
+  from: 3004
+  to: 4004
+  density: 1
+ Connection:
+  from: 3004
+  to: 4005
+  density: 1
+ Connection:
+  from: 3004
+  to: 4006
+  density: 1
+ Connection:
+  from: 3004
+  to: 4007
+  density: 1
+ Connection:
+  from: 3005
+  to: 4001
+  density: 1
+ Connection:
+  from: 3005
+  to: 4002
+  density: 1
+ Connection:
+  from: 3005
+  to: 4003
+  density: 1
+ Connection:
+  from: 3005
+  to: 4004
+  density: 1
+ Connection:
+  from: 3005
+  to: 4005
+  density: 1
+ Connection:
+  from: 3005
+  to: 4006
+  density: 1
+ Connection:
+  from: 3005
+  to: 4007
+  density: 1
+ Connection:
+  from: 4001
+  to: 5001
+  density: 1
+ Connection:
+  from: 4002
+  to: 5002
+  density: 1
+ Connection:
+  from: 4003
+  to: 5003
+  density: 1
+ Connection:
+  from: 4004
+  to: 5004
+  density: 1
+ Connection:
+  from: 4005
+  to: 5005
+  density: 1
+ Connection:
+  from: 4006
+  to: 5006
+  density: 1
+ Connection:
+  from: 4007
+  to: 5007
+  density: 1
+ Connection:
+  from: 5001
+  to: 6001
+  density: 1
+ Connection:
+  from: 5002
+  to: 6001
+  density: 1
+ Connection:
+  from: 5003
+  to: 6001
+  density: 1
+ Connection:
+  from: 5004
+  to: 6001
+  density: 1
+ Connection:
+  from: 5005
+  to: 6001
+  density: 1
+ Connection:
+  from: 5006
+  to: 6001
+  density: 1
+ Connection:
+  from: 5007
+  to: 6001
+  density: 1
+ Connection:
+  from: 5001
+  to: 6002
+  density: 1
+ Connection:
+  from: 5002
+  to: 6002
+  density: 1
+ Connection:
+  from: 5003
+  to: 6002
+  density: 1
+ Connection:
+  from: 5004
+  to: 6002
+  density: 1
+ Connection:
+  from: 5005
+  to: 6002
+  density: 1
+ Connection:
+  from: 5006
+  to: 6002
+  density: 1
+ Connection:
+  from: 5007
+  to: 6002
+  density: 1
+ Connection:
+  from: 5001
+  to: 6003
+  density: 1
+ Connection:
+  from: 5002
+  to: 6003
+  density: 1
+ Connection:
+  from: 5003
+  to: 6003
+  density: 1
+ Connection:
+  from: 5004
+  to: 6003
+  density: 1
+ Connection:
+  from: 5005
+  to: 6003
+  density: 1
+ Connection:
+  from: 5006
+  to: 6003
+  density: 1
+ Connection:
+  from: 5007
+  to: 6003
+  density: 1
+ Connection:
+  from: 5001
+  to: 6004
+  density: 1
+ Connection:
+  from: 5002
+  to: 6004
+  density: 1
+ Connection:
+  from: 5003
+  to: 6004
+  density: 1
+ Connection:
+  from: 5004
+  to: 6004
+  density: 1
+ Connection:
+  from: 5005
+  to: 6004
+  density: 1
+ Connection:
+  from: 5006
+  to: 6004
+  density: 1
+ Connection:
+  from: 5007
+  to: 6004
+  density: 1
+ Connection:
+  from: 5001
+  to: 6005
+  density: 1
+ Connection:
+  from: 5002
+  to: 6005
+  density: 1
+ Connection:
+  from: 5003
+  to: 6005
+  density: 1
+ Connection:
+  from: 5004
+  to: 6005
+  density: 1
+ Connection:
+  from: 5005
+  to: 6005
+  density: 1
+ Connection:
+  from: 5006
+  to: 6005
+  density: 1
+ Connection:
+  from: 5007
+  to: 6005
+  density: 1
+WeightRandomization:
+ min: -0.1
+ max: 0.1
+seed: 42
+LMS:
+ learning_rate: 0.001
+ annealing_tsc: 50
+ epochs: 100
+Faces:
+ faces count: 400
+ random_seed: 0
+ train_percent: 60
+ report_frequency: 1
+ stop_error: 5
+Reading images from disk...
+Read 400 images
+Cache layers[7] : 8464 8000 2000 700 175 5 0
+Prepared 50 images
+Train/test: 30/20
+Training for 100 epochs
+epoch=1 net=0 train_err=7.47606 test_err=7.33076
+epoch=2 net=0 train_err=6.25684 test_err=5.95295
+epoch=3 net=0 train_err=5.18565 test_err=5.78804
+epoch=4 net=0 train_err=5.05492 test_err=5.80259
+epoch=5 net=0 train_err=4.89623 test_err=5.94889
+epoch=6 net=0 train_err=4.49974 test_err=5.59671
+epoch=7 net=0 train_err=3.64369 test_err=5.26776
+epoch=8 net=0 train_err=2.84229 test_err=4.343
+Detailed test results
+
+Man:    1
+Position:       1
+Error:  6.79018
+1:      1.8 -1.6571 3.4571
+2:      -1.8 -1.56073 -0.239272
+3:      -1.8 -1.34901 -0.450992
+4:      -1.8 -0.641227 -1.15877
+5:      -1.8 -1.64056 -0.159443
+
+
+Man:    2
+Position:       5
+Error:  0.816448
+1:      -1.8 -1.62756 -0.172438
+2:      1.8 0.716904 1.0831
+3:      -1.8 -1.61671 -0.183292
+4:      -1.8 -1.19012 -0.609878
+5:      -1.8 -1.64342 -0.156579
+
+
+Man:    3
+Position:       10
+Error:  4.68581
+1:      -1.8 -1.45844 -0.341555
+2:      -1.8 -1.60967 -0.190333
+3:      1.8 -0.320055 2.12005
+4:      -1.8 0.365704 -2.1657
+5:      -1.8 -1.61608 -0.183915
+
+
+Man:    1
+Position:       4
+Error:  7.72204
+1:      1.8 -1.68204 3.48204
+2:      -1.8 -1.70129 -0.098706
+3:      -1.8 -1.31531 -0.484689
+4:      -1.8 -1.41013 -0.389871
+5:      -1.8 -0.0903662 -1.70963
+
+
+Man:    3
+Position:       10
+Error:  4.68581
+1:      -1.8 -1.45844 -0.341555
+2:      -1.8 -1.60967 -0.190333
+3:      1.8 -0.320055 2.12005
+4:      -1.8 0.365704 -2.1657
+5:      -1.8 -1.61608 -0.183915
+
+
+Man:    1
+Position:       7
+Error:  6.50283
+1:      1.8 -1.65062 3.45062
+2:      -1.8 -1.61113 -0.188873
+3:      -1.8 -1.31678 -0.483216
+4:      -1.8 -0.90952 -0.89048
+5:      -1.8 -1.60828 -0.191721
+
+
+Man:    4
+Position:       4
+Error:  0.688249
+1:      -1.8 -1.5266 -0.273403
+2:      -1.8 -1.5088 -0.291201
+3:      -1.8 -1.14508 -0.654921
+4:      1.8 0.918396 0.881604
+5:      -1.8 -1.69606 -0.103942
+
+
+Man:    4
+Position:       2
+Error:  0.988815
+1:      -1.8 -1.37014 -0.429856
+2:      -1.8 -1.22118 -0.578822
+3:      -1.8 -0.945015 -0.854985
+4:      1.8 0.954425 0.845575
+5:      -1.8 -1.69128 -0.108724
+
+
+Man:    3
+Position:       2
+Error:  2.31335
+1:      -1.8 -1.23525 -0.56475
+2:      -1.8 -1.54287 -0.257132
+3:      1.8 0.992302 0.807698
+4:      -1.8 0.0582943 -1.85829
+5:      -1.8 -1.4312 -0.3688
+
+
+Man:    5
+Position:       7
+Error:  0.466491
+1:      -1.8 -1.67459 -0.125415
+2:      -1.8 -1.00694 -0.793059
+3:      -1.8 -1.52312 -0.276883
+4:      -1.8 -1.69474 -0.10526
+5:      1.8 1.35215 0.447846
+
+
+Man:    1
+Position:       6
+Error:  6.69506
+1:      1.8 -1.70948 3.50948
+2:      -1.8 -1.18368 -0.616318
+3:      -1.8 -1.69428 -0.105721
+4:      -1.8 -1.64508 -0.154918
+5:      -1.8 -0.988449 -0.811551
+
+
+Man:    2
+Position:       4
+Error:  0.915707
+1:      -1.8 -1.5812 -0.218797
+2:      1.8 0.654958 1.14504
+3:      -1.8 -1.58157 -0.218427
+4:      -1.8 -1.16328 -0.636725
+5:      -1.8 -1.66111 -0.138894
+
+
+Man:    3
+Position:       2
+Error:  2.31335
+1:      -1.8 -1.23525 -0.56475
+2:      -1.8 -1.54287 -0.257132
+3:      1.8 0.992302 0.807698
+4:      -1.8 0.0582943 -1.85829
+5:      -1.8 -1.4312 -0.3688
+
+
+Man:    2
+Position:       3
+Error:  1.15489
+1:      -1.8 -1.66206 -0.137937
+2:      1.8 0.376846 1.42315
+3:      -1.8 -1.58262 -0.217383
+4:      -1.8 -1.51117 -0.288828
+5:      -1.8 -1.43299 -0.367015
+
+
+Man:    2
+Position:       4
+Error:  0.915707
+1:      -1.8 -1.5812 -0.218797
+2:      1.8 0.654958 1.14504
+3:      -1.8 -1.58157 -0.218427
+4:      -1.8 -1.16328 -0.636725
+5:      -1.8 -1.66111 -0.138894
+
+
+Man:    3
+Position:       2
+Error:  2.31335
+1:      -1.8 -1.23525 -0.56475
+2:      -1.8 -1.54287 -0.257132
+3:      1.8 0.992302 0.807698
+4:      -1.8 0.0582943 -1.85829
+5:      -1.8 -1.4312 -0.3688
+
+
+Man:    2
+Position:       7
+Error:  1.93901
+1:      -1.8 -1.67503 -0.124968
+2:      1.8 0.069702 1.7303
+3:      -1.8 -1.57261 -0.22739
+4:      -1.8 -1.63309 -0.166915
+5:      -1.8 -0.911802 -0.888198
+
+
+Man:    5
+Position:       9
+Error:  0.31857
+1:      -1.8 -1.67376 -0.126238
+2:      -1.8 -1.61599 -0.184013
+3:      -1.8 -1.06949 -0.73051
+4:      -1.8 -1.68769 -0.112313
+5:      1.8 1.59731 0.202694
+
+
+Man:    2
+Position:       5
+Error:  0.816448
+1:      -1.8 -1.62756 -0.172438
+2:      1.8 0.716904 1.0831
+3:      -1.8 -1.61671 -0.183292
+4:      -1.8 -1.19012 -0.609878
+5:      -1.8 -1.64342 -0.156579
+
+
+Man:    4
+Position:       1
+Error:  1.62555
+1:      -1.8 -1.25615 -0.543845
+2:      -1.8 -1.03072 -0.76928
+3:      -1.8 -0.860747 -0.939253
+4:      1.8 0.590895 1.2091
+5:      -1.8 -1.66069 -0.13931
+
+16:19 booble@big ~/pann/trunk/src/Apps/c3nn $
+16:34 booble@big ~/pann/trunk/src/Apps/c3nn $
+16:34 booble@big ~/pann/trunk/src/Apps/c3nn $ ./c3nn config.xml
+Reading metadata from /home/booble/faces_db/orl_92x92/metadata.xml
+path_base: /home/booble/faces_db/orl_92x92/
+Net:
+ seed:0
+ threads: 10
+ Plane:
+  id: 1001
+  width: 92
+  height: 92
+  window_width: 5
+  window_height: 5
+  is_conv: 1
+ Plane:
+  id: 2001
+  width: 40
+  height: 40
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 2002
+  width: 40
+  height: 40
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 2003
+  width: 40
+  height: 40
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 2004
+  width: 40
+  height: 40
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 2005
+  width: 40
+  height: 40
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 3001
+  width: 20
+  height: 20
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 3002
+  width: 20
+  height: 20
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 3003
+  width: 20
+  height: 20
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 3004
+  width: 20
+  height: 20
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 3005
+  width: 20
+  height: 20
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 4001
+  width: 10
+  height: 10
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 4002
+  width: 10
+  height: 10
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 4003
+  width: 10
+  height: 10
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 4004
+  width: 10
+  height: 10
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 4005
+  width: 10
+  height: 10
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 4006
+  width: 10
+  height: 10
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 4007
+  width: 10
+  height: 10
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 5001
+  width: 5
+  height: 5
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 5002
+  width: 5
+  height: 5
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 5003
+  width: 5
+  height: 5
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 5004
+  width: 5
+  height: 5
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 5005
+  width: 5
+  height: 5
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 5006
+  width: 5
+  height: 5
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 5007
+  width: 5
+  height: 5
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 6001
+  width: 1
+  height: 1
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 6002
+  width: 1
+  height: 1
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 6003
+  width: 1
+  height: 1
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 6004
+  width: 1
+  height: 1
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 6005
+  width: 1
+  height: 1
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Connection:
+  from: 1001
+  to: 2001
+  density: 1
+ Connection:
+  from: 1001
+  to: 2002
+  density: 1
+ Connection:
+  from: 1001
+  to: 2003
+  density: 1
+ Connection:
+  from: 1001
+  to: 2004
+  density: 1
+ Connection:
+  from: 1001
+  to: 2005
+  density: 1
+ Connection:
+  from: 2001
+  to: 3001
+  density: 1
+ Connection:
+  from: 2002
+  to: 3002
+  density: 1
+ Connection:
+  from: 2003
+  to: 3003
+  density: 1
+ Connection:
+  from: 2004
+  to: 3004
+  density: 1
+ Connection:
+  from: 2005
+  to: 3005
+  density: 1
+ Connection:
+  from: 3001
+  to: 4001
+  density: 1
+ Connection:
+  from: 3001
+  to: 4002
+  density: 1
+ Connection:
+  from: 3001
+  to: 4003
+  density: 1
+ Connection:
+  from: 3001
+  to: 4004
+  density: 1
+ Connection:
+  from: 3001
+  to: 4005
+  density: 1
+ Connection:
+  from: 3001
+  to: 4006
+  density: 1
+ Connection:
+  from: 3001
+  to: 4007
+  density: 1
+ Connection:
+  from: 3002
+  to: 4001
+  density: 1
+ Connection:
+  from: 3002
+  to: 4002
+  density: 1
+ Connection:
+  from: 3002
+  to: 4003
+  density: 1
+ Connection:
+  from: 3002
+  to: 4004
+  density: 1
+ Connection:
+  from: 3002
+  to: 4005
+  density: 1
+ Connection:
+  from: 3002
+  to: 4006
+  density: 1
+ Connection:
+  from: 3002
+  to: 4007
+  density: 1
+ Connection:
+  from: 3003
+  to: 4001
+  density: 1
+ Connection:
+  from: 3003
+  to: 4002
+  density: 1
+ Connection:
+  from: 3003
+  to: 4003
+  density: 1
+ Connection:
+  from: 3003
+  to: 4004
+  density: 1
+ Connection:
+  from: 3003
+  to: 4005
+  density: 1
+ Connection:
+  from: 3003
+  to: 4006
+  density: 1
+ Connection:
+  from: 3003
+  to: 4007
+  density: 1
+ Connection:
+  from: 3004
+  to: 4001
+  density: 1
+ Connection:
+  from: 3004
+  to: 4002
+  density: 1
+ Connection:
+  from: 3004
+  to: 4003
+  density: 1
+ Connection:
+  from: 3004
+  to: 4004
+  density: 1
+ Connection:
+  from: 3004
+  to: 4005
+  density: 1
+ Connection:
+  from: 3004
+  to: 4006
+  density: 1
+ Connection:
+  from: 3004
+  to: 4007
+  density: 1
+ Connection:
+  from: 3005
+  to: 4001
+  density: 1
+ Connection:
+  from: 3005
+  to: 4002
+  density: 1
+ Connection:
+  from: 3005
+  to: 4003
+  density: 1
+ Connection:
+  from: 3005
+  to: 4004
+  density: 1
+ Connection:
+  from: 3005
+  to: 4005
+  density: 1
+ Connection:
+  from: 3005
+  to: 4006
+  density: 1
+ Connection:
+  from: 3005
+  to: 4007
+  density: 1
+ Connection:
+  from: 4001
+  to: 5001
+  density: 1
+ Connection:
+  from: 4002
+  to: 5002
+  density: 1
+ Connection:
+  from: 4003
+  to: 5003
+  density: 1
+ Connection:
+  from: 4004
+  to: 5004
+  density: 1
+ Connection:
+  from: 4005
+  to: 5005
+  density: 1
+ Connection:
+  from: 4006
+  to: 5006
+  density: 1
+ Connection:
+  from: 4007
+  to: 5007
+  density: 1
+ Connection:
+  from: 5001
+  to: 6001
+  density: 1
+ Connection:
+  from: 5002
+  to: 6001
+  density: 1
+ Connection:
+  from: 5003
+  to: 6001
+  density: 1
+ Connection:
+  from: 5004
+  to: 6001
+  density: 1
+ Connection:
+  from: 5005
+  to: 6001
+  density: 1
+ Connection:
+  from: 5006
+  to: 6001
+  density: 1
+ Connection:
+  from: 5007
+  to: 6001
+  density: 1
+ Connection:
+  from: 5001
+  to: 6002
+  density: 1
+ Connection:
+  from: 5002
+  to: 6002
+  density: 1
+ Connection:
+  from: 5003
+  to: 6002
+  density: 1
+ Connection:
+  from: 5004
+  to: 6002
+  density: 1
+ Connection:
+  from: 5005
+  to: 6002
+  density: 1
+ Connection:
+  from: 5006
+  to: 6002
+  density: 1
+ Connection:
+  from: 5007
+  to: 6002
+  density: 1
+ Connection:
+  from: 5001
+  to: 6003
+  density: 1
+ Connection:
+  from: 5002
+  to: 6003
+  density: 1
+ Connection:
+  from: 5003
+  to: 6003
+  density: 1
+ Connection:
+  from: 5004
+  to: 6003
+  density: 1
+ Connection:
+  from: 5005
+  to: 6003
+  density: 1
+ Connection:
+  from: 5006
+  to: 6003
+  density: 1
+ Connection:
+  from: 5007
+  to: 6003
+  density: 1
+ Connection:
+  from: 5001
+  to: 6004
+  density: 1
+ Connection:
+  from: 5002
+  to: 6004
+  density: 1
+ Connection:
+  from: 5003
+  to: 6004
+  density: 1
+ Connection:
+  from: 5004
+  to: 6004
+  density: 1
+ Connection:
+  from: 5005
+  to: 6004
+  density: 1
+ Connection:
+  from: 5006
+  to: 6004
+  density: 1
+ Connection:
+  from: 5007
+  to: 6004
+  density: 1
+ Connection:
+  from: 5001
+  to: 6005
+  density: 1
+ Connection:
+  from: 5002
+  to: 6005
+  density: 1
+ Connection:
+  from: 5003
+  to: 6005
+  density: 1
+ Connection:
+  from: 5004
+  to: 6005
+  density: 1
+ Connection:
+  from: 5005
+  to: 6005
+  density: 1
+ Connection:
+  from: 5006
+  to: 6005
+  density: 1
+ Connection:
+  from: 5007
+  to: 6005
+  density: 1
+WeightRandomization:
+ min: -0.1
+ max: 0.1
+seed: 42
+LMS:
+ learning_rate: 0.0005
+ annealing_tsc: 50
+ epochs: 100
+Faces:
+ faces count: 400
+ random_seed: 0
+ train_percent: 60
+ report_frequency: 1
+ stop_error: 5
+Reading images from disk...
+Read 400 images
+Cache layers[7] : 8464 8000 2000 700 175 5 0
+Prepared 50 images
+Train/test: 30/20
+Training for 100 epochs
+epoch=1 net=0 train_err=7.93487 test_err=7.37471
+epoch=2 net=0 train_err=6.65293 test_err=6.02595
+epoch=3 net=0 train_err=5.46128 test_err=5.63292
+epoch=4 net=0 train_err=5.15411 test_err=5.62244
+epoch=5 net=0 train_err=5.09541 test_err=5.70151
+epoch=6 net=0 train_err=5.10177 test_err=5.68695
+epoch=7 net=0 train_err=5.09152 test_err=5.74091
+epoch=8 net=0 train_err=5.07751 test_err=5.73308
+epoch=9 net=0 train_err=5.07204 test_err=5.7992
+epoch=10 net=0 train_err=5.07286 test_err=5.79902
+epoch=11 net=0 train_err=5.06044 test_err=5.78403
+epoch=12 net=0 train_err=5.07475 test_err=5.75953
+epoch=13 net=0 train_err=5.06339 test_err=5.8294
+epoch=14 net=0 train_err=5.05922 test_err=5.78953
+epoch=15 net=0 train_err=5.04929 test_err=5.83168
+epoch=16 net=0 train_err=5.04553 test_err=5.79938
+epoch=17 net=0 train_err=5.03585 test_err=5.80394
+epoch=18 net=0 train_err=5.02723 test_err=5.81212
+epoch=19 net=0 train_err=5.02107 test_err=5.83834
+epoch=20 net=0 train_err=5.00747 test_err=5.8031
+epoch=21 net=0 train_err=4.9935 test_err=5.79093
+epoch=22 net=0 train_err=4.95076 test_err=5.7794
+epoch=23 net=0 train_err=4.90441 test_err=5.75972
+epoch=24 net=0 train_err=4.83443 test_err=5.72082
+epoch=25 net=0 train_err=4.7032 test_err=5.60092
+epoch=26 net=0 train_err=4.49277 test_err=5.47657
+epoch=27 net=0 train_err=4.15664 test_err=5.18906
+epoch=28 net=0 train_err=3.75558 test_err=4.96109
+Detailed test results
+
+Man:    3
+Position:       9
+Error:  5.87497
+1:      -1.8 -1.45216 -0.347841
+2:      -1.8 -1.14139 -0.658607
+3:      1.8 -1.28112 3.08112
+4:      -1.8 -0.725529 -1.07447
+5:      -1.8 -1.06014 -0.739858
+
+
+Man:    3
+Position:       9
+Error:  5.87497
+1:      -1.8 -1.45216 -0.347841
+2:      -1.8 -1.14139 -0.658607
+3:      1.8 -1.28112 3.08112
+4:      -1.8 -0.725529 -1.07447
+5:      -1.8 -1.06014 -0.739858
+
+
+Man:    4
+Position:       5
+Error:  1.99482
+1:      -1.8 -1.43648 -0.363523
+2:      -1.8 -0.914947 -0.885053
+3:      -1.8 -1.19672 -0.603284
+4:      1.8 0.204399 1.5956
+5:      -1.8 -1.39468 -0.405322
+
+
+Man:    4
+Position:       10
+Error:  2.01807
+1:      -1.8 -1.38838 -0.411622
+2:      -1.8 -0.788976 -1.01102
+3:      -1.8 -1.06038 -0.739625
+4:      1.8 0.355599 1.4444
+5:      -1.8 -1.34043 -0.459569
+
+
+Man:    5
+Position:       8
+Error:  1.10754
+1:      -1.8 -1.64184 -0.158159
+2:      -1.8 -0.59072 -1.20928
+3:      -1.8 -1.55732 -0.24268
+4:      -1.8 -1.54404 -0.25596
+5:      1.8 1.02327 0.776728
+
+
+Man:    4
+Position:       4
+Error:  2.51188
+1:      -1.8 -1.47085 -0.329149
+2:      -1.8 -1.04485 -0.755153
+3:      -1.8 -1.2639 -0.536105
+4:      1.8 -0.156231 1.95623
+5:      -1.8 -1.31946 -0.480535
+
+
+Man:    4
+Position:       10
+Error:  2.01807
+1:      -1.8 -1.38838 -0.411622
+2:      -1.8 -0.788976 -1.01102
+3:      -1.8 -1.06038 -0.739625
+4:      1.8 0.355599 1.4444
+5:      -1.8 -1.34043 -0.459569
+
+
+Man:    3
+Position:       2
+Error:  5.90142
+1:      -1.8 -1.48507 -0.314929
+2:      -1.8 -1.3396 -0.460396
+3:      1.8 -1.24957 3.04957
+4:      -1.8 -0.423173 -1.37683
+5:      -1.8 -1.25579 -0.544206
+
+
+Man:    3
+Position:       8
+Error:  6.18377
+1:      -1.8 -1.43812 -0.361878
+2:      -1.8 -1.25322 -0.546783
+3:      1.8 -1.28474 3.08474
+4:      -1.8 -1.09139 -0.70861
+5:      -1.8 -0.414407 -1.38559
+
+
+Man:    1
+Position:       1
+Error:  6.47402
+1:      1.8 -1.38518 3.18518
+2:      -1.8 -0.96843 -0.83157
+3:      -1.8 -1.23332 -0.56668
+4:      -1.8 -0.861541 -0.938459
+5:      -1.8 -0.846405 -0.953595
+
+
+Man:    1
+Position:       6
+Error:  5.8841
+1:      1.8 -1.18428 2.98428
+2:      -1.8 -0.935062 -0.864938
+3:      -1.8 -1.17478 -0.625224
+4:      -1.8 -0.792788 -1.00721
+5:      -1.8 -0.958125 -0.841875
+
+
+Man:    4
+Position:       5
+Error:  1.99482
+1:      -1.8 -1.43648 -0.363523
+2:      -1.8 -0.914947 -0.885053
+3:      -1.8 -1.19672 -0.603284
+4:      1.8 0.204399 1.5956
+5:      -1.8 -1.39468 -0.405322
+
+
+Man:    2
+Position:       10
+Error:  4.75924
+1:      -1.8 -1.58792 -0.212076
+2:      1.8 -0.903071 2.70307
+3:      -1.8 -1.41466 -0.385335
+4:      -1.8 -0.906138 -0.893862
+5:      -1.8 -0.695717 -1.10428
+
+
+Man:    1
+Position:       5
+Error:  6.12149
+1:      1.8 -1.1276 2.9276
+2:      -1.8 -0.572555 -1.22745
+3:      -1.8 -1.22939 -0.570609
+4:      -1.8 -0.469699 -1.3303
+5:      -1.8 -1.53496 -0.265044
+
+
+Man:    1
+Position:       4
+Error:  5.75464
+1:      1.8 -1.39296 3.19296
+2:      -1.8 -1.15043 -0.649571
+3:      -1.8 -1.37757 -0.42243
+4:      -1.8 -1.14473 -0.655275
+5:      -1.8 -1.26664 -0.533363
+
+
+Man:    2
+Position:       9
+Error:  4.44904
+1:      -1.8 -1.21889 -0.581106
+2:      1.8 -0.524593 2.32459
+3:      -1.8 -1.19008 -0.609915
+4:      -1.8 -0.314679 -1.48532
+5:      -1.8 -1.03941 -0.760588
+
+
+Man:    4
+Position:       9
+Error:  1.91467
+1:      -1.8 -1.55411 -0.24589
+2:      -1.8 -1.0009 -0.799096
+3:      -1.8 -1.32975 -0.47025
+4:      1.8 0.180962 1.61904
+5:      -1.8 -1.26344 -0.536563
+
+
+Man:    3
+Position:       4
+Error:  5.76357
+1:      -1.8 -1.38814 -0.41186
+2:      -1.8 -1.40213 -0.397869
+3:      1.8 -1.27985 3.07985
+4:      -1.8 -0.533042 -1.26696
+5:      -1.8 -1.47056 -0.329439
+
+
+Man:    3
+Position:       7
+Error:  5.8677
+1:      -1.8 -1.36029 -0.43971
+2:      -1.8 -1.27631 -0.523694
+3:      1.8 -1.19339 2.99339
+4:      -1.8 -0.911809 -0.888191
+5:      -1.8 -0.567714 -1.23229
+
+
+Man:    5
+Position:       4
+Error:  1.42444
+1:      -1.8 -1.57731 -0.222688
+2:      -1.8 -1.50976 -0.290235
+3:      -1.8 -1.42713 -0.372866
+4:      -1.8 -1.26722 -0.532784
+5:      1.8 0.286011 1.51399
+
+16:37 booble@big ~/pann/trunk/src/Apps/c3nn $
+16:41 booble@big ~/pann/trunk/src/Apps/c3nn $
+16:41 booble@big ~/pann/trunk/src/Apps/c3nn $ ./c3nn config.xml
+Reading metadata from /home/booble/faces_db/orl_92x92/metadata.xml
+path_base: /home/booble/faces_db/orl_92x92/
+Net:
+ seed:0
+ threads: 10
+ Plane:
+  id: 1001
+  width: 92
+  height: 92
+  window_width: 5
+  window_height: 5
+  is_conv: 1
+ Plane:
+  id: 2001
+  width: 40
+  height: 40
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 2002
+  width: 40
+  height: 40
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 2003
+  width: 40
+  height: 40
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 2004
+  width: 40
+  height: 40
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 2005
+  width: 40
+  height: 40
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 3001
+  width: 20
+  height: 20
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 3002
+  width: 20
+  height: 20
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 3003
+  width: 20
+  height: 20
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 3004
+  width: 20
+  height: 20
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 3005
+  width: 20
+  height: 20
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 4001
+  width: 10
+  height: 10
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 4002
+  width: 10
+  height: 10
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 4003
+  width: 10
+  height: 10
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 4004
+  width: 10
+  height: 10
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 4005
+  width: 10
+  height: 10
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 4006
+  width: 10
+  height: 10
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 4007
+  width: 10
+  height: 10
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 5001
+  width: 5
+  height: 5
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 5002
+  width: 5
+  height: 5
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 5003
+  width: 5
+  height: 5
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 5004
+  width: 5
+  height: 5
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 5005
+  width: 5
+  height: 5
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 5006
+  width: 5
+  height: 5
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 5007
+  width: 5
+  height: 5
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 6001
+  width: 1
+  height: 1
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 6002
+  width: 1
+  height: 1
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 6003
+  width: 1
+  height: 1
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 6004
+  width: 1
+  height: 1
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 6005
+  width: 1
+  height: 1
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Connection:
+  from: 1001
+  to: 2001
+  density: 1
+ Connection:
+  from: 1001
+  to: 2002
+  density: 1
+ Connection:
+  from: 1001
+  to: 2003
+  density: 1
+ Connection:
+  from: 1001
+  to: 2004
+  density: 1
+ Connection:
+  from: 1001
+  to: 2005
+  density: 1
+ Connection:
+  from: 2001
+  to: 3001
+  density: 1
+ Connection:
+  from: 2002
+  to: 3002
+  density: 1
+ Connection:
+  from: 2003
+  to: 3003
+  density: 1
+ Connection:
+  from: 2004
+  to: 3004
+  density: 1
+ Connection:
+  from: 2005
+  to: 3005
+  density: 1
+ Connection:
+  from: 3001
+  to: 4001
+  density: 1
+ Connection:
+  from: 3001
+  to: 4002
+  density: 1
+ Connection:
+  from: 3001
+  to: 4003
+  density: 1
+ Connection:
+  from: 3001
+  to: 4004
+  density: 1
+ Connection:
+  from: 3001
+  to: 4005
+  density: 1
+ Connection:
+  from: 3001
+  to: 4006
+  density: 1
+ Connection:
+  from: 3001
+  to: 4007
+  density: 1
+ Connection:
+  from: 3002
+  to: 4001
+  density: 1
+ Connection:
+  from: 3002
+  to: 4002
+  density: 1
+ Connection:
+  from: 3002
+  to: 4003
+  density: 1
+ Connection:
+  from: 3002
+  to: 4004
+  density: 1
+ Connection:
+  from: 3002
+  to: 4005
+  density: 1
+ Connection:
+  from: 3002
+  to: 4006
+  density: 1
+ Connection:
+  from: 3002
+  to: 4007
+  density: 1
+ Connection:
+  from: 3003
+  to: 4001
+  density: 1
+ Connection:
+  from: 3003
+  to: 4002
+  density: 1
+ Connection:
+  from: 3003
+  to: 4003
+  density: 1
+ Connection:
+  from: 3003
+  to: 4004
+  density: 1
+ Connection:
+  from: 3003
+  to: 4005
+  density: 1
+ Connection:
+  from: 3003
+  to: 4006
+  density: 1
+ Connection:
+  from: 3003
+  to: 4007
+  density: 1
+ Connection:
+  from: 3004
+  to: 4001
+  density: 1
+ Connection:
+  from: 3004
+  to: 4002
+  density: 1
+ Connection:
+  from: 3004
+  to: 4003
+  density: 1
+ Connection:
+  from: 3004
+  to: 4004
+  density: 1
+ Connection:
+  from: 3004
+  to: 4005
+  density: 1
+ Connection:
+  from: 3004
+  to: 4006
+  density: 1
+ Connection:
+  from: 3004
+  to: 4007
+  density: 1
+ Connection:
+  from: 3005
+  to: 4001
+  density: 1
+ Connection:
+  from: 3005
+  to: 4002
+  density: 1
+ Connection:
+  from: 3005
+  to: 4003
+  density: 1
+ Connection:
+  from: 3005
+  to: 4004
+  density: 1
+ Connection:
+  from: 3005
+  to: 4005
+  density: 1
+ Connection:
+  from: 3005
+  to: 4006
+  density: 1
+ Connection:
+  from: 3005
+  to: 4007
+  density: 1
+ Connection:
+  from: 4001
+  to: 5001
+  density: 1
+ Connection:
+  from: 4002
+  to: 5002
+  density: 1
+ Connection:
+  from: 4003
+  to: 5003
+  density: 1
+ Connection:
+  from: 4004
+  to: 5004
+  density: 1
+ Connection:
+  from: 4005
+  to: 5005
+  density: 1
+ Connection:
+  from: 4006
+  to: 5006
+  density: 1
+ Connection:
+  from: 4007
+  to: 5007
+  density: 1
+ Connection:
+  from: 5001
+  to: 6001
+  density: 1
+ Connection:
+  from: 5002
+  to: 6001
+  density: 1
+ Connection:
+  from: 5003
+  to: 6001
+  density: 1
+ Connection:
+  from: 5004
+  to: 6001
+  density: 1
+ Connection:
+  from: 5005
+  to: 6001
+  density: 1
+ Connection:
+  from: 5006
+  to: 6001
+  density: 1
+ Connection:
+  from: 5007
+  to: 6001
+  density: 1
+ Connection:
+  from: 5001
+  to: 6002
+  density: 1
+ Connection:
+  from: 5002
+  to: 6002
+  density: 1
+ Connection:
+  from: 5003
+  to: 6002
+  density: 1
+ Connection:
+  from: 5004
+  to: 6002
+  density: 1
+ Connection:
+  from: 5005
+  to: 6002
+  density: 1
+ Connection:
+  from: 5006
+  to: 6002
+  density: 1
+ Connection:
+  from: 5007
+  to: 6002
+  density: 1
+ Connection:
+  from: 5001
+  to: 6003
+  density: 1
+ Connection:
+  from: 5002
+  to: 6003
+  density: 1
+ Connection:
+  from: 5003
+  to: 6003
+  density: 1
+ Connection:
+  from: 5004
+  to: 6003
+  density: 1
+ Connection:
+  from: 5005
+  to: 6003
+  density: 1
+ Connection:
+  from: 5006
+  to: 6003
+  density: 1
+ Connection:
+  from: 5007
+  to: 6003
+  density: 1
+ Connection:
+  from: 5001
+  to: 6004
+  density: 1
+ Connection:
+  from: 5002
+  to: 6004
+  density: 1
+ Connection:
+  from: 5003
+  to: 6004
+  density: 1
+ Connection:
+  from: 5004
+  to: 6004
+  density: 1
+ Connection:
+  from: 5005
+  to: 6004
+  density: 1
+ Connection:
+  from: 5006
+  to: 6004
+  density: 1
+ Connection:
+  from: 5007
+  to: 6004
+  density: 1
+ Connection:
+  from: 5001
+  to: 6005
+  density: 1
+ Connection:
+  from: 5002
+  to: 6005
+  density: 1
+ Connection:
+  from: 5003
+  to: 6005
+  density: 1
+ Connection:
+  from: 5004
+  to: 6005
+  density: 1
+ Connection:
+  from: 5005
+  to: 6005
+  density: 1
+ Connection:
+  from: 5006
+  to: 6005
+  density: 1
+ Connection:
+  from: 5007
+  to: 6005
+  density: 1
+WeightRandomization:
+ min: -0.1
+ max: 0.1
+seed: 42
+LMS:
+ learning_rate: 0.001
+ annealing_tsc: 50
+ epochs: 100
+Faces:
+ faces count: 400
+ random_seed: 0
+ train_percent: 60
+ report_frequency: 1
+ stop_error: 4
+Reading images from disk...
+Read 400 images
+Cache layers[7] : 8464 8000 2000 700 175 5 0
+Prepared 50 images
+Train/test: 30/20
+Training for 100 epochs
+epoch=1 net=0 train_err=7.07518 test_err=6.39435
+epoch=2 net=0 train_err=5.30683 test_err=5.70332
+epoch=3 net=0 train_err=5.1682 test_err=5.8668
+epoch=4 net=0 train_err=5.13313 test_err=5.81699
+epoch=5 net=0 train_err=5.06204 test_err=5.94786
+epoch=6 net=0 train_err=5.02516 test_err=5.69594
+epoch=7 net=0 train_err=4.85399 test_err=5.68211
+epoch=8 net=0 train_err=4.38222 test_err=5.40795
+epoch=9 net=0 train_err=3.74871 test_err=5.3509
+epoch=10 net=0 train_err=2.89778 test_err=5.58857
+epoch=11 net=0 train_err=2.48099 test_err=5.27164
+epoch=12 net=0 train_err=1.9686 test_err=4.55942
+epoch=13 net=0 train_err=1.74872 test_err=5.52594
+epoch=14 net=0 train_err=1.76889 test_err=5.42581
+epoch=15 net=0 train_err=1.47498 test_err=5.00744
+epoch=16 net=0 train_err=1.35264 test_err=5.38421
+epoch=17 net=0 train_err=1.32527 test_err=5.13012
+epoch=18 net=0 train_err=1.13665 test_err=5.30441
+epoch=19 net=0 train_err=1.22753 test_err=5.18962
+epoch=20 net=0 train_err=1.12409 test_err=5.49734
+epoch=21 net=0 train_err=1.13856 test_err=5.58983
+epoch=22 net=0 train_err=1.18549 test_err=4.98297
+epoch=23 net=0 train_err=1.33232 test_err=5.57847
+epoch=24 net=0 train_err=1.0624 test_err=5.47888
+epoch=25 net=0 train_err=1.05944 test_err=5.50379
+epoch=26 net=0 train_err=1.06539 test_err=5.42706
+epoch=27 net=0 train_err=1.05423 test_err=5.19703
+epoch=28 net=0 train_err=1.05604 test_err=4.88837
+epoch=29 net=0 train_err=1.35871 test_err=5.22132
+epoch=30 net=0 train_err=1.20218 test_err=5.30042
+epoch=31 net=0 train_err=1.11278 test_err=5.48715
+epoch=32 net=0 train_err=1.03372 test_err=5.41216
+epoch=33 net=0 train_err=1.00618 test_err=5.3402
+epoch=34 net=0 train_err=1.00467 test_err=5.40258
+epoch=35 net=0 train_err=1.00024 test_err=5.41915
+epoch=36 net=0 train_err=0.99127 test_err=4.96691
+epoch=37 net=0 train_err=0.893091 test_err=5.35732
+epoch=38 net=0 train_err=0.975668 test_err=4.9536
+epoch=39 net=0 train_err=0.902883 test_err=5.33747
+epoch=40 net=0 train_err=1.03018 test_err=5.45704
+epoch=41 net=0 train_err=0.963678 test_err=4.80263
+epoch=42 net=0 train_err=0.884447 test_err=5.12661
+epoch=43 net=0 train_err=0.866138 test_err=5.08131
+epoch=44 net=0 train_err=0.860307 test_err=5.16949
+epoch=45 net=0 train_err=0.872313 test_err=4.94569
+epoch=46 net=0 train_err=0.859096 test_err=5.04626
+epoch=47 net=0 train_err=0.849726 test_err=5.29978
+epoch=48 net=0 train_err=0.811584 test_err=4.95672
+epoch=49 net=0 train_err=0.912358 test_err=5.1015
+epoch=50 net=0 train_err=0.706027 test_err=5.23671
+epoch=51 net=0 train_err=0.656895 test_err=5.1523
+epoch=52 net=0 train_err=0.663152 test_err=4.88758
+epoch=53 net=0 train_err=0.582934 test_err=4.99935
+epoch=54 net=0 train_err=0.620731 test_err=4.99871
+epoch=55 net=0 train_err=0.49198 test_err=4.78535
+epoch=56 net=0 train_err=0.541788 test_err=4.84389
+epoch=57 net=0 train_err=0.478399 test_err=4.76912
+epoch=58 net=0 train_err=0.484373 test_err=4.76028
+epoch=59 net=0 train_err=0.468601 test_err=4.78537
+epoch=60 net=0 train_err=0.467374 test_err=4.69518
+epoch=61 net=0 train_err=0.466267 test_err=4.72549
+epoch=62 net=0 train_err=0.46075 test_err=4.7326
+epoch=63 net=0 train_err=0.458991 test_err=4.73135
+epoch=64 net=0 train_err=0.457771 test_err=4.71167
+epoch=65 net=0 train_err=0.454837 test_err=4.71483
+epoch=66 net=0 train_err=0.454198 test_err=4.70821
+epoch=67 net=0 train_err=0.45399 test_err=4.7035
+epoch=68 net=0 train_err=0.452352 test_err=4.71739
+epoch=69 net=0 train_err=0.451303 test_err=4.70895
+epoch=70 net=0 train_err=0.450839 test_err=4.71583
+epoch=71 net=0 train_err=0.449777 test_err=4.69482
+epoch=72 net=0 train_err=0.449723 test_err=4.69466
+epoch=73 net=0 train_err=0.448824 test_err=4.69533
+epoch=74 net=0 train_err=0.448111 test_err=4.69606
+epoch=75 net=0 train_err=0.447855 test_err=4.70167
+epoch=76 net=0 train_err=0.447477 test_err=4.68612
+epoch=77 net=0 train_err=0.446827 test_err=4.70464
+epoch=78 net=0 train_err=0.446573 test_err=4.6965
+epoch=79 net=0 train_err=0.446119 test_err=4.69927
+epoch=80 net=0 train_err=0.445768 test_err=4.69959
+epoch=81 net=0 train_err=0.445462 test_err=4.70466
+epoch=82 net=0 train_err=0.445053 test_err=4.70265
+epoch=83 net=0 train_err=0.444813 test_err=4.70545
+epoch=84 net=0 train_err=0.444533 test_err=4.70221
+epoch=85 net=0 train_err=0.444259 test_err=4.70135
+epoch=86 net=0 train_err=0.443971 test_err=4.70353
+epoch=87 net=0 train_err=0.443629 test_err=4.70559
+epoch=88 net=0 train_err=0.443454 test_err=4.71111
+epoch=89 net=0 train_err=0.443294 test_err=4.71653
+epoch=90 net=0 train_err=0.443074 test_err=4.70922
+epoch=91 net=0 train_err=0.442804 test_err=4.69776
+epoch=92 net=0 train_err=0.442616 test_err=4.70528
+epoch=93 net=0 train_err=0.442444 test_err=4.70513
+epoch=94 net=0 train_err=0.442234 test_err=4.71042
+epoch=95 net=0 train_err=0.442063 test_err=4.70731
+epoch=96 net=0 train_err=0.441932 test_err=4.70442
+epoch=97 net=0 train_err=0.441714 test_err=4.70844
+epoch=98 net=0 train_err=0.441635 test_err=4.70724
+epoch=99 net=0 train_err=0.441398 test_err=4.70789
+epoch=100 net=0 train_err=0.441315 test_err=4.70901
+Detailed test results
+
+Man:    1
+Position:       1
+Error:  11.4992
+1:      1.8 -1.71485 3.51485
+2:      -1.8 -1.71782 -0.082183
+3:      -1.8 -1.68594 -0.11406
+4:      -1.8 1.45847 -3.25847
+5:      -1.8 -1.71789 -0.0821102
+
+
+Man:    3
+Position:       1
+Error:  4.8051
+1:      -1.8 -1.69889 -0.101113
+2:      -1.8 -1.71634 -0.0836617
+3:      1.8 0.0266336 1.77337
+4:      -1.8 0.737987 -2.53799
+5:      -1.8 -1.7177 -0.0823047
+
+
+Man:    2
+Position:       10
+Error:  0.0207969
+1:      -1.8 -1.71789 -0.0821123
+2:      1.8 1.68918 0.110823
+3:      -1.8 -1.71788 -0.0821174
+4:      -1.8 -1.7179 -0.0821001
+5:      -1.8 -1.70468 -0.0953203
+
+
+Man:    1
+Position:       4
+Error:  1.69814
+1:      1.8 0.185484 1.61452
+2:      -1.8 -1.7179 -0.0821006
+3:      -1.8 -1.01457 -0.785425
+4:      -1.8 -1.70829 -0.09171
+5:      -1.8 -1.40303 -0.396967
+
+
+Man:    5
+Position:       4
+Error:  0.0171308
+1:      -1.8 -1.7179 -0.082104
+2:      -1.8 -1.71722 -0.0827779
+3:      -1.8 -1.71529 -0.0847147
+4:      -1.8 -1.7179 -0.0821023
+5:      1.8 1.71784 0.0821637
+
+
+Man:    3
+Position:       2
+Error:  0.0226015
+1:      -1.8 -1.70787 -0.0921264
+2:      -1.8 -1.71778 -0.0822241
+3:      1.8 1.71124 0.0887607
+4:      -1.8 -1.67639 -0.123607
+5:      -1.8 -1.71755 -0.0824481
+
+
+Man:    4
+Position:       5
+Error:  0.0267975
+1:      -1.8 -1.67559 -0.124406
+2:      -1.8 -1.71745 -0.0825496
+3:      -1.8 -1.70282 -0.0971833
+4:      1.8 1.67704 0.122957
+5:      -1.8 -1.7179 -0.0821026
+
+
+Man:    1
+Position:       1
+Error:  11.4992
+1:      1.8 -1.71485 3.51485
+2:      -1.8 -1.71782 -0.082183
+3:      -1.8 -1.68594 -0.11406
+4:      -1.8 1.45847 -3.25847
+5:      -1.8 -1.71789 -0.0821102
+
+
+Man:    3
+Position:       5
+Error:  11.4207
+1:      -1.8 -1.7179 -0.0821007
+2:      -1.8 -1.71331 -0.0866874
+3:      1.8 -1.71329 3.51329
+4:      -1.8 1.43666 -3.23666
+5:      -1.8 -1.71099 -0.0890134
+
+
+Man:    4
+Position:       1
+Error:  0.0199604
+1:      -1.8 -1.71529 -0.0847087
+2:      -1.8 -1.69307 -0.106929
+3:      -1.8 -1.71457 -0.0854334
+4:      1.8 1.71475 0.0852529
+5:      -1.8 -1.71787 -0.0821257
+
+
+Man:    1
+Position:       2
+Error:  12.3181
+1:      1.8 -1.7179 3.5179
+2:      -1.8 1.69751 -3.49751
+3:      -1.8 -1.71787 -0.0821344
+4:      -1.8 -1.67968 -0.120319
+5:      -1.8 -1.71789 -0.0821068
+
+
+Man:    5
+Position:       8
+Error:  0.0265001
+1:      -1.8 -1.70609 -0.0939074
+2:      -1.8 -1.71318 -0.0868246
+3:      -1.8 -1.67882 -0.121181
+4:      -1.8 -1.7179 -0.0821004
+5:      1.8 1.67664 0.123361
+
+
+Man:    3
+Position:       8
+Error:  0.0359068
+1:      -1.8 -1.71178 -0.088217
+2:      -1.8 -1.7179 -0.0821018
+3:      1.8 1.66168 0.138322
+4:      -1.8 -1.70922 -0.0907793
+5:      -1.8 -1.62704 -0.172964
+
+
+Man:    3
+Position:       9
+Error:  0.0520202
+1:      -1.8 -1.5774 -0.222603
+2:      -1.8 -1.71775 -0.082248
+3:      1.8 1.63455 0.165454
+4:      -1.8 -1.68417 -0.115835
+5:      -1.8 -1.71675 -0.0832541
+
+
+Man:    5
+Position:       2
+Error:  0.0172388
+1:      -1.8 -1.71767 -0.0823315
+2:      -1.8 -1.71785 -0.0821519
+3:      -1.8 -1.7179 -0.0821033
+4:      -1.8 -1.71601 -0.0839899
+5:      1.8 1.71541 0.0845866
+
+
+Man:    2
+Position:       4
+Error:  0.0195701
+1:      -1.8 -1.71789 -0.0821092
+2:      1.8 1.70885 0.0911457
+3:      -1.8 -1.71531 -0.0846914
+4:      -1.8 -1.69912 -0.100884
+5:      -1.8 -1.7179 -0.0821002
+
+
+Man:    5
+Position:       3
+Error:  0.0241025
+1:      -1.8 -1.66155 -0.138446
+2:      -1.8 -1.71734 -0.0826553
+3:      -1.8 -1.71788 -0.0821215
+4:      -1.8 -1.71783 -0.0821699
+5:      1.8 1.70667 0.0933272
+
+
+Man:    1
+Position:       5
+Error:  7.58069
+1:      1.8 -1.69176 3.49176
+2:      -1.8 -1.63257 -0.167427
+3:      -1.8 -1.57965 -0.220351
+4:      -1.8 -0.101283 -1.69872
+5:      -1.8 -1.7179 -0.0821001
+
+
+Man:    2
+Position:       4
+Error:  0.0195701
+1:      -1.8 -1.71789 -0.0821092
+2:      1.8 1.70885 0.0911457
+3:      -1.8 -1.71531 -0.0846914
+4:      -1.8 -1.69912 -0.100884
+5:      -1.8 -1.7179 -0.0821002
+
+
+Man:    1
+Position:       3
+Error:  6.21139
+1:      1.8 -1.71786 3.51786
+2:      -1.8 -1.67328 -0.12672
+3:      -1.8 -1.71776 -0.0822363
+4:      -1.8 -1.66621 -0.133786
+5:      -1.8 -1.7178 -0.0821993
+
+
+17:09 booble@big ~/pann/trunk/src/Apps/c3nn $ ./c3nn config.xml
+Reading metadata from /home/booble/faces_db/orl_92x92/metadata.xml
+path_base: /home/booble/faces_db/orl_92x92/
+START: Sat Aug 14 17:09:58 2010
+
+Net:
+ seed:0
+ threads: 10
+ Plane:
+  id: 1001
+  width: 92
+  height: 92
+  window_width: 5
+  window_height: 5
+  is_conv: 1
+ Plane:
+  id: 2001
+  width: 40
+  height: 40
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 2002
+  width: 40
+  height: 40
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 2003
+  width: 40
+  height: 40
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 2004
+  width: 40
+  height: 40
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 2005
+  width: 40
+  height: 40
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 3001
+  width: 20
+  height: 20
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 3002
+  width: 20
+  height: 20
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 3003
+  width: 20
+  height: 20
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 3004
+  width: 20
+  height: 20
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 3005
+  width: 20
+  height: 20
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 4001
+  width: 10
+  height: 10
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 4002
+  width: 10
+  height: 10
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 4003
+  width: 10
+  height: 10
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 4004
+  width: 10
+  height: 10
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 4005
+  width: 10
+  height: 10
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 4006
+  width: 10
+  height: 10
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 4007
+  width: 10
+  height: 10
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 5001
+  width: 5
+  height: 5
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 5002
+  width: 5
+  height: 5
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 5003
+  width: 5
+  height: 5
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 5004
+  width: 5
+  height: 5
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 5005
+  width: 5
+  height: 5
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 5006
+  width: 5
+  height: 5
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 5007
+  width: 5
+  height: 5
+  window_width: 2
+  window_height: 2
+  is_conv: 1
+ Plane:
+  id: 6001
+  width: 1
+  height: 1
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 6002
+  width: 1
+  height: 1
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Plane:
+  id: 6003
+  width: 1
+  height: 1
+  window_width: 5
+  window_height: 5
+  is_conv: 0
+ Connection:
+  from: 1001
+  to: 2001
+  density: 1
+ Connection:
+  from: 1001
+  to: 2002
+  density: 1
+ Connection:
+  from: 1001
+  to: 2003
+  density: 1
+ Connection:
+  from: 1001
+  to: 2004
+  density: 1
+ Connection:
+  from: 1001
+  to: 2005
+  density: 1
+ Connection:
+  from: 2001
+  to: 3001
+  density: 1
+ Connection:
+  from: 2002
+  to: 3002
+  density: 1
+ Connection:
+  from: 2003
+  to: 3003
+  density: 1
+ Connection:
+  from: 2004
+  to: 3004
+  density: 1
+ Connection:
+  from: 2005
+  to: 3005
+  density: 1
+ Connection:
+  from: 3001
+  to: 4001
+  density: 1
+ Connection:
+  from: 3001
+  to: 4002
+  density: 1
+ Connection:
+  from: 3001
+  to: 4003
+  density: 1
+ Connection:
+  from: 3001
+  to: 4004
+  density: 1
+ Connection:
+  from: 3001
+  to: 4005
+  density: 1
+ Connection:
+  from: 3001
+  to: 4006
+  density: 1
+ Connection:
+  from: 3001
+  to: 4007
+  density: 1
+ Connection:
+  from: 3002
+  to: 4001
+  density: 1
+ Connection:
+  from: 3002
+  to: 4002
+  density: 1
+ Connection:
+  from: 3002
+  to: 4003
+  density: 1
+ Connection:
+  from: 3002
+  to: 4004
+  density: 1
+ Connection:
+  from: 3002
+  to: 4005
+  density: 1
+ Connection:
+  from: 3002
+  to: 4006
+  density: 1
+ Connection:
+  from: 3002
+  to: 4007
+  density: 1
+ Connection:
+  from: 3003
+  to: 4001
+  density: 1
+ Connection:
+  from: 3003
+  to: 4002
+  density: 1
+ Connection:
+  from: 3003
+  to: 4003
+  density: 1
+ Connection:
+  from: 3003
+  to: 4004
+  density: 1
+ Connection:
+  from: 3003
+  to: 4005
+  density: 1
+ Connection:
+  from: 3003
+  to: 4006
+  density: 1
+ Connection:
+  from: 3003
+  to: 4007
+  density: 1
+ Connection:
+  from: 3004
+  to: 4001
+  density: 1
+ Connection:
+  from: 3004
+  to: 4002
+  density: 1
+ Connection:
+  from: 3004
+  to: 4003
+  density: 1
+ Connection:
+  from: 3004
+  to: 4004
+  density: 1
+ Connection:
+  from: 3004
+  to: 4005
+  density: 1
+ Connection:
+  from: 3004
+  to: 4006
+  density: 1
+ Connection:
+  from: 3004
+  to: 4007
+  density: 1
+ Connection:
+  from: 3005
+  to: 4001
+  density: 1
+ Connection:
+  from: 3005
+  to: 4002
+  density: 1
+ Connection:
+  from: 3005
+  to: 4003
+  density: 1
+ Connection:
+  from: 3005
+  to: 4004
+  density: 1
+ Connection:
+  from: 3005
+  to: 4005
+  density: 1
+ Connection:
+  from: 3005
+  to: 4006
+  density: 1
+ Connection:
+  from: 3005
+  to: 4007
+  density: 1
+ Connection:
+  from: 4001
+  to: 5001
+  density: 1
+ Connection:
+  from: 4002
+  to: 5002
+  density: 1
+ Connection:
+  from: 4003
+  to: 5003
+  density: 1
+ Connection:
+  from: 4004
+  to: 5004
+  density: 1
+ Connection:
+  from: 4005
+  to: 5005
+  density: 1
+ Connection:
+  from: 4006
+  to: 5006
+  density: 1
+ Connection:
+  from: 4007
+  to: 5007
+  density: 1
+ Connection:
+  from: 5001
+  to: 6001
+  density: 1
+ Connection:
+  from: 5002
+  to: 6001
+  density: 1
+ Connection:
+  from: 5003
+  to: 6001
+  density: 1
+ Connection:
+  from: 5004
+  to: 6001
+  density: 1
+ Connection:
+  from: 5005
+  to: 6001
+  density: 1
+ Connection:
+  from: 5006
+  to: 6001
+  density: 1
+ Connection:
+  from: 5007
+  to: 6001
+  density: 1
+ Connection:
+  from: 5001
+  to: 6002
+  density: 1
+ Connection:
+  from: 5002
+  to: 6002
+  density: 1
+ Connection:
+  from: 5003
+  to: 6002
+  density: 1
+ Connection:
+  from: 5004
+  to: 6002
+  density: 1
+ Connection:
+  from: 5005
+  to: 6002
+  density: 1
+ Connection:
+  from: 5006
+  to: 6002
+  density: 1
+ Connection:
+  from: 5007
+  to: 6002
+  density: 1
+ Connection:
+  from: 5001
+  to: 6003
+  density: 1
+ Connection:
+  from: 5002
+  to: 6003
+  density: 1
+ Connection:
+  from: 5003
+  to: 6003
+  density: 1
+ Connection:
+  from: 5004
+  to: 6003
+  density: 1
+ Connection:
+  from: 5005
+  to: 6003
+  density: 1
+ Connection:
+  from: 5006
+  to: 6003
+  density: 1
+ Connection:
+  from: 5007
+  to: 6003
+  density: 1
+WeightRandomization:
+ min: -0.1
+ max: 0.1
+seed: 42
+LMS:
+ learning_rate: 0.001
+ annealing_tsc: 50
+ epochs: 100
+Faces:
+ faces count: 400
+ random_seed: 0
+ train_percent: 60
+ report_frequency: 1
+ stop_error: 2
+Reading images from disk...
+Read 400 images
+Cache layers[7] : 8464 8000 2000 700 175 3 0
+Prepared 30 images
+Train/test: 18/12
+Training for 100 epochs
+epoch=1 net=0 train_err=4.71055 test_err=4.70736
+epoch=2 net=0 train_err=4.58169 test_err=4.60652
+epoch=3 net=0 train_err=4.46861 test_err=4.52207
+epoch=4 net=0 train_err=4.39296 test_err=4.46996
+epoch=5 net=0 train_err=4.34672 test_err=4.46695
+epoch=6 net=0 train_err=4.33233 test_err=4.45902
+epoch=7 net=0 train_err=4.33866 test_err=4.46066
+epoch=8 net=0 train_err=4.32239 test_err=4.46675
+epoch=9 net=0 train_err=4.33335 test_err=4.46388
+epoch=10 net=0 train_err=4.316 test_err=4.46713
+epoch=11 net=0 train_err=4.33302 test_err=4.46496
+epoch=12 net=0 train_err=4.30729 test_err=4.453
+epoch=13 net=0 train_err=4.30148 test_err=4.4598
+epoch=14 net=0 train_err=4.30652 test_err=4.46023
+epoch=15 net=0 train_err=4.2742 test_err=4.45173
+epoch=16 net=0 train_err=4.25722 test_err=4.4412
+epoch=17 net=0 train_err=4.23448 test_err=4.42156
+epoch=18 net=0 train_err=4.17841 test_err=4.42014
+epoch=19 net=0 train_err=4.11117 test_err=4.37216
+epoch=20 net=0 train_err=3.98051 test_err=4.26161
+epoch=21 net=0 train_err=3.71006 test_err=4.04015
+epoch=22 net=0 train_err=3.34634 test_err=3.56241
+epoch=23 net=0 train_err=2.74896 test_err=2.88915
+epoch=24 net=0 train_err=2.08496 test_err=1.97626
+Detailed test results
+
+Man:    2
+Position:       5
+Error:  1.31682
+1:      -1.8 -0.49869 -1.30131
+2:      1.8 0.965335 0.834665
+3:      -1.8 -1.30647 -0.49353
+
+
+Man:    2
+Position:       5
+Error:  1.31682
+1:      -1.8 -0.49869 -1.30131
+2:      1.8 0.965335 0.834665
+3:      -1.8 -1.30647 -0.49353
+
+
+Man:    1
+Position:       9
+Error:  3.76634
+1:      1.8 -0.680379 2.48038
+2:      -1.8 -1.23209 -0.567914
+3:      -1.8 -0.771471 -1.02853
+
+
+Man:    1
+Position:       6
+Error:  4.38382
+1:      1.8 -0.248264 2.04826
+2:      -1.8 -1.46798 -0.332021
+3:      -1.8 0.312349 -2.11235
+
+
+Man:    3
+Position:       10
+Error:  1.83451
+1:      -1.8 -0.586743 -1.21326
+2:      -1.8 -1.52747 -0.272526
+3:      1.8 0.343035 1.45697
+
+
+Man:    1
+Position:       3
+Error:  1.46575
+1:      1.8 0.230913 1.56909
+2:      -1.8 -1.56418 -0.235823
+3:      -1.8 -1.15669 -0.64331
+
+
+Man:    2
+Position:       10
+Error:  2.62625
+1:      -1.8 -0.679836 -1.12016
+2:      1.8 -0.0203551 1.82036
+3:      -1.8 -0.972934 -0.827066
+
+
+Man:    1
+Position:       1
+Error:  2.22707
+1:      1.8 -0.0496492 1.84965
+2:      -1.8 -1.50971 -0.290286
+3:      -1.8 -0.826007 -0.973993
+
+
+Man:    1
+Position:       9
+Error:  3.76634
+1:      1.8 -0.680379 2.48038
+2:      -1.8 -1.23209 -0.567914
+3:      -1.8 -0.771471 -1.02853
+
+
+Man:    3
+Position:       3
+Error:  0.896141
+1:      -1.8 -0.842362 -0.957638
+2:      -1.8 -1.4437 -0.356299
+3:      1.8 0.934979 0.865021
+
+
+Man:    2
+Position:       9
+Error:  2.13837
+1:      -1.8 -0.814901 -0.985099
+2:      1.8 0.408856 1.39114
+3:      -1.8 -0.629083 -1.17092
+
+
+Man:    3
+Position:       4
+Error:  0.480361
+1:      -1.8 -0.91947 -0.88053
+2:      -1.8 -1.65858 -0.141419
+3:      1.8 1.39332 0.406681
+
+
+Man:    2
+Position:       4
+Error:  0.994676
+1:      -1.8 -0.906199 -0.893801
+2:      1.8 0.99089 0.80911
+3:      -1.8 -1.06801 -0.731992
+
+
+Man:    1
+Position:       10
+Error:  4.11945
+1:      1.8 -0.813561 2.61356
+2:      -1.8 -1.40576 -0.39424
+3:      -1.8 -0.680726 -1.11927
+
+
+Man:    2
+Position:       9
+Error:  2.13837
+1:      -1.8 -0.814901 -0.985099
+2:      1.8 0.408856 1.39114
+3:      -1.8 -0.629083 -1.17092
+
+
+Man:    2
+Position:       4
+Error:  0.994676
+1:      -1.8 -0.906199 -0.893801
+2:      1.8 0.99089 0.80911
+3:      -1.8 -1.06801 -0.731992
+
+
+Man:    3
+Position:       7
+Error:  0.742577
+1:      -1.8 -0.944439 -0.855561
+2:      -1.8 -1.6156 -0.184403
+3:      1.8 0.951964 0.848036
+
+
+Man:    3
+Position:       8
+Error:  0.752998
+1:      -1.8 -1.13902 -0.660978
+2:      -1.8 -1.55946 -0.240544
+3:      1.8 0.794394 1.00561
+
+
+Man:    2
+Position:       2
+Error:  0.845394
+1:      -1.8 -0.987992 -0.812008
+2:      1.8 0.999398 0.800602
+3:      -1.8 -1.17513 -0.624875
+
+
+Man:    3
+Position:       5
+Error:  0.543646
+1:      -1.8 -0.849996 -0.950004
+2:      -1.8 -1.64836 -0.151637
+3:      1.8 1.39777 0.402231
+
+END: Sat Aug 14 17:11:20 2010
+
