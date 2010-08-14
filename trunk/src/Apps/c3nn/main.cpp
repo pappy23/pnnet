@@ -28,10 +28,20 @@ int main(int argc, char ** argv)
         return -1;
     }
 
+    cout<<"START: "<<cur_time()<<endl;
+
     cfg.print();
 
     vector<FaceT> orl = make_faces(cfg);
     vector<NetPtr> nets = make_nets(cfg);
+
+    BOOST_FOREACH(const NetPtr & pnet, nets) {
+        const NetCache & cache = pnet->get_cache();
+        cout<<"Cache layers["<<cache.layers.size()<<"] : ";
+        for(unsigned i = 0; i < cache.layers.size(); ++i)
+            cout<<cache.layers[i].size()<<" ";
+        cout<<endl;
+    }
 
     /*
     trace(nets[0]);
@@ -68,8 +78,12 @@ int main(int argc, char ** argv)
 
     //TODO: LMS!!
     cout<<"Training for "<<cfg.lms.epochs<<" epochs\n";
+    bool need_to_stop = false;
     for(unsigned i = 1; i <= cfg.lms.epochs; ++i)
     {
+        if(need_to_stop)
+            break;
+
         shuffle(train_data);
         unsigned net_no = 0;
         BOOST_FOREACH(const NetPtr & pnet, nets) {
@@ -79,7 +93,7 @@ int main(int argc, char ** argv)
             cout<<"epoch="<<i<<" net="<<net_no++<<" train_err="<<ErrorFunction::mse(train_data)<<
                 " test_err="<<test_err<<"\n";
             if(test_err < cfg.faces.stop_error)
-                break;
+                need_to_stop = true;
         }
     }
 
@@ -89,7 +103,7 @@ int main(int argc, char ** argv)
         do {
             //Select 20 images from ORL faces
             unsigned id = std::rand() % orl.size();
-            if(orl[id].man > cfg.faces.men || orl[id].position != 1)
+            if(orl[id].man > cfg.faces.men /*|| orl[id].position != 1 */)
                 continue;
 
             count++;
@@ -115,6 +129,8 @@ int main(int argc, char ** argv)
 
         //Storage::save<Storage::txt_out>(pnet, "Exp3.net");
     }
+
+    cout<<"END: "<<cur_time()<<endl;
 
     return 0;
 }; //main
