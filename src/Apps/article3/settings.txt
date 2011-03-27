@@ -1,8 +1,0 @@
-men=10
-epochs=20
-rate=0.1
-tsc=10
-l1=50
-l2=70
-l3=20
-density=0.4
