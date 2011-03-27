@@ -12,28 +12,27 @@ set(CMAKE_VERBOSE_MAKEFILE OFF)
 # OPTIONS
 
 option(ENABLE_MOO "Enables easter egg compilation" OFF)
-option(BUILD_PYTHON_BINDINGS "Compile Python bindings" OFF)
-option(BUILD_TESTS "Build rarely needed Unit-tests and other staff" OFF)
-option(BUILD_PANN_VIEWER "Build 3D topology viewer" OFF)
-option(BUILD_ARTICLE1_APPS "Build basic apps (learning and performance measurement)" OFF)
-option(BUILD_ARTICLE3_APPS "Build convolutional network app" OFF)
-option(BUILD_C3NN "Build c3nn" ON)
+#option(BUILD_TESTS "Build rarely needed Unit-tests and other staff" OFF)
+#option(BUILD_PANN_VIEWER "Build 3D topology viewer" OFF)
+#option(BUILD_ARTICLE1_APPS "Build basic apps (learning and performance measurement)" OFF)
+#option(BUILD_ARTICLE3_APPS "Build convolutional network app" OFF)
+#option(BUILD_C3NN "Build c3nn" ON)
 
 if(ENABLE_MOO)
     add_definitions(-DOPTION_ENABLE_MOO_DEFINED)
 endif()
 
-if(BUILD_PYTHON_BINDINGS)
-    add_definitions(-DOPTION_BUILD_PYTHON_BINDINGS_DEFINED)
-endif()
+#if(BUILD_PYTHON_BINDINGS)
+#    add_definitions(-DOPTION_BUILD_PYTHON_BINDINGS_DEFINED)
+#endif()
 
-if(BUILD_PANN_VIEWER)
-    set(QT_USE_QTOPENGL 1)
-    find_package(Qt4)
-    #    if(UNIX)
-    #        find_package(GLUT)
-    #    endif(UNIX)
-endif()
+#if(BUILD_PANN_VIEWER)
+#    set(QT_USE_QTOPENGL 1)
+#    find_package(Qt4)
+#    #    if(UNIX)
+#    #        find_package(GLUT)
+#    #    endif(UNIX)
+#endif()
 
 ############################################################################
 # COMPILERS STAFF
@@ -83,6 +82,7 @@ endif(WIN32)
 
 #set(Boost_USE_STATIC_LIBS OFF)
 find_package(Boost 1.35 REQUIRED COMPONENTS ${BOOST_MODULES})
+FIND_PACKAGE(XMLRPC REQUIRED abyss-server c++)
 
 #if(UNIX)
 #    set(Boost_LIBRARIES ${Boost_LIBRARIES} pthread)
@@ -97,6 +97,8 @@ find_package(Boost 1.35 REQUIRED COMPONENTS ${BOOST_MODULES})
 # pann
 
 #include_directories(pann pann-shit gnuplot-cpp ${Boost_INCLUDE_DIRS} ${PYTHON_INCLUDE_PATH})
-include_directories(pann pann-shit gnuplot-cpp rapidxml ${Boost_INCLUDE_DIRS})
-subdirs(pann pann-shit gnuplot-cpp Apps)
+#include_directories(pann pann-shit gnuplot-cpp rapidxml ${Boost_INCLUDE_DIRS})
+include_directories(pann ${Boost_INCLUDE_DIRS})
+#subdirs(pann pann-shit gnuplot-cpp Apps)
+subdirs(pann rpc)
  
