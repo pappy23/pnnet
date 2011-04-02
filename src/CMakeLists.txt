@@ -12,11 +12,12 @@ set(CMAKE_VERBOSE_MAKEFILE OFF)
 # OPTIONS
 
 option(ENABLE_MOO "Enables easter egg compilation" OFF)
-#option(BUILD_TESTS "Build rarely needed Unit-tests and other staff" OFF)
-#option(BUILD_PANN_VIEWER "Build 3D topology viewer" OFF)
-#option(BUILD_ARTICLE1_APPS "Build basic apps (learning and performance measurement)" OFF)
-#option(BUILD_ARTICLE3_APPS "Build convolutional network app" OFF)
-#option(BUILD_C3NN "Build c3nn" ON)
+option(BUILD_TESTS "Build rarely needed Unit-tests and other staff" OFF)
+option(BUILD_PANN_VIEWER "Build 3D topology viewer" OFF)
+option(BUILD_ARTICLE1_APPS "Build basic apps (learning and performance measurement)" OFF)
+option(BUILD_ARTICLE3_APPS "Build convolutional network app" OFF)
+option(BUILD_C3NN "Build c3nn" OFF)
+option(BUILD_HYBRID "Build hybrid cpp-python app" ON)
 
 if(ENABLE_MOO)
     add_definitions(-DOPTION_ENABLE_MOO_DEFINED)
@@ -97,8 +98,7 @@ FIND_PACKAGE(XMLRPC REQUIRED abyss-server c++)
 # pann
 
 #include_directories(pann pann-shit gnuplot-cpp ${Boost_INCLUDE_DIRS} ${PYTHON_INCLUDE_PATH})
-#include_directories(pann pann-shit gnuplot-cpp rapidxml ${Boost_INCLUDE_DIRS})
-include_directories(pann ${Boost_INCLUDE_DIRS})
+include_directories(pann pann-shit gnuplot-cpp rapidxml ${Boost_INCLUDE_DIRS})
 #subdirs(pann pann-shit gnuplot-cpp Apps)
-subdirs(pann rpc)
+subdirs(pann pann-shit Apps)
  

@@ -1,0 +1,7 @@
+<config>
+    <faces database="/home/booble/pann/trunk/src/Apps/hybrid/metadata.xml"/>
+    <rpc>
+        <port>8888</port>
+    </rpc>
+</config>
+
