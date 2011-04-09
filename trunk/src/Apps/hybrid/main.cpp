@@ -19,6 +19,7 @@ static xmlrpc_value * faces_get_count(  xmlrpc_env *   const envP,
                                         xmlrpc_value * const paramArrayP,
                                         void *         const serverInfo,
                                         void *         const channelInfo) {
+//                                        void *         const user_data) {
 
     //xmlrpc_int32 x, y, z;
 
@@ -54,7 +55,7 @@ int main(int argc, char ** argv)
 
     orl = make_faces(cfg);
 
-
+//New XML-RPC only
     struct xmlrpc_method_info3 const methodInfo = {
         /* .methodName     = */ "faces.get_count",
         /* .methodFunction = */ &faces_get_count,
@@ -68,6 +69,7 @@ int main(int argc, char ** argv)
     registryP = xmlrpc_registry_new(&env);
 
     xmlrpc_registry_add_method3(&env, registryP, &methodInfo);
+//    xmlrpc_registry_add_method(&env, registryP, NULL, "faces.get_conut", &faces_get_count, NULL);
 
     serverparm.config_file_name = NULL;
     serverparm.registryP        = registryP;
