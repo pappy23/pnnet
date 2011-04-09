@@ -1,0 +1,16 @@
+{% if all_logs %}
+<table border=1>
+    <tr>
+        <td>Time</td>
+        <td>Text</td>
+    </tr>
+    {% for r in all_logs %}
+    <tr>
+        <td>{{ r.time }}</td>
+        <td>{{ r.text }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>No log records are available.</p>
+{% endif %}

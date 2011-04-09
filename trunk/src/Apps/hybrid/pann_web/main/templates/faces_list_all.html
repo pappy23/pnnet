@@ -1,0 +1,20 @@
+{% if all_faces %}
+<table border=1>
+    <tr>
+        <td>ID</td>
+        <td>Man</td>
+        <td>Facial expression</td>
+        <td>Path</TD>
+    </tr>
+    {% for face in all_faces %}
+    <tr>
+        <td><a href="/faces/{{ face.id }}/">{{ face.id }}</a></td>
+        <td>{{ face.man }}</td>
+        <td>{{ face.position }}</td>
+        <td>{{ face.path }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>No faces are available.</p>
+{% endif %}
