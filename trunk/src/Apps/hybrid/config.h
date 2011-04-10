@@ -12,6 +12,7 @@ using namespace pann;
 typedef unsigned IdT;
 
 struct FaceConfigT {
+    unsigned id;
     string path;
     unsigned man;
     unsigned position;
@@ -38,13 +39,22 @@ struct ConfigT {
 };
 
 struct FaceT {
+    unsigned id;
     unsigned man;
     unsigned position;
     string path;
     Image * img;
 };
 
+struct DatasetT {
+    unsigned id;
+    string name;
+    vector<unsigned> face_ids;
+    TrainData td;
+};
+
 ConfigT configure(const char * filename);
-vector<FaceT> make_faces(ConfigT & cfg);
+map<unsigned, FaceT> make_faces(ConfigT & cfg);
+void make_datasets(map<unsigned, DatasetT> & result, ConfigT & cfg, map<unsigned, FaceT> & faces);
 
 #endif // CONFIG_H

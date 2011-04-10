@@ -13,27 +13,62 @@ using namespace pann;
 
 
 //All faces are stored here
-vector<FaceT> orl;
+map<unsigned, FaceT> faces;
+map<unsigned, DatasetT> datasets;
 
-static xmlrpc_value * faces_get_count(  xmlrpc_env *   const envP,
-                                        xmlrpc_value * const paramArrayP,
-                                        void *         const serverInfo,
-                                        void *         const channelInfo) {
-//                                        void *         const user_data) {
-
-    //xmlrpc_int32 x, y, z;
-
-    /* Parse our argument array. */
-    //xmlrpc_decompose_value(envP, paramArrayP, "(ii)", &x, &y);
-    //if (envP->fault_occurred)
-    //return NULL;
-
-    /* Add our two numbers. */
-    //z = x + y;
+static xmlrpc_value * rpc_faces_get_count(  xmlrpc_env *   const envP,
+        xmlrpc_value * const paramArrayP,
+        void *         const serverInfo,
+        void *         const channelInfo) {
 
     /* Return our result. */
-    return xmlrpc_build_value(envP, "i", orl.size()); 
-}
+    return xmlrpc_build_value(envP, "i", faces.size()); 
+}; //rpc_faces_get_count
+
+static xmlrpc_value * rpc_faces_get_id_list(xmlrpc_env *   const envP,
+        xmlrpc_value * const paramArrayP,
+        void *         const serverInfo,
+        void *         const channelInfo) {
+//    return xmlrpc_build_value();
+}; //rpc_faces_get_id_list
+
+static xmlrpc_value * rpc_faces_get_face(xmlrpc_env *   const envP,
+        xmlrpc_value * const paramArrayP,
+        void *         const serverInfo,
+        void *         const channelInfo) {
+//    return xmlrpc_build_value();
+}; //rpc_faces_get_face
+
+static xmlrpc_value * rpc_datasets_get_id_list(xmlrpc_env *   const envP,
+        xmlrpc_value * const paramArrayP,
+        void *         const serverInfo,
+        void *         const channelInfo) {
+//    return xmlrpc_build_value();
+}; //rpc_datasets_get_id_list
+
+static xmlrpc_value * rpc_datasets_get_dataset(xmlrpc_env *  envP,
+        xmlrpc_value * const paramArrayP,
+        void *         const serverInfo,
+        void *         const channelInfo) {
+
+    xmlrpc_int32 id;
+    xmlrpc_decompose_value(envP, paramArrayP, "(i)", &id);
+    xmlrpc_value * face_ids = xmlrpc_array_new(envP);;
+    xmlrpc_value * item;
+
+    if(datasets.find(id) == datasets.end()) {
+        xmlrpc_faultf(envP, "Dataset %d not found", id);
+        return 0;
+    }
+
+    for(unsigned i = 0; i < datasets[id].face_ids.size(); ++i) {
+        xmlrpc_value * item = xmlrpc_build_value(envP, "i", datasets[id].face_ids[i]);
+        xmlrpc_array_append_item(envP, face_ids, item);
+        xmlrpc_DECREF(item);
+    }
+
+    return xmlrpc_build_value(envP, "{s:i,s:s,s:A}", "id", datasets[id].id, "name", datasets[id].name.c_str(), "face_ids", face_ids);
+}; //rpc_datasets_get_dataset
 
 
 int main(int argc, char ** argv)
@@ -53,22 +88,49 @@ int main(int argc, char ** argv)
 
     cfg.print();
 
-    orl = make_faces(cfg);
+    faces = make_faces(cfg);
+//    for(map<unsigned, FaceT>::iterator it = faces.begin(); it != faces.end(); ++it)
+//        cout<<it->first<<" "<<it->second.id<<" "<<imgm2tp(it->second, 5).desired_output().size()<<endl;
+//        cout<<it->first<<" "<<it->second.id<<" "<<it->second.img->getAverageValarray().size()<<endl;
+    make_datasets(datasets, cfg, faces);
 
 //New XML-RPC only
-    struct xmlrpc_method_info3 const methodInfo = {
-        /* .methodName     = */ "faces.get_count",
-        /* .methodFunction = */ &faces_get_count,
-    };
     xmlrpc_server_abyss_parms serverparm;
     xmlrpc_registry * registryP;
     xmlrpc_env env;
-
     xmlrpc_env_init(&env);
-
     registryP = xmlrpc_registry_new(&env);
 
-    xmlrpc_registry_add_method3(&env, registryP, &methodInfo);
+    struct xmlrpc_method_info3 const rpc_faces_get_count_m = {
+        /* .methodName     = */ "faces.get_count",
+        /* .methodFunction = */ &rpc_faces_get_count,
+    };
+    xmlrpc_registry_add_method3(&env, registryP, &rpc_faces_get_count_m);
+
+    struct xmlrpc_method_info3 const rpc_faces_get_id_list_m = {
+        /* .methodName     = */ "faces.get_id_list",
+        /* .methodFunction = */ &rpc_faces_get_id_list,
+    };
+    xmlrpc_registry_add_method3(&env, registryP, &rpc_faces_get_id_list_m);
+
+    struct xmlrpc_method_info3 const rpc_faces_get_face_m = {
+        /* .methodName     = */ "faces.get_face",
+        /* .methodFunction = */ &rpc_faces_get_face,
+    };
+    xmlrpc_registry_add_method3(&env, registryP, &rpc_faces_get_face_m);
+
+    struct xmlrpc_method_info3 const rpc_datasets_get_id_list_m = {
+        /* .methodName     = */ "datasets.get_id_list",
+        /* .methodFunction = */ &rpc_datasets_get_id_list,
+    };
+    xmlrpc_registry_add_method3(&env, registryP, &rpc_datasets_get_id_list_m);
+
+    struct xmlrpc_method_info3 const rpc_datasets_get_dataset_m = {
+        /* .methodName     = */ "datasets.get_dataset",
+        /* .methodFunction = */ &rpc_datasets_get_dataset,
+    };
+    xmlrpc_registry_add_method3(&env, registryP, &rpc_datasets_get_dataset_m);
+
 //    xmlrpc_registry_add_method(&env, registryP, NULL, "faces.get_conut", &faces_get_count, NULL);
 
     serverparm.config_file_name = NULL;

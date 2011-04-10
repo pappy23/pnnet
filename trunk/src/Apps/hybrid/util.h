@@ -6,7 +6,7 @@
 
 void random_seed(unsigned seed);
 std::string cur_time();
-TrainPattern imgm2tp(const FaceT& data, unsigned men);
+TrainPattern  imgm2tp(const FaceT& data, unsigned men);
 
 #endif //UTIL_H
 
