@@ -1,20 +1,12 @@
-<!-- <link rel="stylesheet" type="text/css" href="style.css" /> -->
+{% include "menu.html" %}
 
-<style type="text/css">
-    table {
-        border-width: 1px;
-        border-spacing: 2px;
-        border-style: outset;
-        border-color: gray;
-        border-collapse: collapse;
-    }
-</style>
+<link rel="stylesheet" type="text/css" href="html/style.css" />
 
 {% if datasets %}
-<table>
+<table border=1>
     <tr>
         <td>ID</td>
-        <td>Name</td>
+        <td width=200>Name</td>
         <td>Faces</TD>
     </tr>
     {% for dataset in datasets %}

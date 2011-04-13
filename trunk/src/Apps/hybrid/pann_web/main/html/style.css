@@ -1,9 +1,10 @@
 <style type="text/css">
     table {
-        border-width: 1px;
+        border: 10;
+        border-width: 10px;
         border-spacing: 2px;
         border-style: outset;
-        border-color: gray;
+        border-color: black;
         border-collapse: collapse;
         background-color: white;
     }
