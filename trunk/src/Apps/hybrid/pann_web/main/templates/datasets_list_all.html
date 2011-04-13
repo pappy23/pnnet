@@ -1,0 +1,30 @@
+<!-- <link rel="stylesheet" type="text/css" href="style.css" /> -->
+
+<style type="text/css">
+    table {
+        border-width: 1px;
+        border-spacing: 2px;
+        border-style: outset;
+        border-color: gray;
+        border-collapse: collapse;
+    }
+</style>
+
+{% if datasets %}
+<table>
+    <tr>
+        <td>ID</td>
+        <td>Name</td>
+        <td>Faces</TD>
+    </tr>
+    {% for dataset in datasets %}
+    <tr>
+        <td>{{ dataset.id }}</a></td>
+        <td>{{ dataset.name }}</td>
+        <td>{{ dataset.face_ids }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>No datasets are available.</p>
+{% endif %}

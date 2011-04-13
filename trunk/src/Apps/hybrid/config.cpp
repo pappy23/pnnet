@@ -127,8 +127,10 @@ void make_datasets(map<unsigned, DatasetT> & result, ConfigT & cfg, map<unsigned
     cout<<"Train/test: "<<result[2].td.size()<<"/"<<result[3].td.size()<<"\n";
 
     cout<<"Datasets:\n";
-    for(map<unsigned, DatasetT>::iterator it = result.begin(); it != result.end(); ++it)
+    for(map<unsigned, DatasetT>::iterator it = result.begin(); it != result.end(); ++it) {
         cout<<it->first<<"\t"<<it->second.name<<"\t"<<it->second.td.size()<<endl;
+        it->second.id = it->first;
+    }
 
 }; //make_datasets
 

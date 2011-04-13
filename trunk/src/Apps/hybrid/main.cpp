@@ -29,21 +29,45 @@ static xmlrpc_value * rpc_faces_get_id_list(xmlrpc_env *   const envP,
         xmlrpc_value * const paramArrayP,
         void *         const serverInfo,
         void *         const channelInfo) {
-//    return xmlrpc_build_value();
+    xmlrpc_value * result = xmlrpc_array_new(envP);
+    xmlrpc_value * item;
+    for(map<unsigned, FaceT>::iterator it = faces.begin(); it != faces.end(); ++it) {
+        xmlrpc_value * item = xmlrpc_build_value(envP, "i", it->first);
+        xmlrpc_array_append_item(envP, result, item);
+        xmlrpc_DECREF(item);
+    }
+
+    return xmlrpc_build_value(envP, "A", result);
 }; //rpc_faces_get_id_list
 
 static xmlrpc_value * rpc_faces_get_face(xmlrpc_env *   const envP,
         xmlrpc_value * const paramArrayP,
         void *         const serverInfo,
         void *         const channelInfo) {
-//    return xmlrpc_build_value();
+    xmlrpc_int32 id;
+    xmlrpc_decompose_value(envP, paramArrayP, "(i)", &id);
+
+    if(faces.find(id) == faces.end()) {
+        xmlrpc_faultf(envP, "Face %d not found", id);
+        return 0;
+    }
+
+    return xmlrpc_build_value(envP, "{s:i,s:i,s:i,s:s}", "id", faces[id].id, "man", faces[id].man, "position", faces[id].position, "path", faces[id].path.c_str());
 }; //rpc_faces_get_face
 
 static xmlrpc_value * rpc_datasets_get_id_list(xmlrpc_env *   const envP,
         xmlrpc_value * const paramArrayP,
         void *         const serverInfo,
         void *         const channelInfo) {
-//    return xmlrpc_build_value();
+    xmlrpc_value * result = xmlrpc_array_new(envP);
+    xmlrpc_value * item;
+    for(map<unsigned, DatasetT>::iterator it = datasets.begin(); it != datasets.end(); ++it) {
+        xmlrpc_value * item = xmlrpc_build_value(envP, "i", it->first);
+        xmlrpc_array_append_item(envP, result, item);
+        xmlrpc_DECREF(item);
+    }
+
+    return xmlrpc_build_value(envP, "A", result);
 }; //rpc_datasets_get_id_list
 
 static xmlrpc_value * rpc_datasets_get_dataset(xmlrpc_env *  envP,
@@ -53,7 +77,7 @@ static xmlrpc_value * rpc_datasets_get_dataset(xmlrpc_env *  envP,
 
     xmlrpc_int32 id;
     xmlrpc_decompose_value(envP, paramArrayP, "(i)", &id);
-    xmlrpc_value * face_ids = xmlrpc_array_new(envP);;
+    xmlrpc_value * face_ids = xmlrpc_array_new(envP);
     xmlrpc_value * item;
 
     if(datasets.find(id) == datasets.end()) {
