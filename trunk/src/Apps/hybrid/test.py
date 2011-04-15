@@ -11,7 +11,8 @@ if __name__ == "__main__":
     result = server.faces.get_face(10)
     result = server.faces.get_id_list()
 
-    print  map(server.datasets.get_dataset, server.datasets.get_id_list())
+#    print  map(server.datasets.get_dataset, server.datasets.get_id_list())
+    print  map(server.nets.get_net, server.nets.get_id_list())
 
     result = server.faces.get_count()
     # Call the server and get our result.

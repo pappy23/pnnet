@@ -59,6 +59,9 @@ ConfigT configure(const char * filename)
         if(!strcmp(child->name(), "rpc")) {
             config.rpc_port = lexical_cast<unsigned>(child->first_node("port")->value());
         }
+        if(!strcmp(child->name(), "nets")) {
+            config.net_list_path = child->first_node("database")->value();
+        }
     }
 
     return config;
@@ -133,4 +136,46 @@ void make_datasets(map<unsigned, DatasetT> & result, ConfigT & cfg, map<unsigned
     }
 
 }; //make_datasets
+
+void make_nets(map<unsigned, NetT> & result, ConfigT & cfg)
+{
+    cout<<"Loading information about available neural networks...\n";
+
+    rapidxml::file<> xmlfile(cfg.net_list_path.c_str());
+    xml_document<> doc;
+    doc.parse<0>(xmlfile.data());
+    xml_node<> *mroot = doc.first_node("metadata");
+    string path_base;
+    path_base.append(mroot->first_node("directory")->value());
+    cfg.net_list_path_base = path_base;
+    path_base.append("/");
+    cout<<"Path base: "<<path_base<<endl;
+    for(xml_node<> * net_node = mroot->first_node(); net_node; net_node = net_node->next_sibling()) {
+        if(!strcmp(net_node->name(), "net")) {
+            unsigned id = lexical_cast<unsigned>(net_node->first_node("id")->value());
+            result[id].id = id;
+            result[id].path.append(net_node->first_node("file")->value());
+            result[id].actual = false;
+            result[id].name = net_node->first_node("name")->value();
+            cout<<"Found net id: "<<id<<" name: "<<result[id].name<<endl;
+        }
+    }
+
+}; //make_nets
+
+void save_nets_info(map<unsigned, NetT> & result, ConfigT & cfg)
+{
+    ofstream f;
+    f.open(cfg.net_list_path.c_str());
+
+    f<<"<metadata>\n";
+    f<<"<directory>"<<cfg.net_list_path_base<<"</directory>\n";
+
+    for(map<unsigned, NetT>::iterator it = result.begin(); it != result.end(); ++it) {
+        f<<"<net>\n<id>"<<it->first<<"</id>\n<name>"<<it->second.name<<"</name>\n<file>"<<it->second.path<<"</file>\n</net>\n";
+    }
+
+    f<<"</metadata>\n";
+    f.close();
+}; //save_nets
 
