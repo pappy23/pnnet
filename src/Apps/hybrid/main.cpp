@@ -15,6 +15,7 @@ using namespace pann;
 //All faces are stored here
 map<unsigned, FaceT> faces;
 map<unsigned, DatasetT> datasets;
+map<unsigned, NetT> nets;
 
 static xmlrpc_value * rpc_faces_get_count(  xmlrpc_env *   const envP,
         xmlrpc_value * const paramArrayP,
@@ -30,7 +31,6 @@ static xmlrpc_value * rpc_faces_get_id_list(xmlrpc_env *   const envP,
         void *         const serverInfo,
         void *         const channelInfo) {
     xmlrpc_value * result = xmlrpc_array_new(envP);
-    xmlrpc_value * item;
     for(map<unsigned, FaceT>::iterator it = faces.begin(); it != faces.end(); ++it) {
         xmlrpc_value * item = xmlrpc_build_value(envP, "i", it->first);
         xmlrpc_array_append_item(envP, result, item);
@@ -60,7 +60,6 @@ static xmlrpc_value * rpc_datasets_get_id_list(xmlrpc_env *   const envP,
         void *         const serverInfo,
         void *         const channelInfo) {
     xmlrpc_value * result = xmlrpc_array_new(envP);
-    xmlrpc_value * item;
     for(map<unsigned, DatasetT>::iterator it = datasets.begin(); it != datasets.end(); ++it) {
         xmlrpc_value * item = xmlrpc_build_value(envP, "i", it->first);
         xmlrpc_array_append_item(envP, result, item);
@@ -78,7 +77,6 @@ static xmlrpc_value * rpc_datasets_get_dataset(xmlrpc_env *  envP,
     xmlrpc_int32 id;
     xmlrpc_decompose_value(envP, paramArrayP, "(i)", &id);
     xmlrpc_value * face_ids = xmlrpc_array_new(envP);
-    xmlrpc_value * item;
 
     if(datasets.find(id) == datasets.end()) {
         xmlrpc_faultf(envP, "Dataset %d not found", id);
@@ -93,6 +91,45 @@ static xmlrpc_value * rpc_datasets_get_dataset(xmlrpc_env *  envP,
 
     return xmlrpc_build_value(envP, "{s:i,s:s,s:A}", "id", datasets[id].id, "name", datasets[id].name.c_str(), "face_ids", face_ids);
 }; //rpc_datasets_get_dataset
+
+static xmlrpc_value * rpc_nets_get_id_list(xmlrpc_env *   const envP,
+        xmlrpc_value * const paramArrayP,
+        void *         const serverInfo,
+        void *         const channelInfo) {
+    xmlrpc_value * result = xmlrpc_array_new(envP);
+    for(map<unsigned, NetT>::iterator it = nets.begin(); it != nets.end(); ++it) {
+        xmlrpc_value * item = xmlrpc_build_value(envP, "i", it->first);
+        xmlrpc_array_append_item(envP, result, item);
+        xmlrpc_DECREF(item);
+    }
+
+    return xmlrpc_build_value(envP, "A", result);
+}; //rpc_nets_get_id_list
+
+static xmlrpc_value * rpc_nets_get_net(xmlrpc_env *  envP,
+        xmlrpc_value * const paramArrayP,
+        void *         const serverInfo,
+        void *         const channelInfo) {
+
+    xmlrpc_int32 id;
+    xmlrpc_decompose_value(envP, paramArrayP, "(i)", &id);
+
+    if(nets.find(id) == nets.end()) {
+        xmlrpc_faultf(envP, "Net %d not found", id);
+        return 0;
+    }
+
+    bool is_loaded = false;
+    if(nets[id].p)
+        is_loaded = true;
+
+    return xmlrpc_build_value(envP, "{s:i,s:s,s:s,s:b,s:b}",
+            "id", nets[id].id,
+            "name", nets[id].name.c_str(),
+            "path", nets[id].path.c_str(),
+            "actual", nets[id].actual,
+            "loaded", is_loaded);
+}; //rpc_nets_get_net
 
 
 int main(int argc, char ** argv)
@@ -113,10 +150,9 @@ int main(int argc, char ** argv)
     cfg.print();
 
     faces = make_faces(cfg);
-//    for(map<unsigned, FaceT>::iterator it = faces.begin(); it != faces.end(); ++it)
-//        cout<<it->first<<" "<<it->second.id<<" "<<imgm2tp(it->second, 5).desired_output().size()<<endl;
-//        cout<<it->first<<" "<<it->second.id<<" "<<it->second.img->getAverageValarray().size()<<endl;
     make_datasets(datasets, cfg, faces);
+    make_nets(nets, cfg);
+    save_nets_info(nets, cfg);
 
 //New XML-RPC only
     xmlrpc_server_abyss_parms serverparm;
@@ -154,6 +190,18 @@ int main(int argc, char ** argv)
         /* .methodFunction = */ &rpc_datasets_get_dataset,
     };
     xmlrpc_registry_add_method3(&env, registryP, &rpc_datasets_get_dataset_m);
+
+    struct xmlrpc_method_info3 const rpc_nets_get_id_list_m = {
+        /* .methodName     = */ "nets.get_id_list",
+        /* .methodFunction = */ &rpc_nets_get_id_list,
+    };
+    xmlrpc_registry_add_method3(&env, registryP, &rpc_nets_get_id_list_m);
+
+    struct xmlrpc_method_info3 const rpc_nets_get_net_m = {
+        /* .methodName     = */ "nets.get_net",
+        /* .methodFunction = */ &rpc_nets_get_net,
+    };
+    xmlrpc_registry_add_method3(&env, registryP, &rpc_nets_get_net_m);
 
 //    xmlrpc_registry_add_method(&env, registryP, NULL, "faces.get_conut", &faces_get_count, NULL);
 

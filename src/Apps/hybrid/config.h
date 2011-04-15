@@ -32,9 +32,13 @@ struct FacesConfigT {
 struct ConfigT {
     FacesConfigT faces;
     int rpc_port;
+    string net_list_path;
+    string net_list_path_base;
 
     void print() const {
         faces.print();
+        cout<<"RPC port: "<<rpc_port
+            <<"\n Path to network list: "<<net_list_path<<"\n";
     };
 };
 
@@ -53,8 +57,18 @@ struct DatasetT {
     TrainData td;
 };
 
+struct NetT {
+    unsigned id;
+    string name;
+    string path;
+    bool actual;
+    NetPtr p;
+};
+
 ConfigT configure(const char * filename);
 map<unsigned, FaceT> make_faces(ConfigT & cfg);
 void make_datasets(map<unsigned, DatasetT> & result, ConfigT & cfg, map<unsigned, FaceT> & faces);
+void make_nets(map<unsigned, NetT> & result, ConfigT & cfg);
+void save_nets_info(map<unsigned, NetT> & nets, ConfigT & cfg);
 
 #endif // CONFIG_H

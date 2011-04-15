@@ -1,0 +1,26 @@
+{% include "menu.html" %}
+
+<link rel="stylesheet" type="text/css" href="html/style.css" />
+
+{% if nets %}
+<table border=1>
+    <tr>
+        <td>ID</td>
+        <td width=200>Name</td>
+        <td>Path</td>
+        <td>Actual</td>
+        <td>Loaded</td>
+    </tr>
+    {% for net in nets %}
+    <tr>
+        <td>{{ net.id }}</a></td>
+        <td>{{ net.name }}</td>
+        <td>{{ net.path }}</td>
+        <td>{{ net.actual }}</td>
+        <td>{{ net.loaded }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>No nets are available.</p>
+{% endif %}

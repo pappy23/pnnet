@@ -34,6 +34,15 @@ def datasets_list_all(request):
         return render_to_response('error.html')
     return render_to_response('datasets_list_all.html', {'datasets': all_datasets})
 
+def nets_list_all(request):
+    rpc = xmlrpclib.Server(Setting.objects.get(name='rpc_target').value)
+    try:
+        all_nets = map(rpc.nets.get_net, rpc.nets.get_id_list())
+    except Exception as e:
+        log("nets_list_all -> RPC failed: {0}".format(e))
+        return render_to_response('error.html')
+    return render_to_response('nets_list_all.html', {'nets': all_nets})
+
 def test(request):
     class TestForm(forms.Form):
         field = forms.IntegerField()
