@@ -45,3 +45,27 @@ TrainPattern imgm2tp(const FaceT& data, unsigned men)
     return tp;
 }; //imgm2tp
 
+void dispose_net(NetPtr pnet)
+{
+    //STUB
+}; //dispose_net
+
+unsigned get_output_number(NetPtr pnet)
+{
+    const NetCache & cache = pnet->get_cache();
+    if(!cache.layers.size())
+        return 0;
+    return cache.layers[cache.layers.size() - 1].size(); 
+}; //get_output_number
+
+bool check_dataset(NetPtr pnet, DatasetT & dataset, map<unsigned, FaceT> & faces)
+{
+    unsigned face_number = 0;
+    for(unsigned face_id = 0; face_id < dataset.face_ids.size(); ++face_id) {
+        if(faces[face_id].man > face_number)
+            face_number = faces[face_id].man;
+    }
+
+    return (get_output_number(pnet) == face_number);
+
+}; //check_dataset
