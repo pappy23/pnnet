@@ -172,7 +172,7 @@ void save_nets_info(map<unsigned, NetT> & result, ConfigT & cfg)
     f<<"<directory>"<<cfg.net_list_path_base<<"</directory>\n";
 
     for(map<unsigned, NetT>::iterator it = result.begin(); it != result.end(); ++it) {
-        f<<"<net>\n<id>"<<it->first<<"</id>\n<name>"<<it->second.name<<"</name>\n<file>"<<it->second.path<<"</file>\n</net>\n";
+        f<<"\n<net>\n  <id>"<<it->first<<"</id>\n  <name>"<<it->second.name<<"</name>\n  <file>"<<it->second.path<<"</file>\n</net>\n";
     }
 
     f<<"</metadata>\n";

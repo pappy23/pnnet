@@ -3,6 +3,7 @@
 #include "config.h"
 #include "util.h"
 
+#include <boost/lexical_cast.hpp>
 #include <xmlrpc-c/base.h>
 #include <xmlrpc-c/server.h>
 #include <xmlrpc-c/server_abyss.h>
@@ -163,10 +164,46 @@ static xmlrpc_value * rpc_nets_create_mlp(xmlrpc_env * envP,
                                xmlrpc_value * const paramArrayP,
                                void * const serverInfo, void * const channelInfo
                     ) {
+    vector<unsigned> arg;
 
-    //STUB
+    //Parsing
+    xmlrpc_value * array = paramArrayP;
+    //xmlrpc_decompose_value(envP, paramArrayP, "(V)", array);
+    for(unsigned i = 0; i < xmlrpc_array_size(envP, array); ++i) {
+        xmlrpc_value * layer_;
+        xmlrpc_int32 layer;
+        xmlrpc_array_read_item(envP, array, i, &layer_);
+        xmlrpc_read_int(envP, layer_, &layer);
+        xmlrpc_DECREF(layer_);
+        arg.push_back(layer);
+    }
+
+    //Find next free id
+    unsigned id = 0;
+    for(map<unsigned, NetT>::iterator it = nets.begin(); it != nets.end(); ++it)
+        if(it->first > id)
+            id = it->first;
+    id++;
+
+    //Add net to registry
+    nets[id].id = id;
+    nets[id].name = "New Net";
+    nets[id].path = lexical_cast<string>(id) + ".net";
+    nets[id].actual = false;
+
+    //Build Net object
+    vector<tuple<unsigned, TfPtr> > layers;
+    layers.push_back(make_tuple(arg[0], Linear::Instance()));
+    for(unsigned layer_no = 1; layer_no < arg.size(); ++layer_no) {
+        layers.push_back(make_tuple(arg[layer_no], TanH::Instance()));
+    }
+
+    nets[id].p = MultilayerPerceptron(layers);
+
+    //Update net list on disk
     save_nets_info(nets, cfg);
-    return xmlrpc_build_value(envP, "i", 1);
+
+    return xmlrpc_build_value(envP, "i", id);
 }; //rpc_nets_create_mlp
 
 static xmlrpc_value * rpc_nets_create_convnet(xmlrpc_env * envP,
