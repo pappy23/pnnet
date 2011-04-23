@@ -337,6 +337,10 @@ static xmlrpc_value * rpc_nets_reset(xmlrpc_env * envP,
         xmlrpc_faultf(envP, "Net %d not found", id);
         return 0;
     }
+    if(!nets[id].p) {
+        xmlrpc_faultf(envP, "Net %d not loaded", id);
+        return 0;
+    }
 
     nets[id].actual = false;
     randomize_weights_gauss(nets[id].p, min, max);
@@ -485,7 +489,7 @@ static xmlrpc_value * rpc_nets_teach(xmlrpc_env * envP,
         xmlrpc_value * item = xmlrpc_build_value(envP, "{s:i,s:d,s:d}",
                 "epoch", i,
                 "train_error", ErrorFunction::mse(train_data),
-                "test_err", test_err);
+                "test_error", test_err);
         xmlrpc_array_append_item(envP, result, item);
         xmlrpc_DECREF(item);
     }

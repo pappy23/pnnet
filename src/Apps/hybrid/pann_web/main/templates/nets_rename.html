@@ -1,7 +1,7 @@
 {% include "menu.html" %}
 
-<h2>Rename net</h2>
-<form action="/nets_rename" method="post">
+<h2>Rename net #{{ net_id }}</h2>
+<form action="/nets_rename?net_id={{ net_id }}" method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Submit" />

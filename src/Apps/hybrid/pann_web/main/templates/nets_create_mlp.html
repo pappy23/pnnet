@@ -1,0 +1,8 @@
+{% include "menu.html" %}
+
+<h2>Create multilayer perceptron</h2>
+<form action="/nets_create_mlp" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit" />
+</form>

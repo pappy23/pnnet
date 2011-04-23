@@ -1,0 +1,8 @@
+{% include "menu.html" %}
+
+<h2>Test net #{{ net_id }} on face</h2>
+<form action="/nets_test1?net_id={{ net_id }}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit" />
+</form>
