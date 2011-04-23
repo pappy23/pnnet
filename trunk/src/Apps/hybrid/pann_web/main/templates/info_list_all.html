@@ -1,0 +1,24 @@
+{% include "menu.html" %}
+
+{% if all_info %}
+<table border=1>
+    <tr>
+        <td>Net ID</td>
+        <td>Start time</td>
+        <td>Total time</td>
+        <td>Info Type</td>
+        <td>Textual data</td>
+    </tr>
+    {% for r in all_info %}
+    <tr>
+        <td>{{ r.net_id }}</td>
+        <td>{{ r.start_time }}</td>
+        <td>{{ r.total_time }}</td>
+        <td>{{ r.info_type }}</td>
+        <td>{{ r.data }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>No info records are available.</p>
+{% endif %}

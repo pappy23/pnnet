@@ -10,6 +10,7 @@
         <td>Path</td>
         <td>Actual</td>
         <td>Loaded</td>
+        <td>Actions</td>
     </tr>
     {% for net in nets %}
     <tr>
@@ -18,6 +19,7 @@
         <td>{{ net.path }}</td>
         <td>{{ net.actual }}</td>
         <td>{{ net.loaded }}</td>
+        <td><a href="/nets_actions?id={{ net.id }}">Actions</a></td>
     </tr>
     {% endfor %}
 </table>

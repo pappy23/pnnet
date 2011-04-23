@@ -43,7 +43,18 @@ def nets_list_all(request):
         return render_to_response('error.html')
     return render_to_response('nets_list_all.html', {'nets': all_nets})
 
-def test(request):
+def logs_list_all(request):
+    all_logs = Log.objects.all().order_by('-time')
+    return render_to_response('logs_list_all.html', {'all_logs': all_logs})
+
+def info_list_all(request):
+    all_info = TrainInfo.objects.all().order_by('-start_time')
+    return render_to_response('info_list_all.html', {'all_info': all_info})
+
+def nets_actions(request):
+    return render_to_response('nets_actions.html', {'net_id': request.GET['id']})
+
+def nets_rename(request):
     class TestForm(forms.Form):
         field = forms.IntegerField()
 
@@ -55,8 +66,5 @@ def test(request):
     else:
         f = TestForm()
 
-    return render_to_response('test.html', {'form': f}, context_instance=RequestContext(request))
+    return render_to_response('nets_actions.html', {'form': f}, context_instance=RequestContext(request))
 
-def logs_list_all(request):
-    all_logs = Log.objects.all().order_by('-time')
-    return render_to_response('logs_list_all.html', {'all_logs': all_logs})
