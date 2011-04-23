@@ -1,7 +1,7 @@
 <config>
-    <faces database="/home/booble/pann/trunk/src/Apps/hybrid/metadata.xml" />
+    <faces database="/home/booble/pann_data/faces_db/metadata.xml" />
     <nets>
-        <database>/home/booble/pann/trunk/src/Apps/hybrid/net_list.xml</database>
+        <database>/home/booble/pann_data/net_db/net_list.xml</database>
     </nets>
     <rpc>
         <port>8888</port>

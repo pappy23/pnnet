@@ -13,4 +13,5 @@ class TrainInfo(models.Model):
     info_type = models.CharField(max_length=100)
     start_time = models.DateTimeField()
     total_time = models.IntegerField()
+    description = models.TextField()
     data = models.TextField()

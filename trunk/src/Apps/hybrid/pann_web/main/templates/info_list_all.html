@@ -7,6 +7,7 @@
         <td>Start time</td>
         <td>Total time</td>
         <td>Info Type</td>
+        <td>Description</td>
         <td>Textual data</td>
     </tr>
     {% for r in all_info %}
@@ -15,7 +16,8 @@
         <td>{{ r.start_time }}</td>
         <td>{{ r.total_time }}</td>
         <td>{{ r.info_type }}</td>
-        <td>{{ r.data }}</td>
+        <td>{{ r.description }}</td>
+        <td><a href="/info_graph?id={{ r.id }}">{{ r.data }}</a></td>
     </tr>
     {% endfor %}
 </table>
