@@ -1,4 +1,3 @@
-
 #include "pann-shit.h"
 #include "config.h"
 #include "util.h"
@@ -206,22 +205,16 @@ static xmlrpc_value * rpc_nets_create_mlp(xmlrpc_env * envP,
     return xmlrpc_build_value(envP, "i", id);
 }; //rpc_nets_create_mlp
 
-static xmlrpc_value * rpc_nets_create_convnet(xmlrpc_env * envP,
-                               xmlrpc_value * const paramArrayP,
-                               void * const serverInfo, void * const channelInfo
-                    ) {
-
-    //STUB
-    save_nets_info(nets, cfg);
-    return xmlrpc_build_value(envP, "i", 1);
-}; //rpc_nets_create_convnet
-
 static xmlrpc_value * rpc_nets_create_gcnn(xmlrpc_env * envP,
                                xmlrpc_value * const paramArrayP,
                                void * const serverInfo, void * const channelInfo
                     ) {
 
     //STUB
+    //
+    //read net from config file...
+    //
+
     save_nets_info(nets, cfg);
     return xmlrpc_build_value(envP, "i", 1);
 }; //rpc_nets_create_gcnn
@@ -267,6 +260,7 @@ static xmlrpc_value * rpc_nets_load(xmlrpc_env * envP,
     }
     if(nets[id].p) {
         // net already loaded
+        dispose_net(nets[id].p);
     }
 
     string path = cfg.net_list_path_base;
@@ -389,7 +383,7 @@ static xmlrpc_value * rpc_nets_test1(xmlrpc_env * envP,
         xmlrpc_DECREF(item);
     }
 
-    return xmlrpc_build_value(envP, "dA", ErrorFunction::mse(tp), result);
+    return xmlrpc_build_value(envP, "{s:d,s:A}", "mse", ErrorFunction::mse(tp), "data", result);
 }; //rpc_nets_test1
 
 static xmlrpc_value * rpc_nets_test_set(xmlrpc_env * envP,
@@ -425,10 +419,18 @@ static xmlrpc_value * rpc_nets_teach(xmlrpc_env * envP,
                                xmlrpc_value * const paramArrayP,
                                void * const serverInfo, void * const channelInfo
                     ) {
-    xmlrpc_int32 id, train_set_id, test_set_id, epochs;
-    xmlrpc_double stop_error;
+    xmlrpc_int32 id, train_set_id, test_set_id, epochs, annealing_tsc;
+    xmlrpc_double stop_error, learning_rate;
 
-    xmlrpc_decompose_value(envP, paramArrayP, "(iiiid)", &id, &train_set_id, &test_set_id, &epochs, &stop_error);
+    xmlrpc_decompose_value(envP, paramArrayP, "(iiiiddi)",
+            &id,
+            &train_set_id,
+            &test_set_id,
+            &epochs,
+            &stop_error,
+            &learning_rate,
+            &annealing_tsc
+            );
     if(nets.find(id) == nets.end()) {
         xmlrpc_faultf(envP, "Net %d not found", id);
         return 0;
@@ -459,8 +461,13 @@ static xmlrpc_value * rpc_nets_teach(xmlrpc_env * envP,
     TrainData & train_data = datasets[train_set_id].td;
     TrainData & test_data  = datasets[test_set_id].td;
 
-    xmlrpc_value * result = xmlrpc_array_new(envP);
+    nets[id].p->set_work_threads_count(4);
 
+    lms_init(nets[id].p);
+    nets[id].p->set_attr(attr::lms::learning_rate, learning_rate);
+    nets[id].p->set_attr(attr::lms::annealing_tsc, annealing_tsc);
+
+    xmlrpc_value * result = xmlrpc_array_new(envP);
     bool need_to_stop = false;
     for(unsigned i = 1; i <= epochs; ++i)
     {
@@ -484,6 +491,8 @@ static xmlrpc_value * rpc_nets_teach(xmlrpc_env * envP,
     }
 
     return xmlrpc_build_value(envP, "A", result);
+    cout<<"learning finished!"<<endl;
+
 }; //rpc_nets_teach
 
 int main(int argc, char ** argv)
@@ -568,14 +577,8 @@ int main(int argc, char ** argv)
     };
     xmlrpc_registry_add_method3(&env, registryP, &rpc_nets_create_mlp_m);
 
-    struct xmlrpc_method_info3 const rpc_nets_create_convnet_m = {
-        /* .methodName     = */ "nets.create_convnet", // (float density, int wh, int ww, int who, int wwo, [int layer_size]) -> (int id)
-        /* .methodFunction = */ &rpc_nets_create_convnet,
-    };
-    xmlrpc_registry_add_method3(&env, registryP, &rpc_nets_create_convnet_m);
-
     struct xmlrpc_method_info3 const rpc_nets_create_gcnn_m = {
-        /* .methodName     = */ "nets.create_gcnn", // ???
+        /* .methodName     = */ "nets.create_gcnn", // (filename) -> (int id)
         /* .methodFunction = */ &rpc_nets_create_gcnn,
     };
     xmlrpc_registry_add_method3(&env, registryP, &rpc_nets_create_gcnn_m);

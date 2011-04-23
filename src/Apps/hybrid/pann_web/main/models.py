@@ -8,3 +8,9 @@ class Setting(models.Model):
     name = models.CharField(max_length=100)
     value = models.CharField(max_length=100)
 
+class TrainInfo(models.Model):
+    net_id = models.IntegerField()
+    info_type = models.CharField(max_length=100)
+    start_time = models.DateTimeField()
+    total_time = models.IntegerField()
+    data = models.TextField()

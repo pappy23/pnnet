@@ -1,0 +1,13 @@
+{% include "menu.html" %}
+
+<h2>Manage net #{{ net_id }}</h2>
+<p><a href="/nets_rename?net_id={{ net_id }}"  >Rename</a>
+<p><a href="/nets_showsize?net_id={{ net_id }}">Show size</a>
+<p><a href="/nets_load?net_id={{ net_id }}"    >Load</a>
+<p><a href="/nets_save?net_id={{ net_id }}"    >Save</a>
+<p><a href="/nets_reset?net_id={{ net_id }}"   >Reset weights</a>
+<p><a href="/nets_delete?net_id={{ net_id }}"  >Delete</a>
+<p><a href="/nets_copy?net_id={{ net_id }}"    >Copy</a>
+<p><a href="/nets_test1?net_id={{ net_id }}"   >Test on one face</a>
+<p><a href="/nets_test_set?net_id={{ net_id }}">Test on set</a>
+<p><a href="/nets_train?net_id={{ net_id }}"   >Train</a>

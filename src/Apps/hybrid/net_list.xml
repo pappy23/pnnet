@@ -12,4 +12,16 @@
   <name>New Net</name>
   <file>2.net</file>
 </net>
+
+<net>
+  <id>3</id>
+  <name>New Net</name>
+  <file>3.net</file>
+</net>
+
+<net>
+  <id>4</id>
+  <name>New Net</name>
+  <file>4.net</file>
+</net>
 </metadata>
