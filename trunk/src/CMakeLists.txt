@@ -27,13 +27,13 @@ endif()
 #    add_definitions(-DOPTION_BUILD_PYTHON_BINDINGS_DEFINED)
 #endif()
 
-#if(BUILD_PANN_VIEWER)
-#    set(QT_USE_QTOPENGL 1)
-#    find_package(Qt4)
-#    #    if(UNIX)
-#    #        find_package(GLUT)
-#    #    endif(UNIX)
-#endif()
+if(BUILD_PANN_VIEWER)
+    set(QT_USE_QTOPENGL 1)
+    find_package(Qt4)
+    #    if(UNIX)
+    #        find_package(GLUT)
+    #    endif(UNIX)
+endif()
 
 ############################################################################
 # COMPILERS STAFF

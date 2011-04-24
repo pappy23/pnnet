@@ -1,0 +1,81 @@
+<metadata>
+<directory>/home/booble/pann_data/net_db</directory>
+
+<net>
+  <id>1</id>
+  <name>gcnn1</name>
+  <file>1.net</file>
+</net>
+
+<net>
+  <id>2</id>
+  <name>gcnn2</name>
+  <file>2.net</file>
+</net>
+
+<net>
+  <id>3</id>
+  <name>gcnn3</name>
+  <file>3.net</file>
+</net>
+
+<net>
+  <id>4</id>
+  <name>gcnn4</name>
+  <file>4.net</file>
+</net>
+
+<net>
+  <id>5</id>
+  <name>gcnn5</name>
+  <file>5.net</file>
+</net>
+
+<net>
+  <id>6</id>
+  <name>gcnn6</name>
+  <file>6.net</file>
+</net>
+
+<net>
+  <id>7</id>
+  <name>gcnn7</name>
+  <file>7.net</file>
+</net>
+
+<net>
+  <id>8</id>
+  <name>gcnn8</name>
+  <file>8.net</file>
+</net>
+
+<net>
+  <id>9</id>
+  <name>gcnn9</name>
+  <file>9.net</file>
+</net>
+
+<net>
+  <id>10</id>
+  <name>gcnn10</name>
+  <file>10.net</file>
+</net>
+
+<net>
+  <id>11</id>
+  <name>gcnn11</name>
+  <file>11.net</file>
+</net>
+
+<net>
+  <id>12</id>
+  <name>gcnn12</name>
+  <file>12.net</file>
+</net>
+
+<net>
+  <id>13</id>
+  <name>gcnn13</name>
+  <file>13.net</file>
+</net>
+</metadata>

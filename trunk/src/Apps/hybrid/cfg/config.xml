@@ -3,6 +3,9 @@
     <nets>
         <database>/home/booble/pann_data/net_db/net_list.xml</database>
     </nets>
+    <gcnn>
+        <database>/home/booble/pann_data/net_db/gcnn_nets.xml</database>
+    </gcnn>
     <rpc>
         <port>8888</port>
     </rpc>

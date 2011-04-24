@@ -62,6 +62,9 @@ ConfigT configure(const char * filename)
         if(!strcmp(child->name(), "nets")) {
             config.net_list_path = child->first_node("database")->value();
         }
+        if(!strcmp(child->name(), "gcnn")) {
+            config.gcnn_nets_filename = child->first_node("database")->value();
+        }
     }
 
     return config;
@@ -178,4 +181,122 @@ void save_nets_info(map<unsigned, NetT> & result, ConfigT & cfg)
     f<<"</metadata>\n";
     f.close();
 }; //save_nets
+
+void make_nets_from_config(map<unsigned, NetT> & result, ConfigT & cfg)
+{
+    vector<NetConfigT> nets;
+
+    rapidxml::file<> xmlfile(cfg.gcnn_nets_filename.c_str());
+    xml_document<> doc;
+    doc.parse<0>(xmlfile.data());
+
+    xml_node<> *root = doc.first_node("config");
+    for(xml_node<> *child = root->first_node(); child; child = child->next_sibling()) {
+        if(!strcmp(child->name(), "net")) {
+            NetConfigT net_config;
+            for(xml_attribute<> *attr = child->first_attribute(); attr; attr = attr->next_attribute()) {
+                if(!strcmp(attr->name(), "name")) {
+                    net_config.name = attr->value();
+                }
+            }
+            for(xml_node<> *item = child->first_node(); item; item = item->next_sibling()) {
+                if(!strcmp(item->name(), "plane")) {
+                    PlaneConfigT plane_config;
+                    for(xml_attribute<> *attr = item->first_attribute(); attr; attr = attr->next_attribute()) {
+                        if(!strcmp(attr->name(), "id")) {
+                            plane_config.id = lexical_cast<IdT>(attr->value());
+                        }
+                        if(!strcmp(attr->name(), "width")) {
+                            plane_config.width = lexical_cast<unsigned>(attr->value());
+                        }
+                        if(!strcmp(attr->name(), "height")) {
+                            plane_config.height = lexical_cast<unsigned>(attr->value());
+                        }
+                        if(!strcmp(attr->name(), "window_width")) {
+                            plane_config.window_width = lexical_cast<unsigned>(attr->value());
+                        }
+                        if(!strcmp(attr->name(), "window_height")) {
+                            plane_config.window_height = lexical_cast<unsigned>(attr->value());
+                        }
+                        if(!strcmp(attr->name(), "conv")) {
+                            plane_config.is_conv = (!strcmp(attr->value(), "true"));
+                        }
+                    }
+                    net_config.planes.push_back(plane_config);
+                }
+                if(!strcmp(item->name(), "connection")) {
+                    ConnectionConfigT connection_config;
+                    for(xml_attribute<> *attr = item->first_attribute(); attr; attr = attr->next_attribute()) {
+                        if(!strcmp(attr->name(), "from")) {
+                            connection_config.from = lexical_cast<IdT>(attr->value());
+                        }
+                        if(!strcmp(attr->name(), "to")) {
+                            connection_config.to = lexical_cast<IdT>(attr->value());
+                        }
+                        if(!strcmp(attr->name(), "density")) {
+                            connection_config.density = lexical_cast<Float>(attr->value());
+                        }
+                    }
+                    net_config.connections.push_back(connection_config);
+                }
+            }
+            nets.push_back(net_config);
+            cout<<" found net name="<<net_config.name<<endl;
+        }
+    }
+
+    //Find next free id
+    unsigned id = 0;
+    for(map<unsigned, NetT>::iterator it = result.begin(); it != result.end(); ++it)
+        if(it->first > id)
+            id = it->first;
+    id++;
+
+    cout<<"ID = "<<id<<endl;
+
+    random_seed(42);
+    cout<<"r = "<<rand01()<<endl;
+
+    for(vector<NetConfigT>::const_iterator net_iter = nets.begin(); net_iter != nets.end(); ++net_iter) {
+        net_data_t net_data;
+        map<unsigned, unsigned> plane_id;
+        unsigned cur_plane_id = 0;
+        for(vector<PlaneConfigT>::const_iterator plane_iter = net_iter->planes.begin(); plane_iter != net_iter->planes.end(); ++plane_iter) {
+            plane_data_t plane_data;
+            plane_data.width = plane_iter->width;
+            plane_data.height = plane_iter->height;
+            plane_data.window_width = plane_iter->window_width;
+            plane_data.window_height = plane_iter->window_height;
+            plane_data.tf = TanH::Instance();
+            plane_t p = make_plane(plane_data, plane_iter->is_conv);
+            //net_data.planes.push_back(make_plane(plane_data, plane_iter->is_conv));
+            net_data.planes.push_back(p);
+            plane_id[plane_iter->id] = cur_plane_id++;
+        }
+
+        net_data.connection_matrix.resize(boost::extents[cur_plane_id][cur_plane_id]);
+        for(unsigned i = 0; i < cur_plane_id; ++i)
+            for(unsigned j = 0; j < cur_plane_id; ++j)
+                net_data.connection_matrix[i][j] = 0.0;
+        for(vector<ConnectionConfigT>::const_iterator conn_iter = net_iter->connections.begin(); conn_iter != net_iter->connections.end(); ++conn_iter) {
+            net_data.connection_matrix[plane_id[conn_iter->from]][plane_id[conn_iter->to]] = conn_iter->density;
+        }
+
+        cout<<" building net #"<<id<<" name="<<net_iter->name<<endl;
+        NetPtr pnet = make_net(net_data);
+        cout<<" done!"<<endl;
+
+        result[id].id = id;
+        result[id].name = net_iter->name;
+        result[id].path = lexical_cast<string>(id) + ".net";
+        result[id].actual = false;
+        result[id].p = pnet;
+        id++;
+        cout<<" ok\n";
+   }
+
+    //Update net list on disk
+    save_nets_info(result, cfg);
+
+}; //make_nets_from_config
 
