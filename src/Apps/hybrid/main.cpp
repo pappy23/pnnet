@@ -210,13 +210,15 @@ static xmlrpc_value * rpc_nets_create_gcnn(xmlrpc_env * envP,
                                void * const serverInfo, void * const channelInfo
                     ) {
 
-    //STUB
-    //
-    //read net from config file...
-    //
+    cout<<"Building GCNN networks from file '"<<cfg.gcnn_nets_filename<<"'"<<endl;
+    try {
+        make_nets_from_config(nets, cfg);
+    } catch (...) {
+        xmlrpc_faultf(envP, "Error occured while loading from %s", cfg.gcnn_nets_filename.c_str());
+        return 0;
+    };
 
-    save_nets_info(nets, cfg);
-    return xmlrpc_build_value(envP, "i", 1);
+    return xmlrpc_build_value(envP, "i", 0);
 }; //rpc_nets_create_gcnn
 
 static xmlrpc_value * rpc_nets_copy(xmlrpc_env * envP,
@@ -512,6 +514,13 @@ int main(int argc, char ** argv)
         cout<<"Error while reading configuration data\n"<<e.what()<<endl;
         return -1;
     }
+
+    /*
+    cout<<"Testing random...";
+    for(int i = 0; i < 10; ++i)
+        cout<<rand01()<<" ";
+    cout<<endl;
+    */
 
     cfg.print();
 

@@ -24,6 +24,7 @@ namespace pann
     Float
     rand01()
     {
+        /*
         static boost::uniform_real<Float> distribution(0, 1);
         static boost::variate_generator<
             boost::lagged_fibonacci44497,
@@ -31,6 +32,9 @@ namespace pann
         > generator(float_random_generator, distribution);
 
         return generator();
+        */
+        //return 0.5; // chosen by fair dice roll
+        return Float(std::rand())/RAND_MAX;
     }; //rand01
 
     Float
