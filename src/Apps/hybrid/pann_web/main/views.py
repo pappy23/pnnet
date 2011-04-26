@@ -363,5 +363,5 @@ def nets_create_mlp(request):
     return render_to_response('nets_create_mlp.html', {'form': f}, context_instance=RequestContext(request))
 
 def nets_create_gcnn(request):
-    return render_to_response('nets_stub.html')
+    return render_to_response('nets_create_gcnn.html')
 
