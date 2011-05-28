@@ -20,6 +20,11 @@ namespace pann {
             const Hash learning_rate        = 1005;
             const Hash learning_momentum    = 1006;
             const Hash last_dw              = 1007; //Link attribute
+            //Requested by Yaroslaw
+            // Every time the weight becomes less than wbias - set it to reset value (resval)
+            const Hash experimental_algorithm_active = 1008;
+            const Hash experimental_algorithm_wbias  = 1009;
+            const Hash experimental_algorithm_resval = 1010;
         }; //lms
     }; //atrr
 

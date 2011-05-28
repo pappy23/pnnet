@@ -5,6 +5,7 @@
 
 using namespace std;
 using namespace pann;
+using namespace attr;
 
 using boost::tuple;
 
@@ -31,9 +32,14 @@ int main()
     TrainData& td = *(DataGenerator::generateFromFunction(-3.0, +3.0, 20, func));
 
     lms_init(net);
-    net->set_attr(hash("lms_learning_rate"), 0.3);
-    net->set_attr(hash("lms_learning_momentum"), 0.5);
+    net->set_attr(lms::learning_rate, 0.3);
+    net->set_attr(lms::learning_momentum, 0.5);
     randomize_weights_gauss(net, -0.3, +0.3);
+
+    //Experimental learning
+    net->set_attr(lms::experimental_algorithm_active, 1);
+    net->set_attr(lms::experimental_algorithm_wbias,  0.0001);
+    net->set_attr(lms::experimental_algorithm_resval, 0.0);
 
     vector<Float> train_error_info; //MSE
     for(unsigned i = 1; i < epochs; ++i)
