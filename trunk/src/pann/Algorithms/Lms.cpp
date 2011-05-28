@@ -1,6 +1,7 @@
 //LmsRunner.cpp
 
 #include <boost/foreach.hpp>
+#include <iostream> //debug output
 
 #include "Lms.h"
 
@@ -61,6 +62,12 @@ namespace pann {
             //Apply dw
             //boost::mutex::scoped_lock lock(w->getMutex());
             link.get_weight()->add_value(dw);
+            
+            //Experimental algorithm
+            if(net->get_attr(lms::experimental_algorithm_active) != 0) {
+                if(link.get_weight()->get_value() < net->get_attr(lms::experimental_algorithm_wbias))
+                    link.get_weight()->set_value(net->get_attr(lms::experimental_algorithm_resval));
+            };
         }
 
         //Update bias weight
@@ -76,6 +83,12 @@ namespace pann {
             //Apply dw
             //boost::mutex::scoped_lock lock(bias->getMutex());
             neuron->bias->add_value(dw);
+            
+            //Experimental algorithm
+            if(net->get_attr(lms::experimental_algorithm_active) != 0) {
+                if(neuron->bias->get_value() < net->get_attr(lms::experimental_algorithm_wbias))
+                    neuron->bias->set_value(net->get_attr(lms::experimental_algorithm_resval));
+            };
         }
     }; //run
 
@@ -88,6 +101,9 @@ namespace pann {
         net->set_attr(learning_rate, 0.3);
         net->set_attr(learning_momentum, 0.5);
         net->set_attr(annealing_tsc, 10);
+        net->set_attr(experimental_algorithm_active, 0);
+        net->set_attr(experimental_algorithm_wbias,  0.001);
+        net->set_attr(experimental_algorithm_resval, 0.9);
     }; //lms_init
 
 }; //pann
